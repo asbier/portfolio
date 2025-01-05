@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Ensure this is properly imported
+import { useResolvedPath, useMatch } from 'react-router-dom';
 
 function Nav(props) {
     const path = window.location.pathname; // Not used in this code, but valid for debugging
