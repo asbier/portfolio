@@ -8,7 +8,7 @@ function Nav(props) {
             <ul>
                 <li><Link to="/About">ABOUT</Link></li>
                 <li><Link to="/Privacy">PRIVACY</Link></li>
-                <li><Link to="/Contact">C☺NTACT</Link></li>
+                <li><Link to="/Contact">CONTACT</Link></li>
             </ul>
             <div className="toggler">
                 <p className="toggler--light">🌞</p>

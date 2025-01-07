@@ -1,6 +1,6 @@
 /* GLOBAL STYLES */
 body.body-dark {
-  background-color: #2a3f4f; /* Dark Blue Background for Dark Mode */
+  background-color: #000000; /* Dark Blue Background for Dark Mode */
   color: #fff3ed; /* Light text for dark mode */
   min-height: 100vh;
   margin: 0;
@@ -8,7 +8,7 @@ body.body-dark {
 
 body.body-light {
   background-color: #ffffff; /* White Background for Light Mode */
-  color: #2a3f4f; /* Dark text for light mode */
+  color: #000000; /* Dark text for light mode */
   min-height: 100vh;
   margin: 0;
 }
@@ -19,17 +19,17 @@ body.body-light {
 }
 
 .toggler p {
-  font-size: 0.69rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin: 10px;
+  margin: 0px;
 }
 
 .toggler--slider {
   width: 40px;
   height: 15px;
-  background-color: #2a3f4f; /* Default dark slider color */
+  background-color: #000000; /* Default dark slider color */
   border-radius: 2rem;
-  margin-inline: 7px;
+  margin-inline: 4px;
   cursor: pointer;
   display: flex;
   justify-content: flex-start;
@@ -51,7 +51,7 @@ nav.dark .toggler--slider {
 }
 
 nav.dark .toggler--slider--circle {
-  background-color: #2a3f4f;
+  background-color: #000000;
 }
 
 /* NAVIGATION */
@@ -69,7 +69,7 @@ nav {
 }
 
 nav.dark {
-  background-color: #c3d8e9; /* Light blue for dark mode */
+  background-color: #000000; /* Light blue for dark mode */
   color: #fff3ed; /* Light text for dark mode */
 }
 
@@ -89,15 +89,17 @@ nav.dark {
 
 /* Rest of your Nav styles */
 ul {
-  display: flex;
-  gap: 1rem;
+  display: inline-flex;
+  gap: 0.6rem;
   padding: 0;
   margin: 0;
-}
+  align-items: center; 
+  line-height: 1; }
 
 li {
   list-style: none;
-}
+  align-items: center; 
+  line-height: 1; }
 
 a {
   color: inherit;
@@ -115,7 +117,7 @@ h1 {
 }
 
 .hero-p {
-  margin: 35px;
+  margin: 10px;
 }
 
 .container-page {
@@ -149,13 +151,21 @@ img:hover {
 
 .inner-carousel {
   display: flex;
-  background: #fffdfc05;
+  background: #fffdfc00;
+}
+
+inner-carousel.dark {
+  background: #000000; /* Light blue for dark mode */
 }
 
 .carousel {
   cursor: grab;
   overflow: hidden;
-  background-color: #fffdfc03;
+  background-color: #fffdfc00;
+}
+
+carousel.dark {
+  background-color: #000000; /* Light blue for dark mode */
 }
 
 /* FOOTER */
@@ -172,7 +182,7 @@ footer {
 }
 
 footer.dark {
-  background-color: #c3d8e9; /* Light blue background for dark mode */
+  background-color: #000000; /* Light blue background for dark mode */
   color: #fff3ed; /* Light text for dark mode */
 }
 
