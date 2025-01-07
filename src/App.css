@@ -1,206 +1,215 @@
-
-
-.item {
-  min-height:25rem;
-  min-width: 20rem;
-  padding: 40px;
-}
-.item img { 
-  width: 100%;
-  height: 100%;
-  border-radius: 0rem;
+/* GLOBAL STYLES */
+body.body-dark {
+  background-color: #2a3f4f; /* Dark Blue Background for Dark Mode */
+  color: #fff3ed; /* Light text for dark mode */
+  min-height: 100vh;
+  margin: 0;
 }
 
-img:hover {
-  opacity: .4;
-  transition:.5s;
+body.body-light {
+  background-color: #ffffff; /* White Background for Light Mode */
+  color: #2a3f4f; /* Dark text for light mode */
+  min-height: 100vh;
+  margin: 0;
+}
+/* TOGGLE */
+.toggler {
+  display: flex;
+  align-items: center;
+}
+
+.toggler p {
+  font-size: 0.69rem;
+  font-weight: 600;
+  margin: 10px;
+}
+
+.toggler--slider {
+  width: 40px;
+  height: 15px;
+  background-color: #2a3f4f; /* Default dark slider color */
   border-radius: 2rem;
+  margin-inline: 7px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid rgb(249, 240, 172);
 }
 
-.inner-carousel  {
+.toggler--slider--circle {
+  height: 13px;
+  width: 13px;
+  background-color: rgb(252, 250, 226); /* Default circle color */
+  border-radius: 50%;
+}
+
+nav.dark .toggler--slider {
+  background-color: #fff3ed;
+  border-color: #fff3ed;
+  justify-content: flex-end;
+}
+
+nav.dark .toggler--slider--circle {
+  background-color: #2a3f4f;
+}
+
+/* NAVIGATION */
+nav {
   display: flex;
-  background:  #fffdfc05;
-  }
-  
-  .carousel
-  { 
-  cursor:grab;
-  overflow: hidden;
-  background-color: #fffdfc03;;
-  }
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 60px;
+  box-shadow: 0px 1px 4px rgba(98, 92, 104, 0.25);
+  z-index: 1;
+  background-color: #ffffff; /* White for light mode */
+  color: inherit;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-/* MAIN styles */
+nav.dark {
+  background-color: #c3d8e9; /* Light blue for dark mode */
+  color: #fff3ed; /* Light text for dark mode */
+}
 
-
-.container-page
-{
-  font-style: Arial, Helvetica, sans-serif;
-  font-weight: 300;
+/* Logo Styles */
+.nav-logo {
+  font-size: 2rem; /* Set a fixed font size for the logo */
   display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-logo:hover {
+  transform: scale(1.1); /* Slightly enlarge the logo on hover */
+  transition: 0.3s ease;
+}
+
+/* Rest of your Nav styles */
+ul {
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* MAIN CONTENT */
+h1 {
+  font-size: 3rem;
+}
+
+.hero {
+  padding: 10px 35px;
+}
+
+.hero-p {
   margin: 35px;
 }
 
-body {
-  background-color: #c3d8e9; 
-  color: #fff3ed; 
+.container-page {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  margin: 35px;
+  gap: 20px;
 }
 
-/* FOOTER styles */
+/* CAROUSEL STYLES */
+.item {
+  min-height: 25rem;
+  min-width: 20rem;
+  padding: 40px;
+}
 
+.item img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0rem;
+  transition: border-radius 0.5s;
+}
+
+img:hover {
+  opacity: 0.4;
+  transition: 0.5s;
+  border-radius: 2rem;
+}
+
+.inner-carousel {
+  display: flex;
+  background: #fffdfc05;
+}
+
+.carousel {
+  cursor: grab;
+  overflow: hidden;
+  background-color: #fffdfc03;
+}
+
+/* FOOTER */
 footer {
   margin-top: 1rem;
   padding: 1rem;
-  background-color:  #fffdfc00;
+  background-color: #ffffff; /* White background for light mode */
   font-size: 1rem;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 30px 15px;}
-
-.contact {
-cursor:pointer;
+  padding: 30px 15px;
 }
-/* NAV styles */
 
-nav {
+footer.dark {
+  background-color: #c3d8e9; /* Light blue background for dark mode */
+  color: #fff3ed; /* Light text for dark mode */
+}
+
+/* SUBTEXT */
+.sub {
   display: flex;
-  justify-content: space-between;
-  font-size: 1,2rem;
+  font-style: Arial, Helvetica, sans-serif;
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  bottom: 0%;
+  transform: translate(-50%, 0%);
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-size: 1.69rem;
+  height: 40%;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  margin-top: -10px;
-  margin-left: -10px; 
-  margin-right: -10px;
-  background-color:  #fffdfc00;
-  padding: 10px px;
-  height: 60px;
-  box-shadow: 0px 1px 4px rgba(98, 92, 104, 0.25);
-  z-index: 1;
-
 }
 
-nav.dark {
-background-color: #c3d8e9;
-color: #fff3ed;
+/* Additional styles for smooth transitions */
+* {
+  box-sizing: border-box;
 }
 
-ul {  display: flex;
-
-  gap: 1rem;
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-li { 
-  list-style: none;
-  text-decoration: none;
-
-  }
-
-a {color: inherit;
-  text-decoration: none;
-  cursor: pointer;
+/* Ensure the container page is centered */
+.container-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
-
-
-.nav-p {
-  font-size: 2rem;
-  font-weight: 200; 
-  margin: 35px;
-  list-style: none;
- 
-}
-
-.toggler {
-    display: flex;
-    align-items: center;
-}
-
-.toggler p {
-    font-size: 0.625rem;
-    font-weight: 600;
-    margin: 10px;
-}
-
-.toggler--slider {
-    width: 40px;
-    height:15px;
-    background-color: #2a3f4f;
-    border-radius: 2rem;
-    margin-inline: 7px;
-    cursor: pointer;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border: 1px solid rgb(249, 240, 172);
-    box-sizing: content-box;
-}
-
-nav.dark .toggler--slider {
-    border-color: #c3d8e9;
-    background-color: #f8fcc5;
-}
-
-.toggler--slider--circle {
-    height: 13px;
-    width: 13px;
-    background-color: rgb(252, 250, 226);
-    border-radius: 50%;
-}
-
-nav.dark .toggler--slider--circle {
-    background-color: #2a3f4f;
-}
-
-.toggler--light {
-    color: #e3e7c2;
-}
-
-nav.dark .toggler--light {
-    color: #e3e7c2;
-}
-
-.toggler--dark {
-    color: #c3d8e9;
-}
-
-nav.dark .toggler-dark {
-    color: #c3d8e9;
-}
-
-nav.dark .toggler--slider {
-    justify-content: flex-end;
-}
-
-
-/* main */
-h1{
-  font-size: 3rem;
-}
-
-.hero{
-  padding: 10px 35px;
-}
-
-.hero-p {
-margin: 35px;
-
-  }
-
-
-  .sub{
-    display: flex;
-    font-style: Arial, Helvetica, sans-serif;
-    position: absolute;
-    z-index: 10;
-    left: 50%;
-    bottom:0%;
-    transform:translate(-50%,0%);
-    color: white;
-    width: 100%;
-    text-align: center;
-    font-size: 1rem;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  

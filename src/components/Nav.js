@@ -1,13 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Ensure this is properly imported
-import { useResolvedPath, useMatch } from 'react-router-dom';
 
 function Nav(props) {
-    const path = window.location.pathname; // Not used in this code, but valid for debugging
-
     return (
-        <nav className={props.darkMode ? "dark" : ""}>
-            <Link to="/" className="nav-p">🔮</Link>
+        <nav className={props.darkMode ? "nav dark" : "nav"}> {/* Apply dark class based on darkMode */}
+            <Link to="/" className="nav-logo">🔮</Link> {/* Add class for styling */}
             <ul>
                 <li><Link to="/About">ABOUT</Link></li>
                 <li><Link to="/Privacy">PRIVACY</Link></li>
@@ -16,7 +13,7 @@ function Nav(props) {
             <div className="toggler">
                 <p className="toggler--light">🌞</p>
                 <div
-                    className="toggler--slider"
+                    className={`toggler--slider ${props.darkMode ? "dark" : ""}`} // Apply dark class to slider
                     onClick={props.toggleDarkMode}
                 >
                     <div className="toggler--slider--circle"></div>
@@ -26,25 +23,5 @@ function Nav(props) {
         </nav>
     );
 }
-
-
-
-
-
-function CustomLink({ to, children, ...props }) {
-  const resolvedPath = useResolvedPath(to)
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true })
-
-  return (
-    <li className={isActive ? "active" : ""}>
-      <Link to={to} {...props}>
-        {children}
-      </Link>
-    </li>
-  )
-}
-
-
-
 
 export default Nav;

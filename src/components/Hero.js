@@ -1,24 +1,33 @@
-import React from "react"
+import React, { useState, useEffect } from 'react';
 
 function Hero(props) {
-    const date = new Date()
-    const hours = date.getHours()
-    let timeOfDay
-    
-    if (hours < 12) {
-        timeOfDay = "morning"
-    } else if (hours >= 12 && hours <19) {
-        timeOfDay = "afternoon"
-    } else {
-        timeOfDay = "night"
-    }
-    
-    return (
-        <div className={props.darkMode ? "dark" : ""}>
-            <h1 className="hero">Good {timeOfDay}!</h1>
-            <p className="hero-p">I am a Productdesigner and Brand creator based in Berlin, currently learning React 🖤</p>
-        </div>
-    )}
+  const [greeting, setGreeting] = useState('');
+  const [currentTime, setCurrentTime] = useState(new Date());
 
+  useEffect(() => {
+    // Set greeting based on the time of day
+    const hours = currentTime.getHours();
+    if (hours < 12) {
+      setGreeting('Good morning!');
+    } else if (hours < 18) {
+      setGreeting('Good afternoon!');
+    } else {
+      setGreeting('Good evening!');
+    }
+
+    // Update the current time every second
+    const interval = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(interval);
+  }, [currentTime]);
+
+  return (
+    <section className={`hero ${props.darkMode ? 'dark' : 'light'}`}>
+      <div className="hero-content">
+        <h1>{greeting}</h1>
+        I am a Productdesigner and Brand creator based in Berlin, currently learning React 🖤        
+      </div>
+    </section>
+  );
+}
 
 export default Hero;
