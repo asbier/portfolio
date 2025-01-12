@@ -1,17 +1,18 @@
 /* GLOBAL STYLES */
 body.body-dark {
-  background-color: #000000; /* Dark Blue Background for Dark Mode */
-  color: #fff3ed; /* Light text for dark mode */
+  background-color: #000000;
+  color: #fff3ed;
   min-height: 100vh;
   margin: 0;
 }
 
 body.body-light {
-  background-color: #ffffff; /* White Background for Light Mode */
-  color: #000000; /* Dark text for light mode */
+  background-color: #ffffff;
+  color: #000000;
   min-height: 100vh;
   margin: 0;
 }
+
 /* TOGGLE */
 .toggler {
   display: flex;
@@ -27,7 +28,7 @@ body.body-light {
 .toggler--slider {
   width: 40px;
   height: 15px;
-  background-color: #000000; /* Default dark slider color */
+  background-color: #000000;
   border-radius: 2rem;
   margin-inline: 4px;
   cursor: pointer;
@@ -40,7 +41,7 @@ body.body-light {
 .toggler--slider--circle {
   height: 13px;
   width: 13px;
-  background-color: rgb(252, 250, 226); /* Default circle color */
+  background-color: rgb(252, 250, 226);
   border-radius: 50%;
 }
 
@@ -63,19 +64,19 @@ nav {
   height: 60px;
   box-shadow: 0px 1px 4px rgba(98, 92, 104, 0.25);
   z-index: 1;
-  background-color: #ffffff; /* White for light mode */
+  background-color: #ffffff;
   color: inherit;
   transition: background-color 0.3s, color 0.3s;
 }
 
 nav.dark {
-  background-color: #000000; /* Light blue for dark mode */
-  color: #fff3ed; /* Light text for dark mode */
+  background-color: #000000;
+  color: #fff3ed;
 }
 
 /* Logo Styles */
 .nav-logo {
-  font-size: 2rem; /* Set a fixed font size for the logo */
+  font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +84,7 @@ nav.dark {
 }
 
 .nav-logo:hover {
-  transform: scale(1.1); /* Slightly enlarge the logo on hover */
+  transform: scale(1.1);
   transition: 0.3s ease;
 }
 
@@ -93,13 +94,15 @@ ul {
   gap: 0.6rem;
   padding: 0;
   margin: 0;
-  align-items: center; 
-  line-height: 1; }
+  align-items: center;
+  line-height: 1;
+}
 
 li {
   list-style: none;
-  align-items: center; 
-  line-height: 1; }
+  align-items: center;
+  line-height: 1;
+}
 
 a {
   color: inherit;
@@ -134,6 +137,7 @@ h1 {
   min-height: 25rem;
   min-width: 20rem;
   padding: 40px;
+  position: relative; /* Ensures the image title is positioned relative to the carousel item */
 }
 
 .item img {
@@ -155,7 +159,7 @@ img:hover {
 }
 
 inner-carousel.dark {
-  background: #000000; /* Light blue for dark mode */
+  background: #000000;
 }
 
 .carousel {
@@ -165,14 +169,14 @@ inner-carousel.dark {
 }
 
 carousel.dark {
-  background-color: #000000; /* Light blue for dark mode */
+  background-color: #000000;
 }
 
 /* FOOTER */
 footer {
   margin-top: 1rem;
   padding: 1rem;
-  background-color: #ffffff; /* White background for light mode */
+  background-color: #ffffff;
   font-size: 1rem;
   position: fixed;
   bottom: 0;
@@ -182,8 +186,8 @@ footer {
 }
 
 footer.dark {
-  background-color: #000000; /* Light blue background for dark mode */
-  color: #fff3ed; /* Light text for dark mode */
+  background-color: #000000;
+  color: #fff3ed;
 }
 
 /* SUBTEXT */
@@ -205,7 +209,128 @@ footer.dark {
   align-items: center;
 }
 
-/* Additional styles for smooth transitions */
+/* MODAL STYLES */
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.modal-content {
+  position: relative;
+  width: 75%;
+  max-width: 900px; /* Ensure it doesn't stretch too wide */
+  max-height: 90vh;
+  padding: 20px;
+  background-color: #fff;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  padding-bottom: 30px; /* Ensure content doesn't get cut off */
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000000;
+  z-index: 101;
+}
+
+.modal-content .close:hover {
+  color: #ff0000;
+  transition: 0.3s;
+}
+
+/* Dark Mode Styles for Modal */
+.modal-content.dark {
+  background-color: #000000;
+  color: #fff3ed;
+}
+
+.modal-content.dark .close {
+  color: #fff3ed;
+}
+
+.modal-content.dark .close:hover {
+  color: #ff5757;
+}
+
+/* Additional Animations (Optional) */
+.modal-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* IMAGE TITLE STYLES */
+.image-title {
+  position: absolute;
+  top: 40px; /* Position the title at the top of the image */
+  left: 38%; /* Center the title horizontally */
+  transform: translateX(-50%); /* Offset the title by 50% of its width to ensure true centering */
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Image Title (Small) - First part of the title */
+.image-title-small {
+  font-size: 0.5rem; /* Smaller font size for the first part */
+  font-weight: normal; /* Normal weight for the smaller title */
+  text-shadow: none; /* Remove text shadow for a cleaner appearance */
+}
+
+/* Image Title (Main) - Larger main title */
+.image-title-main {
+  font-size: 0.5rem; /* Larger font size for the main title */
+  font-weight: bold; /* Bold style for the main title */
+  margin-top: 5px; /* Adds some space between the lines */
+  text-transform: uppercase; /* Optional: Make it uppercase */
+  letter-spacing: 2px; /* Optional: Add some letter spacing */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Add text shadow for better visibility */
+}
+
+
+/* Ensure the container page is centered */
+.container-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -214,12 +339,4 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
-}
-
-/* Ensure the container page is centered */
-.container-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
 }
