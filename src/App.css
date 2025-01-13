@@ -4,6 +4,7 @@ body.body-dark {
   color: #fff3ed;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll on the body */
 }
 
 body.body-light {
@@ -11,6 +12,7 @@ body.body-light {
   color: #000000;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll on the body */
 }
 
 /* TOGGLE */
@@ -172,6 +174,12 @@ img:hover {
   white-space: nowrap;
   display: flex;
   scroll-behavior: smooth; /* Ensure smooth scroll behavior */
+  -webkit-overflow-scrolling: touch; /* For smoother scrolling on mobile */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Optional: hide scrollbar */
 }
 
 .title-container {
