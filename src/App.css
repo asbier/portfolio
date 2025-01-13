@@ -241,23 +241,19 @@ footer.dark {
 /* Mobile-specific adjustments */
 @media screen and (max-width: 768px) {
   .carousel {
-    padding: 0 20px;
-  }
-
-  .inner-carousel {
-    gap: 10px; /* Reduces space between images on smaller screens */
-  }
-
-  .item {
-    min-width: 220px; /* Adjust item width for mobile view */
-    flex-shrink: 0;
-  }
-
-  /* Optional: Make the image more responsive */
-  .image-container img {
+    white-space: nowrap;
     width: 100%;
-    height: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    scroll-behavior: smooth;
+    scroll-padding: 10px;
+    justify-content: flex-start;
   }
+
+  .carousel {
+  -webkit-overflow-scrolling: touch; /* Ensures better touch scrolling on iOS */
+}
 
   /* Important: Allow vertical scrolling while interacting with the carousel */
   .carousel::-webkit-scrollbar {
