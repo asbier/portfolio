@@ -234,30 +234,29 @@ footer.dark {
 @media screen and (max-width: 768px) {
   .carousel {
     padding-bottom: 50px;
-    transition: transform 0.1s ease; /* Speed up scroll on mobile */
+    /* Remove unnecessary transitions for smoother scrolling */
   }
 
-    h1 {
-    font-size: 2rem;
+  h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem); /* Clamp to prevent excessive scaling */
   }
 
   .item {
-    min-width: 150px; /* Adjust carousel items for mobile */
+    min-width: 150px; /* Ensures carousel items fit better on small screens */
   }
 
   .title-container {
-    font-size: 5vw; /* Font size relative to viewport width */
-    margin-bottom: 5vw; /* Relative spacing for better spacing */
+    font-size: clamp(1rem, 4vw, 1.5rem); /* Use clamp for better scaling */
+    margin-bottom: 10px; /* Fixed spacing for consistency */
   }
 
   .image-title-small {
-    font-size: 3vw; /* Smaller title on mobile */
+    font-size: clamp(0.8rem, 2vw, 1rem); /* Smaller title adjustment */
   }
 
   .image-title-main {
-    font-size: 5vw; /* Larger main title on mobile */
+    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Larger title adjustment */
   }
-
 }
 
 /* MODAL STYLES */
