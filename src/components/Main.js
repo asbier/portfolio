@@ -84,8 +84,6 @@ function Main(props) {
         <motion.div
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
-          dragElastic={0.1} /* Reduce elastic feel for more natural drag */
-          dragMomentum={false}
           className="inner-carousel"
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
