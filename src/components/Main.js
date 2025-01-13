@@ -54,7 +54,7 @@ function Main(props) {
 
     // Adjust scroll velocity based on swipe speed
     if (swipeSpeed > 0.5) {
-      const scrollAmount = Math.sign(delta) * swipeSpeed * 30; // adjust scroll multiplier
+      const scrollAmount = Math.sign(delta) * swipeSpeed * 300; // adjust scroll multiplier
       carousel.current.scrollLeft += scrollAmount;
     }
 
