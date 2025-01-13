@@ -233,10 +233,23 @@ footer.dark {
 /* Mobile-specific adjustments */
 @media screen and (max-width: 768px) {
   .carousel {
-    padding-bottom: 50px;
-    scroll-snap-type: x mandatory; /* Add snapping for better UX on mobile */
-    scroll-padding: 10px; /* Maintain padding consistency */
-    touch-action: pan-x;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: flex;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory; /* Adds snapping for smooth experience */
+    scroll-padding: 10px;
+  }
+
+  /* Important: Allow vertical scrolling while interacting with the carousel */
+  .carousel::-webkit-scrollbar {
+    display: none; /* Optionally hide scrollbar */
+  }
+
+  .carousel {
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    touch-action: auto; /* Allow both horizontal and vertical gestures */
   }
 
   h1 {
