@@ -236,6 +236,9 @@ footer.dark {
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+    width: 100%; /* Makes the carousel adjust to the viewport width */
+    max-width: 100%; /* Ensures it doesn't exceed the screen size */
+    margin: 0 auto;
     display: flex;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory; /* Adds snapping for smooth experience */
@@ -260,6 +263,10 @@ footer.dark {
   .item {
     min-width: 200px; /* Adjust to improve visual balance in carousel */
     padding: 20px 10px; /* Reduce padding for better spacing */
+    flex: 0 0 auto; /* Ensures items are properly sized and don't shrink */
+    width: calc(100vw - 48px); /* Dynamically size items on smaller screens */
+    max-width: 300px; /* Optional: Limit max size on larger screens */
+    scroll-snap-align: start;
   }
 
   .image-container img {
@@ -267,6 +274,12 @@ footer.dark {
     max-width: 100%; /* Prevent overflow on small screens */
     height: auto; /* Maintain aspect ratio */
     width: auto;
+  }
+
+  .inner-carousel {
+    display: flex;
+    width: auto; /* The width should be dictated by its children */
+    gap: 16px; /* Spacing between items */
   }
 
   .title-container {
