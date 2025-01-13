@@ -215,6 +215,22 @@ footer.dark {
   align-items: center;
 }
 
+/* Mobile-specific adjustments */
+@media screen and (max-width: 768px) {
+  .carousel {
+    padding-bottom: 50px; /* Adjust based on footer height */
+  }
+
+  .item {
+    min-width: 200px; /* Slightly smaller items for mobile */
+  }
+
+  .title-container {
+    font-size: 16px; /* Adjust font size for smaller devices */
+    margin-bottom: 15px; /* More space to avoid footer interference */
+  }
+}
+
 /* MODAL STYLES */
 .modal {
   display: flex;
@@ -226,7 +242,7 @@ footer.dark {
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 9999;
   overflow: hidden;
 }
 
