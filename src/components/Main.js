@@ -68,14 +68,14 @@ function Main(props) {
   };
 
   return (
-    <main className={props.darkMode ? "dark" : ""}>
+    <main className={props.darkMode ? "body-dark" : "body-light"}>
       {/* Carousel */}
       <motion.div
         ref={carousel}
         className="carousel"
         whileTap={{ cursor: "grabbing" }}
         onWheel={(e) => {
-          e.preventDefault(); // Prevent default scroll
+          e.preventDefault(); // Prevent default scroll behavior
           carousel.current.scrollLeft += e.deltaY; // Scroll horizontally
         }}
       >
@@ -91,7 +91,7 @@ function Main(props) {
               className="item"
               whileHover={{ scale: 1.1 }}
               key={index}
-              onMouseUp={() => handleImageClick(image)} // Open modal if not dragging
+              onMouseUp={() => handleImageClick(image)} // Open modal when not dragging
             >
               <div className="image-container">
                 <img src={image} alt={`Carousel Item ${index + 1}`} />
@@ -106,9 +106,7 @@ function Main(props) {
                   </>
                 ) : index === 1 ? (
                   <>
-                    <span className="image-title-small">
-                      Digital UX Designer
-                    </span>
+                    <span className="image-title-small">Digital UX Designer</span>
                     <h2 className="image-title-main">CARHARTT WIP</h2>
                   </>
                 ) : (
@@ -124,7 +122,7 @@ function Main(props) {
       <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
-        content={selectedImage && getImageDescription(selectedImage)} // Pass content to Modal
+        content={selectedImage && getImageDescription(selectedImage)} // Pass image content to Modal
       />
     </main>
   );
