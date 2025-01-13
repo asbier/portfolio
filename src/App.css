@@ -241,16 +241,22 @@ footer.dark {
 /* Mobile-specific adjustments */
 @media screen and (max-width: 768px) {
   .carousel {
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    width: 100%; /* Makes the carousel adjust to the viewport width */
-    max-width: 100%; /* Ensures it doesn't exceed the screen size */
-    margin: 0 auto;
-    display: flex;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory; /* Adds snapping for smooth experience */
-    scroll-padding: 10px;
+    padding: 0 20px;
+  }
+
+  .inner-carousel {
+    gap: 10px; /* Reduces space between images on smaller screens */
+  }
+
+  .item {
+    min-width: 220px; /* Adjust item width for mobile view */
+    flex-shrink: 0;
+  }
+
+  /* Optional: Make the image more responsive */
+  .image-container img {
+    width: 100%;
+    height: auto;
   }
 
   /* Important: Allow vertical scrolling while interacting with the carousel */
