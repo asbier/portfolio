@@ -8,6 +8,9 @@ function Main(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isDragging, setIsDragging] = useState(false); // Track dragging state
+  const [startX, setStartX] = useState(0);
+  const [startTime, setStartTime] = useState(0);
+
   const carousel = useRef();
 
   // Update width of the carousel to reflect scrolling constraints
@@ -37,8 +40,26 @@ function Main(props) {
   };
 
   // Detect drag events to prevent modal interaction during drag
-  const handleDragStart = () => setIsDragging(true);
-  const handleDragEnd = () => setIsDragging(false);
+  const handleDragStart = (e) => {
+    setStartX(e.clientX || e.touches[0].clientX);
+    setStartTime(new Date().getTime());
+    setIsDragging(true);
+  };
+
+  const handleDragEnd = (e) => {
+    const endX = e.clientX || e.changedTouches[0].clientX;
+    const delta = startX - endX;
+    const deltaTime = new Date().getTime() - startTime;
+    const swipeSpeed = Math.abs(delta) / deltaTime;
+
+    // Adjust scroll velocity based on swipe speed
+    if (swipeSpeed > 0.5) {
+      const scrollAmount = Math.sign(delta) * swipeSpeed * 30; // adjust scroll multiplier
+      carousel.current.scrollLeft += scrollAmount;
+    }
+
+    setIsDragging(false);
+  };
 
   // Map images to their respective descriptions
   const getImageDescription = (image) => {
@@ -48,26 +69,14 @@ function Main(props) {
           <div>
             <h2>UX Designer & Innovation Consultant</h2>
             <h3>For DAYONE</h3>
-            <p>
-              At Dayone, I learned how transformative great design can be and how crucial it
-              is for teams to embrace it as a driving force...
-            </p>
-            <h3>Automotive Industry Projects: Insights & Contributions</h3>
-            <p>
-              Over the course of several German and International market-focused automotive projects...
-            </p>
+            <p>At Dayone, I learned how transformative great design can be...</p>
           </div>
         );
       case images[1]:
         return (
           <div>
             <h2>Carhartt WIP</h2>
-            <p>
-              As a UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key challenges...
-            </p>
-            <h3>Inefficient Help Desk Experience</h3>
-            <h4>Problem</h4>
-            <p>Users struggled with accessing help and support...</p>
+            <p>As a UX Designer, I was tasked with addressing several key challenges...</p>
           </div>
         );
       default:
@@ -109,9 +118,7 @@ function Main(props) {
               <div className="title-container">
                 {index === 0 ? (
                   <>
-                    <h3 className="image-title-small">
-                      UX Designer & Innovation Consultant
-                    </h3>
+                    <h3 className="image-title-small">UX Designer & Innovation Consultant</h3>
                     <h2 className="image-title-main">DAYONE</h2>
                   </>
                 ) : index === 1 ? (
