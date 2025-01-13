@@ -237,14 +237,27 @@ footer.dark {
     transition: transform 0.1s ease; /* Speed up scroll on mobile */
   }
 
+    h1 {
+    font-size: 2rem;
+  }
+
   .item {
     min-width: 150px; /* Adjust carousel items for mobile */
   }
 
   .title-container {
-    font-size: 16px;
-    margin-bottom: 20px; /* Provide more space to avoid footer overlapping titles */
+    font-size: 5vw; /* Font size relative to viewport width */
+    margin-bottom: 5vw; /* Relative spacing for better spacing */
   }
+
+  .image-title-small {
+    font-size: 3vw; /* Smaller title on mobile */
+  }
+
+  .image-title-main {
+    font-size: 5vw; /* Larger main title on mobile */
+  }
+
 }
 
 /* MODAL STYLES */

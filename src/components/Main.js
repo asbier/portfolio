@@ -75,8 +75,10 @@ function Main(props) {
         className="carousel"
         whileTap={{ cursor: "grabbing" }}
         onWheel={(e) => {
-          e.preventDefault(); // Prevent default scroll behavior
-          carousel.current.scrollLeft += e.deltaY; // Scroll horizontally
+          if (window.innerWidth > 768) {
+            e.preventDefault(); // Disable horizontal scroll on desktop
+            carousel.current.scrollLeft += e.deltaY; // Scroll horizontally only on desktop
+          }
         }}
       >
         <motion.div
