@@ -234,7 +234,7 @@ footer.dark {
 @media screen and (max-width: 768px) {
   .carousel {
     padding-bottom: 50px;
-    /* Remove unnecessary transitions for smoother scrolling */
+    touch-action: pan-x;
   }
 
   h1 {
@@ -244,6 +244,10 @@ footer.dark {
   .item {
     min-width: 150px; /* Ensures carousel items fit better on small screens */
   }
+
+  .image-container img {
+  pointer-events: none;
+}
 
   .title-container {
     font-size: clamp(1rem, 4vw, 1.5rem); /* Use clamp for better scaling */
