@@ -67,6 +67,8 @@ nav {
   background-color: #ffffff;
   color: inherit;
   transition: background-color 0.3s, color 0.3s;
+  position: sticky;
+  top: 0; /* Ensure the header stays at the top */
 }
 
 nav.dark {
@@ -128,8 +130,10 @@ h1 {
   font-weight: 300;
   display: flex;
   justify-content: center;
-  margin: 35px;
+  margin: 0;
   gap: 20px;
+  flex-grow: 1; /* Ensures it takes remaining space to keep footer at the bottom */
+  align-items: flex-start; /* Adjust content to start from the top */
 }
 
 /* CAROUSEL STYLES */
@@ -137,11 +141,11 @@ h1 {
   min-height: 25rem;
   min-width: 20rem;
   padding: 40px;
-  position: relative; /* Ensures image and title are positioned correctly */
+  position: relative;
   display: flex;
-  flex-direction: column; /* Stack the image and titles vertically */
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center; /* Ensures the content is centered */
+  align-items: center;
 }
 
 .item img {
@@ -163,26 +167,27 @@ img:hover {
 }
 
 .carousel {
-  overflow-x: auto; /* Enable native scrolling */
+  overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
   display: flex;
+  scroll-behavior: smooth; /* Ensure smooth scroll behavior */
 }
 
 .title-container {
-  margin-top: 10px; /* Space between image and title */
+  margin-top: 10px;
   padding: 0 15px;
   text-align: center;
 }
 
 .image-title-small {
-  font-size: 0.9rem; /* Smaller font size for the first part of the title */
+  font-size: 0.9rem;
   font-weight: normal;
-  margin-bottom: 5px; /* Space between small and main title */
+  margin-bottom: 5px;
 }
 
 .image-title-main {
-  font-size: 1.2rem; /* Larger font size for the main title */
+  font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -194,11 +199,12 @@ footer {
   padding: 1rem;
   background-color: #ffffff;
   font-size: 1rem;
-  position: fixed;
+  position: sticky;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 30px 15px;
+  padding: 10px 15px;
+  z-index: 0; /* Ensure footer does not overlap content */
 }
 
 footer.dark {
@@ -227,16 +233,17 @@ footer.dark {
 /* Mobile-specific adjustments */
 @media screen and (max-width: 768px) {
   .carousel {
-    padding-bottom: 50px; /* Adjust based on footer height */
+    padding-bottom: 50px;
+    transition: transform 0.1s ease; /* Speed up scroll on mobile */
   }
 
   .item {
-    min-width: 200px; /* Slightly smaller items for mobile */
+    min-width: 150px; /* Adjust carousel items for mobile */
   }
 
   .title-container {
-    font-size: 16px; /* Adjust font size for smaller devices */
-    margin-bottom: 15px; /* More space to avoid footer interference */
+    font-size: 16px;
+    margin-bottom: 20px; /* Provide more space to avoid footer overlapping titles */
   }
 }
 
@@ -258,7 +265,7 @@ footer.dark {
 .modal-content {
   position: relative;
   width: 75%;
-  max-width: 900px; /* Ensure it doesn't stretch too wide */
+  max-width: 900px;
   max-height: 90vh;
   padding: 20px;
   background-color: #fff;
@@ -269,7 +276,7 @@ footer.dark {
   flex-direction: column;
   justify-content: flex-start;
   overflow-y: auto;
-  padding-bottom: 30px; /* Ensure content doesn't get cut off */
+  padding-bottom: 30px;
 }
 
 .modal-content img {
