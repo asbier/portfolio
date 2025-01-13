@@ -234,32 +234,41 @@ footer.dark {
 @media screen and (max-width: 768px) {
   .carousel {
     padding-bottom: 50px;
+    scroll-snap-type: x mandatory; /* Add snapping for better UX on mobile */
+    scroll-padding: 10px; /* Maintain padding consistency */
     touch-action: pan-x;
   }
 
   h1 {
-    font-size: clamp(1.5rem, 4vw, 2rem); /* Clamp to prevent excessive scaling */
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Slightly increased max size for readability */
+    text-align: left;
   }
 
   .item {
-    min-width: 150px; /* Ensures carousel items fit better on small screens */
+    min-width: 200px; /* Adjust to improve visual balance in carousel */
+    padding: 20px 10px; /* Reduce padding for better spacing */
   }
 
   .image-container img {
-  pointer-events: none;
-}
+    pointer-events: none; /* No interactions on images */
+    max-width: 100%; /* Prevent overflow on small screens */
+    height: auto; /* Maintain aspect ratio */
+  }
 
   .title-container {
-    font-size: clamp(1rem, 4vw, 1.5rem); /* Use clamp for better scaling */
-    margin-bottom: 10px; /* Fixed spacing for consistency */
+    font-size: clamp(1rem, 3vw, 1.3rem); /* Adjusted for more consistent scaling */
+    margin-bottom: 15px; /* Increased spacing for better separation */
+    text-align: center; /* Center text for smaller devices */
   }
 
   .image-title-small {
-    font-size: clamp(0.8rem, 2vw, 1rem); /* Smaller title adjustment */
+    font-size: clamp(0.8rem, 2.5vw, 1rem); /* Refined scaling for clarity */
+    font-weight: 500; /* Ensure visibility and hierarchy */
   }
 
   .image-title-main {
-    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Larger title adjustment */
+    font-size: clamp(1.2rem, 3.5vw, 1.7rem); /* Adjusted for balanced visibility */
+    line-height: 1.2; /* Improved spacing for readability */
   }
 }
 
