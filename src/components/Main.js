@@ -10,8 +10,16 @@ function Main(props) {
   const [isDragging, setIsDragging] = useState(false); // Track dragging state
   const carousel = useRef();
 
+  // Update width of the carousel to reflect scrolling constraints
   useEffect(() => {
-    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    const handleResize = () => {
+      setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);  // Recalculate width on resize
+
+    return () => window.removeEventListener("resize", handleResize); // Clean up listener
   }, []);
 
   // Open modal with selected image description
@@ -76,7 +84,7 @@ function Main(props) {
         whileTap={{ cursor: "grabbing" }}
         onWheel={(e) => {
           if (window.innerWidth > 768) {
-            e.preventDefault(); // Disable horizontal scroll on desktop
+            e.preventDefault(); // Disable horizontal scroll on desktop only
             carousel.current.scrollLeft += e.deltaY; // Scroll horizontally only on desktop
           }
         }}
