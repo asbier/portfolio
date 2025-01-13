@@ -139,7 +139,7 @@ h1 {
 /* CAROUSEL STYLES */
 .item {
   min-height: 25rem;
-  min-width: 20rem;
+  min-width: 35rem;
   padding: 40px;
   position: relative;
   display: flex;
