@@ -155,7 +155,7 @@ img:hover {
 
 .inner-carousel {
   display: flex;
-  background: #fffdfc00;
+  gap: 20px; /* Space between items */
 }
 
 inner-carousel.dark {
@@ -163,13 +163,19 @@ inner-carousel.dark {
 }
 
 .carousel {
-  cursor: grab;
-  overflow: hidden;
-  background-color: #fffdfc00;
+  overflow-x: auto; /* Enable native scrolling */
+  overflow-y: hidden;
+  white-space: nowrap;
+  display: flex;
 }
 
 carousel.dark {
   background-color: #000000;
+}
+
+.title-container {
+  margin-top: 10px; /* Add space between image and title */
+  padding: 0 15px; /* Ensures consistent spacing */
 }
 
 /* FOOTER */

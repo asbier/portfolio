@@ -10,4 +10,20 @@ import image9 from "../src/Assets/9.jpg";
 import image10 from "../src/Assets/10.jpg";
 import image11 from "../src/Assets/11.jpg";
 import image12 from "../src/Assets/12.jpg";
-export default [gif1,image2,image3,image4,image5,gif6,image7,image8,image9,image10,image11,image12];
+
+const images = [
+  gif1,
+  image2,
+  image3,
+  image4,
+  image5,
+  gif6,
+  image7,
+  image8,
+  image9,
+  image10,
+  image11,
+  image12,
+];
+
+export default images;
