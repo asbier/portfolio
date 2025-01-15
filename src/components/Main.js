@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion"; // Import useAnimation here
 import Modal from "./Modal"; // Import Modal component
 import images from "../images"; // Assuming images are imported from this file
+import Scrollbar from "smooth-scrollbar"; // Import smooth-scrollbar
 
 function Main(props) {
   const [width, setWidth] = useState(0);
@@ -10,9 +11,13 @@ function Main(props) {
   const [isDragging, setIsDragging] = useState(false);
 
   const carousel = useRef();
-  const controls = useAnimation();
+  const controls = useAnimation(); // Now using the controls from useAnimation hook
 
   useEffect(() => {
+    if (carousel.current) {
+      Scrollbar.init(carousel.current, { damping: 0.05 });
+    }
+
     const handleResize = () => {
       if (carousel.current) {
         setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
@@ -22,7 +27,9 @@ function Main(props) {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const handleImageClick = (image) => {
@@ -37,7 +44,12 @@ function Main(props) {
     setSelectedImage(null);
   };
 
-  // Use Framer Motion's drag constraints for smooth scrolling
+  // Sample usage of `controls` if you want to trigger animations
+  // Example: animating carousel item opacity
+  useEffect(() => {
+    controls.start({ opacity: 1 });
+  }, [controls]);
+
   return (
     <main className={props.darkMode ? "body-dark" : "body-light"}>
       {/* Carousel */}
@@ -45,6 +57,7 @@ function Main(props) {
         ref={carousel}
         className="carousel"
         whileTap={{ cursor: "grabbing" }}
+        animate={controls} // Attach animation controls to the motion component
       >
         <motion.div
           drag="x"
