@@ -272,7 +272,7 @@ footer.dark {
   .item {
     min-width: 200px; /* Adjust to improve visual balance in carousel */
     padding: 20px 10px; /* Reduce padding for better spacing */
-    max-height: 15rem;
+    max-height: 35rem;
     height: 100%;
     flex: 0 0 auto; /* Ensures items are properly sized and don't shrink */
     width: calc(100vw - 48px); /* Dynamically size items on smaller screens */
