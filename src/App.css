@@ -152,13 +152,14 @@ h1 {
 
 .item img {
   width: 100%;
-  height: 100%;
+  max-width: 500px;
+  height: auto;
   border-radius: 0rem;
   transition: border-radius 0.5s;
 }
 
 img:hover {
-  opacity: 0.4;
+  opacity: 0.6;
   transition: 0.5s;
   border-radius: 2rem;
 }
@@ -173,7 +174,7 @@ img:hover {
   overflow-y: hidden;
   white-space: nowrap;
   display: flex;
-  scroll-behavior: smooth; /* Ensure smooth scroll behavior */
+  scroll-behavior: auto; /* Ensure smooth scroll behavior */
   -webkit-overflow-scrolling: touch; /* For smoother scrolling on mobile */
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
@@ -242,28 +243,18 @@ footer.dark {
 @media screen and (max-width: 768px) {
   .carousel {
     white-space: nowrap;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    overflow-y: hidden; /* Disable vertical scrolling */
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
     display: flex;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     scroll-padding: 10px;
     justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .carousel {
-  -webkit-overflow-scrolling: touch; /* Ensures better touch scrolling on iOS */
-}
-
-  /* Important: Allow vertical scrolling while interacting with the carousel */
-  .carousel::-webkit-scrollbar {
-    display: none; /* Optionally hide scrollbar */
-  }
-
-  .carousel {
-    -ms-overflow-style: none; /* For Internet Explorer and Edge */
-    touch-action: auto; /* Allow both horizontal and vertical gestures */
-  }
 
   h1 {
     font-size: clamp(1.5rem, 4vw, 2.5rem); /* Slightly increased max size for readability */
