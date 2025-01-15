@@ -140,9 +140,9 @@ h1 {
 
 /* CAROUSEL STYLES */
 .item {
-  min-height: 25rem;
-  min-width: 35rem;
-  padding: 40px;
+  height: auto;
+  width: auto;
+  padding: 30px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -151,8 +151,9 @@ h1 {
 }
 
 .item img {
-  width: 100%;
-  max-width: 500px;
+  width: auto;
+  max-width: 400px;
+  max-height: 30rem;
   height: auto;
   border-radius: 0rem;
   transition: border-radius 0.5s;
@@ -166,7 +167,7 @@ img:hover {
 
 .inner-carousel {
   display: flex;
-  gap: 20px;
+  gap: 0px;
 }
 
 .carousel {
@@ -174,6 +175,7 @@ img:hover {
   overflow-y: hidden;
   white-space: nowrap;
   display: flex;
+  justify-content: flex-start;
   scroll-behavior: auto; /* Ensure smooth scroll behavior */
   -webkit-overflow-scrolling: touch; /* For smoother scrolling on mobile */
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
@@ -185,7 +187,7 @@ img:hover {
 
 .title-container {
   margin-top: 10px;
-  padding: 0 15px;
+  padding: 0 10px;
   text-align: center;
 }
 
@@ -206,6 +208,7 @@ img:hover {
 footer {
   margin-top: 1rem;
   padding: 1rem;
+  padding-top: 10px;
   background-color: #ffffff;
   font-size: 1rem;
   position: sticky;
@@ -269,6 +272,8 @@ footer.dark {
   .item {
     min-width: 200px; /* Adjust to improve visual balance in carousel */
     padding: 20px 10px; /* Reduce padding for better spacing */
+    max-height: 15rem;
+    height: 100%;
     flex: 0 0 auto; /* Ensures items are properly sized and don't shrink */
     width: calc(100vw - 48px); /* Dynamically size items on smaller screens */
     max-width: 300px; /* Optional: Limit max size on larger screens */
@@ -302,6 +307,11 @@ footer.dark {
   .image-title-main {
     font-size: clamp(1.2rem, 3.5vw, 1.7rem); /* Adjusted for balanced visibility */
     line-height: 1.2; /* Improved spacing for readability */
+  }
+
+  footer {
+    padding: 5px 10px; /* Reduced padding */
+    font-size: 0.8rem;  /* Smaller font size for mobile */
   }
 }
 

@@ -24,7 +24,6 @@ function Hero(props) {
     <section className={`hero ${props.darkMode ? 'dark' : 'light'}`}>
       <div className="hero-content">
         <h1>{greeting}</h1>
-        I am a product designer and brand creator based in Berlin, currently learning React 🖤.         
       </div>
     </section>
   );
