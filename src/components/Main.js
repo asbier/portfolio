@@ -146,8 +146,8 @@ const imagesData = [
     ),
     },
   {
-    title: "UX Designer & Innovation Consultant",
-    subtitle: "DAYONE",
+    title: "Art Director",
+    subtitle: "EDITED / AboutYou",
     content: (
         <div>
             <h2>At Edited & About You</h2>
