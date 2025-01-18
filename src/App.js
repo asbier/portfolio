@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState, useEffect } from 'react';
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
@@ -8,7 +9,8 @@ import Privacy from "./pages/Privacy";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import { Route, Routes } from 'react-router-dom';
-import './styles/Global.css';
+import './styles/Global.css'; // Import global styles
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
