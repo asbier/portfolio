@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Ensure this is properly imported
-
+import './Nav.css';
 function Nav(props) {
     return (
         <nav className={props.darkMode ? "nav dark" : "nav"}> {/* Apply dark class based on darkMode */}

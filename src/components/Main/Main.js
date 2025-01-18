@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "../Modal/Modal";
 import Carousel from "../Carousel/Carousel";
 import imagesData from "../../data/imagesData";
-
+import './Main.css';
 function Main(props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);

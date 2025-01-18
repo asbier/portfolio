@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './Hero.css';
 function Hero(props) {
   const [greeting, setGreeting] = useState('');
   const [currentTime, setCurrentTime] = useState(new Date());

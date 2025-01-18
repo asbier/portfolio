@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Scrollbar from "smooth-scrollbar";
 import imagesData from "../../data/imagesData";
-
+import './Carousel.css';
 
 const Carousel = ({ onImageClick }) => {
     const [width, setWidth] = useState(0);
