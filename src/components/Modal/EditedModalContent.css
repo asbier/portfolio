@@ -1,0 +1,45 @@
+/* src/components/Modal/EditedModalContent.css */
+.modal-content-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.key-contributions {
+    margin-bottom: 1em;
+}
+
+.section {
+    margin-bottom: 1em;
+}
+
+/* Additional styles for headers and links */
+h2, h3, h4 {
+    margin-top: 1em;
+}
+
+p {
+    margin: 1em 0;
+}
+
+a {
+    display: block;
+    margin-top: 1em;
+    color: #1a0dab; /* Typical link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.image-gallery {
+    display: flex;
+    gap: 10px;
+    margin: 1em 0;
+}
+
+.image-gallery img {
+    width: 80px;
+    height: auto;
+}
