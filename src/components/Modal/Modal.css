@@ -37,14 +37,15 @@
 }
 
 .modal-content .close {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #000000;
-  z-index: 101;
+    position: sticky;
+    top: 0;
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
 }
 
 .modal-content .close:hover {
