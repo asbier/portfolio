@@ -1,25 +1,31 @@
-/* src/components/Modal/DayoneModalContent.css */
-.bold-text {
-    font-weight: bold;
+.dayone-modal-content-container {
+  padding: 20px;
 }
 
-.image-gallery {
-    display: flex;
-    gap: 10px;
-    margin: 1em 0;
+.dayone-bold-text {
+  font-weight: bold;
 }
 
-.image-gallery img {
-    width: 80px;
-    height: auto;
+.dayone-image-gallery {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
 }
 
-.aligned-list {
-    margin-left: 0; /* Adjust margin to align with the rest of the text */
-    padding-left: 20px; /* Adjust padding to align with the rest of the text */
-    list-style-type: disc;
+.dayone-image-gallery img {
+  max-width: 150px; /* Adjust the size as needed */
+  margin: 10px;
+  transition: transform 0.3s ease;
 }
 
-.aligned-list li {
-    margin-bottom: 0.5em; /* Add some spacing between list items */
+.dayone-image-gallery img:hover {
+  transform: scale(1.4);
+}
+
+@media screen and (max-width: 768px) {
+  .dayone-image-gallery img {
+    max-width: 120px; /* Adjust the size for mobile as needed */
+  }
 }

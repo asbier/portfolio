@@ -1,9 +1,16 @@
-// src/components/Modal/EditedModalContent.js
 import React from 'react';
 import './EditedModalContent.css';
+import image1 from '../../Assets/Image 4_EDITED/Image 2.png';
+import image2 from '../../Assets/Image 4_EDITED/Image 3.png';
+import image3 from '../../Assets/Image 4_EDITED/Image 4.png';
+import image4 from '../../Assets/Image 4_EDITED/Image 5.png';
+import image5 from '../../Assets/Image 4_EDITED/Image 8.png';
+import image6 from '../../Assets/Image 4_EDITED/Image 7.png';
+import image7 from '../../Assets/Image 4_EDITED/Image 7.png';
+import image8 from '../../Assets/Image 4_EDITED/Image 8.png';
 
 const EditedModalContent = () => (
-    <div className="modal-content-container">
+    <div className="edited-modal-content-container">
         <h2>At Edited & AboutYou</h2>
 
         <p>
@@ -12,7 +19,7 @@ const EditedModalContent = () => (
 
         <h3>Key Contributions</h3>
 
-        <div className="key-contributions">
+        <div className="edited-key-contributions">
             <h4>Building the Brand Ecosystem</h4>
             <p>Introduced a redesign concept for the new website, steering the brand toward a more modern and user-friendly direction.</p>
             <p>Designed and launched new e-commerce stores and enhanced the mobile app, focusing on seamless usability and visually cohesive design.</p>
@@ -26,11 +33,11 @@ const EditedModalContent = () => (
             <p>Designed concepts for Edited collections, including the Shoe Collection and Sport Collection, aligning them with contemporary market trends.</p>
             <p>Developed sustainable packaging concepts, combining design and strategy to enhance eco-conscious branding.</p>
 
-            <div className="image-gallery">
-                <img src="image1.jpg" alt="Image 1" />
-                <img src="image2.jpg" alt="Image 2" />
-                <img src="image3.jpg" alt="Image 3" />
-                <img src="image4.jpg" alt="Image 4" />
+            <div className="edited-image-gallery">
+                <img src={image1} alt="Image 1" />
+                <img src={image2} alt="Image 2" />
+                <img src={image3} alt="Image 3" />
+                <img src={image4} alt="Image 4" />
             </div>
 
             <h4>Event and Campaign Activation</h4>
@@ -45,9 +52,9 @@ const EditedModalContent = () => (
             <p>Supported team growth and culture by developing workflows that streamlined design production while allowing room for innovation.</p>
         </div>
 
-        <div className="image-gallery">
-            <img src="image5.jpg" alt="Image 5" />
-            <img src="image6.jpg" alt="Image 6" />
+        <div className="edited-image-gallery">
+            <img src={image5} alt="Image 5" />
+            <img src={image6} alt="Image 6" />
         </div>
 
         <h3>At About You</h3>
@@ -57,7 +64,7 @@ const EditedModalContent = () => (
 
         <h3>Key Contributions</h3>
 
-        <div className="key-contributions">
+        <div className="edited-key-contributions">
             <h4>Recreating Brand Strategy</h4>
             <p>Collaborated with cross-functional teams to redefine About You’s approach, focusing on enhancing user engagement through personalization and ensuring the platform spoke to a more diverse and mainstream audience.</p>
             <p>Helped develop concepts that positioned the platform as a celebration of individuality, emphasizing the user as the core of the experience, rather than just fashion itself.</p>
@@ -87,9 +94,9 @@ const EditedModalContent = () => (
             <p>Ensured that the platform’s structure, content, and branding strategies aligned with these shifts, fostering a deeper connection with a broader customer base.</p>
         </div>
 
-        <div className="image-gallery">
-            <img src="image7.jpg" alt="Image 7" />
-            <img src="image8.jpg" alt="Image 8" />
+        <div className="edited-image-gallery">
+            <img src={image7} alt="Image 7" />
+            <img src={image8} alt="Image 8" />
         </div>
 
         <p>

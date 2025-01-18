@@ -9,3 +9,18 @@
 .hero-p {
   margin: 10px;
 }
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+  .hero {
+    padding: 5px 20px; /* Smaller padding on mobile */
+  }
+
+  .hero h1 {
+    font-size: 2rem; /* Smaller font size for h1 on mobile */
+  }
+
+  .hero-p {
+    margin: 5px; /* Smaller margin for paragraphs on mobile */
+  }
+}

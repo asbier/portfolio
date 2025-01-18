@@ -1,10 +1,13 @@
-// src/components/Modal/DayoneModalContent.js
 import React from 'react';
 import './DayoneModalContent.css';
+import logo1 from '../../Assets/dayone/Logo 4.png';
+import logo2 from '../../Assets/dayone/Logo 2.png';
+import logo3 from '../../Assets/dayone/Logo 3.png';
+import logo4 from '../../Assets/dayone/Logo 1.png';
 
 const DayoneModalContent = () => (
-    <div className="modal-content-container">
-        <p className="bold-text">UX Designer & Innovation Consultant</p>
+    <div className="dayone-modal-content-container">
+        <p className="dayone-bold-text">UX Designer & Innovation Consultant</p>
         <h2>DAYONE</h2>
         <p>
             At Dayone, I learned how transformative great design can be and how crucial it is for teams to embrace it as a driving force. Growth—both personal and product-driven—requires imagination and a willingness to listen. Without engaging with customers, colleagues, and surroundings, progress stalls.
@@ -17,11 +20,11 @@ const DayoneModalContent = () => (
         </p>
 
         {/* Image Gallery for Logos */}
-        <div className="image-gallery">
-            <img src="logo1.jpg" alt="Logo 1" />
-            <img src="logo2.jpg" alt="Logo 2" />
-            <img src="logo3.jpg" alt="Logo 3" />
-            <img src="logo4.jpg" alt="Logo 4" />
+        <div className="dayone-image-gallery">
+            <img src={logo1} alt="Logo 1" />
+            <img src={logo2} alt="Logo 2" />
+            <img src={logo3} alt="Logo 3" />
+            <img src={logo4} alt="Logo 4" />
         </div>
 
         <h3>Automotive Industry Projects: Insights & Contributions</h3>

@@ -1,45 +1,31 @@
-/* src/components/Modal/EditedModalContent.css */
-.modal-content-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+.edited-modal-content-container {
+  padding: 20px;
 }
 
-.key-contributions {
-    margin-bottom: 1em;
+.edited-bold-text {
+  font-weight: bold;
 }
 
-.section {
-    margin-bottom: 1em;
+.edited-image-gallery {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
 }
 
-/* Additional styles for headers and links */
-h2, h3, h4 {
-    margin-top: 1em;
+.edited-image-gallery img {
+  max-width: 700px;
+  margin: 10px;
+  transition: transform 0.3s ease;
 }
 
-p {
-    margin: 1em 0;
+.edited-image-gallery img:hover {
+  transform: scale(1.4);
 }
 
-a {
-    display: block;
-    margin-top: 1em;
-    color: #1a0dab; /* Typical link color */
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.image-gallery {
-    display: flex;
-    gap: 10px;
-    margin: 1em 0;
-}
-
-.image-gallery img {
-    width: 80px;
-    height: auto;
+@media screen and (max-width: 768px) {
+  .edited-image-gallery img {
+    max-width: 80px;
+  }
 }

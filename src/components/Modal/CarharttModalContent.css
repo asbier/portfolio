@@ -1,30 +1,29 @@
-/* src/components/Modal/CarharttModalContent.css */
-.modal-content-container {
-    max-width: 800px;
-    margin: 0 auto;
+.carhartt-modal-content-container {
     padding: 20px;
 }
 
-.section {
+.carhartt-section {
     margin-bottom: 1em;
 }
 
 /* Additional styles for headers and links */
-h2, h3, h4 {
+.carhartt-modal-content-container h2,
+.carhartt-modal-content-container h3,
+.carhartt-modal-content-container h4 {
     margin-top: 1em;
 }
 
-p {
+.carhartt-modal-content-container p {
     margin: 1em 0;
 }
 
-a {
+.carhartt-modal-content-container a {
     display: block;
     margin-top: 1em;
     color: #1a0dab; /* Typical link color */
     text-decoration: none;
 }
 
-a:hover {
+.carhartt-modal-content-container a:hover {
     text-decoration: underline;
 }

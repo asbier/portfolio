@@ -1,3 +1,23 @@
+.carousel {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  display: flex;
+  justify-content: flex-start;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.inner-carousel {
+  display: flex;
+  gap: 0px;
+}
+
 .item {
   height: auto;
   width: auto;
@@ -18,30 +38,10 @@
   transition: border-radius 0.5s;
 }
 
-img:hover {
+.item img:hover {
   opacity: 0.6;
   transition: 0.5s;
   border-radius: 2rem;
-}
-
-.inner-carousel {
-  display: flex;
-  gap: 0px;
-}
-
-.carousel {
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  display: flex;
-  justify-content: flex-start;
-  scroll-behavior: auto; /* Ensure smooth scroll behavior */
-  -webkit-overflow-scrolling: touch; /* For smoother scrolling on mobile */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
-}
-
-.carousel::-webkit-scrollbar {
-  display: none; /* Optional: hide scrollbar */
 }
 
 .title-container {
@@ -66,13 +66,13 @@ img:hover {
 @media screen and (max-width: 768px) {
   .carousel {
     white-space: nowrap;
-    overflow-x: auto; /* Allow horizontal scrolling */
-    overflow-y: hidden; /* Disable vertical scrolling */
+    overflow-x: auto;
+    overflow-y: hidden;
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
     display: flex;
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
     scroll-padding: 10px;
     justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
@@ -80,51 +80,51 @@ img:hover {
   }
 
   .carousel::-webkit-scrollbar {
-    display: none; /* Optional: hide scrollbar for a cleaner UI */
+    display: none;
   }
 
   h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Slightly increased max size for readability */
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     text-align: left;
   }
 
   .item {
-    min-width: 200px; /* Adjust to improve visual balance in carousel */
-    padding: 20px 10px; /* Reduce padding for better spacing */
+    min-width: 200px;
+    padding: 20px 10px;
     max-height: 35rem;
     height: 100%;
-    flex: 0 0 auto; /* Ensures items are properly sized and don't shrink */
-    width: calc(100vw - 48px); /* Dynamically size items on smaller screens */
-    max-width: 300px; /* Optional: Limit max size on larger screens */
+    flex: 0 0 auto;
+    width: calc(100vw - 48px);
+    max-width: 300px;
     scroll-snap-align: start;
   }
 
   .image-container img {
-    pointer-events: none; /* No interactions on imagesData */
-    max-width: 100%; /* Prevent overflow on small screens */
-    height: auto; /* Maintain aspect ratio */
+    pointer-events: none;
+    max-width: 100%;
+    height: auto;
     width: auto;
   }
 
   .inner-carousel {
     display: flex;
-    width: auto; /* The width should be dictated by its children */
-    gap: 16px; /* Spacing between items */
+    width: auto;
+    gap: 16px;
   }
 
   .title-container {
-    font-size: clamp(1rem, 3vw, 1.3rem); /* Adjusted for more consistent scaling */
-    margin-bottom: 15px; /* Increased spacing for better separation */
-    text-align: center; /* Center text for smaller devices */
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    margin-bottom: 15px;
+    text-align: center;
   }
 
   .image-title-small {
-    font-size: clamp(0.8rem, 2.5vw, 1rem); /* Refined scaling for clarity */
-    font-weight: 500; /* Ensure visibility and hierarchy */
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    font-weight: 500;
   }
 
   .image-title-main {
-    font-size: clamp(1.2rem, 3.5vw, 1.7rem); /* Adjusted for balanced visibility */
-    line-height: 1.2; /* Improved spacing for readability */
+    font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+    line-height: 1.2;
   }
 }
