@@ -1,0 +1,11 @@
+.hero {
+  padding: 10px 35px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero-p {
+  margin: 10px;
+}

@@ -1,0 +1,130 @@
+.item {
+  height: auto;
+  width: auto;
+  padding: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item img {
+  width: auto;
+  max-width: 400px;
+  max-height: 30rem;
+  height: auto;
+  border-radius: 0rem;
+  transition: border-radius 0.5s;
+}
+
+img:hover {
+  opacity: 0.6;
+  transition: 0.5s;
+  border-radius: 2rem;
+}
+
+.inner-carousel {
+  display: flex;
+  gap: 0px;
+}
+
+.carousel {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  display: flex;
+  justify-content: flex-start;
+  scroll-behavior: auto; /* Ensure smooth scroll behavior */
+  -webkit-overflow-scrolling: touch; /* For smoother scrolling on mobile */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Optional: hide scrollbar */
+}
+
+.title-container {
+  margin-top: 10px;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.image-title-small {
+  font-size: 0.9rem;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.image-title-main {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 768px) {
+  .carousel {
+    white-space: nowrap;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    overflow-y: hidden; /* Disable vertical scrolling */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    scroll-behavior: auto;
+    scroll-padding: 10px;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .carousel::-webkit-scrollbar {
+    display: none; /* Optional: hide scrollbar for a cleaner UI */
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Slightly increased max size for readability */
+    text-align: left;
+  }
+
+  .item {
+    min-width: 200px; /* Adjust to improve visual balance in carousel */
+    padding: 20px 10px; /* Reduce padding for better spacing */
+    max-height: 35rem;
+    height: 100%;
+    flex: 0 0 auto; /* Ensures items are properly sized and don't shrink */
+    width: calc(100vw - 48px); /* Dynamically size items on smaller screens */
+    max-width: 300px; /* Optional: Limit max size on larger screens */
+    scroll-snap-align: start;
+  }
+
+  .image-container img {
+    pointer-events: none; /* No interactions on imagesData */
+    max-width: 100%; /* Prevent overflow on small screens */
+    height: auto; /* Maintain aspect ratio */
+    width: auto;
+  }
+
+  .inner-carousel {
+    display: flex;
+    width: auto; /* The width should be dictated by its children */
+    gap: 16px; /* Spacing between items */
+  }
+
+  .title-container {
+    font-size: clamp(1rem, 3vw, 1.3rem); /* Adjusted for more consistent scaling */
+    margin-bottom: 15px; /* Increased spacing for better separation */
+    text-align: center; /* Center text for smaller devices */
+  }
+
+  .image-title-small {
+    font-size: clamp(0.8rem, 2.5vw, 1rem); /* Refined scaling for clarity */
+    font-weight: 500; /* Ensure visibility and hierarchy */
+  }
+
+  .image-title-main {
+    font-size: clamp(1.2rem, 3.5vw, 1.7rem); /* Adjusted for balanced visibility */
+    line-height: 1.2; /* Improved spacing for readability */
+  }
+}

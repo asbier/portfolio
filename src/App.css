@@ -281,7 +281,7 @@ footer.dark {
   }
 
   .image-container img {
-    pointer-events: none; /* No interactions on images */
+    pointer-events: none; /* No interactions on imagesData */
     max-width: 100%; /* Prevent overflow on small screens */
     height: auto; /* Maintain aspect ratio */
     width: auto;

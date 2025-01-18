@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import Main from "./components/Main";
+import Nav from "./components/Nav/Nav";
+import Footer from "./components/Footer/Footer";
+import Hero from "./components/Hero/Hero";
+import Main from "./components/Main/Main";
 import './App.css';
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
