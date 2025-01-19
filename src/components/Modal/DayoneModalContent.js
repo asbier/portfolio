@@ -5,10 +5,9 @@ import logo2 from '../../Assets/dayone/Logo 2.png';
 
 const DayoneModalContent = () => (
     <div className="dayone-modal-content-container">
-<h1>Portfolio - Agency Work</h1>
-
+<h1>DAYONE - Agency Work</h1>
 <section>
-  <h2>At Dayone: Transformative Design, Leadership, and Growth</h2>
+  <h2>Transformative Design, Leadership, and Growth</h2>
   <p>At Dayone, I discovered how transformative design can shape both products and people. Embracing design as a core driving force fosters growth, imagination, and innovation. I learned that actively listening to customers, colleagues, and surroundings is essential to making meaningful progress.</p>
   <p>I also gained valuable insights into how leadership and culture drive innovation. Design-led teams are often bold, pushing boundaries, while business-driven approaches prioritize practicality—sometimes at the expense of creativity. These lessons about the intersection of design, leadership, and growth influence all of my work today.</p>
 </section> 

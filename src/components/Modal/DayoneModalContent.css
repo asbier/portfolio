@@ -28,7 +28,7 @@ li {
   justify-content: left;
 }
 .logos img {
-  max-height: 30px;
+  max-height: 50px;
   object-fit: contain;
 }
 
