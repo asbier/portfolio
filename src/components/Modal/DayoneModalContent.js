@@ -5,7 +5,7 @@ import logo2 from '../../Assets/dayone/Logo 2.png';
 
 const DayoneModalContent = () => (
     <div className="dayone-modal-content-container">
-<h1>DAYONE - Agency Work</h1>
+<h1>DAYONE</h1>
 <section>
   <h2>Transformative Design, Leadership, and Growth</h2>
   <p>At Dayone, I discovered how transformative design can shape both products and people. Embracing design as a core driving force fosters growth, imagination, and innovation. I learned that actively listening to customers, colleagues, and surroundings is essential to making meaningful progress.</p>
@@ -21,12 +21,12 @@ const DayoneModalContent = () => (
   <p>Over several projects across German and international automotive markets, I built expertise in crafting user journeys, conducting user research, and benchmarking competitive products. These experiences helped me design localized, user-centric digital solutions and tackle the complexities of large-scale, cross-functional projects.</p>
   <h3>Key Contributions:</h3>
   <ul>
-    <li><strong>Streamlining Vehicle Searches:</strong> Enhanced search functionality by analyzing user behavior, mapping journeys, and prototyping intuitive filtering tools.</li>
-    <li><strong>Improving Vehicle Detail Presentation:</strong> Designed user-centric ways to showcase specifications, including specialized information for electric vehicles.</li>
-    <li><strong>Enhancing Dealer Connections:</strong> Simplified access to dealer and service information through improved user journeys and prototypes.</li>
-    <li><strong>Simplifying Trade-In Processes:</strong> Refined and streamlined the vehicle trade-in journey for better clarity and usability.</li>
-    <li><strong>Boosting Model Discoverability:</strong> Created solutions to improve car model visibility and comparison, addressing pain points identified through research.</li>
-    <li><strong>AI Integration Workshop:</strong> Contributed to a workshop exploring how AI could enhance automotive ecosystems, focusing on personalized vehicle configuration and service optimization.</li>
+    <li><strong>Streamlining Vehicle Searches</strong> Enhanced search functionality by analyzing user behavior, mapping journeys, and prototyping intuitive filtering tools.</li>
+    <li><strong>Improving Vehicle Detail Presentation</strong> Designed user-centric ways to showcase specifications, including specialized information for electric vehicles.</li>
+    <li><strong>Enhancing Dealer Connections</strong> Simplified access to dealer and service information through improved user journeys and prototypes.</li>
+    <li><strong>Simplifying Trade-In Processes</strong> Refined and streamlined the vehicle trade-in journey for better clarity and usability.</li>
+    <li><strong>Boosting Model Discoverability</strong> Created solutions to improve car model visibility and comparison, addressing pain points identified through research.</li>
+    <li><strong>AI Integration Workshop</strong> Contributed to a workshop exploring how AI could enhance automotive ecosystems, focusing on personalized vehicle configuration and service optimization.</li>
   </ul>
   <p>These experiences solidified my ability to design tailored, user-focused solutions in dynamic, multi-stakeholder environments.</p>
 </section>
@@ -42,15 +42,15 @@ const DayoneModalContent = () => (
   <p>For a confidential app project, I designed the user flows and dashboards for simplifying guest list management and providing artists with an intuitive dashboard. My contributions included crafting flows for guest list entry, login, and artist pages. Collaborating with my UX Lead, we rapidly prototyped and tested solutions based on user insights.</p>
   <h3>Impact:</h3>
   <ul>
-    <li><strong>User-Centric Design:</strong> Focused on reducing stress for guests and staff by simplifying event workflows.</li>
-    <li><strong>Research-Driven Solutions:</strong> Conducted extensive research to understand event dynamics and user needs.</li>
-    <li><strong>Social Impact:</strong> Helped design an app that not only streamlined event entry but also contributed to music education for children in need.</li>
+    <li><strong>User-Centric Design</strong> Focused on reducing stress for guests and staff by simplifying event workflows.</li>
+    <li><strong>Research-Driven Solutions</strong> Conducted extensive research to understand event dynamics and user needs.</li>
+    <li><strong>Social Impact</strong> Helped design an app that not only streamlined event entry but also contributed to music education for children in need.</li>
   </ul>
   <p>This project demonstrated the power of user-focused, purpose-driven design to improve processes while creating a broader positive impact.</p>
 </section>
 
 <p>
-  <p><strong>Final Thoughts:</strong> Through my work at Dayone and beyond, I’ve developed a deep appreciation for the intersection of design, leadership, and growth. Each project has enriched my ability to deliver innovative, user-centric solutions across diverse industries.</p>
+  <p><strong>Final Thoughts</strong> Through my work at Dayone and beyond, I’ve developed a deep appreciation for the intersection of design, leadership, and growth. Each project has enriched my ability to deliver innovative, user-centric solutions across diverse industries.</p>
 </p>
 </div>
 );

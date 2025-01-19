@@ -6,13 +6,15 @@
   font-weight: bold;
 }
 ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin: 10px 0;
+  list-style-type: disc; /* Use bullet points */
+  padding-left: 20px;    /* Indent the list */
+  margin: 10px 0;        /* Add space above and below the list */
 }
+
 li {
-  margin-bottom: 8px;
-  display: list-item;
+  display: list-item;    /* Ensure items are displayed as list items */
+  margin-bottom: 10px;   /* Add spacing between items */
+  line-height: 1.6;      /* Improve readability with proper line spacing */
 }
 .dayone-image-gallery {
   display: flex;
