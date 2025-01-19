@@ -2,8 +2,6 @@ import React from 'react';
 import './DayoneModalContent.css';
 import logo1 from '../../Assets/dayone/Logo 4.png';
 import logo2 from '../../Assets/dayone/Logo 2.png';
-import logo3 from '../../Assets/dayone/Logo 3.png';
-import logo4 from '../../Assets/dayone/Logo 1.png';
 
 const DayoneModalContent = () => (
     <div className="dayone-modal-content-container">
