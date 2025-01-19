@@ -25,8 +25,6 @@ const DayoneModalContent = () => (
         <div className="dayone-image-gallery">
             <img src={logo1} alt="Logo 1" />
             <img src={logo2} alt="Logo 2" />
-            <img src={logo3} alt="Logo 3" />
-            <img src={logo4} alt="Logo 4" />
         </div>
 
         <h3>Automotive Industry Projects: Insights & Contributions</h3>
