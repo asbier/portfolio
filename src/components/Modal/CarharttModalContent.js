@@ -58,10 +58,10 @@ const CarharttModalContent = () => (
         </div>
 
         <p>
-            <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">🌐 See Live on Carhartt Wip</a>
+            <a href="https://www.carhartt-wip.com/de" target="_blank" rel="noopener noreferrer">🌐 See Live on Carhartt-WIP EU</a>
         </p>
         <p>
-            <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">🌐 See Live on Carhartt Wip US</a>
+            <a href="https://us.carhartt-wip.com/?cl=true" target="_blank" rel="noopener noreferrer">🌐 See Live on Carhartt-WP US</a>
         </p>
     </div>
 );

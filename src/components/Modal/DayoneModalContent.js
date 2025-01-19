@@ -64,11 +64,9 @@ const DayoneModalContent = () => (
         </p>
 
         <p>
-            <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">See cases on website</a>
+            <a href="https://www.dayone.de/case/case-autosuche" target="_blank" rel="noopener noreferrer">🌐 See Live DAYONE.de</a>
         </p>
-
-        <h3>Collaborate with DAYONE</h3>
-        <p></p>
+    
     </div>
 );
 
