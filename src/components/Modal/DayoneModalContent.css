@@ -5,6 +5,28 @@
 .dayone-bold-text {
   font-weight: bold;
 }
+.dayone-modal-content-container {
+  padding: 25px;
+}
+
+.dayone-bold-text {
+  font-weight: bold;
+}
+
+/* Spacing for the logos container */
+.logos {
+  margin: 25px 0; /* Adds 25px margin above and below the logos */
+  display: flex;
+  gap: 20px;
+  justify-content: left;
+}
+
+.logos img {
+  max-height: 50px;
+  object-fit: contain;
+}
+
+/* Ensure lists stack vertically */
 ul {
   list-style-type: disc; /* Use bullet points */
   padding-left: 20px;    /* Indent the list */
@@ -16,6 +38,8 @@ li {
   margin-bottom: 10px;   /* Add spacing between items */
   line-height: 1.6;      /* Improve readability with proper line spacing */
 }
+
+/* For image gallery */
 .dayone-image-gallery {
   display: flex;
   justify-content: space-around;
@@ -23,19 +47,9 @@ li {
   flex-wrap: wrap;
   margin: 20px 0;
 }
-.logos {
-  margin: 20px 0;
-  display: flex;
-  gap: 20px;
-  justify-content: left;
-}
-.logos img {
-  max-height: 50px;
-  object-fit: contain;
-}
 
 .dayone-image-gallery img {
-  max-width: 150px; /* Adjust the size as needed */
+  max-width: 150px; /* Adjust size as needed */
   margin: 10px;
   transition: transform 0.3s ease;
 }
@@ -44,17 +58,13 @@ li {
   transform: scale(1.4);
 }
 
-.dayone-modal-content-container ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin: 10px 0;
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .dayone-image-gallery img {
+    max-width: 120px; /* Adjust size for mobile */
+  }
 }
 
-.dayone-modal-content-container li {
-  display: list-item;
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
 
 @media screen and (max-width: 768px) {
   .dayone-image-gallery img {
