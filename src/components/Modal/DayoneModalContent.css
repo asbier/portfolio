@@ -5,7 +5,9 @@
 .dayone-bold-text {
   font-weight: bold;
 }
-
+li {
+  margin-bottom: 5px;
+}
 .dayone-image-gallery {
   display: flex;
   justify-content: space-around;
