@@ -21,7 +21,7 @@ li {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  margin: 20px 0;
+  margin: 20px 25px;
 }
 .logos {
   margin: 20px 0;
