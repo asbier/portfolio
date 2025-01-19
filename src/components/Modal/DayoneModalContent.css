@@ -25,10 +25,10 @@ li {
   margin: 20px 0;
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: left;
 }
 .logos img {
-  max-height: 25px;
+  max-height: 30px;
   object-fit: contain;
 }
 
