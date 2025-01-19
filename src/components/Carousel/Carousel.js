@@ -77,7 +77,7 @@ const Carousel = ({ onImageClick }) => {
                                 </>
                             ) : index === 2 ? (
                                 <>
-                                    <span className="image-title-small">UX Designer</span>
+                                    <span className="image-title-small">Art Director</span>
                                     <h2 className="image-title-main">EDITED</h2>
                                 </>
                             ) : (
