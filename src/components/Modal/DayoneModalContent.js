@@ -21,12 +21,12 @@ const DayoneModalContent = () => (
   <p>Over several projects across German and international automotive markets, I built expertise in crafting user journeys, conducting user research, and benchmarking competitive products. These experiences helped me design localized, user-centric digital solutions and tackle the complexities of large-scale, cross-functional projects.</p>
   <h3>Key Contributions:</h3>
   <ul>
-    <li><strong>Streamlining Vehicle Searches</strong> Enhanced search functionality by analyzing user behavior, mapping journeys, and prototyping intuitive filtering tools.</li>
-    <li><strong>Improving Vehicle Detail Presentation</strong> Designed user-centric ways to showcase specifications, including specialized information for electric vehicles.</li>
-    <li><strong>Enhancing Dealer Connections</strong> Simplified access to dealer and service information through improved user journeys and prototypes.</li>
-    <li><strong>Simplifying Trade-In Processes</strong> Refined and streamlined the vehicle trade-in journey for better clarity and usability.</li>
-    <li><strong>Boosting Model Discoverability</strong> Created solutions to improve car model visibility and comparison, addressing pain points identified through research.</li>
-    <li><strong>AI Integration Workshop</strong> Contributed to a workshop exploring how AI could enhance automotive ecosystems, focusing on personalized vehicle configuration and service optimization.</li>
+    <li><strong>- Streamlining Vehicle Searches</strong> Enhanced search functionality by analyzing user behavior, mapping journeys, and prototyping intuitive filtering tools.</li>
+    <li><strong>- Improving Vehicle Detail Presentation</strong> Designed user-centric ways to showcase specifications, including specialized information for electric vehicles.</li>
+    <li><strong>- Enhancing Dealer Connections</strong> Simplified access to dealer and service information through improved user journeys and prototypes.</li>
+    <li><strong>- Simplifying Trade-In Processes</strong> Refined and streamlined the vehicle trade-in journey for better clarity and usability.</li>
+    <li><strong>- Boosting Model Discoverability</strong> Created solutions to improve car model visibility and comparison, addressing pain points identified through research.</li>
+    <li><strong>- AI Integration Workshop</strong> Contributed to a workshop exploring how AI could enhance automotive ecosystems, focusing on personalized vehicle configuration and service optimization.</li>
   </ul>
   <p>These experiences solidified my ability to design tailored, user-focused solutions in dynamic, multi-stakeholder environments.</p>
 </section>
@@ -43,9 +43,9 @@ const DayoneModalContent = () => (
   <h3>Impact
   </h3>
   <ul>
-    <li><strong>User-Centric Design</strong> Focused on reducing stress for guests and staff by simplifying event workflows.</li>
-    <li><strong>Research-Driven Solutions</strong> Conducted extensive research to understand event dynamics and user needs.</li>
-    <li><strong>Social Impact</strong> Helped design an app that not only streamlined event entry but also contributed to music education for children in need.</li>
+    <li><strong>- User-Centric Design</strong> Focused on reducing stress for guests and staff by simplifying event workflows.</li>
+    <li><strong>- Research-Driven Solutions</strong> Conducted extensive research to understand event dynamics and user needs.</li>
+    <li><strong>- Social Impact</strong> Helped design an app that not only streamlined event entry but also contributed to music education for children in need.</li>
   </ul>
   <p>This project demonstrated the power of user-focused, purpose-driven design to improve processes while creating a broader positive impact.</p>
 </section>

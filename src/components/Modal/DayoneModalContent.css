@@ -12,7 +12,7 @@ ul {
 }
 
 li {
-  display: list-item;    /* Ensure items are displayed as list items */
+  display: block;    /* Ensure items are displayed as list items */
   margin-bottom: 10px;   /* Add spacing between items */
   line-height: 1.6;      /* Improve readability with proper line spacing */
 }
@@ -24,7 +24,8 @@ li {
   margin: 20px 25px;
 }
 .logos {
-  margin: 20px 0;
+  margin-top: 25px; /* Adds space above the logos */
+  margin-bottom: 25px; /* Adds space below the logos */
   display: flex;
   gap: 20px;
   justify-content: left;
