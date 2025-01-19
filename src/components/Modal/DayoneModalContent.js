@@ -27,8 +27,8 @@ I also gained valuable insights into how leadership and culture drive innovation
         </p>
 
         <h4>Key Areas of Focus:</h4>
-        <p></
-        li>eamlining Vehicle Searches: Addressed user needs for intuitive search options by analyzing behavior, mapping journeys, and prototyping enhanced filtering tools.</li> </p>
+        <p>
+        Streamlining Vehicle Searches: Addressed user needs for intuitive search options by analyzing behavior, mapping journeys, and prototyping enhanced filtering tools.</p>
         <p>Improving Vehicle Detail Presentation: Designed user-centric solutions to present specifications and details more clearly, including specialized information for electric vehicles.</p>
         <p>Enhancing Dealer Connections: Developed journeys and prototypes to simplify user access to dealer and service information.</p>
         <p>Simplifying Trade-in Processes: Worked on mapping and refining the journey for trading in vehicles, ensuring clarity and usability.</p>
