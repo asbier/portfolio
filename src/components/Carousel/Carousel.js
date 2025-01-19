@@ -65,24 +65,54 @@ const Carousel = ({ onImageClick }) => {
                             <img src={image} alt={`Carousel Item ${index + 1}`} />
                         </div>
                         <div className="title-container">
-                            {index === 0 ? (
-                                <>
-                                    <h3 className="image-title-small">UX Designer & Innovation Consultant</h3>
-                                    <h2 className="image-title-main">DAYONE</h2>
-                                </>
-                            ) : index === 1 ? (
-                                <>
-                                    <span className="image-title-small">Digital UX Designer</span>
-                                    <h2 className="image-title-main">CARHARTT WIP</h2>
-                                </>
-                            ) : index === 2 ? (
-                                <>
-                                    <span className="image-title-small">Art Director</span>
-                                    <h2 className="image-title-main">EDITED</h2>
-                                </>
-                            ) : (
-                                <h3>{`Title for Image ${index + 1}`}</h3>
-                            )}
+                        {index === 0 ? (
+    <>
+      <h3 className="image-title-small">UX Designer & Innovation Consultant</h3>
+      <h2 className="image-title-main">DAYONE</h2>
+    </>
+  ) : index === 1 ? (
+    <>
+      <span className="image-title-small">Digital UX Designer</span>
+      <h2 className="image-title-main">CARHARTT WIP</h2>
+    </>
+  ) : index === 2 ? (
+    <>
+      <span className="image-title-small">Art Director build Ecosystem</span>
+      <h2 className="image-title-main">EDITED</h2>
+    </>
+  ) : index === 3 ? (
+    <>
+      <span className="image-title-small">Art Director</span>
+      <h2 className="image-title-main">About YOU</h2>
+    </>
+  ) : index === 4 ? (
+    <>
+      <span className="image-title-small">Design</span>
+      <h2 className="image-title-main">Conic Rose</h2>
+    </>
+  ) : index === 5 ? (
+    <>
+      <span className="image-title-small">Event Experience Designer</span>
+      <h2 className="image-title-main">HEROES & HEROINES</h2>
+    </>
+  ) : index === 6 ? (
+    <>
+      <span className="image-title-small">Designer</span>
+      <h2 className="image-title-main">PLASTIC MEDIA</h2>
+    </>
+  ) : index === 7 ? (
+    <>
+      <span className="image-title-small">Art Director</span>
+      <h2 className="image-title-main">MONOPOL MEDIA GmbH</h2>
+    </>
+  ) : index === 8 ? (
+    <>
+      <span className="image-title-small">Design</span>
+      <h2 className="image-title-main">PURISTO</h2>
+    </>
+  ) : (
+    <h3>{`Title for Image ${index + 1}`}</h3>
+  )}
                         </div>
                     </motion.div>
                 ))}
