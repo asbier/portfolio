@@ -1,6 +1,6 @@
 import React from 'react';
 import './DayoneModalContent.css';
-import logo1 from '../../Assets/dayone/Logo 4.png';
+import logo1 from '../../Assets/dayone/Logo 1.png';
 import logo2 from '../../Assets/dayone/Logo 2.png';
 
 const DayoneModalContent = () => (
