@@ -5,7 +5,7 @@ const CarharttModalContent = () => (
     <div className="carhartt-modal-content-container">
         <h2>Digital UX Designer</h2>
         <h4>Carhartt WIP</h4>
-        <p>
+        <p>  </p> <p>
             As a UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key challenges, blending both UX and UI design to create holistic solutions that improved user experience across various platforms.
         </p>
 

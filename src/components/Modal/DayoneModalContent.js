@@ -7,8 +7,10 @@ import logo4 from '../../Assets/dayone/Logo 1.png';
 
 const DayoneModalContent = () => (
     <div className="dayone-modal-content-container">
-        <p className="dayone-bold-text">UX Designer & Innovation Consultant</p>
-        <h2>DAYONE</h2>
+    
+        <h2>UX Designer & Innovation Consultant</h2>
+        <h4>DAYONE</h4>
+        <p>  </p> 
         <p>
             At Dayone, I learned how transformative great design can be and how crucial it is for teams to embrace it as a driving force. Growth—both personal and product-driven—requires imagination and a willingness to listen. Without engaging with customers, colleagues, and surroundings, progress stalls.
         </p>
