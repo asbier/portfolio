@@ -57,7 +57,9 @@ I also gained valuable insights into how leadership and culture drive innovation
         <p>
             In addition to its functional goals, the app had a social impact mission: a portion of its income supports music education for children in need. The app was designed to save time and money, streamline event processes, reduce queues, and enhance the overall experience for both attendees and venue staff.
         </p>
-
+        <h3>Final Thoughts</h3><p>
+Through my work at Dayone and beyond, I’ve developed a deep appreciation for the intersection of design, leadership, and growth. Each project has enriched my ability to deliver innovative, user-centric solutions across diverse industries.
+</p>
         <p>
             <a href="https://www.dayone.de/case/case-autosuche" target="_blank" rel="noopener noreferrer">🌐 See Live DAYONE.de</a>
         </p>
