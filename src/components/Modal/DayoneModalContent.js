@@ -49,7 +49,7 @@ I also gained valuable insights into how leadership and culture drive innovation
 
         <h3>Guest List & Artist Dashboard App (Confidential Project)</h3>
         <p>
-            I contributed to the design of the user flow and dashboard for a confidential app aimed at simplifying the guest list process and providing an intuitive artist dashboard. My responsibilities included designing the guest list flow, login processes, artist pages, and mission pages. Working closely with my UX Lead, we quickly developed and presented the first prototype for both guests and artists, based on user insights.
+            I contributed to the design of the user flow and dashboard for a confidential app aimed at simplifying the guest list process and providing an intuitive artist dashboard. My responsibilities included designing the guest list flow, login processes, artist pages, and mission pages. Working closely with my UX Lead, we quickly developed and presented the first prototype for both guests and artists, based on user hypothesis.
         </p>
         <p>
             The primary goal of the app was to reduce stress for guests and venue staff by simplifying event entry and navigation. In the absence of a clear brand or concept, I led research efforts to understand event workflows and user expectations, ensuring the app addressed the needs of both parties effectively.
