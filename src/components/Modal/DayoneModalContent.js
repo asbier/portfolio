@@ -5,18 +5,14 @@ import logo2 from '../../Assets/dayone/Logo 2.png';
 
 const DayoneModalContent = () => (
     <div className="dayone-modal-content-container">
-    
+
         <h2>UX Designer & Innovation Consultant</h2>
         <h4>DAYONE</h4>
-        <p>  </p> 
-        <p>
-            At Dayone, I learned how transformative great design can be and how crucial it is for teams to embrace it as a driving force. Growth—both personal and product-driven—requires imagination and a willingness to listen. Without engaging with customers, colleagues, and surroundings, progress stalls.
-        </p>
-        <p>
-            I also came to understand how leadership and culture influence growth. Design-led teams tend to push boundaries, while business-driven approaches often favor practicality, sometimes at the cost of innovation.
-        </p>
-        <p>
-            These experiences shaped my perspective on the intersection of design, leadership, and growth, lessons I carry forward in all my work.
+        <h3>
+        Transformative Design, Leadership, and Growth
+        </h3> 
+        <p>At Dayone, I discovered how transformative design can shape both products and people. Embracing design as a core driving force fosters growth, imagination, and innovation. I learned that actively listening to customers, colleagues, and surroundings is essential to making meaningful progress.
+I also gained valuable insights into how leadership and culture drive innovation. Design-led teams are often bold, pushing boundaries, while business-driven approaches prioritize practicality—sometimes at the expense of creativity. These lessons about the intersection of design, leadership, and growth influence all of my work today.
         </p>
 
         {/* Image Gallery for Logos */}
@@ -27,11 +23,12 @@ const DayoneModalContent = () => (
 
         <h3>Automotive Industry Projects: Insights & Contributions</h3>
         <p>
-            Over the course of several German and International market-focused automotive projects, I gained extensive experience in creating user journeys, conducting user research, and performing competitive benchmarking. These projects deepened my understanding of designing localized, user-centric digital solutions within the automotive sector. They also provided valuable lessons in cross-functional collaboration, market-specific challenges, and the complexities of large-scale product development.
+        Over several projects across German and international automotive markets, I built expertise in crafting user journeys, conducting user research, and benchmarking competitive products. These experiences helped me design localized, user-centric digital solutions and tackle the complexities of large-scale, cross-functional projects.
         </p>
 
         <h4>Key Areas of Focus:</h4>
-        <p>Streamlining Vehicle Searches: Addressed user needs for intuitive search options by analyzing behavior, mapping journeys, and prototyping enhanced filtering tools.</p>
+        <p></
+        li>eamlining Vehicle Searches: Addressed user needs for intuitive search options by analyzing behavior, mapping journeys, and prototyping enhanced filtering tools.</li> </p>
         <p>Improving Vehicle Detail Presentation: Designed user-centric solutions to present specifications and details more clearly, including specialized information for electric vehicles.</p>
         <p>Enhancing Dealer Connections: Developed journeys and prototypes to simplify user access to dealer and service information.</p>
         <p>Simplifying Trade-in Processes: Worked on mapping and refining the journey for trading in vehicles, ensuring clarity and usability.</p>
