@@ -1,10 +1,18 @@
 .dayone-modal-content-container {
-  padding: 25px;
+  padding: 50px 200px 20px 50px;
+  background-color: rgb(251, 249, 246);
+  border-radius: 20px; /* Make the background color have rounded edges */
+  margin: 0px;
+  justify-content: left;
+
+    font-size: 26px;
+    line-height:
 }
 
 .dayone-bold-text {
   font-weight: bold;
 }
+
 ul {
   list-style-type: disc; /* Use bullet points */
   padding-left: 20px;    /* Indent the list */

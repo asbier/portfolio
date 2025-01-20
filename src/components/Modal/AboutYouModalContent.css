@@ -1,0 +1,46 @@
+.edited-modal-content-container {
+    padding: 50px 200px 20px 50px;
+  background-color: rgb(251, 249, 246);
+  border-radius: 20px; /* Make the background color have rounded edges */
+  margin: 0px;
+  justify-content: left;
+
+    font-size: 26px;
+    line-height: 40px; /* Adjust this value based on your design preferences */
+  
+  }
+  
+  .edited-bold-text {
+    font-weight: bold;
+  }
+  .edited-image-gallery {
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-around; /* Evenly space the images */
+    align-items: center; /* Align items vertically */
+    flex-wrap: wrap; /* Wrap to the next line if necessary */
+    gap: 0px; /* Add spacing between images */
+    margin: 20px 0; /* Add space above and below the gallery */
+  }
+  
+  .edited-image-gallery img {
+    max-width: 250px; /* Limit the width of the images */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .edited-image-gallery img:hover {
+    transform: scale(1.1); /* Slightly enlarge the image on hover */
+  }
+  
+  
+  .edited-image-gallery img:hover {
+    transform: scale(1.4);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .edited-image-gallery img {
+      max-width: 80px;
+    }
+  }

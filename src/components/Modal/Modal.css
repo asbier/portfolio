@@ -30,6 +30,12 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
+
+.modal-content-padding{
+padding: 25px;
+background-color: #b7b0b0;
+}
+
 .modal-content img {
   width: 100%;
   height: auto;
@@ -49,7 +55,7 @@
 }
 
 .modal-content .close:hover {
-  color: #ff0000;
+  color: #5e5959;
   transition: 0.3s;
 }
 
