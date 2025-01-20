@@ -17,7 +17,7 @@ import image11 from '../../Assets/Image 4_EDITED/Image 11.png';
 const EditedModalContent = () => (
     <div className="edited-modal-content-container">
         <h1>EDITEDtheLabel</h1>
-        <section>
+        <section className='modal-section'>
             <h2>The Build of an Ecosystem</h2>
             <p>
                 I began as a designer at EDITED and worked alongside my colleagues to establish a highly creative and collaborative design environment. Our work focused on transforming the brand's identity, content strategy, and physical presence into a cohesive ecosystem that bridged digital, social, and retail channels.
@@ -54,7 +54,7 @@ const EditedModalContent = () => (
                 </div>
         </section>
 
-        <section>
+        <section className='modal-section'>
             <h4>Event and Campaign Activation</h4>
             <p>Conceptualized and executed fashion show concepts and exclusive pop-up store designs, ensuring a cohesive and innovative customer experience.</p>
             <p>Participated in editorial shoots to capture backstage content, and created engaging video material to amplify campaign coverage.</p>

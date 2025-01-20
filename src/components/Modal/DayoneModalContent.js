@@ -19,7 +19,7 @@ const DayoneModalContent = () => (
       
       
 
-<section>
+<section className="modal-section">
   <h2>Automotive Industry Projects</h2>
   <p>Over several projects across German and international automotive markets, I built expertise in crafting user journeys, conducting user research, and benchmarking competitive products. These experiences helped me design localized, user-centric digital solutions and tackle the complexities of large-scale, cross-functional projects.</p>
   <h3>Key Contributions:</h3>
@@ -36,13 +36,13 @@ const DayoneModalContent = () => (
   <p>These experiences solidified my ability to design tailored, user-focused solutions in dynamic, multi-stakeholder environments.</p>
 </section>
 <p></p>
-<section>
+<section className="modal-section">
   <h2>UX Design for ADAS System Configuration Tool</h2>
   <p>I contributed to the UX design of a dashboard for configuring Advanced Driver Assistance Systems (ADAS). The challenge was to balance complex technical requirements with an intuitive interface designed for non-technical users like mechanics.</p>
   <p>Collaborating closely with a development-focused Product Owner, we prioritized real-world usability by designing a dashboard that streamlined tasks and improved efficiency. The final product, showcased at an industry trade show, demonstrated how thoughtful design could simplify processes and improve workflows for mechanics.</p>
 </section>
 <p></p>
-<section>
+<section className="modal-section">
   <h2>Guest List & Artist Dashboard App</h2>
   <p>For a confidential app project, I designed the user flows and dashboards for simplifying guest list management and providing artists with an intuitive dashboard. My contributions included crafting flows for guest list entry, login, and artist pages. Collaborating with my UX Lead, we rapidly prototyped and tested solutions based on Hypothesis and Artist Insights</p>
   <h3>Impact

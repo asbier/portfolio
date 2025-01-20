@@ -8,7 +8,7 @@ const CarharttModalContent = () => (
         <p>  </p> <p>
             As a UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key challenges, blending both UX and UI design to create holistic solutions that improved user experience across various platforms.
         </p>
-
+        <section className="modal-section">
         <h3>Inefficient Help Desk Experience</h3>
         <h4>Problem</h4>
         <div className="carhartt-section">
@@ -23,8 +23,8 @@ const CarharttModalContent = () => (
         <h4>Solution</h4>
         <div className="carhartt-section">
             I developed intuitive user flows and interfaces that made it easier for customers to access support, track their requests, and receive timely updates. The improved design significantly reduced service request resolution time and increased customer satisfaction.
-        </div>
-
+</div> </section>
+<section className="modal-section">
         <h3>Checkout Experience Optimization</h3>
         <h4>Problem</h4>
         <div className="carhartt-section">
@@ -56,7 +56,7 @@ const CarharttModalContent = () => (
         <div className="carhartt-section">
             By transitioning the design system to Figma, I improved team collaboration, allowing for real-time feedback, seamless handoffs, and more efficient workflows. This also improved consistency across design outputs and made cross-functional collaboration smoother.
         </div>
-
+</section>
         <p>
             <a href="https://www.carhartt-wip.com/de" target="_blank" rel="noopener noreferrer">🌐 See Live on Carhartt-WIP EU</a>
         </p>
