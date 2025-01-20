@@ -21,7 +21,7 @@
   background-color: #fff;
   margin: auto;
   border-radius: 8px;
-
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -82,3 +82,39 @@ background-color: #b7b0b0;
     transform: scale(1);
   }
 }
+  /* Global font size for modals */
+  .modal-content-container {
+    padding: 50px; /* Padding for the main container */
+    font-size: 2vw;  /* This makes font size responsive based on viewport width */
+    line-height: 1.4; /* Line height for readability */
+  }
+  
+  /* Media Query for responsive font size */
+  @media screen and (max-width: 768px) {
+    .modal-content-container {
+      font-size: 5vw; /* Adjusts font size dynamically for smaller devices */
+      padding: 20px; /* Adjust padding for smaller screens */
+    }
+  
+    /* Adjust image size in gallery */
+    .modal-content img {
+      max-width: 120px; /* Adjust image size for mobile */
+    }
+  
+    /* Adjust modal content width for mobile */
+    .modal-content {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    /* Smaller close button on mobile */
+    .modal-content .close {
+      font-size: 24px;
+      padding: 8px;
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .modal-content-container {
+      font-size: 4vw; /* Slightly larger font for tablets */
+    }}

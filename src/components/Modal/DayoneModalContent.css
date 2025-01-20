@@ -1,7 +1,6 @@
 .dayone-modal-content-container {
   padding: 50px; /* Padding for the main container */
-  font-size: 28px;
-  line-height: 40px;
+  
 }
 
 .modal-section {
@@ -68,4 +67,5 @@ section {
   .dayone-image-gallery img {
     max-width: 120px; /* Adjust the size for mobile as needed */
   }
+
 }

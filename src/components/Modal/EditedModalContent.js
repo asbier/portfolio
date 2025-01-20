@@ -16,7 +16,7 @@ import image11 from '../../Assets/Image 4_EDITED/Image 11.png';
 
 const EditedModalContent = () => (
     <div className="edited-modal-content-container">
-        <h1>EDITEDtheLabel</h1>
+        <h1>EDITED the Label</h1>
         <section className='modal-section'>
             <h2>The Build of an Ecosystem</h2>
             <p>

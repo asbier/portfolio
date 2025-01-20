@@ -58,7 +58,8 @@ const DayoneModalContent = () => (
 </section>
 <p></p>
 <p>
-  <p><strong>Final Thoughts</strong> <p></p>Through my work at Dayone and beyond, I’ve developed a deep appreciation for the intersection of design, leadership, and growth. Each project has enriched my ability to deliver innovative, user-centric solutions across diverse industries.</p>
+
+  <p><strong>Final Thoughts</strong> <p></p>Through my work at DAYONE and beyond, I’ve developed a deep appreciation for the intersection of design, leadership, and growth. Each project has enriched my ability to deliver innovative, user-centric solutions across diverse industries.</p>
 </p>
 </div>
 );
