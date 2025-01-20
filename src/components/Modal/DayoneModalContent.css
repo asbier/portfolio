@@ -1,12 +1,19 @@
 .dayone-modal-content-container {
-  padding: 50px 200px 20px 50px;
-  background-color: rgb(251, 249, 246);
-  border-radius: 20px; /* Make the background color have rounded edges */
-  margin: 0px;
-  justify-content: left;
+  padding: 50px; /* Padding for the main container */
+  font-size: 28px;
+  line-height: 40px;
+}
 
-    font-size: 26px;
-    line-height:
+section {
+  margin-bottom: 40px; /* Space between sections */
+  padding: 20px; /* Add padding inside each section */
+  background-color: rgb(245, 242, 237); /* Background color for sections */
+  border-radius: 15px; /* Rounded corners for sections */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for better separation */
+}
+
+section h2 {
+  margin-top: 0; /* Remove extra margin for the section heading */
 }
 
 .dayone-bold-text {
@@ -32,15 +39,19 @@ li {
   margin: 20px 25px;
 }
 .logos {
-  margin-top: 25px; /* Adds space above the logos */
-  margin-bottom: 25px; /* Adds space below the logos */
   display: flex;
-  gap: 20px;
-  justify-content: left;
+  align-items: center; /* Vertically align logos */
+  gap: 20px; /* Space between the logos */
+  margin: 100px 0 100px 0; /* Space above and below the logos */
 }
+
 .logos img {
-  max-height: 50px;
-  object-fit: contain;
+  max-height: 60px; /* Set logo height */
+  object-fit: contain; /* Maintain aspect ratio */
+}
+
+section {
+  margin-bottom: 100px; /* Space between cases/sections */
 }
 
 .dayone-image-gallery img {
