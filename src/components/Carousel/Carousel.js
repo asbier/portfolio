@@ -77,13 +77,13 @@ const Carousel = ({ onImageClick }) => {
     </>
   ) : index === 2 ? (
     <>
-      <span className="image-title-small">Art Director build Ecosystem</span>
+      <span className="image-title-small">Art Director</span>
       <h2 className="image-title-main">EDITED</h2>
     </>
   ) : index === 3 ? (
     <>
       <span className="image-title-small">Art Director</span>
-      <h2 className="image-title-main">About YOU</h2>
+      <h2 className="image-title-main">AboutYOU Redesign</h2>
     </>
   ) : index === 4 ? (
     <>
