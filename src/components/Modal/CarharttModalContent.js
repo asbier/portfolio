@@ -9,9 +9,10 @@ const CarharttModalContent = () => (
             As a UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key challenges, blending both UX and UI design to create holistic solutions that improved user experience across various platforms.
         </p>
         <section className="modal-section">
-        <h3>Inefficient Help Desk Experience</h3>
+        <h3>Help Desk development</h3>
         <h4>Problem</h4>
         <div className="carhartt-section">
+            Inifficient Customer Support.
             Users struggled with accessing help and support, making it difficult for them to resolve issues efficiently on both the web and app platforms.
         </div>
 
@@ -24,11 +25,13 @@ const CarharttModalContent = () => (
         <div className="carhartt-section">
             I developed intuitive user flows and interfaces that made it easier for customers to access support, track their requests, and receive timely updates. The improved design significantly reduced service request resolution time and increased customer satisfaction.
 </div> </section>
-<section className="modal-section">
+
+< section className="modal-section">
+<div>
         <h3>Checkout Experience Optimization</h3>
         <h4>Problem</h4>
         <div className="carhartt-section">
-            The checkout process was cumbersome, particularly for users in the U.S. and German markets, which led to higher cart abandonment rates and a frustrating user experience.
+            The checkout process was cumbersome, particularly for users in the U.S. and EU-Markets, which led to higher cart abandonment rates and a frustrating user experience.
         </div>
 
         <h4>Method</h4>
@@ -41,6 +44,11 @@ const CarharttModalContent = () => (
             I redesigned the checkout system, optimizing mobile usability, improving the filter system, and simplifying the overall flow. The new design streamlined the purchasing process, resulting in lower cart abandonment rates and higher conversions.
         </div>
 
+        </div> 
+        </section>
+
+        <section className="modal-section"> 
+            <div>
         <h3>Transitioning Design Tools from Sketch to Figma</h3>
         <h4>Problem</h4>
         <div className="carhartt-section">
@@ -56,13 +64,14 @@ const CarharttModalContent = () => (
         <div className="carhartt-section">
             By transitioning the design system to Figma, I improved team collaboration, allowing for real-time feedback, seamless handoffs, and more efficient workflows. This also improved consistency across design outputs and made cross-functional collaboration smoother.
         </div>
+        </div>
 </section>
-        <p>
-            <a href="https://www.carhartt-wip.com/de" target="_blank" rel="noopener noreferrer">🌐 See Live on Carhartt-WIP EU</a>
-        </p>
-        <p>
-            <a href="https://us.carhartt-wip.com/?cl=true" target="_blank" rel="noopener noreferrer">🌐 See Live on Carhartt-WP US</a>
-        </p>
+
+<p>
+  <a href="https://www.carhartt-wip.com/de" target="_blank" rel="noopener noreferrer">🌐 See Live on Carhartt-WIP EU</a>
+  <a href="https://us.carhartt-wip.com/?cl=true" target="_blank" rel="noopener noreferrer">🌐 See Live on Carhartt-WIP US</a>
+</p>
+
     </div>
 );
 

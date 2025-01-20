@@ -7,9 +7,8 @@ const DayoneModalContent = () => (
     <div className="dayone-modal-content-container">
 <h1>DAYONE</h1>
 
-
   <h2>Transformative Design, Leadership, and Growth</h2>
-  <p>At Dayone, I discovered how transformative design can shape both products and people. Embracing design as a core driving force fosters growth, imagination, and innovation. I learned that actively listening to customers, colleagues, and surroundings is essential to making meaningful progress.</p>
+  <p>At DAYONE, I discovered how transformative design can shape both products and people. Embracing design as a core driving force fosters growth, imagination, and innovation. I learned that actively listening to customers, colleagues, and surroundings is essential to making meaningful progress.</p>
   <p>I also gained valuable insights into how leadership and culture drive innovation. Design-led teams are often bold, pushing boundaries, while business-driven approaches prioritize practicality—sometimes at the expense of creativity. These lessons about the intersection of design, leadership, and growth influence all of my work today.</p>
 {/* Logos Section */}
 <div className="logos">
@@ -20,9 +19,9 @@ const DayoneModalContent = () => (
       
 
 <section className="modal-section">
-  <h2>Automotive Industry Projects</h2>
+  <h3>Automotive Industry Projects</h3>
   <p>Over several projects across German and international automotive markets, I built expertise in crafting user journeys, conducting user research, and benchmarking competitive products. These experiences helped me design localized, user-centric digital solutions and tackle the complexities of large-scale, cross-functional projects.</p>
-  <h3>Key Contributions:</h3>
+  <h4>Key Contributions</h4>
   <ul>
     <li>
        <p><strong>Streamlining Vehicle Searches</strong> Enhanced search functionality by analyzing user behavior, mapping journeys, and prototyping intuitive filtering tools.</p>
@@ -37,17 +36,16 @@ const DayoneModalContent = () => (
 </section>
 <p></p>
 <section className="modal-section">
-  <h2>UX Design for ADAS System Configuration Tool</h2>
+  <h3>UX Design for ADAS Tool</h3>
   <p>I contributed to the UX design of a dashboard for configuring Advanced Driver Assistance Systems (ADAS). The challenge was to balance complex technical requirements with an intuitive interface designed for non-technical users like mechanics.</p>
   <p>Collaborating closely with a development-focused Product Owner, we prioritized real-world usability by designing a dashboard that streamlined tasks and improved efficiency. The final product, showcased at an industry trade show, demonstrated how thoughtful design could simplify processes and improve workflows for mechanics.</p>
 </section>
 <p></p>
 <section className="modal-section">
-  <h2>Guest List & Artist Dashboard App</h2>
+  <h3>Guest List & Artist Dashboard App</h3>
   <p>For a confidential app project, I designed the user flows and dashboards for simplifying guest list management and providing artists with an intuitive dashboard. My contributions included crafting flows for guest list entry, login, and artist pages. Collaborating with my UX Lead, we rapidly prototyped and tested solutions based on Hypothesis and Artist Insights</p>
-  <h3>Impact
-  </h3>
-  <p></p>
+  <h4>Impact
+  </h4>
   <ul><li>
     <p><strong>User-Centric Design</strong> Focused on reducing stress for guests and staff by simplifying event workflows.</p>
     <p><strong>Research-Driven Solutions</strong> Conducted extensive research to understand event dynamics and user needs.</p>
@@ -58,8 +56,10 @@ const DayoneModalContent = () => (
 </section>
 <p></p>
 <p>
-
   <p><strong>Final Thoughts</strong> <p></p>Through my work at DAYONE and beyond, I’ve developed a deep appreciation for the intersection of design, leadership, and growth. Each project has enriched my ability to deliver innovative, user-centric solutions across diverse industries.</p>
+</p>
+<p>
+  <a href="https://www.dayone.de" target="_blank" rel="noopener noreferrer">🌐 Learn more about DAYONE</a>
 </p>
 </div>
 );

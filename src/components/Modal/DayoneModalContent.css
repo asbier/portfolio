@@ -1,6 +1,7 @@
 .dayone-modal-content-container {
   padding: 50px; /* Padding for the main container */
-  
+ font-size: 28px; /* Set the font-size to 28px for larger screens */
+  line-height: 40px;
 }
 
 .modal-section {
@@ -40,7 +41,7 @@ li {
 .logos {
   display: flex;
   align-items: center; /* Vertically align logos */
-  gap: 20px; /* Space between the logos */
+  gap: 4rem; /* Space between the logos */
   margin: 100px 0 100px 0; /* Space above and below the logos */
 }
 

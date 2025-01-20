@@ -1,3 +1,4 @@
+/* Modal container */
 .modal {
   display: flex;
   position: fixed;
@@ -5,13 +6,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
   justify-content: center;
   align-items: center;
   z-index: 9999;
   overflow: hidden;
 }
 
+/* Modal content */
 .modal-content {
   position: relative;
   width: 75%;
@@ -25,53 +27,83 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow-y: auto;
-  padding-bottom: 30px;
+  overflow-y: auto; /* Enables vertical scrolling for long content */
   animation: fadeIn 0.3s ease-in-out;
 }
 
-
-.modal-content-padding{
-padding: 25px;
-background-color: #b7b0b0;
-}
-
-.modal-content img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
+/* Close button styles */
 .modal-content .close {
-    position: sticky;
-    top: 0;
-    margin-left: auto;
-    background: none;
-    border: none;
-    font-size: 30px;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1;
+  position: sticky; /* Stays visible at the top */
+  top: 0; /* Aligns to the top */
+  margin-left: auto; /* Aligns to the right */
+  background: none; /* No background */
+  border: none; /* No border */
+  font-size: 30px; /* Default size for desktop */
+  cursor: pointer; /* Pointer cursor for clarity */
+  padding: 10px; /* Add spacing around the button */
+  z-index: 1; /* Ensure it is above other content */
+  color: #000; /* Default color */
 }
 
 .modal-content .close:hover {
-  color: #5e5959;
-  transition: 0.3s;
+  color: #5e5959; /* Hover effect */
+  transition: color 0.3s ease; /* Smooth transition for hover */
+}
+/* Style for the links */
+.modal-content p a {
+  font-size: 0.8rem; /* Smaller font size */
+  font-weight: 300; /* Thin font weight */
+  text-decoration: none; /* Remove underline (optional) */
+  color: #002247; /* Default link color */
+  transition: color 0.3s ease; /* Smooth hover effect */
 }
 
-.modal-content.dark {
-  background-color: #000000;
-  color: #fff3ed;
+.modal-content p a:hover {
+  color: #0056b3; /* Darker color on hover */
+  text-decoration: underline; /* Optional hover underline */
+}
+/* Mobile-specific styles for close button */
+@media screen and (max-width: 768px) {
+  .modal-content .close {
+    font-size: 24px; /* Smaller button size for mobile */
+    padding: 8px; /* Reduce padding for mobile */
+    color: #333; /* Slightly darker color for better visibility */
+  }
+
+  .modal-content .close:hover {
+    color: #ff5757; /* More prominent hover color for mobile */
+  }
+}
+/* Specific styles for dayone modal */
+.dayone-modal-content-container {
+  padding: 50px;
+  font-size: 28px; /* Desktop font size */
+  line-height: 1.4; /* Improves readability */
 }
 
-.modal-content.dark .close {
-  color: #fff3ed;
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 90%; /* Full width on smaller screens */
+    padding: 20px; /* Reduce padding for mobile */
+  }
+
+  .dayone-modal-content-container {
+    padding: 15px; /* Adjust padding for mobile */
+    font-size: 5vw; /* Responsive font size for mobile */
+  }
+
+  .modal-content .close {
+    font-size: 24px; /* Smaller close button */
+    padding: 8px;
+  }
+
+  .dayone-image-gallery img {
+    max-width: 120px; /* Scales down gallery images */
+  }
 }
 
-.modal-content.dark .close:hover {
-  color: #ff5757;
-}
-
+/* FadeIn animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -82,39 +114,3 @@ background-color: #b7b0b0;
     transform: scale(1);
   }
 }
-  /* Global font size for modals */
-  .modal-content-container {
-    padding: 50px; /* Padding for the main container */
-    font-size: 2vw;  /* This makes font size responsive based on viewport width */
-    line-height: 1.4; /* Line height for readability */
-  }
-  
-  /* Media Query for responsive font size */
-  @media screen and (max-width: 768px) {
-    .modal-content-container {
-      font-size: 5vw; /* Adjusts font size dynamically for smaller devices */
-      padding: 20px; /* Adjust padding for smaller screens */
-    }
-  
-    /* Adjust image size in gallery */
-    .modal-content img {
-      max-width: 120px; /* Adjust image size for mobile */
-    }
-  
-    /* Adjust modal content width for mobile */
-    .modal-content {
-      width: 90%;
-      padding: 20px;
-    }
-  
-    /* Smaller close button on mobile */
-    .modal-content .close {
-      font-size: 24px;
-      padding: 8px;
-    }
-  }
-  
-  @media screen and (max-width: 1024px) {
-    .modal-content-container {
-      font-size: 4vw; /* Slightly larger font for tablets */
-    }}
