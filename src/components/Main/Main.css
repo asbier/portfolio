@@ -8,3 +8,6 @@
   flex-grow: 1;
   align-items: flex-start;
 }
+section {
+  background-color: rgb(255, 255, 255); /* Background color for sections */
+  }

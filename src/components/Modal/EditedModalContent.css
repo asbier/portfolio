@@ -9,12 +9,13 @@ section {
   padding: 20px; /* Add padding inside each section */
   background-color: rgb(245, 242, 237); /* Background color for sections */
   border-radius: 15px; /* Rounded corners for sections */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for better separation */
+  
 }
 
 section h2 {
   margin-top: 0; /* Remove extra margin for the section heading */
 }
+
 .edited-bold-text {
   font-weight: bold;
 }
