@@ -7,8 +7,8 @@ function Nav(props) {
         <nav className={props.darkMode ? "nav dark" : "nav"}> {/* Apply dark class based on darkMode */}
             <Link to="/" className="nav-logo">🔮</Link> {/* Add class for styling */}
             <ul>
-                <li><Link to="/About">ABOUTme</Link></li>
-                <li><Link to="/Contact">CONTACTme</Link></li>
+                <li><Link to="/About">ABOUT</Link></li>
+                <li><Link to="/Contact">CONTACT</Link></li>
                 <li><Link to="/Privacy">PRIVACY</Link></li>
             </ul>
             <div className="toggler">
