@@ -1,5 +1,8 @@
 import React from 'react';
 import './CarharttModalContent.css';
+import image1 from '../../Assets/carhartt_wip/Image1.png';
+import image2 from '../../Assets/carhartt_wip/Image2.png';
+import videoFile from '../../Assets/carhartt_wip/carhartt_us.mp4'; 
 
 const CarharttModalContent = () => (
     <div className="carhartt-modal-content-container">
@@ -8,6 +11,23 @@ const CarharttModalContent = () => (
         <p>  </p> <p>
             As a UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key challenges, blending both UX and UI design to create holistic solutions that improved user experience across various platforms.
         </p>
+        <div className="carhartt-image-gallery">
+  <img src={image1} alt="Image1" />
+  <img src={image2} alt="Image2" />
+  <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  onMouseOver={(e) => e.target.pause()}
+  onMouseOut={(e) => e.target.play()}
+>
+  <source src={videoFile} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+</div>
+        
         <section className="modal-section">
         <h3>Help Desk development</h3>
         <h4>Problem</h4>
