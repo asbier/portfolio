@@ -1,24 +1,34 @@
-.edited-modal-content-container {
-    padding: 50px; 
+.aboutyou-modal-content-container {
     font-size: 28px; /* Set the font-size to 28px for larger screens */
   line-height: 40px;
   }
-  
-section {
-    margin-bottom: 40px; /* Space between sections */
-    padding: 20px; /* Add padding inside each section */
-    background-color: rgb(245, 242, 237); /* Background color for sections */
-    border-radius: 15px; /* Rounded corners for sections */
-    
-  }
-  
-  section h2 {
-    margin-top: 0; /* Remove extra margin for the section heading */
-  }
-  .edited-bold-text {
-    font-weight: bold;
-  }
-  .edited-image-gallery {
+
+  .aboutyou-section {
+    margin-bottom: 1em;
+}
+
+/* Additional styles for headers and links */
+.aboutyou-modal-content-container h2,
+.caboutyou-modal-content-container h3,
+.aboutyou-modal-content-container h4 {
+    margin-top: 1em;
+}
+
+.aboutyou-modal-content-container p {
+    margin: 1em 0;
+}
+
+.aboutyou-modal-content-container a {
+    display: block;
+    margin-top: 1em;
+    color: #1a0dab; /* Typical link color */
+    text-decoration: none;
+}
+
+.aboutyou-modal-content-container a:hover {
+    text-decoration: underline;
+}
+  .aboutyou-image-gallery {
     display: flex; /* Use flexbox for horizontal alignment */
     justify-content: space-around; /* Evenly space the images */
     align-items: center; /* Align items vertically */
@@ -27,7 +37,7 @@ section {
     margin: 20px 0; /* Add space above and below the gallery */
   }
   
-  .edited-image-gallery img {
+  .aboutyou-image-gallery img {
     max-width: 250px; /* Limit the width of the images */
     height: auto; /* Maintain the aspect ratio */
     border-radius: 8px; /* Optional: Add rounded corners */
@@ -35,17 +45,17 @@ section {
     transition: transform 0.3s ease; /* Smooth hover effect */
   }
   
-  .edited-image-gallery img:hover {
+  .aboutyou-image-gallery img:hover {
     transform: scale(1.1); /* Slightly enlarge the image on hover */
   }
   
   
-  .edited-image-gallery img:hover {
+  .aboutyou-image-gallery img:hover {
     transform: scale(1.4);
   }
   
   @media screen and (max-width: 768px) {
-    .edited-image-gallery img {
+    .aboutyou-image-gallery img {
       max-width: 80px;
     }
   }

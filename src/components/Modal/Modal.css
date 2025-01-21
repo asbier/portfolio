@@ -6,24 +6,31 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */ 
   justify-content: center;
   align-items: center;
   z-index: 9999;
   overflow: hidden;
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  backdrop-filter: blur(10px); /* Hintergrund unscharf machen */
 }
 
+.modal-section {
+margin-bottom: 20px;  
+padding: 50px; /* Add padding inside each section */
+background-color: rgb(249, 249, 249); /* Background color for sections */
+border-radius: 8px; /* Rounded corners for sections */
+}
 /* Modal content */
 .modal-content {
   position: relative;
   width: 75%;
   max-width: 1000px;
   max-height: 90vh;
-  padding: 50px;
+  padding: 35px;
   background-color: #fff;
   margin: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -74,12 +81,7 @@
     color: #ff5757; /* More prominent hover color for mobile */
   }
 }
-/* Specific styles for dayone modal */
-.dayone-modal-content-container {
-  padding: 50px;
-  font-size: 28px; /* Desktop font size */
-  line-height: 1.4; /* Improves readability */
-}
+
 
 /* Mobile-specific styles */
 @media screen and (max-width: 768px) {
@@ -96,10 +98,6 @@
   .modal-content .close {
     font-size: 24px; /* Smaller close button */
     padding: 8px;
-  }
-
-  .dayone-image-gallery img {
-    max-width: 120px; /* Scales down gallery images */
   }
 }
 
