@@ -1,6 +1,6 @@
 import React from 'react';
 import './EditedModalContent.css';
-import image1 from '../../Assets/Image 4_EDITED/image 1.png';
+import image1 from '../../Assets/Image 4_EDITED/Image 1.png';
 import image2 from '../../Assets/Image 4_EDITED/Image 2.png';
 import image3 from '../../Assets/Image 4_EDITED/Image 3.png';
 import image4 from '../../Assets/Image 4_EDITED/Image 4.png';
