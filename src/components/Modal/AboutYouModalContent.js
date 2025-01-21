@@ -1,10 +1,8 @@
 import React from 'react';
 import './AboutYouModalContent.css';
 
-
-
 const EditedModalContent = () => (
-    <div className="edited-modal-content-container">
+    <div className="aboutyou-modal-content-container">
         <h2> AboutYou</h2>
 
         <p>
@@ -15,7 +13,8 @@ const EditedModalContent = () => (
 
 <h3>Key Contributions</h3>
 
-<div className="edited-key-contributions">
+<section className="modal-section">
+<div className="aboutyou-section">
     <h4>Recreating Brand Strategy</h4>
     <p>Collaborated with cross-functional teams to redefine About You’s approach, focusing on enhancing user engagement through personalization and ensuring the platform spoke to a more diverse and mainstream audience.</p>
     <p>Helped develop concepts that positioned the platform as a celebration of individuality, emphasizing the user as the core of the experience, rather than just fashion itself.</p>
@@ -44,8 +43,9 @@ const EditedModalContent = () => (
     <p>Contributed to the shift in strategy as About You transitioned from a niche e-commerce platform to a more mainstream approach, focusing on diversity and inclusivity, with an emphasis on personalization.</p>
     <p>Ensured that the platform’s structure, content, and branding strategies aligned with these shifts, fostering a deeper connection with a broader customer base.</p>
 </div>
+</section>
 </p>
     </div>
 );
 
-export default EditedModalContent;
+export default AboutYouModalContent;

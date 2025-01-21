@@ -1,16 +1,8 @@
 .dayone-modal-content-container {
-  padding: 50px; /* Padding for the main container */
  font-size: 28px; /* Set the font-size to 28px for larger screens */
   line-height: 40px;
 }
 
-.modal-section {
-  margin-bottom: 40px; /* Space between sections */
-  padding: 20px; /* Add padding inside each section */
-  background-color: rgb(245, 242, 237); /* Background color for sections */
-  border-radius: 15px; /* Rounded corners for sections */
-  
-}
 
 .modal-section h2 {
   margin-top: 0; /* Remove extra margin for the section heading */

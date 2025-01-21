@@ -4,17 +4,6 @@
   line-height: 40px;
 }
 
-section {
-    margin-bottom: 20px; /* Space between sections */
-    padding: 20px; /* Add padding inside each section */
-    background-color: rgb(245, 242, 237); /* Background color for sections */
-    border-radius: 15px; /* Rounded corners for sections */
-
-  }
-  
-  section h2 {
-    margin-top: 0; /* Remove extra margin for the section heading */
-  }
 .carhartt-section {
     margin-bottom: 1em;
 }
@@ -42,17 +31,15 @@ section {
 }
 .carhartt-image-gallery {
   display: flex;
-  justify-content: flex-start;  /* Ensure content is aligned to the left */
-  align-items: center;          /* Vertically center images and video */
-  flex-wrap: wrap;              /* Allow content to wrap to the next line */
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
   margin: 20px 25px;
-  gap: 20px;                    /* Add space between images/video */
-  width: 100%;                  /* Ensure the gallery takes up the full container width */
+  gap: 20px; /* Space between the images and video */
 }
 
 .carhartt-image-gallery img {
-  width: 100%;
- /* Ensure images do not stretch too large */
+  width: 100%;      /* Ensure images do not stretch too large */
   height: auto;     /* Maintain aspect ratio */
 
 }
@@ -62,7 +49,8 @@ section {
   width: 100%;
   height: auto;        /* Maintain aspect ratio */
   object-fit: cover;   /* Ensure the video fills the container and cuts excess */
-
+  margin-bottom: 5%;
+  max-width: 100%;
 }
 
 
