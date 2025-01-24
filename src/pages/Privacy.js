@@ -5,6 +5,7 @@ import React from 'react';
 function Privacy() {
     return (
 <div className='pages'>
+    <p className='privacy'> 
    <h2> PRIVACY</h2>
 
    <p>
@@ -17,6 +18,7 @@ function Privacy() {
    AS
 
 
+   </p>
    </p>
 </div>
 

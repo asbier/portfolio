@@ -1,29 +1,29 @@
 import React from 'react';
-import './CarharttModalContent.css';
-import image1 from '../../Assets/carhartt_wip/Image1.png';
-import image2 from '../../Assets/carhartt_wip/Image2.png';
-import videoFile from '../../Assets/carhartt_wip/carhartt_us.mp4'; 
+import './ConicRoseContent.css';
+import image1 from '../../Assets/ConicRose/Image1.png';
+import image2 from '../../Assets/ConicRose/Image2.png';
 
 const CarharttModalContent = () => (
-    <div className="carhartt-modal-content-container">
-        <h2>Digital UX Designer</h2>
-        <h4>Carhartt WIP</h4>
-        <p>  </p> <p>
+    <div className="ConicRose">
+        <h2>Cover</h2>
+      
+        <p>  
             As a UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key challenges, blending both UX and UI design to create holistic solutions that improved user experience across various platforms.
         </p>
         <div className="carhartt-image-gallery">
-  <img src={image1} alt="Image 1" />
-  <img src={image2} alt="Image 2" />
-  <video 
-    autoPlay 
-    muted 
-    loop 
-    onMouseOver={(e) => e.target.pause()} 
-    onMouseOut={(e) => e.target.play()}
-  >
-    <source src={videoFile} type="carhartt_us/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <img src={image1} alt="Image1" />
+  <img src={image2} alt="Image2" />
+  <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  onMouseOver={(e) => e.target.pause()}
+  onMouseOut={(e) => e.target.play()}
+>
+  <source src={videoFile} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
 </div>
         
         <section className="modal-section">
