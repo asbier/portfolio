@@ -40,11 +40,13 @@ const AboutYouModalContent = () => (
                     <h4>Store & Event Concepts</h4>
                     <p>Designed innovative store concepts and pop-up events to enhance the brand’s physical presence and improve consumer interaction with the platform.</p>
                     <p>Developed branding strategies for high-profile events that aligned with the company’s vision of creating an engaging and immersive shopping experience.</p>
+                    </section>
+                    <section className="modal-section">
                     <h4>Collaboration with External Brands</h4>
                     <p>Led efforts to collaborate with well-known external designers and influencers, creating strategic partnerships that elevated the brand’s visibility and market positioning.</p>
                     <p>Worked on co-branded campaigns that aligned the About You aesthetic with well-established names in fashion, making the platform more appealing to a larger audience.</p>
                     </section>
-                    
+
                     <section className="modal-section">
                     <h4>Strategic Adaptation</h4>
                     <p>Contributed to the shift in strategy as About You transitioned from a niche e-commerce platform to a more mainstream approach, focusing on diversity and inclusivity, with an emphasis on personalization.</p>
