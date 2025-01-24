@@ -101,6 +101,32 @@ border-radius: 8px; /* Rounded corners for sections */
   }
 }
 
+
+.image-gallery {
+  display: grid; /* Use CSS Grid for precise layout */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
+  gap: 16px; /* Space between images */
+  width: 100%;
+}
+
+.image-gallery img {
+  width: 100%; /* Make images fill their grid cell */
+  height: 300px; /* Uniform height for all images */
+  object-fit: cover; /* Ensure images maintain aspect ratio and fill the area */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+@media screen and (max-width: 768px) {
+  .image-gallery img {
+    max-width: 80px;
+  }
+}
+
 /* FadeIn animation */
 @keyframes fadeIn {
   from {

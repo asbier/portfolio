@@ -24,7 +24,7 @@ const ConicRoseModalContent= () => (
         <h1>Conic Rose</h1>
     
 
-        <div className="conicrose-image-gallery">
+        <div className="image-gallery">
                     <img src={image3} alt="Final" /> 
                     </div>
                     
@@ -71,7 +71,7 @@ that perfectly captures the essence of the sound.
 <p><strong>What I aim to achieve </strong>are designs that visually echo the essence of the music, drawing the right audience with 
 clarity and authenticity.
 </p>
-<div className="how-image-gallery">
+<div className="image-gallery">
                     <img src={image1} alt="Vision 1" />
                     <img src={image2} alt="Vision 2" /> 
                     <img src={image4} alt="Vision 3" /> 

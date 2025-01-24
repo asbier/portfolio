@@ -39,7 +39,7 @@ const AboutYouModalContent = () => (
                     <h4>Influencer and Celebrity Engagement</h4>
                     <p>Developed the “Celebrity X” initiative to incorporate well-known public figures into campaigns, making the brand feel more relatable and authentic, and directly engaging with a broader user base.</p>
                     
-                    <div className="edited-image-gallery">
+                    <div className="image-gallery">
                     <img src={image2} alt="AboutYou" /> 
                     
                     </div>
@@ -57,7 +57,7 @@ const AboutYouModalContent = () => (
                         Cllaborate with well-known external designers and influencers, creating strategic partnerships that elevated the brand’s visibility and market positioning.</p>
                     <p>Worked on co-branded campaigns that aligned the About You aesthetic with well-established names in fashion, making the platform more appealing to a larger audience.</p>
                     
-                    <div className="edited-image-gallery">
+                    <div className="image-gallery">
                     <img src={image6} alt="EditedBoothdesign" /> 
                 <img src={image3} alt="AboutYouWeb" />
                     <img src={image4} alt="AboutYouLabels" /> 

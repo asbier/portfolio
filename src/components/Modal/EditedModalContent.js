@@ -19,6 +19,7 @@ import image14 from '../../Assets/Image 4_EDITED/Image 14.png';
 import image15 from '../../Assets/Image 4_EDITED/Image 15.png';
 import image16 from '../../Assets/Image 4_EDITED/Edited Product Design.png';
 import image17 from '../../Assets/Image 4_EDITED/Edited_Launch.png';
+import image18 from '../../Assets/Image 4_EDITED/Editedweb.png';
 
 const EditedModalContent = () => (
     <div className="edited-modal-content-container">
@@ -28,16 +29,27 @@ const EditedModalContent = () => (
             </p>
             
             <section className='modal-section'>
-            <div className="edited-key-contributions">
-    
-                <p><strong>Building the Brand Ecosystem </strong>due Introducing strong a redesign concept for the new website, steering the brand toward a more modern and user-friendly direction.</p>
-                <p>Designed and launched new e-commerce stores and enhanced the mobile app, focusing on seamless usability and visually cohesive design.</p>
-                <p>Developed content strategies for social media, including photography concepts, campaign direction, and video production for web and social platforms.</p>
+                <p><strong>Building the Brand Ecosystem </strong> due Introducing a redesign concept for the new website, steering the brand toward a more modern and user-friendly direction.</p>
                 
-                <div className="edited-image-gallery">
-                    <img src={image1} alt="EDITED Web and App" />
+        
+                    <div className="image-gallery">
+                    <img src={image1} alt="EDITED Web and App" /> 
                     <img src={image2} alt="EDITED Store Franfurt" /> 
-                    </div></div>
+                    </div>
+            </section>
+
+                    <section className='modal-section'>
+                    <p><strong>Designed and launched new e-commerce stores and enhanced the mobile 
+                        app</strong>, focusing on seamless usability and visually cohesive design.</p>
+                    <p>Developed content strategies for social media, including photography concepts, campaign direction, and video production for web and social platforms.</p>
+                   
+                    <div className="edited-image-gallery-center">  
+                         
+                     <img src={image18} alt="EDITED Web Redesign" />
+                    </div> 
+                     <p></p>
+               
+        
                 </section>
     
                 
@@ -45,7 +57,7 @@ const EditedModalContent = () => (
                 <div className="edited-key-contributions">
             <p><strong> Created the CI (Corporate Identity) for Stores, developing mood boards, interior concepts, and merchandise displays</strong>  that reflected the brand’s ethos.</p>
                 <p>Established brand books and design guidelines for retail and events to maintain consistency across physical and digital touchpoints.</p>
-                <div className="edited-image-gallery">
+                <div className="image-gallery">
                     <img src={image3} alt="EDITEDLaidBackLaunch" />
                     <img src={image4} alt="EDITEDStoreVienna" /> 
                     <img src={image5_2} alt="EDITEDStoreMunich" /> 
@@ -58,7 +70,7 @@ const EditedModalContent = () => (
                 <p><strong> Designed concepts for Edited collections, including the Shoe Collection and Sport Collection</strong> , aligning them with contemporary market trends.</p>
                 <p>Developed sustainable packaging concepts, combining design and strategy to enhance eco-conscious branding.</p>
 
-                <div className="edited-image-gallery">
+                <div className="image-gallery">
                     <img src={image5} alt="EDITEDConcepts" />
                     <img src={image6} alt="EDITEDStoreShoes" />
             
@@ -73,7 +85,7 @@ const EditedModalContent = () => (
     
             <p><strong> Conceptualized and executed fashion show concepts and exclusive pop-up store designs</strong>, ensuring a cohesive and innovative customer experience.</p>
             <p>Participated in editorial shoots to capture backstage content, and created engaging video material to amplify campaign coverage.</p>
-            <div className="edited-image-gallery">
+            <div className="image-gallery">
             <img src={image7} alt="EDITEDxInstyle Event Berlin" />
             <img src={image17} alt="EDITEDLaunchStoreEventBerlin" />
                 <img src={image9_2} alt="BladeRunnerKollektion1" />
