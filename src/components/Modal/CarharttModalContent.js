@@ -6,16 +6,15 @@ import videoFile from '../../Assets/carhartt_wip/carhartt_us.mp4';
 
 const CarharttModalContent = () => (
     <div className="carhartt-modal-content-container">
-        <h2>Digital UX Designer</h2>
-        <h4>Carhartt WIP</h4>
         <p>  </p> <p>
-        Carhartt Work In Progress (Carhartt WIP) forms a division of the 
+        <strong>Carhartt Work In Progress (Carhartt WIP)</strong> forms a division of the 
         American brand Carhartt, one of the first companies to pioneer workwear in the USA. 
         Founded in Europe in 1989, 100 years after Hamilton Carhartt established his business in Detroit, Carhartt WIP 
         has been carefully adapting and modifying Carhartt's core product characteristics for a different audience of 
         consumers who value refined design and quality while still remaining true to Carhartt's brand origins. 
 ©CARHARRT-WIP
-<h2>ROLE</h2>
+
+<h3>ROLE</h3>
 As a UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key challenges, blending both UX and UI design to create holistic solutions that improved user experience across various platforms.
         </p>
         <div className="carhartt-image-gallery">
