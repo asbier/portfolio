@@ -5,7 +5,8 @@ import React from 'react';
 function Privacy() {
     return (
 <div className='pages'>
-   <h2> PRIVACY</h2>
+<div className="abstand">
+    <h2> PRIVACY</h2>
 
    <p>
 
@@ -18,6 +19,7 @@ function Privacy() {
 
 
    </p>
+</div>
 </div>
 
     );

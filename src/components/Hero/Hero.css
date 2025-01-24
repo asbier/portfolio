@@ -1,15 +1,9 @@
-
-
 .hero {
-  padding: 10px 35px;
+  padding: 0rem 0rem 0rem 2rem;
 }
 
 .hero h1 {
   font-size: 3rem;
-}
-
-.hero-p {
-  margin: 10px;
 }
 
 /* Media query for mobile devices */

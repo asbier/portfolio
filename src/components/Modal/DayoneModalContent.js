@@ -6,9 +6,7 @@ import logo2 from '../../Assets/dayone/Logo 2.png';
 const DayoneModalContent = () => (
     <div className="dayone-modal-content-container">
 <h1>DAYONE</h1>
-
-  <h2>Transformative Design, Leadership, and Growth</h2>
-  <p>At DAYONE, I discovered how transformative design can shape both products and people. Embracing design as a core driving force fosters growth, imagination, and innovation. I learned that actively listening to customers, colleagues, and surroundings is essential to making meaningful progress.</p>
+  <p><strong>At DAYONE, I discovered </strong>how transformative design can shape both products and people. Embracing design as a core driving force fosters growth, imagination, and innovation. I learned that actively listening to customers, colleagues, and surroundings is essential to making meaningful progress.</p>
   <p>I also gained valuable insights into how leadership and culture drive innovation. Design-led teams are often bold, pushing boundaries, while business-driven approaches prioritize practicality—sometimes at the expense of creativity. These lessons about the intersection of design, leadership, and growth influence all of my work today.</p>
 {/* Logos Section */}
 <div className="logos">
@@ -19,8 +17,8 @@ const DayoneModalContent = () => (
       
 
 <section className="modal-section">
-  <h3>Automotive Industry Projects</h3>
-  <p>Over several projects across German and international automotive markets, I built expertise in crafting user journeys, conducting user research, and benchmarking competitive products. These experiences helped me design localized, user-centric digital solutions and tackle the complexities of large-scale, cross-functional projects.</p>
+  <p> <strong> Over several projects across German and international automotive markets </strong>, I built expertise in crafting user journeys, conducting user research, and benchmarking competitive products. These experiences helped me design localized, user-centric digital solutions and tackle the complexities of large-scale, cross-functional projects.</p>
+  <p></p>
   <h4>Key Contributions</h4>
   <ul>
     <li>
@@ -33,14 +31,14 @@ const DayoneModalContent = () => (
     </li>
   </ul>
   <p>These experiences solidified my ability to design tailored, user-focused solutions in dynamic, multi-stakeholder environments.</p>
-</section>
-<p></p>
+  </section>
+
 <section className="modal-section">
-  <h3>UX Design for ADAS Tool</h3>
-  <p>I contributed to the UX design of a dashboard for configuring Advanced Driver Assistance Systems (ADAS). The challenge was to balance complex technical requirements with an intuitive interface designed for non-technical users like mechanics.</p>
+  <p><strong>I contributed to the UX design of a ADAS dashboard </strong> for configuring Advanced Driver Assistance Systems (ADAS). The challenge was to balance complex technical requirements with an intuitive interface designed for non-technical users like mechanics.</p>
   <p>Collaborating closely with a development-focused Product Owner, we prioritized real-world usability by designing a dashboard that streamlined tasks and improved efficiency. The final product, showcased at an industry trade show, demonstrated how thoughtful design could simplify processes and improve workflows for mechanics.</p>
 </section>
 <p></p>
+
 <section className="modal-section">
   <h3>Guest List & Artist Dashboard App</h3>
   <p>For a confidential app project, I designed the user flows and dashboards for simplifying guest list management and providing artists with an intuitive dashboard. My contributions included crafting flows for guest list entry, login, and artist pages. Collaborating with my UX Lead, we rapidly prototyped and tested solutions based on Hypothesis and Artist Insights</p>
@@ -60,7 +58,9 @@ const DayoneModalContent = () => (
 </p>
 <p>
   <a href="https://www.dayone.de" target="_blank" rel="noopener noreferrer">🌐 Learn more about DAYONE</a>
+
 </p>
+
 </div>
 );
 

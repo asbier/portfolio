@@ -3,7 +3,8 @@ import React from 'react';
 function About(props) {
     return (
         <div className={props.darkMode ? "dark-background" : "light-background"}>
-            <h2>ABOUT</h2>
+               <div className="abstand">
+                 <h2>ABOUT</h2>
             <p>
             I am a product designer and humanity-centered thinker. 
             Collaborating within a network of creative minds,interdisciplinary practice bridges design, technology, 
@@ -16,6 +17,7 @@ emphasizing ethical, impactful, and sustainable design.
 By consulting, and facilitating I contribute to fostering inclusive spaces and 
 exploring how humanity-centered design can shape better presents and futures.
             </p>
+        </div>
         </div>
     );
 }

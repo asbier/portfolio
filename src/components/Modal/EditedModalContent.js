@@ -27,8 +27,8 @@ const EditedModalContent = () => (
             
             <section className='modal-section'>
             <div className="edited-key-contributions">
-                <h4>Building the Brand Ecosystem</h4>
-                <p>Introduced a redesign concept for the new website, steering the brand toward a more modern and user-friendly direction.</p>
+    
+                <p><strong>Building the Brand Ecosystem </strong>due Introducing strong a redesign concept for the new website, steering the brand toward a more modern and user-friendly direction.</p>
                 <p>Designed and launched new e-commerce stores and enhanced the mobile app, focusing on seamless usability and visually cohesive design.</p>
                 <p>Developed content strategies for social media, including photography concepts, campaign direction, and video production for web and social platforms.</p>
                 
@@ -41,8 +41,7 @@ const EditedModalContent = () => (
                 
                 <section className='modal-section'>
                 <div className="edited-key-contributions">
-                <h4>Store Concept & Branding</h4>
-                <p>Created the CI (Corporate Identity) for Stores, developing mood boards, interior concepts, and merchandise displays that reflected the brand’s ethos.</p>
+            <p><strong> Created the CI (Corporate Identity) for Stores, developing mood boards, interior concepts, and merchandise displays</strong>  that reflected the brand’s ethos.</p>
                 <p>Established brand books and design guidelines for retail and events to maintain consistency across physical and digital touchpoints.</p>
                 <div className="edited-image-gallery">
                     <img src={image3} alt="EDITEDLaidBackLaunch" />
@@ -54,8 +53,7 @@ const EditedModalContent = () => (
 
                 <section className='modal-section'>
                 <div className="edited-key-contributions">
-                    <h4>Collection & Packaging Concepts</h4>
-                <p>Designed concepts for Edited collections, including the Shoe Collection and Sport Collection, aligning them with contemporary market trends.</p>
+                <p><strong> Designed concepts for Edited collections, including the Shoe Collection and Sport Collection</strong> , aligning them with contemporary market trends.</p>
                 <p>Developed sustainable packaging concepts, combining design and strategy to enhance eco-conscious branding.</p>
 
                 <div className="edited-image-gallery">
@@ -69,8 +67,8 @@ const EditedModalContent = () => (
 
         <section className='modal-section'> 
         <div className="edited-key-contributions"> 
-            <h4>Event and Campaign Activation</h4>
-            <p>Conceptualized and executed fashion show concepts and exclusive pop-up store designs, ensuring a cohesive and innovative customer experience.</p>
+    
+            <p><strong> Conceptualized and executed fashion show concepts and exclusive pop-up store designs</strong>, ensuring a cohesive and innovative customer experience.</p>
             <p>Participated in editorial shoots to capture backstage content, and created engaging video material to amplify campaign coverage.</p>
             <div className="edited-image-gallery">
                 <img src={image9_2} alt="BladeRunnerKollektion1" />
@@ -88,16 +86,15 @@ const EditedModalContent = () => (
             
             <section className='modal-section'> 
             <div className="edited-key-contributions">
-            <h4>Sustainability Initiatives</h4>
-            <p>Designed sustainable packaging concepts, integrating eco-friendly materials and strategies to 
+            <p><strong>Designed sustainable packaging concepts</strong>, integrating eco-friendly materials and strategies to 
                 align with EDITED's evolving commitment to sustainability.</p>
             </div>
             </section>
 
             <section className='modal-section'> 
             <div className="edited-key-contributions">
-            <h4>Scaling with Strategy</h4>
-            <p>Worked on marketing strategies that balanced new bold and sometimes more expensive ideas with scalability, aligning campaigns with long-term brand objectives.</p>
+        
+            <p><strong>Worked on marketing strategies</strong> that balanced new bold and sometimes more expensive ideas with scalability, aligning campaigns with long-term brand objectives.</p>
             <p>Supported team growth and culture by developing workflows that streamlined design production while allowing room for innovation.</p>
     
 
@@ -105,7 +102,7 @@ const EditedModalContent = () => (
         </section>
 
         <p>
-            Looking back, it was an exhilarating, fast-paced journey. Both brands experienced rapid growth 
+        <strong>Looking back</strong> , it was an exhilarating, fast-paced journey. Both brands experienced rapid growth 
             over those years, and every initiative we launched seemed to succeed. It was an exciting time—full 
             of creativity, risk, and reward. There were moments of self-doubt and times when improvisation was necessary—times I wished for more time—but these challenges made the experience all the more memorable. Ultimately, it was a period of growth and discovery that felt truly magical. If given the chance, I would relive those years in the same way, and likely make the same decision to move on when I did.
         </p><p>
