@@ -18,19 +18,25 @@
 }
 
 .conicrose-image-gallery img {
-  width: 80%;
-  max-width: 30%; /* Ensure image doesn't stretch too large */
+  width: 100%;
+  max-width: 100%; /* Ensure image doesn't stretch too large */
   height: auto; /* Maintain aspect ratio */
   object-fit: cover;
 }
 
-.conicrose-image-gallery img:hover {
-  transform: scale(1.1); /* Slightly enlarge the image on hover */
+.how-image-gallery {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
 }
-
-
-.conicrose-image-gallery img:hover {
-  transform: scale(1.4);
+.how-image-gallery img{
+  width: 40%;
+  max-width: 40%; /* Ensure image doesn't stretch too large */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
 }
 
 @media screen and (max-width: 768px) {

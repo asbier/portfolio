@@ -1,12 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.161ef12e.css",
-    "main.js": "/static/js/main.f84f5c52.js",
+    "main.css": "/static/css/main.5d65ebc0.css",
+    "main.js": "/static/js/main.ad5c387a.js",
     "static/js/787.dc6905b1.chunk.js": "/static/js/787.dc6905b1.chunk.js",
     "static/media/carhartt_us.mp4": "/static/media/carhartt_us.ded98a31a906a3040c41.mp4",
     "static/media/Image1.png": "/static/media/Image1.e5089830ea0df42ce10f.png",
     "static/media/9.jpg": "/static/media/9.dee9de86d731e86ba53f.jpg",
+    "static/media/Vision 2.png": "/static/media/Vision 2.5ac3c363e6a0845f55a4.png",
     "static/media/10.gif": "/static/media/10.88b4cda9a832c58ee3a2.gif",
+    "static/media/Vision 1.png": "/static/media/Vision 1.72fa7bb2fc2f0c23b92b.png",
     "static/media/Image2.png": "/static/media/Image2.44c6d30cbe40b8f96685.png",
     "static/media/Image 7.png": "/static/media/Image 7.8d38dfd7ac497d6b1e93.png",
     "static/media/8.jpg": "/static/media/8.ee469dd0b0e315331e1f.jpg",
@@ -36,12 +38,12 @@
     "static/media/4.jpg": "/static/media/4.5b7a9b45871c08bc9d2f.jpg",
     "static/media/Logo 2.png": "/static/media/Logo 2.a7671f6e3612cf8a7713.png",
     "index.html": "/index.html",
-    "main.161ef12e.css.map": "/static/css/main.161ef12e.css.map",
-    "main.f84f5c52.js.map": "/static/js/main.f84f5c52.js.map",
+    "main.5d65ebc0.css.map": "/static/css/main.5d65ebc0.css.map",
+    "main.ad5c387a.js.map": "/static/js/main.ad5c387a.js.map",
     "787.dc6905b1.chunk.js.map": "/static/js/787.dc6905b1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.161ef12e.css",
-    "static/js/main.f84f5c52.js"
+    "static/css/main.5d65ebc0.css",
+    "static/js/main.ad5c387a.js"
   ]
 }
