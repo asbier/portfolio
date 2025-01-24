@@ -1,0 +1,40 @@
+.conicrose-modal-content-container {
+  padding: 10px; /* Padding for the main container */
+  font-size: 28px; /* Set the font-size to 28px for larger screens */
+  line-height: 40px;
+}
+
+
+.conicrose-bold-text {
+  font-weight: bold;
+}
+.conicrose-image-gallery {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+.conicrose-image-gallery img {
+  width: 80%;
+  max-width: 30%; /* Ensure image doesn't stretch too large */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
+}
+
+.conicrose-image-gallery img:hover {
+  transform: scale(1.1); /* Slightly enlarge the image on hover */
+}
+
+
+.conicrose-image-gallery img:hover {
+  transform: scale(1.4);
+}
+
+@media screen and (max-width: 768px) {
+  .edited-image-gallery img {
+    max-width: 80px;
+  }
+}

@@ -6,14 +6,15 @@ import DayoneModalContent from '../Modal/DayoneModalContent';
 import CarharttModalContent from '../Modal/CarharttModalContent';
 import EditedModalContent from '../Modal/EditedModalContent';
 import AboutYouModalContent from '../Modal/AboutYouModalContent';
+import ConicRoseModalContent from '../Modal/ConicRoseModalContent';
 import './Main.css';
 
 const imagesData = [
     { src: 'path/to/dayone.jpg', alt: 'DAYONE', title: 'DAYONE', subtitle: 'Learn more about my Projects at DAYONE' },
-    { src: 'path/to/carhartt.jpg', alt: 'Carhartt', title: 'Carhartt Digital UX Design', subtitle: 'Learn more about my Carhartt Projects' },
+    { src: 'path/to/carhartt.jpg', alt: 'Carhartt-WIP', title: 'Carhartt Digital UX Design', subtitle: 'Learn more about my Carhartt Projects' },
     { src: 'path/to/edited.jpg', alt: 'Edited', title: 'Edited Art Direction', subtitle: 'Learn more about Edited ArtDirection' },
     { src: 'path/to/aboutyou.jpg', alt: 'AboutYou', title: 'AboutYou Redesign', subtitle: 'Learn more about AboutYou Redesign' },
-
+    { src: 'path/to/conicrose.jpg', alt: 'Conic Rose', title: 'CONIC ROSE', subtitle: 'Learn more about Cover Redesign' },
 ];
 
 const Main = ({ darkMode }) => {
@@ -33,6 +34,9 @@ const Main = ({ darkMode }) => {
                 break;
             case 3:
                 setModalContent(<AboutYouModalContent />);
+                break;
+            case 4:
+                setModalContent(<ConicRoseModalContent />);
                 break;
             default:
                 setModalContent(null);
