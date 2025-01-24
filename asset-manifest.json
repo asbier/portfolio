@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.3214479c.css",
-    "main.js": "/static/js/main.f2f9f148.js",
+    "main.css": "/static/css/main.a08f3e90.css",
+    "main.js": "/static/js/main.67c0bf9a.js",
     "static/js/787.dc6905b1.chunk.js": "/static/js/787.dc6905b1.chunk.js",
     "static/media/carhartt_us.mp4": "/static/media/carhartt_us.ded98a31a906a3040c41.mp4",
     "static/media/Image1.png": "/static/media/Image1.e5089830ea0df42ce10f.png",
@@ -14,6 +14,7 @@
     "static/media/8.jpg": "/static/media/8.ee469dd0b0e315331e1f.jpg",
     "static/media/Editedbooth.png": "/static/media/Editedbooth.025b34db80cdee8c659a.png",
     "static/media/2.jpg": "/static/media/2.ed83f210f435bc03ce8c.jpg",
+    "static/media/Editedweb.png": "/static/media/Editedweb.234a677e350c85e84db8.png",
     "static/media/Image 2.png": "/static/media/Image 2.6b78189f585e7dbb2d65.png",
     "static/media/Image 13.png": "/static/media/Image 13.8bfe7da2c49e8b1ea07b.png",
     "static/media/6.jpg": "/static/media/6.c416f56357ace93cdc21.jpg",
@@ -54,12 +55,12 @@
     "static/media/Edited Product Design.png": "/static/media/Edited Product Design.8476adacd09da5724da8.png",
     "static/media/Logo 2.png": "/static/media/Logo 2.a7671f6e3612cf8a7713.png",
     "index.html": "/index.html",
-    "main.3214479c.css.map": "/static/css/main.3214479c.css.map",
-    "main.f2f9f148.js.map": "/static/js/main.f2f9f148.js.map",
+    "main.a08f3e90.css.map": "/static/css/main.a08f3e90.css.map",
+    "main.67c0bf9a.js.map": "/static/js/main.67c0bf9a.js.map",
     "787.dc6905b1.chunk.js.map": "/static/js/787.dc6905b1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3214479c.css",
-    "static/js/main.f2f9f148.js"
+    "static/css/main.a08f3e90.css",
+    "static/js/main.67c0bf9a.js"
   ]
 }
