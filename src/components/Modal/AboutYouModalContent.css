@@ -38,10 +38,10 @@
   }
   
   .aboutyou-image-gallery img {
-    max-width: 250px; /* Limit the width of the images */
+    max-width: 60%; /* Limit the width of the images */
     height: auto; /* Maintain the aspect ratio */
     border-radius: 8px; /* Optional: Add rounded corners */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+   
     transition: transform 0.3s ease; /* Smooth hover effect */
   }
   

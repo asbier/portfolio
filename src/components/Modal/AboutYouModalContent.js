@@ -1,31 +1,28 @@
 import React from 'react';
 import './AboutYouModalContent.css';
-import image1 from '../../Assets/Image 5_AboutYou/Image 1.png';
+import image1 from '../../Assets/Image 5_AboutYou/aboutyouweb2.png';
 import image2 from '../../Assets/Image 5_AboutYou/Image 2.png';
 import image3 from '../../Assets/Image 5_AboutYou/Image 3.png';
 import image4 from '../../Assets/Image 5_AboutYou/Image 4.png';
-import image5 from '../../Assets/Image 5_AboutYou/Image 5.png';
 import image6 from '../../Assets/Image 5_AboutYou/Editedbooth.png';
 
 // Ensure the component name matches the export name
 const AboutYouModalContent = () => (
     <div className="aboutyou-modal-content-container">
-        <h2> About You</h2>
-            <p>
-                I played a significant role in the 
-                creative evolution of the company’s brand strategy, contributing to key projects like the LeGer by Lena Gercke label and other major brand initiatives. 
-                During my time at EDITED, About You was undergoing a strategic shift towards a broader, mainstream audience, which required adapting lessons learned from previous 
-                projects with EDITED in more niche markets. 
-                This process focused on enhancing personalization and creating a user-centered platform, key to competing with major players in the e-commerce sector.
-            </p>
-                    <section className="modal-section">
-            <h4>Recreating Brand Strategy</h4>
-             <p>Collaborated with cross-functional teams to redefine About You’s approach, focusing on enhancing user engagement through personalization and ensuring the platform spoke to a more diverse and mainstream audience.</p>
-             <p>Helped develop concepts that positioned the platform as a celebration of individuality, emphasizing the user as the core of the experience, rather than just fashion itself.</p>
-             <p>Incorporated market trends from high-performing regions to align with industry shifts, ensuring that About You could capture a larger market share.</p>
-             
-             <div className="edited-image-gallery">
-                    <img src={image1} alt="AboutYou diversity" />
+
+     <h2> About You</h2>
+     <section className="modal-section"> 
+         <p> <strong>Collaborated with cross-functional teams to redefine About You’s 
+            strategy, enhancing 
+            personalization and positioning the platform to engage a broader, 
+            more diverse audience. </strong> Developed concepts that celebrated individuality, 
+            placing users at the center of the experience, while aligning with market trends to 
+            capture greater share.<p></p> Contributed to a new website structure and storytelling approach, 
+            emphasizing emotional connection, and conceptualized campaigns and commercials 
+            that championed inclusivity and user-driven content.</p>
+    
+             <div className="aboutyou-image-gallery">
+                    <img src={image1} alt="AboutYouweb" />
                     </div>
                 </section>
         
@@ -36,14 +33,7 @@ const AboutYouModalContent = () => (
                <p>Embraced a trial-and-error mindset, which helped the brand evolve organically while maintaining flexibility and agility in execution.</p>
                 </section>
 
-                    <section className="modal-section">  
-                    <h4>Website and Commercial Adjustments</h4>
-                    <p>Contributed to the development of a new website structure focused on enhancing the sense of individuality and personal connection with the audience.</p>
-                    <p>Worked on conceptualizing campaigns and commercials that resonated with a wider, more diverse audience, emphasizing inclusivity and user-driven content.</p>
-                    
-                    <div className="edited-image-gallery">
-                    <img src={image5} alt="AboutYouWeb" /> </div>
-                </section>
+                
 
                     <section className="modal-section">
                     <h4>Influencer and Celebrity Engagement</h4>

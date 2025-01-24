@@ -17,6 +17,8 @@ import image12 from '../../Assets/Image 4_EDITED/Image 12.png';
 import image13 from '../../Assets/Image 4_EDITED/Image 13.png';
 import image14 from '../../Assets/Image 4_EDITED/Image 14.png';
 import image15 from '../../Assets/Image 4_EDITED/Image 15.png';
+import image16 from '../../Assets/Image 4_EDITED/Edited Product Design.png';
+import image17 from '../../Assets/Image 4_EDITED/Edited_Launch.png';
 
 const EditedModalContent = () => (
     <div className="edited-modal-content-container">
@@ -59,7 +61,8 @@ const EditedModalContent = () => (
                 <div className="edited-image-gallery">
                     <img src={image5} alt="EDITEDConcepts" />
                     <img src={image6} alt="EDITEDStoreShoes" />
-                    <img src={image7} alt="EDITEDxInstyle Event Berlin" />
+            
+                    <img src={image16} alt="ProductDesign" />
                 </div>
 
                 </div>
@@ -71,6 +74,8 @@ const EditedModalContent = () => (
             <p><strong> Conceptualized and executed fashion show concepts and exclusive pop-up store designs</strong>, ensuring a cohesive and innovative customer experience.</p>
             <p>Participated in editorial shoots to capture backstage content, and created engaging video material to amplify campaign coverage.</p>
             <div className="edited-image-gallery">
+            <img src={image7} alt="EDITEDxInstyle Event Berlin" />
+            <img src={image17} alt="EDITEDLaunchStoreEventBerlin" />
                 <img src={image9_2} alt="BladeRunnerKollektion1" />
                 <img src={image9} alt="BladeRunnerKollektion2" />
                 <img src={image10} alt="BladeRunnerKollektion3" />
