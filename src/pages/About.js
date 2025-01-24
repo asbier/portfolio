@@ -5,19 +5,16 @@ function About(props) {
         <div className={props.darkMode ? "dark-background" : "light-background"}>
             <h2>ABOUT</h2>
             <p>
-                I am a product designer with a background in editorial 
-                design and a passion for crafting user-centered solutions. 
-                Currently working at DAYONE as a UX Designer and Digital 
-                Transformation Consultant, 
-                I specialize in creating innovative, 
-                functional, and emotionally engaging designs for diverse 
-                sectors, including culture.
-            </p>
-            <p>
-                From enhancing user experiences to developing impactful, 
-                non-intrusive advertising formats, I combine creativity, technology, 
-                and a deep understanding of user behavior to deliver meaningful results.
-                Let’s create something together!
+            I am a product designer and humanity-centered thinker. 
+            Collaborating within a network of creative minds,interdisciplinary practice bridges design, technology, 
+            research, and user advocacy to craft thoughtful, inclusive solutions that shape meaningful experiences.
+Currently working at DAYONE as a UX Designer and Digital Transformation Consultant, I focus 
+on creating user-centric systems, seamless interfaces, 
+and innovative tools that empower diverse industries, including culture and beyond. T
+Their work balances the needs of the present with forward-looking visions, 
+emphasizing ethical, impactful, and sustainable design.
+By consulting, and facilitating I contribute to fostering inclusive spaces and 
+exploring how humanity-centered design can shape better presents and futures.
             </p>
         </div>
     );

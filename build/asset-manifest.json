@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5d65ebc0.css",
-    "main.js": "/static/js/main.ad5c387a.js",
+    "main.css": "/static/css/main.5b762bef.css",
+    "main.js": "/static/js/main.5a733352.js",
     "static/js/787.dc6905b1.chunk.js": "/static/js/787.dc6905b1.chunk.js",
     "static/media/carhartt_us.mp4": "/static/media/carhartt_us.ded98a31a906a3040c41.mp4",
     "static/media/Image1.png": "/static/media/Image1.e5089830ea0df42ce10f.png",
@@ -16,13 +16,25 @@
     "static/media/Image 13.png": "/static/media/Image 13.8bfe7da2c49e8b1ea07b.png",
     "static/media/6.jpg": "/static/media/6.c416f56357ace93cdc21.jpg",
     "static/media/7.jpg": "/static/media/7.50ccc59badb2f3f89f82.jpg",
+    "static/media/Vision 7.png": "/static/media/Vision 7.b724d3f620f9887d4254.png",
     "static/media/1.gif": "/static/media/1.cd5ea90e245dd3e82e1f.gif",
     "static/media/5.jpg": "/static/media/5.ae0d9c8594ec0dd6e8f0.jpg",
+    "static/media/How.png": "/static/media/How.d80eb21e899f760cf5a5.png",
+    "static/media/Vision 4.png": "/static/media/Vision 4.99ca31394859dddaea0a.png",
+    "static/media/Vision 6.png": "/static/media/Vision 6.14328af9e86a13f733e6.png",
+    "static/media/Vision-F.png": "/static/media/Vision-F.fa6014512b1872094930.png",
+    "static/media/Vision 3.png": "/static/media/Vision 3.cfa8de26829060bb4d32.png",
+    "static/media/Vision 5.png": "/static/media/Vision 5.1fb823b4c64bac870d61.png",
+    "static/media/How 5.png": "/static/media/How 5.1aea944956028d240d52.png",
     "static/media/Image 10.png": "/static/media/Image 10.f74c5c828b5bc89f54cb.png",
     "static/media/Image 9.png": "/static/media/Image 9.784c60dc7b8f4893d661.png",
     "static/media/Image 9_2.png": "/static/media/Image 9_2.d8e1bb7bb576d2f1f54e.png",
+    "static/media/How 4.png": "/static/media/How 4.44bb0f4ad0abc0a12dad.png",
     "static/media/Image 1.png": "/static/media/Image 1.19795a1693faef15d570.png",
+    "static/media/Final.png": "/static/media/Final.9426a0caa3358bf54e1f.png",
+    "static/media/How 3.png": "/static/media/How 3.1b4324341b7da44385c3.png",
     "static/media/Image 12.png": "/static/media/Image 12.c71624e0515aacd32d3b.png",
+    "static/media/How 2.png": "/static/media/How 2.1f29112be29e4ac0e4e4.png",
     "static/media/Image 14.png": "/static/media/Image 14.d24255c4c26e276e9cc2.png",
     "static/media/Image 15.png": "/static/media/Image 15.7af3f35fe3bee6c82ff2.png",
     "static/media/Image 2.png": "/static/media/Image 2.6b78189f585e7dbb2d65.png",
@@ -38,12 +50,12 @@
     "static/media/4.jpg": "/static/media/4.5b7a9b45871c08bc9d2f.jpg",
     "static/media/Logo 2.png": "/static/media/Logo 2.a7671f6e3612cf8a7713.png",
     "index.html": "/index.html",
-    "main.5d65ebc0.css.map": "/static/css/main.5d65ebc0.css.map",
-    "main.ad5c387a.js.map": "/static/js/main.ad5c387a.js.map",
+    "main.5b762bef.css.map": "/static/css/main.5b762bef.css.map",
+    "main.5a733352.js.map": "/static/js/main.5a733352.js.map",
     "787.dc6905b1.chunk.js.map": "/static/js/787.dc6905b1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d65ebc0.css",
-    "static/js/main.ad5c387a.js"
+    "static/css/main.5b762bef.css",
+    "static/js/main.5a733352.js"
   ]
 }
