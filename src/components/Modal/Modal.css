@@ -27,7 +27,7 @@ border-radius: 8px; /* Rounded corners for sections */
   width: 75%;
   max-width: 1000px;
   max-height: 90vh;
-  padding: 35px;
+  padding: 2rem;
   background-color: #fff;
   margin: auto;
   border-radius: px;
@@ -72,8 +72,8 @@ border-radius: 8px; /* Rounded corners for sections */
 /* Mobile-specific styles for close button */
 @media screen and (max-width: 768px) {
   .modal-content .close {
-    font-size: 24px; /* Smaller button size for mobile */
-    padding: 8px; /* Reduce padding for mobile */
+    font-size: 1rem; /* Smaller button size for mobile */
+    padding: 1rem; /* Reduce padding for mobile */
     color: #333; /* Slightly darker color for better visibility */
   }
 
@@ -81,23 +81,25 @@ border-radius: 8px; /* Rounded corners for sections */
     color: #ff5757; /* More prominent hover color for mobile */
   }
 }
-
-
 /* Mobile-specific styles */
 @media screen and (max-width: 768px) {
   .modal-content {
-    width: 90%; /* Full width on smaller screens */
-    padding: 20px; /* Reduce padding for mobile */
+    width: 100%; /* Full width on smaller screens */
+    padding: 3rem; /* Reduce padding for mobile */
   }
 
-  .dayone-modal-content-container {
-    padding: 15px; /* Adjust padding for mobile */
-    font-size: 5vw; /* Responsive font size for mobile */
+  .modal-content-container {
+    padding: 2rem; /* Adjust padding for mobile */
+    font-size: 1.2rem; /* Responsive font size for mobile */
+  }
+
+  p, a {
+    font-size: 1rem; /* Verkleinerung für Links und Text */
   }
 
   .modal-content .close {
-    font-size: 24px; /* Smaller close button */
-    padding: 8px;
+    font-size: 2rem; /* Smaller close button */
+    padding: 1rem;
   }
 }
 
@@ -111,7 +113,7 @@ border-radius: 8px; /* Rounded corners for sections */
 
 .image-gallery img {
   width: 100%; /* Make images fill their grid cell */
-  height: 300px; /* Uniform height for all images */
+  height: auto; /* Uniform height for all images */
   object-fit: cover; /* Ensure images maintain aspect ratio and fill the area */
   border-radius: 8px; /* Optional: Add rounded corners */
   transition: transform 0.3s ease; /* Smooth hover effect */
@@ -127,6 +129,17 @@ border-radius: 8px; /* Rounded corners for sections */
   }
 }
 
+@media screen and (max-width: 768px) {
+  .modal-content {
+    padding: 1.5rem; /* Reduziertes Padding für die mobile Ansicht */
+  }
+
+  .modal-section {
+    padding: 1rem; /* Weniger Padding in den einzelnen Sektionen */
+    margin-bottom: 1rem; /* Kleinere Abstände zwischen den Sektionen */
+  }
+}
+
 /* FadeIn animation */
 @keyframes fadeIn {
   from {
@@ -136,5 +149,21 @@ border-radius: 8px; /* Rounded corners for sections */
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+@media screen and (max-width: 768px) {
+  .image-gallery {
+    grid-template-columns: repeat(2, 1fr); /* Nur 2 Spalten */
+    gap: 12px; /* Weniger Abstand zwischen Bildern */
+  }
+
+  .image-gallery img {
+    height: auto; /* Responsive Höhe */
+  }
+}
+
+@media (hover: none) {
+  .image-gallery img:hover {
+    transform: none; /* Kein Zoom auf Touchgeräten */
   }
 }

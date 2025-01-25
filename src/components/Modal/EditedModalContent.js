@@ -22,7 +22,7 @@ import image17 from '../../Assets/Image 4_EDITED/Edited_Launch.png';
 import image18 from '../../Assets/Image 4_EDITED/Editedweb.png';
 
 const EditedModalContent = () => (
-    <div className="edited-modal-content-container">
+    <div className="modal-content-container">
         <h1>EDITED the Label</h1>
             <p>
                 I began as a designer at EDITED and worked in the Brand Team to establish a highly creative and collaborative design environment. Our work focused on transforming the brand's identity, content strategy, and physical presence into a cohesive ecosystem that bridged digital, social, and retail channels.
@@ -54,7 +54,7 @@ const EditedModalContent = () => (
     
                 
                 <section className='modal-section'>
-                <div className="edited-key-contributions">
+             
             <p><strong> Created the CI (Corporate Identity) for Stores, developing mood boards, interior concepts, and merchandise displays</strong>  that reflected the brand’s ethos.</p>
                 <p>Established brand books and design guidelines for retail and events to maintain consistency across physical and digital touchpoints.</p>
                 <div className="image-gallery">
@@ -62,11 +62,11 @@ const EditedModalContent = () => (
                     <img src={image4} alt="EDITEDStoreVienna" /> 
                     <img src={image5_2} alt="EDITEDStoreMunich" /> 
                     </div> 
-                    </div>
+            
                 </section>
 
                 <section className='modal-section'>
-                <div className="edited-key-contributions">
+              
                 <p><strong> Designed concepts for Edited collections, including the Shoe Collection and Sport Collection</strong> , aligning them with contemporary market trends.</p>
                 <p>Developed sustainable packaging concepts, combining design and strategy to enhance eco-conscious branding.</p>
 
@@ -77,11 +77,10 @@ const EditedModalContent = () => (
                     <img src={image16} alt="ProductDesign" />
                 </div>
 
-                </div>
                    </section>
 
         <section className='modal-section'> 
-        <div className="edited-key-contributions"> 
+       
     
             <p><strong> Conceptualized and executed fashion show concepts and exclusive pop-up store designs</strong>, ensuring a cohesive and innovative customer experience.</p>
             <p>Participated in editorial shoots to capture backstage content, and created engaging video material to amplify campaign coverage.</p>
@@ -97,25 +96,22 @@ const EditedModalContent = () => (
                 <img src={image12} alt="NinaKastensxEDITEDLaunchEvent2" />
                 <img src={image13} alt="NinaKastensxEDITEDLaunchEvent3" />
                 <img src={image14} alt="NinaKastensxEDITEDLaunchEvent4" />
-            </div>  </div>
+            </div>  
             </section>
 
             
             <section className='modal-section'> 
-            <div className="edited-key-contributions">
+            
             <p><strong>Designed sustainable packaging concepts</strong>, integrating eco-friendly materials and strategies to 
                 align with EDITED's evolving commitment to sustainability.</p>
-            </div>
+        
             </section>
 
             <section className='modal-section'> 
-            <div className="edited-key-contributions">
+          
         
             <p><strong>Worked on marketing strategies</strong> that balanced new bold and sometimes more expensive ideas with scalability, aligning campaigns with long-term brand objectives.</p>
             <p>Supported team growth and culture by developing workflows that streamlined design production while allowing room for innovation.</p>
-    
-
-            </div>
         </section>
 
         <p>

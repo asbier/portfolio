@@ -24,13 +24,18 @@ const ConicRoseModalContent= () => (
         <h1>Conic Rose</h1>
     
 
-        <div className="image-gallery">
+        <div className="conicrose-image-gallery">
                     <img src={image3} alt="Final" /> 
                     </div>
                     
      <p>
-        I love Music, so if I get the change to interpret the music into a visual. I will do my best.
+
+
+        I love Music, so if I get the chance to interpret the music into a visual. I will do my best.
         </p>
+        <p>          
+  <a href="https://conicrose.bandcamp.com/album/heller-tag" target="_blank" rel="noopener noreferrer">🌐Buy Here</a>
+</p>
 
  <section className='modal-section'>
  <h3>How I Design Covers</h3>
@@ -57,7 +62,7 @@ that perfectly captures the essence of the sound.
 
 </p>
 
-<div className="how-image-gallery">
+<div className="image-gallery">
 <img src={image9} alt="How"    />
 <img src={image10} alt="How 2" />  
 <img src={image11} alt="How 3" />  
@@ -81,9 +86,7 @@ clarity and authenticity.
                     <img src={image8} alt="Vision 7" />  
                     <img src={image14} alt="Vision-F" />
                     </div>
-                    <p>          
-  <a href="https://conicrose.bandcamp.com/album/heller-tag" target="_blank" rel="noopener noreferrer">🌐Buy Here</a>
-</p>
+                  
  </section>
 
     

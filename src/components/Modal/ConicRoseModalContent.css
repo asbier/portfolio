@@ -24,20 +24,6 @@
   object-fit: cover;
 }
 
-.how-image-gallery {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 8px;
-  width: 100%;
-}
-.how-image-gallery img{
-  width: 40%;
-  max-width: 40%; /* Ensure image doesn't stretch too large */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover;
-}
 
 @media screen and (max-width: 768px) {
   .edited-image-gallery img {
