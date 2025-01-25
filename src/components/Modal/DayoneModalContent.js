@@ -14,13 +14,12 @@ const DayoneModalContent = () => (
             <img src={logo2} alt="Logo 2" />
         </div>
       
-      
 
 <section className="modal-section">
   <p> <strong> Over several projects across German and international automotive markets </strong>, I built expertise in crafting user journeys, conducting user research, and benchmarking competitive products. These experiences helped me design localized, user-centric digital solutions and tackle the complexities of large-scale, cross-functional projects.</p>
   <p></p>
   <h4>Key Contributions</h4>
-  <ul>
+  <ul className='key'>
     <li>
        <p><strong>Streamlining Vehicle Searches</strong> Enhanced search functionality by analyzing user behavior, mapping journeys, and prototyping intuitive filtering tools.</p>
     <p><strong>Improving Vehicle Detail Presentation</strong> Designed user-centric ways to showcase specifications, including specialized information for electric vehicles.</p>
