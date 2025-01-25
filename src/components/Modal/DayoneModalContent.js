@@ -43,7 +43,7 @@ const DayoneModalContent = () => (
   <p>For a confidential app project, I designed the user flows and dashboards for simplifying guest list management and providing artists with an intuitive dashboard. My contributions included crafting flows for guest list entry, login, and artist pages. Collaborating with my UX Lead, we rapidly prototyped and tested solutions based on Hypothesis and Artist Insights</p>
   <h4>Impact
   </h4>
-  <ul><li>
+  <ul className='key'><li>
     <p><strong>User-Centric Design</strong> Focused on reducing stress for guests and staff by simplifying event workflows.</p>
     <p><strong>Research-Driven Solutions</strong> Conducted extensive research to understand event dynamics and user needs.</p>
     <p><strong>Social Impact</strong> Helped design an app that not only streamlined event entry but also contributed to music education for children in need.</p>
