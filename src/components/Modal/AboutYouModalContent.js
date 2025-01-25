@@ -8,7 +8,7 @@ import image6 from '../../Assets/Image 5_AboutYou/Editedbooth.png';
 
 // Ensure the component name matches the export name
 const AboutYouModalContent = () => (
-    <div className="aboutyou-modal-content-container">
+    <div className="modal-content-container">
 
      <h2> About You</h2>
      <section className="modal-section"> 

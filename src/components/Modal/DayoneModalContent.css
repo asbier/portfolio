@@ -1,28 +1,4 @@
-.dayone-modal-content-container {
- font-size: 28px; /* Set the font-size to 28px for larger screens */
-  line-height: 40px;
-}
 
-
-.modal-section h2 {
-  margin-top: 0; /* Remove extra margin for the section heading */
-}
-
-.dayone-bold-text {
-  font-weight: bold;
-}
-
-ul {
-  list-style-type: disc; /* Use bullet points */
-  padding-left: 20px;    /* Indent the list */
-  margin: 10px 0;        /* Add space above and below the list */
-}
-
-li {
-  display: block;    /* Ensure items are displayed as list items */
-  margin-bottom: 10px;   /* Add spacing between items */
-  line-height: 1.6;      /* Improve readability with proper line spacing */
-}
 .dayone-image-gallery {
   display: flex;
   justify-content: space-around;

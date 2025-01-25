@@ -1,33 +1,4 @@
-.aboutyou-modal-content-container {
-    font-size: 28px; /* Set the font-size to 28px for larger screens */
-  line-height: 40px;
-  }
 
-  .aboutyou-section {
-    margin-bottom: 1em;
-}
-
-/* Additional styles for headers and links */
-.aboutyou-modal-content-container h2,
-.caboutyou-modal-content-container h3,
-.aboutyou-modal-content-container h4 {
-    margin-top: 1em;
-}
-
-.aboutyou-modal-content-container p {
-    margin: 1em 0;
-}
-
-.aboutyou-modal-content-container a {
-    display: block;
-    margin-top: 1em;
-    color: #1a0dab; /* Typical link color */
-    text-decoration: none;
-}
-
-.aboutyou-modal-content-container a:hover {
-    text-decoration: underline;
-}
   .aboutyou-image-gallery {
     display: flex; /* Use flexbox for horizontal alignment */
     justify-content: space-around; /* Evenly space the images */

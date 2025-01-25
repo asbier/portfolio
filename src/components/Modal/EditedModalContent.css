@@ -1,13 +1,4 @@
-.edited-modal-content-container {
-  padding: 10px; /* Padding for the main container */
-  font-size: 28px; /* Set the font-size to 28px for larger screens */
-  line-height: 40px;
-}
 
-
-.edited-bold-text {
-  font-weight: bold;
-}
 .edited-image-gallery-center {
   display: flex; /* Use flexbox for horizontal alignment */
   justify-content: space-around; /* Evenly space the images */

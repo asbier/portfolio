@@ -15,12 +15,25 @@
   backdrop-filter: blur(10px); /* Hintergrund unscharf machen */
 }
 
-.modal-section {
-margin-bottom: 20px;  
-padding: 50px; /* Add padding inside each section */
-background-color: rgb(249, 249, 249); /* Background color for sections */
-border-radius: 8px; /* Rounded corners for sections */
+.modal-content-container {
+  font-size: clamp(0.875rem, 1.5vw, 1.75rem); /* Flexible Schriftgröße */
+  line-height: 1.5; /* Relativer Zeilenabstand */
+  padding: clamp(1rem, 5vw, 3rem); /* Flexibles Padding */
 }
+ 
+ 
+ .bold-text {
+   font-weight: bold;
+ }
+
+/* Modal sections */
+.modal-section {
+  padding: clamp(10px, 5vw, 50px); /* Flexibles Padding */
+  margin-bottom: 1rem; /* Einheitlicher Abstand */
+  background-color: rgb(249, 249, 249);
+  border-radius: 8px;
+}
+
 /* Modal content */
 .modal-content {
   position: relative;
@@ -38,23 +51,48 @@ border-radius: 8px; /* Rounded corners for sections */
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Close button styles */
-.modal-content .close {
-  position: sticky; /* Stays visible at the top */
-  top: 0; /* Aligns to the top */
-  margin-left: auto; /* Aligns to the right */
-  background: none; /* No background */
-  border: none; /* No border */
-  font-size: 30px; /* Default size for desktop */
-  cursor: pointer; /* Pointer cursor for clarity */
-  padding: 10px; /* Add spacing around the button */
-  z-index: 1; /* Ensure it is above other content */
-  color: #000; /* Default color */
+
+
+/* Additional styles for headers and links */
+.modal-content-container h2,
+.modal-content-container h3,
+.modal-content-container h4 {
+    margin-top: 1em;
 }
 
+.modal-content-container p {
+    margin: 1em 0;
+}
+
+.
+.modal-content-container a {
+    display: block;
+    margin-top: 1em;
+    color: #1a006e; /* Typical link color */
+    text-decoration: none;
+}
+
+.modal-content-container a:hover {
+    text-decoration: underline;
+}
+
+.modal-content .close {
+  position: absolute; /* Fixes position relative to the modal */
+  top: 1rem; /* Align to the top */
+  right: 1rem; /* Align to the right */
+  background: none; /* No background color */
+  border: none; /* Remove border */
+  font-size: 3rem; /* Large close icon */
+  cursor: pointer; /* Pointer cursor for clarity */
+  color: #000; /* Black color */
+  padding: 0; /* Remove extra padding */
+  line-height: 1; /* Ensure button height matches font size */
+}
+
+/* Hover effect for close button */
 .modal-content .close:hover {
-  color: #5e5959; /* Hover effect */
-  transition: color 0.3s ease; /* Smooth transition for hover */
+  color: #ff0000; /* Red on hover for better visibility */
+  transition: color 0.3s ease; /* Smooth hover transition */
 }
 /* Style for the links */
 .modal-content p a {
@@ -81,62 +119,62 @@ border-radius: 8px; /* Rounded corners for sections */
     color: #ff5757; /* More prominent hover color for mobile */
   }
 }
-/* Mobile-specific styles */
-@media screen and (max-width: 768px) {
-  .modal-content {
-    width: 100%; /* Full width on smaller screens */
-    padding: 3rem; /* Reduce padding for mobile */
-  }
-
-  .modal-content-container {
-    padding: 2rem; /* Adjust padding for mobile */
-    font-size: 1.2rem; /* Responsive font size for mobile */
-  }
-
-  p, a {
-    font-size: 1rem; /* Verkleinerung für Links und Text */
-  }
-
-  .modal-content .close {
-    font-size: 2rem; /* Smaller close button */
-    padding: 1rem;
-  }
-}
 
 
 .image-gallery {
-  display: grid; /* Use CSS Grid for precise layout */
-  grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
-  gap: 16px; /* Space between images */
-  width: 100%;
+  display: grid; /* Nutzt Grid-Layout */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Flexible Spaltenbreite */
+  gap: 16px; /* Abstand zwischen den Bildern */
+  grid-template-rows: masonry; /* Dies sorgt für das Masonry-Layout */
 }
 
 .image-gallery img {
-  width: 100%; /* Make images fill their grid cell */
-  height: auto; /* Uniform height for all images */
-  object-fit: cover; /* Ensure images maintain aspect ratio and fill the area */
-  border-radius: 8px; /* Optional: Add rounded corners */
-  transition: transform 0.3s ease; /* Smooth hover effect */
+  width: 100%; /* Bilder nehmen die volle Breite der Zelle */
+  height: auto; /* Höhe bleibt proportional */
+  object-fit: cover; /* Zuschneiden der Bilder */
+  border-radius: 8px; /* Abgerundete Ecken */
+  transition: transform 0.3s ease; /* Weicher Hover-Effekt */
 }
 
 .image-gallery img:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  transform: scale(1.05);
 }
 
+
+/* Mobile Ansicht */
 @media screen and (max-width: 768px) {
-  .image-gallery img {
-    max-width: 80px;
+  .image-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Kleinere Spaltenbreite */
+    gap: 8px; /* Weniger Abstand */
+  }
+}
+@media (hover: none) {
+  .image-gallery img:hover {
+    transform: none; /* Kein Hover-Zoom auf Touchgeräten */
   }
 }
 
+/* Mobile-specific styles */
+
+/* Mobile-specific adjustments */
 @media screen and (max-width: 768px) {
   .modal-content {
-    padding: 1.5rem; /* Reduziertes Padding für die mobile Ansicht */
+    padding: 1.5rem; /* Reduziertes Padding */
+  }
+
+  .modal-content-container {
+    font-size: 0.875rem; /* Kleinere Schriftgröße */
+    padding: 1rem; /* Geringeres Padding */
   }
 
   .modal-section {
-    padding: 1rem; /* Weniger Padding in den einzelnen Sektionen */
-    margin-bottom: 1rem; /* Kleinere Abstände zwischen den Sektionen */
+    padding: 1rem; /* Weniger Padding */
+    margin-bottom: 1rem;
+  }
+
+
+  .modal-content .close {
+    font-size: 1.5rem; /* Kleinere Schließen-Taste */
   }
 }
 
@@ -151,16 +189,7 @@ border-radius: 8px; /* Rounded corners for sections */
     transform: scale(1);
   }
 }
-@media screen and (max-width: 768px) {
-  .image-gallery {
-    grid-template-columns: repeat(2, 1fr); /* Nur 2 Spalten */
-    gap: 12px; /* Weniger Abstand zwischen Bildern */
-  }
 
-  .image-gallery img {
-    height: auto; /* Responsive Höhe */
-  }
-}
 
 @media (hover: none) {
   .image-gallery img:hover {

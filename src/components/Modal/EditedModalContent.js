@@ -24,8 +24,11 @@ import image18 from '../../Assets/Image 4_EDITED/Editedweb.png';
 const EditedModalContent = () => (
     <div className="modal-content-container">
         <h1>EDITED the Label</h1>
+        <p>With modern looks, current trend pieces and a strong focus on the house-owned brand EDITED, stands for a unique mix of clothes, accessories and shoes for women passionate about fashion. Created in a multifaceted city like Berlin by an international creative team, EDITED stands out with inspiring and trend-focused fashion that is simply fun. © EDITED the Label
+        </p>
             <p>
-                I began as a designer at EDITED and worked in the Brand Team to establish a highly creative and collaborative design environment. Our work focused on transforming the brand's identity, content strategy, and physical presence into a cohesive ecosystem that bridged digital, social, and retail channels.
+            <strong>I began as a designer at EDITED as part of the Brand Team </strong> With friends from Uni we established a highly creative and collaborative design environment. 
+            Our work focused on transforming the brand's identity, content strategy, and physical presence into a cohesive ecosystem that bridged digital, social, and retail channels.
             </p>
             
             <section className='modal-section'>

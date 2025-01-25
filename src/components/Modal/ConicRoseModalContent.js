@@ -24,7 +24,7 @@ const ConicRoseModalContent= () => (
         <h1>Conic Rose</h1>
     
 
-        <div className="conicrose-image-gallery">
+        <div className="image-gallery">
                     <img src={image3} alt="Final" /> 
                     </div>
                     

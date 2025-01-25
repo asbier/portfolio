@@ -1,34 +1,4 @@
-.carhartt-modal-content-container {
-    padding: 25px; /* Padding for the main container */
-    font-size: 28px; /* Set the font-size to 28px for larger screens */
-  line-height: 40px;
-}
 
-.carhartt-section {
-    margin-bottom: 1em;
-}
-
-/* Additional styles for headers and links */
-.carhartt-modal-content-container h2,
-.carhartt-modal-content-container h3,
-.carhartt-modal-content-container h4 {
-    margin-top: 1em;
-}
-
-.carhartt-modal-content-container p {
-    margin: 1em 0;
-}
-
-.carhartt-modal-content-container a {
-    display: block;
-    margin-top: 1em;
-    color: #1a0dab; /* Typical link color */
-    text-decoration: none;
-}
-
-.carhartt-modal-content-container a:hover {
-    text-decoration: underline;
-}
 .carhartt-image-gallery {
   display: flex;
   justify-content: flex-start;
