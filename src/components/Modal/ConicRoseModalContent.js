@@ -19,12 +19,12 @@ import image14 from '../../Assets/Image_5_Conic Rose/Vision-F.png';
 
 
 const ConicRoseModalContent= () => (
-    <div className="conicrose-modal-content-container">
+    <div className="modal-content-container">
     
         <h1>Conic Rose</h1>
     
 
-        <div className="image-gallery">
+        <div className="conicrose-image-gallery">
                     <img src={image3} alt="Final" /> 
                     </div>
                     
