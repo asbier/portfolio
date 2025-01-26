@@ -35,5 +35,5 @@ jobs:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         # Set the GitHub token for authentication
-        git config --global url."https://$GH_TOKEN@github.com/asbier/portfolio".insteadOf "https://github.com/"
+        git config --global url."https://$GH_TOKEN@github.com".insteadOf "https://github.com/"
         npm run deploy
