@@ -31,5 +31,6 @@ jobs:
 
     - name: Deploy to GitHub Pages
       env:
-        REACT_APP_PASSWORD: ${{ secrets.REACT_APP_PASSWORD }}
+        REACT_APP_PASSWORD: ${{ secrets.REACT_APP_PASSWORD }}  # your secret React app password if needed
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}  # GitHub personal access token for authentication
       run: npm run deploy
