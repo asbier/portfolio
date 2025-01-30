@@ -34,7 +34,7 @@ section {
 }
 
 .dayone-image-gallery img {
-  max-width: 150px; /* Adjust the size as needed */
+  max-width: 100%; /* Adjust the size as needed */
   margin: 10px;
   transition: transform 0.3s ease;
 }

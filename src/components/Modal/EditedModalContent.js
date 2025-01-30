@@ -1,25 +1,25 @@
 import React from 'react';
 import './EditedModalContent.css';
-import image1 from '../../Assets/Image 4_EDITED/Image 1.png';
-import image2 from '../../Assets/Image 4_EDITED/Image 2.png';
-import image3 from '../../Assets/Image 4_EDITED/Image 3.png';
-import image4 from '../../Assets/Image 4_EDITED/Image 4.png';
-import image5_2 from '../../Assets/Image 4_EDITED/Image 5_2.png';
-import image5 from '../../Assets/Image 4_EDITED/Image 5.png';
-import image6 from '../../Assets/Image 4_EDITED/Image 6.png';
-import image7 from '../../Assets/Image 4_EDITED/Image 7.png';
-import image8 from '../../Assets/Image 4_EDITED/Image 8.png';
-import image9 from '../../Assets/Image 4_EDITED/Image 9.png';
-import image9_2 from '../../Assets/Image 4_EDITED/Image 9_2.png';
-import image10 from '../../Assets/Image 4_EDITED/Image 10.png';
-import image11 from '../../Assets/Image 4_EDITED/Image 11.png';
-import image12 from '../../Assets/Image 4_EDITED/Image 12.png';
-import image13 from '../../Assets/Image 4_EDITED/Image 13.png';
-import image14 from '../../Assets/Image 4_EDITED/Image 14.png';
-import image15 from '../../Assets/Image 4_EDITED/Image 15.png';
-import image16 from '../../Assets/Image 4_EDITED/Edited Product Design.png';
-import image17 from '../../Assets/Image 4_EDITED/Edited_Launch.png';
-import image18 from '../../Assets/Image 4_EDITED/Editedweb.png';
+import image1 from '../../Assets/Image_2_EDITED/Image 1.png';
+import image2 from '../../Assets/Image_2_EDITED/Image 2.png';
+import image3 from '../../Assets/Image_2_EDITED/Image 3.png';
+import image4 from '../../Assets/Image_2_EDITED/Image 4.png';
+import image5_2 from '../../Assets/Image_2_EDITED/Image 5_2.png';
+import image5 from '../../Assets/Image_2_EDITED/Image 5.png';
+import image6 from '../../Assets/Image_2_EDITED/Image 6.png';
+import image7 from '../../Assets/Image_2_EDITED/Image 7.png';
+import image8 from '../../Assets/Image_2_EDITED/Image 8.png';
+import image9 from '../../Assets/Image_2_EDITED/Image 9.png';
+import image9_2 from '../../Assets/Image_2_EDITED/Image 10.png';
+import image10 from '../../Assets/Image_2_EDITED/Image 10.png';
+import image11 from '../../Assets/Image_2_EDITED/Image 11.png';
+import image12 from '../../Assets/Image_2_EDITED/Image 12.png';
+import image13 from '../../Assets/Image_2_EDITED/Image 13.png';
+import image14 from '../../Assets/Image_2_EDITED/Image 14.png';
+import image15 from '../../Assets/Image_2_EDITED/Image 15.png';
+import image16 from '../../Assets/Image_2_EDITED/Edited Product Design.png';
+import image17 from '../../Assets/Image_2_EDITED/Edited_Launch.png';
+import image18 from '../../Assets/Image_2_EDITED/Editedweb.png';
 
 const EditedModalContent = () => (
     <div className="modal-content-container">

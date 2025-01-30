@@ -28,19 +28,55 @@
 
 /* Modal sections */
 .modal-section {
-  padding: clamp(10px, 5vw, 50px); /* Flexibles Padding */
-  margin-bottom: 1rem; /* Einheitlicher Abstand */
+  padding: clamp(10px, 5vw, 50px);
+  margin-bottom: 1rem;
   background-color: rgb(249, 249, 249);
   border-radius: 8px;
+  position: relative;
+  overflow: hidden; /* Sorgt dafür, dass der Effekt nicht überläuft */
+  border: 3px solid transparent; /* Wichtiger Trick für die Kontur */
 }
 
+/* Shining Neon Border Effekt */
+.modal-section::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* Deckt nur die Border ab */
+  border-radius: 8px;
+  padding: 3px; /* Erzeugt den Rand-Effekt */
+  background: linear-gradient(90deg, transparent, #e6fae0, #8df4c0, transparent);
+  background-size: 200% 100%;
+  mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+  -webkit-mask-composite: destination-out;
+  z-index: 1; /* Bringt die Kontur nach vorne */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Animation beim Hover aktivieren */
+.modal-section:hover::before {
+  opacity: 1;
+  animation: neon-border-shine 8s linear infinite;
+}
+
+/* Keyframes für den fließenden Shine-Effekt */
+@keyframes neon-border-shine {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
 /* Modal content */
 .modal-content {
   position: relative;
   width: 75%;
   max-width: 1000px;
   max-height: 90vh;
-  padding: 2rem;
+  padding: 1rem;
   background-color: #fff;
   margin: auto;
   border-radius: px;

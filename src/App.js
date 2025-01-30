@@ -26,7 +26,10 @@ function App() {
     }
   }, [darkMode]);
 
+/* open Router here */
   return (
+    
+
     <div className={darkMode ? "body-dark" : "body-light"}>
       <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <div className="container-page">
@@ -41,6 +44,7 @@ function App() {
       <Main darkMode={darkMode} />
       <Footer darkMode={darkMode} />
     </div>
+     
   );
 }
 

@@ -107,9 +107,14 @@ const Carousel = ({ onImageClick }) => {
     </>
   ) : index === 8 ? (
     <>
-      <span className="image-title-small">Design</span>
-      <h2 className="image-title-main">PURISTO</h2>
+      <span className="image-title-small">Art Director</span>
+      <h2 className="image-title-main">Comma</h2>
     </>
+     ) : index === 9 ? (
+      <>
+        <span className="image-title-small">Art Director</span>
+        <h2 className="image-title-main">MonaM</h2>
+      </>
   ) : (
     <h3>{`Title for Image ${index + 1}`}</h3>
   )}

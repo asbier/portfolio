@@ -1,7 +1,7 @@
 import React from 'react';
 import './CarharttModalContent.css';
-import image1 from '../../Assets/carhartt_wip/Image1.png';
-import image2 from '../../Assets/carhartt_wip/Image2.png';
+import image1 from '../../Assets/Image_1_carhartt_wip/Image1.png';
+import image2 from '../../Assets/Image_1_carhartt_wip/Image2.png';
 
 
 const CarharttModalContent = () => (

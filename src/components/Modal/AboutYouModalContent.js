@@ -1,10 +1,10 @@
 import React from 'react';
 import './AboutYouModalContent.css';
-import image1 from '../../Assets/Image 5_AboutYou/aboutyouweb2.png';
-import image2 from '../../Assets/Image 5_AboutYou/Image 2.png';
-import image3 from '../../Assets/Image 5_AboutYou/Image 3.png';
-import image4 from '../../Assets/Image 5_AboutYou/Image 4.png';
-import image6 from '../../Assets/Image 5_AboutYou/Editedbooth.png';
+import image1 from '../../Assets/Image 3_AboutYou/final.png';
+import image2 from '../../Assets/Image 3_AboutYou/ayawards.png';
+import image3 from '../../Assets/Image 3_AboutYou/Image 3.png';
+import image4 from '../../Assets/Image 3_AboutYou/Image 4.png';
+import image6 from '../../Assets/Image 3_AboutYou/Editedbooth.png';
 
 // Ensure the component name matches the export name
 const AboutYouModalContent = () => (
@@ -50,6 +50,7 @@ const AboutYouModalContent = () => (
                     <p>Designed innovative store concepts and pop-up events to enhance the brand’s physical presence and improve consumer interaction with the platform.</p>
                     <p>Developed branding strategies for high-profile events that aligned with the company’s vision of creating an engaging and immersive shopping experience.</p>
                     </section>
+
                     <section className="modal-section">
                     
                     <h4>Collaboration with Influencers and External Brands</h4>
