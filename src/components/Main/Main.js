@@ -4,7 +4,7 @@ import Carousel from '../Carousel/Carousel';
 import Modal from '../Modal/Modal';
 import DayoneModalContent from '../Modal/DayoneModalContent';
 import CarharttModalContent from '../Modal/CarharttModalContent';
-import EditedModalContent from '../Modal/EditedModalContent';
+import { EditedModalContent } from '../Modal/EditedModalContent';
 import AboutYouModalContent from '../Modal/AboutYouModalContent';
 import ConicRoseModalContent from '../Modal/ConicRoseModalContent';
 import HeroesnHeroinesModalContent from '../Modal/HeroesnHeroinesModalContent';
@@ -20,12 +20,12 @@ const imagesData = [
     { src: 'path/to/carhartt.jpg', alt: 'Carhartt-WIP', title: 'Carhartt Digital UX Design', subtitle: 'Learn more about my Carhartt Projects' },
     { src: 'path/to/edited.jpg', alt: 'Edited', title: 'Edited Art Direction', subtitle: 'Learn more about Edited ArtDirection' },
     { src: 'path/to/aboutyou.jpg', alt: 'AboutYou', title: 'AboutYou Redesign', subtitle: 'Learn more about AboutYou Redesign' },
-    { src: 'path/to/conicrose.jpg', alt: 'Conic Rose', title: 'CONIC ROSE', subtitle: 'Learn more about Cover Redesign' },
-    { src: 'path/to/heroesnheroines.jpg', alt: 'HeroesnHeroines', title: 'Heroes & Heroines', subtitle: 'Learn more about my work at Heroes & Heroines' },
-    { src: 'path/to/plasticMedia.jpg', alt: 'PlasticMedia', title: 'Plastic Media', subtitle: 'Learn more about my work at Plastic Media' },
-    { src: 'path/to/monopolGmbH.jpg', alt: 'MonopolGmbH', title: 'MonopolGmbH', subtitle: 'Learn more about my work at MonopolGmbH' },
+    { src: 'path/to/conicrose.jpg', alt: 'Conic Rose', title: 'CONIC ROSE ALBUM ART WORK', subtitle: 'Learn more about Cover Redesign' },
+    { src: 'path/to/heroesnheroines.jpg', alt: 'HeroesnHeroines', title: 'Heroes & Heroines AGENCY', subtitle: 'Learn more about my work at Heroes & Heroines' },
+    { src: 'path/to/plasticMedia.jpg', alt: 'PlasticMedia', title: 'Plastic Media AGENCY', subtitle: 'Learn more about my work at Plastic Media' },
+    { src: 'path/to/monopolGmbH.jpg', alt: 'MonopolGmbH', title: 'MonopolGmbH AGENCY', subtitle: 'Learn more about my work at MonopolGmbH' },
     { src: 'path/to/comma.jpg', alt: 'Comma', title: 'SuperrealxComma', subtitle: 'Learn more about my work at SuperReal for Comma' },
-    { src: 'path/to/MonaM.jpg', alt: 'MonaM', title: 'MonaM', subtitle: 'Learn more about my work for MonaM' },
+    { src: 'path/to/MonaM.jpg', alt: 'MonaM', title: 'MonaM Album Art', subtitle: 'Learn more about my work for MonaM' },
 ];
 
 const Main = ({ darkMode }) => {

@@ -67,27 +67,28 @@ const Carousel = ({ onImageClick }) => {
                         <div className="title-container">
                         {index === 0 ? (
     <>
-      <h3 className="image-title-small">UX Designer & Innovation Consultant</h3>
+      <h3 className="image-title-small">UX Designer & Innovation Consultant in Agency</h3>
       <h2 className="image-title-main">DAYONE</h2>
     </>
   ) : index === 1 ? (
     <>
-      <span className="image-title-small">Digital UX Designer</span>
+      <span className="image-title-small">UX Designer ­– E-Commerce</span>
       <h2 className="image-title-main">CARHARTT WIP</h2>
     </>
   ) : index === 2 ? (
     <>
-      <span className="image-title-small">Art Director</span>
+      <span className="image-title-small">Art Director Brand</span>
       <h2 className="image-title-main">EDITED</h2>
+      
     </>
   ) : index === 3 ? (
     <>
-      <span className="image-title-small">Art Director</span>
+      <span className="image-title-small">Art Director Brand</span>
       <h2 className="image-title-main">AboutYOU Redesign</h2>
     </>
   ) : index === 4 ? (
     <>
-      <span className="image-title-small">Design</span>
+      <span className="image-title-small">Design Album Cover </span>
       <h2 className="image-title-main">Conic Rose</h2>
     </>
   ) : index === 5 ? (
@@ -97,22 +98,22 @@ const Carousel = ({ onImageClick }) => {
     </>
   ) : index === 6 ? (
     <>
-      <span className="image-title-small">Designer</span>
+      <span className="image-title-small">Designer in Agency</span>
       <h2 className="image-title-main">PLASTIC MEDIA</h2>
     </>
   ) : index === 7 ? (
     <>
-      <span className="image-title-small">Art Director</span>
+      <span className="image-title-small">Art Director in Agency </span>
       <h2 className="image-title-main">MONOPOL MEDIA GmbH</h2>
     </>
   ) : index === 8 ? (
     <>
-      <span className="image-title-small">Art Director</span>
+      <span className="image-title-small">Art Director for Agency</span>
       <h2 className="image-title-main">Comma</h2>
     </>
      ) : index === 9 ? (
       <>
-        <span className="image-title-small">Art Director</span>
+        <span className="image-title-small">Designer Album Cover</span>
         <h2 className="image-title-main">MonaM</h2>
       </>
   ) : (

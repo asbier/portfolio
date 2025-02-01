@@ -16,81 +16,77 @@ import image12 from '../../Assets/Image_4_Conic Rose/How 4.png';
 import image13 from '../../Assets/Image_4_Conic Rose/How 5.png';
 import image14 from '../../Assets/Image_4_Conic Rose/Vision-F.png';
 
+const ConicRoseModalContent = () => (
+  <div className="modal-content-container">
+    <h1>Conic Rose</h1>
 
+    <div className="conicrose-image-gallery">
+      <img src={image3} alt="Final" />
+    </div>
 
-const ConicRoseModalContent= () => (
-    <div className="modal-content-container">
-    
-        <h1>Conic Rose</h1>
-    
-
-        <div className="conicrose-image-gallery">
-                    <img src={image3} alt="Final" /> 
-                    </div>
-                    
-     <p>
-
-
-        I love Music, so if I get the chance to interpret the music into a visual. I will do my best.
-        </p>
-        <p>          
-  <a href="https://conicrose.bandcamp.com/album/heller-tag" target="_blank" rel="noopener noreferrer">🌐Buy Here</a>
-</p>
-
- <section className='modal-section'>
- <h3>How I Design Covers</h3>
- <p> When approaching a project, I begin by immersing myself in the music. 
-    I listen carefully, allowing the sound to guide my initial impressions. 
+    <p>
+      I love Music, so if I get the chance to interpret the music into a visual, I will do it with pleasure.
     </p>
-    <p>  <strong>I listen  </strong> to the musicians to understand their interpretation—what story they want 
-        to tell, what emotions they aim to evoke. As we know from both psychology and human-centered design, 
-        perception is inherently subjective, shaped by personal experiences, culture, and context. 
+
+    <p>
+      <a href="https://conicrose.bandcamp.com/album/heller-tag" target="_blank" rel="noopener noreferrer">
+        🌐Buy Here
+      </a>
+    </p>
+
+    <section className="modal-section">
+      <p>
+        When approaching Album-Cover Design, I begin by immersing myself in the music. I listen carefully, allowing
+        the sound to guide my initial impressions.
+      </p>
+
+      <p>
+        I listen to the musicians to understand their interpretation—what story they want to tell, what emotions they
+        aim to evoke. As we know from both psychology and human-centered design, perception is inherently subjective,
+        shaped by personal experiences, culture, and context.
+      </p>
+
+      <p>
         My goal is to bridge their intent with how the audience might perceive and connect with the work.
- </p>
-</section>
-<section className='modal-section'>
+      </p>
 
-<p>
-<strong>I analyze </strong> market—exploring existing designs in the genre, 
-understanding what resonates with audiences, and identifying the band’s preferences. My goal is to craft something original yet instantly recognizable as a reflection of the sound.
-</p>
+      <p>
+        I analyze the market—exploring existing designs in the genre, understanding what resonates with audiences, and
+        identifying the band’s preferences. My goal is to craft something original yet instantly recognizable as a
+        reflection of the sound.
+      </p>
 
-<p>I often mix analog and digital tools to create designs that feel both organic 
-and modern. With a strong intuition for color and visualization, I aim to make covers that, 
-like the music itself, draw the right audience. As a digger myself, I know the power of a cover 
-that perfectly captures the essence of the sound.
+      <p>
+        I often mix analog and digital tools to create designs that feel both organic and modern. With a strong
+        intuition for color and visualization, I aim to make covers that, like the music itself, draw the right audience.
+        As a digger myself, I know the power of a cover that perfectly captures the essence of the sound.
+      </p>
 
-</p>
+      <div className="image-gallery">
+        <img src={image9} alt="How" />
+        <img src={image10} alt="How 2" />
+        <img src={image11} alt="How 3" />
+        <img src={image12} alt="How 4" />
+        <img src={image13} alt="How 5" />
+      </div>
 
-<div className="image-gallery">
-<img src={image9} alt="How"    />
-<img src={image10} alt="How 2" />  
-<img src={image11} alt="How 3" />  
-<img src={image12} alt="How 4" />  
-<img src={image13} alt="How 5" />  
-</div>
-</section>
+      <p>
+        What I aim to achieve are designs that visually echo the essence of the music, drawing the right audience with
+        clarity and authenticity.
+      </p>
 
-<section className='modal-section'>
-
-<p><strong>What I aim to achieve </strong>are designs that visually echo the essence of the music, drawing the right audience with 
-clarity and authenticity.
-</p>
-<div className="image-gallery">
-                    <img src={image1} alt="Vision 1" />
-                    <img src={image2} alt="Vision 2" /> 
-                    <img src={image4} alt="Vision 3" /> 
-                    <img src={image5} alt="Vision 4" />
-                    <img src={image6} alt="Vision 5" />  
-                    <img src={image7} alt="Vision 6" />  
-                    <img src={image8} alt="Vision 7" />  
-                    <img src={image14} alt="Vision-F" />
-                    </div>
-                  
- </section>
-
-    
- </div>
+      <div className="image-gallery">
+        <img src={image1} alt="Vision 1" />
+        <img src={image2} alt="Vision 2" />
+        <img src={image4} alt="Vision 3" />
+        <img src={image5} alt="Vision 4" />
+        <img src={image6} alt="Vision 5" />
+        <img src={image7} alt="Vision 6" />
+        <img src={image8} alt="Vision 7" />
+        <img src={image14} alt="Vision-F" />
+      </div>
+    </section>
+  </div>
 );
 
 export default ConicRoseModalContent;

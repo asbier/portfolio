@@ -14,71 +14,65 @@ const CarharttModalContent = () => (
         consumers who value refined design and quality while still remaining true to Carhartt's brand origins. 
 ©CARHARRT-WIP
 </p>
-<p> <strong>As UX Designer </strong> within the Digital Design Team at Carhartt, I was tasked with addressing several key challenges, blending both UX and UI design to create holistic solutions that improved user experience across various platforms.
-        </p>
 
         <div className="carhartt-image-gallery">
   <img src={image1} alt="Image1" />
   <img src={image2} alt="Image2" /></div>
         
         <section className="modal-section">
-        <h3>Help Desk development</h3>
-        <h4>Problem</h4>
-        <div className="modal-section">
-            Inifficient Customer Support.
+        <h1>Help Desk development</h1>
+        <p>Time  <big> →  </big>Within 2 Month Live</p> 
+     <h2>
+<p>As UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key challenges, blending both UX and UI design to create holistic solutions that improved user experience across various platforms.
+        </p>Inifficient Customer Support.
             Users struggled with accessing 
             help and support, making it difficult for them to resolve issues efficiently on both the web and app platforms.
-        </div>
+            </h2>
+Process<p></p>
+I conducted benchmark research, identifying key pain points and understanding the needs of our target audience. I mapped out the user journey to highlight friction points and collaborated directly with developers to ensure technical feasibility. We presented my findings and solutions to the dev team, ensuring alignment on user needs and design requirements.
 
-        <h4>Method</h4>
-        <div className="modal-section">
-            I conducted benchmark research, identifying key pain points and understanding the needs of our target audience. I mapped out the user journey to highlight friction points and collaborated directly with developers to ensure technical feasibility. We presented my findings and solutions to the dev team, ensuring alignment on user needs and design requirements.
-        </div>
-
-        <h4>Solution</h4>
-        <div className="modal-section">
-            I developed intuitive user flows and interfaces that made it easier for customers to access support, track their requests, and receive timely updates. The improved design significantly reduced service request resolution time and increased customer satisfaction.
-</div> </section>
+<p></p>Solution<p></p>
+I developed intuitive user flows and interfaces that made it easier for customers to access support, track their requests, and receive timely updates. The improved design significantly reduced service request resolution time and increased customer satisfaction.
+</section>
 
 < section className="modal-section">
 <div>
-        <h3>Checkout Experience Optimization</h3>
-        <h4>Problem</h4>
-        <div className="modal-section">
-            The checkout process was cumbersome, particularly for users in the U.S. and EU-Markets, which led to higher cart abandonment rates and a frustrating user experience.
-        </div>
+ <h1>Checkout Experience Optimization</h1>
+        <p>Time  <big> →  </big>Within 2 Month Live</p> 
+<p></p>
+<p></p>
+<h2>As UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key challenges, blending both UX and UI design to create holistic solutions that improved user experience across various platforms.
+</h2> 
+<p></p>Process<p></p>
+I conducted benchmark research, identifying key pain points and understanding the needs of our target audience. I mapped out the user journey to highlight friction points and collaborated directly with developers to ensure technical feasibility. 
+We presented my findings and solutions to the dev team, ensuring alignment on user needs and design requirements.        
 
-        <h4>Method</h4>
-        <div className="modal-section">
-            I worked closely with Digital Design Lead, and SEO Marketers to understand market-specific needs and user behavior. We all collaborated on addressing friction points in the checkout flow. I ensured the design was aligned with SEO best practices to enhance discoverability and conversion.
-        </div>
-
-        <h4>Solution</h4>
-        <div className="modal-section">
-            I redesigned the checkout system, optimizing mobile usability, improving the filter system, and simplifying the overall flow. The new design streamlined the purchasing process, resulting in lower cart abandonment rates and higher conversions.
-        </div>
+<p></p>Solution<p></p>
+I developed intuitive user flows and interfaces that made it easier for customers 
+to access support, track their requests, and receive timely updates. 
+The improved design significantly reduced service 
+request resolution time and increased customer satisfaction.       
 
         </div> 
         </section>
 
         <section className="modal-section"> 
-            <div>
-        <h3>Transitioning Design Tools from Sketch to Figma</h3>
-        <h4>Problem</h4>
-        <div className="modal-section">
-            The team was facing challenges in collaboration due to the limitations of Sketch, and it was crucial to transition to a more flexible design system.
-        </div>
+           
+        <h1>Transitioning Design Tools from Sketch to Figma</h1>
+        <p>Time<big> →  </big>Within 1 Week</p> 
 
-        <h4>Method</h4>
-        <div className="modal-section">
+        
+        <h2>The team was facing challenges in collaboration due to the limitations of Sketch, and it was crucial to transition to a more flexible design system.
+        </h2>
+            <p></p>Process<p></p>
+       
             I worked closely with the Design Lead to evaluate Figma’s features and its potential to improve workflow.
-        </div>
+       
 
-        <h4>Solution</h4>
-        <div className="modal-section">
+        <h4>Solution</h4> 
             By transitioning the design system to Figma, I improved team collaboration, allowing for real-time feedback, seamless handoffs, and more efficient workflows. This also improved consistency across design outputs and made cross-functional collaboration smoother.
-        </div>
-        </div>
+       
+    
 </section>
 
 <p>

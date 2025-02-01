@@ -1,5 +1,9 @@
 /* Modal container */
 .modal {
+  font-family: Lausanne, sans-serif;
+  font-size: 1rem;
+    font-weight: 600;
+    line-height: 100%;
   display: flex;
   position: fixed;
   top: 0;
@@ -15,22 +19,33 @@
   backdrop-filter: blur(10px); /* Hintergrund unscharf machen */
 }
 
+.modal h3 {
+  font-family: Cormorant Garamond;
+  font-weight: 400;
+}
+
+.modal h2 {
+  font-family: Lausanne, sans-serif;
+  font-weight: 400;
+  line-height: 2.4rem;
+}
+
 .modal-content-container {
-  font-size: clamp(0.875rem, 1.5vw, 1.75rem); /* Flexible Schriftgröße */
-  line-height: 1.5; /* Relativer Zeilenabstand */
+
+  font-size: clamp(0.1rem, 1.5vw, 3rem); /* Flexible Schriftgröße */
+  line-height: 2rem; /* Relativer Zeilenabstand */
   padding: clamp(1rem, 5vw, 3rem); /* Flexibles Padding */
 }
  
  
- .bold-text {
-   font-weight: bold;
- }
+ 
 
 /* Modal sections */
 .modal-section {
   padding: clamp(10px, 5vw, 50px);
   margin-bottom: 1rem;
-  background-color: rgb(249, 249, 249);
+  background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); 
+  background-color: rgb(239, 239, 239);
   border-radius: 8px;
   position: relative;
   overflow: hidden; /* Sorgt dafür, dass der Effekt nicht überläuft */
@@ -77,7 +92,8 @@
   max-width: 1000px;
   max-height: 90vh;
   padding: 1rem;
-  background-color: #fff;
+  background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); 
+  background-color: #fffdf5e1;
   margin: auto;
   border-radius: px;
   display: flex;
@@ -126,20 +142,20 @@
 
 /* Hover effect for close button */
 .modal-content .close:hover {
-  color: #ff0000; /* Red on hover for better visibility */
+  color: #40ff00; /* Red on hover for better visibility */
   transition: color 0.3s ease; /* Smooth hover transition */
 }
 /* Style for the links */
 .modal-content p a {
-  font-size: 0.8rem; /* Smaller font size */
-  font-weight: 300; /* Thin font weight */
+  font-size: 1rem; /* Smaller font size */
+  font-weight: 400; /* Thin font weight */
   text-decoration: none; /* Remove underline (optional) */
   color: #002247; /* Default link color */
   transition: color 0.3s ease; /* Smooth hover effect */
 }
 
 .modal-content p a:hover {
-  color: #0056b3; /* Darker color on hover */
+  color: #40ff00; /* Darker color on hover */
   text-decoration: underline; /* Optional hover underline */
 }
 /* Mobile-specific styles for close button */
@@ -151,7 +167,7 @@
   }
 
   .modal-content .close:hover {
-    color: #ff5757; /* More prominent hover color for mobile */
+    color: #40ff00; /* More prominent hover color for mobile */
   }
 }
 
