@@ -13,18 +13,31 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Set up Git user information
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+
     - name: Install Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '18'
 
     - name: Install dependencies
       run: npm install
 
     - name: Build project
-      run: npm run build
+      run: |
+        npm run build
+        touch build/.nojekyll  # Fixes issues with underscores in file paths
+
+    - name: Create CNAME file for custom domain
+      run: echo "www.annemariesauerbier.com" > build/CNAME
 
     - name: Deploy to GitHub Pages
       env:
-        REACT_APP_PASSWORD: ${{ secrets.REACT_APP_PASSWORD }}
-      run: npm run deploy
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        git config --global url."https://$GH_TOKEN@github.com/".insteadOf "https://github.com/"
+        npm install -g gh-pages
+        npx gh-pages -d build -b gh-pages -t true
