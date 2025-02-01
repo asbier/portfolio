@@ -11,7 +11,7 @@ const PasswordPage = ({ onPasswordCorrect }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const correctPassword = process.env.REACT_APP_PASSWORD; // Use environment variable
+    const correctPassword = "best-password";
 
     if (password === correctPassword) {
       onPasswordCorrect();
