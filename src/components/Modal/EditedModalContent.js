@@ -92,7 +92,7 @@ const EditedModalContent = () => (
     </section>
 
     <p>
-      <strong>Looking back</strong>, it was an exhilarating, fast-paced journey. Both brands experienced rapid growth over those years, and every initiative we launched seemed to succeed. It was an exciting time—full of creativity, risk, and reward. There were moments of self-doubt and times when improvisation was necessary—times I wished for more time—but these challenges made the experience all the more memorable. Ultimately, it was a period of growth and discovery that felt truly magical. If given the chance, I would relive those years in the same way, and likely make the same decision to move on when I did.
+      <strong>Looking back</strong>, it was an exhilarating, fast paced journey. Both brands experienced rapid growth over those years, and every initiative we launched seemed to succeed. It was an exciting time—full of creativity, risk, and reward. There were moments of self-doubt and times when improvisation was necessary—times I wished for more time—but these challenges made the experience all the more memorable. Ultimately, it was a period of growth and discovery that felt truly magical. If given the chance, I would relive those years in the same way, and likely make the same decision to move on when I did.
     </p>
 
     <p>
