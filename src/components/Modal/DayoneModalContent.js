@@ -7,8 +7,8 @@ import Image4 from '../../Assets/Image_0_ dayone/Insights User 4.png';
 import Image5 from '../../Assets/Image_0_ dayone/slider-final.png';
 import Image6 from '../../Assets/Image_0_ dayone/Insights User 3.png';
 
-import Video1 from '/Users/annemarissauerbier/Desktop/portfolio/src/Assets/Image_0_ dayone/PDPvideo.mp4'; // Example path
-import Video2 from '/Users/annemarissauerbier/Desktop/portfolio/src/Assets/Image_0_ dayone/Demo New Filter Experience viedeo.mp4'; // Example path
+import Video1 from '../../Assets/Image_0_ dayone/PDPvideo.mp4'; // Example path
+import Video2 from '../../Assets/Image_0_ dayone/Demo New Filter Experience viedeo.mp4'; // Example path
 
 
 
