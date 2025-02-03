@@ -1,17 +1,9 @@
-body.body-dark {
-  background-color: #000000;
-  color: #ffffff;
-  min-height: 100vh;
-  margin: 0;
-  overflow-x: hidden; /* Prevent horizontal scroll on the body */
-}
-
-body.body-light {
+.body{
   background-color: #fffdf5ca;
   background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); /* Paper texture */
   color: #000000a7;
   min-height: 100vh;
-  margin: 0;
+  margin: 2rem;
   overflow-x: hidden; /* Prevent horizontal scroll on the body */
 }
 
@@ -19,4 +11,16 @@ body.body-light {
   margin: 2rem 30rem 2rem 2rem ;
 }
 
+
+.pages a {
+  font-size: 1rem;
+  display: block;
+  margin-top: 1em;
+  color: #484848; /* Typical link color */
+  text-decoration: none;
+}
+
+.pages a:hover {
+  text-decoration: underline;
+}
 

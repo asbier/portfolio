@@ -1,7 +1,7 @@
 /* Modal container */
 .modal {
   font-family: Lausanne, sans-serif;
-  font-size: 1rem;
+  font-size: 1.3rem;
     font-weight: 600;
     line-height: 100%;
   display: flex;
@@ -19,8 +19,10 @@
   backdrop-filter: blur(10px); /* Hintergrund unscharf machen */
 }
 
+
+
 .modal h3 {
-  font-family: Cormorant Garamond;
+  font-family: Lausanne, sans-serif;
   font-weight: 400;
 }
 
@@ -36,7 +38,7 @@
   line-height: 2rem; /* Relativer Zeilenabstand */
   padding: clamp(1rem, 5vw, 3rem); /* Flexibles Padding */
 }
- 
+
  
  
 
@@ -119,7 +121,7 @@
 .modal-content-container a {
     display: block;
     margin-top: 1em;
-    color: #1a006e; /* Typical link color */
+    color: #000000; /* Typical link color */
     text-decoration: none;
 }
 

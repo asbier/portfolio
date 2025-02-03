@@ -33,6 +33,7 @@ nav.dark {
 }
 
 ul {
+  font-family: Lausanne, sans-serif;
   display: inline-flex;
   gap: 0.6rem;
   padding: 0;

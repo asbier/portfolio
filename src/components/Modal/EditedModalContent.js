@@ -27,7 +27,6 @@ const EditedModalContent = () => (
     <p>
       With modern looks, current trend pieces, and a strong focus on the house-owned brand, EDITED stands for a unique mix of clothes, accessories, and shoes for women passionate about fashion. Created in a multifaceted city like Berlin by an international creative team, EDITED stands out with inspiring and trend-focused fashion that is simply fun. © EDITED the Label.
     </p>
-
     <p>
       I started at EDITED when the brand was just a year old. EDITED, a daughter company of ABOUT YOU, focuses on trend-driven, data-backed fashion. As an in-house label, EDITED blends contemporary styles with accessibility, offering curated collections that reflect emerging trends. The brand is known for its minimal yet expressive aesthetic, appealing to fashion-conscious consumers. My role involved shaping its art direction, ensuring a cohesive brand identity across digital and print.
     </p>

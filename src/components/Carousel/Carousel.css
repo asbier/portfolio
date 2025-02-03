@@ -51,12 +51,14 @@
 }
 
 .image-title-small {
+  font-family: Lausanne, sans-serif;
   font-size: 0.9rem;
   font-weight: normal;
   margin-bottom: 5px;
 }
 
 .image-title-main {
+  font-family: Lausanne, sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
