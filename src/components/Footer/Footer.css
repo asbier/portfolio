@@ -1,7 +1,7 @@
 footer {
   margin-top: 1rem;
   padding: 1rem;
-  background-color: #fffdf5ca;
+  background-color:  #fffdf5ca;
   background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); /* Paper texture */
   font-size: 1rem;
   position: sticky;
@@ -13,7 +13,7 @@ footer {
 
 footer.dark {
   background-color: #000000;
-  color: #fff3ed;
+  color:  #fffdf5ca;
 }
 
 @media screen and (max-width: 768px) {

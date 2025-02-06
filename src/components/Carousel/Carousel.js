@@ -67,8 +67,8 @@ const Carousel = ({ onImageClick }) => {
                         <div className="title-container">
                         {index === 0 ? (
     <>
-      <h3 className="image-title-small">UX Designer & Innovation Consultant in Agency</h3>
-      <h2 className="image-title-main">DAYONE</h2>
+      <h3 className="image-title-small">UX Designer & Innovation Consultant</h3>
+      <h2 className="image-title-main">Volkswagen x DAYONE</h2>
     </>
   ) : index === 1 ? (
     <>

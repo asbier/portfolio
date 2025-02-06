@@ -1,9 +1,9 @@
 /* Modal container */
 .modal {
   font-family: Lausanne, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
     font-weight: 600;
-    line-height: 100%;
+    line-height: 120%;
   display: flex;
   position: fixed;
   top: 0;
@@ -20,7 +20,6 @@
 }
 
 
-
 .modal h3 {
   font-family: Lausanne, sans-serif;
   font-weight: 400;
@@ -29,18 +28,25 @@
 .modal h2 {
   font-family: Lausanne, sans-serif;
   font-weight: 400;
-  line-height: 2.4rem;
+  line-height: 120%;
 }
 
 .modal-content-container {
-
-  font-size: clamp(0.1rem, 1.5vw, 3rem); /* Flexible Schriftgröße */
-  line-height: 2rem; /* Relativer Zeilenabstand */
+  font-size: clamp(0.1rem, 1.5vw, 2rem); /* Flexible Schriftgröße */
+  line-height: 120%; /* Relativer Zeilenabstand */
   padding: clamp(1rem, 5vw, 3rem); /* Flexibles Padding */
 }
 
  
  
+/* Captions */
+.image-caption {
+  color: rgb(165, 165, 165);
+  font-size: 0.8rem; /* 16pt as requested */
+  font-weight: 400;
+  margin-top: 0.4rem; /* Space between image and caption */
+}
+
 
 /* Modal sections */
 .modal-section {
@@ -70,6 +76,76 @@
   z-index: 1; /* Bringt die Kontur nach vorne */
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+}
+
+.responsive-columns {
+  display: grid;
+  grid-template-columns: 1fr; /* Default: single column */
+  gap: 1.4rem;
+  margin: 1.4rem 0;
+  align-items: start; /* Align content to the top */
+}
+
+.column {
+  padding: 0rem;
+}
+
+.column h3 {
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.fontWeight {
+  font-weight: 400;
+  line-height: 110%;
+}
+.checklist {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+}
+
+.checklist li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 0rem;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+}
+
+
+
+/* Medium Screens: Two Columns */
+@media (min-width: 768px) {
+  .responsive-columns {
+    grid-template-columns: 1fr ;
+    align-items: start;
+  }
+}
+
+/* Large Screens: Three Columns */
+@media (min-width: 1200px) {
+  .responsive-columns {
+    grid-template-columns: 1fr  ;
+    gap: 2rem;
+    align-items: start; /* Ensure content sticks to the top */
+  }
+
+  .column h3 {
+    font-size: 1rem;
+  }
+
+  ul li {
+    font-size: 1rem;
+    line-height: 2;
+  }
 }
 
 /* Animation beim Hover aktivieren */
@@ -120,13 +196,14 @@
 
 .modal-content-container a {
     display: block;
-    margin-top: 1em;
+    margin: auto;
     color: #000000; /* Typical link color */
     text-decoration: none;
 }
 
 .modal-content-container a:hover {
     text-decoration: underline;
+    margin: auto;
 }
 
 .modal-content .close {
