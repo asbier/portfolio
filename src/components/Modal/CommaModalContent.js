@@ -1,5 +1,5 @@
 import React from 'react';
-import './CommaModalContent.css';
+import './modal-common.css';
 import image1 from '../../Assets/Image_8_Comma/Image 1.png';
 import image2 from '../../Assets/Image_8_Comma/Image 2.png';
 import image3 from '../../Assets/Image_8_Comma/Image 3.png';

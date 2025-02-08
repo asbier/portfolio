@@ -14,7 +14,6 @@ import CommaModalContent from '../Modal/CommaModalContent';
 import MonaMModalContent from '../Modal/MonaMModalContent';
 import './Main.css';
 
-
 const imagesData = [
     { src: 'path/to/dayone.jpg', alt: 'DAYONE', title: 'DAYONE', subtitle: 'Learn more about my Projects at DAYONE' },
     { src: 'path/to/carhartt.jpg', alt: 'Carhartt-WIP', title: 'Carhartt Digital UX Design', subtitle: 'Learn more about my Carhartt Projects' },
@@ -28,7 +27,7 @@ const imagesData = [
     { src: 'path/to/MonaM.jpg', alt: 'MonaM', title: 'MonaM Album Art', subtitle: 'Learn more about my work for MonaM' },
 ];
 
-const Main = ({ darkMode }) => {
+const Main = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState(null);
 
@@ -49,7 +48,6 @@ const Main = ({ darkMode }) => {
             case 4:
                 setModalContent(<ConicRoseModalContent />);
                 break;
-
             case 5:
                 setModalContent(<HeroesnHeroinesModalContent/>);
                 break;
@@ -77,7 +75,7 @@ const Main = ({ darkMode }) => {
     };
 
     return (
-        <main className={darkMode ? "body-dark" : "body-light"}>
+        <main>
             <Carousel onImageClick={handleImageClick} images={imagesData} />
             <Modal isOpen={isModalOpen} onClose={closeModal} content={modalContent} />
         </main>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './modal-common.css';
 import image1 from '../../Assets/Image_5_Heroesnheroines/Image 8.png';
 
 const HeroesnHeroinesModalContent = () => (

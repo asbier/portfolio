@@ -1,13 +1,11 @@
 import React from 'react';
-import './AboutYouModalContent.css';
+import './modal-common.css';
 import image1 from '../../Assets/Image 3_AboutYou/final.png';
 import image2 from '../../Assets/Image 3_AboutYou/ayawards.png';
 
 const AboutYouModalContent = () => (
     <div className="modal-content-container">
         <h1>About You</h1>
-
-        <section className="modal-section">
             <p>
                 ABOUT YOU is one of Europe’s leading fashion e-commerce platforms, revolutionizing online shopping through personalization and digital innovation. 
                 Launched in 2014 by the Otto Group, the platform merges content and commerce, offering a curated and inspiring shopping experience driven by AI and influencer collaborations.
@@ -15,7 +13,6 @@ const AboutYouModalContent = () => (
             <p>
                 In 2017, I contributed to the brand’s creative direction and rebranding efforts, working on strategy, personalization, and user experience.
             </p>
-        </section>
 
         <section className="modal-section">
             <h2>Case 1 — Influencer and Celebrity Engagement</h2>
@@ -26,7 +23,7 @@ const AboutYouModalContent = () => (
                 I collaborated with renowned external designers and influencers, creating strategic partnerships that elevated the brand’s visibility and market positioning. Additionally, I worked on co-branded campaigns that aligned the ABOUT YOU aesthetic with established fashion icons, making the platform more appealing to a larger audience.
             </p>
 
-            <div className="aboutyou-image-gallery">
+            <div className="image-gallery">
                 <img src={image1} alt="Influencer and Celebrity Campaigns" />
             </div>
         </section>

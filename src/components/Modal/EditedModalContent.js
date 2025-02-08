@@ -1,5 +1,5 @@
 import React from 'react';
-import './EditedModalContent.css';
+import './modal-common.css';
 import image1 from '../../Assets/Image_2_EDITED/Image 1.png';
 import image2 from '../../Assets/Image_2_EDITED/Image 2.png';
 import image3 from '../../Assets/Image_2_EDITED/Image 3.png';

@@ -1,15 +1,15 @@
 .container-page {
   font-family: Lausanne, sans-serif;
   font-size: 2rem;
-    font-weight: 600;
-    line-height: 100%;
-    background-color: #fffdf5ca;
-    background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); 
+  font-weight: 600;
+  line-height: 100%;
+  background-color: #ECE9E4;
+  background-image: url('https://www.transparenttextures.com/patterns/ecailles.png');
   display: flex;
   justify-content: center;
   margin: 0;
   gap: 2rem;
-  flex-grow: 2;
+  flex-grow: 1; /* Make this stretch to fill remaining space */
   align-items: flex-start;
+  padding: 2rem; /* Add padding if needed */
 }
-

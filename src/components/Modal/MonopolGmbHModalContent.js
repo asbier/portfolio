@@ -1,5 +1,5 @@
 import React from 'react';
-import './MonopolGmbHModalContent.css';
+import './modal-common.css';
 import image1 from '../../Assets/Image_7_Monopol GmbH/image-1.png';
 
 const MonopolGmbHModalContent = () => (

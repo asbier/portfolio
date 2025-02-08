@@ -6,7 +6,7 @@ nav {
   height: 60px;
   
   z-index: 1;
-  background-color: #fffdf5db;
+  background-color: #ECE9E4;
   color: inherit;
   transition: background-color 0.3s, color 0.3s;
   position: sticky;
@@ -15,7 +15,7 @@ nav {
 
 nav.dark {
   background-color: #000000;
-  color: #fff3ed;
+  color: #ECE9E4;
   background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); /* Paper texture */
 }
 

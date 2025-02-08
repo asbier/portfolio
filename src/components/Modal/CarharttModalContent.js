@@ -1,5 +1,5 @@
 import React from 'react';
-import './CarharttModalContent.css';
+import './modal-common.css';
 import Image1 from '../../Assets/Image_1_carhartt_wip/Image1.png';
 import Image2 from '../../Assets/Image_1_carhartt_wip/Image2.png';
 import Image3 from '../../Assets/Image_1_carhartt_wip/Image-1.png';
@@ -20,7 +20,7 @@ const CarharttModalContent = () => (
 </p>
 
         
-<figure className="carhartt-image-gallery">
+<figure className="image-gallery">
           <img src={Image1} alt="Research" />
           <img src={Image2} alt="Research" />
           <figcaption className="image-caption">Carhartt-WIP.US & Carhartt-WIP.EU</figcaption>
@@ -73,7 +73,7 @@ const CarharttModalContent = () => (
 Process<p></p>
 I conducted benchmark research, identifying key pain points and understanding the needs of our target audience. I mapped out the user journey to highlight friction points and collaborated directly with developers to ensure technical feasibility. We presented my findings and solutions to the dev team, ensuring alignment on user needs and design requirements.
 
-<figure className="carhartt-image-gallery">
+<figure className="image-gallery">
           <img src={Image3} alt="Research" />
           <figcaption className="image-caption">Examples of the Study Result</figcaption>
         </figure>
@@ -101,7 +101,7 @@ service request resolution time and increased customer satisfaction.
 I conducted benchmark research, identifying key pain points and understanding the needs of our target audience. I mapped out the user journey to highlight friction points and collaborated directly with developers to ensure technical feasibility. 
 We presented my findings and solutions to the dev team, ensuring alignment on user needs and design requirements.        
 
-<figure className="carhartt-image-gallery">
+<figure className="image-gallery">
           <img src={Image3} alt="Research" />
           <figcaption className="image-caption">Examples of the Study Result</figcaption>
         </figure>
@@ -131,7 +131,7 @@ request resolution time and increased customer satisfaction.
        
 
 
-            <figure className="carhartt-image-gallery">
+            <figure className="image-gallery">
           <img src={Image3} alt="Research" />
           <figcaption className="image-caption">Examples of the Study Result</figcaption>
         </figure>

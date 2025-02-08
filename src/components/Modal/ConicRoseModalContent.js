@@ -1,5 +1,5 @@
 import React from 'react';
-import './ConicRoseModalContent.css';
+import './modal-common.css';
 
 import image1 from '../../Assets/Image_4_Conic Rose/Vision 1.png';
 import image2 from '../../Assets/Image_4_Conic Rose/Vision 2.png';
@@ -20,7 +20,7 @@ const ConicRoseModalContent = () => (
   <div className="modal-content-container">
     <h1>Conic Rose</h1>
 
-    <div className="conicrose-image-gallery">
+    <div className="image-gallery">
       <img src={image3} alt="Final" />
     </div>
 

@@ -1,0 +1,288 @@
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap; /* Allow the images to wrap when necessary */
+    justify-content: center; /* Center images horizontally */
+    align-items: center; /* Center images vertically */
+    gap: 10px; /* Add a gap between images */
+    margin: 20px 25px;
+    width: 95%;
+    max-width: 95%;
+}
+
+
+.image-gallery img {
+  align-content: center;
+  height: auto;    /* Maintain aspect ratio */
+  width: 100%;
+  margin: 10px;
+  transition: transform 0.3s ease;
+  display: block;   /* Make sure the image is a block element */
+}
+
+.modal-content-container {
+  /* Adjust the max width to prevent overflowing */
+  align-content: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.video-container {
+  align-content: center;
+  width: 100%;           /* Make sure the container takes up 100% of its parent */
+  max-width: 80%;        /* Adjust this as needed to limit the container width */
+  margin: 20px auto;     /* Center the container */
+  box-sizing: border-box;
+}
+
+.video-gallery {
+  align-content: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px 0;
+  width: 100%;    /* Ensure gallery takes up full container width */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.video-gallery video { /* Ensure videos never exceed their container's width */
+  width: 100%;      /* Make videos responsive to the container */
+  max-width: 400px; /* Limit max-width of videos */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+  object-fit: scale-down; /* Ensure videos stay within container's bounds */
+  box-sizing: border-box; /* Include padding/border in width calculation */
+  flex-direction: column;
+  align-content: center;
+}
+
+/* Modal container */
+.modal {
+  font-family: Lausanne, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 120%;
+  display: flex;
+  align-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  backdrop-filter: blur(10px); /* Background blur */
+}
+.modal-section {
+  font-family: Lausanne, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 120%;
+  padding: clamp(10px, 5vw, 50px);
+  margin-bottom: 1rem;
+  background-color: #fffdf5ca;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid transparent; /* Invisible border for alignment */
+  z-index: 0;
+  box-sizing: border-box;
+}
+
+
+/* Modal content styles */
+.modal-content {
+  position: relative;
+  width: 75%;
+  max-width: 1000px;
+  align-content: center;
+  max-height: 90vh;
+  padding: 1rem;
+  background-color: #fffdf5e1;
+  margin: auto;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Close button styles */
+.modal-content .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  color: #000;
+  padding: 0;
+  line-height: 1;
+}
+
+.modal-content .close:hover {
+  color: #40ff00;
+  transition: color 0.3s ease;
+}
+
+/* FadeIn animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Image caption (grey and smaller font size) */
+.image-caption {
+  color: rgb(165, 165, 165); /* Soft grey text */
+  font-size: 0.8rem; /* Small font size */
+  font-weight: 400; /* Thin font weight */
+  margin-top: 0.4rem; /* Small space between image and caption */
+  text-align: center; /* Center-align the caption */
+  line-height: 1.5; /* Slightly increased line height for readability */
+  letter-spacing: 0.02rem; /* Optional: Slight letter-spacing for clarity */
+}
+
+/* Modal grid for columns */
+.responsive-columns {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for mobile */
+  gap: 1.4rem;
+  margin: 1.4rem 0;
+}
+
+.column {
+  padding: 0;
+  align-items: center;
+}
+
+.column h3 {
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.column h4 {
+  font-weight: 400;
+}
+
+/* Checklist styling */
+.checklist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid; /* Use grid layout */
+  grid-template-columns: auto 1fr; /* Bullet in the first column, text in the second */
+  gap: 10px 20px; /* Vertical and horizontal space between items */
+}
+
+
+/* List item styling */
+.checklist li {
+  display: contents; /* Makes each list item behave like its content */
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1.1rem;
+  border-top: 10px;
+}
+
+/* Custom bullet point */
+.checklist li::before {
+  content: "✦";         /* Custom bullet */
+  font-weight: 400;
+  font-size: 19.2px;    /* Bullet size */
+  color: rgb(0, 0, 0);  /* Bullet color */
+  grid-column: 1;       /* Force the bullet to stay in the first column */
+  align-self: center;   /* Vertically center the bullet */
+}
+
+
+
+/* Media Queries for different screen sizes */
+
+/* Modal content adjustments for mobile */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    padding: 1.5rem; /* Adjust padding on mobile */
+  }
+
+  .modal-content-container {
+    font-size: 0.875rem;
+    line-height: 1.3rem;
+    padding: 1rem;
+  }
+
+  .modal-section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal-content .close {
+    font-size: 1.5rem; /* Smaller close button */
+  }
+
+  /* Adjust image gallery for mobile */
+  .image-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Smaller columns */
+    gap: 8px; /* Reduced gap */
+  }
+
+  /* Adjust image caption for smaller screens */
+  .image-caption {
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+  }
+}
+
+/* Hover effect on touch devices */
+@media (hover: none) {
+  .image-gallery img:hover {
+    transform: none; /* Disable hover effect on touch devices */
+  }
+}
+
+
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    /* Image gallery styling */
+    .image-gallery img {
+        max-width: 100%;  /* Ensure images never exceed their container's width */
+        width: 100%;      /* Make images responsive to the container */
+        height: auto;     /* Maintain aspect ratio */
+        border-radius: 8px; /* Optional: Add rounded corners */
+        transition: transform 0.3s ease; /* Smooth hover effect */
+    }
+
+    /* Video gallery styling */
+    .video-container {
+        max-width: 100%; /* Ensure the container takes full width on small screens */
+    }
+
+    .video-gallery {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        gap: 20px;
+        justify-content: center;
+        margin: 20px 0;
+        flex-direction: column; /* Stack videos vertically on small screens */
+        align-items: center;    /* Center videos when stacked */
+    }
+
+    .video-gallery video {
+        width: 100%;        /* Make videos fill their container */
+        max-width: 100%;    /* Ensure videos never exceed the container's width */
+        border-radius: 12px; /* Rounded corners for videos */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+        object-fit: contain;  /* Ensure videos stay within container's bounds */
+    }
+}

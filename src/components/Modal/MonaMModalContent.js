@@ -1,5 +1,5 @@
 import React from 'react';
-import './MonaMModalContent.css';
+import './modal-common.css';
 
 const MonaMModalContent = () => (
     <div className="modal-content-container">

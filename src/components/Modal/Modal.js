@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import './Modal.css';
+import './modal-common.css';
 
 const Modal = ({ isOpen, onClose, content }) => {
     if (!isOpen) return null;

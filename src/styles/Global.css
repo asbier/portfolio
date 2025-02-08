@@ -1,22 +1,28 @@
-.body{
-  background-color:  #fffdf5ca;
-  background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); /* Paper texture */
-  color: #ffffffa7;
-  min-height: 100vh;
-  margin: 2rem;
-  overflow-x: hidden; /* Prevent horizontal scroll on the body */
+/* Ensure html and body take up the full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #ECE9E4;
 }
 
-
-
+.body {
+  background-color: #ECE9E4;
+  background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); /* Paper texture */
+  color: #ECE9E4;
+  min-height: 100vh;
+  margin: 0; /* Remove margin */
+  padding: 2rem; /* Use padding instead if spacing is needed */
+  overflow-x: hidden; /* Prevent horizontal scroll on the body */
+  display: flex;
+  flex-direction: column;
+}
 
 .pages a {
   font-size: 1rem;
   display: block;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  color: #ffffff; /* Typical link color */
+  color: #ECE9E4; /* Typical link color */
   text-decoration: none;
   align-items: flex-start;
 }
-

@@ -1,26 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Ensure this is properly imported
 import './Nav.css';
-import './Toggler.css';
-function Nav(props) {
+
+function Nav() {
     return (
-        <nav className={props.darkMode ? "nav dark" : "nav"}> {/* Apply dark class based on darkMode */}
+        <nav className="nav">
             <Link to="/" className="nav-logo">🔮</Link> {/* Add class for styling */}
             <ul>
                 <li><Link to="/About">ABOUT</Link></li>
                 <li><Link to="/Contact">CONTACT</Link></li>
                 <li><Link to="/Privacy">PRIVACY</Link></li>
             </ul>
-            <div className="toggler">
-                <p className="toggler--light">🌞</p>
-                <div
-                    className={`toggler--slider ${props.darkMode ? "dark" : ""}`} // Apply dark class to slider
-                    onClick={props.toggleDarkMode}
-                >
-                    <div className="toggler--slider--circle"></div>
-                </div>
-                <p className="toggler--dark">🌚</p>
-            </div>
         </nav>
     );
 }
