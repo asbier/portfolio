@@ -1,15 +1,12 @@
-import React from "react"
-
-
-
+import React from "react";
+import "./about.css"; // Import the styles
 
 function Contact() {
     return (
         <div className="pages">
-<h3> CONTACT </h3><a href="mailto:annemariesauerbier@googlemail.com"> E-MAIL Me</a>
+            <a className="cta-button" href="mailto:annemariesauerbier@googlemail.com">CONTACT</a>
         </div>
-        
-    )
+    );
 }
 
-export default Contact
+export default Contact;

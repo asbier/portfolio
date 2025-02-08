@@ -1,38 +1,34 @@
 import React, { useState } from "react";
-
+import "./about.css"; // Import the styles
 
 function About(props) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <div className={props.darkMode ? "dark-background" : "light-background"}>
             <div className="abstand">
                 <h2>ABOUT</h2>
                 <p><strong>
-                    I am a product designer and humanity-centered thinker. 
+                I am a product designer and humanity-centered thinker. 
                     Collaborating within a network of creative minds, my interdisciplinary practice bridges design, technology, 
                     research, and user advocacy to craft thoughtful, inclusive solutions that shape meaningful experiences.
                     Currently working at DAYONE as a UX Designer and Digital Transformation Consultant, I focus 
-                    on creating user-centric systems and seamless interfaces.
-                </strong></p>
-
-                <p><strong>By consulting and facilitating</strong>, I contribute to fostering inclusive spaces and 
+                    on creating user-centric systems and seamless interfaces.By consulting and facilitating, I contribute 
+                    to fostering inclusive spaces and 
                     exploring how humanity-centered design can shape better presents and futures.
-                </p>
+                </strong></p>
 
                 {/* CTA Button */}
                 <button 
                     onClick={() => setIsExpanded(!isExpanded)} 
-                    className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+                    className="cta-button"
                 >
                     {isExpanded ? "Read Less" : "Read More About My Journey"}
                 </button>
 
                 {/* Collapsible Section */}
-                {isExpanded && (
-                    <div className="mt-4 transition-opacity duration-300 ease-in-out">
-                        <p><strong>💭 Before joining DAYONE</strong></p>  
-                        <p>I didn’t fully grasp the significance of emerging roles in creating products, 
+                <div className={`collapsible-section ${isExpanded ? "expanded" : ""}`}>
+                    <p><strong>💭 Before joining DAYONE</strong></p>  
+                    <p>I didn’t fully grasp the significance of emerging roles in creating products, 
                             building culture, and generating awareness—elements crucial to connecting with people. Roles like UX, UI, 
                             product strategy, service design, analytics, and engineering fit into broader concepts such as Product, 
                             Service, and Machine Design, all of which ultimately fall under the umbrella of Design.
@@ -43,7 +39,7 @@ function About(props) {
                             not necessarily expected to handle backend development or full-stack frontend work. However, depending on their learning 
                             and experience, they might be capable of it. The truth is, there’s no direct, predefined path in times of a revolution. 
                         </p>
-                        <p>Call it the 4th. We are in a time where the convergence of design, technology, and human-centered practices is reshaping industries, 
+                        <p>We are in a time where the convergence of design, technology, and human-centered practices is reshaping industries, 
                             economies, and the very nature of work. This transition requires individuals and organizations to adapt quickly to new skill sets 
                             and new ways of thinking—similar to previous revolutions in history.
                         </p>
@@ -65,7 +61,7 @@ function About(props) {
                             interactions, requiring an understanding of both user behavior and technical feasibility. A well-rounded designer—whether called Product, 
                             UX, UI, Digital Designer, or Graphic Designer—must also understand either the backend structures in the digital realm or the physical space 
                             (e.g., how APIs work, how data is processed, and which methods or materials to use) to ensure design aligns with execution, creating seamless 
-                            user experiences.
+                            user e xperiences.
                         </p>
                         <p>Ultimately, roles in design, marketing, and engineering aren’t isolated; they form a unified process to deliver experiences that meet both 
                             user needs and business goals. While the mediums—digital, physical, virtual, etc.—evolve, the core objective remains the same: designing solutions 
@@ -75,11 +71,12 @@ function About(props) {
                             doesn’t succeed. To create truly effective, human-centered solutions, design, marketing, analytics, and technical execution must collaborate. 
                             Each skill set must be deeply understood, placing the right people into the right positions within the "machine" of the company.
                         </p>
-                    </div>
-                )}
+                </div>
             </div>
-        </div>
+    
     );
 }
+
+
 
 export default About;

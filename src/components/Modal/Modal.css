@@ -2,159 +2,90 @@
 .modal {
   font-family: Lausanne, sans-serif;
   font-size: 1.2rem;
-    font-weight: 600;
-    line-height: 120%;
+  font-weight: 600;
+  line-height: 120%;
   display: flex;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */ 
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
   justify-content: center;
   align-items: center;
   z-index: 9999;
   overflow: hidden;
   -webkit-backdrop-filter: blur(10px); /* Safari support */
-  backdrop-filter: blur(10px); /* Hintergrund unscharf machen */
+  backdrop-filter: blur(10px); /* Background blur */
 }
 
-
-.modal h3 {
-  font-family: Lausanne, sans-serif;
-  font-weight: 400;
-}
-
-.modal h2 {
-  font-family: Lausanne, sans-serif;
-  font-weight: 400;
-  line-height: 120%;
-}
-
+/* Modal content container */
 .modal-content-container {
-  font-size: clamp(0.1rem, 1.5vw, 2rem); /* Flexible Schriftgröße */
-  line-height: 120%; /* Relativer Zeilenabstand */
-  padding: clamp(1rem, 5vw, 3rem); /* Flexibles Padding */
+  font-size: clamp(1rem, 2.5vw, 2rem); /* Flexible font size */
+  line-height: 120%;
+  padding: clamp(1rem, 5vw, 3rem); /* Flexible padding */
 }
 
- 
- 
-/* Captions */
-.image-caption {
-  color: rgb(165, 165, 165);
-  font-size: 0.8rem; /* 16pt as requested */
+.modal-content-container h2 {
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 100%;
+  font-weight: 400; /* Control line height */
+}
+
+.modal-content-container h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 400;
-  margin-top: 0.4rem; /* Space between image and caption */
 }
 
+.modal-content-container h4 {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+.modal-content-container p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.modal-content-container a {
+  font-size: clamp(0.8rem, 1.5vw, 1.2rem); /* Flexible link size */
+}
 
 /* Modal sections */
 .modal-section {
   padding: clamp(10px, 5vw, 50px);
   margin-bottom: 1rem;
-  background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); 
   background-color: rgb(239, 239, 239);
   border-radius: 8px;
   position: relative;
-  overflow: hidden; /* Sorgt dafür, dass der Effekt nicht überläuft */
-  border: 3px solid transparent; /* Wichtiger Trick für die Kontur */
+  overflow: hidden;
+  border: 3px solid transparent; /* Invisible border for the effect */
+  z-index: 0;
+  box-sizing: border-box;
 }
-
-/* Shining Neon Border Effekt */
+/* Shining Neon Border Effect */
 .modal-section::before {
   content: "";
   position: absolute;
-  inset: 0; /* Deckt nur die Border ab */
+  top: 0; /* Start at the top of the element */
+  left: 0; /* Start at the left of the element */
+  right: 0; /* Ensure it spans the full width */
+  bottom: 0; /* Ensure it spans the full height */
   border-radius: 8px;
-  padding: 3px; /* Erzeugt den Rand-Effekt */
   background: linear-gradient(90deg, transparent, #e6fae0, #8df4c0, transparent);
   background-size: 200% 100%;
-  mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
-  mask-composite: exclude;
-  -webkit-mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
-  -webkit-mask-composite: destination-out;
-  z-index: 1; /* Bringt die Kontur nach vorne */
+  z-index: -1; /* Keeps the glow effect behind the content */
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  padding: 5px; /* Adjust padding to only show the effect on the edges */
+  box-sizing: border-box; /* Ensure padding is included in element size */
 }
 
-.responsive-columns {
-  display: grid;
-  grid-template-columns: 1fr; /* Default: single column */
-  gap: 1.4rem;
-  margin: 1.4rem 0;
-  align-items: start; /* Align content to the top */
-}
-
-.column {
-  padding: 0rem;
-}
-
-.column h3 {
-  font-weight: 400;
-  text-align: left;
-  margin-bottom: 1rem;
-}
-
-.fontWeight {
-  font-weight: 400;
-  line-height: 110%;
-}
-.checklist {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.checklist li {
-  position: relative;
-  padding-left: 25px;
-  margin-bottom: 10px;
-}
-
-.checklist li::before {
-  content: "✦";
-  position: absolute;
-  left: 0;
-  top: 0rem;
-  color: rgb(0, 0, 0);
-  font-size: 18px;
-}
-
-
-
-/* Medium Screens: Two Columns */
-@media (min-width: 768px) {
-  .responsive-columns {
-    grid-template-columns: 1fr ;
-    align-items: start;
-  }
-}
-
-/* Large Screens: Three Columns */
-@media (min-width: 1200px) {
-  .responsive-columns {
-    grid-template-columns: 1fr  ;
-    gap: 2rem;
-    align-items: start; /* Ensure content sticks to the top */
-  }
-
-  .column h3 {
-    font-size: 1rem;
-  }
-
-  ul li {
-    font-size: 1rem;
-    line-height: 2;
-  }
-}
-
-/* Animation beim Hover aktivieren */
+/* Neon effect active on hover */
 .modal-section:hover::before {
   opacity: 1;
   animation: neon-border-shine 8s linear infinite;
 }
 
-/* Keyframes für den fließenden Shine-Effekt */
+/* Keyframes for the flowing neon shine */
 @keyframes neon-border-shine {
   from {
     background-position: 200% 0;
@@ -163,149 +94,41 @@
     background-position: -200% 0;
   }
 }
-/* Modal content */
+
+/* Modal content styles */
 .modal-content {
   position: relative;
   width: 75%;
   max-width: 1000px;
   max-height: 90vh;
   padding: 1rem;
-  background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); 
   background-color: #fffdf5e1;
   margin: auto;
-  border-radius: px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow-y: auto; /* Enables vertical scrolling for long content */
+  overflow-y: auto;
   animation: fadeIn 0.3s ease-in-out;
 }
 
-
-
-/* Additional styles for headers and links */
-.modal-content-container h2,
-.modal-content-container h3,
-.modal-content-container h4 {
-    margin-top: 1em;
-}
-
-.modal-content-container p {
-    margin: 1em 0;
-}
-
-.modal-content-container a {
-    display: block;
-    margin: auto;
-    color: #000000; /* Typical link color */
-    text-decoration: none;
-}
-
-.modal-content-container a:hover {
-    text-decoration: underline;
-    margin: auto;
-}
-
+/* Close button styles */
 .modal-content .close {
-  position: absolute; /* Fixes position relative to the modal */
-  top: 1rem; /* Align to the top */
-  right: 1rem; /* Align to the right */
-  background: none; /* No background color */
-  border: none; /* Remove border */
-  font-size: 3rem; /* Large close icon */
-  cursor: pointer; /* Pointer cursor for clarity */
-  color: #000; /* Black color */
-  padding: 0; /* Remove extra padding */
-  line-height: 1; /* Ensure button height matches font size */
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  color: #000;
+  padding: 0;
+  line-height: 1;
 }
 
-/* Hover effect for close button */
 .modal-content .close:hover {
-  color: #40ff00; /* Red on hover for better visibility */
-  transition: color 0.3s ease; /* Smooth hover transition */
-}
-/* Style for the links */
-.modal-content p a {
-  font-size: 1rem; /* Smaller font size */
-  font-weight: 400; /* Thin font weight */
-  text-decoration: none; /* Remove underline (optional) */
-  color: #002247; /* Default link color */
-  transition: color 0.3s ease; /* Smooth hover effect */
-}
-
-.modal-content p a:hover {
-  color: #40ff00; /* Darker color on hover */
-  text-decoration: underline; /* Optional hover underline */
-}
-/* Mobile-specific styles for close button */
-@media screen and (max-width: 768px) {
-  .modal-content .close {
-    font-size: 1rem; /* Smaller button size for mobile */
-    padding: 1rem; /* Reduce padding for mobile */
-    color: #333; /* Slightly darker color for better visibility */
-  }
-
-  .modal-content .close:hover {
-    color: #40ff00; /* More prominent hover color for mobile */
-  }
-}
-
-
-.image-gallery {
-  display: grid; /* Nutzt Grid-Layout */
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Flexible Spaltenbreite */
-  gap: 16px; /* Abstand zwischen den Bildern */
-  grid-template-rows: masonry; /* Dies sorgt für das Masonry-Layout */
-}
-
-.image-gallery img {
-  width: 100%; /* Bilder nehmen die volle Breite der Zelle */
-  height: auto; /* Höhe bleibt proportional */
-  object-fit: cover; /* Zuschneiden der Bilder */
-  border-radius: 8px; /* Abgerundete Ecken */
-  transition: transform 0.3s ease; /* Weicher Hover-Effekt */
-}
-
-.image-gallery img:hover {
-  transform: scale(1.05);
-}
-
-
-/* Mobile Ansicht */
-@media screen and (max-width: 768px) {
-  .image-gallery {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Kleinere Spaltenbreite */
-    gap: 8px; /* Weniger Abstand */
-  }
-}
-@media (hover: none) {
-  .image-gallery img:hover {
-    transform: none; /* Kein Hover-Zoom auf Touchgeräten */
-  }
-}
-
-/* Mobile-specific styles */
-
-/* Mobile-specific adjustments */
-@media screen and (max-width: 768px) {
-  .modal-content {
-    padding: 1.5rem; /* Reduziertes Padding */
-  }
-
-  .modal-content-container {
-    font-size: 0.875rem; /* Kleinere Schriftgröße */
-    padding: 1rem; /* Geringeres Padding */
-  }
-
-  .modal-section {
-    padding: 1rem; /* Weniger Padding */
-    margin-bottom: 1rem;
-  }
-
-
-  .modal-content .close {
-    font-size: 1.5rem; /* Kleinere Schließen-Taste */
-  }
+  color: #40ff00;
+  transition: color 0.3s ease;
 }
 
 /* FadeIn animation */
@@ -320,9 +143,146 @@
   }
 }
 
+/* Image caption (grey and smaller font size) */
+.image-caption {
+  color: rgb(165, 165, 165); /* Soft grey text */
+  font-size: 0.8rem; /* Small font size */
+  font-weight: 400; /* Thin font weight */
+  margin-top: 0.4rem; /* Small space between image and caption */
+  text-align: center; /* Center-align the caption */
+  line-height: 1.5; /* Slightly increased line height for readability */
+  letter-spacing: 0.02rem; /* Optional: Slight letter-spacing for clarity */
+}
 
+/* Image gallery layout */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 16px;
+}
+
+.image-gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Modal grid for columns */
+.responsive-columns {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for mobile */
+  gap: 1.4rem;
+  margin: 1.4rem 0;
+}
+
+.column {
+  padding: 0;
+}
+
+.column h3 {
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.column h4 {
+  font-weight: 400;
+}
+
+/* Checklist styling */
+.checklist {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.checklist li::before {
+  content: "✦";
+  font-weight: 400;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+}
+
+/* Media Queries for different screen sizes */
+
+/* Medium Screens: Single column layout */
+@media (min-width: 768px) {
+  .responsive-columns {
+    grid-template-columns: 1fr; /* One column for medium screens */
+  }
+
+  .modal-content {
+    padding: 2rem; /* More padding for larger screens */
+  }
+
+  .modal-content-container {
+    font-size: 1.2rem; /* Slightly larger font on medium screens */
+  }
+}
+
+/* Large Screens: Two or more columns */
+@media (min-width: 1200px) {
+  .responsive-columns {
+    grid-template-columns: 1fr 1fr; /* Two columns for large screens */
+    gap: 2rem;
+  }
+
+  .column h3 {
+    font-size: 1rem;
+  }
+
+  ul li {
+    font-size: 1rem;
+    line-height: 2;
+  }
+}
+
+/* Modal content adjustments for mobile */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    padding: 1.5rem; /* Adjust padding on mobile */
+  }
+
+  .modal-content-container {
+    font-size: 0.875rem;
+    line-height: 1.3rem;
+    padding: 1rem;
+  }
+
+  .modal-section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal-content .close {
+    font-size: 1.5rem; /* Smaller close button */
+  }
+
+  /* Adjust image gallery for mobile */
+  .image-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Smaller columns */
+    gap: 8px; /* Reduced gap */
+  }
+
+  /* Adjust image caption for smaller screens */
+  .image-caption {
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+  }
+}
+
+/* Hover effect on touch devices */
 @media (hover: none) {
   .image-gallery img:hover {
-    transform: none; /* Kein Zoom auf Touchgeräten */
+    transform: none; /* Disable hover effect on touch devices */
   }
 }

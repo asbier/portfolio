@@ -59,13 +59,13 @@ const DayoneModalContent = () => {
   <div className="column">
     <h3><strong>Team Design of Group Stock Locator (Autosuche) </strong></h3>
     <ul>
-    <li className="fontWeight">Anja Gehrke <br></br>PM ACC</li>
-    <li className="fontWeight">Max Moldovan <br></br>PM DAYONE</li>
-      <li className="fontWeight">Skirmante Rudaviciute <br></br>UI DAYONE</li>
+    <li className="fontWeight"> Anja Gehrke PM ACC</li>
+    <li className="fontWeight"> Max Moldovan PM DAYONE</li><p></p>
+      <li className="fontWeight">Skirmante Rudaviciute UI DAYONE</li>
       <li className="fontWeight">Annemarie Sauerbier <br></br>UX DAYONE</li>
       <li className="fontWeight">Odair Faléco <br></br>Lead ACC </li>
       <li className="fontWeight">Marina Meinhard <br></br>UX/UI ACC</li>
-      <li className="fontWeight">Anna Kutíková <br></br>UX/UI ACC</li>     
+      <li className="fontWeight">Anna Kutíková <br></br>UX/UI ACC</li>   
       
       <li className="fontWeight"></li>
     </ul>
@@ -74,7 +74,10 @@ const DayoneModalContent = () => {
   <div className="column">
     <h3><strong>Deliverables</strong></h3>
     <ul>
-      <li className="fontWeight">1. Concept Iteration, 2. Folowed by: Workshopboards,User tests, Ui Designs, Presentations</li>
+      <li className="fontWeight">1. Concept Iteration, 
+      <p></p>2. Folowed by: Workshopboards,
+      <p></p>User tests, Ui Designs, <p></p>
+      Presentations</li>
     </ul>
   </div>
  
@@ -82,16 +85,18 @@ const DayoneModalContent = () => {
 <div className="column">
   <h3><strong>My Role</strong></h3>
     <ul>
-      <li className="fontWeight">UX Research</li>
-      <li className="fontWeight">UX Design</li>
-      <li className="fontWeight">High-Level UI Design</li>
+      <li className="fontWeight">UX Research</li><p></p>
+      <li className="fontWeight">UX Design</li><p></p>
+      <li className="fontWeight">High-Level UI Design</li><p></p>
       </ul>
       </div>
-        <p><h2>My first challenge was working with Accenture Song on the International Group Stock Locator on Volkswage's OneHub (Central Content-Management- und Experience-System), a highly political environment.
-          Collaborating with different teams, I had to navigate varying goals and workflows.
-          Being new helped me approach challenges with fresh perspectives.</h2></p>
+        <h3><strong>Challenge</strong></h3><p></p> My first to do, was working with Accenture Song on the 
+        International Group Stock Locator on Volkswage's OneHub (Central Content-Management- und Experience-System), 
+        a highly political environment.
+        Collaborating with different teams, I had to navigate varying goals and workflows.
+        Being new helped me approach challenges with fresh perspectives.<p></p>
 
-          <h3><strong>What is the Group Stock Locator at Volskswagen?</strong></h3>
+          <p><strong>What is the Group Stock Locator at Volskswagen?</strong></p>
           <p>The GroupStockLocator integrates new and pre-owned
 stock-car offerings into every relevant micro-moment for the
 customer to enable an engaging digital brand experience while
@@ -105,11 +110,13 @@ configurator-built new cars to local dealer-offers for used cars.<p></p>
         <h3><strong>Process</strong></h3>
         <p> To gain clarity, I focused on research and extensive questioning to understand Volkswagen’s
           objectives and user pain points. 
-          Through User Days, we discovered that users struggled to find specific cars due to Volkswagen’s offline sales legacy.</p>
+          Through User Days, we discovered that users struggled to 
+          find specific cars due to Volkswagen’s offline sales legacy.</p>
 
         <figure className="dayone-image-gallery">
           <img src={Image1} alt="Before" />
-          <figcaption className="image-caption">VW.de 2022 Group Stock Locator "Before"</figcaption>
+          <figcaption className="image-caption">VW.de 2022 Group 
+            Stock Locator "Before"</figcaption>
         </figure>
 
         <figure className="dayone-image-gallery">
@@ -134,16 +141,17 @@ configurator-built new cars to local dealer-offers for used cars.<p></p>
   <div className="filter-chip">Offroad Models</div>
 </div>
 </p>
-        <figure className="dayone-image-gallery">
+        <figure className="image-gallery">
         <img src={Image8} alt="Slider" />
           <img src={Image5} alt="Research" />
           <figcaption className="image-caption">Outcome of the Category Slider</figcaption>
         </figure>
 
-        <p>During these discussions, I opened Pandora's box, sparking thoughts about a more holistic approach.
+        <p>During these discussions, I was sparking thoughts about a more holistic approach.
           This led to the birth of the Holistic Filter Initiative or later called Global Filter Experience. 
           As a result, our Design Team launched both quantitative
-          research through heatmaps and qualitative research during a User Day, where, with the support of Ipsos, we interviewed
+          research through heatmaps and qualitative research during a User Day, where, with the 
+          support of Ipsos, we interviewed
           five car owners who were either about to purchase or had recently purchased a vehicle.
         </p>
 
@@ -155,7 +163,7 @@ configurator-built new cars to local dealer-offers for used cars.<p></p>
         <figure className="dayone-image-gallery">
           <img src={Image6} alt="Research" />
        
-          <figcaption className="image-caption">Examples show possibilities of new Objektives</figcaption>
+          <figcaption className="dayone-image-caption">Examples show possibilities of new Objektives</figcaption>
         </figure>
 
         <p>This lead then to a whole new Vision, which was to do a Holistic Search, where we created

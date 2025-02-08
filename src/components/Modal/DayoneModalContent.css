@@ -13,11 +13,6 @@
   transition: transform 0.3s ease;
 }
 
-
-.dayone-image-gallery img:hover {
-  transform: scale(1.4);
-}
-
 .dayone-video-gallery {
   display: flex;
   gap: 20px;
@@ -54,15 +49,10 @@
 }
 
 .filter-chip:hover {
-  background-color:#ffffff;
-  border-color: #001effad;
+  background-color:#09ff00;
+  border-color: #9d8f6376;
 }
 
-.filter-chip.active {
-  background-color: #ffffff; /* Blue when active */
-  color: #09ff00;
-  border-color: #0056b3;
-}
 
 
 @media screen and (max-width: 768px) {
