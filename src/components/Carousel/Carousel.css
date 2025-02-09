@@ -1,5 +1,6 @@
 .carousel {
   background-color: #ECE9E4;
+  height: auto;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
@@ -10,7 +11,9 @@
   -ms-overflow-style: none;
 }
 
-
+.image-container img {
+    min-height: 30rem;
+  }
 
 
 .carousel::-webkit-scrollbar {
@@ -19,6 +22,7 @@
 
 .inner-carousel {
   display: flex;
+  height: auto;
   gap: 0px;
 }
 
