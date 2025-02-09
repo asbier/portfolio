@@ -66,15 +66,13 @@ const CarharttModalContent = () => (
                 </ul>
             </div>
 
-            <h2>
-                <p>As UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key
-                    challenges, blending both UX and UI design to create holistic solutions that improved user
-                    experience across various platforms.
-                </p>Inifficient Customer Support.
-                Users struggled with accessing
-                help and support, making it difficult for them to resolve issues efficiently on both the web and app
-                platforms.
-            </h2>
+            <p>As UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key
+                challenges, blending both UX and UI design to create holistic solutions that improved user
+                experience across various platforms.
+            </p>Inifficient Customer Support.
+            Users struggled with accessing
+            help and support, making it difficult for them to resolve issues efficiently on both the web and app
+            platforms.
             Process<p></p>
             I conducted benchmark research, identifying key pain points and understanding the needs of our target
             audience. I mapped out the user journey to highlight friction points and collaborated directly with
@@ -101,10 +99,9 @@ const CarharttModalContent = () => (
                 <p>Time <big> → </big>Within 2 Month Live</p>
                 <p></p>
                 <p></p>
-                <h2>As UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key
-                    challenges, blending both UX and UI design to create holistic solutions that improved user
-                    experience across various platforms.
-                </h2>
+                As UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key
+                challenges, blending both UX and UI design to create holistic solutions that improved user
+                experience across various platforms.
                 <p></p>Process<p></p>
                 I conducted benchmark research, identifying key pain points and understanding the needs of our target
                 audience. I mapped out the user journey to highlight friction points and collaborated directly with
@@ -134,9 +131,8 @@ const CarharttModalContent = () => (
             <p>Time<big> → </big>Within 1 Week</p>
 
 
-            <h2>The team was facing challenges in collaboration due to the limitations of Sketch, and it was crucial to
-                transition to a more flexible design system.
-            </h2>
+            The team was facing challenges in collaboration due to the limitations of Sketch, and it was crucial to
+            transition to a more flexible design system.
             <p></p>Process<p></p>
 
             I worked closely with the Design Lead to evaluate Figma’s features and its potential to improve workflow.

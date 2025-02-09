@@ -100,15 +100,20 @@
     max-height: 35rem;
     height: 100%;
     flex: 0 0 auto;
+    width: calc(100% - 32px);
     max-width: 300px;
     scroll-snap-align: start;
   }
 
   .image-container img {
     pointer-events: none;
-    max-width: 100%;
     height: auto;
-    width: auto;
+    margin-right: 2px;
+    width: 100%;
+    max-width: 400px;
+    min-width: 300px; /* Ensures smaller images don't shrink below this */
+    max-height: 40rem;
+    min-height: 30rem;
   }
 
   .inner-carousel {

@@ -167,6 +167,11 @@
   margin-bottom: 1rem;
 }
 
+.column h2 {
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
 .column h4 {
   font-weight: 400;
 }
