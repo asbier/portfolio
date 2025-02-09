@@ -74,15 +74,15 @@
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    width: 100%;
-    max-width: 100%;
+    width: 96%;
     margin: 0 auto;
-    display: flex;
+    display: inline-flex;
     scroll-behavior: smooth;
-    scroll-padding: 10px;
     justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
+    scroll-padding-left: 16px;
+    scroll-padding-right: 150px;
   }
 
   .carousel::-webkit-scrollbar {
@@ -100,7 +100,6 @@
     max-height: 35rem;
     height: 100%;
     flex: 0 0 auto;
-    width: calc(100vw - 48px);
     max-width: 300px;
     scroll-snap-align: start;
   }
@@ -114,8 +113,9 @@
 
   .inner-carousel {
     display: flex;
-    width: auto;
     gap: 16px;
+    width: max-content; /* Ensure inner carousel adjusts based on child items */
+    flex-wrap: nowrap; /* Prevent wrapping */
   }
 
   .title-container {

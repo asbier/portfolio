@@ -77,10 +77,6 @@
   backdrop-filter: blur(10px); /* Background blur */
 }
 .modal-section {
-  font-family: Lausanne, sans-serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 120%;
   padding: clamp(10px, 5vw, 50px);
   margin-bottom: 1rem;
   background-color: #fffdf5ca;
@@ -189,58 +185,49 @@
 /* List item styling */
 .checklist li {
   display: contents; /* Makes each list item behave like its content */
-  font-weight: 400;
   line-height: 1.5;
-  font-size: 1.1rem;
   border-top: 10px;
 }
 
 /* Custom bullet point */
 .checklist li::before {
   content: "✦";         /* Custom bullet */
-  font-weight: 400;
-  font-size: 19.2px;    /* Bullet size */
   color: rgb(0, 0, 0);  /* Bullet color */
   grid-column: 1;       /* Force the bullet to stay in the first column */
   align-self: center;   /* Vertically center the bullet */
 }
 
+.filter-chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Space between the chips */
+  margin: 0.2rem 0;
+  justify-content: center;
+  align-items: center;
+}
 
+.filter-chip {
+  display: flex; /* Enables flexbox */
+  justify-content: center; /* Centers text horizontally */
+  align-items: center; /* Centers text vertically */
+  padding: 6px 12px;
+  background-color: #9d8f6376; /* Light gray background */
+  border-radius: 3rem; /* Makes the chip look like a bubble */
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
 
-/* Media Queries for different screen sizes */
+.filter-chip:hover {
+  background-color:#09ff00;
+  border-color: #001effad;
+}
 
-/* Modal content adjustments for mobile */
-@media screen and (max-width: 768px) {
-  .modal-content {
-    padding: 1.5rem; /* Adjust padding on mobile */
-  }
-
-  .modal-content-container {
-    font-size: 0.875rem;
-    line-height: 1.3rem;
-    padding: 1rem;
-  }
-
-  .modal-section {
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .modal-content .close {
-    font-size: 1.5rem; /* Smaller close button */
-  }
-
-  /* Adjust image gallery for mobile */
-  .image-gallery {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Smaller columns */
-    gap: 8px; /* Reduced gap */
-  }
-
-  /* Adjust image caption for smaller screens */
-  .image-caption {
-    font-size: 0.75rem;
-    margin-top: 0.2rem;
-  }
+.filter-chip.active {
+  background-color: #ffffff; /* Blue when active */
+  color: #09ff00;
+  border-color: #0056b3;
 }
 
 /* Hover effect on touch devices */
@@ -250,39 +237,115 @@
   }
 }
 
-
-/* Media query for screens smaller than 768px */
+/* Modal content adjustments for mobile */
 @media screen and (max-width: 768px) {
-    /* Image gallery styling */
-    .image-gallery img {
-        max-width: 100%;  /* Ensure images never exceed their container's width */
-        width: 100%;      /* Make images responsive to the container */
-        height: auto;     /* Maintain aspect ratio */
-        border-radius: 8px; /* Optional: Add rounded corners */
-        transition: transform 0.3s ease; /* Smooth hover effect */
-    }
+  /* Ensure the modal takes up the whole screen */
+  .modal {
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    position: fixed; /* Fixed position to stay on screen */
+    top: 0;
+    left: 0;
+    padding: 0; /* Remove padding */
+    background: rgba(0, 0, 0, 0.5); /* Optional: add background overlay */
+    z-index: 9999; /* Ensure the modal stays on top */
+    margin: 0; /* Ensure no margin */
+  }
 
-    /* Video gallery styling */
-    .video-container {
-        max-width: 100%; /* Ensure the container takes full width on small screens */
-    }
+  /* Ensure the modal content takes up the full height and width */
+  .modal-content {
+    width: 99%; /* Full width */
+    height: 100%; /* Full height */
+    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    padding: 1.5rem; /* Adjust padding for mobile */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+  }
 
-    .video-gallery {
-        display: flex;
-        width: 100%;
-        max-width: 100%;
-        gap: 20px;
-        justify-content: center;
-        margin: 20px 0;
-        flex-direction: column; /* Stack videos vertically on small screens */
-        align-items: center;    /* Center videos when stacked */
-    }
+  .modal-content-container {
+    font-size: 0.875rem;
+    line-height: 1.3rem;
+    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    padding: 0; /* No padding */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+  }
 
-    .video-gallery video {
-        width: 100%;        /* Make videos fill their container */
-        max-width: 100%;    /* Ensure videos never exceed the container's width */
-        border-radius: 12px; /* Rounded corners for videos */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
-        object-fit: contain;  /* Ensure videos stay within container's bounds */
-    }
+  .modal-section {
+    margin: 0; /* Remove default margin */
+    padding: 0 1.5rem; /* Add horizontal padding for sections */
+    justify-content: center; /* Centers images horizontally */
+    align-items: center;
+  }
+
+  .modal-content .close {
+    font-size: 1.5rem; /* Smaller close button */
+  }
+
+  /* Adjust image gallery for mobile */
+  .image-gallery {
+    display: flex; /* Enables flexbox */
+    flex-wrap: wrap; /* Allows images to wrap */
+    justify-content: center; /* Centers images horizontally */
+    align-items: center; /* Centers images vertically */
+    gap: 8px; /* Reduced gap */
+    margin-left: 7px;
+  }
+
+  /* Adjust image caption for smaller screens */
+  .image-caption {
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+    justify-content: center; /* Center content horizontally */
+    align-items: center;
+  }
+
+  /* Image gallery styling */
+  .image-gallery img {
+    max-width: 100%;  /* Ensure images never exceed their container's width */
+    width: auto; /* Ensures images maintain natural width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    justify-content: center; /* Centers images horizontally */
+    align-items: center;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+    display: block; /* Removes any inline spacing issues */
+    margin: 0 auto; /* Ensures proper centering */
+  }
+
+  /* Video gallery styling */
+  .video-container {
+    max-width: 100%; /* Ensure the container takes full width on small screens */
+    height: auto;
+    min-height: 200px;   /* Ensure there's at least some height for the video on mobile */
+  }
+
+  .video-gallery {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    gap: 30px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-direction: column; /* Stack videos vertically on small screens */
+    align-items: center;    /* Center videos when stacked */
+  }
+
+  .video-gallery video {
+    width: 100%;        /* Make videos fill their container */
+    max-width: 100%;    /* Ensure videos never exceed the container's width */
+    border-radius: 12px; /* Rounded corners for videos */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    object-fit: contain;  /* Ensure videos stay within container's bounds */
+  }
 }
+
+
+
