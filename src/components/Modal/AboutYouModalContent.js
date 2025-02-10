@@ -1,7 +1,5 @@
 import React from 'react';
 import './modal-common.css';
-import image1 from '../../Assets/Image 3_AboutYou/final.png';
-import image2 from '../../Assets/Image 3_AboutYou/ayawards.png';
 
 const AboutYouModalContent = () => (
     <div className="modal-content-container">
@@ -23,9 +21,8 @@ const AboutYouModalContent = () => (
                 I collaborated with renowned external designers and influencers, creating strategic partnerships that elevated the brand’s visibility and market positioning. Additionally, I worked on co-branded campaigns that aligned the ABOUT YOU aesthetic with established fashion icons, making the platform more appealing to a larger audience.
             </p>
 
-            <div className="image-gallery">
-                <img src={image1} alt="Influencer and Celebrity Campaigns" />
-            </div>
+           
+
         </section>
 
         <section className="modal-section">
@@ -35,9 +32,8 @@ const AboutYouModalContent = () => (
                 Additionally, I developed branding strategies for high-profile events that aligned with the company’s vision of creating an engaging and immersive shopping experience.
             </p>
 
-            <div className="image-gallery">
-                <img src={image2} alt="Store and Event Concepts for ABOUT YOU" />
-            </div>
+            
+
         </section>
 
         <section className="modal-section">

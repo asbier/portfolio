@@ -2,12 +2,13 @@ import React, { useRef, useEffect } from 'react';
 import './modal-common.css';
 import Image1 from '../../Assets/Image_0_dayone/before.png';
 import Image2 from '../../Assets/Image_0_dayone/Release.png';
-import Image3 from '../../Assets/Image_0_dayone/NewEntry-LP_GSL.png';
 import Image4 from '../../Assets/Image_0_dayone/Insights User 4.png';
 import Image5 from '../../Assets/Image_0_dayone/insight-UserDay.png';
 import Image6 from '../../Assets/Image_0_dayone/Insights User 3.png';
 import Image7 from '../../Assets/Image_0_dayone/outcome.png';
 import Image8 from '../../Assets/Image_0_dayone/Insight2.png';
+import Image9 from '../../Assets/Image_0_dayone/slider-final.png';
+import Image10 from '../../Assets/Image_0_dayone/wireframe-slider.png';
 
 import video1 from '../../Assets/Image_0_dayone/Demo New Filter Experience video.mp4';
 import video2 from '../../Assets/Image_0_dayone/PDPvideo.mp4'; // Example path
@@ -47,9 +48,34 @@ const DayoneModalContent = () => {
       <p><strong>As Product Designer at DAYONE, </strong>
         I balanced design, leadership, and strategy, taking ownership with minimal oversight. I focused on a holistic approach, from UX to business strategy, integrating user research and product ownership into the design process. My main client is Volkswagen.
       </p>
+      <div className="column">
+  <h3><strong>My Role</strong></h3>
+  <ul className="list" >
+    <li className="fontWeight">UX </li>
+    <li className="fontWeight">UI </li>
+    <li className="fontWeight">Strategy</li>
+
+  </ul>
+  <h3><strong>Our Design Team for UX/UI </strong></h3>
+  <ul className="list" >
+  <li className="list">Digital Design Lead AccentureSong, Odair Faléco </li><p></p>
+  <li className="fontWeight"> UX/UI Designer AccentureSong, Marina Meinhardt</li>
+    <li className="fontWeight"> UX Designer DAYONE, Annemarie Sauerbier </li>
+    <li className="fontWeight"> UX/UI Designer DAYONE, Skirmante Radvucuite </li>
+  </ul>
+  <p></p>
+</div>
 
       <section className="modal-section">
         <h2>Global Filter Experience</h2>
+
+
+        <figure className="image-gallery">
+          <img src={Image10} alt="Slider" />
+          <figcaption className="image-caption">Wireframe of the catergory Slider - the first Task</figcaption>
+        </figure>
+
+        
         <div className="column">
           <h3><strong>My Role</strong></h3>
           <ul>
@@ -59,8 +85,10 @@ const DayoneModalContent = () => {
           </ul>
         </div>
 
+
         <h3><strong>Challenge</strong></h3>
         <p>At DAYONE, I was working with Accenture Song on the International Group Stock Locator for Volkswagen’s OneHub (Central Content-Management- and Experience-System). Collaborating with different teams, I had to navigate varying goals and workflows. Being new helped me approach challenges with fresh perspectives.</p>
+
 
         <h3><strong>What is the Group Stock Locator at Volkswagen?</strong></h3>
         <p>The GroupStockLocator integrates new and pre-owned stock-car offerings for the customer to enable an engaging digital brand experience while driving both online and offline sales.</p>
@@ -74,7 +102,7 @@ const DayoneModalContent = () => {
         </figure>
 
         <figure className="image-gallery">
-          <img src={Image3} alt="Research" />
+          <img src={Image5} alt="Research" />
           <figcaption className="image-caption">Input for the Concept from latest Userday</figcaption>
         </figure>
 
@@ -91,7 +119,7 @@ const DayoneModalContent = () => {
 
         <figure className="image-gallery">
           <img src={Image8} alt="Slider" />
-          <img src={Image5} alt="Research" />
+          <img src={Image9} alt="Research" />
           <figcaption className="image-caption">Outcome of the Category Slider</figcaption>
         </figure>
 
