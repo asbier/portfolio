@@ -30,11 +30,13 @@ nav.dark {
 .nav-logo:hover {
   transform: scale(1.1);
   transition: 0.3s ease;
+  cursor: pointer;
 }
 
 .nav-logo img {
   width: 100%; /* Adjust logo size */
   height: auto;
+  cursor: pointer;
 }
 
 ul {
@@ -64,3 +66,33 @@ a {
  /* Adjust size */
   height: auto;
 }
+
+.contact-link img:hover,
+.about-link img:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+
+
+  /* Position the links with images to the top right corner */
+  .contact-link {
+    position: absolute;
+    top: 15px;
+    right: -70px;
+    display: inline-block;
+    margin-left: 20px; /* Space between the two icons */
+  }
+
+  .about-link img {
+    position: absolute;
+    top: 0px;
+    right: 130px;
+    display: inline-block;
+    margin-left: 0px;
+  }
+}
+
