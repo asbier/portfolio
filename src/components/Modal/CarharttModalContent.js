@@ -28,31 +28,31 @@ const CarharttModalContent = () => {
         useRef(null)
       ];
     
-      useEffect(() => {
-        const handleIntersection = (entries) => {
-          entries.forEach((entry) => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-              video.play();
-            } else {
-              video.pause();
-            }
-          });
-        };
-      
-        const observer = new IntersectionObserver(handleIntersection, { threshold: 0.5 });
-      
-        videoRefs.forEach((ref) => {
-          if (ref.current) observer.observe(ref.current);
-        });
-      
-        return () => {
-          videoRefs.forEach((ref) => {
-            if (ref.current) observer.unobserve(ref.current);
-          });
-        };
-      }, []);
-      
+     useEffect(() => {
+  const handleIntersection = (entries) => {
+    entries.forEach((entry) => {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(handleIntersection, { threshold: 0.5 });
+
+  videoRefs.forEach((ref) => {
+    if (ref.current) observer.observe(ref.current);
+  });
+
+  return () => {
+    videoRefs.forEach((ref) => {
+      if (ref.current) observer.unobserve(ref.current);
+    });
+  };
+}, []);
+
     
       return (
       <div className="modal-content-container">

@@ -17,6 +17,8 @@ import image24 from '../../Assets/Image_2_EDITED/stores.png';
 import image25 from '../../Assets/Image_2_EDITED/first-stores.png';
 import image26 from '../../Assets/Image_2_EDITED/fashionshow.png';
 import image27 from '../../Assets/Image_2_EDITED/berlin-collection.png';
+import image28 from '../../Assets/Image_2_EDITED/Luma.png';
+
 
 const EditedModalContent = () => (
   <div className="modal-content-container">
@@ -120,6 +122,8 @@ const EditedModalContent = () => (
     <img src={image17} alt="EDITED Launch Store Event in Berlin" />
     <img src={image26} alt="EDITED Launch Store Event in Berlin" />
     <figcaption className="image-caption">Store Event with Fashionshow Collection Launch</figcaption>
+    <img src={image28} alt="Luma" />
+    <figcaption className="image-caption">Luma Grothe in Berlin</figcaption>
     <img src={image15} alt="Nina Kastens Launch Event 1" />
     <figcaption className="image-caption">Nina Kastens Event & Website Launch</figcaption>
     <img src={image23} alt="Online-Launch" />
