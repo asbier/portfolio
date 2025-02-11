@@ -2,7 +2,7 @@ footer {
   margin-top: 0rem;
   font-family: Lausanne, sans-serif;
   padding: 1rem;
-  background-color:  #ECE9E4;
+  background-color:  #ece9e4bc;
   background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); /* Paper texture */
   font-size: 1rem;
   position: fixed;
@@ -10,11 +10,6 @@ footer {
   left: 0;
   width: 100%;
   z-index: 0; /* Ensure footer does not overlap content */
-}
-
-footer.dark {
-  background-color: #000000;
-  color:  #fffdf5ca;
 }
 
 li {
