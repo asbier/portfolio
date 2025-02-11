@@ -39,6 +39,7 @@ const DayoneModalContent = () => {
         if (ref.current) observer.unobserve(ref.current);
       });
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
