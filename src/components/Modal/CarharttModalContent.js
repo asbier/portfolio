@@ -27,7 +27,7 @@ const CarharttModalContent = () => {
         useRef(null),
         useRef(null)
       ];
-    
+     // eslint-disable-next-line react-hooks/exhaustive-deps 
      useEffect(() => {
   const handleIntersection = (entries) => {
     entries.forEach((entry) => {

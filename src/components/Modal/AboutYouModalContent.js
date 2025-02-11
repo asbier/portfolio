@@ -6,7 +6,7 @@ import Image4 from '../../Assets/Image 3_AboutYou/shoebrand-AY.png';
 import Image5 from '../../Assets/Image 3_AboutYou/RedesignContentStoriesafter.png';
 import Image6 from '../../Assets/Image 3_AboutYou/LergerBrands.png';
 import Image8 from '../../Assets/Image 3_AboutYou/Stories_wireframeoutcome.png';
-import Image9 from '../../Assets/Image 3_AboutYou/ayvideoconcept.png';
+import Image9 from '../../Assets/Image 3_AboutYou/ayawards-final .png';
 import Image10 from '../../Assets/Image 3_AboutYou/Stories_video outcome.png';
 
 import Image13 from '../../Assets/Image 3_AboutYou/AnnaundElla-Brand-soho-event.png';
@@ -93,7 +93,8 @@ const AboutYouModalContent = () => (
 
             <figure className="image-gallery">
             
-          <figcaption className="image-caption"> Award Outcome </figcaption>
+            <img src={Image9} alt="emilyandeveshoebrand" />
+          <figcaption className="image-caption">About YOU Launch in Amsterdam and AY Awards </figcaption>
                   </figure>
                   <a href="https://www.youtube.com/watch?v=KhQpW7210ws&list=PLkv5msXu1MbBBGeaZGT-LqZ5gL8YxZWoB" target="_blank" rel="noopener noreferrer">➞ See Live on YouTube </a>
         </section>

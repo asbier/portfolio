@@ -9,16 +9,32 @@ import image6 from '../../Assets/Image_4_Conic Rose/Vision 5.png';
 import image7 from '../../Assets/Image_4_Conic Rose/Vision 6.png';
 import image8 from '../../Assets/Image_4_Conic Rose/Vision 7.png';
 import image3 from '../../Assets/Image_4_Conic Rose/Final.png';
-import image9 from '../../Assets/Image_4_Conic Rose/How.png';
-import image10 from '../../Assets/Image_4_Conic Rose/How 2.png';
-import image11 from '../../Assets/Image_4_Conic Rose/How 3.png';
+
+import image10 from '../../Assets/Image_4_Conic Rose//How-2.png';
+
 import image12 from '../../Assets/Image_4_Conic Rose/How 4.png';
 import image13 from '../../Assets/Image_4_Conic Rose/How 5.png';
 import image14 from '../../Assets/Image_4_Conic Rose/Vision-F.png';
 
 const ConicRoseModalContent = () => (
   <div className="modal-content-container">
-    <h1>Conic Rose</h1>
+    <h1>Conic Rose Album </h1>
+    <p> Worked up via Bertram Burkert’s mournful guitar improvisations, the cut and thrust of city life seeps through 
+      this Berlin band’s teary debut. From the wistful vistas of Honeylake, filmic heartbreak of Uli to the wispy, held-in Chopin Rosé, 
+      its progressively playful tracks dabble with Hassell, Bach, Radiohead, hip-hop beats and woozy electronics, providing 
+      a masterful showcase for the mazy trumpet melodics and forlorn flugelhorns of Konstantin Döben.**** Mojo Music Magazine (2023)</p>
+
+
+
+
+    <p>
+      <a href="https://conicrose.bandcamp.com/album/heller-tag" target="_blank" rel="noopener noreferrer">
+      ➞ Buy Here
+      </a>
+    </p>
+
+    <section className="modal-section">
+
 
     <div className="image-gallery">
       <img src={image3} alt="Final" />
@@ -28,13 +44,7 @@ const ConicRoseModalContent = () => (
       I love Music, so if I get the chance to interpret the music into a visual, I will do it with pleasure.
     </p>
 
-    <p>
-      <a href="https://conicrose.bandcamp.com/album/heller-tag" target="_blank" rel="noopener noreferrer">
-        🌐Buy Here
-      </a>
-    </p>
 
-    <section className="modal-section">
       <p>
         When approaching Album-Cover Design, I begin by immersing myself in the music. I listen carefully, allowing
         the sound to guide my initial impressions.
@@ -63,9 +73,9 @@ const ConicRoseModalContent = () => (
       </p>
 
       <div className="image-gallery">
-        <img src={image9} alt="How" />
-        <img src={image10} alt="How 2" />
-        <img src={image11} alt="How 3" />
+      
+        <img src={image10} alt="How-2" />
+    
         <img src={image12} alt="How 4" />
         <img src={image13} alt="How 5" />
       </div>
@@ -78,7 +88,6 @@ const ConicRoseModalContent = () => (
       <div className="image-gallery">
         <img src={image1} alt="Vision 1" />
         <img src={image2} alt="Vision 2" />
-        <img src={image4} alt="Vision 3" />
         <img src={image5} alt="Vision 4" />
         <img src={image6} alt="Vision 5" />
         <img src={image7} alt="Vision 6" />

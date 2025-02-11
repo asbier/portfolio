@@ -1,37 +1,59 @@
 import React from 'react';
 import './modal-common.css';
-import image1 from '../../Assets/Image_7_Monopol GmbH/image-1.png';
+import image1 from '../../Assets/Image_7_Monopol GmbH/Biorama.png';
+import image2 from '../../Assets/Image_7_Monopol GmbH/Biorama-web.png';
+import image3 from '../../Assets/Image_7_Monopol GmbH/Image 10.png';
+import image6 from '../../Assets/Image_7_Monopol GmbH/Image 8.png';
+import image7 from '../../Assets/Image_7_Monopol GmbH/Image 11.png';
+import image8 from '../../Assets/Image_7_Monopol GmbH/Image 12.png';
+
+import gif1 from '../../Assets/Image_7_Monopol GmbH/Cover.gif';
+
 
 const MonopolGmbHModalContent = () => (
     <div className="modal-content-container">
         <h2>Monopol GmbH</h2>
 
-        <section className="modal-section">
             <p>
                 <strong>Medienhaus & Agentur für Kreativwirtschaft, Kultur und Kunst</strong><br />
                 Monopol is a dynamic media house and agency based in Vienna, focusing on creative industries, culture, and art. They specialize in producing content and providing strategic services for various sectors, offering expertise in branding, design, and digital media. Their work spans a wide range of creative fields, including editorial content, social media marketing, and web design.
             </p>
-        </section>
+
+            <div><h3><strong>My Role</strong></h3>
+  <ul className="list" >
+    <li className="fontWeight"> Art Direction </li>
+    <li className="fontWeight"> & Strategy </li>
+  </ul>
+  <h3><strong>Design Team</strong></h3>
+  <ul className="list" >
+  <li className="list">Thomas Albdorf</li><p></p>
+    <li className="fontWeight">Annemarie Sauerbier </li>
+  </ul>
+</div> <p></p>
 
         <section className="modal-section">
-            <h2>BIORAMA MAGAZINE</h2>
-            <p>
-                As an Art Director at Monopol, I was responsible for <em>The Gap Music and Culture City Magazine</em> and <em>Biorama Magazine</em>, a lifestyle publication dedicated to sustainability. My role included overseeing the creative direction, design, and visual identity of the magazines.
-            </p>
-            <p>
-                In addition to the magazines, we collaborated with a diverse array of clients across Austria, providing branding, packaging design, and social media marketing solutions. Notable projects included web design for the blog <a href="https://www.schroedingerskatze.at" target="_blank" rel="noopener noreferrer">www.schroedingerskatze.at</a> and creating social media assets for <em>Die Grünen Wien</em>. Our team’s work helped elevate clients' creative visions and expand their reach across various digital and print platforms.
-            </p>
+        <h2>BIORAMA MAGAZINE</h2>
+<p>
+    As <strong>Art Director</strong> at Monopol, I led the creative direction, design, and visual identity for <em>The Gap</em>—a music and culture magazine—and <em>Biorama</em>, a sustainability-focused lifestyle publication. My role encompassed overseeing the magazines' aesthetics while ensuring a cohesive and engaging reader experience.
+</p>
+<p>
+    Beyond editorial work, we collaborated with a diverse range of Austrian clients, delivering branding, packaging design, and social media marketing solutions. Notable projects included web design for  
+    <a href="https://www.schroedingerskatze.at" target="_blank" rel="noopener noreferrer"> Schrödinger’s Katze</a> and social media assets for <em>Die Grünen Wien</em>. Our team’s work amplified clients’ creative impact across digital and print platforms, helping them connect with broader audiences.
+</p>
+
 
             <div className="image-gallery">
                 <img src={image1} alt="Monopol GmbH project showcase" />
+                <img src={image2} alt="Monopol GmbH project showcase" />
+                <img src={gif1} alt="Monopol GmbH project showcase" />
+                <img src={image3} alt="Monopol GmbH project showcase" />
+                <img src={image6} alt="Monopol GmbH project showcase" />
+                <img src={image7} alt="Monopol GmbH project showcase" />
+                <img src={image8} alt="Monopol GmbH project showcase" />
+                <p>
+        <a href="https://www.monopol.at/" target="_blank" rel="noopener noreferrer"> ➞ Learn more about Monopol</a>
+      </p>
             </div>
-        </section>
-
-        <section className="modal-section">
-            <h4>ROLE</h4>
-            <p>
-                I worked on a project basis for a year, following the former art director's guidelines during his time at Bildungskranz. However, I also introduced new design guidelines and implemented redesigns throughout the year.
-            </p>
         </section>
     </div>
 );

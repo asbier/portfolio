@@ -49,6 +49,7 @@ const DayoneModalContent = () => {
         I balanced design, leadership, and strategy, taking ownership with minimal oversight. I focused on a holistic approach, from UX to business strategy, integrating user research and product ownership into the design process. My main client is Volkswagen.
       </p>
       <div className="column">
+        
   <h3><strong>My Role</strong></h3>
   <ul className="list" >
     <li className="fontWeight">UX </li>

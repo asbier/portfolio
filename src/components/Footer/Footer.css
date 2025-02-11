@@ -17,6 +17,12 @@ footer.dark {
   color:  #fffdf5ca;
 }
 
+li {
+  list-style: none;
+  align-items: center;
+  line-height: 1;
+}
+
 @media screen and (max-width: 768px) {
   footer {
     padding: 5px 10px; /* Reduced padding */

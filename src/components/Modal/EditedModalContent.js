@@ -17,12 +17,18 @@ import image24 from '../../Assets/Image_2_EDITED/stores.png';
 import image25 from '../../Assets/Image_2_EDITED/first-stores.png';
 import image26 from '../../Assets/Image_2_EDITED/fashionshow.png';
 import image27 from '../../Assets/Image_2_EDITED/berlin-collection.png';
-import image28 from '../../Assets/Image_2_EDITED/Luma.png';
+import image28 from '../../Assets/Image_2_EDITED/Luma.png'
+import image29 from '../../Assets/Image_2_EDITED/malaika.png';
+import image30 from '../../Assets/Image_2_EDITED/priouette.png';
+import image31 from '../../Assets/Image_2_EDITED/Pullver-Design.png';
+import image32 from '../../Assets/Image_2_EDITED/magazines.png';
+
 
 
 const EditedModalContent = () => (
   <div className="modal-content-container">
     <h1>EDITED the Label</h1>
+
 
     <p>
       With modern looks, current trend pieces, and a strong focus on the 
@@ -68,10 +74,16 @@ const EditedModalContent = () => (
       <p>Introducing a redesign concept for the Social Media and the new website, 
         steering the brand toward a more modern and holistic direction.</p>
 
-      <div className="image-gallery">
-        <img src={image1} alt="EDITED Web and App" />
-        <img src={image2} alt="EDITED Store in Frankfurt" />
-      </div>
+
+
+      <figure className="image-gallery">
+          <img src={image1} alt="Product Design" />
+          <img src={image32} alt="Collab Design" />
+          <img src={image2} alt="Product Design" />
+          <figcaption className="image-caption">Examples of the Holistic Brand Communication </figcaption>
+        </figure>
+
+
     </section>
 
     <section className="modal-section">
@@ -96,7 +108,6 @@ const EditedModalContent = () => (
       <div className="image-gallery">
       <img src={image24} alt="EDITED Laid-Back Launch" />
       <img src={image25} alt="All Stores" />
-        <img src={image3} alt="EDITED Laid-Back Launch" />
         <img src={image4} alt="EDITED Store in Vienna" />
         <img src={image21} alt="Umkleide" />
         <img src={image5_2} alt="EDITED Window-Store in Munich" />
@@ -104,42 +115,41 @@ const EditedModalContent = () => (
     </section>
 
     <section className="modal-section">
-      <p><strong>Designed concepts for #EDITEDthelabel collections and collaborations </strong>, including the Shoe Collection and Sport Collection, aligning them with contemporary market trends.</p>
+      <h2>ConceptsCollections and Influencer Collaborations </h2><p> including the Shoe Collection and Sport Collection, aligning them with contemporary market trends.</p>
       <p>In 2017 developed sustainable packaging concepts, which are used now, combining design and strategy to enhance eco-conscious branding.</p>
 
-      <div className="image-gallery">
-    
-        <img src={image18} alt="Product Design" />
-        <img src={image22} alt="Collab Design" />
-      </div>
+      <figure className="image-gallery">
+          <img src={image18} alt="Product Design" />
+          <img src={image22} alt="Collab Design" />
+          <img src={image31} alt="Product Design" />
+          <figcaption className="image-caption">Examples of Collab Design </figcaption>
+        </figure>
+
     </section>
 
     <section className="modal-section">
       <p><strong>Conceptualized and executed fashion show concepts</strong> and exclusive pop-up store designs, ensuring a cohesive and innovative customer experience.</p>
       <p>Participated in editorial shoots to capture backstage content and created engaging video material to amplify campaign coverage.</p>
 
-      <div className="image-gallery">
+      <figure className="image-gallery">
     <img src={image17} alt="EDITED Launch Store Event in Berlin" />
     <img src={image26} alt="EDITED Launch Store Event in Berlin" />
     <figcaption className="image-caption">Store Event with Fashionshow Collection Launch</figcaption>
     <img src={image28} alt="Luma" />
-    <figcaption className="image-caption">Luma Grothe in Berlin</figcaption>
+    <img src={image29} alt="Product Design" />
+    <img src={image30} alt="Product Design" />
+    <figcaption className="image-caption">EDITEDxLuma Grothe in Berlin</figcaption>
     <img src={image15} alt="Nina Kastens Launch Event 1" />
-    <figcaption className="image-caption">Nina Kastens Event & Website Launch</figcaption>
-    <img src={image23} alt="Online-Launch" />
-    <figcaption className="image-caption">Campaigns Online matching Offline Events</figcaption>
+    <figcaption className="image-caption">EDITEDxNina Kastens Event & Website Launch</figcaption>
     <img src={image19} alt="Bladerunner" />
     <figcaption className="image-caption">Blade Runner Collection Launch Event</figcaption>
-
     <img src={image20} alt="New Mexico Collection Launch" />
     <figcaption className="image-caption">New Mexico Collection Launch Dinner Event</figcaption>
-
-
     <img src={image27} alt="VideoMaterial Collections" />
     <figcaption className="image-caption">Campaign Videos for Shopp,App and Social Media usage</figcaption>
-
-  
-</div>
+    <img src={image23} alt="Online-Launch" />
+    <figcaption className="image-caption">Campaigns Online matching Offline Events</figcaption>
+    </figure>
 
     </section>
 

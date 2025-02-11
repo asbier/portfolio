@@ -1,18 +1,34 @@
 import React from 'react';
 import './modal-common.css';
+import image1 from '../../Assets/Image_9_MonaM/Final-LP.png';
+import image2 from '../../Assets/Image_9_MonaM/Lp-Mona-M-Teaser.png';
+
+import gif1 from '../../Assets/Image_9_MonaM//5f329f7759b1249a739e9af8_2rot.gif';
+import gif2 from '../../Assets/Image_9_MonaM/5f3296783cb04c18cab4ed9f_weiß-3gm-.gif';
+import gif3 from '../../Assets/Image_9_MonaM/5f329ee54b42d204b3e78de0_3.gif';
+
 
 const MonaMModalContent = () => (
     <div className="modal-content-container">
         <h1>Mona M</h1>
 
-        <section className="modal-section">
             <p>
                 Mona M. is a Hamburg-based artist known for her unique blend of electronic, experimental, and alternative music. Drawing influences from ambient, techno, and industrial sounds, Mona M.’s music creates an atmospheric experience, merging abstract soundscapes with emotional depth.
             </p>
             <p>
-                Her work often explores themes of identity, technology, and human connection, incorporating innovative production techniques alongside raw, organic elements. With her experimental approach, Mona M. has developed a distinctive voice in the German music scene, captivating listeners with tracks that are both thought-provoking and immersive. Her music continues to push boundaries, challenging traditional genres and offering a fresh perspective on contemporary electronic music.
+                Her work often explores themes of identity, technology, and human connection, incorporating innovative production techniques alongside raw, 
+                organic elements. With her experimental approach, Mona M. has developed a distinctive voice in the German music scene, captivating listeners 
+                with tracks that are both thought-provoking and immersive. Her music continues to push boundaries, 
+                challenging traditional genres and offering a fresh perspective on contemporary electronic music.
             </p>
-        </section>
+
+            <div>
+                <h3><strong>My Role</strong></h3> <ul className="list"> <li className="fontWeight"> Mona Mandouri - Creative Direction, Responsible for analog masks, set design, and filming</li>
+  <li className="fontWeight">Annemarie Sauerbier Creative Direction, Assisted with set design and filming, editing, and graphic design</li>
+  </ul>
+</div> <p></p>
+
+       
 
         <section className="modal-section">
             <h2>Case 1 — Album Cover & Videos for Social Media</h2>
@@ -23,27 +39,22 @@ const MonaMModalContent = () => (
                 As digital art and AI-generated visuals were gaining popularity, we decided to take a different approach: using an analog process with an old iPhone. The aim was to create an image where it’s difficult to tell if it was digitally manipulated or captured in the physical world. Though the final product was digital, the conceptual layers—built with analog patterns and textures—shone through, merging the two worlds.
             </p>
             <p>
-                The result was a striking, experimental album cover, filled with broken art, abstract patterns, and a raw aesthetic that felt both nostalgic and forward-thinking. Unfortunately, this project never saw the light of day, as the vinyl was never printed or recorded. However, looking back, it feels incredibly relevant to today’s evolving landscape of art and digital media.
-            </p>
+                The result was a striking, experimental album cover, filled with broken art, 
+                abstract patterns, and a raw aesthetic that felt both nostalgic and forward-thinking. Unfortunately, this project never saw the light 
+                of day, as the vinyl was never printed or recorded. However, looking back, it feels incredibly relevant to today’s evolving landscape of art and digital media. Shot entirely on an iPhone for maximum flexibility</p>
 
-            <h3>Roles & Contributions:</h3>
-            <ul>
-                <li><strong>Mona Mandouri:</strong> Responsible for analog masks, set design, and filming.</li>
-                <li><strong>My Role:</strong> Assisted with set design and filming, editing, and graphic design.</li>
-                <li><strong>Filming:</strong> Shot entirely on an iPhone for maximum flexibility.</li>
-            </ul>
+                <figure className="image-gallery">
+          <img src={image1} alt="Event" />
+          <img src={image2} alt="Event" />
+     
+          <img src={gif1} alt="Event" />
+          <img src={gif3} alt="Event" />
+          <img src={gif2} alt="Event" />
+    
+        </figure>
+        
         </section>
 
-        <section className="modal-section">
-            <h2>Explore More</h2>
-            <p>
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer">🌐 Learn more about Mona M's work</a>
-            </p>
-        </section>
-
-        <div className="image-gallery">
-            {/* Add images here if available */}
-        </div>
     </div>
 );
 
