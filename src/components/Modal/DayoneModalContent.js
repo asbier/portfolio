@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import './modal-common.css';
 import Image1 from '../../Assets/Image_0_dayone/before.png';
 import Image2 from '../../Assets/Image_0_dayone/Release.png';
@@ -14,9 +14,9 @@ import video1 from '../../Assets/Image_0_dayone/Demo New Filter Experience video
 import video2 from '../../Assets/Image_0_dayone/PDPvideo.mp4'; // Example path
 
 const DayoneModalContent = () => {
-  const videoRefs = [useRef(null), useRef(null)];
+  const [videoRefs] = useState([useRef(null), useRef(null)]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps 
+
   useEffect(() => {
     const handleIntersection = (entries) => {
       entries.forEach((entry, index) => {
@@ -29,11 +29,11 @@ const DayoneModalContent = () => {
     };
 
     const observer = new IntersectionObserver(handleIntersection, { threshold: 0.5 });
-    // eslint-disable-next-line react-hooks/exhaustive-deps 
+  
     videoRefs.forEach((ref) => {
       if (ref.current) observer.observe(ref.current);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps 
+
     return () => {
       videoRefs.forEach((ref) => {
         if (ref.current) observer.unobserve(ref.current);

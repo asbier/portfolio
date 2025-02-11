@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import './modal-common.css';
 import Image1 from '../../Assets/Image_1_carhartt_wip/Image1.png';
@@ -21,12 +21,12 @@ import video4 from '../../Assets/Image_1_carhartt_wip/Video_comp_final.mp4';
 
 
 const CarharttModalContent = () => {
-    const videoRefs = [
+   const [videoRefs] = useState([
         useRef(null),
         useRef(null),
         useRef(null),
         useRef(null)
-      ];
+      ]);
      // eslint-disable-next-line react-hooks/exhaustive-deps 
      useEffect(() => {
   const handleIntersection = (entries) => {

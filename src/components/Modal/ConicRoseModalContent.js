@@ -3,7 +3,6 @@ import './modal-common.css';
 
 import image1 from '../../Assets/Image_4_Conic Rose/Vision 1.png';
 import image2 from '../../Assets/Image_4_Conic Rose/Vision 2.png';
-import image4 from '../../Assets/Image_4_Conic Rose/Vision 4.png';
 import image5 from '../../Assets/Image_4_Conic Rose/Vision 3.png';
 import image6 from '../../Assets/Image_4_Conic Rose/Vision 5.png';
 import image7 from '../../Assets/Image_4_Conic Rose/Vision 6.png';
