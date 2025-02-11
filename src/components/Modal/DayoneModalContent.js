@@ -16,7 +16,7 @@ import video2 from '../../Assets/Image_0_dayone/PDPvideo.mp4'; // Example path
 const DayoneModalContent = () => {
   const videoRefs = [useRef(null), useRef(null)];
 
-  // Auto-play/pause videos when they enter/leave the viewport
+  // eslint-disable-next-line react-hooks/exhaustive-deps 
   useEffect(() => {
     const handleIntersection = (entries) => {
       entries.forEach((entry, index) => {
@@ -29,11 +29,11 @@ const DayoneModalContent = () => {
     };
 
     const observer = new IntersectionObserver(handleIntersection, { threshold: 0.5 });
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
     videoRefs.forEach((ref) => {
       if (ref.current) observer.observe(ref.current);
     });
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
     return () => {
       videoRefs.forEach((ref) => {
         if (ref.current) observer.unobserve(ref.current);
@@ -49,7 +49,7 @@ const DayoneModalContent = () => {
         I balanced design, leadership, and strategy, taking ownership with minimal oversight. I focused on a holistic approach, from UX to business strategy, integrating user research and product ownership into the design process. My main client is Volkswagen.
       </p>
       <div className="column">
-        
+
   <h3><strong>My Role</strong></h3>
   <ul className="list" >
     <li className="fontWeight">UX </li>

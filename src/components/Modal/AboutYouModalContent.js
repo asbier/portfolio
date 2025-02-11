@@ -1,6 +1,5 @@
 import React from 'react';
 import './modal-common.css';
-import Image1 from '../../Assets/Image 3_AboutYou/Editorial-Moodbefore.png';
 import Image2 from '../../Assets/Image 3_AboutYou/Stories_final.png';
 import Image4 from '../../Assets/Image 3_AboutYou/shoebrand-AY.png';
 import Image5 from '../../Assets/Image 3_AboutYou/RedesignContentStoriesafter.png';

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'; // Ensure this is properly imported
 import './Nav.css';
 
 
-import Logo from '../../Assets/neues Logo.svg';
 import Image1 from '../../Assets/Modal Images/heart.png';
 import Image2 from '../../Assets/Modal Images/Contact.png';
 import Image3 from '../../Assets/Modal Images/open.png';

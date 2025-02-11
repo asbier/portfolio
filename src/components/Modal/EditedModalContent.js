@@ -2,7 +2,6 @@ import React from 'react';
 import './modal-common.css';
 import image1 from '../../Assets/Image_2_EDITED/Editedweb.png';
 import image2 from '../../Assets/Image_2_EDITED/Frankfurt_openingdesign.png';
-import image3 from '../../Assets/Image_2_EDITED/Image 3.png';
 import image4 from '../../Assets/Image_2_EDITED/Image 4.png';
 import image5_2 from '../../Assets/Image_2_EDITED/Image 5_2.png';
 import image15 from '../../Assets/Image_2_EDITED/Image 15.png';
