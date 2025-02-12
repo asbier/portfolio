@@ -295,14 +295,14 @@
     height: 100%; /* Full height */
     justify-content: center; /* Center content horizontally */
     align-items: center;
-    padding: 1.5rem; /* Adjust padding for mobile */
+    padding: 0.8rem; /* Adjust padding for mobile */
     display: flex;
     flex-direction: column; /* Stack content vertically */
   }
 
   .modal-content-container {
     font-size: 0.875rem;
-    line-height: 1.3rem;
+    line-height: auto;
     justify-content: center; /* Center content horizontally */
     align-items: center;
     padding: 0; /* No padding */

@@ -136,9 +136,9 @@ const AboutYouModalContent = () => (
 
             <figure className="image-gallery">
             <img src={Image14} alt="ABOUT YOU LAUNCH EVENT AMSTERDAM EVENT IDENTITY" />
+            <figcaption className="image-caption"> Moodboard</figcaption>
             <img src={Image13} alt="ABOUT YOU Brand" /> 
-                       <figcaption className="image-caption"> Moodboard</figcaption>
-            <figcaption className="image-caption"> Anna&Ella ABOUT YOU Brand Launch</figcaption>
+                      <figcaption className="image-caption">Anna&Ella new Shoe Brand by ABOUTYOU, Brand Launch Dinner Event in Soho House Barcelona</figcaption>
         </figure>
         </section>
             

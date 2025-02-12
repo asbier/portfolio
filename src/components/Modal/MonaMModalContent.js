@@ -31,20 +31,31 @@ const MonaMModalContent = () => (
        
 
         <section className="modal-section">
-            <h2>Case 1 — Album Cover & Videos for Social Media</h2>
+            <h2>Album Cover & Videos for Social Media</h2>
+
+            
             <p>
                 During the COVID-19 pandemic, we had the unique opportunity to experiment with minimal resources and break traditional creative boundaries. Mona M., the artist behind the project, needed a new album cover, and Mona Mandouri initiated this project. We wanted to create something that blurred the lines between analog and digital, as that's what we felt the music represents.
             </p>
+            <figure className="image-gallery">
+          <img src={image1} alt="Event" />
+        
+        </figure>
+        <h2>The Process</h2>
             <p>
                 As digital art and AI-generated visuals were gaining popularity, we decided to take a different approach: using an analog process with an old iPhone. The aim was to create an image where it’s difficult to tell if it was digitally manipulated or captured in the physical world. Though the final product was digital, the conceptual layers—built with analog patterns and textures—shone through, merging the two worlds.
             </p>
+            <h2>The Solution</h2>
+    <p></p>
+
+   
             <p>
                 The result was a striking, experimental album cover, filled with broken art, 
                 abstract patterns, and a raw aesthetic that felt both nostalgic and forward-thinking. Unfortunately, this project never saw the light 
                 of day, as the vinyl was never printed or recorded. However, looking back, it feels incredibly relevant to today’s evolving landscape of art and digital media. Shot entirely on an iPhone for maximum flexibility</p>
 
                 <figure className="image-gallery">
-          <img src={image1} alt="Event" />
+         
           <img src={image2} alt="Event" />
      
           <img src={gif1} alt="Event" />

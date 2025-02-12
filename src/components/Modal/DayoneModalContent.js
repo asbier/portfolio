@@ -47,7 +47,7 @@ const DayoneModalContent = () => {
       <h1>DAYONE</h1>
       <p><strong>DAYONE provides innovative consulting and design services for digital transformation. © DAYONE</strong></p>
       <p><strong>As Product Designer at DAYONE, </strong>
-        I balanced design, leadership, and strategy, taking ownership with minimal oversight. I focused on a holistic approach, from UX to business strategy, integrating user research and product ownership into the design process. My main client is Volkswagen.
+        I balanced design, leadership, and strategy, taking ownership with minimal oversight. I focused on a holistic approach, from UX to business strategy, integrating user research and product ownership into the design process. My main client was Volkswagen.
       </p>
       <div className="column">
 

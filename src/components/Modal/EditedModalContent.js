@@ -77,9 +77,12 @@ const EditedModalContent = () => (
 
       <figure className="image-gallery">
           <img src={image1} alt="Product Design" />
-          <img src={image32} alt="Collab Design" />
+          <figcaption className="image-caption">2-week circular e-commerce content design, weekly blog updates, UI redesign—from illustrated top navigation to a classic sidenav with editorial focus over product images.</figcaption>
+          <img src={image32} alt="Collab Design" />  
+          <figcaption className="image-caption">In 2017, we shifted #EDITEDpaper from four to two larger print issues per year, with all designers contributing to design and illustrations.</figcaption>
+ 
           <img src={image2} alt="Product Design" />
-          <figcaption className="image-caption">Examples of the Holistic Brand Communication </figcaption>
+          <figcaption className="image-caption">EDITED store scaling, launch events, and merchandise, including in-store displays.</figcaption>
         </figure>
 
 
@@ -135,17 +138,19 @@ const EditedModalContent = () => (
     <img src={image26} alt="EDITED Launch Store Event in Berlin" />
     <figcaption className="image-caption">Store Event with Fashionshow Collection Launch</figcaption>
     <img src={image28} alt="Luma" />
+    <figcaption className="image-caption">EDITED x Luma Grothe launch in Berlin</figcaption>
     <img src={image29} alt="Product Design" />
+    <figcaption className="image-caption">EDITED launch of a new collection</figcaption>
     <img src={image30} alt="Product Design" />
-    <figcaption className="image-caption">EDITEDxLuma Grothe in Berlin</figcaption>
+    <figcaption className="image-caption">EDITED x Malaika Raiss</figcaption>
     <img src={image15} alt="Nina Kastens Launch Event 1" />
     <figcaption className="image-caption">EDITEDxNina Kastens Event & Website Launch</figcaption>
     <img src={image19} alt="Bladerunner" />
-    <figcaption className="image-caption">Blade Runner Collection Launch Event</figcaption>
+    <figcaption className="image-caption">Blade Runner collection launch </figcaption>
     <img src={image20} alt="New Mexico Collection Launch" />
-    <figcaption className="image-caption">New Mexico Collection Launch Dinner Event</figcaption>
+    <figcaption className="image-caption">New Mexico collection launch Dinner </figcaption>
     <img src={image27} alt="VideoMaterial Collections" />
-    <figcaption className="image-caption">Campaign Videos for Shopp,App and Social Media usage</figcaption>
+    <figcaption className="image-caption">Campaign Videos for Shopp, App and Social Media usage</figcaption>
     <img src={image23} alt="Online-Launch" />
     <figcaption className="image-caption">Campaigns Online matching Offline Events</figcaption>
     </figure>

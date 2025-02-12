@@ -36,9 +36,13 @@ const CommaModalContent = () => (
 
     <h2>The Solution</h2>
     <p>
-        I developed a dynamic, zine-style lookbook featuring bold typography, collage elements, and modern aesthetics. 
-        This design was translated into a digital experience using parallax scrolling and interactive visuals, 
-        ensuring a cohesive print-to-web transformation.
+    I created a dynamic, zine-style lookbook called "Comma CI". During this process, 
+    we identified the need for two distinct target pieces: a 
+    classic design and a youthful "Stylemagazine". The latter 
+    embraced bold typography, collage elements, and modern aesthetics. 
+    This visual identity was seamlessly translated into a digital 
+    experience through parallax scrolling and interactive visuals, 
+    ensuring a cohesive transition from print to web.
     </p>
 
     <h2>The Outcome</h2>
@@ -59,7 +63,6 @@ const CommaModalContent = () => (
                     <img src={image1} alt="Comma Mag1" />
                     <img src={image2} alt="Comma Mag1" />
                    
-                    
                     </div>
 
                     </div>         
@@ -68,7 +71,7 @@ const CommaModalContent = () => (
                    
  
 <p>
-  <a href="https://www.deptagency.com/de-dach/" target="_blank" rel="noopener noreferrer"> ➞ Learn more about former SuperReal now deptagency</a>
+  <a href="https://www.deptagency.com/de-dach/" target="_blank" rel="noopener noreferrer"> ➞ Learn more about former SuperReal now Dept.-Agency</a>
   </p>
 
  </div>
