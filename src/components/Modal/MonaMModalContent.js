@@ -23,8 +23,9 @@ const MonaMModalContent = () => (
             </p>
 
             <div>
-                <h3><strong>My Role</strong></h3> <ul className="list"> <li className="fontWeight"> Mona Mandouri - Creative Direction, Responsible for analog masks, set design, and filming</li>
-  <li className="fontWeight">Annemarie Sauerbier Creative Direction, Assisted with set design and filming, editing, and graphic design</li>
+                <h3><strong>My Role</strong></h3> <ul className="list"> <li className="fontWeight"> Mona Mandouri - Creative Direction, Responsible 
+                    for analog masks, set design, and filming </li><p></p>
+  <li className="fontWeight"> Annemarie Sauerbier Creative Direction, Assisted with set design and filming, editing, and graphic design</li>
   </ul>
 </div> <p></p>
 
