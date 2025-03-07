@@ -24,7 +24,8 @@
 
   .hero h1 {
     font-size: 2rem; /* Smaller font size for h1 on mobile */
-  }
+    line-height: 100%;}
+
 
   .hero-p {
     margin: 5px; /* Smaller margin for paragraphs on mobile */

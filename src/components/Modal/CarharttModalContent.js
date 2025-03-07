@@ -93,7 +93,7 @@ const CarharttModalContent = () => {
         </div>
         <section className="modal-section">
 
-            <h1>Help Desk development</h1>
+            <h1>Help Yourself - Help Desk development</h1>
             <p>Time <big>→</big> Within 3 Month live</p>
             <div className="column">
                 <h3><strong>Deliverables</strong></h3>
@@ -141,7 +141,7 @@ const CarharttModalContent = () => {
 
         <section className="modal-section">
             <div>
-                <h1>Checkout Experience Optimization</h1>
+                <h1>Easy Checkout - Experience Optimization</h1>
                 <p>Time <big> → </big>Within 2 Month Live</p>
                 <p></p>
                 <p></p>
@@ -188,7 +188,7 @@ const CarharttModalContent = () => {
 
        
         <section className="modal-section">
-    <h1>GIF and Video Integration</h1>
+    <h1>Get Inspired - GIF and Video Integration</h1>
     <p>Time <big>→</big> Within 2 Weeks</p>
 
     <h3>Challenge</h3>
@@ -215,7 +215,7 @@ const CarharttModalContent = () => {
 </section>
 
 <section className="modal-section">
-    <h1>Enhanced Navigation and Filtering</h1>
+    <h1>Find the right Fit - Filter experience</h1>
     <p>Time <big>→</big> Within 1 Month</p>
 
     <h3>Challenge</h3>
