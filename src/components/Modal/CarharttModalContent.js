@@ -54,7 +54,8 @@ const CarharttModalContent = () => {
     
       return (
       <div className="modal-content-container">
-        <p>
+        <h1>Carhartt WIP</h1>
+       <p>
             <strong>Carhartt Work In Progress (Carhartt WIP)</strong> forms a division of the
             American brand Carhartt, one of the first companies to pioneer workwear in the USA.
             Founded in Europe in 1989, 100 years after Hamilton Carhartt established 

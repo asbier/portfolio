@@ -4,7 +4,7 @@
   --bg-dark: #222;
   --btn-bg: #9d8f6376;
   --btn-hover: #09ff00;
-  --btn-active: #004494;
+
   --text-light: white;
   --text-dark: black;
 }
@@ -14,7 +14,7 @@
   font-family: Lausanne, sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1.8;
+  line-height: 130%;
   display: flex;
   position: fixed;
   inset: 0; /* Kurzform für top, left, right, bottom */
@@ -47,14 +47,22 @@
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   margin-bottom: 1rem;
+ 
 }
 
 .about p {
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   font-weight: 400;
-  line-height: 1.8;
+  line-height: 130%;
   word-wrap: break-word;
 }
+
+.abstand
+{  margin-right: 20rem;
+  line-height: 130%;
+}
+
+
 
 /* ✅ CTA Button */
 .cta-button {
@@ -111,7 +119,13 @@
     max-width: 90%;
     font-size: 0.95rem;
     padding: 0.7rem 1.8rem;
+    line-height: 120%;
   }
+
+.abstand
+{  margin-right: 2rem;
+  line-height: 130%;
+}
 }
 
 @media (max-width: 480px) { /* Smartphone */
@@ -120,6 +134,13 @@
     padding: 0.6rem 1.5rem;
     width: 100%;
     text-align: center;
+    line-height: 120%;
+
+  }
+
+  .abstand
+  {  margin-right: 2rem;
+    line-height: 130%;
   }
 
   .about h2 {
@@ -128,7 +149,7 @@
 
   .about p {
     font-size: 0.9rem;
-    line-height: 1.4;
+    line-height: 120%;
   }
 
   .abstand {

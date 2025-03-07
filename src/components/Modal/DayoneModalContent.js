@@ -77,15 +77,7 @@ const DayoneModalContent = () => {
           <figcaption className="image-caption">Wireframe of the catergory Slider - the first Task</figcaption>
         </figure>
 
-        
-        <div className="column">
-          <h3><strong>My Role</strong></h3>
-          <ul>
-            <li className="fontWeight">UX Research</li>
-            <li className="fontWeight">UX Design</li>
-            <li className="fontWeight">High-Level UI Design</li>
-          </ul>
-        </div>
+       
 
 
         <h3><strong>Challenge</strong></h3>
