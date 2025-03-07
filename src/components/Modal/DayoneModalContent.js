@@ -77,18 +77,20 @@ const DayoneModalContent = () => {
           <figcaption className="image-caption">Wireframe of the catergory Slider - the first Task</figcaption>
         </figure>
 
-       
-
 
         <h3><strong>Challenge</strong></h3>
-        <p>At DAYONE, I was working with Accenture Song on the International Group Stock Locator for Volkswagen’s OneHub (Central Content-Management- and Experience-System). Collaborating with different teams, I had to navigate varying goals and workflows. Being new helped me approach challenges with fresh perspectives.</p>
+        <p>At DAYONE, I was working with Accenture Song on the International Group Stock Locator for 
+          Volkswagen’s OneHub (Central Content-Management- and Experience-System). Collaborating with different 
+          teams, I had to navigate varying goals and workflows. Being new helped me approach challenges with fresh perspectives.</p>
 
 
         <h3><strong>What is the Group Stock Locator at Volkswagen?</strong></h3>
-        <p>The GroupStockLocator integrates new and pre-owned stock-car offerings for the customer to enable an engaging digital brand experience while driving both online and offline sales.</p>
+        <p>The GroupStockLocator integrates new and pre-owned stock-car offerings for the customer to 
+          enable an engaging digital brand experience while driving both online and offline sales.</p>
 
         <h3><strong>Process</strong></h3>
-        <p>To gain clarity, I focused on research and extensive questioning to understand Volkswagen’s objectives and user pain points. Through User Days, we discovered that users struggled to find specific cars due to Volkswagen’s offline sales legacy.</p>
+        <p>To gain clarity, I focused on research and extensive questioning to understand Volkswagen’s 
+          objectives and user pain points. Through User Days, we discovered that users struggled to find specific cars due to Volkswagen’s offline sales legacy.</p>
 
         <figure className="image-gallery">
           <img src={Image1} alt="Before" />
@@ -100,8 +102,15 @@ const DayoneModalContent = () => {
           <figcaption className="image-caption">Input for the Concept from latest Userday</figcaption>
         </figure>
 
-        <h3><strong>Outcome 1</strong></h3>
-        <p>With these insights, I proposed a simple yet effective solution: <strong>"The Category Slider."</strong> To simplify the buying decisions for certain user groups, a new personalized GSL Category Entry Slider was introduced on the GSL Content Page as well as on the Product List Page. These Category filters give users more guidance to find their desired type of vehicle, enabling a better purchase decision. The overall goal was “finding my dream car faster” by using the Lifestyle Categories, which fit each user’s needs.</p>
+        <h3><strong>Outcome</strong></h3>
+        <p>With these insights, I proposed a simple yet effective solution: “The Category Slider.”
+          To simplify the buying decisions for certain user groups, 
+          a new personalized GSL Category Entry Slider was introduced on the GSL Content Page 
+          as well as on the Product List Page. 
+          These Category filters give users more guidance to find their desired type of vehicle, 
+          enabling a better purchase decision. 
+          The overall goal was “finding my dream car faster” by using the Lifestyle Categories,
+          which fit each user’s needs.</p>
 
         <div className="filter-chips-container">
           <div className="filter-chip">Electro & Hybrid</div>
@@ -117,7 +126,11 @@ const DayoneModalContent = () => {
           <figcaption className="image-caption">Outcome of the Category Slider</figcaption>
         </figure>
 
-        <p>During these discussions, I was sparking thoughts about a more holistic approach, leading to the birth of the Holistic Filter Initiative, later called the Global Filter Experience. As a result, our Design Team launched both quantitative research through heatmaps and qualitative research during a User Day, where, with the support of Ipsos, we interviewed five car owners who were either about to purchase or had recently purchased a vehicle.</p>
+        <p>During these discussions, I was sparking thoughts about a more holistic approach, leading to the birth of 
+          “the Holistic Filter Initiative”,
+           later called “the Global Filter Experience”. As a result, our Design Team launched both quantitative 
+           research through heatmaps and qualitative research during a User Day, where, with the support of 
+           Ipsos, we interviewed five car owners who were either about to purchase or had recently purchased a vehicle.</p>
 
         <figure className="image-gallery">
           <img src={Image4} alt="Research" />
@@ -148,7 +161,9 @@ const DayoneModalContent = () => {
           <video ref={videoRefs[1]} src={video2} muted loop playsInline></video>
         </div>
 
-        <p>💡 My takeaway is that every idea can open up new opportunities that lead to a deeper understanding of what users truly need and ask for. This is a great example of how I like to work—transforming a small idea into a big change with a positive outcome for the user.</p>
+        <p>💡 My takeaway is that every idea can open up new opportunities that lead to a deeper understanding 
+          of what users truly need and ask for. This is a great example of how I like to work—transforming 
+          a small idea into a big change with a positive outcome for the user.</p>
 
         <figure className="image-gallery">
           <img src={Image2} alt="Filtercockpit Live" />

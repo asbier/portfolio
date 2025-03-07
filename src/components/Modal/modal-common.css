@@ -303,7 +303,7 @@
 
   .modal-content-container {
     font-size: 0.875rem;
-    line-height: auto;
+    line-height: 130%;
     justify-content: center; /* Center content horizontally */
     align-items: center;
     padding: 0; /* No padding */
@@ -326,7 +326,11 @@
   .modal-section h1 {
     line-height: 120%;
   }
-  /* Adjust image gallery for mobile */
+
+  .modal-section h2 {
+    line-height: 120%;
+  }
+
   .image-gallery {
     display: flex; /* Enables flexbox */
     flex-wrap: wrap; /* Allows images to wrap */
