@@ -89,8 +89,8 @@ const EditedModalContent = () => (
     </section>
 
     <section className="modal-section">
-      <p><strong>Created the Corporate Identity for EDITEDtheLabel Stores</strong>, developing mood boards, 
-      interior concepts, and merchandise displays that reflected the brand’s ethos.</p>
+      <h2>Corporate Identity for EDITEDtheLabel Stores</h2> 
+      <p>developing mood boards, interior concepts, and merchandise displays that reflected the brand’s ethos.</p>
       <p>Established brand books and design guidelines for retail and events to maintain 
         consistency across physical and digital touchpoints.</p>
 
