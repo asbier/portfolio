@@ -95,7 +95,7 @@ const EditedModalContent = () => (
         consistency across physical and digital touchpoints.</p>
 
 
-        <p>Our Rules After the Redesign in 2016</p>
+        <p>Objectives of our Redesign in 2016</p>
 <ul className="checklist">
   <li className="fontWeight">Everything we produce must be shareable—Pinterest posts, Instagram, YouTube, and the in-store experience (each corner should serve as an inviting photo background).</li>
   <li className="fontWeight">Each launch should be memorable.</li>
