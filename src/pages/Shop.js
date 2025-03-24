@@ -1,17 +1,22 @@
 import React, { useState } from "react";
-import "../pages/About.css"; // Import the styles
+import "../pages/About.css";
 
-function Shop() {
-  return ( 
-    <div className="pages">
-    <a className="cta-button" href="mailto:annemariesauerbier@googlemail.com">Lets Collaborate</a>
+function Shop(props) {
+    const [isExpanded, setIsExpanded] = useState(false);
 
-      <h2>Meet & Greet</h2>
-      <p>I foster Collaboration -
-        please get in contact with these beautyful individuums to collaborate or book as a package
-      </p>
-    </div>
-  );
+    return (
+        <div className="abstand">
+            <h2 onClick={() => setIsExpanded(!isExpanded)} style={{ cursor: 'pointer' }}>
+                Community_
+            </h2>
+
+            <div className={`collapsible-section ${isExpanded ? "expanded" : ""}`}>
+                <p>
+                    I foster Collaboration - please get in contact with these beautiful individuums to collaborate or book as a package.
+                </p>
+            </div>
+        </div>
+    );
 }
 
 export default Shop;
