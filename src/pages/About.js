@@ -1,21 +1,22 @@
 import React, { useState } from "react";
-import "./about.css"; // Import the styles
+import "../pages/About.css"; // Import the styles
+
 
 function About(props) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
             <div className="abstand">
-                <h2>ABOUT</h2>
-                <p><strong>
-                I am a product designer and humanity-centered thinker. 
-                    Collaborating within a network of creative minds, my interdisciplinary practice bridges design, technology, 
-                    research, and user advocacy to craft thoughtful, inclusive solutions that shape meaningful experiences.
-                    Currently working at DAYONE as a UX Designer and Digital Transformation Consultant, I focus 
-                    on creating user-centric systems and seamless interfaces.By consulting and facilitating, I contribute 
-                    to fostering inclusive spaces and 
-                    exploring how humanity-centered design can shape better presents and futures.
-                </strong></p>
+                Hello!
+                <p>
+                I’m Annemarie, a product designer and creative mind based in Berlin. 
+                I love blending editorial storytelling, UX, and brand experience to craft 
+                meaningful products and services – both digital and physical. My work 
+                is driven by curiosity and a human-centered mindset, always aiming to 
+                create solutions that are functional, emotionally engaging, and leave a positive impact.
+
+
+            </p>
 
                 {/* CTA Button */}
                 <button 
@@ -27,7 +28,7 @@ function About(props) {
 
                 {/* Collapsible Section */}
                 <div className={`collapsible-section ${isExpanded ? "expanded" : ""}`}>
-                    <p><strong>💭 Before joining DAYONE</strong></p>  
+                    <p><strong>💭 From Silos to Synergy: The New Era of Design, Tech, and Human-Centered Innovation </strong></p>  
                     <p>I didn’t fully grasp the significance of emerging roles in creating products, 
                             building culture, and generating awareness—elements crucial to connecting with people. Roles like UX, UI, 
                             product strategy, service design, analytics, and engineering fit into broader concepts such as Product, 
@@ -61,14 +62,15 @@ function About(props) {
                             interactions, requiring an understanding of both user behavior and technical feasibility. A well-rounded designer—whether called Product, 
                             UX, UI, Digital Designer, or Graphic Designer—must also understand either the backend structures in the digital realm or the physical space 
                             (e.g., how APIs work, how data is processed, and which methods or materials to use) to ensure design aligns with execution, creating seamless 
-                            user e xperiences.
+                            user experiences.
                         </p>
                         <p>Ultimately, roles in design, marketing, and engineering aren’t isolated; they form a unified process to deliver experiences that meet both 
                             user needs and business goals. While the mediums—digital, physical, virtual, etc.—evolve, the core objective remains the same: designing solutions 
                             that resonate with humans.
                         </p>
                         <p>Unfortunately, the industry often isolates these roles into silos, preventing effective integration. The result is often a fragmented product that 
-                            doesn’t succeed. To create truly effective, human-centered solutions, design, marketing, analytics, and technical execution must collaborate. 
+                            doesn’t succeed. 
+                            In my Opinion, to create truly effective, human-centered solutions, design, marketing, analytics, and technical execution must collaborate. 
                             Each skill set must be deeply understood, placing the right people into the right positions within the "machine" of the company.
                         </p>
                 </div>

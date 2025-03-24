@@ -22,13 +22,9 @@ import image30 from '../../Assets/Image_2_EDITED/priouette.png';
 import image31 from '../../Assets/Image_2_EDITED/Pullver-Design.png';
 import image32 from '../../Assets/Image_2_EDITED/magazines.png';
 
-
-
 const EditedModalContent = () => (
   <div className="modal-content-container">
     <h1>EDITED the Label</h1>
-
-
     <p>
       With modern looks, current trend pieces, and a strong focus on the 
       house-owned brand, EDITED stands for a unique mix of clothes, 
@@ -71,7 +67,7 @@ const EditedModalContent = () => (
 
 
       <p>Introducing a redesign concept for the Social Media and the new website, 
-        steering the brand toward a more modern and holistic direction.</p>
+        steering the brand towards a more modern and holistic direction.</p>
 
 
 
@@ -117,8 +113,7 @@ const EditedModalContent = () => (
     </section>
 
     <section className="modal-section">
-      <h2>ConceptsCollections and Influencer Collaborations </h2><p> including the Shoe Collection and Sport Collection, aligning them with contemporary market trends.</p>
-      <p>In 2017 developed sustainable packaging concepts, which are used now, combining design and strategy to enhance eco-conscious branding.</p>
+      <h2>Concept-Collections and Influencer Collaborations </h2>
 
       <figure className="image-gallery">
           <img src={image18} alt="Product Design" />
@@ -130,8 +125,7 @@ const EditedModalContent = () => (
     </section>
 
     <section className="modal-section">
-      <p><strong>Conceptualized and executed fashion show concepts</strong> and exclusive pop-up store designs, ensuring a cohesive and innovative customer experience.</p>
-      <p>Participated in editorial shoots to capture backstage content and created engaging video material to amplify campaign coverage.</p>
+    
 
       <figure className="image-gallery">
     <img src={image17} alt="EDITED Launch Store Event in Berlin" />
@@ -154,11 +148,10 @@ const EditedModalContent = () => (
     <img src={image23} alt="Online-Launch" />
     <figcaption className="image-caption">Campaigns Online matching Offline Events</figcaption>
     </figure>
-
     </section>
 
     <p>
-      <strong>Looking back</strong>, it was an exhilarating, fast paced journey. Both brands experienced rapid growth over those years, and every initiative we launched seemed to succeed. It was an exciting time—full of creativity, risk, and reward. There were moments of self-doubt and times when improvisation was necessary—times I wished for more time—but these challenges made the experience all the more memorable. Ultimately, it was a period of growth and discovery that felt truly magical. If given the chance, I would relive those years in the same way, and likely make the same decision to move on when I did.
+      <strong>Looking back</strong> It was an exhilarating, fast paced journey. Both brands experienced rapid growth over those years, and every initiative we launched seemed to succeed. It was an exciting time—full of creativity, risk, and reward. There were moments of self-doubt and times when improvisation was necessary—times I wished for more time—but these challenges made the experience all the more memorable. Ultimately, it was a period of growth and discovery that felt truly magical. If given the chance, I would relive those years in the same way, and likely make the same decision to move on when I did.
     </p>
 
     <p>

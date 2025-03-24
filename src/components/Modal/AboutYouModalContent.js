@@ -73,29 +73,6 @@ const AboutYouModalContent = () => (
           <figcaption className="image-caption"> Emily and Eve - New Shoes Brand Concept</figcaption>
         </figure>
         
-        <h2> Holistic Marketing Strategies with ProSieben as Partner</h2>
-            <p>
-            I conceptualized the award designs and booths for 
-            the second ABOUT YOU Awards, unlocking their full potential after the first edition fell short. <p></p>
-            My Brand Manager then positioned us as the Creative Team for both EDITED and ABOUT YOU to maximize impact.
-            The event celebrated influencers as key advocates for our brand, marking 
-            the first awards of their kind in Germany and elevating ABOUT YOU’s presence 
-            in both German and European markets. <p></p> 
-            Additionally, I worked with my Brand Lead to design booth and 
-            label presentations for EDITED and ABOUT YOU, ensuring a strong, immersive presence. 
-            The booth concept resembled a vibrant backstage lounge where nominees 
-            could connect and create. To enhance the experience, various brands 
-            showcased their latest products, offering interactive elements 
-            from food to fashion. Under the motto IT’s ABOUT YOU, guests personalized 
-            bags, socks, jeans, and more, making the space dynamic and engaging.
-            </p>
-
-            <figure className="image-gallery">
-            
-            <img src={Image9} alt="emilyandeveshoebrand" />
-          <figcaption className="image-caption">About YOU Launch in Amsterdam and AY Awards </figcaption>
-                  </figure>
-                  <a href="https://www.youtube.com/watch?v=KhQpW7210ws&list=PLkv5msXu1MbBBGeaZGT-LqZ5gL8YxZWoB" target="_blank" rel="noopener noreferrer">➞ See Live on YouTube </a>
         </section>
 
 

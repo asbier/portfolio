@@ -102,7 +102,6 @@ const CarharttModalContent = () => {
                 </ul>
             </div>
 
-        
             <h3><strong>Challenge</strong></h3>
             <p>As UX Designer within the Digital Design Team at Carhartt, I was tasked with addressing several key
                 challenges, blending both UX and UI design to create holistic solutions that improved user
@@ -117,7 +116,13 @@ const CarharttModalContent = () => {
             audience. I mapped out the user journey to highlight friction points and collaborated directly with
             developers to ensure technical feasibility. We presented my findings and solutions to the dev team, ensuring
             alignment on user needs and design requirements.
-
+            
+            <h3><strong>Solution</strong></h3>
+           <p>
+                I developed intuitive user flows and interfaces that made it easier for customers to access support,
+                track their requests, and receive timely updates. The improved design significantly reduced
+                service request resolution time and increased customer satisfaction.
+            </p>
         
             <figure className="image-gallery">
                     <img src={Image11} alt="Research"/>
@@ -125,12 +130,6 @@ const CarharttModalContent = () => {
                     <figcaption className="image-caption">HelpDesk Flow</figcaption>
                 </figure>
                 <p></p>
-            <h3><strong>Solution</strong></h3>
-           <p>
-                I developed intuitive user flows and interfaces that made it easier for customers to access support,
-                track their requests, and receive timely updates. The improved design significantly reduced
-                service request resolution time and increased customer satisfaction.
-            </p>
 
             <div className="video-gallery">
           <video ref={videoRefs[0]} src={video1} muted loop playsInline></video>
@@ -154,13 +153,26 @@ const CarharttModalContent = () => {
                     <figcaption className="image-caption">Before: A standard guided checkout—no order edits, status updates, or fast-payment options.</figcaption>
                 </figure>
                 <p></p>
-
                     </p>Process<p></p>
                     I started by conducting benchmark research to identify pain points and analyze 
                     competitor solutions. Then, I mapped out the user journey to pinpoint friction 
-                    areas and collaborated with developers to ensure technical feasibility. Through prototyping and iterative design, we fine-tuned the checkout experience, focusing on improving usability and streamlining the process. The findings and solutions were presented to the development 
+                    areas and collaborated with developers to ensure technical feasibility. 
+                    Through prototyping and iterative design, we fine-tuned the checkout experience, focusing on 
+                    improving usability and streamlining the process. The findings and solutions were presented to the development 
                     team to align on user needs and ensure seamless integration of the new features.
 
+                    <p>Solution<p></p>
+                <p>  The final solution introduced a smart checkout experience, replacing 
+                  the default Shopify checkout with a custom fast-checkout solution tailored for Carhartt WIP US and Europe/Germany. Key improvements included:</p>
+        <ul className="checklist">
+          <li className="fontWeight">New Cart Design Features – Enhanced visual hierarchy for improved usability.</li>
+          <li className="fontWeight">One-Click Fast Payment Options – Seamless integrations with Apple Pay, Google Pay, and PayPal.</li>
+          <li className="fontWeight">Real-Time Order Adjustments – Allowing users to modify their orders before finalizing.</li>
+          <li className="fontWeight">Live Order Tracking & Status Updates – Providing clear post-purchase transparency.
+          </li>
+        </ul><p></p>
+              These optimizations significantly reduced checkout time, improved conversion rates, and enhanced overall customer satisfaction.
+                </p>
                 <figure className="image-gallery">
                     <img src={Image7} alt="Research"/>
                     <figcaption className="image-caption">New Cart Design Features, aswell as a smart-Checkout</figcaption>
@@ -171,22 +183,11 @@ const CarharttModalContent = () => {
         </div>
         <figcaption className="image-caption">New Shopping Cart Design for EU/Germ</figcaption>
 
-                <p>Solution<p></p>
-                <p>  The final solution introduced a smart checkout experience, replacing the default Shopify checkout with a custom fast-checkout solution tailored for Carhartt WIP US and Europe/Germany. Key improvements included:</p>
-        <ul className="checklist">
-          <li className="fontWeight">New Cart Design Features – Enhanced visual hierarchy for improved usability.</li>
-          <li className="fontWeight">One-Click Fast Payment Options – Seamless integrations with Apple Pay, Google Pay, and PayPal.</li>
-          <li className="fontWeight">Real-Time Order Adjustments – Allowing users to modify their orders before finalizing.</li>
-          <li className="fontWeight">Live Order Tracking & Status Updates – Providing clear post-purchase transparency.
-          </li>
-        </ul><p></p>
-              These optimizations significantly reduced checkout time, improved conversion rates, and enhanced overall customer satisfaction.
-                </p>
+                
             </div>
 
         </section>
 
-       
         <section className="modal-section">
     <h1>Get Inspired - GIF and Video Integration</h1>
     <p>Time <big>→</big> Within 2 Weeks</p>
