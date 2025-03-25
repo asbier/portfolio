@@ -67,12 +67,15 @@ a {
   height: auto;
 }
 
+
 .contact-link img:hover,
-.about-link img:hover {
+.about-link img:hover 
+.community-link img:hover {
   transform: scale(1.1);
   transition: 0.3s ease;
   cursor: pointer;
 }
+
 
 /* Mobile Styles */
 @media (max-width: 768px) {
@@ -88,6 +91,15 @@ a {
   }
 
   .about-link img {
+    position: absolute;
+    top: 0px;
+    right: 130px;
+    display: inline-block;
+    margin-left: 0px;
+  }
+
+
+  .community-link img {
     position: absolute;
     top: 0px;
     right: 130px;

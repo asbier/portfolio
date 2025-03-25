@@ -4,10 +4,10 @@
   --bg-dark: #222;
   --btn-bg: #9d8f6376;
   --btn-hover: #09ff00;
-
   --text-light: white;
   --text-dark: black;
 }
+
 
 /* 🌟 Modal Container */
 .about {
@@ -68,7 +68,6 @@
 }
 
 
-
 /* ✅ CTA Button */
 .cta-button {
   font-family: Lausanne, sans-serif;
@@ -109,17 +108,25 @@
 
 /* 🎚 Collapsible Section */
 .collapsible-section {
-  margin-top: 1rem;
   opacity: 0;
   max-height: 0;
-  overflow: auto;
+  overflow: hidden;
   transition: max-height 0.5s ease, opacity 0.3s ease-in-out;
 }
 
 .collapsible-section.expanded {
   opacity: 1;
-  max-height: 1000px; /* Dynamisch anpassen */
+  max-height: 500px; /* Adjust as needed */
 }
+
+.about p {
+  font-family: Lausanne, sans-serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-weight: 400;
+  line-height: 130%;
+  word-wrap: break-word;
+}
+
 
 /* 📲 Mobile Anpassungen */
 @media (max-width: 768px) { /* Tablet */
@@ -170,3 +177,4 @@
       font-size: 1.5rem;
   }
 }
+

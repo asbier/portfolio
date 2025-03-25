@@ -1,5 +1,4 @@
-// src/App.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
@@ -9,40 +8,38 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import { Route, Routes } from 'react-router-dom';
 import './styles/Global.css'; // Import global styles
+import Community from './pages/Community';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [visibleContent, setVisibleContent] = useState({
+    community: false,
+    about: false,
+    contact: false,
+  });
 
-  const toggleDarkMode = () => setDarkMode((prevMode) => !prevMode);
+  // Toggle content visibility for each page
+  const toggleContentVisibility = (page) => {
+    setVisibleContent((prevState) => ({
+      ...prevState,
+      [page]: !prevState[page],
+    }));
+  };
 
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('body-dark');
-      document.body.classList.remove('body-light');
-    } else {
-      document.body.classList.add('body-light');
-      document.body.classList.remove('body-dark');
-    }
-  }, [darkMode]);
-
-/* open Router here */
   return (
-    
-
-    <div className={darkMode ? "body-dark" : "body-light"}>
-      <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+    <div>
+      <Nav toggleContentVisibility={toggleContentVisibility} />
       <div className="container-page">
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/About' element={<About />} />
+          <Route path='/About' element={<About isVisible={visibleContent.about} />} />
           <Route path='/Privacy' element={<Privacy />} />
-          <Route path='/Contact' element={<Contact />} />
+          <Route path='/Contact' element={<Contact isVisible={visibleContent.contact} />} />
+          <Route path='/Community' element={<Community isVisible={visibleContent.community} />} />
         </Routes>
       </div>
-      <Main darkMode={darkMode} />
-      <Footer darkMode={darkMode} />
+      <Main />
+      <Footer />
     </div>
-     
   );
 }
 
