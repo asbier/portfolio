@@ -4,7 +4,6 @@ import './Nav.css';
 import Image1 from '../../Assets/Modal Images/heart.png';
 import Image2 from '../../Assets/Modal Images/Contact.png';
 import Image3 from '../../Assets/Modal Images/open.png';
-import Image4 from '../../Assets/Modal Images/hands.png';
 
 function Nav({ toggleContentVisibility }) {
   return (
@@ -23,12 +22,6 @@ function Nav({ toggleContentVisibility }) {
         <li>
           <Link to="/Contact" onClick={() => toggleContentVisibility('contact')} className="contact-link">
             <img src={Image2} alt="Contact Me" className="nav-image" />
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/Community" onClick={() => toggleContentVisibility('community')} className="community-link">
-            <img src={Image4} alt="Community" className="nav-image" />
           </Link>
         </li>
       </ul>

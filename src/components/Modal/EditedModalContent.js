@@ -33,16 +33,7 @@ const EditedModalContent = () => (
       EDITED stands out with inspiring and trend-focused fashion that is simply fun. 
       © EDITED the Label.
     </p>
-    <p>
-      I started at EDITED when the brand was just a year old. EDITED, 
-      a daughter company of ABOUT YOU, focuses on trend-driven, data-backed fashion. A
-      s an in-house label, #EDITEDthelabel blends contemporary styles with accessibility, 
-      offering curated collections that reflect emerging trends. 
-      The brand is known for its minimal yet expressive aesthetic, 
-      appealing to fashion-conscious consumers. My role involved shaping 
-      its art direction, ensuring a cohesive brand identity across digital and print.
-    </p>
-
+    
     <div className="column">
   <h3><strong>My Role</strong></h3>
   <ul className="list" >
@@ -53,10 +44,10 @@ const EditedModalContent = () => (
   <h3><strong>Our Design Team</strong></h3>
   <ul className="list" >
   <li className="list">Brand Director Franziska Nellesen </li><p></p>
-    <li className="fontWeight">Freelance Art Director, Sonja Klements </li><p></p>
-    <li className="fontWeight">Freelance Art Director, Sally Milota </li><p></p>
-    <li className="fontWeight">Art Director, Annemarie Sauerbier </li><p></p>
-    <li className="fontWeight">Designer, Vivien Voss</li> <p></p>
+    <li className="fontWeight">Freelance Art Director Editorials & Brand: Sonja Klements </li><p></p>
+    <li className="fontWeight">Freelance Art Director, Brand, EDITED Paper: Sally Milota </li><p></p>
+    <li className="fontWeight">Art Director Brand Vision, Stores, Engagement: Annemarie Sauerbier </li><p></p>
+    <li className="fontWeight">Designer: Vivien Voss</li> <p></p>
   </ul>
 </div><p></p>
 
@@ -144,15 +135,13 @@ const EditedModalContent = () => (
     <img src={image20} alt="New Mexico Collection Launch" />
     <figcaption className="image-caption">New Mexico collection launch Dinner </figcaption>
     <img src={image27} alt="VideoMaterial Collections" />
-    <figcaption className="image-caption">Campaign Videos for Shopp, App and Social Media usage</figcaption>
+    <figcaption className="image-caption">Campaign Videos for Shop, App and Social Media usage</figcaption>
     <img src={image23} alt="Online-Launch" />
     <figcaption className="image-caption">Campaigns Online matching Offline Events</figcaption>
     </figure>
     </section>
 
-    <p>
-      <strong>Looking back</strong> It was an exhilarating, fast paced journey. Both brands experienced rapid growth over those years, and every initiative we launched seemed to succeed. It was an exciting time—full of creativity, risk, and reward. There were moments of self-doubt and times when improvisation was necessary—times I wished for more time—but these challenges made the experience all the more memorable. Ultimately, it was a period of growth and discovery that felt truly magical. If given the chance, I would relive those years in the same way, and likely make the same decision to move on when I did.
-    </p>
+
 
     <p>
       <a href="https://www.edited.de/" target="_blank" rel="noopener noreferrer">➞ See Live on EDITED.de</a>

@@ -34,7 +34,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
 }
 
 .item img {
@@ -55,7 +55,7 @@
 .title-container {
   margin-top: 10px;
   padding: 0 10px;
-  text-align: center;
+  text-align: left;
 }
 
 .image-title-small {
@@ -130,16 +130,18 @@
   .title-container {
     font-size: clamp(1rem, 3vw, 1.3rem);
     margin-bottom: 15px;
-    text-align: center;
+    text-align: left;
   }
 
   .image-title-small {
     font-size: clamp(0.8rem, 2.5vw, 1rem);
     font-weight: 500;
+    text-align: left;
   }
 
   .image-title-main {
     font-size: clamp(1.2rem, 3.5vw, 1.7rem);
-    line-height: 1.2;
+    line-height: 1;
+    text-align: left;
   }
 }
