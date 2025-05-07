@@ -52,18 +52,18 @@ const DayoneModalContent = () => {
       <div className="column">
 
   <h3><strong>My Role</strong></h3>
-  <ul className="list" >
-    <li className="fontWeight">UX </li>
-    <li className="fontWeight">UI </li>
-    <li className="fontWeight">Strategy</li>
+  <ul className="checklist" >
+    <li className="fontWeight"><b>UX</b></li>
+    <li className="fontWeight"><b>UI</b></li>
+    <li className="fontWeight"><b> Strategy</b></li>
 
   </ul>
   <h3><strong>Our Design Team for UX/UI </strong></h3>
   <ul className="list" >
-  <li className="list">Digital Design Lead AccentureSong, Odair Faléco </li><p></p>
-  <li className="fontWeight"> UX/UI Designer AccentureSong, Marina Meinhardt</li>
-    <li className="fontWeight"> UX Designer DAYONE, Annemarie Sauerbier </li>
-    <li className="fontWeight"> UX/UI Designer DAYONE, Skirmante Radvucuite </li>
+  <li className="checklist"> <b>Digital Design Lead AccentureSong</b> Odair Faléco </li>
+  <li className="fontWeight"> <b>UX/UI Designer AccentureSong</b>Marina Meinhardt</li>
+    <li className="fontWeight"> <b>UX Designer DAYONE</b> Annemarie Sauerbier </li>
+    <li className="fontWeight"> <b>UX/UI Designer DAYONE</b> Skirmante Radvucuite </li>
   </ul>
   <p></p>
 </div>

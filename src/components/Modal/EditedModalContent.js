@@ -36,19 +36,19 @@ const EditedModalContent = () => (
     
     <div className="column">
   <h3><strong>My Role</strong></h3>
-  <ul className="list" >
-    <li className="fontWeight">Art Director </li><p></p>
-    <li className="fontWeight">Content Designer </li><p></p>
-    <li className="fontWeight">Concepter </li><p></p>
+  <ul className="checklist" >
+    <li className="fontWeight">Art Director </li>
+    <li className="fontWeight">Content Designer </li>
+    <li className="fontWeight">Concepter </li>
   </ul>
   <h3><strong>Our Design Team</strong></h3>
   <ul className="list" >
-  <li className="list">Brand Director Franziska Nellesen </li><p></p>
-    <li className="fontWeight">Freelance Art Director Editorials & Brand: Sonja Klements </li><p></p>
-    <li className="fontWeight">Freelance Art Director, Brand, EDITED Paper: Sally Milota </li><p></p>
-    <li className="fontWeight">Art Director Brand Vision, Stores, Engagement: Annemarie Sauerbier </li><p></p>
-    <li className="fontWeight">Designer: Vivien Voss</li> <p></p>
-  </ul>
+  <li className="checklist"><b>Brand Director</b>  Franziska Nellesen </li>
+    <li className="fontWeight"><b> Freelance Art Director Editorials & Brand</b> Sonja Klements </li>
+    <li className="fontWeight"><b> Freelance Art Director, Brand, EDITED Paper</b> Sally Milota </li>
+    <li className="fontWeight"><b> Art Director Brand Vision, Stores, Engagement</b> Annemarie Sauerbier </li>
+    <li className="fontWeight"><b> Designer </b> Vivien Voss</li>
+  </ul><p></p>
 </div><p></p>
 
     <section className="modal-section">

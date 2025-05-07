@@ -67,7 +67,7 @@ const CarharttModalContent = () => {
         
         <div className="column">
   <h3><strong>My Role</strong></h3>
-  <ul className="list" >
+  <ul className="checklist" >
     <li className="fontWeight">UX </li>
     <li className="fontWeight">UI </li>
     <li className="fontWeight">Strategy</li>
@@ -75,8 +75,8 @@ const CarharttModalContent = () => {
   </ul>
   <h3><strong>Our Design Team for UX /UI </strong></h3>
   <ul className="list" >
-  <li className="list">Digital Design Lead, Lutz Erian </li><p></p>
-    <li className="fontWeight"> UX Designer, Annemarie Sauerbier </li>
+  <li className="checklist"> <b>Digital Design Lead</b> Lutz Erian </li>
+    <li className="checklist"> <b>UX Designer</b>Annemarie Sauerbier </li>
   </ul>
 </div>
 
