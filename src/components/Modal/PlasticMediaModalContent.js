@@ -27,16 +27,18 @@ const PlasticMediaModalContent = () => (
       Under the mentorship of Art Director Daniela Bily and Creative Director Kira Stachowitz,  
       I learned how to channel my skills and creativity within the realms of editorial design, brand marketing, and public relations.  
       We designed the Monki Magazine, four issues of INDIE Magazine, and Material Girl Magazine.</p>
+     
+     
       <div className="column">
   <h3><strong>My Role</strong></h3>
-  <ul className="list" >
+  <ul className="checklist" >
     <li className="fontWeight"> Editorial Design & </li>
     <li className="fontWeight"> Strategy </li>
   </ul>
   <h3><strong>Design Team</strong></h3>
   <ul className="list" >
-  <li className="list">Lead Daniela Bily</li><p></p>
-    <li className="fontWeight"> Assistant Annemarie Sauerbier </li>
+  <li className="list"><b>Lead </b> Daniela Bily</li>
+    <li className="fontWeight"> <b>Assistant </b> Annemarie Sauerbier </li>
   </ul>
 </div>
 <p></p>
