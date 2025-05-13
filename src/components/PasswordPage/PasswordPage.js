@@ -23,7 +23,7 @@ const PasswordPage = ({ onPasswordCorrect }) => {
 
   return (
     <div className="password-page">
-      <h1>Annemarie's Portfolio</h1>
+      <h1>AM's WORK</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="password"
