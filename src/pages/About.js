@@ -13,12 +13,7 @@ function About({ isVisible, toggleContentVisibility }) {
     <div className="abstand">
       <h2>About Me</h2>
       <p>
-        I’m Annemarie, a product designer and creative mind based in Berlin. I
-        love blending editorial storytelling, UX, and brand experience to craft
-        meaningful products and services – both digital and physical. My work is
-        driven by curiosity and a human-centered mindset, always aiming to create
-        solutions that are functional, emotionally engaging, and leave a positive
-        impact.
+      I design at the intersection of humanity, ecology, and system thinking. My work centers around people – their needs, behaviors, and stories – while creating awareness of the environments we inhabit and shape. I believe design is not just about form or function, but about responsibility: to improve systems, question habits, and build new possibilities. Inspired by nature and driven by curiosity, I collaborate with partners who seek meaningful, sustainable impact – not just surface solutions.
       </p>
 
       {/* CTA Button */}
