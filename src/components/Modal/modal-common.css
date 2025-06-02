@@ -35,27 +35,29 @@
 .video-container {
   align-content: center;
   width: 100%;           /* Make sure the container takes up 100% of its parent */
-  max-width: 80%;        /* Adjust this as needed to limit the container width */
+  max-width: 100%;        /* Adjust this as needed to limit the container width */
   margin: 20px auto;     /* Center the container */
   box-sizing: border-box;
 }
 
 .video-gallery {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
+  display: flex; /* Use flexbox to arrange videos side by side */
+  justify-content: space-between; /* Space videos evenly */
   margin: 20px 0;
-  width: 100%;    /* Ensure gallery takes up full container width */
-  box-sizing: border-box; /* Ensure padding and border are included in the width */
+  width: 100%; /* Ensure gallery takes full container width */
 }
 
-.video-gallery video { /* Ensure videos never exceed their container's width */
-  width: 100%;      /* Make videos responsive to the container */
-  max-width: 95%; /* Limit max-width of videos */
-  border-radius: 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
-  object-fit: scale-down; /* Ensure videos stay within container's bounds */
-  box-sizing: border-box; /* Include padding/border in width calculation */
+.video-wrapper {
+  flex: 1; /* Allow the video wrappers to grow equally */
+  margin: 0 10px; /* Add horizontal margin for spacing */
+  max-width: 48%; /* Limit max width to ensure they fit side by side */
+}
+
+.video-wrapper video {
+  width: 100%; /* Make the video fill the wrapper */
+  max-height: 6rem; /* Set a maximum height */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: add rounded corners */
 }
 
 /* Modal container */
@@ -112,6 +114,7 @@
 }
 
 .modal-content .close {
+  position: -webkit-sticky;
   position: sticky;
   right: 0.8rem; /* Abstand vom rechten Rand */
   top: 0;
@@ -123,7 +126,8 @@
   padding: 0.8rem;
   line-height: 1;
   z-index: 800; /* Damit er über dem Inhalt bleibt */
-  align-self: flex-end; /* Button nach rechts schieben */}
+  align-self: flex-end; /* Button nach rechts schieben */
+}
 
 .modal-content .close:hover {
   color: #40ff00;
@@ -174,6 +178,7 @@
 .column h2 {
   font-weight: 400;
   margin-bottom: 1rem;
+  line-height: 170%;
 }
 
 .column h4 {
