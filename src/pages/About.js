@@ -5,11 +5,12 @@ function About({ isVisible, toggleContentVisibility }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleToggleContent = () => {
+    console.log("Button clicked");
     setIsExpanded((prev) => {
       console.log("isExpanded:", !prev);
       return !prev;
     });
-    toggleContentVisibility("about");
+    toggleContentVisibility("About");
   };
 
   return (
