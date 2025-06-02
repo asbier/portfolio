@@ -5,18 +5,18 @@ function About({ isVisible, toggleContentVisibility }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleToggleContent = () => {
-    setIsExpanded((prev) => !prev);
-    toggleContentVisibility("about"); // This will update App.js state
+    setIsExpanded((prev) => {
+      console.log("isExpanded:", !prev);
+      return !prev;
+    });
+    toggleContentVisibility("about");
   };
 
   return (
     <div className="abstand">
-      <h2>Annemarie is a multidisciplinary designer based in Berlin</h2>
-      <p>
-        Select Clients: DAYONExVolkswagen / Carhartt-WIP / EDITED / AboutYou /
-        Plastic Media / SuperRealxComma / CONIC ROSE / MonaM
-      </p>
-
+      <p> Creator & Art Director with focus on
+      building holistic digital and spatial experiences</p> 
+    
       {/* CTA Button */}
       <button onClick={handleToggleContent} className="cta-button">
         {isExpanded ? "Read Less" : "Read More About My Journey"}
@@ -26,11 +26,20 @@ function About({ isVisible, toggleContentVisibility }) {
       {isExpanded && (
         <div className="about-details">
           <p>
-            Annemarie’s design practice spans branding, interaction, and creative direction. 
-            With a background in visual communication and new media, she develops visual 
-            languages that are intuitive and exploratory. Her work explores emotion, interface, 
-            and storytelling, often merging art and commercial contexts.
-          </p>
+          Never stopped playing and being curious: for 12 years, I've designed 
+          holistic, humanity-first experiences that elevate how people connect—with 
+          each other and with how they consume. Rooted in visual communication 
+          and guided by curiosity, my practice blends branding, user interaction, and 
+          creative direction to explore where emotion, 
+          narrative, and systems thinking intersect. The future demands new ways of 
+          engaging our senses and rethinking how we source and interact with goods. 
+          I'm actively seeking new opportunities, also in AR, VR, and MR. — to me, 
+          design isn't just about aesthetics; it's about shaping what we pay attention to, what we value, and how we experience the world.
+          <p>Worked with</p>
+        <p> DAYONE x VOLKSWAGEN x HELLA GUTMANN / CARHARTT WIP / EDITED / ABOUT YOU /
+        PLASTIC MEDIA x INDIE x MATERIAL GIRL x MONKI / HEROES & HEROINES x BUMBLE x ABSOLUT x HENNESSY x TALLY WEIJL / SUPERREAL x COMMA' / CONIC ROSE / SCHINKEL PAVILLION / MONA.M / JOVANA REISINGER /
+        MONOPOL x BIORAMA x THE GAP x DIE GRÜNEN x JOYA  </p>
+        </p>
         </div>
       )}
     </div>

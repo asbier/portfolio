@@ -31,11 +31,12 @@ function App() {
       <div className="container-page">
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/About' element={<About isVisible={visibleContent.about} />} />
           <Route path='/Privacy' element={<Privacy />} />
           <Route path='/Contact' element={<Contact isVisible={visibleContent.contact} />} />
           <Route path='/Community' element={<Community isVisible={visibleContent.community} />} />
         </Routes>
+
+        {visibleContent.about && <About isVisible={visibleContent.about} toggleContentVisibility={toggleContentVisibility} />}
       </div>
       <Main />
       <Footer />
