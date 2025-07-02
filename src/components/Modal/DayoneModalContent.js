@@ -43,9 +43,7 @@ const DayoneModalContent = () => {
     <div className="modal-content-container">
       <Header />
       <RoleAndTeam />
-      <GlobalFilterExperience />
-      <ResearchAndInsights />
-      <Outcome videoRefs={videoRefs} />
+      <GlobalFilterExperience videoRefs={videoRefs} />
       <Takeaway />
       <Links />
     </div>
@@ -57,7 +55,7 @@ const Header = () => (
     <h1>DAYONE</h1>
     <p><strong>DAYONE provides innovative consulting and design services for digital transformation. © DAYONE</strong></p>
     <p><strong>As Product Designer at DAYONE, </strong>
-      I balanced design, leadership, and strategy, taking ownership with minimal oversight. I focused on a holistic approach, from UX to business strategy, integrating user research and product ownership into the design process. My main client was Volkswagen.
+      I balanced design, leadership, and strategy, taking ownership with minimal oversight. I focused on a holistic approach, from UX to business strategy, integrating user research and product ownership into the design process. My main client was Volkswagen. Working as the German knowledge base with Accenture's international team, I brought local market expertise to global design solutions.
     </p>
   </>
 );
@@ -84,43 +82,32 @@ const RoleAndTeam = () => (
   </div>
 );
 
-
-const GlobalFilterExperience = () => (
+const GlobalFilterExperience = ({ videoRefs }) => (
   <section className="modal-section">
     <h2>Category Slider → led to a new Global Filter Experience</h2>
-   <figure className="image-gallery">
-
+    
+    <figure className="image-gallery">
       <img src={Image1} alt="Before" />
       <figcaption className="image-caption">VW.de 2022 Group Stock Locator "Before"</figcaption>
     </figure>
-    <h3><strong>Context & Challenge</strong></h3>
-    <p>At DAYONE, I joined a team formed in collaboration with Accenture, where we—bringing deep German domain expertise—worked closely with their global specialists. Together, we combined local insights with international best practices to shape Volkswagen's digital experience strategy.</p>
-    <p>As a new team member, I navigated multiple stakeholder workflows (marketing, product, regional sales) to define a unifying vision.</p>
-    <p><strong>Primary Question:</strong> How might we inform users about Volkswagen's full vehicle range in a clear, engaging way, while guiding them toward confident online purchase decisions?</p>
-    <h3><strong>What is the Group Stock Locator at Volkswagen?</strong></h3>
-    <p>The Group Stock Locator aggregates new and pre-owned Volkswagen inventory across regions, delivering a consistent digital brand experience that drives both online inquiries and offline sales.</p>
-  </section>
-);
-
-const ResearchAndInsights = () => (
-  <section className="modal-section">
-    <h3><strong>Research & Insights</strong></h3>
-    <p>To clarify Volkswagen's goals and user pain points, I led a mixed-methods research effort:</p>
-    <p>User Interviews: Buyers struggled to find vehicles due to Volkswagen's offline sales legacy and preferred "shop by lifestyle" over complex filters.</p>
-    <p>Heatmaps: Low engagement with search fields and high bounce rates when manual make/model input was required.</p>
-    <p>Benchmarking: Top sites use simple, high-level filters like "SUV" or "Under €20k" before detailed options.</p>
+    
+    <h3><strong>Challenge</strong></h3>
+    <p>Volkswagen's online vehicle finder was too complex. Users struggled to find cars and had high bounce rates when trying to search manually.</p>
+    
+    <h3><strong>The Question</strong></h3>
+    <p>How might we help users find their ideal vehicle in a simple, engaging way?</p>
+    
+    <h3><strong>My Approach</strong></h3>
+    <p>I analyzed the user research which was taken place to understand the core problem: buyers preferred "shopping by lifestyle" over technical filters. Research also showed that category sliders used on the website currently had no use for users - they needed more relevant topics, better structure, and functionality that actually works on mobile devices. Through user interviews, heatmap analysis, and competitive benchmarking, I identified that successful sites use simple, high-level categories first.</p>
     
     <figure className="image-gallery">
       <img src={Image5} alt="Research" />
-      <figcaption className="image-caption">Input for the Concept from latest Userday</figcaption>
+      <figcaption className="image-caption">User research insights</figcaption>
     </figure>
-  </section>
-);
-
-const Outcome = ({ videoRefs }) => (
-  <section className="modal-section">
-    <h3><strong>Outcome</strong></h3>
-    <p>With these insights, I proposed a simple yet effective solution: "The Category Slider." To simplify the buying decisions for certain user groups, a new personalized GSL Category Entry Slider was introduced on the GSL Content Page as well as on the Product List Page. These Category filters give users more guidance to find their desired type of vehicle, enabling a better purchase decision.</p>
+    
+    <h3><strong>Solution</strong></h3>
+    <p>I designed "The Category Slider" - simple lifestyle-based filters that guide users to their ideal vehicle type. This personalized approach replaced complex technical filters with intuitive categories.</p>
+    
     <div className="filter-chips-container">
       <div className="filter-chip">Electro & Hybrid</div>
       <div className="filter-chip">Models for Families</div>
@@ -131,13 +118,14 @@ const Outcome = ({ videoRefs }) => (
 
     <figure className="image-gallery">
       <img src={Image10} alt="Slider" />
-      <figcaption className="image-caption">Wireframe of the category Slider</figcaption>
+      <figcaption className="image-caption">Category Slider wireframe</figcaption>
     </figure>
     <figure className="image-gallery">
       <img src={Image8} alt="Slider" />
       <img src={Image9} alt="Research" />
-      <figcaption className="image-caption">Outcome of the Category Slider</figcaption>
+      <figcaption className="image-caption">Final implementation</figcaption>
     </figure>
+    
     <div className="video-gallery">
       <div className="video-wrapper">
         <video ref={videoRefs[0]} src={video1} muted loop playsInline></video>
@@ -146,12 +134,16 @@ const Outcome = ({ videoRefs }) => (
         <video ref={videoRefs[1]} src={video2} muted loop playsInline></video>
       </div>
     </div>
+    
+    <h3><strong>Impact</strong></h3>
+    <p>The impact of this consultancy was significant: rather than just implementing the category slider on the landing page, my analysis revealed the need for a complete user journey transformation. We created an entirely upgraded experience with a comprehensive filter concept, enhanced search functionalities, redesigned product detail pages, and mobile-optimized interactions throughout.</p>
   </section>
 );
 
 const Takeaway = () => (
   <section className="modal-section">
-    <p>💡 My takeaway is that every idea can open up new opportunities that lead to a deeper understanding of what users truly need and ask for. This is a great example of how I like to work—transforming a small idea into a big change with a positive outcome for the user.</p>
+    <h3><strong>Key Takeaway</strong></h3>
+    <p>My takeaway is that every idea can open up new opportunities that lead to a deeper understanding of what users truly need and ask for. This is a great example of how I like to work—transforming a small idea into a big change with a positive outcome for the user.</p>
     <figure className="image-gallery">
       <img src={Image2} alt="Filtercockpit Live" />
       <figcaption className="image-caption"> Next Task was building the Global Filter Concept -> This is the Live Version from June 2024</figcaption>

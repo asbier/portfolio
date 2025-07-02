@@ -18,13 +18,20 @@ import image14 from '../../Assets/Image_4_Conic Rose/Vision-F.png';
 const ConicRoseModalContent = () => (
   <div className="modal-content-container">
     <h1>Conic Rose Album </h1>
-    <p> Worked up via Bertram Burkert’s mournful guitar improvisations, the cut and thrust of city life seeps through 
-      this Berlin band’s teary debut. From the wistful vistas of Honeylake, filmic heartbreak of Uli to the wispy, held-in Chopin Rosé, 
+    <p> Worked up via Bertram Burkert's mournful guitar improvisations, the cut and thrust of city life seeps through 
+      this Berlin band's teary debut. From the wistful vistas of Honeylake, filmic heartbreak of Uli to the wispy, held-in Chopin Rosé, 
       its progressively playful tracks dabble with Hassell, Bach, Radiohead, hip-hop beats and woozy electronics, providing 
       a masterful showcase for the mazy trumpet melodics and forlorn flugelhorns of Konstantin Döben.**** Mojo Music Magazine (2023)</p>
 
-
-
+    <div className="column">
+      <div>
+        <h3><strong>My Role</strong></h3>
+        <ul className="list">
+          <li>Album Cover Design</li>
+          <li>Visual Concept Development</li>
+        </ul>
+      </div>
+    </div>
 
     <p>
       <a href="https://conicrose.bandcamp.com/album/heller-tag" target="_blank" rel="noopener noreferrer">
@@ -61,7 +68,7 @@ const ConicRoseModalContent = () => (
 
       <p>
         I analyze the market—exploring existing designs in the genre, understanding what resonates with audiences, and
-        identifying the band’s preferences. My goal is to craft something original yet instantly recognizable as a
+        identifying the band's preferences. My goal is to craft something original yet instantly recognizable as a
         reflection of the sound.
       </p>
 

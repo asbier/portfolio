@@ -66,30 +66,34 @@ const CarharttModalContent = () => {
         </p>
         
         <div className="column">
-  <h3><strong>My Role</strong></h3>
-  <ul className="checklist" >
-    <li className="fontWeight">UX </li>
-    <li className="fontWeight">UI </li>
-    <li className="fontWeight">Strategy</li>
+          <div>
+            <h3><strong>My Role</strong></h3>
+            <ul className="checklist">
+              <li>UX</li>
+              <li>UI</li>
+              <li>Strategy</li>
+            </ul>
+          </div>
+          <div>
+            <h3><strong>Our Design Team for UX/UI</strong></h3>
+            <ul className="list">
+              <li><b>Digital Design Lead</b> Lutz Erian</li>
+              <li><b>UX Designer</b> Annemarie Sauerbier</li>
+            </ul>
+          </div>
+        </div>
 
-  </ul>
-  <h3><strong>Our Design Team for UX /UI </strong></h3>
-  <ul className="list" >
-  <li className="checklist"> <b>Digital Design Lead</b> Lutz Erian </li>
-    <li className="checklist"> <b>UX Designer</b>Annemarie Sauerbier </li>
-  </ul>
-</div>
-
-        
         <figure className="image-gallery">
-        <img src={Image13} alt="Research"/>
-                <img src={Image1} alt="Research"/>
-                <img src={Image2} alt="Research"/>
-                <figcaption className="image-caption">Carhartt-WIP.US & Carhartt-WIP.EU</figcaption>
-            </figure>
+          <img src={Image13} alt="Research"/>
+          <img src={Image1} alt="Research"/>
+          <img src={Image2} alt="Research"/>
+          <figcaption className="image-caption">Carhartt-WIP.US & Carhartt-WIP.EU</figcaption>
+        </figure>
 
-            <div className="video-gallery">
-          <video ref={videoRefs[1]} src={video2} muted loop playsInline></video>
+        <div className="video-gallery">
+          <div className="video-wrapper">
+            <video ref={videoRefs[1]} src={video2} muted loop playsInline></video>
+          </div>
         </div>
         <section className="modal-section">
 
@@ -132,9 +136,11 @@ const CarharttModalContent = () => {
                 <p></p>
 
             <div className="video-gallery">
-          <video ref={videoRefs[0]} src={video1} muted loop playsInline></video>
-          </div>
-          <figcaption className="image-caption">Helpdesk Live</figcaption>
+              <div className="video-wrapper">
+                <video ref={videoRefs[0]} src={video1} muted loop playsInline></video>
+              </div>
+            </div>
+            <figcaption className="image-caption">Helpdesk Live</figcaption>
 
         </section>
 
@@ -179,9 +185,11 @@ const CarharttModalContent = () => {
                 </figure>
 
                 <div className="video-gallery">
-          <video ref={videoRefs[2]} src={video3} muted loop playsInline></video>
-        </div>
-        <figcaption className="image-caption">New Shopping Cart Design for EU/Germ</figcaption>
+                  <div className="video-wrapper">
+                    <video ref={videoRefs[2]} src={video3} muted loop playsInline></video>
+                  </div>
+                </div>
+                <figcaption className="image-caption">New Shopping Cart Design for EU/Germ</figcaption>
 
                 
             </div>
@@ -210,8 +218,10 @@ const CarharttModalContent = () => {
         formats, ensuring smooth playback and accessibility.
     </p>
     <div className="video-gallery">
-          <video ref={videoRefs[3]} src={video4} muted loop playsInline></video>
-        </div>
+      <div className="video-wrapper">
+        <video ref={videoRefs[3]} src={video4} muted loop playsInline></video>
+      </div>
+    </div>
     
 </section>
 
@@ -257,7 +267,7 @@ The team was facing challenges in collaboration due to the limitations of Sketch
 transition to a more flexible design system.
 <p></p>Process<p></p>
 
-I worked closely with the Design Lead to evaluate Figma’s features and its potential to improve workflow.
+I worked closely with the Design Lead to evaluate Figma's features and its potential to improve workflow.
 
 <figure className="image-gallery">
     <img src={Image10} alt="Research"/>

@@ -19,18 +19,21 @@ const CommaModalContent = () => (
     for those seeking sophistication and comfort.
 </p>
 
-<div><h3><strong>My Role</strong></h3>
-  <ul className="list" >
-  <li className="fontWeight">Freelance Art Director for creating Magazines</li>
-  </ul>
-</div> <p></p>
+        <div className="column">
+          <div>
+            <h3><strong>My Role</strong></h3>
+            <ul className="list">
+              <li>Freelance Art Director for creating Magazines</li>
+            </ul>
+          </div>
+        </div>
 
         <div className="modal-section">
         
         <h2>The Challenge</h2>
     <p>
         Comma needed a fresh approach to attract a younger audience while maintaining its classic appeal. 
-        Their catalog, previously a simple brochure, required a redesign to elevate the brand’s image and create a seamless 
+        Their catalog, previously a simple brochure, required a redesign to elevate the brand's image and create a seamless 
         e-commerce experience.
     </p>
 

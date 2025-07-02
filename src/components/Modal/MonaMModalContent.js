@@ -22,12 +22,15 @@ const MonaMModalContent = () => (
                 challenging traditional genres and offering a fresh perspective on contemporary electronic music.
             </p>
 
-            <div>
-                <h3><strong>My Role</strong></h3> <ul className="list"> <li className="fontWeight"> Mona Mandouri - Creative Direction, Responsible 
-                    for analog masks, set design, and filming </li><p></p>
-  <li className="fontWeight"> Annemarie Sauerbier Creative Direction, Assisted with set design and filming, editing, and graphic design</li>
-  </ul>
-</div> <p></p>
+            <div className="column">
+              <div>
+                <h3><strong>My Role</strong></h3>
+                <ul className="list">
+                  <li>Mona Mandouri - Creative Direction, Responsible for analog masks, set design, and filming</li>
+                  <li>Annemarie Sauerbier - Creative Direction, Assisted with set design and filming, editing, and graphic design</li>
+                </ul>
+              </div>
+            </div>
 
        
 
@@ -44,7 +47,7 @@ const MonaMModalContent = () => (
         </figure>
         <h2>The Process</h2>
             <p>
-                As digital art and AI-generated visuals were gaining popularity, we decided to take a different approach: using an analog process with an old iPhone. The aim was to create an image where it’s difficult to tell if it was digitally manipulated or captured in the physical world. Though the final product was digital, the conceptual layers—built with analog patterns and textures—shone through, merging the two worlds.
+                As digital art and AI-generated visuals were gaining popularity, we decided to take a different approach: using an analog process with an old iPhone. The aim was to create an image where it's difficult to tell if it was digitally manipulated or captured in the physical world. Though the final product was digital, the conceptual layers—built with analog patterns and textures—shone through, merging the two worlds.
             </p>
             <h2>The Solution</h2>
     <p></p>
@@ -53,7 +56,7 @@ const MonaMModalContent = () => (
             <p>
                 The result was a striking, experimental album cover, filled with broken art, 
                 abstract patterns, and a raw aesthetic that felt both nostalgic and forward-thinking. Unfortunately, this project never saw the light 
-                of day, as the vinyl was never printed or recorded. However, looking back, it feels incredibly relevant to today’s evolving landscape of art and digital media. Shot entirely on an iPhone for maximum flexibility</p>
+                of day, as the vinyl was never printed or recorded. However, looking back, it feels incredibly relevant to today's evolving landscape of art and digital media. Shot entirely on an iPhone for maximum flexibility</p>
 
                 <figure className="image-gallery">
          

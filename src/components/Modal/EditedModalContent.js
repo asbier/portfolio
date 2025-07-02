@@ -120,7 +120,7 @@ const EditedModalContent = () => (
     </section>
 
     <section className="modal-section">
-    
+      <h2>Collection Launch Events</h2>
 
       <figure className="image-gallery">
     <img src={image17} alt="EDITED Launch Store Event in Berlin" />
