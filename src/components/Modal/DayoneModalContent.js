@@ -64,20 +64,23 @@ const Header = () => (
 
 const RoleAndTeam = () => (
   <div className="column">
-    <h3><strong>My Role</strong></h3>
-    <ul className="checklist">
-      <li className="fontWeight"><b>UX</b></li>
-      <li className="fontWeight"><b>UI</b></li>
-      <li className="fontWeight"><b>Strategy</b></li>
-    </ul>
-    <h3><strong>Our Design Team for UX/UI</strong></h3>
-    <ul className="list">
-      <li className="checklist"><b>Digital Design Lead AccentureSong</b> Odair Faléco</li>
-      <li className="fontWeight"><b>UX/UI Designer AccentureSong</b> Marina Meinhardt</li>
-      <li className="fontWeight"><b>UX Product-Designer DAYONE</b> Annemarie Sauerbier</li>
-      <li className="fontWeight"><b>UX/UI Product-Designer DAYONE</b> Skirmante Radvucuite</li>
-      <p></p>
-    </ul>
+    <div>
+      <h3><strong>My Role</strong></h3>
+      <ul className="checklist">
+        <li><b>UX</b></li>
+        <li><b>UI</b></li>
+        <li><b>Strategy</b></li>
+      </ul>
+    </div>
+    <div>
+      <h3><strong>Our Design Team for UX/UI</strong></h3>
+      <ul className="list">
+        <li><b>Digital Design Lead AccentureSong</b> Odair Faléco</li>
+        <li><b>UX/UI Designer AccentureSong</b> Marina Meinhardt</li>
+        <li><b>UX Product-Designer DAYONE</b> Annemarie Sauerbier</li>
+        <li><b>UX/UI Product-Designer DAYONE</b> Skirmante Radvucuite</li>
+      </ul>
+    </div>
   </div>
 );
 
@@ -135,11 +138,13 @@ const Outcome = ({ videoRefs }) => (
       <img src={Image9} alt="Research" />
       <figcaption className="image-caption">Outcome of the Category Slider</figcaption>
     </figure>
-    <div className="video-wrapper">
-      <video ref={videoRefs[0]} src={video1} muted loop playsInline></video>
-    </div>
-    <div className="video-wrapper">
-      <video ref={videoRefs[1]} src={video2} muted loop playsInline></video>
+    <div className="video-gallery">
+      <div className="video-wrapper">
+        <video ref={videoRefs[0]} src={video1} muted loop playsInline></video>
+      </div>
+      <div className="video-wrapper">
+        <video ref={videoRefs[1]} src={video2} muted loop playsInline></video>
+      </div>
     </div>
   </section>
 );
@@ -155,14 +160,15 @@ const Takeaway = () => (
 );
 
 const Links = () => (
-  <section className="modal-section">
-    <p>
-      <a href="https://www.volkswagen.de/de/modelle/verfuegbare-fahrzeuge.html" target="_blank" rel="noopener noreferrer"> ➞ See the Product Live</a>
-    </p>
-    <p>
-      <a href="https://www.dayone.de" target="_blank" rel="noopener noreferrer"> ➞ Learn more about DAYONE</a>
-    </p>
-  </section>
+  <p>
+    <a href="https://www.volkswagen.de/de/modelle/verfuegbare-fahrzeuge.html" target="_blank" rel="noopener noreferrer">
+      → See the Product Live
+    </a>
+    <br />
+    <a href="https://www.dayone.de" target="_blank" rel="noopener noreferrer">
+      → Learn more about DAYONE
+    </a>
+  </p>
 );
 
 export default DayoneModalContent;

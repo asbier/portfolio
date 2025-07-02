@@ -11,10 +11,51 @@
   -ms-overflow-style: none;
 }
 
+.image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 0;
+  font-size: 0;
+}
+
 .image-container img {
     min-height: 30rem;
   }
 
+.title-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  color: white;
+}
+
+.image-container:hover .title-overlay {
+  opacity: 1;
+}
+
+.image-container::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.6));
+  opacity: 0;
+  transition: opacity 0.3s ease, border-radius 0.5s;
+  pointer-events: none;
+  border-radius: 0rem;
+  z-index: 1;
+}
+
+.image-container:hover::before {
+  opacity: 1;
+  border-radius: 2rem;
+}
 
 .carousel::-webkit-scrollbar {
   display: none;
@@ -44,6 +85,7 @@
   height: auto;
   border-radius: 0rem;
   transition: border-radius 0.5s;
+  position: relative;
 }
 
 .item img:hover {
@@ -52,17 +94,13 @@
   border-radius: 2rem;
 }
 
-.title-container {
-  margin-top: 10px;
-  padding: 0 10px;
-  text-align: left;
-}
+
 
 .image-title-small {
-  font-family: Lausanne, sans-serif;
-  font-size: 0.9rem;
+  font-family: 'PPEditorialNew-Ultralight', sans-serif;
+  font-size: 0.81rem;
   font-weight: normal;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .image-title-main {
@@ -109,6 +147,14 @@
     scroll-snap-align: start;
   }
 
+  .image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 0;
+  }
+
   .image-container img {
     pointer-events: none;
     height: auto;
@@ -120,6 +166,29 @@
     min-height: 30rem;
   }
 
+  .title-overlay {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    opacity: 1;
+    z-index: 2;
+    color: white;
+  }
+
+  .image-container::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.6));
+    opacity: 1;
+    pointer-events: none;
+    border-radius: 0rem;
+    z-index: 1;
+  }
+
   .inner-carousel {
     display: flex;
     gap: 16px;
@@ -127,16 +196,14 @@
     flex-wrap: nowrap; /* Prevent wrapping */
   }
 
-  .title-container {
-    font-size: clamp(1rem, 3vw, 1.3rem);
-    margin-bottom: 15px;
-    text-align: left;
-  }
+
 
   .image-title-small {
-    font-size: clamp(0.8rem, 2.5vw, 1rem);
-    font-weight: 500;
+    font-family: 'PPEditorialNew-Ultralight', sans-serif;
+    font-size: clamp(0.72rem, 2.25vw, 0.9rem);
+    font-weight: normal;
     text-align: left;
+    margin-bottom: 2px;
   }
 
   .image-title-main {

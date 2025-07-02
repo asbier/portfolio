@@ -63,9 +63,8 @@ const Carousel = ({ onImageClick }) => {
                     >
                         <div className="image-container">
                             <img src={image} alt={`Carousel Item ${index + 1}`} />
-                        </div>
-                        <div className="title-container">
-                        {index === 0 ? (
+                            <div className="title-overlay">
+                            {index === 0 ? (
     <>
       <h3 className="image-title-small">UX Designer & Innovation Consultant</h3>
       <h2 className="image-title-main">Volkswagen x DAYONE</h2>
@@ -119,6 +118,7 @@ const Carousel = ({ onImageClick }) => {
   ) : (
     <h3>{`Title for Image ${index + 1}`}</h3>
   )}
+                            </div>
                         </div>
                     </motion.div>
                 ))}

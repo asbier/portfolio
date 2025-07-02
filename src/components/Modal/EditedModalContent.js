@@ -35,21 +35,25 @@ const EditedModalContent = () => (
     </p>
     
     <div className="column">
-  <h3><strong>My Role</strong></h3>
-  <ul className="checklist" >
-    <li className="fontWeight">Art Director </li>
-    <li className="fontWeight">Content Designer </li>
-    <li className="fontWeight">Concepter </li>
-  </ul>
-  <h3><strong>Our Design Team</strong></h3>
-  <ul className="list" >
-  <li className="checklist"><b>Brand Director</b>  Franziska Nellesen </li>
-    <li className="fontWeight"><b> Freelance Art Director Editorials & Brand</b> Sonja Klements </li>
-    <li className="fontWeight"><b> Freelance Art Director, Brand, EDITED Paper</b> Sally Milota </li>
-    <li className="fontWeight"><b> Art Director Brand Vision, Stores, Engagement</b> Annemarie Sauerbier </li>
-    <li className="fontWeight"><b> Designer </b> Vivien Voss</li>
-  </ul><p></p>
-</div><p></p>
+      <div>
+        <h3><strong>My Role</strong></h3>
+        <ul className="checklist">
+          <li>Art Director</li>
+          <li>Content Designer</li>
+          <li>Concepter</li>
+        </ul>
+      </div>
+      <div>
+        <h3><strong>Our Design Team</strong></h3>
+        <ul className="list">
+          <li><b>Brand Director</b> Franziska Nellesen</li>
+          <li><b>Freelance Art Director Editorials & Brand</b> Sonja Klements</li>
+          <li><b>Freelance Art Director, Brand, EDITED Paper</b> Sally Milota</li>
+          <li><b>Art Director Brand Vision, Stores, Engagement</b> Annemarie Sauerbier</li>
+          <li><b>Designer</b> Vivien Voss</li>
+        </ul>
+      </div>
+    </div>
 
     <section className="modal-section">
 
@@ -77,7 +81,7 @@ const EditedModalContent = () => (
 
     <section className="modal-section">
       <h2>Corporate Identity for EDITEDtheLabel Stores</h2> 
-      <p>Developing mood boards, interior concepts, and merchandise displays that reflected the brand’s ethos.</p>
+      <p>Developing mood boards, interior concepts, and merchandise displays that reflected the brand's ethos.</p>
       <p>Established brand books and design guidelines for retail and events to maintain 
         consistency across physical and digital touchpoints.</p>
 

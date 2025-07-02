@@ -55,9 +55,10 @@
 
 .video-wrapper video {
   width: 100%; /* Make the video fill the wrapper */
-  max-height: 6rem; /* Set a maximum height */
   height: auto; /* Maintain aspect ratio */
+  max-height: 400px; /* Increased max height for better visibility */
   border-radius: 8px; /* Optional: add rounded corners */
+  object-fit: contain; /* Ensure video is not cropped */
 }
 
 /* Modal container */
@@ -167,12 +168,23 @@
 
 .column {
   padding: 0;
-  align-items: center;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.column h3:first-child {
+  margin-top: 0;
 }
 
 .column h3 {
-  font-weight: 400;
+  font-family: 'PPEditorialNew-Ultralight', sans-serif;
+  font-weight: normal;
   margin-bottom: 1rem;
+  margin-top: 0;
 }
 
 .column h2 {
@@ -183,6 +195,136 @@
 
 .column h4 {
   font-weight: 400;
+}
+
+/* Standardized Typography Hierarchy */
+
+/* Above sections - Bold entry in Lausanne */
+.modal-content-container > h1 {
+  font-family: Lausanne, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.modal-content-container > p {
+  font-family: Lausanne, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content-container > p strong {
+  font-weight: 600;
+}
+
+/* Role and team section - Compact and side-by-side */
+.column > div {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.column h3 {
+  font-family: Lausanne, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0;
+}
+
+.column h2 {
+  font-family: Lausanne, sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 170%;
+}
+
+.column h4 {
+  font-family: Lausanne, sans-serif;
+  font-weight: 600;
+}
+
+.column p {
+  font-family: Lausanne, sans-serif;
+  font-weight: 500;
+}
+
+.column ul {
+  font-family: Lausanne, sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+}
+
+.column li {
+  font-family: Lausanne, sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+}
+
+/* Inside sections - All text in PPEditorialNew-Ultralight */
+.modal-section h2 {
+  font-family: 'PPEditorialNew-Ultralight', sans-serif;
+  font-size: 1.8rem;
+  font-weight: normal;
+  margin-bottom: 1.2rem;
+  margin-top: 2rem;
+  line-height: 1.3;
+}
+
+.modal-section h3 {
+  font-family: 'PPEditorialNew-Ultralight', sans-serif;
+  font-size: 1.3rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  line-height: 1.4;
+}
+
+/* All text inside sections in Lausanne regular */
+.modal-section p {
+  font-family: Lausanne, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.modal-section p strong {
+  font-weight: 600;
+}
+
+.modal-section ul {
+  font-family: Lausanne, sans-serif;
+  font-weight: 300;
+}
+
+.modal-section li {
+  font-family: Lausanne, sans-serif;
+  font-weight: 300;
+}
+
+/* Standardized section spacing */
+.modal-section {
+  padding: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 2rem;
+  line-height: 140%;
+  background-color: #fffdf5ca;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid transparent;
+  z-index: 0;
+  box-sizing: border-box;
 }
 
 /* Checklist styling */
@@ -328,12 +470,53 @@
   .modal-content .close {
     font-size: 1.5rem; /* Smaller close button */
   }
-  .modal-section h1 {
+  /* Above sections - Bold entry in Lausanne */
+  .modal-content-container > h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     line-height: 120%;
+    margin-bottom: 1.2rem;
   }
 
+  .modal-content-container > p {
+    font-size: clamp(1.1rem, 3vw, 1.2rem);
+    margin-bottom: 1.2rem;
+  }
+
+  /* Inside sections - All text in PPEditorialNew-Ultralight */
   .modal-section h2 {
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
     line-height: 120%;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .modal-section h3 {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    margin-bottom: 0.8rem;
+    margin-top: 1.2rem;
+  }
+
+  .modal-section p {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    margin-bottom: 0.8rem;
+  }
+
+  /* Mobile: Stack role and team sections vertically */
+  .column {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .column h3 {
+    font-size: 0.9rem;
+  }
+
+  .column ul {
+    font-size: 0.8rem;
+  }
+
+  .column li {
+    font-size: 0.8rem;
   }
 
   .image-gallery {
@@ -388,6 +571,7 @@
   .video-gallery video {
     width: 100%;        /* Make videos fill their container */
     max-width: 100%;    /* Ensure videos never exceed the container's width */
+    max-height: 300px;  /* Limit height on mobile */
     border-radius: 12px; /* Rounded corners for videos */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
     object-fit: contain;  /* Ensure videos stay within container's bounds */

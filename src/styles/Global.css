@@ -1,3 +1,12 @@
+/* Custom Font Declaration */
+@font-face {
+  font-family: 'PPEditorialNew-Ultralight';
+  src: url('../fonts/PPEditorialNew-Ultralight.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Ensure html and body take up the full height */
 html, body {
   height: 100%;
