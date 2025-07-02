@@ -18,10 +18,12 @@ import image14 from '../../Assets/Image_4_Conic Rose/Vision-F.png';
 const ConicRoseModalContent = () => (
   <div className="modal-content-container">
     <h1>Conic Rose Album </h1>
-    <p> Worked up via Bertram Burkert's mournful guitar improvisations, the cut and thrust of city life seeps through 
-      this Berlin band's teary debut. From the wistful vistas of Honeylake, filmic heartbreak of Uli to the wispy, held-in Chopin Rosé, 
-      its progressively playful tracks dabble with Hassell, Bach, Radiohead, hip-hop beats and woozy electronics, providing 
-      a masterful showcase for the mazy trumpet melodics and forlorn flugelhorns of Konstantin Döben.**** Mojo Music Magazine (2023)</p>
+    <p>
+      <strong>Worked up via Bertram Burkert's mournful guitar improvisations, the cut and thrust of city life seeps through this Berlin band's teary debut. From the wistful vistas of Honeylake, filmic heartbreak of Uli to the wispy, held-in Chopin Rosé, its progressively playful tracks dabble with Hassell, Bach, Radiohead, hip-hop beats and woozy electronics, providing a masterful showcase for the mazy trumpet melodics and forlorn flugelhorns of Konstantin Döben.**** Mojo Music Magazine (2023)</strong>
+    </p>
+    <p className="role-description">
+      As album cover designer, I interpreted the band's emotional soundscape into visual form, creating artwork that captures the essence of their Berlin-influenced experimental music.
+    </p>
 
     <div className="column">
       <div>

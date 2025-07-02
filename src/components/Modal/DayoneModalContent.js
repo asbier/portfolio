@@ -54,8 +54,8 @@ const Header = () => (
   <>
     <h1>DAYONE</h1>
     <p><strong>DAYONE provides innovative consulting and design services for digital transformation. © DAYONE</strong></p>
-    <p><strong>As Product Designer at DAYONE, </strong>
-      I balanced design, leadership, and strategy, taking ownership with minimal oversight. I focused on a holistic approach, from UX to business strategy, integrating user research and product ownership into the design process. My main client was Volkswagen. Working as the German knowledge base with Accenture's international team, I brought local market expertise to global design solutions.
+    <p className="role-description">
+      As Product Designer at DAYONE, I balanced design, leadership, and strategy with Volkswagen as my main client. Working as the German knowledge base with Accenture's international team, I brought local market expertise to global design solutions.
     </p>
   </>
 );
@@ -98,7 +98,7 @@ const GlobalFilterExperience = ({ videoRefs }) => (
     <p>How might we help users find their ideal vehicle in a simple, engaging way?</p>
     
     <h3><strong>My Approach</strong></h3>
-    <p>I analyzed the user research which was taken place to understand the core problem: buyers preferred "shopping by lifestyle" over technical filters. Research also showed that category sliders used on the website currently had no use for users - they needed more relevant topics, better structure, and functionality that actually works on mobile devices. Through user interviews, heatmap analysis, and competitive benchmarking, I identified that successful sites use simple, high-level categories first.</p>
+    <p>I analyzed the user research that had taken place to understand the core problem: buyers preferred "shopping by lifestyle" over technical filters. Research also showed that category sliders used on the website currently had no use for users - they needed more relevant topics, better structure, and functionality that actually works on mobile devices. Through user interviews, heatmap analysis, and competitive benchmarking, I identified that successful sites use simple, high-level categories first.</p>
     
     <figure className="image-gallery">
       <img src={Image5} alt="Research" />

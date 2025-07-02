@@ -15,15 +15,17 @@ const CommaModalContent = () => (
   
   <h1>Comma</h1>
 <p>
-    Comma is a fashion brand that blends modern trends with timeless design, offering high-quality, versatile pieces 
-    for those seeking sophistication and comfort.
+    <strong>Comma is a fashion brand that blends modern trends with timeless design, offering high-quality, versatile pieces for those seeking sophistication and comfort.</strong>
+</p>
+<p className="role-description">
+    As Art Director, I transformed Comma's traditional catalog into dynamic style magazines, creating a modern brand experience that bridges print and digital while attracting younger audiences.
 </p>
 
         <div className="column">
           <div>
             <h3><strong>My Role</strong></h3>
-            <ul className="list">
-              <li>Freelance Art Director for creating Magazines</li>
+            <ul className="checklist">
+              <li>Freelance Art Director</li>
             </ul>
           </div>
         </div>

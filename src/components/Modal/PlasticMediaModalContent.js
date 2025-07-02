@@ -15,7 +15,7 @@ import gif8 from '../../Assets/Image_6_Plastic Media/10years.gif';
 
 const PlasticMediaModalContent = () => (
   <div className="modal-content-container">
-    <h2>Plastic Media</h2>
+    <h1>Plastic Media</h1>
 
     
       <p><strong>“WE LIVE ONLINE, YET ARE ADDICTED TO THE SMELL OF FRESHLY PRINTED MAGAZINE PAGES.  
@@ -23,10 +23,9 @@ const PlasticMediaModalContent = () => (
       WE ARE DEEPLY ROOTED IN OUR LOCAL COMMUNITY, WHILST ALSO WORKING WITH THE VERY BEST OF INTERNATIONAL TEAMS.  
       HELLO, THIS IS PLASTIC MEDIA.” ©PLASTIC MEDIA</strong></p>
 
-      <p>Here I had my first design-related experiences with international customer contact.  
-      Under the mentorship of Art Director Daniela Bily and Creative Director Kira Stachowitz,  
-      I learned how to channel my skills and creativity within the realms of editorial design, brand marketing, and public relations.  
-      We designed the Monki Magazine, four issues of INDIE Magazine, and Material Girl Magazine.</p>
+      <p className="role-description">
+        Here I had my first design-related experiences with international customer contact. Under the mentorship of Art Director Daniela Bily and Creative Director Kira Stachowitz, I learned how to channel my skills and creativity within the realms of editorial design, brand marketing, and public relations. We designed the Monki Magazine, four issues of INDIE Magazine, and Material Girl Magazine.
+      </p>
      
      
       <div className="column">

@@ -26,12 +26,10 @@ const EditedModalContent = () => (
   <div className="modal-content-container">
     <h1>EDITED the Label</h1>
     <p>
-      With modern looks, current trend pieces, and a strong focus on the 
-      house-owned brand, EDITED stands for a unique mix of clothes, 
-      accessories, and shoes for women passionate about fashion. Created 
-      in a multifaceted city like Berlin by an international creative team, 
-      EDITED stands out with inspiring and trend-focused fashion that is simply fun. 
-      © EDITED the Label.
+      <strong>With modern looks, current trend pieces, and a strong focus on the house-owned brand, EDITED stands for a unique mix of clothes, accessories, and shoes for women passionate about fashion. Created in a multifaceted city like Berlin by an international creative team, EDITED stands out with inspiring and trend-focused fashion that is simply fun. © EDITED the Label.</strong>
+    </p>
+    <p className="role-description">
+      In 2016/2017, I contributed to the brand's creative direction and rebranding efforts, working on strategy, personalization, and user experience.
     </p>
     
     <div className="column">

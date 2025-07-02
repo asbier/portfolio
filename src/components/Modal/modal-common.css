@@ -214,10 +214,20 @@
   font-weight: 500;
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  max-width: 70ch; /* Limit line length for better readability */
 }
 
 .modal-content-container > p strong {
   font-weight: 600;
+}
+
+/* Special styling for role descriptions */
+.role-description {
+  font-family: 'PPEditorialNew-Ultralight', sans-serif !important;
+  font-style: italic !important;
+  font-weight: normal !important;
+  font-size: 1.1rem !important;
+  max-width: 70ch !important; /* Limit line length for better readability */
 }
 
 /* Role and team section - Compact and side-by-side */
