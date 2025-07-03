@@ -56,7 +56,8 @@
 .video-wrapper video {
   width: 100%; /* Make the video fill the wrapper */
   height: auto; /* Maintain aspect ratio */
-  max-height: 400px; /* Increased max height for better visibility */
+  max-height: 600px; /* Increased max height for better visibility */
+  min-height: 300px; /* Ensure minimum size for better visibility */
   border-radius: 8px; /* Optional: add rounded corners */
   object-fit: contain; /* Ensure video is not cropped */
 }

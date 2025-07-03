@@ -44,7 +44,7 @@ const AboutYouModalContent = () => (
             </div>
 
             <section className="modal-section">
-            <h2>Case 1 — Holistic Marketing Strategies</h2>
+            <h2> Holistic Marketing Strategies</h2>
            
             <p>
                 I contributed to the strategic shift as ABOUT YOU transitioned from a niche e-commerce platform to a mainstream brand, focusing on diversity, inclusivity, and personalization. 
@@ -73,7 +73,9 @@ const AboutYouModalContent = () => (
          <img src={Image5} alt="Slider" />  
          <img src={Image8} alt="Slider" /> 
          <figcaption className="image-caption">Wireframe of Storie Layout - Concept</figcaption>
-         <img src={Image2} alt="Slider" /> 
+         <img src={Image2} alt="Slider" />
+         <img src={Image9} alt="AY Awards" />
+         <figcaption className="image-caption">ABOUT YOU Awards and achievements</figcaption>
         </figure>
       
        <figcaption className="image-caption">Outcome of the Editorial Stories - After</figcaption>
@@ -94,7 +96,7 @@ const AboutYouModalContent = () => (
 
 
         <section className="modal-section">
-            <h2>Case 2 — Influencer and Celebrity Engagement</h2>
+            <h2> Influencer and Celebrity Engagement</h2>
             <p>
                 I developed the "Celebrity X" initiative to incorporate well-known public figures into campaigns, 
                 making the brand feel more relatable and authentic, while directly engaging with a broader user base.
@@ -120,7 +122,7 @@ const AboutYouModalContent = () => (
         </section>
 
         <section className="modal-section">
-            <h2>Case 3 — Store & Event Concepts</h2>
+            <h2>Store & Event Concepts</h2>
             <p>
                 I designed innovative store concepts and pop-up events to enhance the brand's 
                 physical presence and improve consumer interaction with the platform. 

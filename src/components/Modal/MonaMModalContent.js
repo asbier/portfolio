@@ -4,7 +4,7 @@ import image1 from '../../Assets/Image_9_MonaM/Final-LP.png';
 import image2 from '../../Assets/Image_9_MonaM/Lp-Mona-M-Teaser.png';
 import image3 from '../../Assets/Image_9_MonaM/5f329f7759b1249a739e9af8_2rot.gif';
 
-import gif1 from '../../Assets/Image_9_MonaM//5f329f7759b1249a739e9af8_2rot.gif';
+
 import gif2 from '../../Assets/Image_9_MonaM/5f3296783cb04c18cab4ed9f_weiß-3gm-.gif';
 import gif3 from '../../Assets/Image_9_MonaM/5f329ee54b42d204b3e78de0_3.gif';
 
@@ -45,6 +45,8 @@ const MonaMModalContent = () => (
                 <img src={image1} alt="Mona M creative direction" />
                 <img src={image2} alt="Mona M creative direction" />
                 <img src={image3} alt="Mona M creative direction" />
+                <img src={gif2} alt="Mona M creative direction" />
+                <img src={gif3} alt="Mona M creative direction" />
             </div>
         </section>
     </div>

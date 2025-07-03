@@ -102,7 +102,9 @@ const GlobalFilterExperience = ({ videoRefs }) => (
     
     <figure className="image-gallery">
       <img src={Image5} alt="Research" />
-      <figcaption className="image-caption">User research insights</figcaption>
+      <img src={Image4} alt="User Insights" />
+      <img src={Image6} alt="User Research" />
+      <figcaption className="image-caption">User research insights and analysis</figcaption>
     </figure>
     
     <h3><strong>Solution</strong></h3>
@@ -137,6 +139,11 @@ const GlobalFilterExperience = ({ videoRefs }) => (
     
     <h3><strong>Impact</strong></h3>
     <p>The impact of this consultancy was significant: rather than just implementing the category slider on the landing page, my analysis revealed the need for a complete user journey transformation. We created an entirely upgraded experience with a comprehensive filter concept, enhanced search functionalities, redesigned product detail pages, and mobile-optimized interactions throughout.</p>
+    
+    <figure className="image-gallery">
+      <img src={Image2} alt="Project Outcome" />
+      <figcaption className="image-caption">Project outcomes and impact metrics</figcaption>
+    </figure>
   </section>
 );
 
@@ -145,7 +152,7 @@ const Takeaway = () => (
     <h3><strong>Key Takeaway</strong></h3>
     <p>My takeaway is that every idea can open up new opportunities that lead to a deeper understanding of what users truly need and ask for. This is a great example of how I like to work—transforming a small idea into a big change with a positive outcome for the user.</p>
     <figure className="image-gallery">
-      <img src={Image2} alt="Filtercockpit Live" />
+      <img src={Image7} alt="Filtercockpit Live" />
       <figcaption className="image-caption"> Next Task was building the Global Filter Concept -> This is the Live Version from June 2024</figcaption>
     </figure>
   </section>
