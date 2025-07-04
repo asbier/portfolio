@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "../pages/About.css"; // Import the styles
 
 function About({ isVisible, toggleContentVisibility }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showTimeline, setShowTimeline] = useState(false);
+  const timelineRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   const handleToggleContent = () => {
     console.log("Button clicked");
@@ -11,11 +15,33 @@ function About({ isVisible, toggleContentVisibility }) {
       console.log("isExpanded:", !prev);
       return !prev;
     });
-    toggleContentVisibility("About");
   };
 
   const handleToggleTimeline = () => {
     setShowTimeline((prev) => !prev);
+  };
+
+  // Drag to scroll handlers
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - timelineRef.current.offsetLeft);
+    setScrollLeft(timelineRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - timelineRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed
+    timelineRef.current.scrollLeft = scrollLeft - walk;
   };
 
   const timelineData = [
@@ -25,7 +51,8 @@ function About({ isVisible, toggleContentVisibility }) {
       company: "DAYONE x VOLKSWAGEN",
       role: "UX Designer & Digital Consultant",
       description: "Leading UX strategy for VW's AutoSuche, optimizing e-commerce for sustainable car sales",
-      type: "current"
+      type: "current",
+      image: "/timeline/dayone.jpg"
     },
     {
       year: "2022",
@@ -33,7 +60,8 @@ function About({ isVisible, toggleContentVisibility }) {
       company: "DAYONE GmbH",
       role: "UX Designer & Digital Consultant",
       description: "Oct. 2022 – Contract ended 06.2025. Led UX strategy & design for VW's AutoSuche, optimizing e-commerce for sustainable car sales. Designed interactive prototypes & UI for dealer & trade-in tools. Created dashboard User Flows for Hella Gutmann's ADAS.",
-      type: "ux"
+      type: "ux",
+      image: "/timeline/dayone2.jpg"
     },
     {
       year: "2021",
@@ -41,7 +69,8 @@ function About({ isVisible, toggleContentVisibility }) {
       company: "Carhartt WIP",
       role: "UX/UI Designer",
       description: "Design system migration, checkout optimization, help center launch",
-      type: "ux"
+      type: "ux",
+      image: "/timeline/carhartt.jpg"
     },
     {
       year: "2019",
@@ -49,7 +78,8 @@ function About({ isVisible, toggleContentVisibility }) {
       company: "We22 GmbH",
       role: "Team Lead Design",
       description: "Led design systems for Telekom & Strato, cross-functional innovation workshops",
-      type: "leadership"
+      type: "leadership",
+      image: "/timeline/we22.jpg"
     },
     {
       year: "2015",
@@ -57,7 +87,8 @@ function About({ isVisible, toggleContentVisibility }) {
       company: "EDITED / AboutYou",
       role: "Designer → Art Director",
       description: "Holistic brand experiences across digital & spatial touchpoints, diversity campaigns, strategic brand direction",
-      type: "digital"
+      type: "digital",
+      image: "/timeline/edited.jpg"
     },
     {
       year: "2014",
@@ -65,7 +96,8 @@ function About({ isVisible, toggleContentVisibility }) {
       company: "SuperReal / Monopol",
       role: "Freelance Art Director",
       description: "COMMA StyleMagazine, BIORAMA & The Gap redesigns",
-      type: "editorial"
+      type: "editorial",
+      image: "/timeline/superreal.jpg"
     },
     {
       year: "2013",
@@ -73,7 +105,8 @@ function About({ isVisible, toggleContentVisibility }) {
       company: "Plastic Media / Heroes&Heroines",
       role: "Intern → Freelancer",
       description: "INDIE Magazine, Bumble, Absolut campaigns with Daniela Bily",
-      type: "editorial"
+      type: "editorial",
+      image: "/timeline/plastic.jpg"
     },
     {
       year: "2012",
@@ -81,7 +114,8 @@ function About({ isVisible, toggleContentVisibility }) {
       company: "Nido Magazine / G+J",
       role: "Editorial Designer",
       description: "Layout design, illustrations, visual storytelling",
-      type: "foundation"
+      type: "foundation",
+      image: "/timeline/nido.jpg"
     },
     {
       year: "2007",
@@ -89,13 +123,14 @@ function About({ isVisible, toggleContentVisibility }) {
       company: "Staatstheater Braunschweig",
       role: "Stage & Costume Design",
       description: "12-month internship in theater design, graphic arts foundation",
-      type: "foundation"
+      type: "foundation",
+      image: "/timeline/theater.jpg"
     }
   ];
 
   return (
     <div className="abstand">
-      <p> Creator & Art Director with focus on
+      <p>Creator & Art Director with focus on
       building holistic digital and spatial experiences</p> 
     
       {/* CTA Buttons */}
@@ -115,15 +150,24 @@ function About({ isVisible, toggleContentVisibility }) {
         </a>
       </div>
 
-      {/* Timeline Section */}
-      {showTimeline && (
-        <div className="timeline-container">
-          <h3>12+ Years of Creative Evolution</h3>
-          <div className="timeline-wrapper">
-            <div className="timeline">
-              {timelineData.map((item, index) => (
+      {/* Timeline Section - Collapsible like about-details */}
+      <div className={`timeline-container ${showTimeline ? 'expanded' : ''}`}>
+        <h3>12+ Years of Creative Evolution</h3>
+        <div 
+          className="timeline-wrapper"
+          ref={timelineRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+        >
+          <div className="timeline">
+                          {timelineData.map((item, index) => (
                 <div key={index} className={`timeline-item ${item.type}`}>
                   <div className="timeline-year">{item.year}</div>
+                  <div className="timeline-image">
+                    <img src={item.image} alt={item.company} />
+                  </div>
                   <div className="timeline-content">
                     <div className="timeline-title">{item.title}</div>
                     <div className="timeline-company">{item.company}</div>
@@ -132,10 +176,9 @@ function About({ isVisible, toggleContentVisibility }) {
                   </div>
                 </div>
               ))}
-            </div>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Collapsible Section with Scroll */}
       {isExpanded && (
