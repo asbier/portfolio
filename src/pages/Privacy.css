@@ -1,0 +1,84 @@
+/* Privacy Page Specific Styles */
+.privacy-page {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #ECE9E4;
+  display: flex;
+  flex-direction: column;
+}
+
+.privacy-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.privacy-page .pages {
+  font-family: Lausanne, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 100%;
+  background-color: #ECE9E4;
+  background-image: url('https://www.transparenttextures.com/patterns/ecailles.png');
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  gap: 2rem;
+  flex-grow: 1;
+  align-items: flex-start;
+  padding: 2rem;
+  min-height: calc(100vh - 120px); /* Account for nav and footer */
+}
+
+/* Ensure privacy page text is readable */
+.privacy-page .abstand p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.privacy-page .abstand h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.privacy-page .abstand ul {
+  margin-bottom: 1rem;
+}
+
+.privacy-page .abstand li {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.privacy-page .abstand small {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin: 2rem 0 0.5rem 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .privacy-page .pages {
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .privacy-page .abstand {
+    padding: 1rem;
+  }
+  
+  .privacy-page .abstand h2 {
+    font-size: 1.5rem;
+  }
+  
+  .privacy-page .abstand p {
+    font-size: 0.9rem;
+  }
+} 

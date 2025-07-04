@@ -15,6 +15,7 @@ function App() {
     community: false,
     about: false,
     contact: false,
+    privacy: false,
   });
 
   // Toggle content visibility for each page
@@ -25,21 +26,23 @@ function App() {
     }));
   };
 
+  const hasVisibleContent = visibleContent.about || visibleContent.contact || visibleContent.community || visibleContent.privacy;
+
   return (
     <div>
       <Nav toggleContentVisibility={toggleContentVisibility} />
-      <div className="container-page">
+      <div className={`container-page ${hasVisibleContent ? 'visible' : ''}`}>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/Privacy' element={<Privacy />} />
           <Route path='/Contact' element={<Contact isVisible={visibleContent.contact} />} />
           <Route path='/Community' element={<Community isVisible={visibleContent.community} />} />
         </Routes>
 
         {visibleContent.about && <About isVisible={visibleContent.about} toggleContentVisibility={toggleContentVisibility} />}
+        {visibleContent.privacy && <Privacy isVisible={visibleContent.privacy} toggleContentVisibility={toggleContentVisibility} />}
       </div>
-      <Main />
-      <Footer />
+      <Main hasVisibleContent={hasVisibleContent} />
+      <Footer toggleContentVisibility={toggleContentVisibility} />
     </div>
   );
 }

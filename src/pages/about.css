@@ -15,11 +15,13 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem 2rem;
   text-align: left;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  height: 100%;
+  min-height: 0;
 }
 
 /* 📌 Überschriften & Text */
@@ -92,12 +94,45 @@
 /* ✅ Download Button Specific Styling */
 .cta-download {
   color: #2c3e50;
-  border-bottom: 2px solid #2c3e50;
+  border-bottom: none;
+  position: relative;
+  overflow: visible;
+}
+
+.cta-download::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 8px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(157, 143, 99, 0.3) 10%, 
+    rgba(157, 143, 99, 0.6) 20%, 
+    rgba(157, 143, 99, 0.4) 30%, 
+    rgba(157, 143, 99, 0.7) 40%, 
+    rgba(157, 143, 99, 0.3) 50%, 
+    rgba(157, 143, 99, 0.8) 60%, 
+    rgba(157, 143, 99, 0.2) 70%, 
+    rgba(157, 143, 99, 0.5) 80%, 
+    rgba(157, 143, 99, 0.3) 90%, 
+    transparent 100%
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50px;
+  filter: blur(1px);
+}
+
+.cta-download:hover::before {
+  opacity: 1;
 }
 
 .cta-download:hover {
   color: var(--btn-hover);
-  border-bottom-color: var(--btn-hover);
 }
 
 /* ✅ Timeline Button Specific Styling */
@@ -116,7 +151,8 @@
   margin-top: 1rem;
   text-align: left;
   padding-right: 1rem;
-  flex-shrink: 0;
+  flex: 1;
+  min-height: 0;
   opacity: 0;
   max-height: 0;
   overflow: hidden;
@@ -125,14 +161,15 @@
 
 .timeline-container.expanded {
   opacity: 1;
-  max-height: 500px;
+  max-height: none;
   overflow: visible;
+  flex: 1;
 }
 
 /* Timeline wrapper - horizontal scrollable container */
 .timeline-wrapper {
   width: 100%;
-  height: 350px;
+  height: 400px;
   overflow-x: auto;
   overflow-y: hidden;
   background: transparent;
@@ -148,6 +185,8 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  flex: 1;
+  min-height: 0;
 }
 
 .timeline-wrapper:active {
@@ -346,11 +385,11 @@
 
   /* Timeline Mobile Styles - Collapsible */
   .timeline-container.expanded {
-    max-height: 300px;
+    max-height: 400px;
   }
 
   .timeline-wrapper {
-    height: 220px;
+    height: 280px;
   }
 
   .timeline {

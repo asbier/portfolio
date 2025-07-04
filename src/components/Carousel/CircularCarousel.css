@@ -1,0 +1,205 @@
+/* Circular Carousel Styles */
+.circular-carousel {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+  position: relative;
+}
+
+.circular-carousel:active {
+  cursor: grabbing;
+}
+
+.circular-carousel-container {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circular-carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+}
+
+.circular-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 280px;
+  transform-origin: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.circular-item:hover {
+  z-index: 10;
+}
+
+.circular-image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.circular-image-container img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.circular-title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+
+.circular-title-small {
+  font-family: Lausanne, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #666;
+  display: block;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.circular-title-main {
+  font-family: 'PPEditorialNew-Ultralight', sans-serif;
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Protected project indicator for circular */
+.circular-item.protected::after {
+  content: '🔒';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.25rem;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.circular-item.protected:hover::after {
+  opacity: 1;
+}
+
+/* Mobile Circular Carousel */
+@media (max-width: 768px) {
+  .circular-carousel {
+    height: 80vh;
+    /* Show only bottom half of circle */
+    overflow: hidden;
+  }
+
+  .circular-carousel-container {
+    width: 400px;
+    height: 400px;
+    /* Position to show only bottom half */
+    transform: translateY(-50%);
+  }
+
+  .circular-item {
+    width: 150px;
+    height: 200px;
+  }
+
+  .circular-title-overlay {
+    padding: 0.75rem;
+  }
+
+  .circular-title-small {
+    font-size: 0.6rem;
+  }
+
+  .circular-title-main {
+    font-size: 0.8rem;
+  }
+
+  .circular-item.protected::after {
+    opacity: 0.8;
+    font-size: 0.8rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    top: 0.25rem;
+    right: 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .circular-carousel-container {
+    width: 320px;
+    height: 320px;
+    transform: translateY(-60%);
+  }
+
+  .circular-item {
+    width: 120px;
+    height: 160px;
+  }
+
+  .circular-title-overlay {
+    padding: 0.5rem;
+  }
+
+  .circular-title-small {
+    font-size: 0.55rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .circular-title-main {
+    font-size: 0.7rem;
+  }
+}
+
+/* Fade effect for items on the back of the circle */
+.circular-item {
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Optional: Add depth effect */
+.circular-carousel-track {
+  perspective: 1000px;
+}
+
+.circular-item {
+  transform-style: preserve-3d;
+} 

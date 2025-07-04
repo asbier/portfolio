@@ -83,13 +83,22 @@ function About({ isVisible, toggleContentVisibility }) {
       image: "/timeline/edited.jpg"
     },
     {
-      year: "2014",
-      title: "Editorial Mastery",
-      company: "SuperReal / Monopol",
+      year: "2015",
+      title: "Editorial Freelance",
+      company: "SuperReal",
       role: "Freelance Art Director",
       description: "COMMA StyleMagazine, BIORAMA & The Gap redesigns",
       type: "editorial",
       image: "/timeline/superreal.jpg"
+    },
+    {
+      year: "2014",
+      title: "Art Direction Agency",
+      company: "Monopol Media GmbH",
+      role: "Art Director",
+      description: "Full-time Art Director position for 1 year at Monopol Media",
+      type: "editorial",
+      image: "/timeline/monopol.jpg"
     },
     {
       year: "2013",

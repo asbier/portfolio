@@ -14,15 +14,15 @@ function Nav({ toggleContentVisibility }) {
       
       <ul>
         <li>
-          <Link to="/About" onClick={() => toggleContentVisibility('about')} className="about-link">
+          <button onClick={() => toggleContentVisibility('about')} className="about-link nav-button">
             <img src={Image3} alt="About Me" className="nav-image" />
-          </Link>
+          </button>
         </li>
 
         <li>
-          <Link to="/Contact" onClick={() => toggleContentVisibility('contact')} className="contact-link">
+          <button onClick={() => toggleContentVisibility('contact')} className="contact-link nav-button">
             <img src={Image2} alt="Contact Me" className="nav-image" />
-          </Link>
+          </button>
         </li>
       </ul>
     </nav>

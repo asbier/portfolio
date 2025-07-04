@@ -12,4 +12,22 @@
   flex-grow: 1; /* Make this stretch to fill remaining space */
   align-items: flex-start;
   padding: 2rem; /* Add padding if needed */
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  height: 70vh;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  transform: translateY(-100%);
+  z-index: 10;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.container-page.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }

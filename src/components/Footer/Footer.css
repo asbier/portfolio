@@ -18,6 +18,18 @@ li {
   line-height: 1;
 }
 
+.footer-privacy-btn {
+  font-family: Lausanne, sans-serif;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+}
+
 @media screen and (max-width: 768px) {
   footer {
     padding: 5px 10px; /* Reduced padding */
