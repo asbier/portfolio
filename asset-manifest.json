@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.04c000a5.css",
-    "main.js": "/static/js/main.f48b6f9e.js",
+    "main.css": "/static/css/main.d46ade99.css",
+    "main.js": "/static/js/main.7c1b8f6c.js",
     "static/js/787.dc6905b1.chunk.js": "/static/js/787.dc6905b1.chunk.js",
     "static/media/Video_comp_final.mp4": "/static/media/Video_comp_final.377fe7bdd41eb4846dfa.mp4",
     "static/media/PDPvideo.mp4": "/static/media/PDPvideo.179d65155d75b8e3e16e.mp4",
@@ -74,7 +74,6 @@
     "static/media/How 4.png": "/static/media/How 4.7261c8b9bc7a7f0a0725.png",
     "static/media/Image1.png": "/static/media/Image1.547664c4fa7b5bd1af3c.png",
     "static/media/monki3.png": "/static/media/monki3.e4f0b90b0269cb7342f5.png",
-    "static/media/itstime.gif": "/static/media/itstime.d01ae2b2b858d01aa4fc.gif",
     "static/media/before.png": "/static/media/before.158eab3e240b2ab52961.png",
     "static/media/6.jpg": "/static/media/6.c416f56357ace93cdc21.jpg",
     "static/media/Vido_Implemetation.png": "/static/media/Vido_Implemetation.61b0f7778030bd19c1f8.png",
@@ -121,12 +120,12 @@
     "static/media/PPEditorialNew-Ultralight.otf": "/static/media/PPEditorialNew-Ultralight.75b1aea60b5a489aeaea.otf",
     "static/media/Contact.png": "/static/media/Contact.c17329da8774721d342b.png",
     "index.html": "/index.html",
-    "main.04c000a5.css.map": "/static/css/main.04c000a5.css.map",
-    "main.f48b6f9e.js.map": "/static/js/main.f48b6f9e.js.map",
+    "main.d46ade99.css.map": "/static/css/main.d46ade99.css.map",
+    "main.7c1b8f6c.js.map": "/static/js/main.7c1b8f6c.js.map",
     "787.dc6905b1.chunk.js.map": "/static/js/787.dc6905b1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.04c000a5.css",
-    "static/js/main.f48b6f9e.js"
+    "static/css/main.d46ade99.css",
+    "static/js/main.7c1b8f6c.js"
   ]
 }
