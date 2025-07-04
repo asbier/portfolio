@@ -4,7 +4,6 @@ import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
-import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import { Route, Routes } from 'react-router-dom';
 import './styles/Global.css'; // Import global styles
@@ -14,7 +13,6 @@ function App() {
   const [visibleContent, setVisibleContent] = useState({
     community: false,
     about: false,
-    contact: false,
     privacy: false,
   });
 
@@ -26,15 +24,19 @@ function App() {
     }));
   };
 
-  const hasVisibleContent = visibleContent.about || visibleContent.contact || visibleContent.community || visibleContent.privacy;
+  // Close all overlay content (used when clicking Home logo)
+  const closeAllContent = () => {
+    setVisibleContent({ community: false, about: false, privacy: false });
+  };
+
+  const hasVisibleContent = visibleContent.about || visibleContent.community || visibleContent.privacy;
 
   return (
     <div>
-      <Nav toggleContentVisibility={toggleContentVisibility} />
+      <Nav toggleContentVisibility={toggleContentVisibility} closeAllContent={closeAllContent} />
       <div className={`container-page ${hasVisibleContent ? 'visible' : ''}`}>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/Contact' element={<Contact isVisible={visibleContent.contact} />} />
           <Route path='/Community' element={<Community isVisible={visibleContent.community} />} />
         </Routes>
 

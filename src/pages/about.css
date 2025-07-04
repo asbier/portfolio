@@ -15,7 +15,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem; /* Reduced top/bottom padding */
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -57,9 +57,27 @@
   margin-top: 1rem;
   text-align: left;
   overflow-y: auto;
-  max-height: 200px;
+  max-height: 350px; /* Increased from 200px to 350px */
   padding-right: 1rem;
   flex-shrink: 0;
+}
+
+/* Contact details section */
+.contact-details {
+  margin-top: 2rem;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.contact-details p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 400;
+  line-height: 140%;
+  margin-bottom: 0.8rem;
+}
+
+.contact-details strong {
+  font-weight: 600;
 }
 
 

@@ -11,12 +11,12 @@
   gap: 2rem;
   flex-grow: 1; /* Make this stretch to fill remaining space */
   align-items: flex-start;
-  padding: 2rem; /* Add padding if needed */
+  padding: 1.5rem; /* Reduced padding for more space */
   position: fixed;
   top: 60px;
   left: 0;
   right: 0;
-  height: 70vh;
+  height: 80vh; /* Increased from 70vh to 80vh */
   opacity: 0;
   transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: none;

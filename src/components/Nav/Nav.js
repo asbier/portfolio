@@ -5,10 +5,10 @@ import Image1 from '../../Assets/Modal Images/heart.png';
 import Image2 from '../../Assets/Modal Images/Contact.png';
 import Image3 from '../../Assets/Modal Images/open.png';
 
-function Nav({ toggleContentVisibility }) {
+function Nav({ toggleContentVisibility, closeAllContent }) {
   return (
     <nav className="nav">
-      <Link to="/" className="nav-logo">
+      <Link to="/" className="nav-logo" onClick={closeAllContent}>
         <img src={Image1} alt="Home" className="logo" />
       </Link>
       
@@ -20,9 +20,9 @@ function Nav({ toggleContentVisibility }) {
         </li>
 
         <li>
-          <button onClick={() => toggleContentVisibility('contact')} className="contact-link nav-button">
+          <a href="mailto:annemariesauerbier@googlemail.com" className="contact-link">
             <img src={Image2} alt="Contact Me" className="nav-image" />
-          </button>
+          </a>
         </li>
       </ul>
     </nav>

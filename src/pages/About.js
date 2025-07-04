@@ -11,6 +11,10 @@ function About({ isVisible, toggleContentVisibility }) {
 
   const handleToggleContent = () => {
     console.log("Button clicked");
+    // Close timeline when opening read more
+    if (!isExpanded) {
+      setShowTimeline(false);
+    }
     setIsExpanded((prev) => {
       console.log("isExpanded:", !prev);
       return !prev;
@@ -18,6 +22,10 @@ function About({ isVisible, toggleContentVisibility }) {
   };
 
   const handleToggleTimeline = () => {
+    // Close read more when opening timeline
+    if (!showTimeline) {
+      setIsExpanded(false);
+    }
     setShowTimeline((prev) => !prev);
   };
 
@@ -67,7 +75,7 @@ function About({ isVisible, toggleContentVisibility }) {
     {
       year: "2019",
       title: "Leadership",
-      company: "We22 GmbH",
+      company: "We22 GmbH - Websitebuilder",
       role: "Team Lead Design",
       description: "Led Team motivation and craeted  design systems for Telekom & Strato, cross-functional",
       type: "leadership",

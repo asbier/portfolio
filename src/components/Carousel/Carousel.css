@@ -14,8 +14,8 @@
 
 /* When about content is visible, push carousel down */
 .carousel.with-about {
-  height: 30vh;
-  transform: translateY(70vh);
+  height: 20vh;
+  transform: translateY(80vh);
 }
 
 .carousel:active {
