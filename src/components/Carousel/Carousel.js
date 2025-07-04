@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import './Carousel.css';
 import imagesData from '../../data/imagesData';
@@ -6,13 +6,59 @@ import imagesData from '../../data/imagesData';
 const Carousel = ({ onImageClick, hasVisibleContent }) => {
     const carousel = useRef();
     const controls = useAnimation();
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
 
     useEffect(() => {
         controls.start({ opacity: 1 });
     }, [controls]);
 
+    // Drag to scroll handlers
+    const handleMouseDown = (e) => {
+        setIsDragging(true);
+        setStartX(e.pageX - carousel.current.offsetLeft);
+        setScrollLeft(carousel.current.scrollLeft);
+    };
+
+    const handleTouchStart = (e) => {
+        setIsDragging(true);
+        setStartX(e.touches[0].pageX - carousel.current.offsetLeft);
+        setScrollLeft(carousel.current.scrollLeft);
+    };
+
+    const handleMouseLeave = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleTouchEnd = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseMove = (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.current.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.current.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleTouchMove = (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.touches[0].pageX - carousel.current.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.current.scrollLeft = scrollLeft - walk;
+    };
+
     const handleItemClick = (index) => {
-        onImageClick(index);
+        if (!isDragging) {
+            onImageClick(index);
+        }
     };
 
     return (
@@ -21,6 +67,13 @@ const Carousel = ({ onImageClick, hasVisibleContent }) => {
             initial={{ opacity: 0 }}
             animate={controls}
             ref={carousel}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchMove={handleTouchMove}
         >
             <div className="inner-carousel">
                 {imagesData.map((image, index) => {

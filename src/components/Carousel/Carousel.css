@@ -99,6 +99,17 @@
   border-radius: 2rem;
 }
 
+/* Remove corner effects on mobile */
+@media (hover: none) {
+  .image-container::before {
+    border-radius: 0 !important;
+  }
+  
+  .image-container:hover::before {
+    border-radius: 0 !important;
+  }
+}
+
 .item img {
   width: auto;
   max-width: 400px;
@@ -113,6 +124,17 @@
   opacity: 0.6;
   transition: 0.5s;
   border-radius: 2rem;
+}
+
+/* Remove corner effects on mobile */
+@media (hover: none) {
+  .item img {
+    border-radius: 0 !important;
+  }
+  
+  .item img:hover {
+    border-radius: 0 !important;
+  }
 }
 
 .image-title-small {
