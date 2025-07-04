@@ -55,7 +55,7 @@ const Header = () => (
     <h1>DAYONE</h1>
     <p><strong>DAYONE provides innovative consulting and design services for digital transformation. © DAYONE</strong></p>
     <p className="role-description">
-      As Product Designer at DAYONE, I balanced design, leadership, and strategy with Volkswagen as my main client. Working as the German knowledge base with Accenture's international team, I brought local market expertise to global design solutions.
+    As a Product Designer at DAYONE, I balanced design and business strategy, with Volkswagen as my main client.
     </p>
   </>
 );

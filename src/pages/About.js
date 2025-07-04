@@ -3,6 +3,7 @@ import "../pages/About.css"; // Import the styles
 
 function About({ isVisible, toggleContentVisibility }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showTimeline, setShowTimeline] = useState(false);
 
   const handleToggleContent = () => {
     console.log("Button clicked");
@@ -13,15 +14,128 @@ function About({ isVisible, toggleContentVisibility }) {
     toggleContentVisibility("About");
   };
 
+  const handleToggleTimeline = () => {
+    setShowTimeline((prev) => !prev);
+  };
+
+  const timelineData = [
+    {
+      year: "2022 to 2025",
+      title: "UX/UI Consultant",
+      company: "DAYONE x VOLKSWAGEN",
+      role: "UX Designer & Digital Consultant",
+      description: "Leading UX strategy for VW's AutoSuche, optimizing e-commerce for sustainable car sales",
+      type: "current"
+    },
+    {
+      year: "2022",
+      title: "Product Focus",
+      company: "DAYONE GmbH",
+      role: "UX Designer & Digital Consultant",
+      description: "Oct. 2022 – Contract ended 06.2025. Led UX strategy & design for VW's AutoSuche, optimizing e-commerce for sustainable car sales. Designed interactive prototypes & UI for dealer & trade-in tools. Created dashboard User Flows for Hella Gutmann's ADAS.",
+      type: "ux"
+    },
+    {
+      year: "2021",
+      title: "E-Commerce UX",
+      company: "Carhartt WIP",
+      role: "UX/UI Designer",
+      description: "Design system migration, checkout optimization, help center launch",
+      type: "ux"
+    },
+    {
+      year: "2019",
+      title: "Leadership",
+      company: "We22 GmbH",
+      role: "Team Lead Design",
+      description: "Led design systems for Telekom & Strato, cross-functional innovation workshops",
+      type: "leadership"
+    },
+    {
+      year: "2015",
+      title: "Art Direction Holistic Brand",
+      company: "EDITED / AboutYou",
+      role: "Designer → Art Director",
+      description: "Holistic brand experiences across digital & spatial touchpoints, diversity campaigns, strategic brand direction",
+      type: "digital"
+    },
+    {
+      year: "2014",
+      title: "Editorial Mastery",
+      company: "SuperReal / Monopol",
+      role: "Freelance Art Director",
+      description: "COMMA StyleMagazine, BIORAMA & The Gap redesigns",
+      type: "editorial"
+    },
+    {
+      year: "2013",
+      title: "Industry Entry",
+      company: "Plastic Media / Heroes&Heroines",
+      role: "Intern → Freelancer",
+      description: "INDIE Magazine, Bumble, Absolut campaigns with Daniela Bily",
+      type: "editorial"
+    },
+    {
+      year: "2012",
+      title: "Foundation",
+      company: "Nido Magazine / G+J",
+      role: "Editorial Designer",
+      description: "Layout design, illustrations, visual storytelling",
+      type: "foundation"
+    },
+    {
+      year: "2007",
+      title: "Creative Roots",
+      company: "Staatstheater Braunschweig",
+      role: "Stage & Costume Design",
+      description: "12-month internship in theater design, graphic arts foundation",
+      type: "foundation"
+    }
+  ];
+
   return (
     <div className="abstand">
       <p> Creator & Art Director with focus on
       building holistic digital and spatial experiences</p> 
     
-      {/* CTA Button */}
-      <button onClick={handleToggleContent} className="cta-button">
-        {isExpanded ? "Read Less" : "Read More About My Journey"}
-      </button>
+      {/* CTA Buttons */}
+      <div className="cta-buttons">
+        <button onClick={handleToggleContent} className="cta-button">
+          {isExpanded ? "Read Less" : "Read More About My Journey"}
+        </button>
+        <button onClick={handleToggleTimeline} className="cta-button cta-timeline">
+          {showTimeline ? "Hide Timeline" : "View Timeline"}
+        </button>
+        <a 
+          href="/cv-annemarie-sauerbier.pdf" 
+          download="CV-Annemarie-Sauerbier.pdf"
+          className="cta-button cta-download"
+        >
+          ↓ Download CV
+        </a>
+      </div>
+
+      {/* Timeline Section */}
+      {showTimeline && (
+        <div className="timeline-container">
+          <h3>12+ Years of Creative Evolution</h3>
+          <div className="timeline-wrapper">
+            <div className="timeline">
+              {timelineData.map((item, index) => (
+                <div key={index} className={`timeline-item ${item.type}`}>
+                  <div className="timeline-year">{item.year}</div>
+                  <div className="timeline-content">
+                    <div className="timeline-title">{item.title}</div>
+                    <div className="timeline-company">{item.company}</div>
+                    <div className="timeline-role">{item.role}</div>
+                    <div className="timeline-description">{item.description}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Collapsible Section with Scroll */}
       {isExpanded && (

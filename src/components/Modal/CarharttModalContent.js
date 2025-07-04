@@ -82,13 +82,6 @@ const CarharttModalContent = () => {
 
         <section className="modal-section">
           <h2>Design System Migration & Component Optimization</h2>
-
-          <figure className="image-gallery">
-            <img src={Image13} alt="Carhartt platforms"/>
-            <img src={Image1} alt="US site"/>
-            <img src={Image2} alt="EU site"/>
-            <figcaption className="image-caption">Carhartt-WIP.US & Carhartt-WIP.EU</figcaption>
-          </figure>
           
           <h3><strong>Challenge</strong></h3>
           <p>Carhartt WIP needed to modernize their design workflow and improve e-commerce experiences across US and European markets. Previous research had been conducted, and I was brought in to execute design solutions based on existing findings.</p>
@@ -174,7 +167,12 @@ const CarharttModalContent = () => {
         <section className="modal-section">
           <h2>Checkout Optimization</h2>
           
-         
+          <figure className="image-gallery">
+            <img src={Image13} alt="Carhartt platforms"/>
+            <img src={Image1} alt="US site"/>
+            <img src={Image2} alt="EU site"/>
+            <figcaption className="image-caption">Carhartt-WIP.US & Carhartt-WIP.EU</figcaption>
+          </figure>
 
           <div className="video-gallery">
             <div className="video-wrapper">
