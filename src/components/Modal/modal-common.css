@@ -143,9 +143,21 @@
   font-size: 0.8rem; /* Small font size */
   font-weight: 400; /* Thin font weight */
   margin-top: 0.4rem; /* Small space between image and caption */
+  margin-bottom: 1.5rem; /* Space after caption before next image */
   text-align: center; /* Center-align the caption */
   line-height: 1.5; /* Slightly increased line height for readability */
   letter-spacing: 0.02rem; /* Optional: Slight letter-spacing for clarity */
+}
+
+/* Proper spacing for figure elements */
+figure {
+  margin: 0 0 2rem 0; /* Remove default margin, add bottom spacing */
+  display: inline-block;
+  width: 100%;
+}
+
+figure img {
+  margin-bottom: 0.4rem; /* Consistent spacing before caption */
 }
 
 /* Modal grid for columns */

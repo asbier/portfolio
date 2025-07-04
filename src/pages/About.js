@@ -95,7 +95,7 @@ function About({ isVisible, toggleContentVisibility }) {
       title: "Editorial Freelance",
       company: "SuperReal",
       role: "Freelance Art Director",
-      description: "COMMA StyleMagazine, BIORAMA & The Gap redesigns",
+      description: "COMMA StyleMagazine",
       type: "editorial",
       image: "/timeline/superreal.jpg"
     },
@@ -104,7 +104,7 @@ function About({ isVisible, toggleContentVisibility }) {
       title: "Art Direction Agency",
       company: "Monopol Media GmbH",
       role: "Art Director",
-      description: "Full-time Art Director position for 1 year at Monopol Media",
+      description: "Full-time Art Director position for 1 year at Monopol Media, BIORAMA & The Gap redesigns",
       type: "editorial",
       image: "/timeline/monopol.jpg"
     },

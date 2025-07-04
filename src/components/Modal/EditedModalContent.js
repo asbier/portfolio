@@ -64,15 +64,22 @@ const EditedModalContent = () => (
 
 
 
-      <figure className="image-gallery">
-          <img src={image1} alt="Product Design" />
-          <figcaption className="image-caption">2-week circular e-commerce content design, weekly blog updates, UI redesign—from illustrated top navigation to a classic sidenav with editorial focus over product images.</figcaption>
-          <img src={image32} alt="Collab Design" />  
-          <figcaption className="image-caption">In 2017, we shifted #EDITEDpaper from four to two larger print issues per year, with all designers contributing to design and illustrations.</figcaption>
+      <div className="image-gallery">
+          <figure>
+            <img src={image1} alt="Product Design" />
+            <figcaption className="image-caption">2-week circular e-commerce content design, weekly blog updates, UI redesign—from illustrated top navigation to a classic sidenav with editorial focus over product images.</figcaption>
+          </figure>
+          
+          <figure>
+            <img src={image32} alt="EDITED Paper Design" />  
+            <figcaption className="image-caption">In 2017, we shifted #EDITEDpaper from four to two larger print issues per year, with all designers contributing to design and illustrations.</figcaption>
+          </figure>
  
-          <img src={image2} alt="Product Design" />
-          <figcaption className="image-caption">EDITED store scaling, launch events, and merchandise, including in-store displays.</figcaption>
-        </figure>
+          <figure>
+            <img src={image2} alt="EDITED Store Events" />
+            <figcaption className="image-caption">EDITED store scaling, launch events, and merchandise, including in-store displays.</figcaption>
+          </figure>
+        </div>
 
 
     </section>
