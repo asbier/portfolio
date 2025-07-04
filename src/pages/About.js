@@ -54,15 +54,7 @@ function About({ isVisible, toggleContentVisibility }) {
       type: "current",
       image: "/timeline/dayone.jpg"
     },
-    {
-      year: "2022",
-      title: "Product Focus",
-      company: "DAYONE GmbH",
-      role: "UX Designer & Digital Consultant",
-      description: "Oct. 2022 – Contract ended 06.2025. Led UX strategy & design for VW's AutoSuche, optimizing e-commerce for sustainable car sales. Designed interactive prototypes & UI for dealer & trade-in tools. Created dashboard User Flows for Hella Gutmann's ADAS.",
-      type: "ux",
-      image: "/timeline/dayone2.jpg"
-    },
+
     {
       year: "2021",
       title: "E-Commerce UX",
