@@ -50,7 +50,7 @@ function About({ isVisible, toggleContentVisibility }) {
       title: "UX/UI Consultant",
       company: "DAYONE x VOLKSWAGEN",
       role: "UX Designer & Digital Consultant",
-      description: "Leading UX strategy for VW's AutoSuche, optimizing e-commerce for sustainable car sales",
+      description: "UX Design, Research, Ideation & UX strategy for VW's AutoSuche, optimizing e-commerce for sustainable car sales",
       type: "current",
       image: "/timeline/dayone.jpg"
     },
@@ -69,7 +69,7 @@ function About({ isVisible, toggleContentVisibility }) {
       title: "Leadership",
       company: "We22 GmbH",
       role: "Team Lead Design",
-      description: "Led design systems for Telekom & Strato, cross-functional innovation workshops",
+      description: "Led Team motivation and craeted  design systems for Telekom & Strato, cross-functional",
       type: "leadership",
       image: "/timeline/we22.jpg"
     },
@@ -77,7 +77,7 @@ function About({ isVisible, toggleContentVisibility }) {
       year: "2015",
       title: "Art Direction Holistic Brand",
       company: "EDITED / AboutYou",
-      role: "Designer → Art Director",
+      role: "2015 Designer became 2016 Art Director",
       description: "Holistic brand experiences across digital & spatial touchpoints, diversity campaigns, strategic brand direction",
       type: "digital",
       image: "/timeline/edited.jpg"
@@ -96,7 +96,7 @@ function About({ isVisible, toggleContentVisibility }) {
       title: "Industry Entry",
       company: "Plastic Media / Heroes&Heroines",
       role: "Intern → Freelancer",
-      description: "INDIE Magazine, Bumble, Absolut campaigns with Daniela Bily",
+      description: "INDIE Magazine, Bumble, Absolut Events with my mentor Daniela Bily",
       type: "editorial",
       image: "/timeline/plastic.jpg"
     },
@@ -144,7 +144,6 @@ function About({ isVisible, toggleContentVisibility }) {
 
       {/* Timeline Section - Collapsible like about-details */}
       <div className={`timeline-container ${showTimeline ? 'expanded' : ''}`}>
-        <h3>12+ Years of Creative Evolution</h3>
         <div 
           className="timeline-wrapper"
           ref={timelineRef}
