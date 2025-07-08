@@ -71,12 +71,13 @@ const RoleAndTeam = () => (
       </ul>
     </div>
     <div>
-      <h3><strong>Our Design Team for UX/UI</strong></h3>
+      <h3><strong>UX/UI Team</strong></h3>
       <ul className="list">
         <li><b>Digital Design Lead AccentureSong</b> Odair Faléco</li>
         <li><b>UX/UI Designer AccentureSong</b> Marina Meinhardt</li>
         <li><b>UX Product-Designer DAYONE</b> Annemarie Sauerbier</li>
         <li><b>UX/UI Product-Designer DAYONE</b> Skirmante Radvucuite</li>
+        <li><b>UX/UI Designer DAYONE</b> Anna Kutíková</li>
       </ul>
     </div>
   </div>
@@ -153,7 +154,7 @@ const Takeaway = () => (
     <p>My takeaway is that every idea can open up new opportunities that lead to a deeper understanding of what users truly need and ask for. This is a great example of how I like to work—transforming a small idea into a big change with a positive outcome for the user.</p>
     <figure className="image-gallery">
       <img src={Image7} alt="Filtercockpit Live" />
-      <figcaption className="image-caption"> Next Task was building the Global Filter Concept -> This is the Live Version from June 2024</figcaption>
+      <figcaption className="image-caption"> Next Task was building the Global Filter Concept - This is the Live Version from June 2024</figcaption>
     </figure>
   </section>
 );

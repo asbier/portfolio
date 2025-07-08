@@ -29,17 +29,22 @@ const PlasticMediaModalContent = () => (
      
      
       <div className="column">
-  <h3><strong>My Role</strong></h3>
-  <ul className="checklist" >
-    <li className="fontWeight"> Editorial Design & </li>
-    <li className="fontWeight"> Strategy </li>
-  </ul>
-  <h3><strong>Design Team</strong></h3>
-  <ul className="list" >
-  <li className="list"><b>Lead </b> Daniela Bily</li>
-    <li className="fontWeight"> <b>Assistant </b> Annemarie Sauerbier </li>
-  </ul>
-</div>
+        <div>
+          <h3><strong>My Role</strong></h3>
+          <ul className="checklist">
+            <li>Editorial Design</li>
+            <li>Strategy</li>
+          </ul>
+        </div>
+        <div>
+          <h3><strong>Design Team</strong></h3>
+          <ul className="list">
+            <li><strong>Creative Director</strong> Kira Stachowitz</li>
+            <li><strong>Lead</strong> Daniela Bily</li>
+            <li><strong>Assistant</strong> Annemarie Sauerbier</li>
+          </ul>
+        </div>
+      </div>
 <p></p>
 
     <section className="modal-section">

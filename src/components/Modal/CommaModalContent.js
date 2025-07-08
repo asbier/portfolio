@@ -28,6 +28,13 @@ const CommaModalContent = () => (
               <li>Freelance Art Director</li>
             </ul>
           </div>
+          <div>
+            <h3><strong>Design Team</strong></h3>
+            <ul className="list">
+              <li><strong>Creative Direction & Management</strong> SuperReal</li>
+              <li><strong>Freelance Art Director</strong> Annemarie Sauerbier</li>
+            </ul>
+          </div>
         </div>
 
         <div className="modal-section">

@@ -28,7 +28,7 @@ const ConicRoseModalContent = () => (
     <div className="column">
       <div>
         <h3><strong>My Role</strong></h3>
-        <ul className="list">
+        <ul className="checklist">
           <li>Album Cover Design</li>
           <li>Visual Concept Development</li>
         </ul>
@@ -42,17 +42,13 @@ const ConicRoseModalContent = () => (
     </p>
 
     <section className="modal-section">
+      <h2>Album Cover Artwork</h2>
+      <h3>Challenge</h3>
+      <p>
+        Album Cover Design for a Jazz band where it was not sure what songs will be on that album. The project was mentored by the artist CLUESO. The challenge was to create visual identity for music that was still evolving, capturing the essence of a jazz band's experimental sound while working with uncertainty about the final tracklist.
+      </p>
 
-
-    <div className="image-gallery">
-      <img src={image3} alt="Final" />
-    </div>
-
-    <p>
-      I love Music, so if I get the chance to interpret the music into a visual, I will do it with pleasure.
-    </p>
-
-
+      <h3>My Approach</h3>
       <p>
         When approaching Album-Cover Design, I begin by immersing myself in the music. I listen carefully, allowing
         the sound to guide my initial impressions.
@@ -74,19 +70,24 @@ const ConicRoseModalContent = () => (
         reflection of the sound.
       </p>
 
+      <div className="image-gallery">
+        <img src={image10} alt="How-2" />
+        <img src={image1} alt="Vision 1" />
+        <img src={image2} alt="Vision 2" />
+        <img src={image5} alt="Vision 3" />
+        <img src={image6} alt="Vision 5" />
+        <img src={image7} alt="Vision 6" />
+        <img src={image8} alt="Vision 7" />
+        <img src={image12} alt="How 4" />
+        <img src={image13} alt="How 5" />
+      </div>
+
+      <h3>Solution</h3>
       <p>
         I often mix analog and digital tools to create designs that feel both organic and modern. With a strong
         intuition for color and visualization, I aim to make covers that, like the music itself, draw the right audience.
         As a digger myself, I know the power of a cover that perfectly captures the essence of the sound.
       </p>
-
-      <div className="image-gallery">
-      
-        <img src={image10} alt="How-2" />
-    
-        <img src={image12} alt="How 4" />
-        <img src={image13} alt="How 5" />
-      </div>
 
       <p>
         What I aim to achieve are designs that visually echo the essence of the music, drawing the right audience with
@@ -94,13 +95,8 @@ const ConicRoseModalContent = () => (
       </p>
 
       <div className="image-gallery">
-        <img src={image1} alt="Vision 1" />
-        <img src={image2} alt="Vision 2" />
-        <img src={image5} alt="Vision 4" />
-        <img src={image6} alt="Vision 5" />
-        <img src={image7} alt="Vision 6" />
-        <img src={image8} alt="Vision 7" />
         <img src={image14} alt="Vision-F" />
+        <img src={image3} alt="Final" />
       </div>
     </section>
   </div>

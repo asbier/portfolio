@@ -42,7 +42,7 @@ const EditedModalContent = () => (
         </ul>
       </div>
       <div>
-        <h3><strong>Our Design Team</strong></h3>
+        <h3><strong>Design Team</strong></h3>
         <ul className="list">
           <li><b>Brand Director</b> Franziska Nellesen</li>
           <li><b>Freelance Art Director Editorials & Brand</b> Sonja Klements</li>

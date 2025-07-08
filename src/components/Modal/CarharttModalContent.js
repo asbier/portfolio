@@ -72,7 +72,7 @@ const CarharttModalContent = () => {
             </ul>
           </div>
           <div>
-            <h3><strong>Team</strong></h3>
+            <h3><strong>UX/UITeam</strong></h3>
             <ul className="list">
               <li><b>Digital Design Lead</b> Lutz Erian</li>
               <li><b>UX/UI Designer</b> Annemarie Sauerbier</li>

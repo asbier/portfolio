@@ -174,8 +174,8 @@ figure img {
   display: flex;
   flex-direction: row;
   gap: 3rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin-top: 1.5rem; /* Increased spacing above role/team section */
+  margin-bottom: 2rem; /* Increased spacing below role/team section */
 }
 
 .column h3:first-child {
@@ -349,6 +349,7 @@ figure img {
 .modal-section {
   padding: clamp(2rem, 4vw, 3rem);
   margin-bottom: 2rem;
+  margin-top: 3rem; /* Increased spacing above sections */
   line-height: 140%;
   background-color: #fffdf5ca;
   border-radius: 8px;

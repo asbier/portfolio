@@ -20,21 +20,26 @@ const HeroesnHeroinesModalContent = () => (
                 Collaborating in such an inspiring environment was transformative and reinforced the power of daring creativity in delivering meaningful results.
             </p>
             <div className="column">
-  <h3><strong>My Role</strong></h3>
-  <ul className="list" >
-    <li className="fontWeight">Graphic Design & </li>
-    <li className="fontWeight"> Strategy </li>
-  </ul>
-  <h3><strong>Design Team</strong></h3>
-  <ul className="list" >
-  <li className="list">Lead Daniela Bily</li><p></p>
-    <li className="fontWeight"> Assistant Annemarie Sauerbier </li>
-  </ul>
-</div>
+              <div>
+                <h3><strong>My Role</strong></h3>
+                <ul className="checklist">
+                  <li>Graphic Design</li>
+                  <li>Strategy</li>
+                </ul>
+              </div>
+              <div>
+                <h3><strong>Design Team</strong></h3>
+                <ul className="list">
+                  <li><strong>Creative Director</strong> Kira Stachowitz</li>
+                  <li><strong>Lead</strong> Daniela Bily</li>
+                  <li><strong>Assistant</strong> Annemarie Sauerbier</li>
+                </ul>
+              </div>
+            </div>
 <p></p>
 
         <section className="modal-section">
-            <h2>CASE 2 — Tally Weijl Store Opening & Hennessy Event</h2>
+            <h2>Tally Weijl Store Opening & Hennessy Event</h2>
             <p>
                 I contributed to the strategy for bringing the Tally Weijl event to life. Additionally, I created graphic designs for the stations we set up in the shop.
                 The experience had a circus theme, and the event was attended by influencers and artists from Austria and the UK "Flagship Store-Opening with Pixie Geldof".
@@ -54,7 +59,7 @@ const HeroesnHeroinesModalContent = () => (
         </section>
 
         <section className="modal-section">
-            <h2>CASE 1 — Bumble Event</h2>
+            <h2>Bumble Event</h2>
             <p>I was primarily responsible for the graphic design during the event's execution.</p>
            
             <figure className="image-gallery">
