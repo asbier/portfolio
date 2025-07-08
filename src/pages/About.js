@@ -65,10 +65,9 @@ function About({ isVisible, toggleContentVisibility }) {
 
   const handleTouchMove = (e) => {
     if (!isDragging) return;
-    e.preventDefault();
-    e.stopPropagation();
+    // Don't prevent default on mobile to allow native scrolling
     const x = e.touches[0].pageX - timelineRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed
+    const walk = (x - startX) * 1.5; // Reduced scroll speed for mobile
     timelineRef.current.scrollLeft = scrollLeft - walk;
   };
 

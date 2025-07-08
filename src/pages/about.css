@@ -217,8 +217,16 @@
   -ms-user-select: none;
   flex: 1;
   min-height: 0;
-  touch-action: pan-x; /* Only allow horizontal scrolling on mobile */
+  scroll-behavior: smooth; /* Smooth scrolling */
   -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile-specific timeline wrapper */
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    touch-action: pan-x; /* Only horizontal scrolling */
+    cursor: auto; /* Remove grab cursor on mobile */
+  }
 }
 
 .timeline-wrapper:active {
@@ -456,12 +464,8 @@
   /* Prevent unwanted touch behaviors on mobile */
   .abstand {
     touch-action: pan-y; /* Only allow vertical scrolling */
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
+    overscroll-behavior: none; /* Prevent pull-to-refresh */
   }
 
   .about-details {
@@ -503,6 +507,8 @@
   .timeline-wrapper {
     height: auto; /* Let content determine height */
     max-height: 70vh; /* Limit to viewport height for scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
+    overscroll-behavior-x: contain; /* Prevent overscroll bounce */
   }
 
   .timeline {
