@@ -61,6 +61,8 @@
   max-height: 400px; /* Increased for better readability */
   padding-right: 1rem;
   flex-shrink: 0;
+  touch-action: pan-y; /* Only allow vertical scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
 }
 
 .about-details > p:first-child {
@@ -133,31 +135,45 @@
   display: inline-block;
   position: relative;
   transition: color 0.3s ease;
-  border-bottom: 2px solid #000;
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #000;
+  transition: background-color 0.3s ease;
 }
 
 /* ✅ Download Button Specific Styling */
 .cta-download {
   color: #000;
-  border-bottom: 2px solid #000;
   position: relative;
   margin-bottom: 0; /* Ensure consistent spacing */
 }
 
 .cta-download:hover {
   color: var(--btn-hover);
-  border-bottom-color: var(--btn-hover);
+}
+
+.cta-download:hover::after {
+  background-color: var(--btn-hover);
 }
 
 /* ✅ Timeline Button Specific Styling */
 .cta-timeline {
   color: #000;
-  border-bottom: 2px solid #000;
 }
 
 .cta-timeline:hover {
   color: var(--btn-hover);
-  border-bottom-color: var(--btn-hover);
+}
+
+.cta-timeline:hover::after {
+  background-color: var(--btn-hover);
 }
 
 /* 📅 Timeline Container - Collapsible like about-details */
@@ -201,6 +217,8 @@
   -ms-user-select: none;
   flex: 1;
   min-height: 0;
+  touch-action: pan-x; /* Only allow horizontal scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
 }
 
 .timeline-wrapper:active {
@@ -322,7 +340,10 @@
 .cta-button:hover {
   font-family: Lausanne, sans-serif;
   color: var(--btn-hover);
-  border-bottom-color: var(--btn-hover);
+}
+
+.cta-button:hover::after {
+  background-color: var(--btn-hover);
 }
 
 .cta-button:active {
@@ -386,24 +407,102 @@
 
 @media (max-width: 480px) { /* Smartphone */
   .cta-buttons {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 1rem;
     align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 1rem; /* Reduce bottom margin on mobile */
   }
   
   .cta-button {
     font-size: 0.9rem;
     padding: 0.4rem 0;
     text-align: left;
+    flex: 0 0 auto;
+    margin-bottom: 0; /* Ensure consistent spacing for all buttons */
+    border-bottom: 2px solid #000; /* Use border instead of pseudo element on mobile */
+    display: inline-block; /* Keep inline-block to match text width */
+  }
+
+  /* Hide the pseudo element on mobile */
+  .cta-button::after {
+    display: none;
+  }
+
+  /* Make first two buttons (Read More/Less and View Timeline) share a row */
+  .cta-button:nth-child(1),
+  .cta-button:nth-child(2) {
+    flex: 0 0 auto;
+    margin-right: 2rem; /* Add space between buttons */
+  }
+
+  /* Download CV button gets its own full-width row */
+  .cta-download {
+    flex: 0 0 100%; /* Force new line */
+    width: auto; /* Only take needed width */
+    display: inline-block; /* Ensure inline-block */
+    margin-bottom: 0 !important; /* Force no bottom margin */
+    margin-top: 0; /* Remove any extra top margin */
+    padding-bottom: 0.4rem; /* Match other buttons */
+    border-bottom: none !important; /* Remove underline on mobile */
+  }
+
+  /* Mobile hover states with border */
+  .cta-button:hover {
+    border-bottom-color: var(--btn-hover);
+  }
+
+  /* Prevent unwanted touch behaviors on mobile */
+  .abstand {
+    touch-action: pan-y; /* Only allow vertical scrolling */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .about-details {
+    touch-action: pan-y; /* Only vertical scrolling for content */
+    overscroll-behavior: contain; /* Prevent scroll chaining */
+    max-height: 60vh; /* Better mobile height */
+    padding: 0; /* Remove padding */
+    margin-top: 0.5rem; /* Reduced space from buttons */
+  }
+
+  .about-details p {
+    font-size: 1rem !important; /* Ensure readable font size */
+    line-height: 1.5 !important; /* Better line spacing */
+    margin-bottom: 1rem !important;
+  }
+
+  .about-details p:nth-child(2) {
+    font-size: 0.9rem !important; /* "Worked with" header */
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .about-details p:nth-child(3) {
+    font-size: 0.85rem !important; /* Company list */
+    line-height: 1.4 !important;
+    font-weight: 400 !important;
   }
 
   /* Timeline Mobile Styles - Collapsible */
+  .timeline-container {
+    margin-top: 0.5rem !important; /* Override desktop margin */
+  }
+  
   .timeline-container.expanded {
-    max-height: 400px;
+    max-height: none; /* Remove height restriction on mobile */
+    margin-top: 0.5rem !important; /* Ensure consistent spacing when expanded */
   }
 
   .timeline-wrapper {
-    height: 280px;
+    height: auto; /* Let content determine height */
+    max-height: 70vh; /* Limit to viewport height for scrolling */
   }
 
   .timeline {
@@ -457,7 +556,8 @@
     margin-right: 1rem;
     margin-left: 0.5rem;
     line-height: 130%;
-    padding: 1.5rem;
+    padding: 1rem; /* Reduced padding for mobile */
+    min-height: auto; /* Allow natural height */
   }
 
   .abstand h2 {
@@ -469,6 +569,14 @@
     font-family: Lausanne, sans-serif;
     font-size: 1rem; /* Increased from 0.9rem for better mobile readability */
     line-height: 140%; /* Increased line height */
+  }
+
+  /* Improve intro paragraph on mobile */
+  .abstand > p:first-child {
+    font-size: clamp(1.2rem, 4vw, 1.8rem) !important;
+    line-height: 130% !important;
+    margin-bottom: 1.5rem !important;
+    max-width: none !important; /* Remove width constraint on mobile */
   }
 }
 

@@ -36,6 +36,13 @@ function About({ isVisible, toggleContentVisibility }) {
     setScrollLeft(timelineRef.current.scrollLeft);
   };
 
+  const handleTouchStart = (e) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - timelineRef.current.offsetLeft);
+    setScrollLeft(timelineRef.current.scrollLeft);
+    e.stopPropagation();
+  };
+
   const handleMouseLeave = () => {
     setIsDragging(false);
   };
@@ -44,10 +51,23 @@ function About({ isVisible, toggleContentVisibility }) {
     setIsDragging(false);
   };
 
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   const handleMouseMove = (e) => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - timelineRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed
+    timelineRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const x = e.touches[0].pageX - timelineRef.current.offsetLeft;
     const walk = (x - startX) * 2; // Scroll speed
     timelineRef.current.scrollLeft = scrollLeft - walk;
   };
@@ -168,6 +188,9 @@ function About({ isVisible, toggleContentVisibility }) {
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchMove={handleTouchMove}
         >
           <div className="timeline">
                           {timelineData.map((item, index) => (
