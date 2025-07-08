@@ -37,7 +37,7 @@ const Main = ({ hasVisibleContent }) => {
     // Protected projects that require password
     const protectedProjects = {
         0: 'DAYONE',
-        1: 'Carhartt'
+        1: 'Carhartt-WIP'
     };
 
     const openProjectModal = (index) => {
