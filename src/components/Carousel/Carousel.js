@@ -25,6 +25,8 @@ const Carousel = ({ onImageClick, hasVisibleContent }) => {
         setIsDragging(true);
         setStartX(e.touches[0].pageX - carousel.current.offsetLeft);
         setScrollLeft(carousel.current.scrollLeft);
+        // Prevent page scrolling when touching the carousel
+        e.stopPropagation();
     };
 
     const handleMouseLeave = () => {
@@ -50,6 +52,7 @@ const Carousel = ({ onImageClick, hasVisibleContent }) => {
     const handleTouchMove = (e) => {
         if (!isDragging) return;
         e.preventDefault();
+        e.stopPropagation();
         const x = e.touches[0].pageX - carousel.current.offsetLeft;
         const walk = (x - startX) * 2;
         carousel.current.scrollLeft = scrollLeft - walk;

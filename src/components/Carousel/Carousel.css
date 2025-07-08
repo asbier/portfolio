@@ -164,6 +164,9 @@
     height: 80vh;
     /* Show only bottom half of circle like Gucci */
     overflow: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x; /* Only allow horizontal scrolling */
   }
 
 
