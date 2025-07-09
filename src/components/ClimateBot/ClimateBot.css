@@ -296,4 +296,91 @@
   .fact-text {
     font-size: 0.7rem;
   }
+}
+
+/* Extra small screens like iPhone SE */
+@media (max-width: 375px) {
+  .climate-earth {
+    bottom: 20px;
+    right: 20px;
+    z-index: 1002;
+  }
+
+  /* Target specific bubbles for iPhone SE positioning */
+  .floating-category[style*="bottom: 160px"] {
+    bottom: 110px !important;
+    right: 10px !important;
+  }
+
+  .floating-category[style*="bottom: 50px"] {
+    bottom: 70px !important;
+    right: 40px !important;
+  }
+
+  .floating-category[style*="bottom: 120px"] {
+    bottom: 90px !important;
+    right: 80px !important;
+  }
+
+  .category-content {
+    padding: 3px 6px;
+    width: 100px;
+    height: 24px;
+    font-size: 0.55rem;
+    border-radius: 12px;
+  }
+
+  .floating-category.active .category-content {
+    width: 160px;
+    min-height: 30px;
+    padding: 5px 8px;
+    border-radius: 12px;
+  }
+
+  .category-text {
+    font-size: 0.55rem;
+    font-weight: 600;
+  }
+
+  .fact-text {
+    font-size: 0.5rem;
+    line-height: 1.2;
+  }
+}
+
+/* iPhone SE specific - even smaller */
+@media (max-width: 320px) {
+  .climate-earth {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .floating-category[style*="bottom: 100px"] {
+    bottom: 100px !important;
+    right: 30px !important;
+  }
+
+  .floating-category[style*="bottom: 50px"] {
+    bottom: 70px !important;
+    right: 5px !important;
+  }
+
+  .floating-category[style*="bottom: 80px"] {
+    bottom: 85px !important;
+    right: 65px !important;
+  }
+
+  .category-content {
+    width: 100px;
+    height: 22px;
+    padding: 1px 4px;
+    font-size: 0.55rem;
+  }
+
+  .floating-category.active .category-content {
+    width: 140px;
+    min-height: 26px;
+    padding: 3px 5px;
+    font-size: 0.5rem;
+  }
 } 
