@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import { Route, Routes } from 'react-router-dom';
 import './styles/Global.css'; // Import global styles
 import Community from './pages/Community';
+import ClimateBot from './components/ClimateBot/ClimateBot';
 
 function App() {
   const [visibleContent, setVisibleContent] = useState({
@@ -45,6 +46,7 @@ function App() {
       </div>
       <Main hasVisibleContent={hasVisibleContent} />
       <Footer toggleContentVisibility={toggleContentVisibility} />
+      <ClimateBot />
     </div>
   );
 }

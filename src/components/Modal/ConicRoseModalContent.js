@@ -43,6 +43,7 @@ const ConicRoseModalContent = () => (
 
     <section className="modal-section">
       <h2>Album Cover Artwork</h2>
+      <p></p>
       <h3>Challenge</h3>
       <p>
         Album Cover Design for a Jazz band where it was not sure what songs will be on that album. The project was mentored by the artist CLUESO. The challenge was to create visual identity for music that was still evolving, capturing the essence of a jazz band's experimental sound while working with uncertainty about the final tracklist.

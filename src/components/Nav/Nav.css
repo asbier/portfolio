@@ -98,7 +98,7 @@ a, .nav-button {
 /* Mobile Styles */
 @media (max-width: 768px) {
   nav {
-    padding: 10px 15px;
+    padding: 15px 15px 10px 15px; /* Better top padding on mobile */
     height: 50px;
   }
 
