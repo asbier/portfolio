@@ -71,14 +71,14 @@ const AboutYouModalContent = () => (
          <img src={Image10} alt="Slider" /> 
          <figcaption className="image-caption">Outcome of Videos - After</figcaption>
          <img src={Image5} alt="Slider" />  
+         <figcaption className="image-caption">Outcome of the Editorial Stories - After</figcaption>
          <img src={Image8} alt="Slider" /> 
          <figcaption className="image-caption">Wireframe of Storie Layout - Concept</figcaption>
          <img src={Image2} alt="Slider" />
+         <figcaption className="image-caption">Final Stories Layout Implementation</figcaption>
          <img src={Image9} alt="AY Awards" />
          <figcaption className="image-caption">ABOUT YOU Awards and achievements</figcaption>
         </figure>
-      
-       <figcaption className="image-caption">Outcome of the Editorial Stories - After</figcaption>
         
             <h2>Emily & Eve new AY Shoe Brand Concept </h2>
             <p>

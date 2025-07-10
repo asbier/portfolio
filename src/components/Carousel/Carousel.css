@@ -1,6 +1,6 @@
 /* Updated styles - Force refresh */
 .carousel {
-  background-color: #ECE9E4;
+  background-color: #FAFAFA;
   height: 100vh;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -42,13 +42,13 @@
 .item {
   height: auto;
   width: auto;
-  padding: 30px;
+  padding: 40px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: left;
-  min-width: 200px;
+  min-width: 250px;
   flex: 0 0 auto;
   scroll-snap-align: start;
 }
@@ -62,7 +62,7 @@
 }
 
 .image-container img {
-  min-height: 30rem;
+  min-height: 35rem;
 }
 
 .title-overlay {
@@ -112,8 +112,8 @@
 
 .item img {
   width: auto;
-  max-width: 400px;
-  max-height: 30rem;
+  max-width: 450px;
+  max-height: 35rem;
   height: auto;
   border-radius: 0rem;
   transition: border-radius 0.5s;

@@ -12,14 +12,13 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #ECE9E4;
+  background-color: #FAFAFA;
   overflow: hidden;
 }
 
 .body {
-  background-color: #ECE9E4;
-  background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); /* Paper texture */
-  color: #ECE9E4;
+  background-color: #FAFAFA;
+  color: #333;
   min-height: 100vh;
   margin: 0; /* Remove margin */
   padding: 2rem; /* Use padding instead if spacing is needed */

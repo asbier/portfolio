@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import { Route, Routes } from 'react-router-dom';
 import './styles/Global.css'; // Import global styles
 import Community from './pages/Community';
+import EditedShowcase from './pages/EditedShowcase';
 import ClimateBot from './components/ClimateBot/ClimateBot';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/Community' element={<Community isVisible={visibleContent.community} />} />
+          <Route path='/edited-showcase' element={<EditedShowcase />} />
         </Routes>
 
         {visibleContent.about && <About isVisible={visibleContent.about} toggleContentVisibility={toggleContentVisibility} />}

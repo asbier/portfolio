@@ -6,7 +6,7 @@ nav {
   height: 60px;
   
   z-index: 9999;
-  background-color: #ECE9E4;
+  background-color: #FAFAFA;
   color: inherit;
   transition: background-color 0.3s, color 0.3s;
   position: -webkit-sticky;
@@ -16,8 +16,7 @@ nav {
 
 nav.dark {
   background-color: #000000;
-  color: #ECE9E4;
-  background-image: url('https://www.transparenttextures.com/patterns/ecailles.png'); /* Paper texture */
+  color: #FAFAFA;
 }
 
 .nav-logo {

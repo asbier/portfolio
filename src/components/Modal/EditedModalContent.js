@@ -67,7 +67,7 @@ const EditedModalContent = () => (
       <div className="image-gallery">
           <figure>
             <img src={image1} alt="Product Design" />
-            <figcaption className="image-caption">2-week circular e-commerce content design, weekly blog updates, UI redesign—from illustrated top navigation to a classic sidenav with editorial focus over product images.</figcaption>
+            <figcaption className="image-caption"> Circular e-commerce content design, weekly blog updates, UI redesign—from illustrated top navigation to a classic sidenav with editorial focus over product images.</figcaption>
           </figure>
           
           <figure>

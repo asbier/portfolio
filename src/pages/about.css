@@ -1,6 +1,6 @@
 /* ✨ Allgemeine Stile - Updated Timeline v2.6 Drag Scroll */
 :root {
-  --bg-light: #fffdf5ca;
+  --bg-light: rgba(255, 255, 255, 0.8);
   --bg-dark: #222;
   --btn-bg: #9d8f6376;
   --btn-hover: #09ff00;

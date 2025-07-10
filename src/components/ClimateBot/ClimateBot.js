@@ -12,21 +12,21 @@ const ClimateBot = () => {
       id: 'design',
       title: 'How do you approach design?',
       color: '#000',
-      position: { bottom: '160px', right: '120px' },
+      position: { bottom: '140px', right: '100px' },
       fact: "I design holistic solutions that consider the entire user ecosystem"
     },
     {
       id: 'mindful',
       title: 'What\'s your design philosophy?',
       color: '#000',
-      position: { bottom: '50px', right: '200px' },
+      position: { bottom: '80px', right: '220px' },
       fact: "Good intentions, less waste, circularity, new material exploration, invest and risk"
     },
     {
       id: 'future',
       title: 'Who do you design for?',
       color: '#000',
-      position: { bottom: '120px', right: '320px' },
+      position: { bottom: '140px', right: '340px' },
       fact: "I design for humanity, not just usability - considering social impact, equity, and environmental consequences"
     }
   ];

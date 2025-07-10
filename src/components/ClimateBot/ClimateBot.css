@@ -114,7 +114,7 @@
   background: rgba(255, 255, 255, 0.3);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
-  border: 2px solid #999;
+  border: 0.75px solid #999;
   border-radius: 20px;
   padding: 8px 16px;
   display: flex;
@@ -312,17 +312,17 @@
   }
 
   /* Compact positioning around stone */
-  .floating-category[style*="bottom: 160px"] {
+  .floating-category[style*="bottom: 140px"][style*="right: 100px"] {
     bottom: 80px !important;
     right: 10px !important;
   }
 
-  .floating-category[style*="bottom: 50px"] {
+  .floating-category[style*="bottom: 80px"][style*="right: 220px"] {
     bottom: 45px !important;
     right: 50px !important;
   }
 
-  .floating-category[style*="bottom: 120px"] {
+  .floating-category[style*="bottom: 140px"][style*="right: 340px"] {
     bottom: 65px !important;
     right: 90px !important;
   }
@@ -364,17 +364,17 @@
     right: 1.5rem;
   }
 
-  .floating-category[style*="bottom: 100px"] {
+  .floating-category[style*="bottom: 140px"][style*="right: 100px"] {
     bottom: 100px !important;
     right: 30px !important;
   }
 
-  .floating-category[style*="bottom: 50px"] {
+  .floating-category[style*="bottom: 80px"][style*="right: 220px"] {
     bottom: 70px !important;
     right: 5px !important;
   }
 
-  .floating-category[style*="bottom: 80px"] {
+  .floating-category[style*="bottom: 140px"][style*="right: 340px"] {
     bottom: 85px !important;
     right: 65px !important;
   }
