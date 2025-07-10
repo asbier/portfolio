@@ -298,53 +298,62 @@
   }
 }
 
-/* Extra small screens like iPhone SE */
+/* Mobile 375px - iPhone SE and similar */
 @media (max-width: 375px) {
   .climate-earth {
-    bottom: 20px;
-    right: 20px;
+    bottom: 1rem;
+    right: 1rem;
     z-index: 1002;
   }
 
-  /* Target specific bubbles for iPhone SE positioning */
+  .earth-core {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Compact positioning around stone */
   .floating-category[style*="bottom: 160px"] {
-    bottom: 110px !important;
+    bottom: 80px !important;
     right: 10px !important;
   }
 
   .floating-category[style*="bottom: 50px"] {
-    bottom: 70px !important;
-    right: 40px !important;
+    bottom: 45px !important;
+    right: 50px !important;
   }
 
   .floating-category[style*="bottom: 120px"] {
-    bottom: 90px !important;
-    right: 80px !important;
+    bottom: 65px !important;
+    right: 90px !important;
   }
 
   .category-content {
-    padding: 3px 6px;
-    width: 100px;
-    height: 24px;
-    font-size: 0.55rem;
-    border-radius: 12px;
+    padding: 6px 12px;
+    width: 120px;
+    height: 28px;
+    font-size: 0.65rem;
+    border-radius: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .floating-category.active .category-content {
-    width: 160px;
-    min-height: 30px;
-    padding: 5px 8px;
-    border-radius: 12px;
+    width: 200px;
+    min-height: 35px;
+    padding: 8px 14px;
+    border-radius: 14px;
+    white-space: normal;
   }
 
   .category-text {
-    font-size: 0.55rem;
+    font-size: 0.65rem;
     font-weight: 600;
   }
 
   .fact-text {
-    font-size: 0.5rem;
-    line-height: 1.2;
+    font-size: 0.6rem;
+    line-height: 1.3;
   }
 }
 
