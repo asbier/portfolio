@@ -54,7 +54,7 @@ const AboutYouModalContent = () => (
             <p><strong>My Idea & Strategy</strong></p>
 <ul className="checklist">
   <li className="fontWeight">Shift from white-background catalog images to engaging real-life content with diversity & inclusivity.</li>
-  <li className="fontWeight">Shareable Content </li>
+  <li className="fontWeight">Slow-Life Movement - Education and Awareness</li>
   <li className="fontWeight">"Stories" to tell – Outfits curated for every occasion. Clothes are grouped into editorial narratives, making it easy to find the perfect look.</li>
   <li className="fontWeight">Elevate the brand philosophy: "It's About YOU —giving meaning to "AY."</li>
   <li className="fontWeight">Personalization: Features like name-based greetings (e.g.,"It's About Julia") for a tailored experience.</li>
