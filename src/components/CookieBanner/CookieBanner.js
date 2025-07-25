@@ -60,7 +60,7 @@ const CookieBanner = () => {
     <div className="cookie-banner">
       <div className="cookie-content">
         <div className="cookie-text">
-          <h3>🍪 Cookies & Analytics</h3>
+          <h3>Cookies & Analytics</h3>
           <p>
             Ich verwende Google Analytics, um zu verstehen, wie Besucher mein Portfolio nutzen. 
             Dies hilft mir, die Benutzererfahrung zu verbessern.
@@ -76,10 +76,10 @@ const CookieBanner = () => {
         </div>
         <div className="cookie-buttons">
           <button onClick={handleAccept} className="accept-btn">
-            ✅ Akzeptieren
+            Akzeptieren
           </button>
           <button onClick={handleReject} className="reject-btn">
-            ❌ Ablehnen
+            Ablehnen
           </button>
         </div>
       </div>
