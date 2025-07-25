@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.20b88f82.css",
-    "main.js": "/static/js/main.97804e98.js",
+    "main.js": "/static/js/main.731538aa.js",
     "static/js/787.dc6905b1.chunk.js": "/static/js/787.dc6905b1.chunk.js",
     "static/media/Video_comp_final.mp4": "/static/media/Video_comp_final.377fe7bdd41eb4846dfa.mp4",
     "static/media/PDPvideo.mp4": "/static/media/PDPvideo.179d65155d75b8e3e16e.mp4",
@@ -46,7 +46,6 @@
     "static/media/ayawards-final .png": "/static/media/ayawards-final .7bce6b983c3ea12c8eae.png",
     "static/media/Image2.png": "/static/media/Image2.44c6d30cbe40b8f96685.png",
     "static/media/Video Desktop.png": "/static/media/Video Desktop.82d9205d26aff7397dfa.png",
-    "static/media/Biorama.png": "/static/media/Biorama.d59590df8f0a3931dba3.png",
     "static/media/berlin-collection.png": "/static/media/berlin-collection.c83036cbb73c96ebc16e.png",
     "static/media/Lp-Mona-M-Teaser.png": "/static/media/Lp-Mona-M-Teaser.38a1008cca7976758238.png",
     "static/media/Image-7.png": "/static/media/Image-7.597223641261b00392da.png",
@@ -71,7 +70,6 @@
     "static/media/Image-1.png": "/static/media/Image-1.051b0aa69225203f91ed.png",
     "static/media/Editedweb.png": "/static/media/Editedweb.234a677e350c85e84db8.png",
     "static/media/Bumblebig1.png": "/static/media/Bumblebig1.f7559f38e6ed956f2e04.png",
-    "static/media/Biorama-web.png": "/static/media/Biorama-web.d21b107142dbcb9f6a71.png",
     "static/media/How 4.png": "/static/media/How 4.7261c8b9bc7a7f0a0725.png",
     "static/media/Image1.png": "/static/media/Image1.547664c4fa7b5bd1af3c.png",
     "static/media/monki3.png": "/static/media/monki3.e4f0b90b0269cb7342f5.png",
@@ -87,8 +85,8 @@
     "static/media/5.jpg": "/static/media/5.ae0d9c8594ec0dd6e8f0.jpg",
     "static/media/Vision 6.png": "/static/media/Vision 6.14328af9e86a13f733e6.png",
     "static/media/Vision-F.png": "/static/media/Vision-F.fa6014512b1872094930.png",
-    "static/media/Image 8.png": "/static/media/Image 8.c1a3b219b7ceca4a8786.png",
     "static/media/Vision 3.png": "/static/media/Vision 3.cfa8de26829060bb4d32.png",
+    "static/media/biorama-cover.png": "/static/media/biorama-cover.45d5b1afd9210b57b88e.png",
     "static/media/Vision 5.png": "/static/media/Vision 5.1fb823b4c64bac870d61.png",
     "static/media/Image-3.png": "/static/media/Image-3.bd8fd1a72836f5c29651.png",
     "static/media/Stories_wireframeoutcome.png": "/static/media/Stories_wireframeoutcome.11dd3c1d6001d0d9b4e6.png",
@@ -105,11 +103,13 @@
     "static/media/specsFAQ.png": "/static/media/specsFAQ.9e3f7b456fbfc7c84283.png",
     "static/media/Image 5_2.png": "/static/media/Image 5_2.dde3d4b9619da3f4f152.png",
     "static/media/Cover.gif": "/static/media/Cover.eaaa067b7ea29bf1ce6c.gif",
+    "static/media/fd05a329442313.55f9612230b20.gif": "/static/media/fd05a329442313.55f9612230b20.eaaa067b7ea29bf1ce6c.gif",
     "static/media/9.jpg": "/static/media/9.226d60f9461926c84c46.jpg",
     "static/media/Helpflow.png": "/static/media/Helpflow.2196a14f08cb6a121c00.png",
     "static/media/Image 4.png": "/static/media/Image 4.6b8ec533e9c66258d382.png",
     "static/media/Image 10.png": "/static/media/Image 10.e59b7b4d5df34faf00d6.png",
     "static/media/4.jpg": "/static/media/4.5b7a9b45871c08bc9d2f.jpg",
+    "static/media/Image 6.png": "/static/media/Image 6.84efe7f86f010f0f284a.png",
     "static/media/Designsystem.png": "/static/media/Designsystem.6441ab4f4fa52c39691a.png",
     "static/media/Image 11.png": "/static/media/Image 11.e23a7155a820830f3f1c.png",
     "static/media/Image 12.png": "/static/media/Image 12.f0356fe13b3068e47340.png",
@@ -118,6 +118,7 @@
     "static/media/10years.gif": "/static/media/10years.17804b19454b69234138.gif",
     "static/media/person1.png": "/static/media/person1.342884d143af48f71d3e.png",
     "static/media/Image 1.png": "/static/media/Image 1.c4612d0c8a6567c97da9.png",
+    "static/media/Image 5.png": "/static/media/Image 5.fba9d2f0f7caf32e6eaf.png",
     "static/media/10years2.gif": "/static/media/10years2.e562750c2716c441ec4f.gif",
     "static/media/open.png": "/static/media/open.405da05c2a9dd3908350.png",
     "static/media/PPEditorialNew-Ultralight.otf": "/static/media/PPEditorialNew-Ultralight.75b1aea60b5a489aeaea.otf",
@@ -125,11 +126,11 @@
     "static/media/stone.png": "/static/media/stone.a0cbc5903a7df9708f99.png",
     "index.html": "/index.html",
     "main.20b88f82.css.map": "/static/css/main.20b88f82.css.map",
-    "main.97804e98.js.map": "/static/js/main.97804e98.js.map",
+    "main.731538aa.js.map": "/static/js/main.731538aa.js.map",
     "787.dc6905b1.chunk.js.map": "/static/js/787.dc6905b1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.20b88f82.css",
-    "static/js/main.97804e98.js"
+    "static/js/main.731538aa.js"
   ]
 }
