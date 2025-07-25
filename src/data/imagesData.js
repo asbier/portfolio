@@ -13,18 +13,18 @@ import gif10 from "../Assets/10.gif";
 
 
 const imagesData = [
-  person1,    // 0: Biodiversity project
-  gif1,       // 1: DAYONE
-  image2,     // 2: Carhartt-WIP  
-  gif3,       // 3: EDITED
-  image4,     // 4: ABOUT YOU
-  image5,     // 5: Conic Rose
-  jovana,     // 6: Jovana Reisinger
-  image6,     // 7: Heroes & Heroines
-  image7,     // 8: Plastic Media
-  image8,     // 9: Monopol GmbH
-  image9,     // 10: Comma
-  gif10       // 11: MonaM
+  // person1,    // 0: Biodiversity project (temporarily hidden)
+  gif1,       // 0: DAYONE (shifted)
+  image2,     // 1: Carhartt-WIP (shifted)
+  gif3,       // 2: EDITED (shifted)
+  image4,     // 3: ABOUT YOU (shifted)
+  image5,     // 4: Conic Rose (shifted)
+  jovana,     // 5: Jovana Reisinger (shifted)
+  image6,     // 6: Heroes & Heroines (shifted)
+  image7,     // 7: Plastic Media (shifted)
+  image8,     // 8: Monopol GmbH (shifted)
+  image9,     // 9: Comma (shifted)
+  gif10       // 10: MonaM (shifted)
 ];
 
 export default imagesData;

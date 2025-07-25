@@ -13,7 +13,7 @@ import PlasticMediaModalContent from '../Modal/PlasticMediaModalContent';
 import MonopolGmbHModalContent from '../Modal/MonopolGmbHModalContent';
 import CommaModalContent from '../Modal/CommaModalContent';
 import MonaMModalContent from '../Modal/MonaMModalContent';
-import BiodiversityModalContent from '../Modal/BiodiversityModalContent';
+// import BiodiversityModalContent from '../Modal/BiodiversityModalContent'; // Temporarily hidden
 import JovanaReisingerModalContent from '../Modal/JovanaReisingerModalContent';
 import './Main.css';
 
@@ -25,46 +25,43 @@ const Main = ({ hasVisibleContent }) => {
 
     // Protected projects that require password
     const protectedProjects = {
-        1: 'DAYONE',
-        2: 'Carhartt-WIP'
+        0: 'DAYONE',
+        1: 'Carhartt-WIP'
     };
 
     const openProjectModal = (index) => {
         switch(index) {
             case 0:
-                setModalContent(<BiodiversityModalContent />);
-                break;
-            case 1:
                 setModalContent(<DayoneModalContent />);
                 break;
-            case 2:
+            case 1:
                 setModalContent(<CarharttModalContent />);
                 break;
-            case 3:
+            case 2:
                 setModalContent(<EditedModalContent />);
                 break;
-            case 4:
+            case 3:
                 setModalContent(<AboutYouModalContent />);
                 break;
-            case 5:
+            case 4:
                 setModalContent(<ConicRoseModalContent />);
                 break;
-            case 6:
+            case 5:
                 setModalContent(<JovanaReisingerModalContent />);
                 break;
-            case 7:
+            case 6:
                 setModalContent(<HeroesnHeroinesModalContent/>);
                 break;
-            case 8:
+            case 7:
                 setModalContent(<PlasticMediaModalContent/>);
                 break;
-            case 9:
+            case 8:
                 setModalContent(<MonopolGmbHModalContent/>);
                 break;
-            case 10:
+            case 9:
                 setModalContent(<CommaModalContent/>);
                 break;
-            case 11:
+            case 10:
                 setModalContent(<MonaMModalContent/>);
                 break;
             default:
