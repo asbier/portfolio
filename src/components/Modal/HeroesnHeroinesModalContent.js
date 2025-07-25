@@ -9,17 +9,12 @@ import image5 from '../../Assets/Image_5_Heroesnheroines/ballons.png';
 
 const HeroesnHeroinesModalContent = () => (
     <div className="modal-content-container">
-        <h2>Heroes & Heroines</h2>
-
-            <p>
-                A fearless network of innovators, strategic masterminds, and digital mavericks, we elevate brands to the next level with our 360° APPROACH. Heroes & Heroines ©.
-                As a designer for Heroes & Heroines, I had the opportunity to work on forward-thinking and interconnected projects across our studios in Vienna and later as a freelancer in Berlin for clients like Bumble.
-                These ideas were truly fast-forward, driven by Kira’s visionary mindset (who is also the CD and CEO of PlasticMedia).
-                Her ability to think differently and inspire those around her pushed boundaries and challenged conventions.
-                My work involved crafting innovative visual designs, developing cohesive branding strategies for marketing events, and contributing to a fearless, boundary-pushing spirit.
-                Collaborating in such an inspiring environment was transformative and reinforced the power of daring creativity in delivering meaningful results.
-            </p>
-            <div className="column">
+        <h1>Heroes & Heroines</h1>
+        <p><strong>A fearless network of innovators, strategic masterminds, and digital mavericks, we elevate brands to the next level with our 360° APPROACH. Heroes & Heroines ©.</strong></p>
+        <p className="role-description">
+            As a designer for Heroes & Heroines, I worked on forward-thinking projects across Vienna and Berlin studios for clients like Bumble. Driven by Kira's visionary mindset (CD and CEO of PlasticMedia), we pushed boundaries and challenged conventions through innovative visual designs and cohesive branding strategies.
+        </p>
+        <div className="column">
               <div>
                 <h3><strong>My Role</strong></h3>
                 <ul className="checklist">

@@ -4,7 +4,7 @@ import personImage from '../../Assets/person1.png';
 
 const BiodiversityModalContent = () => (
     <div className="modal-content-container">
-        <h1>Biodiversität & Regenwasser</h1>
+        <h1>More Biodiversity in Cities </h1>
         <p>
             <strong>Ein innovatives Branding-Projekt für nachhaltige Stadtentwicklung. Für die Förderung der Biodiversität durch intelligentes Regenwasser-Management und die Sensibilisierung für ökologische Asphaltalternativen in urbanen Räumen.</strong>
         </p>

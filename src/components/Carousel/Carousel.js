@@ -99,7 +99,7 @@ const Carousel = ({ onImageClick, hasVisibleContent }) => {
                                 {index === 0 ? (
                                     <>
                                         <div className="image-title-small">Brand Strategy & Environmental Design</div>
-                                        <div className="image-title-main">BIODIVERSITÄT & REGENWASSER</div>
+                                        < div className="image-title-main"> BIODIVERSITY in Citeies </div>
                                     </>
                                 ) : index === 1 ? (
                                     <>
