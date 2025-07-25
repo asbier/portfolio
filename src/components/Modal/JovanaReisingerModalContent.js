@@ -16,7 +16,7 @@ const JovanaReisingerModalContent = () => (
                     <img src={image1} alt="Jovana Reisinger Design Work 1" style={{ width: '100%', height: 'auto', marginBottom: '2rem' }} />
                     <h3>Collaboration</h3>
                     <p>
-                        I met Jovana in Vienna. Since then, we have supported each other from time to time and collaborated on various creative projects. This collaboration is reflected in the works presented here, which showcase our shared vision and creative synergy.
+                        I met Jovana in Vienna. Since then, we have supported each other from time to time and collaborated on various creative projects. 
                     </p>
                 </div>
                 <div style={{ flex: '1', minWidth: '300px' }}>
