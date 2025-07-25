@@ -14,6 +14,7 @@ import MonopolGmbHModalContent from '../Modal/MonopolGmbHModalContent';
 import CommaModalContent from '../Modal/CommaModalContent';
 import MonaMModalContent from '../Modal/MonaMModalContent';
 import BiodiversityModalContent from '../Modal/BiodiversityModalContent';
+import JovanaReisingerModalContent from '../Modal/JovanaReisingerModalContent';
 import './Main.css';
 
 const Main = ({ hasVisibleContent }) => {
@@ -49,18 +50,21 @@ const Main = ({ hasVisibleContent }) => {
                 setModalContent(<ConicRoseModalContent />);
                 break;
             case 6:
-                setModalContent(<HeroesnHeroinesModalContent/>);
+                setModalContent(<JovanaReisingerModalContent />);
                 break;
             case 7:
-                setModalContent(<PlasticMediaModalContent/>);
+                setModalContent(<HeroesnHeroinesModalContent/>);
                 break;
             case 8:
-                setModalContent(<MonopolGmbHModalContent/>);
+                setModalContent(<PlasticMediaModalContent/>);
                 break;
             case 9:
-                setModalContent(<CommaModalContent/>);
+                setModalContent(<MonopolGmbHModalContent/>);
                 break;
             case 10:
+                setModalContent(<CommaModalContent/>);
+                break;
+            case 11:
                 setModalContent(<MonaMModalContent/>);
                 break;
             default:

@@ -128,10 +128,15 @@ const Carousel = ({ onImageClick, hasVisibleContent }) => {
                                     </>
                                 ) : index === 6 ? (
                                     <>
+                                        <div className="image-title-small">Designer</div>
+                                        <div className="image-title-main">JOVANA REISINGER</div>
+                                    </>
+                                ) : index === 7 ? (
+                                    <>
                                         <div className="image-title-small">Event Experience Designer</div>
                                         <div className="image-title-main">HEROES & HEROINES</div>
                                     </>
-                                ) : index === 7 ? (
+                                ) : index === 8 ? (
                                     <>
                                         <div className="image-title-small">Designer in Agency</div>
                                         <div className="image-title-main">PLASTIC MEDIA</div>
