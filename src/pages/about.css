@@ -64,6 +64,7 @@
   z-index: 10;
   color: #000 !important;
   background: transparent !important;
+  background-color: transparent !important;
   transform: none !important;
   margin-top: 4rem !important;
   padding-top: 1rem !important;
@@ -157,17 +158,79 @@
   margin-top: 0;
 }
 
-/* Editorial highlights */
+/* Editorial highlights - DISABLED for text selection only */
 .about-details .highlight {
-  background: linear-gradient(120deg, #f2ff00 0%, #f2ff00 100%);
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  padding: 0;
+  color: inherit;
+}
+
+.about-details .highlight:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: inherit;
+}
+
+/* Text selection highlighting */
+.about-details ::selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+.about-details ::-moz-selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+/* Also apply to the main headline */
+.abstand > p:first-child ::selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+.abstand > p:first-child ::-moz-selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+/* Ensure no background on headline text */
+.abstand > p:first-child span {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Override any potential background colors on headline */
+.abstand > p:first-child,
+.abstand > p:first-child * {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.about-details .highlight-silver {
+  background: linear-gradient(120deg, #c0c0c0 0%, #e0e0e0 100%);
   background-repeat: no-repeat;
   background-size: 100% 0.3em;
   background-position: 0 88%;
   transition: all 0.25s ease-in;
   padding: 0.1em 0.2em;
 }
+.about-details .highlight-silver:hover {
+  background-size: 100% 100%;
+}
 
-.about-details .highlight:hover {
+.about-details .highlight-yellow {
+  background: linear-gradient(120deg, #f2ff00 0%, #e6f200 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.3em;
+  background-position: 0 88%;
+  transition: all 0.25s ease-in;
+  padding: 0.1em 0.2em;
+}
+.about-details .highlight-yellow:hover {
   background-size: 100% 100%;
 }
 

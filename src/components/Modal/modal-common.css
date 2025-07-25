@@ -463,6 +463,37 @@ figure img {
   }
 }
 
+/* Text selection highlighting for modals */
+.modal-content-container ::selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+.modal-content-container ::-moz-selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+.modal-section ::selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+.modal-section ::-moz-selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+.column ::selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+.column ::-moz-selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
 /* Modal content adjustments for mobile */
 @media screen and (max-width: 768px) {
   /* Ensure the modal takes up the whole screen */
