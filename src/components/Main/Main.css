@@ -1,3 +1,10 @@
+main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .container-page {
   font-family: Lausanne, sans-serif;
   font-size: 2rem;
@@ -8,25 +15,23 @@
   justify-content: center;
   margin: 0;
   gap: 2rem;
-  flex-grow: 1; /* Make this stretch to fill remaining space */
   align-items: flex-start;
-  padding: 1.5rem; /* Reduced padding for more space */
-  position: fixed;
-  top: 60px;
+  padding: 1.5rem;
+  position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  height: 80vh; /* Increased from 70vh to 80vh */
+  height: 0;
   opacity: 0;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: height 0.5s ease, opacity 0.5s ease;
   pointer-events: none;
-  transform: translateY(-100%);
-  z-index: 10;
   overflow-y: auto;
   box-sizing: border-box;
+  z-index: 2;
 }
 
 .container-page.visible {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  height: 80vh;
 }

@@ -1,3 +1,4 @@
+import person1 from "../Assets/person1.png"; // Biodiversity project
 import gif1 from "../Assets/1.gif";
 import image2 from "../Assets/2.jpg";
 import gif3 from "../Assets/3.gif";
@@ -11,16 +12,17 @@ import gif10 from "../Assets/10.gif";
 
 
 const imagesData = [
-  gif1,
-  image2,
-  gif3,
-  image4,
-  image5,
-  image6,
-  image7,
-  image8,
-  image9,
-  gif10
+  person1,    // 0: Biodiversity project
+  gif1,       // 1: DAYONE
+  image2,     // 2: Carhartt-WIP  
+  gif3,       // 3: EDITED
+  image4,     // 4: ABOUT YOU
+  image5,     // 5: Conic Rose
+  image6,     // 6: Heroes & Heroines
+  image7,     // 7: Plastic Media
+  image8,     // 8: Monopol GmbH
+  image9,     // 9: Comma
+  gif10       // 10: MonaM
 ];
 
 export default imagesData;

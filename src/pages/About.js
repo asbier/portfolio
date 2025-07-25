@@ -213,21 +213,32 @@ function About({ isVisible, toggleContentVisibility }) {
       {/* Collapsible Section with Scroll */}
       {isExpanded && (
         <div className="about-details">
-          <p>
-          Never stopped playing and being curious: for 12 years, I've designed 
-          holistic, humanity-first experiences that elevate how people connect—with 
-          each other and with how they consume. Rooted in visual communication 
-          and guided by curiosity, my practice blends branding, user interaction, and 
-          creative direction to explore where emotion, 
-          narrative, and systems thinking intersect. The future demands new ways of 
-          engaging our senses and rethinking how we source and interact with goods. 
-          I'm actively seeking new opportunities, also in AR, VR, and MR. — to me, 
-          design isn't just about aesthetics; it's about shaping what we pay attention to, what we value, and how we experience the world.
-          <p>Worked with</p>
-        <p> DAYONE x VOLKSWAGEN x HELLA GUTMANN / CARHARTT WIP / EDITED / ABOUT YOU /
-        PLASTIC MEDIA x INDIE x MATERIAL GIRL x MONKI / HEROES & HEROINES x BUMBLE x ABSOLUT x HENNESSY x TALLY WEIJL / SUPERREAL x COMMA' / CONIC ROSE / SCHINKEL PAVILLION / MONA.M / JOVANA REISINGER /
-        MONOPOL x BIORAMA x THE GAP x DIE GRÜNEN x JOYA  </p>
-        </p>
+          <div className="text-column">
+            <p> 
+              I never stopped playing or staying curious.
+            
+    For over 12 years, I've been designing holistic, humanity-first experiences that elevate how people connect — with each other, with systems, and with the ways they consume. Rooted in visual communication and guided by intuition and experimentation, my practice blends branding, user interaction, and creative direction to explore the space where emotion, narrative, and systems thinking intersect.
+            </p>
+          </div>
+          
+          <div className="text-column">
+            <p>
+              The future demands new ways of engaging our senses, rethinking materials, and reimagining how we source, perceive, and experience goods. I'm currently deepening my data fluency and am actively seeking new opportunities — also in AR, VR, or MR — where analogue meets digital, and conceptual design can shape new worlds.
+        
+           
+              To me, design isn't just about aesthetics; it's about shaping what we pay attention to, what we value, and how we engage with the world.
+            </p>
+          </div>
+          
+          <div className="full-width">
+            <p>Worked with</p>
+            
+            <p>
+              DAYONE x VOLKSWAGEN x HELLA GUTMANN / CARHARTT WIP / EDITED / ABOUT YOU /
+              PLASTIC MEDIA x INDIE x MATERIAL GIRL x MONKI / HEROES & HEROINES x BUMBLE x ABSOLUT x HENNESSY x TALLY WEIJL / SUPERREAL x COMMA' / CONIC ROSE / SCHINKEL PAVILLION / MONA.M / JOVANA REISINGER /
+              MONOPOL x BIORAMA x THE GAP x DIE GRÜNEN x JOYA
+            </p>
+          </div>
         </div>
       )}
     </div>

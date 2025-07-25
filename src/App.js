@@ -10,6 +10,8 @@ import './styles/Global.css'; // Import global styles
 import Community from './pages/Community';
 import EditedShowcase from './pages/EditedShowcase';
 import ClimateBot from './components/ClimateBot/ClimateBot';
+import CookieBanner from './components/CookieBanner/CookieBanner';
+import AnimatedBanner from './components/AnimatedBanner/AnimatedBanner';
 
 function App() {
   const [visibleContent, setVisibleContent] = useState({
@@ -35,6 +37,7 @@ function App() {
 
   return (
     <div>
+      <AnimatedBanner />
       <Nav toggleContentVisibility={toggleContentVisibility} closeAllContent={closeAllContent} />
       <div className={`container-page ${hasVisibleContent ? 'visible' : ''}`}>
         <Routes>
@@ -49,6 +52,7 @@ function App() {
       <Main hasVisibleContent={hasVisibleContent} />
       <Footer toggleContentVisibility={toggleContentVisibility} />
       <ClimateBot />
+      <CookieBanner />
     </div>
   );
 }

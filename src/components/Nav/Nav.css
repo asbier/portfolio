@@ -2,8 +2,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 10px 10px 10px;
+  padding: 18px 2rem 10px 2rem;
   height: 60px;
+  margin-top: 50px;
   
   z-index: 9999;
   background-color: #FAFAFA;
@@ -76,7 +77,7 @@ a, .nav-button {
 
 
 .contact-link img:hover,
-.about-link img:hover 
+.about-link img:hover,
 .community-link img:hover {
   transform: scale(1.1);
   transition: 0.3s ease;
@@ -99,6 +100,7 @@ a, .nav-button {
   nav {
     padding: 15px 15px 10px 15px; /* Better top padding on mobile */
     height: 50px;
+    margin-top: 40px;
   }
 
   .nav-logo {

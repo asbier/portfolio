@@ -11,7 +11,7 @@ const PasswordModal = ({ isOpen, onClose, onSuccess, projectName }) => {
   // Password for protected projects
   const PROTECTED_PASSWORDS = {
     'DAYONE': 'best-password',
-    'Carhartt': 'Carhartt-WIP'
+    'Carhartt-WIP': 'best-password'
   };
 
   const handleSubmit = (e) => {

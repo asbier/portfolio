@@ -32,6 +32,9 @@
   align-content: center;
   max-width: 100%;
   margin: 0 auto;
+  padding: 0.5rem 0;
+  min-height: 0;
+  overflow: visible;
 }
 
 .video-container {
@@ -81,9 +84,12 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   -webkit-backdrop-filter: blur(10px); /* Safari support */
   backdrop-filter: blur(10px); /* Background blur */
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 
@@ -94,8 +100,9 @@
   width: 75%;
   max-width: 1000px;
   align-content: center;
-  max-height: 90vh;
-  padding: 2rem;
+  min-height: auto;
+  max-height: calc(100vh - 2rem);
+  padding: 1.5rem;
   background-color: #ffffffe8;
   margin: auto;
   border-radius: 1rem;
@@ -104,6 +111,7 @@
   justify-content: flex-start;
   overflow-y: auto;
   animation: fadeIn 0.3s ease-in-out;
+  box-sizing: border-box;
 }
 
 .modal-content .close {
@@ -212,7 +220,7 @@ figure img {
 /* Above sections - Bold entry in Lausanne */
 .modal-content-container > h1 {
   font-family: Lausanne, sans-serif;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 2.5rem);
   font-weight: 600;
   margin-bottom: 0.5rem;
   margin-top: 0;
@@ -226,7 +234,7 @@ figure img {
 
 .modal-content-container > p {
   font-family: Lausanne, sans-serif;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: 500;
   line-height: 1.6;
   margin-bottom: 1rem;
@@ -243,7 +251,7 @@ figure img {
   font-family: 'PPEditorialNew-Ultralight', sans-serif !important;
   font-style: italic !important;
   font-weight: normal !important;
-  font-size: 1.1rem !important;
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem) !important;
   max-width: 70ch !important; /* Limit line length for better readability */
 }
 
@@ -613,6 +621,59 @@ figure img {
     border-radius: 12px; /* Rounded corners for videos */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
     object-fit: contain;  /* Ensure videos stay within container's bounds */
+  }
+}
+
+/* Desktop and larger screens - ensure proper content display */
+@media screen and (min-width: 769px) {
+  .modal-content {
+    max-height: 95vh;
+    padding: 2rem;
+    width: 80%;
+    max-width: 1200px;
+  }
+  
+  .modal-content-container {
+    padding: 1rem 0;
+    overflow: visible;
+  }
+  
+  .modal-content-container > h1 {
+    font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  
+  .modal-content-container > p {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    max-width: 75ch;
+  }
+  
+  .role-description {
+    font-size: clamp(1rem, 1.8vw, 1.2rem) !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1.2rem !important;
+  }
+  
+  .modal-section {
+    padding: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 3rem;
+    margin-top: 1.5rem;
+  }
+  
+  .modal-section h2 {
+    font-size: clamp(1.6rem, 2.8vw, 2rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .modal-section p {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
   }
 }
 
