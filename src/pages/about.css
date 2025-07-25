@@ -69,6 +69,11 @@
   margin-top: 4rem !important;
   padding-top: 1rem !important;
   padding-right: 2rem !important;
+  /* Enable text selection */
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
 }
 
 @media (max-width: 768px) {
@@ -94,6 +99,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
+  /* Enable text selection */
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 .about-details .text-column {
@@ -174,24 +184,39 @@
   color: inherit;
 }
 
-/* Text selection highlighting */
-.about-details ::selection {
+/* Text selection highlighting - with highest specificity */
+html body .about-details ::selection {
   background: #f2ff00 !important;
   color: #9c9c9c !important;
 }
 
-.about-details ::-moz-selection {
+html body .about-details ::-moz-selection {
   background: #f2ff00 !important;
   color: #9c9c9c !important;
 }
 
 /* Also apply to the main headline */
-.abstand > p:first-child ::selection {
+html body .abstand > p:first-child ::selection {
   background: #f2ff00 !important;
   color: #9c9c9c !important;
 }
 
-.abstand > p:first-child ::-moz-selection {
+html body .abstand > p:first-child ::-moz-selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+/* Additional specific rules for all text elements */
+html body .about-details p ::selection,
+html body .about-details .text-column ::selection,
+html body .about-details .full-width ::selection {
+  background: #f2ff00 !important;
+  color: #9c9c9c !important;
+}
+
+html body .about-details p ::-moz-selection,
+html body .about-details .text-column ::-moz-selection,
+html body .about-details .full-width ::-moz-selection {
   background: #f2ff00 !important;
   color: #9c9c9c !important;
 }
@@ -208,6 +233,43 @@
   background: transparent !important;
   background-color: transparent !important;
   background-image: none !important;
+}
+
+/* Force text selection to work everywhere in About section */
+.abstand *,
+.about-details * {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}
+
+/* Override any user-select: none that might be inherited */
+.abstand,
+.about-details,
+.abstand > p:first-child,
+.about-details p,
+.about-details .text-column,
+.about-details .full-width {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}
+
+/* Global override for text selection in About section - highest specificity */
+html body .abstand,
+html body .about-details,
+html body .abstand > p:first-child,
+html body .about-details p,
+html body .about-details .text-column,
+html body .about-details .full-width,
+html body .abstand *,
+html body .about-details * {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
 }
 
 .about-details .highlight-silver {
