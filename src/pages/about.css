@@ -685,19 +685,35 @@ html body .about-details * {
     border-bottom-color: var(--btn-hover);
   }
 
-  /* Prevent unwanted touch behaviors on mobile */
+  /* Android mobile optimizations */
   .abstand {
-    touch-action: pan-y; /* Only allow vertical scrolling */
+    touch-action: manipulation; /* Better Android touch handling */
     -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
     overscroll-behavior: none; /* Prevent pull-to-refresh */
+    /* Enable text selection on mobile */
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    /* Android-specific fixes */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+    -webkit-touch-callout: none; /* Disable callout on long press */
   }
 
   .about-details {
-    touch-action: pan-y; /* Only vertical scrolling for content */
+    touch-action: manipulation; /* Better Android touch handling */
     overscroll-behavior: contain; /* Prevent scroll chaining */
     max-height: 60vh; /* Better mobile height */
     padding: 0; /* Remove padding */
     margin-top: 0.5rem; /* Reduced space from buttons */
+    /* Enable text selection on mobile */
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    /* Android-specific fixes */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+    -webkit-touch-callout: none; /* Disable callout on long press */
   }
 
   .about-details p {
@@ -716,6 +732,19 @@ html body .about-details * {
     font-size: 0.85rem !important; /* Company list */
     line-height: 1.4 !important;
     font-weight: 400 !important;
+  }
+
+  /* Mobile text selection highlighting */
+  .about-details ::selection,
+  .abstand > p:first-child ::selection {
+    background: #f2ff00 !important;
+    color: #9c9c9c !important;
+  }
+
+  .about-details ::-moz-selection,
+  .abstand > p:first-child ::-moz-selection {
+    background: #f2ff00 !important;
+    color: #9c9c9c !important;
   }
 
   /* Timeline Mobile Styles - Collapsible */

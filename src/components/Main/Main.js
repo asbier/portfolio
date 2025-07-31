@@ -5,7 +5,7 @@ import Modal from '../Modal/Modal';
 import PasswordModal from '../Modal/PasswordModal';
 import DayoneModalContent from '../Modal/DayoneModalContent';
 import CarharttModalContent from '../Modal/CarharttModalContent';
-import { EditedModalContent } from '../Modal/EditedModalContent';
+import EditedModalContent from '../Modal/EditedModalContent';
 import AboutYouModalContent from '../Modal/AboutYouModalContent';
 import ConicRoseModalContent from '../Modal/ConicRoseModalContent';
 import HeroesnHeroinesModalContent from '../Modal/HeroesnHeroinesModalContent';

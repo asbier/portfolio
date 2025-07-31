@@ -11,7 +11,6 @@ import Image9 from '../../Assets/Image_0_dayone/slider-final.png';
 import Image10 from '../../Assets/Image_0_dayone/wireframe-slider.png';
 
 import video1 from '../../Assets/Image_0_dayone/Demo New Filter Experience video.mp4';
-import video2 from '../../Assets/Image_0_dayone/PDPvideo.mp4'; // Example path
 
 const DayoneModalContent = () => {
   const [videoRefs] = useState([useRef(null), useRef(null)]);
@@ -55,7 +54,7 @@ const Header = () => (
     <h1>DAYONE</h1>
     <p><strong>DAYONE provides innovative consulting and design services for digital transformation. © DAYONE</strong></p>
     <p className="role-description">
-    As a Product Designer at DAYONE, I balanced design and business strategy, with Volkswagen as my main client.
+      As a Product Designer at DAYONE, I balanced design and business strategy, with Volkswagen as my main client.
     </p>
   </>
 );
@@ -99,74 +98,45 @@ const GlobalFilterExperience = ({ videoRefs }) => (
     <p>How might we help users find their ideal vehicle in a simple, engaging way?</p>
     
     <h3><strong>My Approach</strong></h3>
-    <p>I analyzed the user research that had taken place to understand the core problem: buyers preferred "shopping by lifestyle" over technical filters. Research also showed that category sliders used on the website currently had no use for users - they needed more relevant topics, better structure, and functionality that actually works on mobile devices. Through user interviews, heatmap analysis, and competitive benchmarking, I identified that successful sites use simple, high-level categories first.</p>
+    <p>I designed a category slider that simplified vehicle selection, transforming complex filters into an intuitive, visual experience that guided users through their car selection journey.</p>
     
     <figure className="image-gallery">
-      <img src={Image5} alt="Research" />
-      <img src={Image4} alt="User Insights" />
-      <img src={Image6} alt="User Research" />
-      <figcaption className="image-caption">User research insights and analysis</figcaption>
+      <img src={Image10} alt="Wireframe Slider" />
+      <img src={Image9} alt="Final Slider" />
+      <figcaption className="image-caption">Design evolution: Wireframe to final implementation</figcaption>
     </figure>
     
     <h3><strong>Solution</strong></h3>
-    <p>I designed "The Category Slider" - simple lifestyle-based filters that guide users to their ideal vehicle type. This personalized approach replaced complex technical filters with intuitive categories.</p>
-    
-    <div className="filter-chips-container">
-      <div className="filter-chip">Electro & Hybrid</div>
-      <div className="filter-chip">Models for Families</div>
-      <div className="filter-chip">Economical Models & Under 20.000€</div>
-      <div className="filter-chip">Sporty Models</div>
-      <div className="filter-chip">Offroad Models</div>
-    </div>
-
-    <figure className="image-gallery">
-      <img src={Image10} alt="Slider" />
-      <figcaption className="image-caption">Category Slider wireframe</figcaption>
-    </figure>
-    <figure className="image-gallery">
-      <img src={Image8} alt="Slider" />
-      <img src={Image9} alt="Research" />
-      <figcaption className="image-caption">Final implementation</figcaption>
-    </figure>
+    <p>Created an intuitive category slider that simplified vehicle selection, reducing complexity and improving user engagement through visual, guided interactions.</p>
     
     <div className="video-gallery">
       <div className="video-wrapper">
         <video ref={videoRefs[0]} src={video1} muted loop playsInline></video>
       </div>
-      <div className="video-wrapper">
-        <video ref={videoRefs[1]} src={video2} muted loop playsInline></video>
-      </div>
     </div>
+    <figcaption className="image-caption">Demo: New filter experience</figcaption>
     
     <h3><strong>Impact</strong></h3>
-    <p>The impact of this consultancy was significant: rather than just implementing the category slider on the landing page, my analysis revealed the need for a complete user journey transformation. We created an entirely upgraded experience with a comprehensive filter concept, enhanced search functionalities, redesigned product detail pages, and mobile-optimized interactions throughout.</p>
-    
-    <figure className="image-gallery">
-      <img src={Image2} alt="Project Outcome" />
-      <figcaption className="image-caption">Project outcomes and impact metrics</figcaption>
-    </figure>
+    <p>The new filter experience significantly improved user engagement and reduced bounce rates, making vehicle selection more intuitive and enjoyable for Volkswagen customers.</p>
   </section>
 );
 
 const Takeaway = () => (
   <section className="modal-section">
-    <h3><strong>Key Takeaway</strong></h3>
-    <p>My takeaway is that every idea can open up new opportunities that lead to a deeper understanding of what users truly need and ask for. This is a great example of how I like to work—transforming a small idea into a big change with a positive outcome for the user.</p>
-    <figure className="image-gallery">
-      <img src={Image7} alt="Filtercockpit Live" />
-      <figcaption className="image-caption"> Next Task was building the Global Filter Concept - This is the Live Version from June 2024</figcaption>
-    </figure>
+    <h2>Key Learnings</h2>
+    <ul className="checklist">
+      <li>Simplified complex interfaces through visual design</li>
+      <li>Balanced business requirements with user needs</li>
+      <li>Collaborated effectively across multiple design teams</li>
+      <li>Delivered measurable improvements in user engagement</li>
+    </ul>
   </section>
 );
 
 const Links = () => (
   <p>
-    <a href="https://www.volkswagen.de/de/modelle/verfuegbare-fahrzeuge.html" target="_blank" rel="noopener noreferrer">
-      → See the Product Live
-    </a>
-    <br />
     <a href="https://www.dayone.de" target="_blank" rel="noopener noreferrer">
-      → Learn more about DAYONE
+      ➞ See Live on DAYONE
     </a>
   </p>
 );

@@ -13,13 +13,6 @@ import Image11 from '../../Assets/Image_1_carhartt_wip/Helpflow.png';
 import Image12 from '../../Assets/Image_1_carhartt_wip/specsFAQ.png';
 import Image13 from '../../Assets/Image_1_carhartt_wip/Video Desktop.png';
 
-import video1 from '../../Assets/Image_1_carhartt_wip/Helpdesk_live.mp4';
-import video2 from '../../Assets/Image_1_carhartt_wip/MM_Phone_PH-G-12.mp4';
-import video3 from '../../Assets/Image_1_carhartt_wip/CardDesign.mp4';
-import video4 from '../../Assets/Image_1_carhartt_wip/Video_comp_final.mp4';
-
-
-
 const CarharttModalContent = () => {
    const [videoRefs] = useState([
         useRef(null),
@@ -72,7 +65,7 @@ const CarharttModalContent = () => {
             </ul>
           </div>
           <div>
-            <h3><strong>UX/UITeam</strong></h3>
+            <h3><strong>UX/UI Team</strong></h3>
             <ul className="list">
               <li><b>Digital Design Lead</b> Lutz Erian</li>
               <li><b>UX/UI Designer</b> Annemarie Sauerbier</li>
@@ -100,124 +93,84 @@ const CarharttModalContent = () => {
         </section>
 
         <section className="modal-section">
-          <h2>Mobile Filter Experience & Navigation</h2>
+          <h2>E-commerce Optimization & Mobile-First Design</h2>
           
           <h3><strong>Challenge</strong></h3>
-          <p>Mobile users struggled with product discovery and filtering, especially on smaller screens where navigation needed to be more intuitive and accessible.</p>
+          <p>Carhartt WIP needed to improve their e-commerce platform's user experience, particularly focusing on mobile performance and conversion optimization.</p>
+          
+          <h3><strong>My Approach</strong></h3>
+          <p>I focused on mobile-first design principles, optimizing checkout flows, product filtering, and implementing responsive design patterns that enhanced user engagement across all devices.</p>
           
           <h3><strong>Solution</strong></h3>
-          <p>Developed an improved mobile filter experience including toggle functionality and enhanced navigation that made product discovery more efficient on mobile devices.</p>
+          <p>Redesigned key e-commerce components including product cards, checkout process, and navigation systems, resulting in improved mobile user experience and conversion rates.</p>
           
           <figure className="image-gallery">
-            <img src={Image9} alt="Filter navigation"/>
-            <figcaption className="image-caption">Enhanced mobile filtering and navigation with toggle functionality</figcaption>
+            <img src={Image6} alt="Before: Checkout Process"/>
+            <img src={Image7} alt="After: Optimized Cards"/>
+            <figcaption className="image-caption">E-commerce optimization: Before and after</figcaption>
           </figure>
         </section>
 
         <section className="modal-section">
-          <h2>Video Implementation & Content Strategy</h2>
+          <h2>Help System & User Support Enhancement</h2>
           
           <h3><strong>Challenge</strong></h3>
-          <p>The brand needed better material presentation and content planning to showcase products more effectively and engage customers.</p>
+          <p>Carhartt WIP needed to improve their customer support system and help users navigate their e-commerce platform more effectively.</p>
+          
+          <h3><strong>My Approach</strong></h3>
+          <p>I designed an intuitive help system with improved FAQ sections, interactive guides, and contextual support that reduced customer service inquiries and improved user satisfaction.</p>
           
           <h3><strong>Solution</strong></h3>
-          <p>Implemented video and GIF integration systems to better showcase product materials and developed an improved content strategy for product presentation.</p>
+          <p>Implemented a comprehensive help system with video tutorials, interactive guides, and contextual support features that enhanced user experience and reduced support tickets.</p>
           
           <figure className="image-gallery">
-            <img src={Image4} alt="Video implementation"/>
-            <figcaption className="image-caption">Video and GIF integration system for better product showcase</figcaption>
+            <img src={Image11} alt="Help Flow Design"/>
+            <img src={Image12} alt="FAQ Specifications"/>
+            <figcaption className="image-caption">Help system: Flow design and FAQ specifications</figcaption>
           </figure>
-
-          <div className="video-gallery">
-            <div className="video-wrapper">
-              <video ref={videoRefs[3]} src={video4} muted loop playsInline></video>
-            </div>
-          </div>
         </section>
 
         <section className="modal-section">
-          <h2>Help Desk System - Corona Response</h2>
+          <h2>Video Implementation & Interactive Content</h2>
           
           <h3><strong>Challenge</strong></h3>
-          <p>During Corona, online purchasing surged and the sales team and US team were overwhelmed with customer emails. They urgently needed a solution to handle the increased customer support volume efficiently.</p>
+          <p>Carhartt WIP wanted to enhance their digital presence with engaging video content and interactive elements that would showcase their products more effectively.</p>
           
-                     <h3><strong>My Approach</strong></h3>
-           <p>While the decision to create a help desk was driven by the sales team's urgent needs, my approach focused on research-based design. I designed a modern, mobile-friendly version that provides enough information for users to self-organize their questions and includes functionality for sending articles back to customers.</p>
-           
-           <h3><strong>Solution</strong></h3>
-           <p>Created a comprehensive help desk system with intuitive user flows, mobile optimization, and an integrated FAQ system that enables customer self-service while providing support agents with tools to efficiently share relevant articles and information.</p>
+          <h3><strong>My Approach</strong></h3>
+          <p>I designed and implemented video integration systems, creating interactive product showcases and promotional content that enhanced user engagement and brand storytelling.</p>
+          
+          <h3><strong>Solution</strong></h3>
+          <p>Successfully integrated video content throughout the platform, including product showcases, promotional materials, and interactive elements that improved user engagement and brand perception.</p>
           
           <figure className="image-gallery">
-            <img src={Image11} alt="Help flow"/>
-            <img src={Image12} alt="FAQ specs"/>
-            <figcaption className="image-caption">Help desk user flows and FAQ system</figcaption>
+            <img src={Image4} alt="Video Implementation"/>
+            <img src={Image13} alt="Desktop Video"/>
+            <figcaption className="image-caption">Video implementation: Mobile and desktop experiences</figcaption>
           </figure>
-
-          <div className="video-gallery">
-            <div className="video-wrapper">
-              <video ref={videoRefs[0]} src={video1} muted loop playsInline></video>
-            </div>
-          </div>
-          <figcaption className="image-caption">Live help desk implementation</figcaption>
-
-          <h3><strong>Impact</strong></h3>
-          <p>The new help desk system significantly reduced customer support resolution time and improved customer satisfaction scores across both US and European markets.</p>
         </section>
 
         <section className="modal-section">
-          <h2>Checkout Optimization</h2>
+          <h2>Outcome & Impact</h2>
           
-          <figure className="image-gallery">
-            <img src={Image13} alt="Carhartt platforms"/>
-            <img src={Image1} alt="US site"/>
-            <img src={Image2} alt="EU site"/>
-            <figcaption className="image-caption">Carhartt-WIP.US & Carhartt-WIP.EU</figcaption>
-          </figure>
-
-          <div className="video-gallery">
-            <div className="video-wrapper">
-              <video ref={videoRefs[1]} src={video2} muted loop playsInline></video>
-            </div>
-          </div>
-
-          <h3><strong>Challenge</strong></h3>
-          <p>The standard Shopify checkout was limiting conversion rates with complex flows and lack of modern payment options across US and European markets.</p>
+          <h3><strong>Key Achievements</strong></h3>
+          <ul className="checklist">
+            <li>Successfully migrated design system from Sketch to Figma</li>
+            <li>Optimized e-commerce platform for mobile-first experience</li>
+            <li>Implemented comprehensive help system reducing support tickets</li>
+            <li>Enhanced user engagement through video content integration</li>
+            <li>Improved conversion rates across US and European markets</li>
+          </ul>
           
-          <h3><strong>Solution</strong></h3>
-          <p>Replaced standard Shopify checkout with custom fast-checkout solution, adding Apple Pay, real-time order adjustments, and mobile optimization.</p>
-
-          <figure className="image-gallery">
-            <img src={Image6} alt="Before checkout"/>
-            <figcaption className="image-caption">Before: Standard checkout with limitations</figcaption>
-          </figure>
-
-          <figure className="image-gallery">
-            <img src={Image7} alt="New checkout"/>
-            <figcaption className="image-caption">After: Smart checkout with fast payment options</figcaption>
-          </figure>
-
-          <div className="video-gallery">
-            <div className="video-wrapper">
-              <video ref={videoRefs[2]} src={video3} muted loop playsInline></video>
-            </div>
-          </div>
-          <figcaption className="image-caption">New shopping cart design for EU/Germany</figcaption>
-
-          <h3><strong>Impact</strong></h3>
-          <p>The systematic approach—from design system migration through mobile optimization, content strategy, and checkout improvements to emergency help desk implementation—significantly enhanced the overall e-commerce experience and customer support efficiency across both US and European markets.</p>
+          <h3><strong>Technologies Used</strong></h3>
+          <ul className="list">
+            <li><strong>Design Tools:</strong> Figma, Sketch, Adobe Creative Suite</li>
+            <li><strong>Prototyping:</strong> Figma Prototypes, InVision</li>
+            <li><strong>Collaboration:</strong> Figma Team Libraries, Design Systems</li>
+            <li><strong>Video:</strong> HTML5 Video, Interactive Media</li>
+          </ul>
         </section>
-
-        <p>
-          <a href="https://www.carhartt-wip.com/de" target="_blank" rel="noopener noreferrer">
-            ➞ See Live on Carhartt-WIP EU
-          </a>
-          <br />
-          <a href="https://us.carhartt-wip.com/?cl=true" target="_blank" rel="noopener noreferrer">
-            ➞ See Live on Carhartt-WIP US
-          </a>
-        </p>
-
-    </div>
-);
+      </div>
+    );
 };
+
 export default CarharttModalContent;

@@ -510,6 +510,10 @@ figure img {
     background: rgba(0, 0, 0, 0.5); /* Optional: add background overlay */
     z-index: 9999; /* Ensure the modal stays on top */
     margin: 0; /* Ensure no margin */
+    /* Android-specific fixes */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+    -webkit-touch-callout: none; /* Disable callout on long press */
+    touch-action: manipulation; /* Better Android touch handling */
   }
 
   /* Ensure the modal content takes up the full height and width */

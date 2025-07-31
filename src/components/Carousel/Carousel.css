@@ -169,7 +169,10 @@
     overflow: hidden;
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x; /* Only allow horizontal scrolling */
+    touch-action: manipulation; /* Better Android touch handling */
+    /* Android-specific fixes */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+    -webkit-touch-callout: none; /* Disable callout on long press */
   }
 
   .carousel::-webkit-scrollbar {
