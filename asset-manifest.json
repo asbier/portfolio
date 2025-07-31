@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ca0132f7.css",
-    "main.js": "/static/js/main.701b78a7.js",
+    "main.css": "/static/css/main.38a43049.css",
+    "main.js": "/static/js/main.5f7255e9.js",
     "static/js/787.dc6905b1.chunk.js": "/static/js/787.dc6905b1.chunk.js",
     "static/media/Demo New Filter Experience video.mp4": "/static/media/Demo New Filter Experience video.c1886d5f61662b1c1904.mp4",
     "static/media/How-2.png": "/static/media/How-2.30e8e2b1cd27a116b44c.png",
@@ -111,12 +111,12 @@
     "static/media/Contact.png": "/static/media/Contact.c17329da8774721d342b.png",
     "static/media/stone.png": "/static/media/stone.a0cbc5903a7df9708f99.png",
     "index.html": "/index.html",
-    "main.ca0132f7.css.map": "/static/css/main.ca0132f7.css.map",
-    "main.701b78a7.js.map": "/static/js/main.701b78a7.js.map",
+    "main.38a43049.css.map": "/static/css/main.38a43049.css.map",
+    "main.5f7255e9.js.map": "/static/js/main.5f7255e9.js.map",
     "787.dc6905b1.chunk.js.map": "/static/js/787.dc6905b1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca0132f7.css",
-    "static/js/main.701b78a7.js"
+    "static/css/main.38a43049.css",
+    "static/js/main.5f7255e9.js"
   ]
 }
