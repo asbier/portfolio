@@ -116,7 +116,7 @@ function About({ isVisible, toggleContentVisibility }) {
       role: "Freelance Art Director",
       description: "COMMA StyleMagazine",
       type: "editorial",
-      image: "/timeline/superreal.jpg"
+      image: "/timeline/SuperReal.jpg"
     },
     {
       year: "2014",

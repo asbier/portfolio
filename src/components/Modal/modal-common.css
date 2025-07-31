@@ -90,6 +90,16 @@
   backdrop-filter: blur(10px); /* Background blur */
   padding: 1rem;
   box-sizing: border-box;
+  /* Prevent body scroll when modal is open */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -502,7 +512,7 @@ figure img {
     height: 100vh; /* Full viewport height */
     display: flex;
     justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    align-items: flex-start; /* Align to top instead of center */
     position: fixed; /* Fixed position to stay on screen */
     top: 0;
     left: 0;
@@ -510,32 +520,44 @@ figure img {
     background: rgba(0, 0, 0, 0.5); /* Optional: add background overlay */
     z-index: 9999; /* Ensure the modal stays on top */
     margin: 0; /* Ensure no margin */
-    /* Android-specific fixes */
+    /* iOS and Android-specific fixes */
     -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
     -webkit-touch-callout: none; /* Disable callout on long press */
-    touch-action: manipulation; /* Better Android touch handling */
+    touch-action: pan-y; /* Only allow vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    overflow: hidden; /* Prevent body scroll */
   }
 
   /* Ensure the modal content takes up the full height and width */
   .modal-content {
-    width: 99%; /* Full width */
-    height: 100%; /* Full height */
-    justify-content: center; /* Center content horizontally */
-    align-items: center;
-    padding: 0.8rem; /* Adjust padding for mobile */
+    width: 100%; /* Full width */
+    height: 100vh; /* Full viewport height */
+    max-height: 100vh; /* Ensure it doesn't exceed viewport */
+    justify-content: flex-start; /* Align to top */
+    align-items: stretch; /* Stretch to full width */
+    padding: 1rem; /* Adjust padding for mobile */
     display: flex;
     flex-direction: column; /* Stack content vertically */
+    overflow: hidden; /* Prevent modal content overflow */
+    position: relative; /* For proper scrolling */
   }
 
   .modal-content-container {
     font-size: 0.875rem;
     line-height: 130%;
-    justify-content: center; /* Center content horizontally */
-    align-items: center;
+    justify-content: flex-start; /* Align to top */
+    align-items: stretch; /* Stretch to full width */
     padding: 0; /* No padding */
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow-y: auto; /* Allow scrolling if content overflows */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    position: relative; /* For proper scrolling context */
+    /* Prevent horizontal scrolling */
+    overflow-x: hidden;
+    /* Prevent content from shifting */
+    transform: translateZ(0); /* Force hardware acceleration */
+    -webkit-transform: translateZ(0); /* Safari support */
   }
 
   .modal-section {
