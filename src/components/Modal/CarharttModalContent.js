@@ -160,14 +160,8 @@ const CarharttModalContent = () => {
             <li>Enhanced user engagement through video content integration</li>
             <li>Improved conversion rates across US and European markets</li>
           </ul>
-          
-          <h3><strong>Technologies Used</strong></h3>
-          <ul className="list">
-            <li><strong>Design Tools:</strong> Figma, Sketch, Adobe Creative Suite</li>
-            <li><strong>Prototyping:</strong> Figma Prototypes, InVision</li>
-            <li><strong>Collaboration:</strong> Figma Team Libraries, Design Systems</li>
-            <li><strong>Video:</strong> HTML5 Video, Interactive Media</li>
-          </ul>
+
+               
         </section>
       </div>
     );

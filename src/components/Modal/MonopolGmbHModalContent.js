@@ -6,7 +6,6 @@ import image5 from '../../Assets/Image_7_Monopol GmbH/Image 5.png';
 import image6 from '../../Assets/Image_7_Monopol GmbH/Image 6.png';
 import image7 from '../../Assets/Image_7_Monopol GmbH/Image 11.png';
 import image8 from '../../Assets/Image_7_Monopol GmbH/Image 12.png';
-import gif1 from '../../Assets/Image_7_Monopol GmbH/Cover.gif';
 import gapImage from '../../Assets/fd05a329442313.55f9612230b20.gif';
 
 const MonopolGmbHModalContent = () => (

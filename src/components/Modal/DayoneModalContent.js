@@ -1,12 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './modal-common.css';
 import Image1 from '../../Assets/Image_0_dayone/before.png';
-import Image2 from '../../Assets/Image_0_dayone/Release.png';
-import Image4 from '../../Assets/Image_0_dayone/Insights User 4.png';
-import Image5 from '../../Assets/Image_0_dayone/insight-UserDay.png';
-import Image6 from '../../Assets/Image_0_dayone/Insights User 3.png';
-import Image7 from '../../Assets/Image_0_dayone/outcome.png';
-import Image8 from '../../Assets/Image_0_dayone/Insight2.png';
 import Image9 from '../../Assets/Image_0_dayone/slider-final.png';
 import Image10 from '../../Assets/Image_0_dayone/wireframe-slider.png';
 

@@ -1,4 +1,3 @@
-import person1 from "../Assets/person1.png"; // Biodiversity project
 import gif1 from "../Assets/1.gif";
 import image2 from "../Assets/2.jpg";
 import gif3 from "../Assets/3.gif";

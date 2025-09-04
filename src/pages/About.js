@@ -1,13 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../pages/About.css"; // Import the styles
 
 function About({ isVisible, toggleContentVisibility }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showTimeline, setShowTimeline] = useState(false);
   const timelineRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
 
   const handleToggleContent = () => {
     console.log("Button clicked");
@@ -29,47 +26,74 @@ function About({ isVisible, toggleContentVisibility }) {
     setShowTimeline((prev) => !prev);
   };
 
-  // Drag to scroll handlers
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - timelineRef.current.offsetLeft);
-    setScrollLeft(timelineRef.current.scrollLeft);
-  };
+  // Working timeline drag-to-scroll
+  useEffect(() => {
+    const wrapper = timelineRef.current;
+    if (!wrapper || !showTimeline) return;
 
-  const handleTouchStart = (e) => {
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX - timelineRef.current.offsetLeft);
-    setScrollLeft(timelineRef.current.scrollLeft);
-    e.stopPropagation();
-  };
+    let isDragging = false;
+    let startX;
+    let scrollLeft;
 
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-  };
+    const handleMouseDown = (e) => {
+      isDragging = true;
+      startX = e.pageX - wrapper.offsetLeft;
+      scrollLeft = wrapper.scrollLeft;
+      wrapper.style.cursor = 'grabbing';
+      e.preventDefault();
+    };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
+    const handleMouseMove = (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - wrapper.offsetLeft;
+      const walk = (x - startX) * 3; // Increased sensitivity
+      wrapper.scrollLeft = scrollLeft - walk;
+    };
 
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
+    const handleMouseUp = () => {
+      isDragging = false;
+      wrapper.style.cursor = 'grab';
+    };
 
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - timelineRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed
-    timelineRef.current.scrollLeft = scrollLeft - walk;
-  };
+    const handleTouchStart = (e) => {
+      isDragging = true;
+      startX = e.touches[0].pageX - wrapper.offsetLeft;
+      scrollLeft = wrapper.scrollLeft;
+      e.preventDefault();
+    };
 
-  const handleTouchMove = (e) => {
-    if (!isDragging) return;
-    // Don't prevent default on mobile to allow native scrolling
-    const x = e.touches[0].pageX - timelineRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5; // Reduced scroll speed for mobile
-    timelineRef.current.scrollLeft = scrollLeft - walk;
-  };
+    const handleTouchMove = (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.touches[0].pageX - wrapper.offsetLeft;
+      const walk = (x - startX) * 3;
+      wrapper.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleTouchEnd = () => {
+      isDragging = false;
+    };
+
+    wrapper.addEventListener('mousedown', handleMouseDown);
+    wrapper.addEventListener('mousemove', handleMouseMove);
+    wrapper.addEventListener('mouseup', handleMouseUp);
+    wrapper.addEventListener('mouseleave', handleMouseUp);
+    wrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
+    wrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
+    wrapper.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      wrapper.removeEventListener('mousedown', handleMouseDown);
+      wrapper.removeEventListener('mousemove', handleMouseMove);
+      wrapper.removeEventListener('mouseup', handleMouseUp);
+      wrapper.removeEventListener('mouseleave', handleMouseUp);
+      wrapper.removeEventListener('touchstart', handleTouchStart);
+      wrapper.removeEventListener('touchmove', handleTouchMove);
+      wrapper.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [showTimeline]);
+
 
   const timelineData = [
     {
@@ -183,13 +207,6 @@ function About({ isVisible, toggleContentVisibility }) {
         <div 
           className="timeline-wrapper"
           ref={timelineRef}
-          onMouseDown={handleMouseDown}
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          onTouchMove={handleTouchMove}
         >
           <div className="timeline">
                           {timelineData.map((item, index) => (

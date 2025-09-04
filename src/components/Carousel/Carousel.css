@@ -164,15 +164,15 @@
 
 @media screen and (max-width: 768px) {
   .carousel {
-    height: 80vh;
-    /* Show only bottom half of circle like Gucci */
-    overflow: hidden;
+    height: 100vh;
     overflow-x: scroll;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    touch-action: manipulation; /* Better Android touch handling */
-    /* Android-specific fixes */
-    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
-    -webkit-touch-callout: none; /* Disable callout on long press */
+    touch-action: manipulation;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 1rem;
   }
 
   .carousel::-webkit-scrollbar {
@@ -185,14 +185,12 @@
   }
 
   .item {
-    min-width: 200px;
-    padding: 20px 10px;
-    max-height: 35rem;
-    height: 100%;
+    min-width: 280px;
+    max-width: 280px;
+    padding: 15px 10px;
+    height: auto;
     flex: 0 0 auto;
-    width: calc(100% - 32px);
-    max-width: 300px;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
   }
 
   .image-container {
@@ -209,15 +207,17 @@
     margin-right: 2px;
     width: 100%;
     max-width: 400px;
-    min-width: 300px; /* Ensures smaller images don't shrink below this */
-    max-height: 40rem;
-    min-height: 30rem;
+    min-width: 300px;
+    max-height: 30rem;
+    min-height: 22rem;
   }
 
   .title-overlay {
     position: absolute;
     bottom: 15px;
     left: 15px;
+    right: 15px; /* Keep text within image bounds */
+    max-width: calc(100% - 30px);
     opacity: 1;
     z-index: 2;
     color: white;
@@ -239,9 +239,12 @@
 
   .inner-carousel {
     display: flex;
-    gap: 16px;
-    width: max-content; /* Ensure inner carousel adjusts based on child items */
-    flex-wrap: nowrap; /* Prevent wrapping */
+    gap: 20px;
+    width: max-content;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: auto;
+    padding: 0 40px; /* Increased padding for better centering */
   }
 
   .image-title-small {
@@ -253,9 +256,11 @@
   }
 
   .image-title-main {
-    font-size: clamp(1.2rem, 3.5vw, 1.7rem);
-    line-height: 1;
+    font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+    line-height: 1.2; /* Improve legibility and avoid clipping */
     text-align: left;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 }
 

@@ -3,7 +3,7 @@ import './CookieBanner.css';
 
 const CookieBanner = () => {
   const [showBanner, setShowBanner] = useState(false);
-  const [consent, setConsent] = useState(null);
+  const [, setConsent] = useState(null);
 
   useEffect(() => {
     // Check if user already gave consent

@@ -3,7 +3,7 @@ import './modal-common.css';
 import Image2 from '../../Assets/Image 3_AboutYou/Stories_final.png';
 import Image4 from '../../Assets/Image 3_AboutYou/shoebrand-AY.png';
 import Image5 from '../../Assets/Image 3_AboutYou/RedesignContentStoriesafter.png';
-import Image6 from '../../Assets/Image 3_AboutYou/LergerBrands.png';
+// Image6 removed - not used
 import Image8 from '../../Assets/Image 3_AboutYou/Stories_wireframeoutcome.png';
 import Image9 from '../../Assets/Image 3_AboutYou/ayawards-final .png';
 import Image10 from '../../Assets/Image 3_AboutYou/Stories_video outcome.png';
@@ -91,7 +91,7 @@ const AboutYouModalContent = () => (
         <section className="modal-section">
             <h2>Influencer and Celebrity Engagement</h2>
             <p>
-                I developed strategies for influencer and celebrity collaborations, creating authentic partnerships that resonated with ABOUT YOU's target audience. This included working with celebrities like Gigi Hadid and other high-profile influencers to create aspirational content that drove engagement and sales.
+                I developed strategies for influencer and celebrity collaborations, creating authentic partnerships that resonated with ABOUT YOU's target audience. This included working with German celebrities and high-profile influencers to create aspirational content that drove engagement and sales.
             </p>
 
             <figure className="image-gallery">
