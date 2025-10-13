@@ -194,7 +194,7 @@ function About({ isVisible, toggleContentVisibility }) {
           {showTimeline ? "Hide Timeline" : "View Timeline"}
         </button>
         <a 
-          href="/cv-annemarie-sauerbier.pdf" 
+          href="/CV-Annemarie-Sauerbier.pdf" 
           download="CV-Annemarie-Sauerbier.pdf"
           className="cta-button cta-download"
         >
