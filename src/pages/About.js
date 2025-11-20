@@ -182,7 +182,7 @@ function About({ isVisible, toggleContentVisibility }) {
 
   return (
     <div className="abstand">
-      <p>Creator & Art Director with focus on
+      <p>Product Designer & Art Director with focus on
       building holistic digital and spatial experiences</p> 
     
       {/* CTA Buttons */}
