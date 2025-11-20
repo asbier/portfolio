@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.a97d3f17.css",
-    "main.js": "/static/js/main.bb588dcb.js",
+    "main.js": "/static/js/main.ad99a19b.js",
     "static/js/787.dc6905b1.chunk.js": "/static/js/787.dc6905b1.chunk.js",
     "static/media/Demo New Filter Experience video.mp4": "/static/media/Demo New Filter Experience video.c1886d5f61662b1c1904.mp4",
     "static/media/How-2.png": "/static/media/How-2.30e8e2b1cd27a116b44c.png",
@@ -103,11 +103,11 @@
     "static/media/stone.png": "/static/media/stone.a0cbc5903a7df9708f99.png",
     "index.html": "/index.html",
     "main.a97d3f17.css.map": "/static/css/main.a97d3f17.css.map",
-    "main.bb588dcb.js.map": "/static/js/main.bb588dcb.js.map",
+    "main.ad99a19b.js.map": "/static/js/main.ad99a19b.js.map",
     "787.dc6905b1.chunk.js.map": "/static/js/787.dc6905b1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a97d3f17.css",
-    "static/js/main.bb588dcb.js"
+    "static/js/main.ad99a19b.js"
   ]
 }
