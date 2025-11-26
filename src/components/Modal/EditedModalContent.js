@@ -67,7 +67,7 @@ const EditedModalContent = () => (
 
         <figure>
           <img src={image7} alt="Luma Grothe Event" />
-          <figcaption className="image-caption">Luma Grothe event appearance and campaign visuals as part of EDITED’s circular brand ecosystem.</figcaption>
+          <figcaption className="image-caption">Luma Grothe Launch – Sensual Omnichannel Brand & Community Activation.</figcaption>
         </figure>
       </div>
     </section>
