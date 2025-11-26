@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.a97d3f17.css",
-    "main.js": "/static/js/main.ad99a19b.js",
+    "main.js": "/static/js/main.b4f3d460.js",
     "static/js/787.dc6905b1.chunk.js": "/static/js/787.dc6905b1.chunk.js",
     "static/media/Demo New Filter Experience video.mp4": "/static/media/Demo New Filter Experience video.c1886d5f61662b1c1904.mp4",
     "static/media/How-2.png": "/static/media/How-2.30e8e2b1cd27a116b44c.png",
@@ -11,6 +11,7 @@
     "static/media/Image-4.png": "/static/media/Image-4.ca842429ba088f197312.png",
     "static/media/magazines.png": "/static/media/magazines.138f83f89f7e6ca3cc8d.png",
     "static/media/laidbackopening.png": "/static/media/laidbackopening.5b07e193dad1b80940cc.png",
+    "static/media/bladerunnerc.png": "/static/media/bladerunnerc.eab8673c899e80b88d24.png",
     "static/media/first-stores.png": "/static/media/first-stores.6dc06ac9ffa848a9f295.png",
     "static/media/RedesignContentStoriesafter.png": "/static/media/RedesignContentStoriesafter.ea4fae6475cb79de0dc9.png",
     "static/media/Moods_spots_wireframeoutcome.png": "/static/media/Moods_spots_wireframeoutcome.1d8f78543c7d4ada3f86.png",
@@ -37,9 +38,11 @@
     "static/media/Lp-Mona-M-Teaser.png": "/static/media/Lp-Mona-M-Teaser.38a1008cca7976758238.png",
     "static/media/Image-7.png": "/static/media/Image-7.597223641261b00392da.png",
     "static/media/shoe_packaging.png": "/static/media/shoe_packaging.4f96c586f7a1f5924959.png",
+    "static/media/Image 15.png": "/static/media/Image 15.8a6246440b23e3158a51.png",
     "static/media/Image-6.png": "/static/media/Image-6.4c390f523afc77c6f534.png",
     "static/media/monki4.png": "/static/media/monki4.1c16f6c887b61bd1a20c.png",
     "static/media/Image-5.png": "/static/media/Image-5.a832fe5f02b77638830b.png",
+    "static/media/Image 7.png": "/static/media/Image 7.8d38dfd7ac497d6b1e93.png",
     "static/media/collab-design.png": "/static/media/collab-design.1dd2ac83baae95809e2e.png",
     "static/media/slider-final.png": "/static/media/slider-final.b6df2f97037fad739d72.png",
     "static/media/Stories_video outcome.png": "/static/media/Stories_video outcome.d9ed2fbb47ef31fedf74.png",
@@ -103,11 +106,11 @@
     "static/media/stone.png": "/static/media/stone.a0cbc5903a7df9708f99.png",
     "index.html": "/index.html",
     "main.a97d3f17.css.map": "/static/css/main.a97d3f17.css.map",
-    "main.ad99a19b.js.map": "/static/js/main.ad99a19b.js.map",
+    "main.b4f3d460.js.map": "/static/js/main.b4f3d460.js.map",
     "787.dc6905b1.chunk.js.map": "/static/js/787.dc6905b1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a97d3f17.css",
-    "static/js/main.ad99a19b.js"
+    "static/js/main.b4f3d460.js"
   ]
 }
