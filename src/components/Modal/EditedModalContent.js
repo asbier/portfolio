@@ -64,6 +64,11 @@ const EditedModalContent = () => (
           <img src={image2} alt="EDITED Store Events" />
           <figcaption className="image-caption">EDITED store scaling, launch events, and merchandise, including in-store displays.</figcaption>
         </figure>
+
+        <figure>
+          <img src={image7} alt="Luma Grothe Event" />
+          <figcaption className="image-caption">Luma Grothe event appearance and campaign visuals as part of EDITED’s circular brand ecosystem.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -126,11 +131,6 @@ const EditedModalContent = () => (
         <figure>
           <img src={bladerunner} alt="Bladerunner Editorial" />
           <figcaption className="image-caption">Bladerunner-inspired editorial story for EDITED.</figcaption>
-        </figure>
-
-        <figure>
-          <img src={image7} alt="Luma Grothe Event" />
-          <figcaption className="image-caption">Luma Grothe event appearance and campaign visuals.</figcaption>
         </figure>
 
         <figure>
