@@ -15,7 +15,7 @@ const AnimatedBanner = () => {
           Open for new projects which create a positive impact on environmental challenges
         </span>
         <span className="banner-text">
-          Currently learning data analytics
+          If you’re still designing for your backlog, you hired the wrong people. If you want someone who designs for your tomorrow, hire me.
         </span>
         <span className="banner-text">
           <svg className="smiley-icon" viewBox="0 0 24 24" width="16" height="16">
@@ -27,7 +27,7 @@ const AnimatedBanner = () => {
           Open for new projects which create a positive impact on environmental challenges
         </span>
         <span className="banner-text">
-        Currently learning data analytics
+          If you’re still designing for your backlog, you hired the wrong people. If you want someone who designs for your tomorrow, hire me.
         </span>
         <span className="banner-text">
           <svg className="smiley-icon" viewBox="0 0 24 24" width="16" height="16">
@@ -39,7 +39,7 @@ const AnimatedBanner = () => {
           Open for new projects which create a positive impact on environmental challenges
         </span>
         <span className="banner-text">
-          Currently learning data analytics
+          If you’re still designing for your backlog, you hired the wrong people. If you want someone who designs for your tomorrow, hire me.
         </span>
       </div>
     </div>
