@@ -3,6 +3,8 @@ import './modal-common.css';
 import image1 from '../../Assets/Image_2_EDITED/Editedweb.png';
 import image2 from '../../Assets/Image_2_EDITED/Frankfurt_openingdesign.png';
 import image4 from '../../Assets/Image_2_EDITED/Image 4.png';
+import image7 from '../../Assets/Image_2_EDITED/Image 7.png';
+import image15 from '../../Assets/Image_2_EDITED/Image 15.png';
 import image17 from '../../Assets/Image_2_EDITED/laidbackopening.png';
 import image18 from '../../Assets/Image_2_EDITED/shoe_packaging.png';
 import image22 from '../../Assets/Image_2_EDITED/collab-design.png';
@@ -10,6 +12,7 @@ import image24 from '../../Assets/Image_2_EDITED/stores.png';
 import image25 from '../../Assets/Image_2_EDITED/first-stores.png';
 import image26 from '../../Assets/Image_2_EDITED/fashionshow.png';
 import image32 from '../../Assets/Image_2_EDITED/magazines.png';
+import bladerunner from '../../Assets/Image_2_EDITED/bladerunnerc.png';
 
 const EditedModalContent = () => (
   <div className="modal-content-container">
@@ -118,6 +121,21 @@ const EditedModalContent = () => (
         <figure>
           <img src={image22} alt="Collaboration Design" />
           <figcaption className="image-caption">Collaboration design examples</figcaption>
+        </figure>
+
+        <figure>
+          <img src={bladerunner} alt="Bladerunner Editorial" />
+          <figcaption className="image-caption">Bladerunner-inspired editorial story for EDITED.</figcaption>
+        </figure>
+
+        <figure>
+          <img src={image7} alt="Luma Grothe Event" />
+          <figcaption className="image-caption">Luma Grothe event appearance and campaign visuals.</figcaption>
+        </figure>
+
+        <figure>
+          <img src={image15} alt="Nina Kastens Event" />
+          <figcaption className="image-caption">Nina Kastens x EDITED jewellery event experience.</figcaption>
         </figure>
       </div>
     </section>
