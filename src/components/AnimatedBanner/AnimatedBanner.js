@@ -3,10 +3,9 @@ import './AnimatedBanner.css';
 
 const AnimatedBanner = () => {
   const bannerMessages = [
-  ' ✨Need your brand to survive longer than five years? I don’t do backlog design. I build narratives that kill dusty agendas. ✨',  ' ✨Need your brand to survive longer than five years? I don’t do backlog design. I build narratives that kill dusty agendas.   ✨',
-  ' ✨Need your brand to survive longer than five years? I don’t do backlog design. I build narratives that kill dusty agendas. ✨',  '✨Need your brand to survive longer than five years? I don’t do backlog design. I build narratives that kill dusty agendas.   ✨',
-  ' ✨Need your brand to survive longer than five years? I don’t do backlog design. I build narratives that kill dusty agendas.  ✨',
-  ' ✨Need your brand to survive longer than five years? I don’t do backlog design. I build narratives that kill dusty agendas.  ✨',
+  ' ✨ Need your brand to survive longer than five years? I don’t do backlog design. I build narratives that kill dusty agendas ✨', 
+  ' 🎁 I help you stand out from the crowd 🎁',  '✨Need your brand to survive longer than five years? I don’t do backlog design. I build narratives that kill dusty agendas ✨',
+  ' ✨ I help you stand out from the crowd ✨'
 
     
   ];
