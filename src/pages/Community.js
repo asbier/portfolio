@@ -1,5 +1,5 @@
 import React from "react";
-import "../pages/About.css"; // Import the styles
+import "./about.css";
 
 function Community({ isVisible }) {
     return (

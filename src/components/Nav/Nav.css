@@ -1,139 +1,507 @@
-nav {
+/* Desktop Navigation */
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(0.5rem, 1vw, 1rem); /* Responsive gap */
+    padding: clamp(1rem, 1.5vw, 1.5rem) clamp(1rem, 2vw, 2rem); /* Responsive padding */
+    z-index: 9998;
+    background-color: rgba(241, 242, 229, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    margin-top: 0;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100%;
+    max-width: 100vw; /* Prevent horizontal overflow */
+    box-sizing: border-box;
+    overflow: visible; /* Allow filters to be visible */
+    min-height: fit-content;
+  }
+}
+
+/* HOME Link - AM Logo + Title */
+.nav-home {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 18px 10px 10px 10px;
-  height: 60px;
-  
+  gap: clamp(0.5rem, 0.75vw, 0.75rem); /* Responsive gap */
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  min-width: 0;
+  flex-shrink: 1;
+  max-width: 60%; /* Reduced to ensure filters fit */
+  overflow: hidden; /* Prevent content overflow */
+  box-sizing: border-box;
+}
+
+/* Ensure nav-home doesn't push filters off screen */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav-home {
+    max-width: 55%; /* More space for filters on tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-home {
+    max-width: 65%; /* More space on larger screens */
+  }
+}
+
+.nav-home:hover {
+  transform: scale(1.02);
+}
+
+/* AM Logo */
+.logo-letters {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.85;
+  flex-shrink: 0;
+}
+
+.logo-a {
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #D9D9D9;
+  letter-spacing: normal;
+}
+
+.logo-m {
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #deff06;
+  letter-spacing: normal;
+}
+
+@media (min-width: 1024px) {
+  .logo-a,
+  .logo-m {
+    font-size: 1.75rem;
+  }
+}
+
+/* Title - PRODUCT DESIGN & BRANDING */
+.nav-title {
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(0.875rem, 4vw, 120px); /* More conservative responsive font size */
+  font-weight: 600;
+  color: #D9D9D9;
+  letter-spacing: normal;
+  white-space: nowrap;
+  text-transform: uppercase;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+/* Responsive title sizing at different breakpoints */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav-title {
+    font-size: clamp(0.75rem, 3vw, 2rem); /* Smaller on tablets */
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .nav-title {
+    font-size: clamp(1rem, 5vw, 80px); /* Medium size */
+  }
+}
+
+@media (min-width: 1280px) {
+  .nav-title {
+    font-size: clamp(1.5rem, 8vw, 120px); /* Full size on large screens */
+  }
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  gap: clamp(0.25rem, 0.5vw, 0.5rem); /* Responsive gap */
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: nowrap; /* Never wrap - filters must always be visible */
+  min-width: fit-content; /* Ensure buttons don't shrink too much */
+}
+
+/* Ensure filters are always visible and accessible */
+@media (min-width: 768px) {
+  .nav-buttons {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 10; /* Above slider */
+  }
+}
+
+/* CONTACT Button - Active (Yellow) */
+.btn-contact-active {
+  background: #deff06;
+  border: 1px solid #deff06;
+  border-radius: 50px;
+  padding: clamp(0.4rem, 0.5vw, 0.625rem) clamp(0.875rem, 1vw, 1.25rem); /* Responsive padding */
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(0.625rem, 0.75vw, 1rem); /* Responsive font size */
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  flex-shrink: 0; /* Never shrink */
+}
+
+.btn-contact-active:hover {
+  background: #c5e600;
+  border-color: #c5e600;
+}
+
+/* Filter Buttons (COMMERCIAL, PRIVATE, HISTORY) */
+.btn-filter {
+  background: transparent;
+  border: 1px solid #D9D9D9;
+  border-radius: 50px;
+  padding: clamp(0.4rem, 0.5vw, 0.625rem) clamp(0.75rem, 1vw, 1.25rem); /* Responsive padding */
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(0.625rem, 0.75vw, 1rem); /* Responsive font size */
+  font-weight: 600;
+  color: #D9D9D9;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  flex-shrink: 0; /* Never shrink - filters must always be visible */
+  min-width: fit-content; /* Ensure text is always visible */
+}
+
+.btn-filter:hover {
+  border-color: #D9D9D9;
+  color: #D9D9D9;
+}
+
+.btn-filter.active {
+  background: #deff06;
+  border-color: #deff06;
+  color: #1a1a1a;
+}
+
+/* Mobile Navigation - Fixed Bottom */
+.mobile-nav {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.25rem;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  height: calc(70px + env(safe-area-inset-bottom, 0px));
   z-index: 9999;
-  background-color: #FAFAFA;
-  color: inherit;
-  transition: background-color 0.3s, color 0.3s;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+  background-color: rgba(241, 242, 229, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  align-items: center;
+  justify-content: center;
 }
 
-nav.dark {
-  background-color: #000000;
-  color: #FAFAFA;
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none;
+  }
 }
 
-.nav-logo {
-  font-size: 2rem;
+.mobile-nav-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-filters {
+  display: flex;
+  gap: clamp(0.25rem, 1vw, 0.5rem); /* Responsive gap */
+  align-items: center;
+  justify-self: start;
+  flex-shrink: 0; /* Never shrink */
+  min-width: fit-content; /* Ensure filters are always visible */
+  overflow: visible; /* Allow filters to be fully visible */
+}
+
+.mobile-filter {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.125rem, 0.5vw, 0.25rem); /* Responsive padding */
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(12px, 3vw, 16px); /* Responsive font size */
+  font-weight: 600;
+  color: #D9D9D9;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: none;
+  white-space: nowrap; /* Prevent text wrapping */
+  flex-shrink: 0; /* Never shrink */
+  min-width: fit-content; /* Ensure text is always visible */
+}
+
+/* Very small mobile screens */
+@media (max-width: 360px) {
+  .mobile-filter {
+    font-size: 11px;
+    padding: 0.375rem 0.125rem;
+  }
+}
+
+.mobile-filter.active {
+  color: #000;
+}
+
+.menu-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
   cursor: pointer;
+  justify-self: center;
 }
 
-.nav-logo:hover {
-  transform: scale(1.1);
-  transition: 0.3s ease;
+.menu-dot {
+  width: 12px;
+  height: 12px;
+  background: #D9D9D9;
+  border-radius: 50%;
+  display: block;
+}
+
+.mobile-contact-btn {
+  background: #deff06;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
   cursor: pointer;
-}
-
-.nav-logo img {
-  width: 100%; /* Adjust logo size */
-  height: auto;
-  cursor: pointer;
-}
-
-ul {
-  font-family: Lausanne, sans-serif;
-  display: inline-flex;
-  gap: 0.6rem;
-  padding: 0;
-  margin: 0;
-  align-items: center;
-  line-height: 1;
-}
-
-li {
-  list-style: none;
-  align-items: center;
-  line-height: 1;
-}
-
-a, .nav-button {
-  color: inherit;
   text-decoration: none;
-  cursor: pointer;
-  pointer-events: auto;
-  position: relative;
-  z-index: 10;
+  text-transform: uppercase;
+  justify-self: end;
+}
+
+/* Mobile Menu Overlay - 80% transparent paper look modal */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(241, 242, 229, 0.2); /* 80% transparent */
+  background-image: 
+    /* Paper texture - subtle grid */
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.015),
+      rgba(0, 0, 0, 0.015) 1px,
+      transparent 1px,
+      transparent 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.015),
+      rgba(0, 0, 0, 0.015) 1px,
+      transparent 1px,
+      transparent 2px
+    ),
+    /* Paper grain texture */
+    radial-gradient(circle at 20% 50%, rgba(0, 0, 0, 0.01) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.01) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(0, 0, 0, 0.01) 0%, transparent 50%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 99999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+.mobile-menu-item {
   background: none;
   border: none;
-  padding: 0;
-  font: inherit;
+  padding: 1rem 2rem;
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #D9D9D9;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
 }
 
-.nav-image {
-  width: 40%; 
- /* Adjust size */
-  height: auto;
+.mobile-menu-item:active {
+  color: #000;
 }
 
+.yellow-dot {
+  width: 16px;
+  height: 16px;
+  background: #deff06;
+  border-radius: 50%;
+  margin-top: 1rem;
+}
 
-.contact-link img:hover,
-.about-link img:hover 
-.community-link img:hover {
-  transform: scale(1.1);
-  transition: 0.3s ease;
+.menu-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+
+.menu-footer-text {
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 100;
+  color: #D9D9D9;
+}
+
+.menu-footer-privacy {
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #D9D9D9;
+  background: transparent;
+  border: none;
   cursor: pointer;
 }
 
-
-/* Remove hover effects on mobile */
 @media (hover: none) {
-  .nav-logo:hover,
-  .contact-link img:hover,
-  .about-link img:hover,
-  .community-link img:hover {
+  .nav-home:hover {
     transform: none;
   }
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-  nav {
-    padding: 15px 15px 10px 15px; /* Better top padding on mobile */
-    height: 50px;
+  
+  .btn-contact-active:hover {
+    background: #deff06;
+    border-color: #deff06;
   }
-
-  .nav-logo {
-    font-size: 1.5rem;
-  }
-
-  ul {
-    gap: 1rem;
-  }
-
-  .nav-image {
-    width: 60%;
-    height: auto;
-  }
-
-  /* Fix navigation positioning */
-  .contact-link {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin-left: 0;
-  }
-
-  .about-link img {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin-left: 0;
-  }
-
-  .community-link img {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin-left: 0;
+  
+  .btn-filter:hover {
+    background: transparent;
+    border-color: #D9D9D9;
+    color: #D9D9D9;
   }
 }
 
+/* Mobile Menu Close Button - Always visible */
+.mobile-menu-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(241, 242, 229, 0.9); /* More opaque background for visibility */
+  border: 1px solid rgba(217, 217, 217, 0.3);
+  border-radius: 50%;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  z-index: 100000;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-close:active {
+  background: rgba(241, 242, 229, 1);
+  color: #000;
+  transform: scale(0.95);
+}
+
+/* Ensure desktop nav and filters are always visible */
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .nav-buttons {
+    display: flex !important;
+    visibility: visible !important;
+  }
+  
+  .btn-filter {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Additional desktop nav visibility fixes */
+@media (min-width: 768px) {
+  .desktop-nav {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9998 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background-color: rgba(241, 242, 229, 0.95) !important;
+  }
+  
+  .nav-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .btn-contact-active,
+  .btn-filter {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+}
