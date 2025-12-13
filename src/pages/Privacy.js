@@ -1,5 +1,5 @@
 import React from 'react';
-import '../pages/About.css';
+import './About.css';
 
 function Privacy({ isVisible }) {
     return (
@@ -65,7 +65,7 @@ Designing experiences connected with all senses and with nature in mind
 <p>  </p>
 
 <small>credits</small><p>  </p>
-This website utilises Lausanne, 600 as the primary typeface and PPEditorialNew-Ultralight 400 for secondary tidbits.
+This website utilises Inter as the primary typeface and PPEditorialNew-Ultralight for secondary elements.
 <p>  </p>
 <small>Credits Visual & Programming</small><p>  </p>
 <p> </p>

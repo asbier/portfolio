@@ -1,24 +1,40 @@
 footer {
   margin-top: 0rem;
-  font-family: Lausanne, sans-serif;
-  padding: 1rem;
-  background-color: rgba(255, 254, 253, 0.75);
-  font-size: 1rem;
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  padding: 1rem 1.5rem;
+  background-color: rgba(241, 242, 229, 0.9);
+  font-size: 9pt;
+  font-weight: 100;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 0; /* Ensure footer does not overlap content */
+  z-index: 9997;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-li {
+footer p {
+  margin: 0;
+  font-weight: 100;
+}
+
+footer ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+footer li {
   list-style: none;
   align-items: center;
   line-height: 1;
 }
 
 .footer-privacy-btn {
-  font-family: Lausanne, sans-serif;
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   color: inherit;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -27,11 +43,22 @@ li {
   cursor: pointer;
   font-size: inherit;
   padding: 0;
+  font-weight: 100;
 }
 
 @media screen and (max-width: 768px) {
   footer {
-    padding: 5px 10px; /* Reduced padding */
-    font-size: 0.8rem;  /* Smaller font size for mobile */
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    font-size: 12px;
+    font-weight: 100;
+    /* Position above the bottom nav */
+    bottom: 60px;
+  }
+  
+  .footer-privacy-btn {
+    font-size: 12px;
+    font-weight: 100;
   }
 }

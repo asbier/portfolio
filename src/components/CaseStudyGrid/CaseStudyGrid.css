@@ -1,0 +1,305 @@
+/* Case Study Grid - Sticky Horizontal Slider */
+
+/* Container - Base styles */
+.case-study-container {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw; /* Prevent horizontal overflow */
+  background-color: #f1f2e5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  z-index: 1;
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Desktop: Sticky below nav, fills remaining viewport height */
+@media (min-width: 768px) {
+  .case-study-container {
+    position: sticky;
+    top: 0;
+    height: 100vh; /* Full viewport height */
+    min-height: 100vh;
+    max-height: 100vh;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    z-index: 1; /* Below nav (z-index: 9998) so filters are always accessible */
+  }
+  
+  .case-study-grid {
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+
+/* Mobile: Fixed, fills full viewport, sticks to navbar */
+@media (max-width: 767px) {
+  .case-study-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    /* Fill entire container */
+    align-items: stretch;
+  }
+  
+  .case-study-grid {
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    /* Cards align to bottom of container */
+    align-items: flex-end;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* When about content is visible, push container down */
+.case-study-container.with-about {
+  height: 20vh;
+  transform: translateY(80vh);
+  overflow: hidden;
+}
+
+/* Grid - Horizontal scroll */
+.case-study-grid {
+  display: flex;
+  gap: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 100%; /* Prevent horizontal overflow */
+  align-items: center;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+}
+
+/* Add padding to cards using pseudo-elements */
+.case-study-grid::before,
+.case-study-grid::after {
+  content: '';
+  flex-shrink: 0;
+  width: 0; /* Edge-to-edge, full viewport - no padding */
+}
+
+/* Desktop: no padding - full width */
+@media (min-width: 768px) {
+  .case-study-grid::before,
+  .case-study-grid::after {
+    width: 0; /* No padding on desktop either */
+  }
+}
+
+.case-study-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card - Mobile: 320px x 400px */
+.case-card {
+  flex-shrink: 0;
+  width: 320px;
+  height: 400px;
+  cursor: pointer;
+}
+
+/* Desktop: 520px x 655px */
+@media (min-width: 768px) {
+  .case-card {
+    width: 520px;
+    height: 655px;
+  }
+}
+
+/* Desktop 1280px+ - Larger cards */
+@media (min-width: 1280px) {
+  .case-card {
+    width: 500px;
+    height: 728px;
+  }
+}
+
+/* Desktop 1440px+ - Optimized for 1440x900 viewport */
+@media (min-width: 1440px) {
+  .case-card {
+    width: 500px;
+    height: 728px;
+  }
+  
+  .tag {
+    font-size: 24px;
+  }
+}
+
+/* Desktop 1536px+ - Large screens */
+@media (min-width: 1536px) {
+  .case-card {
+    width: 500px;
+    height: 728px;
+  }
+}
+
+/* Card background with gradient */
+.card-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Card image */
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Tags at bottom */
+.card-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+  margin-top: auto;
+}
+
+.tag {
+  border: 0.5px solid #979797;
+  border-radius: 20px;
+  padding: 8px;
+  font-family: OTNeueMontreal, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #979797;
+  white-space: nowrap;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* Desktop hover on tags */
+@media (hover: hover) {
+  .tag:hover {
+    background: #deff06;
+    border-color: #deff06;
+    color: #fff;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 400px) {
+  .case-card {
+    width: 280px;
+    height: 350px;
+  }
+  
+  .tag {
+    font-size: 14px;
+    padding: 6px;
+  }
+  
+  .card-background {
+    padding: 12px;
+  }
+}
+
+/* No hover effects on touch devices */
+@media (hover: none) {
+  .tag:hover {
+    border-color: #979797;
+    color: #979797;
+    background: transparent;
+  }
+}
+
+/* Global resets */
+#root,
+#root > div,
+#root > div > div {
+  margin: 0;
+  padding: 0;
+}
+
+/* Fix wrapper div spacing in Main.js */
+main > div:not(.container-page) {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  display: block !important;
+}
+
+/* Ensure tags are always visible on desktop */
+@media (min-width: 768px) {
+  .card-tags {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 100 !important;
+  }
+  
+  .tag {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #979797 !important;
+    border: 0.5px solid #979797 !important;
+    background: transparent !important;
+  }
+  
+  .card-background {
+    position: relative;
+  }
+  
+  .card-image {
+    z-index: 1;
+  }
+  
+  .card-tags {
+    z-index: 100;
+  }
+}
