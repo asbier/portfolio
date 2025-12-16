@@ -21,14 +21,7 @@ const Home = () => {
             {/* 🛑 REMOVE STICKY HEADER AND FILTER SECTION FROM MAIN 🛑 */}
             {/* The main content now starts after the fixed Navbar height. */}
             <main className="pt-24 max-w-7xl mx-auto"> 
-                
-                {/* Clean up the Portfolio title/desc section */}
-                <div className="px-8 pb-8"> 
-                    <h2 className="text-xl font-neue mb-2">Portfolio</h2>
-                    <p className="text-sm text-gray-700">
-                        Creator & Art Director with focus on building holistic digital and spatial experiences.
-                    </p>
-                </div>
+                        
                 
                 {/* Case Slider remains */}
                 <div className="relative -mx-8"> 
