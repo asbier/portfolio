@@ -1,8 +1,10 @@
 import React from 'react';
+// Import Link from react-router-dom if you use it, or leave as <a> tags if not.
 
 const Navbar = () => {
   return (
-    <header className="fixed top-0 left-0 w-full z-10 bg-white">
+    // 🛑 CRITICAL: Ensure 'fixed', 'top-0', 'w-full', and a high 'z-index' are present
+    <header className="fixed top-0 left-0 w-full z-20 bg-white shadow-md"> 
       <div className="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
         
         {/* Large Title - mimicking the 'PRODUCT DESIGN & BRANDING' area */}
@@ -15,7 +17,8 @@ const Navbar = () => {
           {['Contact', 'Commercial', 'Private', 'History'].map((item) => (
             <a 
               key={item} 
-              href={`#${item.toLowerCase()}`} 
+              // Using relative links for proper navigation
+              href={item === 'Contact' ? '/contact' : '#'} 
               className={`px-4 py-2 text-sm uppercase font-neue font-medium rounded-full transition-colors 
                 ${item === 'Contact' ? 'bg-portfolio-green text-black' : 'hover:bg-gray-100 text-black'}`
               }
