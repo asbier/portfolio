@@ -1,0 +1,19 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        // This makes 'font-neue' available in your JSX files
+        neue: ['NeueMontreal', 'sans-serif'], 
+      },
+      // You can also define custom colors based on your moodboard
+      colors: {
+        'portfolio-green': '#A9B48F', // Example color based on the design
+      }
+    },
+  },
+  plugins: [],
+}
