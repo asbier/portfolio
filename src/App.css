@@ -1,11 +1,16 @@
-/* Custom scrollbar hide utility */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-
+@font-face {
+  font-family: 'NeueMontreal';
+  src: url('./Fonts/OTNeueMontreal-BoldExtraSqueezed.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+} 
+  @font-face {
+    font-family: 'NeueMontreal';
+    src: url('./Fonts/OTNeueMontreal-BoldExtraSqueezed.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
