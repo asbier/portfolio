@@ -8,17 +8,15 @@ const Home = () => {
     const [activeFilter, setActiveFilter] = useState('all'); 
 
     return (
-        // The main container needs to allow scrolling
         <div className="min-h-screen bg-white text-black">
-            {/* Navbar is already FIXED by design, but ensure content moves under it */}
             <Navbar />
             
-            {/* Main content area */}
-            <main className="pt-24 px-8 max-w-7xl mx-auto"> 
+            {/* 🛑 REMOVED pt-24 from <main> 🛑 */}
+            <main className="max-w-7xl mx-auto"> 
                 
-                {/* 1. Sticky Content Container */}
-                {/* This top section needs to stay visible above the CaseSlider */}
-                <div className="sticky top-24 bg-white z-10 pb-4">
+                {/* 1. Sticky Content Container (Portfolio title, description, and filters) */}
+                {/* 🛑 UPDATED top-0 and added pt-24 here 🛑 */}
+                <div className="sticky top-0 bg-white z-10 pb-4 px-8 pt-24"> 
                     <h2 className="text-xl font-neue mb-2">Portfolio</h2>
                     <p className="text-sm text-gray-700 mb-8">
                         Creator & Art Director with focus on building holistic digital and spatial experiences.
@@ -30,9 +28,8 @@ const Home = () => {
                     /> 
                 </div>
                 
-                {/* 2. Case Slider - Should be wide and scrollable */}
-                {/* The CaseSlider component will handle the snapping */}
-                <div className="relative -mx-8"> {/* Negative margin to stretch across the viewport width */}
+                {/* 2. Case Slider - Should remain scrollable and full-bleed */}
+                <div className="relative -mx-8"> 
                    <CaseSlider 
                         cases={cases} 
                         filter={activeFilter}
