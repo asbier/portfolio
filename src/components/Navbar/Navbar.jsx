@@ -1,26 +1,58 @@
 import React from 'react';
-// Import Link from react-router-dom if you use it, or leave as <a> tags if not.
 
-const Navbar = () => {
+// Accept the filter state/setter as props
+const Navbar = ({ activeFilter, setActiveFilter }) => {
+  const mainNavs = ['Contact', 'History'];
+  const filterOptions = ['all', 'commerce', 'private']; 
+
+  const handleFilterChange = (filterName) => {
+      setActiveFilter(filterName);
+  };
+  
   return (
-    // 🛑 CRITICAL: Ensure 'fixed', 'top-0', 'w-full', and a high 'z-index' are present
-    <header className="fixed top-0 left-0 w-full z-20 bg-white shadow-md"> 
-      <div className="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+    <header className="fixed top-0 left-0 w-full z-20 bg-background-light"> 
+      {/* Reduced padding for tighter fit */}
+      <div className="flex justify-between items-center px-4 py-4 max-w-7xl mx-auto"> 
         
-        {/* Large Title - mimicking the 'PRODUCT DESIGN & BRANDING' area */}
-        <h1 className="text-4xl sm:text-5xl font-bold font-neue text-black uppercase opacity-20">
+        {/* Left Side: Large Title - Apply D9D9D9 color */}
+        <h1 className="text-xl sm:text-2xl lg:text-5xl font-bold font-neue uppercase text-title-gray">
           PRODUCT DESIGN & BRANDING 
         </h1>
 
-        {/* Navigation Links - mimicking the buttons on the right */}
-        <nav className="flex space-x-4">
-          {['Contact', 'Commercial', 'Private', 'History'].map((item) => (
+        {/* Right Side: Consolidated Navigation and Filters */}
+        <nav className="flex space-x-1 sm:space-x-2 items-center overflow-x-auto"> {/* Added overflow-x-auto for extremely small screens */}
+          
+          {/* Filter Buttons */}
+          {filterOptions.map((filterName) => (
+            <button 
+                key={filterName}
+                onClick={() => handleFilterChange(filterName)}
+                // 🛑 NEW RESPONSIVE STYLING 🛑
+                className={`
+                    px-3 py-1 lg:px-6 lg:py-2 
+                    text-base sm:text-lg lg:text-[2rem] font-semibold uppercase 
+                    font-neue whitespace-nowrap rounded-full border border-[1px] transition-colors 
+                    ${activeFilter === filterName 
+                        ? 'bg-portfolio-green text-black border-portfolio-green' 
+                        : 'hover:bg-gray-100 text-tag-gray border-tag-gray'
+                    }`
+                }
+            >
+                {filterName.toUpperCase()}
+            </button>
+          ))}
+
+          {/* Main Navigation Links (Contact, History) */}
+          {mainNavs.map((item) => (
             <a 
               key={item} 
-              // Using relative links for proper navigation
-              href={item === 'Contact' ? '/contact' : '#'} 
-              className={`px-4 py-2 text-sm uppercase font-neue font-medium rounded-full transition-colors 
-                ${item === 'Contact' ? 'bg-portfolio-green text-black' : 'hover:bg-gray-100 text-black'}`
+              href={item === 'Contact' ? '/contact' : '/history'} 
+              // 🛑 NEW RESPONSIVE STYLING 🛑
+              className={`
+                px-3 py-1 lg:px-6 lg:py-2 
+                text-base sm:text-lg lg:text-[2rem] font-semibold uppercase 
+                font-neue whitespace-nowrap rounded-full border border-[1px] transition-colors 
+                hover:bg-gray-100 text-tag-gray border-tag-gray`
               }
             >
               {item}

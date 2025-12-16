@@ -1,34 +1,36 @@
+// src/pages/Home.jsx
+
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar/Navbar.jsx';
-import FilterTabs from '../components/FilterTabs/FilterTabs.jsx';
+import Navbar from '../components/Navbar/Navbar.jsx'; // Will now handle filters
+// 🛑 REMOVE THIS IMPORT: import FilterTabs from '../components/FilterTabs/FilterTabs.jsx'; 
 import CaseSlider from '../components/CaseSlider/CaseSlider.jsx'; 
 import { cases } from '../data/cases.js'; 
 
 const Home = () => {
+    // 🛑 KEEP STATE HERE: This state controls the slider filtering.
     const [activeFilter, setActiveFilter] = useState('all'); 
 
     return (
         <div className="min-h-screen bg-white text-black">
-            <Navbar />
+            {/* 🛑 PASS FILTER STATE TO NAVBAR 🛑 */}
+            <Navbar 
+                activeFilter={activeFilter} 
+                setActiveFilter={setActiveFilter} 
+            />
             
-            {/* 🛑 REMOVED pt-24 from <main> 🛑 */}
-            <main className="max-w-7xl mx-auto"> 
+            {/* 🛑 REMOVE STICKY HEADER AND FILTER SECTION FROM MAIN 🛑 */}
+            {/* The main content now starts after the fixed Navbar height. */}
+            <main className="pt-24 max-w-7xl mx-auto"> 
                 
-                {/* 1. Sticky Content Container (Portfolio title, description, and filters) */}
-                {/* 🛑 UPDATED top-0 and added pt-24 here 🛑 */}
-                <div className="sticky top-0 bg-white z-10 pb-4 px-8 pt-24"> 
+                {/* Clean up the Portfolio title/desc section */}
+                <div className="px-8 pb-8"> 
                     <h2 className="text-xl font-neue mb-2">Portfolio</h2>
-                    <p className="text-sm text-gray-700 mb-8">
+                    <p className="text-sm text-gray-700">
                         Creator & Art Director with focus on building holistic digital and spatial experiences.
                     </p>
-                    
-                    <FilterTabs 
-                        activeFilter={activeFilter} 
-                        onFilterChange={setActiveFilter} 
-                    /> 
                 </div>
                 
-                {/* 2. Case Slider - Should remain scrollable and full-bleed */}
+                {/* Case Slider remains */}
                 <div className="relative -mx-8"> 
                    <CaseSlider 
                         cases={cases} 
