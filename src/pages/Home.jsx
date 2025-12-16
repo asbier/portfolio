@@ -20,10 +20,7 @@ const Home = () => {
             {/* pt-20 for mobile, pt-32 for large screens where Navbar is taller */}
             <main className="pt-20 lg:pt-32">
                 
-                {/* 🛑 ADD max-w-7xl mx-auto and px-8 here for centering text 🛑 */}
-                <div className="max-w-7xl mx-auto px-8 pb-4"> 
-                    <h2 className="text-xl font-neue mb-2">Portfolio</h2>
-                </div>
+            
                 
                 {/* Case Slider remains (it needs to handle its own margins) */}
                 <div className="relative"> 
