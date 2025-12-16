@@ -1,62 +1,54 @@
+// src/components/CaseSlider/CaseSlider.jsx
+
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+// Removed: import { motion } from 'framer-motion';
 
-// 🛑 Line 7: Start of the Component Function 🛑
 const CaseSlider = ({ cases, filter }) => {
     const navigate = useNavigate();
     const sliderRef = useRef(null);
 
-    const filteredCases = filter === 'all' 
-        ? cases 
+    // 🛑 FIX 1: filteredCases is now correctly used in the return map 🛑
+    const filteredCases = filter === 'all'
+        ? cases
         : cases.filter(caseItem => caseItem.category.toLowerCase() === filter.toLowerCase());
 
+    // 🛑 FIX 2: handleCaseClick is now correctly used in the onClick handler 🛑
     const handleCaseClick = (caseId) => {
         navigate(`/case/${caseId}`);
     };
 
-    // 🛑 Line 20: Start of the return statement (must be inside the function) 🛑
     return (
-        // Container for scrolling: Apply horizontal scroll and snapping behavior
         <div 
-            className="w-full overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory" 
+            className="overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory" 
             ref={sliderRef}
         >
-            {/* Content container. Added pl-8 for initial padding. */}
-            <div className="flex space-x-6 pb-4 pl-8"> 
-                {filteredCases.map((caseItem, index) => (
-                    <motion.div
+            <div className="flex space-x-[0.1875rem] pb-4 pl-8"> 
+                {/* 🛑 USING filteredCases HERE 🛑 */}
+                {filteredCases.map((caseItem) => ( 
+                    <div
                         key={caseItem.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.05 }}
-                        // Set the width based on the viewport size (vw)
-                        className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[35vw] snap-center cursor-pointer group" 
-                        onClick={() => handleCaseClick(caseItem.id)}
+                        // 🛑 USING handleCaseClick HERE 🛑
+                        onClick={() => handleCaseClick(caseItem.id)} 
+                        className="flex-shrink-0 w-[510px] h-[742px] snap-center cursor-pointer group"
                     >
-                        <div className="relative overflow-hidden rounded-none bg-gray-100 aspect-[7/10] shadow-xl">
-                            <img
-                                src={caseItem.image}
-                                alt={caseItem.title}
-                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                loading="lazy"
-                            />
-                            
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                            
+                        <div className="relative overflow-hidden rounded-none bg-gray-100 aspect-[510/742]">
+                            {/* Image Placeholder */}
+                            <div className="w-full h-full bg-gray-400"></div>
+
+                            {/* Title (Ensuring the title is inside and styled) */}
                             <div className="absolute bottom-0 left-0 right-0 p-4">
                                 <h3 
-                                    className="text-white text-lg font-neue uppercase font-extrabold tracking-wider"
+                                    className="text-white text-lg font-neue uppercase font-extrabold tracking-wider text-title-gray"
                                 >
                                     {caseItem.title}
                                 </h3>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </div>
     );
-}; // 🛑 Line 60 (approx): End of the Component Function 🛑
-
+};
 export default CaseSlider;

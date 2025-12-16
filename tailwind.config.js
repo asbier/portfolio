@@ -11,7 +11,10 @@ module.exports = {
         'title-gray': '#D9D9D9', 
         'tag-gray': '#979797', 
         'background-light': '#F1F2E5',
-      }, // 🛑 CORRECTED: Only one comma (or none) here 🛑
+      },
+      fontFamily: {
+        'neue': ['NeueMontreal', 'sans-serif'],
+      },
     },
   },
   plugins: [],

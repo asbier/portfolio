@@ -2,14 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Define 600 weight: */
 @font-face {
   font-family: 'NeueMontreal';
-  /* 🛑 CHANGE: Use lowercase 'fonts' */
   src: url('./fonts/OTNeueMontreal-BoldExtraSqueezed.otf') format('opentype'); 
   font-weight: 600; 
   font-style: normal;
@@ -18,9 +13,7 @@
 /* Define 400 weight: */
 @font-face {
   font-family: 'NeueMontreal';
-  /* 🛑 CHANGE: Use lowercase 'fonts' */
   src: url('./fonts/OTNeueMontreal-BookSqueezed.otf') format('opentype');
   font-weight: 400; 
   font-style: normal;
 }
-/* ... check any other font definitions for this same issue ... */

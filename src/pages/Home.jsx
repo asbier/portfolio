@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar.jsx'; // Will now handle filters
-// 🛑 REMOVE THIS IMPORT: import FilterTabs from '../components/FilterTabs/FilterTabs.jsx'; 
 import CaseSlider from '../components/CaseSlider/CaseSlider.jsx'; 
 import { cases } from '../data/cases.js'; 
 
@@ -11,20 +10,23 @@ const Home = () => {
     const [activeFilter, setActiveFilter] = useState('all'); 
 
     return (
-        <div className="min-h-screen bg-white text-black">
-            {/* 🛑 PASS FILTER STATE TO NAVBAR 🛑 */}
+        <div className="min-h-screen bg-background-light"> 
             <Navbar 
                 activeFilter={activeFilter} 
                 setActiveFilter={setActiveFilter} 
             />
             
-            {/* 🛑 REMOVE STICKY HEADER AND FILTER SECTION FROM MAIN 🛑 */}
-            {/* The main content now starts after the fixed Navbar height. */}
-            <main className="pt-24 max-w-7xl mx-auto"> 
-                        
+            {/* 🛑 MODIFIED: Responsive top padding based on Navbar height 🛑 */}
+            {/* pt-20 for mobile, pt-32 for large screens where Navbar is taller */}
+            <main className="pt-20 lg:pt-32">
                 
-                {/* Case Slider remains */}
-                <div className="relative -mx-8"> 
+                {/* 🛑 ADD max-w-7xl mx-auto and px-8 here for centering text 🛑 */}
+                <div className="max-w-7xl mx-auto px-8 pb-4"> 
+                    <h2 className="text-xl font-neue mb-2">Portfolio</h2>
+                </div>
+                
+                {/* Case Slider remains (it needs to handle its own margins) */}
+                <div className="relative"> 
                    <CaseSlider 
                         cases={cases} 
                         filter={activeFilter}
@@ -33,6 +35,4 @@ const Home = () => {
             </main>
         </div>
     );
-};
-
-export default Home;
+}; export default Home;
