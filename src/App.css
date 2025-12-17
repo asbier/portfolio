@@ -17,3 +17,17 @@
   font-weight: 400; 
   font-style: normal;
 }
+
+/* Define SemiBoldExtraSqueezed: */
+@font-face {
+  font-family: 'NeueMontrealSemiBold';
+  src: url('./fonts/OTNeueMontreal-SemiBoldExtraSqueezed.otf') format('opentype');
+  font-weight: normal; 
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Ensure SemiBoldExtraSqueezed is used for case titles */
+.font-neue-semibold {
+  font-family: 'NeueMontrealSemiBold', sans-serif !important;
+}

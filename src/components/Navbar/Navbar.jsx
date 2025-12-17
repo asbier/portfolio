@@ -36,11 +36,11 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
           <nav className="flex space-x-2 lg:space-x-4 items-center w-full lg:w-auto justify-between lg:justify-end h-[70px]">
             <div className="flex space-x-2 overflow-x-auto no-scrollbar">
               {filterOptions.map((f) => (
-                <button key={f} onClick={() => setActiveFilter(f)} className={`text-[10px] lg:text-2xl font-black uppercase px-4 py-2 rounded-full border ${activeFilter === f ? 'bg-[#DFFF00] border-black shadow-[2px_2px_0px_rgba(0,0,0,1)]' : 'bg-transparent border-black/10 text-black/30'}`}>{f}</button>
+                <button key={f} onClick={() => setActiveFilter(f)} className={`text-[10px] lg:text-2xl font-semibold uppercase px-4 py-2 rounded-full border font-neue-semibold ${activeFilter === f ? 'bg-[#DFFF00] border-black/10' : 'bg-transparent border-black/10 text-black/30'}`}>{f}</button>
               ))}
             </div>
             <div className="flex items-center space-x-2">
-              <a href="mailto:mail@annemaris.de" className="px-5 py-2 lg:px-8 lg:py-3 text-[10px] lg:text-2xl font-black uppercase rounded-full bg-[#DFFF00] border border-black shadow-[2px_2px_0px_rgba(0,0,0,1)] lg:shadow-none lg:bg-transparent lg:border-black/10 lg:text-black/30">Contact</a>
+              <a href="mailto:mail@annemaris.de" className="px-5 py-2 lg:px-8 lg:py-3 text-[10px] lg:text-2xl font-semibold uppercase rounded-full bg-[#FFB115] border border-black/10 lg:bg-[#FFB115] lg:border-black/10 lg:text-black/30 font-neue-semibold">Contact</a>
               <button onClick={() => setIsMenuOpen(true)} className="lg:hidden w-10 h-10 rounded-full bg-black flex items-center justify-center"><div className="w-1.5 h-1.5 bg-white rounded-full"></div></button>
             </div>
           </nav>
