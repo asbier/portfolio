@@ -1,54 +1,53 @@
-// src/components/CaseSlider/CaseSlider.jsx
-
-import React, { useRef } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// Removed: import { motion } from 'framer-motion';
 
 const CaseSlider = ({ cases, filter }) => {
-    const navigate = useNavigate();
-    const sliderRef = useRef(null);
+  const navigate = useNavigate();
+  const filteredCases = filter === 'all' 
+    ? cases 
+    : cases.filter(c => c.category.toLowerCase() === filter.toLowerCase());
 
-    // 🛑 FIX 1: filteredCases is now correctly used in the return map 🛑
-    const filteredCases = filter === 'all'
-        ? cases
-        : cases.filter(caseItem => caseItem.category.toLowerCase() === filter.toLowerCase());
+  return (
+    /* Desktop: h-[calc(100vh-120px)] passt exakt unter die 120px Nav.
+       Mobile: h-[calc(100vh-80px)] füllt alles über der 80px Nav aus.
+       overflow-x-auto + scrollbar-hide verhindert sichtbare Balken.
+    */
+    <div className="w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory bg-background-light
+                    mt-0 h-[calc(100vh-80px)]      /* Mobile: Startet ganz oben */
+                    lg:mt-[120px] lg:h-[calc(100vh-120px)]"> 
+      
+      <div className="flex h-full w-max"> {/* w-max verhindert das Stauchen der Bilder */}
+        {filteredCases.map((caseItem) => ( 
+          <div
+            key={caseItem.id}
+            onClick={() => navigate(`/case/${caseItem.id}`)}
+            className="flex-shrink-0 w-screen h-full snap-center relative group
+                       lg:w-[33.33vw] lg:border-r lg:border-black/5"
+          >
+            <img 
+              src={caseItem.image} 
+              alt={caseItem.title} 
+              className="absolute inset-0 w-full h-full object-cover" 
+            />
 
-    // 🛑 FIX 2: handleCaseClick is now correctly used in the onClick handler 🛑
-    const handleCaseClick = (caseId) => {
-        navigate(`/case/${caseId}`);
-    };
-
-    return (
-        <div 
-            className="overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory" 
-            ref={sliderRef}
-        >
-            <div className="flex space-x-[0.1875rem] pb-4 pl-8"> 
-                {/* 🛑 USING filteredCases HERE 🛑 */}
-                {filteredCases.map((caseItem) => ( 
-                    <div
-                        key={caseItem.id}
-                        // 🛑 USING handleCaseClick HERE 🛑
-                        onClick={() => handleCaseClick(caseItem.id)} 
-                        className="flex-shrink-0 w-[510px] h-[742px] snap-center cursor-pointer group"
-                    >
-                        <div className="relative overflow-hidden rounded-none bg-gray-100 aspect-[510/742]">
-                            {/* Image Placeholder */}
-                            <div className="w-full h-full bg-gray-400"></div>
-
-                            {/* Title (Ensuring the title is inside and styled) */}
-                            <div className="absolute bottom-0 left-0 right-0 p-4">
-                                <h3 
-                                    className="text-white text-lg font-neue uppercase font-extrabold tracking-wider text-title-gray"
-                                >
-                                    {caseItem.title}
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
+            {/* Overlay für Titel & Tags wie im Ziel-Design */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent flex flex-col justify-end p-8">
+              <h3 className="text-white text-3xl lg:text-5xl font-black font-neue uppercase leading-none mb-4">
+                {caseItem.title}
+              </h3>
+              <div className="flex gap-2">
+                {caseItem.tags?.map(tag => (
+                  <span key={tag} className="px-4 py-1 border border-white/40 rounded-full text-[10px] text-white uppercase font-neue backdrop-blur-md">
+                    {tag}
+                  </span>
                 ))}
+              </div>
             </div>
-        </div>
-    );
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
+
 export default CaseSlider;
