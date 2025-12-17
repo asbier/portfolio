@@ -7,32 +7,32 @@ const CaseDetail = lazy(() => import('./pages/CaseDetail'));
 
 const cases = [
   {
-    id: 1,
-    title: "E-Commerce Platform Redesign",
-    category: "commercial",
-    image: "/images/project1.jpg", 
-    tags: ["Volkswagen", "Product Design", "Landingpage", "UX/UI"],
-    description: "A deep dive into the digital transformation of e-commerce systems.",
+    id: 0, // Das wird dein Berlin Dashboard
+    title: "Berlin Tech Job Dashboard",
+    category: "PRODUCT DESIGN / DEV COLLAB",
+    // Dein Verlauf
+    image: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)", 
+    tags: ["REACT", "TAILWIND", "DASHBOARD"],
+    description: "A collaborative project for the Berlin tech market.",
     year: "2024",
-    // 💡 DIESE FELDER FEHLTEN:
-    challenge: "The existing platform suffered from high bounce rates and a fragmented checkout process that frustrated users.",
-    impact: "Boosted conversion rates by 25% and reduced mobile cart abandonment through a simplified 3-step checkout flow.",
-    outcome: "A scalable, high-performing design system that unified the brand's global digital presence.",
-    detailImage1: "/images/detail1.jpg", // Stelle sicher, dass die Pfade stimmen
-    detailImage2: "/images/detail2.jpg"
+    challenge: "Fragmented job data made it hard for developers to find roles.",
+    impact: "Created a focused interface for tech-stack based job hunting.",
+    outcome: "A high-fidelity MVP built with a developer partner."
   },
   {
-    id: 2,
-    title: "Brand Identity System",
-    category: "private",
-    image: "/images/project2.jpg",
-    tags: ["Branding", "Concept", "Design System"],
-    description: "Developing a cohesive visual language for modern brands.",
-    year: "2023",
-    challenge: "Defining a visual identity that feels both high-tech and human-centric for an AI-driven service.",
-    impact: "The new identity secured a Series A funding round and established a distinctive market presence.",
-    outcome: "A flexible brand toolkit including custom iconography and a vibrant typography-led interface.",
-    detailImage1: "/images/brand-detail1.jpg"
+    id: 1, // Das wird Hella Gutmann
+    title: "Hella Gutmann Solution",
+    category: "PRODUCT DESIGN",
+    // Dein Pfad
+    image: "/images/01_hellagutmann/sliderImage_hellagutmann_dashboard_hero.jpg",
+    tags: ["DIAGNOSTICS", "ADAS", "UI-DESIGN"],
+    description: "Advanced diagnostic systems for workshops.",
+    year: "2024",
+    challenge: "Workshops needed faster vehicle selection.",
+    impact: "Streamlined ADAS workflows to save time.",
+    detailImage1: "/images/01_hellagutmann/fahrzeug_auswählen_basis_default_1280-800.png",
+    detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.png",
+    outcome: "Reduced vehicle selection time and improved accuracy."
   }
 ];
 
