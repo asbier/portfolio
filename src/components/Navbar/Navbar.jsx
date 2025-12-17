@@ -10,49 +10,44 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
   
   return (
     <header className="fixed top-0 left-0 w-full z-20 bg-background-light"> 
-      {/* Reduced padding for tighter fit */}
       <div className="flex justify-between items-center px-4 py-4 max-w-7xl mx-auto"> 
         
-        {/* Left Side: Large Title - Apply D9D9D9 color */}
-        <h1 className="text-4xl sm:text-5xl font-bold font-neue uppercase text-title-gray">
+        {/* Titel: Responsiv skaliert (text-xl auf Mobile, text-5xl auf Desktop) */}
+        <h1 className="text-xl sm:text-2xl lg:text-5xl font-bold font-neue uppercase text-title-gray">
           PRODUCT DESIGN & BRANDING 
         </h1>
 
-        {/* Right Side: Consolidated Navigation and Filters */}
-        <nav className="flex space-x-2 items-center">
+        <nav className="flex space-x-1 sm:space-x-2 items-center">
           
           {/* Filter Buttons */}
           {filterOptions.map((filterName) => (
             <button 
                 key={filterName}
                 onClick={() => handleFilterChange(filterName)}
-                // 🛑 NEW STYLING 🛑
                 className={`
-                    px-6 py-2 
-                    text-[2rem] font-semibold uppercase 
-                    font-neue rounded-full border border-[1px] transition-colors 
-                    ${activeFilter === filterName 
-                        ? 'bg-portfolio-green text-black border-portfolio-green' 
-                        : 'hover:bg-gray-100 text-tag-gray border-tag-gray'
-                    }`
-                }
+                  px-3 py-1 lg:px-6 lg:py-2 
+                  text-xs sm:text-base lg:text-[2rem] font-semibold uppercase 
+                  font-neue rounded-full border border-[1px] transition-colors 
+                  ${activeFilter === filterName 
+                      ? 'bg-portfolio-green text-black border-portfolio-green' 
+                      : 'hover:bg-gray-100 text-tag-gray border-tag-gray'
+                  }`}
             >
                 {filterName.toUpperCase()}
             </button>
           ))}
 
-          {/* Main Navigation Links (Contact, History) */}
+          {/* Main Navigation Links */}
           {mainNavs.map((item) => (
             <a 
               key={item} 
-              href={item === 'Contact' ? '/contact' : '/history'} 
-              // 🛑 NEW STYLING & NO ACTIVE STATE FOR CONTACT 🛑
+              /* 🛑 HIER IST DIE ÄNDERUNG: mailto für Contact 🛑 */
+              href={item === 'Contact' ? 'mailto:deine-email@beispiel.de' : '/history'} 
               className={`
-                px-6 py-2 
-                text-[2rem] font-semibold uppercase 
+                px-3 py-1 lg:px-6 lg:py-2 
+                text-xs sm:text-base lg:text-[2rem] font-semibold uppercase 
                 font-neue rounded-full border border-[1px] transition-colors 
-                hover:bg-gray-100 text-tag-gray border-tag-gray`
-              }
+                hover:bg-gray-100 text-tag-gray border-tag-gray`}
             >
               {item}
             </a>
