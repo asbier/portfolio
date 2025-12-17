@@ -9,10 +9,10 @@ const CaseSlider = ({ cases, filter }) => {
     : cases.filter(c => c.category.toLowerCase() === filter.toLowerCase());
 
   return (
-    <div className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory 
-    top-0 
-    h-[calc(100vh-110px)] /* Muss exakt h der Navbar entsprechen */
-    lg:top-[120px] lg:h-[calc(100vh-120px)]">
+   <div className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory 
+                top-0 
+               h-[calc(100vh-119px)] /* Muss exakt h der Navbar entsprechen */
+                lg:top-[120px] lg:h-[calc(100vh-120px)]">
       
       <div className="flex h-full w-max">
         {filteredCases.map((caseItem) => ( 
