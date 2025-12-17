@@ -8,15 +8,16 @@ const CaseSlider = ({ cases, filter }) => {
     : cases.filter(c => c.category.toLowerCase() === filter.toLowerCase());
 
   return (
-    /* Desktop: h-[calc(100vh-120px)] passt exakt unter die 120px Nav.
-       Mobile: h-[calc(100vh-80px)] füllt alles über der 80px Nav aus.
-       overflow-x-auto + scrollbar-hide verhindert sichtbare Balken.
+    /* Wir nutzen 'fixed' oder 'absolute', um sicherzustellen, dass 
+       kein Padding des Eltern-Elements (z.B. in App.jsx) den Slider verschiebt.
     */
-    <div className="w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory bg-background-light
-                    mt-0 h-[calc(100vh-80px)]      /* Mobile: Startet ganz oben */
-                    lg:mt-[120px] lg:h-[calc(100vh-120px)]"> 
+    <div className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory bg-background-light
+                    /* 📱 Mobile: Startet exakt bei 0, füllt Platz bis zur 80px Nav unten */
+                    top-0 h-[calc(100vh-80px)] 
+                    /* 💻 Desktop: Startet exakt unter der 120px Nav oben */
+                    lg:top-[120px] lg:h-[calc(100vh-120px)]"> 
       
-      <div className="flex h-full w-max"> {/* w-max verhindert das Stauchen der Bilder */}
+      <div className="flex h-full w-max">
         {filteredCases.map((caseItem) => ( 
           <div
             key={caseItem.id}
@@ -30,18 +31,11 @@ const CaseSlider = ({ cases, filter }) => {
               className="absolute inset-0 w-full h-full object-cover" 
             />
 
-            {/* Overlay für Titel & Tags wie im Ziel-Design */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent flex flex-col justify-end p-8">
-              <h3 className="text-white text-3xl lg:text-5xl font-black font-neue uppercase leading-none mb-4">
+            {/* Titel am unteren Rand des Bildes */}
+            <div className="absolute inset-x-0 bottom-0 p-8 lg:p-12 bg-gradient-to-t from-black/60 to-transparent">
+              <h3 className="text-white text-3xl lg:text-5xl font-black font-neue uppercase leading-none tracking-tighter">
                 {caseItem.title}
               </h3>
-              <div className="flex gap-2">
-                {caseItem.tags?.map(tag => (
-                  <span key={tag} className="px-4 py-1 border border-white/40 rounded-full text-[10px] text-white uppercase font-neue backdrop-blur-md">
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         ))}
