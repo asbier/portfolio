@@ -21,7 +21,7 @@ const cases = [
   },
   {
     id: 1, // Das wird Hella Gutmann
-    title: "Hella Gutmann Solution",
+    title: "HellagutmannxDAYONE",
     category: "PRODUCT DESIGN",
     // Dein Pfad
     image: "/images/01_hellagutmann/sliderImage_hellagutmann_dashboard_hero.jpg",
@@ -31,7 +31,8 @@ const cases = [
     challenge: "Workshops needed faster vehicle selection.",
     impact: "Streamlined ADAS workflows to save time.",
     detailImage1: "/images/01_hellagutmann/fahrzeug_auswählen_basis_default_1280-800.png",
-    detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.png",
+  detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.png",
+  detailImage3: "/images/01_hellagutmann/hellagutmann_dashboard_adas_guide.png",
     outcome: "Reduced vehicle selection time and improved accuracy."
   }
 ];

@@ -91,7 +91,16 @@ const MobileCaseView = ({ caseItem }) => {
               <img src={caseItem.detailImage2} alt="Detail 2" className="w-full h-auto" />
             </div>
           )}
-
+{/* DETAIL IMAGE 3 (ADAS Guide) */}
+{caseItem.detailImage3 && (
+  <div className="w-full h-auto py-4">
+    <img 
+      src={caseItem.detailImage3} 
+      alt="ADAS Guide" 
+      className="w-full h-auto rounded-lg shadow-lg" 
+    />
+  </div>
+)}
           {caseItem.outcome && (
             <div className="space-y-6 border-t border-black/10 pt-10">
               <span className="text-[10px] font-bold uppercase tracking-widest text-black/40">03. Outcome</span>

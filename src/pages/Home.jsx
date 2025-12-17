@@ -1,35 +1,29 @@
-// src/pages/Home.jsx
-
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar/Navbar.jsx'; // Will now handle filters
-import CaseSlider from '../components/CaseSlider/CaseSlider.jsx'; 
-import { cases } from '../data/cases.js'; 
+import Navbar from '../components/Navbar/Navbar.jsx'; 
+import CaseSlider from '../components/CaseSlider/CaseSlider.jsx'; 
 
-const Home = () => {
-    // 🛑 KEEP STATE HERE: This state controls the slider filtering.
-    const [activeFilter, setActiveFilter] = useState('all'); 
+// 🛑 WICHTIG: Den alten Import von '../data/cases.js' löschen!
 
-    return (
-        <div className="min-h-screen bg-background-light"> 
-            <Navbar 
-                activeFilter={activeFilter} 
-                setActiveFilter={setActiveFilter} 
-            />
-            
-            {/* 🛑 MODIFIED: Responsive top padding based on Navbar height 🛑 */}
-            {/* pt-20 for mobile, pt-32 for large screens where Navbar is taller */}
-            <main className="pt-20 lg:pt-32">
-                
-            
-                
-                {/* Case Slider remains (it needs to handle its own margins) */}
-                <div className="relative"> 
-                   <CaseSlider 
-                        cases={cases} 
-                        filter={activeFilter}
-                    /> 
-                </div>
-            </main>
-        </div>
-    );
-}; export default Home;
+const Home = ({ cases }) => { // ⬅️ cases hier als Prop entgegennehmen
+    const [activeFilter, setActiveFilter] = useState('all'); 
+
+    return (
+        <div className="min-h-screen bg-[#F1F2E5]"> 
+            <Navbar 
+                activeFilter={activeFilter} 
+                setActiveFilter={setActiveFilter} 
+            />
+            
+            <main className="pt-20 lg:pt-32">
+                <div className="relative"> 
+                   <CaseSlider 
+                        cases={cases}  // Nutzt jetzt die Daten aus App.jsx
+                        filter={activeFilter}
+                    /> 
+                </div>
+            </main>
+        </div>
+    );
+}; 
+
+export default Home;
