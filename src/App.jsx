@@ -7,20 +7,22 @@ const CaseDetail = lazy(() => import('./pages/CaseDetail'));
 
 const cases = [
   {
-    id: 0, // Das wird dein Berlin Dashboard
+    id: 1,
     title: "Berlin Tech Job Dashboard",
     category: "PRODUCT DESIGN / DEV COLLAB",
-    // Dein Verlauf
-    image: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)", 
+    image: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)", // Nur EINMAL 'image' behalten!
     tags: ["REACT", "TAILWIND", "DASHBOARD"],
-    description: "A collaborative project for the Berlin tech market.",
+    description: "Visualizing the Berlin tech job market through data-driven design.",
     year: "2024",
     challenge: "Fragmented job data made it hard for developers to find roles.",
+    detailImage1: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
     impact: "Created a focused interface for tech-stack based job hunting.",
-    outcome: "A high-fidelity MVP built with a developer partner."
+    detailImage2: "linear-gradient(180deg, #363C53 0%, #1A1D25 100%)",
+    outcome: "A high-fidelity MVP built with a developer partner.",
+    detailImage3: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
   },
   {
-    id: 1, // Das wird Hella Gutmann
+    id: 2, 
     title: "HellagutmannxDAYONE",
     category: "PRODUCT DESIGN",
     // Dein Pfad

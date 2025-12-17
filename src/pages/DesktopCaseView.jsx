@@ -14,8 +14,9 @@ const DesktopCaseView = ({ caseItem }) => {
   // Beispiel-Anordnung der Bilder für das Desktop-Grid
   const caseImages = [
     { id: 1, url: caseItem.image, format: 'portrait', initialX: 450, initialY: 100 },
-    { id: 2, url: caseItem.image, format: 'landscape', initialX: 850, initialY: 450 },
-  ];
+    { id: 2, url: caseItem.detailImage1, format: 'landscape', initialX: 850, initialY: 450 },
+    { id: 3, url: caseItem.detailImage2, format: 'portrait', initialX: 150, initialY: 400 },
+  ].filter(img => img.url); // Zeigt nur Bilder an, die existieren
 
   return (
     <div className="min-h-screen bg-[#F1F2E5] overflow-hidden">

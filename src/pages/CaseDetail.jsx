@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCaseById } from '../data/cases';
+// Den Import von getCaseById löschen wir, da wir die Props nutzen!
 import MobileCaseView from './MobileCaseView';
 import DesktopCaseView from './DesktopCaseView';
 
-const CaseDetail = () => {
+const CaseDetail = ({ cases }) => { // <--- cases als Prop empfangen
   const { id } = useParams();
-  const caseItem = getCaseById(id);
+  
+  // Wir suchen direkt im cases-Array
+  const caseItem = cases.find((c) => c.id.toString() === id.toString());
+
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
   useEffect(() => {
