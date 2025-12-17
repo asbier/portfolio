@@ -9,9 +9,10 @@ const CaseSlider = ({ cases, filter }) => {
     : cases.filter(c => c.category.toLowerCase() === filter.toLowerCase());
 
   return (
-    <div className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory bg-background-light
-                    top-0 h-[calc(100vh-80px)] 
-                    lg:top-[120px] lg:h-[calc(100vh-120px)]"> 
+    <div className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory 
+    top-0 
+    h-[calc(100vh-110px)] /* Muss exakt h der Navbar entsprechen */
+    lg:top-[120px] lg:h-[calc(100vh-120px)]">
       
       <div className="flex h-full w-max">
         {filteredCases.map((caseItem) => ( 
@@ -28,8 +29,8 @@ const CaseSlider = ({ cases, filter }) => {
               className="absolute inset-0 w-full h-full object-cover" 
             />
 
-            {/* 🏷️ TAGS SECTION (Unten Links, über dem Titel) */}
-            <div className="absolute bottom-24 left-8 lg:bottom-32 lg:left-12 flex flex-wrap gap-2 z-10">
+            {/* 🏷️ TAGS SECTION (Angepasst: Höher rutschen wegen Navbar) */}
+            <div className="absolute bottom-32 left-8 lg:bottom-32 lg:left-12 flex flex-wrap gap-2 z-10">
               {caseItem.tags && caseItem.tags.map((tag, index) => (
                 <span 
                   key={index} 
@@ -40,8 +41,8 @@ const CaseSlider = ({ cases, filter }) => {
               ))}
             </div>
 
-            {/* Titel am unteren Rand mit sanftem Verlauf */}
-            <div className="absolute inset-x-0 bottom-0 p-8 lg:p-12 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
+            {/* Titel (Angepasst: padding-bottom erhöht, damit er über der Navbar steht) */}
+            <div className="absolute inset-x-0 bottom-0 p-8 pb-12 lg:p-12 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
               <h3 className="text-white text-3xl lg:text-5xl font-black font-neue uppercase leading-none tracking-tighter">
                 {caseItem.title}
               </h3>

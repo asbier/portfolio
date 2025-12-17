@@ -6,12 +6,11 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
   const filterOptions = ['all', 'commercial', 'private'];
   const hiddenPages = ['Home', 'Privacy', 'Contact'];
 
-  // Der Text für den Lauf-Titel
   const marqueeText = "PRODUCT DESIGN & BRANDING ✦ SINCE 2012 ✦ SPECIALISED IN E-COMMERCE & SERVICE DESIGN ✦ GOOD DESIGN PERFORMS ✦ STOP BEING BORING ✦ ";
 
   return (
     <>
-      {/* --- MOBILE PAPYRUS MODAL --- (Unverändert) */}
+      {/* --- MOBILE PAPYRUS MODAL --- */}
       {isMenuOpen && (
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/5 backdrop-blur-md" 
@@ -30,15 +29,15 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
       )}
 
       {/* --- MAIN NAVBAR --- */}
-      {/* Mobile: bottom-0 | Desktop: top-0 */}
+      {/* Festgelegte Höhe h-[110px] für Mobile, um den Gap zum Slider zu schließen */}
       <header className="fixed left-0 w-full z-50 bg-[#F1F2E5]/90 backdrop-blur-sm
-                        bottom-0 border-t border-black/5 h-auto
-                        lg:top-0 lg:bottom-auto lg:h-[120px] lg:border-t-0 lg:border-b">
+                  bottom-0 border-t border-black/5 h-[110px] /* Festwert */
+                  lg:top-0 lg:bottom-auto lg:h-[120px] lg:border-t-0 lg:border-b">
         
-        <div className="flex flex-col lg:flex-row justify-between items-center px-6 py-4 lg:py-0 h-full max-w-[1800px] mx-auto overflow-hidden"> 
+        <div className="flex flex-col lg:flex-row justify-between items-center px-6 h-full max-w-[1800px] mx-auto overflow-hidden"> 
           
-          {/* 1. MARQUEE BEREICH: Mobile oben in der Navbar, Desktop links */}
-          <div className="w-full lg:flex-1 lg:max-w-[50%] overflow-hidden whitespace-nowrap mb-4 lg:mb-0 lg:mr-4 border-b border-black/5 lg:border-none pb-2 lg:pb-0">
+          {/* 1. MARQUEE BEREICH (Höhe fixiert auf 40px) */}
+          <div className="w-full lg:flex-1 lg:max-w-[50%] overflow-hidden whitespace-nowrap h-[40px] flex items-center border-b border-black/5 lg:border-none">
             <motion.div 
               animate={{ x: [0, -1000] }} 
               transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
@@ -49,8 +48,8 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
             </motion.div>
           </div>
 
-          {/* 2. NAVIGATION & FILTER */}
-          <nav className="flex space-x-2 lg:space-x-4 items-center w-full lg:w-auto justify-between lg:justify-end">
+          {/* 2. NAVIGATION & FILTER (Restliche Höhe 70px) */}
+          <nav className="flex space-x-2 lg:space-x-4 items-center w-full lg:w-auto justify-between lg:justify-end h-[70px]">
             <div className="flex space-x-2 overflow-x-auto no-scrollbar py-1">
               {filterOptions.map((f) => (
                 <button 
@@ -66,7 +65,6 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
                 </button>
               ))}
               
-              {/* Mobile History Button */}
               <button className="lg:hidden text-[10px] font-black uppercase px-4 py-2 rounded-full border border-black/10 text-black/30">
                 History
               </button>
