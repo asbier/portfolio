@@ -34,7 +34,7 @@ const MobileCaseView = ({ caseItem }) => {
         {/* 3. CONTENT BEREICH */}
         <div className="px-5 pt-8">
           <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#FFB115] mb-3 block">
-            {caseItem.category} // UI DESIGN
+            {caseItem.category} {/* UI DESIGN*/}
           </span>
           
           {/* Tight Headline Look */}
