@@ -44,7 +44,17 @@ const CaseSlider = ({ cases, filter }) => {
 
               {/* Titel-Overlay */}
               <div className="absolute inset-x-0 bottom-0 p-8 pb-12 lg:p-12 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
-                <h3 className="text-white text-2xl lg:text-5xl font-semibold font-neue-semibold uppercase leading-none tracking-tighter">
+                {/* Tags */}
+                {caseItem.tags && caseItem.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {caseItem.tags.map((tag, index) => (
+                      <span key={index} className="px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase text-[#979797] bg-transparent border border-[#979797]">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <h3 className="text-[#979797] text-2xl lg:text-5xl font-semibold font-neue-semibold uppercase leading-none tracking-tighter">
                   {caseItem.title}
                 </h3>
               </div>

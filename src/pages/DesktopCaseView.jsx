@@ -32,7 +32,7 @@ const DesktopCaseView = ({ caseItem }) => {
         </button>
 
         <div className="absolute top-[200px] left-12 z-0 max-w-4xl pointer-events-none">
-          <h1 className="text-9xl font-black font-neue uppercase tracking-tighter text-black/10 leading-[0.8] mb-8">
+          <h1 className="text-9xl font-semibold font-neue-semibold uppercase tracking-tighter text-[#979797] leading-[0.8] mb-8">
             {caseItem.title}
           </h1>
         </div>

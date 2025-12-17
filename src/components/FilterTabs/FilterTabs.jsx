@@ -14,11 +14,11 @@ const FilterTabs = ({ activeFilter, onFilterChange }) => {
                     key={filter.id}
                     onClick={() => onFilterChange(filter.id)}
                     className={`
-                        px-4 py-1 text-sm uppercase font-neue font-medium rounded-full transition-colors 
+                        px-4 py-1 text-sm uppercase font-semibold font-neue-semibold rounded-full transition-colors 
                         ${
                             activeFilter === filter.id
                             ? 'bg-portfolio-green text-black' // Active style: Green background, black text
-                            : 'bg-transparent text-black border border-gray-300 hover:bg-gray-100' // Inactive style
+                            : 'bg-transparent text-[#979797] border border-gray-300 hover:bg-gray-100' // Inactive style
                         }
                     `}
                 >

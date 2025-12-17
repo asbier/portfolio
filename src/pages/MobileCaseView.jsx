@@ -41,7 +41,7 @@ const MobileCaseView = ({ caseItem }) => {
           
           <div className="absolute bottom-6 left-5 flex flex-wrap gap-2">
             {caseItem.tags?.map((tag, index) => (
-              <span key={index} className="px-4 py-1.5 border border-white/40 rounded-full text-[10px] text-white uppercase font-bold backdrop-blur-md">
+              <span key={index} className="px-4 py-2 rounded-full text-[10px] font-semibold font-neue-semibold uppercase text-[#979797] bg-transparent border border-[#979797]">
                 {tag}
               </span>
             ))}
@@ -55,7 +55,7 @@ const MobileCaseView = ({ caseItem }) => {
           <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#FFB115] mb-3 block">
             {caseItem.category}
           </span>
-          <h1 className="text-[40px] font-black uppercase tracking-tighter leading-[0.85] mb-6">
+          <h1 className="text-[40px] font-semibold font-neue-semibold uppercase tracking-tighter leading-[0.85] mb-6 text-[#979797]">
             {caseItem.title}
           </h1>
           <div className="flex justify-between items-start border-b border-black/10 pb-12">
