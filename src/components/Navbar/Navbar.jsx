@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 const Navbar = ({ activeFilter, setActiveFilter }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  // Angleichung der Filter-Namen an deine Screenshots
   const filterOptions = ['all', 'commercial', 'private'];
   const hiddenPages = ['Home', 'Privacy', 'Contact'];
 
@@ -26,7 +25,6 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
                 </a>
               ))}
             </div>
-            {/* Der neongelbe Punkt im Modal wie im Screenshot */}
             <div className="mt-12 flex justify-center">
                 <div className="w-4 h-4 bg-[#DFFF00] rounded-full shadow-[0_0_15px_#DFFF00]"></div>
             </div>
@@ -35,27 +33,27 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
       )}
 
       {/* --- MAIN NAVBAR --- */}
-      <header className="fixed left-0 w-full z-40 bg-background-light border-gray-100 
+      <header className="fixed left-0 w-full z-40 bg-background-light 
                         bottom-0 h-[80px] border-t          /* Mobile Layout */
-                        lg:top-0 lg:bottom-auto lg:h-[120px] lg:border-t-0 lg:border-b">
+                        lg:top-0 lg:bottom-auto lg:h-[120px] lg:border-t-0 lg:border-b border-gray-100">
         
         <div className="flex justify-between items-center px-6 h-full max-w-[1800px] mx-auto"> 
           
-          {/* Titel: Desktop groß & dunkel, Mobile klein & dezent */}
+          {/* Titel */}
           <h1 className="text-lg lg:text-6xl font-black font-neue uppercase text-title-gray opacity-40 lg:opacity-100 tracking-tighter">
             PRODUCT DESIGN & BRANDING 
           </h1>
 
-          <nav className="flex space-x-3 lg:space-x-6 items-center">
+          <nav className="flex space-x-3 lg:space-x-4 items-center">
             {/* Dynamische Filter Buttons */}
             {filterOptions.map((f) => (
               <button 
                 key={f}
                 onClick={() => setActiveFilter(f)}
-                className={`text-xs lg:text-2xl font-black uppercase font-neue transition-all pb-1
+                className={`text-[10px] lg:text-2xl font-black uppercase font-neue transition-all px-4 py-1.5 lg:px-8 lg:py-3 rounded-full border
                   ${activeFilter === f 
-                    ? 'lg:bg-portfolio-green lg:px-6 lg:py-2 lg:rounded-full lg:text-black border-b-2 border-black lg:border-b-0' 
-                    : 'text-tag-gray lg:border lg:border-tag-gray lg:px-6 lg:py-2 lg:rounded-full hover:text-black'
+                    ? 'bg-[#DFFF00] border-[#DFFF00] text-black' 
+                    : 'bg-transparent border-black/10 text-tag-gray hover:border-black hover:text-black'
                   }`}
               >
                 {f}
@@ -63,24 +61,24 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
             ))}
 
             {/* Desktop Only: History Button */}
-            <a href="/history" className="hidden lg:block px-6 py-2 text-2xl font-black uppercase font-neue rounded-full border border-tag-gray text-tag-gray hover:bg-black hover:text-white transition-all">
+            <a href="/history" className="hidden lg:block px-8 py-3 text-2xl font-black uppercase font-neue rounded-full border border-black/10 text-tag-gray hover:border-black hover:text-black transition-all">
               History
             </a>
 
-            {/* Contact CTA: Giftgrün auf Mobile (Screen 08.26.33), Pill auf Desktop */}
+            {/* Contact CTA: Jetzt mit Outline im Default auf Desktop */}
             <a href="mailto:mail@annemaris.de" 
-               className="px-5 py-2 text-xs lg:text-2xl font-black uppercase font-neue rounded-full 
+               className="px-5 py-2 lg:px-8 lg:py-3 text-[10px] lg:text-2xl font-black uppercase font-neue rounded-full 
                           bg-[#DFFF00] text-black border-none
-                          lg:bg-transparent lg:border lg:border-tag-gray lg:text-tag-gray lg:hover:bg-portfolio-green">
+                          lg:bg-transparent lg:border lg:border-black/10 lg:text-tag-gray lg:hover:border-black lg:hover:text-black transition-all">
               Contact
             </a>
 
-            {/* Menü-Punkt (Dot) */}
+            {/* Menü-Punkt (Dot): NUR Mobile & kleiner */}
             <button 
               onClick={() => setIsMenuOpen(true)} 
-              className="w-10 h-10 lg:w-14 lg:h-14 rounded-full bg-black flex items-center justify-center hover:scale-110 active:scale-90 transition-transform"
+              className="lg:hidden w-10 h-10 rounded-full bg-black flex items-center justify-center hover:scale-110 active:scale-90 transition-transform"
             >
-              <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
             </button>
           </nav>
         </div>
