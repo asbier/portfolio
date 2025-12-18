@@ -27,7 +27,21 @@
   font-display: swap;
 }
 
+/* Define BookSemiSqueezed: */
+@font-face {
+  font-family: 'NeueMontrealBookSemi';
+  src: url('./fonts/OTNeueMontreal-BookSemiSqueezed.otf') format('opentype');
+  font-weight: normal; 
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Ensure SemiBoldExtraSqueezed is used for case titles */
 .font-neue-semibold {
   font-family: 'NeueMontrealSemiBold', sans-serif !important;
+}
+
+/* Ensure BookSemiSqueezed is used for body copy */
+.font-neue-book-semi {
+  font-family: 'NeueMontrealBookSemi', sans-serif !important;
 }

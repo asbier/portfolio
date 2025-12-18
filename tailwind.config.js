@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         'neue': ['NeueMontreal', 'sans-serif'],
         'neue-semibold': ['NeueMontrealSemiBold'],
+        'neue-book-semi': ['NeueMontrealBookSemi'],
       },
     },
   },
