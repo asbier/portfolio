@@ -1,8 +1,10 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 
 const MobileCaseView = ({ caseItem }) => {
+  const navigate = useNavigate();
   // Hilfsfunktion: Entscheidet ob Bild oder Verlauf gerendert wird
   const renderMedia = (source, alt, className = "") => {
     if (!source) return null;
@@ -10,7 +12,7 @@ const MobileCaseView = ({ caseItem }) => {
 
     return (
       <div 
-        className={`w-full overflow-hidden rounded-xl ${className}`}
+        className={`w-full overflow-hidden ${className}`}
         style={{ 
           background: isGradient ? source : 'transparent',
           aspectRatio: isGradient ? '16/9' : 'auto' // Platzhalter-Ratio für Verläufe
@@ -26,13 +28,13 @@ const MobileCaseView = ({ caseItem }) => {
   const heroIsGradient = caseItem.image?.startsWith('linear-gradient');
 
   return (
-    <div className="min-h-screen bg-[#F1F2E5] text-black font-neue">
+    <div className="min-h-screen bg-[#F1F2E5] text-black font-neue overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
       <Navbar />
       
-      <main className="pt-0 pb-32"> 
-        {/* 1. HERO BEREICH */}
+      <main className="pt-0 pb-32 scroll-smooth"> 
+        {/* 1. HERO BEREICH - Sticky */}
         <div 
-          className="relative w-full h-[60vh] overflow-hidden"
+          className="sticky top-0 z-30 relative w-full h-[60vh] overflow-hidden"
           style={{ background: heroIsGradient ? caseItem.image : 'transparent' }}
         > 
           {!heroIsGradient && (
@@ -50,13 +52,20 @@ const MobileCaseView = ({ caseItem }) => {
 
         <div className="h-[3px] w-full bg-[#F1F2E5]"></div>
 
+        {/* Navigation - Above first card */}
+        <div className="px-5 pt-8 pb-4">
+          <button 
+            onClick={() => navigate('/')}
+            className="text-xs font-black font-neue uppercase border-b border-black"
+          >
+            ← See all cases
+          </button>
+        </div>
+
         {/* 2. INTRO CARD */}
-        <div className="px-5 pt-8 mb-[3px]">
-          <div className="bg-[#E2DED3] p-8 rounded-[2rem] space-y-0">
-            <span className="text-[10px] font-semibold font-neue-semibold uppercase tracking-[0.15em] text-[#FFB115] mb-3 block">
-              {caseItem.category}
-            </span>
-            <h1 className="text-[32px] lg:text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-[68px]">
+        <div className="px-5 mb-[0.1875rem]">
+          <div className="bg-[#E2DED3] p-8 space-y-0">
+            <h1 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">
               {caseItem.title}
             </h1>
             <div className="flex justify-between items-start">
@@ -71,46 +80,46 @@ const MobileCaseView = ({ caseItem }) => {
         </div>
 
         {/* 3. CONTENT SECTIONS */}
-        <div className="px-5 space-y-[3px]">
+        <div className="px-5 space-y-[0.1875rem] snap-y snap-mandatory">
           
           {/* CHALLENGE */}
           {caseItem.challenge && (
-            <div className="space-y-6">
-              <div className="bg-[#E2DED3] p-8 rounded-[2rem] space-y-0">
-                <h2 className="text-[32px] lg:text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-[68px]">CHALLENGE</h2>
+            <div className="space-y-[0.1875rem] snap-start">
+              <div className="bg-[#E2DED3] p-8 space-y-0">
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">CHALLENGE</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
               </div>
-              {renderMedia(caseItem.detailImage1, "Challenge Detail", "py-4 grayscale hover:grayscale-0 transition-all duration-700")}
+              {renderMedia(caseItem.detailImage1, "Challenge Detail", "grayscale hover:grayscale-0 transition-all duration-700")}
             </div>
           )}
 
           {/* IMPACT */}
           {caseItem.impact && (
-            <div className="space-y-6">
-              <div className="bg-[#E2DED3] p-8 rounded-[2rem] space-y-0">
-                <h2 className="text-[32px] lg:text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-[68px]">IMPACT</h2>
+            <div className="space-y-[0.1875rem] snap-start">
+              <div className="bg-[#E2DED3] p-8 space-y-0">
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">IMPACT</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
               </div>
-              {renderMedia(caseItem.detailImage2, "Impact Detail", "py-4")}
+              {renderMedia(caseItem.detailImage2, "Impact Detail", "")}
             </div>
           )}
 
           {/* OUTCOME */}
           {caseItem.outcome && (
-            <div className="space-y-6">
-              <div className="bg-[#E2DED3] p-8 rounded-[2rem] space-y-0">
-                <h2 className="text-[32px] lg:text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-[68px]">OUTCOME</h2>
+            <div className="space-y-[0.1875rem] snap-start">
+              <div className="bg-[#E2DED3] p-8 space-y-0">
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">OUTCOME</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
               </div>
-              {renderMedia(caseItem.detailImage3, "Final Outcome Detail", "py-4 shadow-lg")}
+              {renderMedia(caseItem.detailImage3, "Final Outcome Detail", "shadow-lg")}
             </div>
           )}
 
           {/* LEARNING */}
           {caseItem.learning && (
-            <div className="space-y-6">
-              <div className="bg-[#E2DED3] p-8 rounded-[2rem] space-y-0">
-                <h2 className="text-[32px] lg:text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-[68px]">LEARNING</h2>
+            <div className="space-y-[0.1875rem] snap-start">
+              <div className="bg-[#E2DED3] p-8 space-y-0">
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">LEARNING</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
               </div>
             </div>

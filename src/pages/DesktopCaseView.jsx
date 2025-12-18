@@ -37,7 +37,7 @@ const DesktopCaseView = ({ caseItem }) => {
           onClick={() => navigate('/')}
           className="fixed top-32 left-12 z-50 text-xs font-black font-neue uppercase border-b border-black"
         >
-          ← Back to Index
+          ← See all cases
         </button>
 
         {/* Container for scrollable content */}
@@ -85,7 +85,7 @@ const DesktopCaseView = ({ caseItem }) => {
               initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }}
               className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg z-20"
             >
-              <h2 className="text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-[68px]">DASHBOARD DESIGN ADAS SYSTEM GUIDE</h2>
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">DASHBOARD DESIGN ADAS SYSTEM GUIDE</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed text-black">Streamlined ADAS dashboard workflows to save time and improve documentation.</p>
             </motion.div>
 
@@ -97,7 +97,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 initial={{ x: cardPositions.challenge.x, y: cardPositions.challenge.y }}
                 className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[400px] h-[300px] z-20 flex flex-col overflow-hidden"
               >
-                <h2 className="text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-[68px] flex-shrink-0">CHALLENGE</h2>
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px] flex-shrink-0">CHALLENGE</h2>
                 <p className="text-lg font-neue-book-semi leading-relaxed text-black overflow-y-auto flex-1">{caseItem.challenge}</p>
               </motion.div>
             )}
@@ -110,7 +110,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 initial={{ x: cardPositions.impact.x, y: cardPositions.impact.y }}
                 className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[400px] h-[300px] z-20 flex flex-col overflow-hidden"
               >
-                <h2 className="text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-[68px] flex-shrink-0">IMPACT</h2>
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px] flex-shrink-0">IMPACT</h2>
                 <p className="text-lg font-neue-book-semi leading-relaxed text-black overflow-y-auto flex-1">{caseItem.impact}</p>
               </motion.div>
             )}
@@ -123,7 +123,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 initial={{ x: cardPositions.outcome.x, y: cardPositions.outcome.y }}
                 className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[400px] h-[300px] z-20 flex flex-col overflow-hidden"
               >
-                <h2 className="text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-[68px] flex-shrink-0">OUTCOME</h2>
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px] flex-shrink-0">OUTCOME</h2>
                 <p className="text-lg font-neue-book-semi leading-relaxed text-black overflow-y-auto flex-1">{caseItem.outcome}</p>
               </motion.div>
             )}
@@ -136,7 +136,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 initial={{ x: cardPositions.learning.x, y: cardPositions.learning.y }}
                 className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[400px] h-[300px] z-20 flex flex-col overflow-hidden"
               >
-                <h2 className="text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-[68px] flex-shrink-0">LEARNING</h2>
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px] flex-shrink-0">LEARNING</h2>
                 <p className="text-lg font-neue-book-semi leading-relaxed text-black italic overflow-y-auto flex-1">"{caseItem.learning}"</p>
               </motion.div>
             )}
@@ -145,7 +145,7 @@ const DesktopCaseView = ({ caseItem }) => {
 
           {/* Team Info - Fixed on Background, Bottom Left Corner */}
           <div className="fixed bottom-12 left-12 z-0 pointer-events-none">
-            <h3 className="text-[62px] font-semibold font-neue-semibold uppercase tracking-tighter leading-tight text-black mb-6">DAYONE X HELLAGUTMANN</h3>
+            <h3 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">DAYONE X HELLAGUTMANN</h3>
             <div className="space-y-2 text-lg font-neue-book-semi leading-relaxed text-black">
               <p>Christopher G. Product Design Lead</p>
               <p>Annemarie S. UX</p>
