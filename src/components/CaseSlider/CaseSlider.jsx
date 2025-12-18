@@ -6,7 +6,11 @@ const CaseSlider = ({ cases, filter }) => {
   
   const filteredCases = filter === 'all' 
     ? cases 
-    : cases.filter(c => c.category.toLowerCase() === filter.toLowerCase());
+    : filter === 'private'
+    ? cases.filter(c => c.isPrivate === true)
+    : filter === 'commercial'
+    ? cases.filter(c => !c.isPrivate)
+    : cases;
 
   return (
    <div className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory 
