@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar.jsx'; 
-import CaseSlider from '../components/CaseSlider/CaseSlider.jsx'; 
+import CaseSlider from '../components/CaseSlider/CaseSlider.jsx';
+import GrainOverlay from '../components/GrainOverlay/GrainOverlay'; 
 
 // 🛑 WICHTIG: Den alten Import von '../data/cases.js' löschen!
 
 const Home = ({ cases }) => { // ⬅️ cases hier als Prop entgegennehmen
     const [activeFilter, setActiveFilter] = useState('all'); 
 
-    return (
-        <div className="min-h-screen bg-[#F1F2E5]"> 
-            <Navbar 
+    return (
+        <div className="min-h-screen bg-[#F1F2E5]"> 
+            <GrainOverlay />
+            <Navbar
                 activeFilter={activeFilter} 
                 setActiveFilter={setActiveFilter} 
             />

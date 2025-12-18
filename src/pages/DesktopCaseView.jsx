@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
+import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 
 const DesktopCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const DesktopCaseView = ({ caseItem }) => {
 
   return (
     <div className="min-h-screen bg-[#F1F2E5] overflow-y-auto">
+      <GrainOverlay />
       <Navbar />
       <main className="relative w-full pt-[120px] pb-32 cursor-crosshair">
         
@@ -85,8 +87,8 @@ const DesktopCaseView = ({ caseItem }) => {
               initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }}
               className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg z-20"
             >
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">DASHBOARD DESIGN ADAS SYSTEM GUIDE</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed text-black">Streamlined ADAS dashboard workflows to save time and improve documentation.</p>
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">{caseItem.title}</h2>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.description}</p>
             </motion.div>
 
             {/* Challenge Card */}
@@ -144,15 +146,27 @@ const DesktopCaseView = ({ caseItem }) => {
           </div>
 
           {/* Team Info - Fixed on Background, Bottom Left Corner */}
-          <div className="fixed bottom-12 left-12 z-0 pointer-events-none">
-            <h3 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">DAYONE X HELLAGUTMANN</h3>
-            <div className="space-y-2 text-lg font-neue-book-semi leading-relaxed text-black">
-              <p>Christopher G. Product Design Lead</p>
-              <p>Annemarie S. UX</p>
-              <p>Bean D. UI</p>
-              <p>Silvana M. PM</p>
+          {caseItem.team && (
+            <div className="fixed bottom-12 left-12 z-0 pointer-events-none">
+              <h3 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">{caseItem.team.title}</h3>
+              <div className="space-y-2 text-lg font-neue-book-semi leading-relaxed text-black">
+                {caseItem.team.members.map((member, index) => (
+                  <p key={index}>{member}</p>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+          {!caseItem.team && (
+            <div className="fixed bottom-12 left-12 z-0 pointer-events-none">
+              <h3 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">DAYONE X HELLAGUTMANN</h3>
+              <div className="space-y-2 text-lg font-neue-book-semi leading-relaxed text-black">
+                <p>Christopher G. Product Design Lead</p>
+                <p>Annemarie S. UX</p>
+                <p>Bean D. UI</p>
+                <p>Silvana M. PM</p>
+              </div>
+            </div>
+          )}
         </div>
       </main>
     </div>

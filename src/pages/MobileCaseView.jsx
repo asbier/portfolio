@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
+import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 
 const MobileCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const MobileCaseView = ({ caseItem }) => {
 
   return (
     <div className="min-h-screen bg-[#F1F2E5] text-black font-neue overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
+      <GrainOverlay />
       <Navbar />
       
       <main className="pt-0 pb-32 scroll-smooth"> 
@@ -73,7 +75,7 @@ const MobileCaseView = ({ caseItem }) => {
                 {caseItem.description}
               </p>
               <div className="text-sm font-neue-book-semi uppercase text-right leading-relaxed text-black">
-                YEAR: {caseItem.year || '2024'}<br />ROLE: LEAD
+                YEAR: {caseItem.year || '2024'}<br />ROLE: {caseItem.role || 'LEAD'}
               </div>
             </div>
           </div>

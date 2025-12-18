@@ -21,14 +21,50 @@ export const cases = [
     category: "PRODUCT DESIGN",
     image: "/images/01_hellagutmann/sliderImage_hellagutmann_dashboard_hero.jpg",
     tags: ["DIAGNOSTICS", "ADAS", "UI-DESIGN"],
-    description: "Advanced diagnostic systems for workshops.",
+    description: "Redesigning advanced diagnostic systems to empower workshops through high-speed calibration and intuitive data management.",
     year: "2024",
-    challenge: "Workshops needed faster vehicle selection.",
-    impact: "Streamlined ADAS workflows to save time.",
+    role: "LEAD",
+    challenge: "The legacy ADAS dashboard suffered from excessive complexity and a lack of intuitive design, rendering mechanical workflows laborious and susceptible to error. Technicians lacked visibility into task progress, potential interruptions, and estimated completion times, which hindered operational efficiency and made documentation tracking unnecessarily difficult.",
+    impact: "Streamlined ADAS dashboard workflows that significantly reduced calibration time and enhanced the precision of documentation.",
     detailImage1: "/images/01_hellagutmann/fahrzeug_auswählen_basis_default_1280-800.jpg",
     detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.jpg",
     detailImage3: "/images/01_hellagutmann/hellagutmann_dashboard_adas_guide_calibration.jpg",
-    outcome: "Reduced vehicle selection time and improved accuracy."
+    outcome: "A guided, step-by-step interface incorporating real-time estimates, proactive notifications, and integrated documentation layers. This enables mechanics to monitor progress seamlessly, recover from interruptions, and ultimately optimise the entire calibration workflow.",
+    learning: "Always be the one to ask—early enough—if a feature is truly required and what fundamental purpose it serves.",
+    team: {
+      title: "DAYONE X HELLAGUTMANN",
+      members: [
+        "Christopher G. Product Design Lead",
+        "Annemarie S. UX",
+        "Bean D. UI",
+        "Silvana M. PM"
+      ]
+    }
+  },
+  {
+    id: 3,
+    title: "CARHARTT-WIP",
+    category: "PRODUCT DESIGN",
+    image: "/images/03_case_03/ImageSlider-Carhartt-Helpcenter.jpg",
+    tags: ["UX DESIGN", "UI DESIGN", "STRATEGY"],
+    team: {
+      title: "CARHARTT-WIP",
+      members: [  "DESIGN TEAM ",
+        "Digital Design Lead Lutz Erian",
+        "Product Designer Annemarie Sauerbier"
+
+      ]
+    },
+    description: "Developing a help center to improve customer support and self-service capabilities.",
+    year: "2019",
+    role: "Product / Digital Designer",
+    challenge: "Increased support tickets and customer frustration.",
+    impact: "Improved self-service rates and reduced support ticket volume through better information architecture and search functionality.",
+    detailImage1: "/images/03_case_03/Carhartt_help_desk_live_garmentsecure.jpg",
+    detailImage2: "/images/03_case_03/Helpdesk-Userflow.jpg",
+    detailImage3: "/images/03_case_03/Helpdesk_Designflow.jpg",
+    outcome: "A redesigned help center with intuitive navigation, improved search, and clear categorization that enables customers to quickly find the information they need.",
+    learning: "User research and testing are crucial for understanding how customers actually search for information."
   }
 ];
 
