@@ -1,87 +1,177 @@
-// Portfolio case data
 export const cases = [
   {
     id: 1,
     title: "Berlin Tech Job Dashboard",
     category: "PRODUCT DESIGN / DEV COLLAB",
-    image: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
+    year: "2025",
     tags: ["REACT", "TAILWIND", "DASHBOARD"],
     description: "Visualizing the Berlin tech job market through data-driven design.",
-    year: "2024",
     challenge: "Fragmented job data made it hard for developers to find roles.",
-    detailImage1: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
     impact: "Created a focused interface for tech-stack based job hunting.",
-    detailImage2: "linear-gradient(180deg, #363C53 0%, #1A1D25 100%)",
     outcome: "A high-fidelity MVP built with a developer partner.",
+    image: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
+    detailImage1: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
+    detailImage2: "linear-gradient(180deg, #363C53 0%, #1A1D25 100%)",
     detailImage3: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
+    team: { title: "PRIVATE", members: ["Annemarie S. (Design)", "James N. (Data Eng)"] }
   },
   {
-    id: 2, 
-    title: "HellagutmannxDAYONE",
+    id: 2,
+    title: "Hellagutmann x DAYONE",
     category: "PRODUCT DESIGN",
-    image: "/images/01_hellagutmann/sliderImage_hellagutmann_dashboard_hero.jpg",
-    tags: ["DIAGNOSTICS", "ADAS", "UI-DESIGN"],
-    description: "Redesigning advanced diagnostic systems to empower workshops through high-speed calibration and intuitive data management.",
     year: "2024",
     role: "LEAD",
-    challenge: "The legacy ADAS dashboard suffered from excessive complexity and a lack of intuitive design, rendering mechanical workflows laborious and susceptible to error. Technicians lacked visibility into task progress, potential interruptions, and estimated completion times, which hindered operational efficiency and made documentation tracking unnecessarily difficult.",
-    impact: "Streamlined ADAS dashboard workflows that significantly reduced calibration time and enhanced the precision of documentation.",
+    tags: ["DIAGNOSTICS", "ADAS", "UI-DESIGN"],
+    description: "Redesigning advanced diagnostic systems for workshops.",
+    challenge: "The legacy ADAS dashboard suffered from excessive complexity, rendering mechanical workflows laborious.",
+    impact: "Streamlined ADAS dashboard workflows that significantly reduced calibration time.",
+    outcome: "A guided, step-by-step interface with real-time estimates and integrated documentation layers.",
+    image: "/images/01_hellagutmann/sliderImage_hellagutmann_dashboard_hero.jpg",
     detailImage1: "/images/01_hellagutmann/fahrzeug_auswählen_basis_default_1280-800.jpg",
     detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.jpg",
     detailImage3: "/images/01_hellagutmann/hellagutmann_dashboard_adas_guide_calibration.jpg",
-    outcome: "A guided, step-by-step interface incorporating real-time estimates, proactive notifications, and integrated documentation layers. This enables mechanics to monitor progress seamlessly, recover from interruptions, and ultimately optimise the entire calibration workflow.",
-    learning: "Always be the one to ask—early enough—if a feature is truly required and what fundamental purpose it serves.",
-    team: {
-      title: "DAYONE X HELLAGUTMANN",
-      members: [
-        "Christopher G. Product Design Lead",
-        "Annemarie S. UX",
-        "Bean D. UI",
-        "Silvana M. PM"
-      ]
-    }
+    team: { title: "DAYONE X HELLAGUTMANN", members: ["Christopher G. (Lead)", "Annemarie S.", "Bean D.", "Silvana M."] }
   },
   {
     id: 3,
-    title: "CARHARTT-WIP",
+    title: "VOLKSWAGEN ID MODELLE PROBEFAHREN",
     category: "PRODUCT DESIGN",
-    image: "/images/03_case_03/ImageSlider-Carhartt-Helpcenter.jpg",
-    tags: ["UX DESIGN", "UI DESIGN", "STRATEGY"],
-    team: {
-      title: "CARHARTT-WIP",
-      members: [  "DESIGN TEAM ",
-        "Digital Design Lead Lutz Erian",
-        "Product Designer Annemarie Sauerbier"
-
-      ]
-    },
+    year: "2024",
+    tags: ["UX DESIGN", "AUTOMOTIVE", "DIGITAL"],
+    description: "Designing a test drive booking system for Volkswagen ID models.",
+    challenge: "Creating an intuitive booking experience for electric vehicle test drives.",
+    impact: "Streamlined test drive booking process with improved user experience.",
+    outcome: "A digital platform that simplifies the test drive booking journey.",
+    image: "/images/07_case_07/SliderImage_Volkswagen-IDModelleProbefahren.jpg",
+    detailImage1: "/images/07_case_07/DetailUX.jpg",
+    detailImage2: "/images/07_case_07/IDModelleProbefahren-copy.jpg",
+    detailImage3: "/images/07_case_07/SLiderImage_IDModelleProbefahren.webp",
+    team: { title: "VOLKSWAGEN", members: ["Annemarie Sauerbier"] }
+  },
+  {
+    id: 4,
+    title: "CARHARTT-WIP HELPCENTER",
+    category: "PRODUCT DESIGN",
+    year: "2019-2025",
+    tags: ["UX DESIGN", "E-COMMERCE", "STRATEGY"],
     description: "Developing a help center to improve customer support and self-service capabilities.",
-    year: "2019",
-    role: "Product / Digital Designer",
-    challenge: "Increased support tickets and customer frustration.",
-    impact: "Improved self-service rates and reduced support ticket volume through better information architecture and search functionality.",
+    challenge: "Increased support tickets and customer frustration during the shopping journey.",
+    impact: "Improved self-service rates and reduced support load through better information architecture.",
+    outcome: "A redesigned help center with intuitive navigation and clear categorization.",
+    image: "/images/03_case_03/ImageSlider-Carhartt-Helpcenter.jpg",
     detailImage1: "/images/03_case_03/Carhartt_help_desk_live_garmentsecure.jpg",
     detailImage2: "/images/03_case_03/Helpdesk-Userflow.jpg",
     detailImage3: "/images/03_case_03/Helpdesk_Designflow.jpg",
-    outcome: "A redesigned help center with intuitive navigation, improved search, and clear categorization that enables customers to quickly find the information they need.",
-    learning: "User research and testing are crucial for understanding how customers actually search for information."
+    team: { title: "CARHARTT-WIP", members: ["Lutz Erian (Lead)", "Annemarie Sauerbier (Designer)"] }
+  },
+  {
+    id: 5,
+    title: "CARHARTT-WIP SHOPPING JOURNEY",
+    category: "PRODUCT DESIGN",
+    year: "2019-2025",
+    tags: ["USER JOURNEY", "E-COMMERCE", "SEARCH"],
+    description: "Building a Commerce Platform that fits the brand's heritage while driving technical revolution.",
+    challenge: "Helping the Service Team get less load through a better Checkout and Order experience.",
+    impact: "Less returns due to better descriptions and targeted user journeys with integrated search and FAQs.",
+    outcome: "A modern platform that contributed to growth and stability during the Covid wave and beyond.",
+    learning: "Stay true to your vision and aspirations. Trust within the team is the key to successful teamwork.",
+    image: "/images/04_case_04/04carharttwip_shopping_journeyslider.jpg",
+    detailImage1: "/images/04_case_04/before_checkout_carhartt_wip.jpg",
+    detailImage2: "/images/04_case_04/new_cart_Checkout_paymentsystem.jpg",
+    detailImage3: "/images/04_case_04/outcome_filternav.jpg",
+    team: { title: "CARHARTT-WIP", members: ["Digital Design Lead: Lutz Erian", "Annemarie Sauerbier"] }
+  },
+  {
+    id: 6,
+    title: "CONIC ROSE – EIN HELLER TAG",
+    category: "VISUAL IDENTITY / ART",
+    year: "2023",
+    tags: ["ALBUM DESIGN", "JAZZ", "CLUESO MENTORED"],
+    description: "Visual identity for the Berlin-based jazz-electronica band's debut, mentored by Clueso.",
+    challenge: "Creating a visual identity for music that was still evolving, capturing experimental sounds.",
+    impact: "Developed a visual concept that echoes the 'cut and thrust' of city life and 'filmic heartbreak'.",
+    outcome: "A mazy and masterful showcase of analog and digital tools reflecting the essence of the music.",
+    image: "/images/05_case_05/finalconicrosedesign.jpg",
+    detailImage1: "/images/05_case_05/conicrosefinal.jpg",
+    detailImage2: "/images/05_case_05/draft_3.jpg",
+    detailImage3: "/images/05_case_05/how_paint_waterclour_straw.jpg",
+    team: { title: "CONIC ROSE", members: ["Konstantin Döben", "Bertram Burkert", "Annemarie Sauerbier", "Mentored by Clueso"] }
+  },
+  {
+    id: 7,
+    title: "EDITED BRANDING",
+    category: "ART DIRECTION / BRANDING",
+    year: "2016-2018",
+    tags: ["REBRANDING", "FASHION", "GROWTH"],
+    description: "Scaling the label from 100 to 300 employees and growing into the European market.",
+    challenge: "Focused on a unique mix of fashion for a smaller, trend-focused target group than About You.",
+    impact: "Design systems and strategies that outlast every product or service touched within the company.",
+    outcome: "Personalized B2C and B2B Retail concepts that made Influencer Marketing a successful job.",
+    image: "/images/06_case_06/06slider_editedderportfolio2025.jpg",
+    detailImage1: "/images/06_case_06/launchbeforeafter.jpg",
+    detailImage2: "/images/06_case_06/lookbooks.jpg",
+    detailImage3: "/images/06_case_06/webcaapignredesignassets.jpg",
+    team: { title: "EDITED", members: ["Franziska Nellesen", "Sonja Klements", "Sally Milota", "Annemarie Sauerbier", "Vivien Voss"] }
+  },
+  {
+    id: 8,
+    title: "ABOUT YOU RELAUNCH",
+    category: "ART DIRECTION / EXPERIENCE",
+    year: "2018",
+    tags: ["RELAUNCH", "STRATEGY", "PERSONALIZATION"],
+    description: "Revolutionizing online shopping through diversity, inclusivity, and personalization.",
+    challenge: "Strategic shift from German mainstream to European mainstream leader.",
+    impact: "Concepts still in use after 10 years, creating growth through less conservative marketing.",
+    outcome: "A new perspective on branding for consumerism with a balance between success and responsibility.",
+    image: "linear-gradient(180deg, #000000 0%, #333333 100%)",
+    team: { title: "ABOUT YOU", members: ["Relaunch Lead: Franziska Nellesen", "Annemarie Sauerbier"] }
+  },
+  {
+    id: 9,
+    title: "MONOPOL MEDIA",
+    category: "EDITORIAL DESIGN",
+    year: "2017",
+    tags: ["MAGAZINE", "LAYOUT", "CULTURE"],
+    description: "Creating 6 issues a year for a dynamic media house in Vienna focusing on art and culture.",
+    challenge: "Bringing modernity through refined layout, whitespace, and image curation.",
+    impact: "Generated more followers and subscriptions through a high-end visual aesthetic.",
+    outcome: "Strategy and design that gave readers valuable time and inspiration.",
+    image: "linear-gradient(180deg, #FFFFFF 0%, #E0E0E0 100%)",
+    team: { title: "MONOPOL", members: ["Annemarie Sauerbier", "Thomas Albdorf"] }
+  },
+  {
+    id: 10,
+    title: "PLASTIC MEDIA (MONKI/INDIE)",
+    category: "EDITORIAL / CONCEPT",
+    year: "2015-2017",
+    tags: ["EDITORIAL", "MAGAZINES", "FASHION"],
+    description: "Conceptual Editorial Design for international niche and commercial fashion titles.",
+    challenge: "Designing 3 issues for Monki and helping with Material Girl and Indie layouts.",
+    impact: "Merged digital trends with the tactile smell of freshly printed magazine pages.",
+    outcome: "Successful delivery of conceptual issues as part of the client's marketing strategy.",
+    image: "linear-gradient(180deg, #FFEFBA 0%, #FFFFFF 100%)",
+    team: { title: "PLASTIC MEDIA", members: ["Kira Stachowitz", "Daniela Bily", "Annemarie Sauerbier"] }
+  },
+  {
+    id: 11,
+    title: "HEROES & HEROINES",
+    category: "GRAPHIC DESIGN / STRATEGY",
+    year: "2015-2016",
+    tags: ["BRANDING", "EVENTS", "360 APPROACH"],
+    description: "Elevating brands like Bumble, Hennessy, and Absolut through innovative visual design.",
+    challenge: "Pushing boundaries across Vienna and Berlin studios with a fearless network of innovators.",
+    impact: "Forward-thinking projects that challenged conventions through cohesive branding strategies.",
+    outcome: "Strategic masterminding and digital innovation for international top-tier clients.",
+    image: "linear-gradient(180deg, #FFD200 0%, #F7971E 100%)",
+    team: { title: "HEROES & HEROINES", members: ["Kira Stachowitz", "Daniela Bily", "Annemarie Sauerbier"] }
   }
 ];
 
-// Helper function to get cases by category
 export const getCasesByCategory = (category) => {
   if (!category || category === 'all') return cases;
   return cases.filter(caseItem => caseItem.category === category);
 };
 
-// Helper function to get case by ID
 export const getCaseById = (id) => {
   return cases.find(caseItem => caseItem.id === parseInt(id));
 };
-
-
-
-
-
-
-
