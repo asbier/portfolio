@@ -18,14 +18,15 @@ const DesktopCaseView = ({ caseItem }) => {
     challenge: { x: 100, y: 400 },
     impact: { x: 550, y: 700 },
     outcome: { x: 1000, y: 350 },
-    learning: { x: 600, y: 1050 }
+    learning: { x: 600, y: 1050 },
+    offer: { x: 1200, y: 1100 }
   };
 
   // Harmonische Anordnung der Bilder für den Licht-Tisch
   // Automatische Erkennung des Bildformats oder verwende definierte Formate
   const [imageFormats, setImageFormats] = useState({});
 
-  // Für Conic Rose alle Bilder verwenden (ohne Duplikate), sonst nur die ersten 3
+  // Für Conic Rose, EDITED, BIORAMA und Plastic Media alle Bilder verwenden (ohne Duplikate), sonst nur die ersten 3
   const getUniqueImages = useCallback(() => {
     if (caseItem.id === 6) { // CONIC ROSE
       const images = [
@@ -40,12 +41,100 @@ const DesktopCaseView = ({ caseItem }) => {
       // Entferne Duplikate
       return [...new Set(images)];
     }
+    if (caseItem.id === 7) { // EDITED
+      const images = [
+        caseItem.image,
+        caseItem.detailImage1,
+        caseItem.detailImage2,
+        caseItem.detailImage3,
+        caseItem.detailImage4,
+        caseItem.detailImage5,
+        caseItem.detailImage6,
+        caseItem.detailImage7,
+        caseItem.detailImage8,
+        caseItem.detailImage9,
+        caseItem.detailImage10,
+        caseItem.detailImage11,
+        caseItem.detailImage12,
+        caseItem.detailImage13,
+        caseItem.detailImage14,
+        caseItem.detailImage15,
+        caseItem.detailImage16
+      ].filter(Boolean);
+      // Entferne Duplikate
+      return [...new Set(images)];
+    }
+    if (caseItem.id === 8) { // ABOUT YOU
+      const images = [
+        caseItem.image,
+        caseItem.detailImage1,
+        caseItem.detailImage2,
+        caseItem.detailImage3,
+        caseItem.detailImage4,
+        caseItem.detailImage5,
+        caseItem.detailImage6,
+        caseItem.detailImage7
+      ].filter(Boolean);
+      // Entferne Duplikate
+      return [...new Set(images)];
+    }
+    if (caseItem.id === 9) { // BIORAMA
+      const images = [
+        caseItem.image,
+        caseItem.detailImage1,
+        caseItem.detailImage2,
+        caseItem.detailImage3,
+        caseItem.detailImage4,
+        caseItem.detailImage5
+      ].filter(Boolean);
+      // Entferne Duplikate
+      return [...new Set(images)];
+    }
+    if (caseItem.id === 10) { // PLASTIC MEDIA
+      const images = [
+        caseItem.image,
+        caseItem.detailImage1,
+        caseItem.detailImage2,
+        caseItem.detailImage3,
+        caseItem.detailImage4,
+        caseItem.detailImage5,
+        caseItem.detailImage6,
+        caseItem.detailImage7
+      ].filter(Boolean);
+      // Entferne Duplikate
+      return [...new Set(images)];
+    }
+    if (caseItem.id === 11) { // MONKI
+      const images = [
+        caseItem.image,
+        caseItem.detailImage1,
+        caseItem.detailImage2,
+        caseItem.detailImage3,
+        caseItem.detailImage4,
+        caseItem.detailImage5,
+        caseItem.detailImage6,
+        caseItem.detailImage7
+      ].filter(Boolean);
+      // Entferne Duplikate
+      return [...new Set(images)];
+    }
+    if (caseItem.id === 12) { // COMMA
+      const images = [
+        caseItem.image,
+        caseItem.detailImage1,
+        caseItem.detailImage2,
+        caseItem.detailImage3,
+        caseItem.detailImage4
+      ].filter(Boolean);
+      // Entferne Duplikate
+      return [...new Set(images)];
+    }
     return [
       caseItem.image,
       caseItem.detailImage1,
       caseItem.detailImage2
     ].filter(Boolean);
-  }, [caseItem.id, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6]);
+  }, [caseItem.id, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6, caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9, caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12, caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15, caseItem.detailImage16]);
 
   const allImages = getUniqueImages();
   
@@ -88,7 +177,7 @@ const DesktopCaseView = ({ caseItem }) => {
         }
       });
     }
-  }, [getUniqueImages, caseItem.id, caseItem.imageFormats, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6]);
+  }, [getUniqueImages, caseItem.id, caseItem.imageFormats, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6, caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9, caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12, caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15, caseItem.detailImage16]);
 
   const initialPositions = caseItem.id === 6
     ? [
@@ -99,6 +188,76 @@ const DesktopCaseView = ({ caseItem }) => {
         { x: 400, y: 600 },
         { x: 1400, y: 300 },
         { x: 1100, y: 900 }
+      ]
+    : caseItem.id === 7
+    ? [
+        { x: 600, y: 200 },
+        { x: 1200, y: 500 },
+        { x: 200, y: 800 },
+        { x: 900, y: 1000 },
+        { x: 400, y: 600 },
+        { x: 1400, y: 300 },
+        { x: 1100, y: 900 },
+        { x: 300, y: 400 },
+        { x: 800, y: 700 },
+        { x: 1300, y: 1100 },
+        { x: 500, y: 1200 },
+        { x: 1000, y: 300 },
+        { x: 150, y: 600 },
+        { x: 750, y: 1100 },
+        { x: 1100, y: 200 },
+        { x: 450, y: 900 },
+        { x: 1350, y: 800 }
+      ]
+    : caseItem.id === 8
+    ? [
+        { x: 600, y: 200 },
+        { x: 1200, y: 500 },
+        { x: 200, y: 800 },
+        { x: 900, y: 1000 },
+        { x: 400, y: 600 },
+        { x: 1400, y: 300 },
+        { x: 1100, y: 900 },
+        { x: 300, y: 400 }
+      ]
+    : caseItem.id === 9
+    ? [
+        { x: 600, y: 200 },
+        { x: 1200, y: 500 },
+        { x: 200, y: 800 },
+        { x: 900, y: 1000 },
+        { x: 400, y: 600 },
+        { x: 1400, y: 300 }
+      ]
+    : caseItem.id === 10
+    ? [
+        { x: 600, y: 200 },
+        { x: 1200, y: 500 },
+        { x: 200, y: 800 },
+        { x: 900, y: 1000 },
+        { x: 400, y: 600 },
+        { x: 1400, y: 300 },
+        { x: 1100, y: 900 },
+        { x: 300, y: 400 }
+      ]
+    : caseItem.id === 11
+    ? [
+        { x: 600, y: 200 },
+        { x: 1200, y: 500 },
+        { x: 200, y: 800 },
+        { x: 900, y: 1000 },
+        { x: 400, y: 600 },
+        { x: 1400, y: 300 },
+        { x: 1100, y: 900 },
+        { x: 300, y: 400 }
+      ]
+    : caseItem.id === 12
+    ? [
+        { x: 600, y: 200 },
+        { x: 1200, y: 500 },
+        { x: 200, y: 800 },
+        { x: 900, y: 1000 },
+        { x: 400, y: 600 }
       ]
     : [
         { x: 600, y: 200 },
@@ -250,6 +409,24 @@ const DesktopCaseView = ({ caseItem }) => {
               >
                 <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">LEARNING</h2>
                 <p className="text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
+              </motion.div>
+            )}
+
+            {/* Offer Card */}
+            {caseItem.offer && (
+              <motion.div 
+                drag 
+                dragMomentum={false} 
+                initial={{ x: cardPositions.offer.x, y: cardPositions.offer.y }}
+                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
+              >
+                <p className="text-lg font-neue-book-semi leading-relaxed text-black mb-6">{caseItem.offer}</p>
+                <a 
+                  href="mailto:mail@annemaris.de" 
+                  className="text-lg font-neue-book-semi leading-relaxed text-black underline hover:no-underline transition-all"
+                >
+                  Contact
+                </a>
               </motion.div>
             )}
 
