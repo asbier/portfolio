@@ -5,7 +5,7 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const filterOptions = ['all', 'commercial', 'private'];
   const hiddenPages = ['Home', 'Privacy', 'Contact'];
-  const marqueeText = " ✦ PRODUCT DESIGN & BRANDING ✦ SINCE 2012 ✦ SPECIALISED IN E-COMMERCE & SERVICE DESIGN ✦ GOOD DESIGN PERFORMS ✦ STOP BEING BORING ✦ ";
+  const marqueeText = " ✦ PRODUCT DESIGN & BRANDING ✦ SINCE 2012 ✦ SPECIALISED IN E-COMMERCE & SERVICE DESIGN ✦ STOP BEING BORING ✦ ";
   
   // Split text into sentences and render with alternating colors
   const renderMarqueeText = () => {
@@ -47,11 +47,11 @@ const Navbar = ({ activeFilter, setActiveFilter }) => {
           <div className="w-full lg:flex-1 overflow-hidden whitespace-nowrap h-[40px] flex items-center border-b lg:border-none border-black/5 px-6 lg:px-0">
             <motion.div 
               animate={{ x: [0, -1000] }} 
-              transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
+              transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
               className="text-[14px] lg:text-[40px] font-black font-neue uppercase flex"
             >
-              <span className="pr-10 flex">{renderMarqueeText()}</span>
-              <span className="pr-10 flex">{renderMarqueeText()}</span>
+              <span className="pr-4 flex">{renderMarqueeText()}</span>
+              <span className="pr-4 flex">{renderMarqueeText()}</span>
             </motion.div>
           </div>
           <nav className="flex space-x-2 lg:space-x-4 items-center w-full lg:w-auto justify-between lg:justify-end h-[70px]">

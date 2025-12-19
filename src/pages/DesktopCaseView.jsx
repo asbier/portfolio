@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
@@ -22,11 +22,113 @@ const DesktopCaseView = ({ caseItem }) => {
   };
 
   // Harmonische Anordnung der Bilder für den Licht-Tisch
-  const caseImages = [
-    { id: 1, url: caseItem.image, format: 'portrait', initialX: 600, initialY: 200 },
-    { id: 2, url: caseItem.detailImage1, format: 'landscape', initialX: 1200, initialY: 500 },
-    { id: 3, url: caseItem.detailImage2, format: 'portrait', initialX: 200, initialY: 800 },
-  ].filter(img => img.url); // Zeigt nur Bilder an, die existieren
+  // Automatische Erkennung des Bildformats oder verwende definierte Formate
+  const [imageFormats, setImageFormats] = useState({});
+
+  // Für Conic Rose alle Bilder verwenden (ohne Duplikate), sonst nur die ersten 3
+  const getUniqueImages = useCallback(() => {
+    if (caseItem.id === 6) { // CONIC ROSE
+      const images = [
+        caseItem.image,
+        caseItem.detailImage1,
+        caseItem.detailImage2,
+        caseItem.detailImage3,
+        caseItem.detailImage4,
+        caseItem.detailImage5,
+        caseItem.detailImage6
+      ].filter(Boolean);
+      // Entferne Duplikate
+      return [...new Set(images)];
+    }
+    return [
+      caseItem.image,
+      caseItem.detailImage1,
+      caseItem.detailImage2
+    ].filter(Boolean);
+  }, [caseItem.id, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6]);
+
+  const allImages = getUniqueImages();
+  
+  // Wenn imageFormats definiert sind, verwende diese, sonst erkenne automatisch
+  useEffect(() => {
+    const currentImages = getUniqueImages();
+    
+    if (caseItem.imageFormats && caseItem.id === 6) {
+      // Für Conic Rose: Mappe die Formate auf die eindeutigen Bilder
+      const formats = {};
+      const originalImages = [
+        caseItem.image,
+        caseItem.detailImage1,
+        caseItem.detailImage2,
+        caseItem.detailImage3,
+        caseItem.detailImage4,
+        caseItem.detailImage5,
+        caseItem.detailImage6
+      ].filter(Boolean);
+      
+      currentImages.forEach((url, uniqueIndex) => {
+        const originalIndex = originalImages.indexOf(url);
+        if (originalIndex !== -1 && caseItem.imageFormats[originalIndex]) {
+          formats[uniqueIndex] = caseItem.imageFormats[originalIndex];
+        }
+      });
+      setImageFormats(formats);
+    } else {
+      // Automatische Erkennung
+      const formats = {};
+      currentImages.forEach((url, index) => {
+        if (url) {
+          const img = new Image();
+          img.onload = () => {
+            const aspectRatio = img.width / img.height;
+            formats[index] = aspectRatio >= 1 ? 'landscape' : 'portrait';
+            setImageFormats({ ...formats });
+          };
+          img.src = url;
+        }
+      });
+    }
+  }, [getUniqueImages, caseItem.id, caseItem.imageFormats, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6]);
+
+  const initialPositions = caseItem.id === 6
+    ? [
+        { x: 600, y: 200 },
+        { x: 1200, y: 500 },
+        { x: 200, y: 800 },
+        { x: 900, y: 1000 },
+        { x: 400, y: 600 },
+        { x: 1400, y: 300 },
+        { x: 1100, y: 900 }
+      ]
+    : [
+        { x: 600, y: 200 },
+        { x: 1200, y: 500 },
+        { x: 200, y: 800 }
+      ];
+
+  // Extrahiere Bildtitel aus URLs oder verwende definierte Titel
+  const getImageTitle = (url, index) => {
+    if (caseItem.imageTitles && caseItem.imageTitles[index]) {
+      return caseItem.imageTitles[index];
+    }
+    // Fallback: Extrahiere Dateinamen ohne Extension
+    if (url) {
+      const filename = url.split('/').pop().replace(/\.[^/.]+$/, '');
+      return filename.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    }
+    return '';
+  };
+
+  const caseImages = allImages
+    .map((url, index) => ({
+      id: index + 1,
+      url,
+      title: getImageTitle(url, index),
+      format: imageFormats[index] || 'landscape', // Fallback zu landscape während des Ladens
+      initialX: initialPositions[index]?.x || 600,
+      initialY: initialPositions[index]?.y || 200
+    }))
+    .filter(img => img.url); // Zeigt nur Bilder an, die existieren
 
   return (
     <div className="min-h-screen bg-[#F1F2E5] overflow-y-auto">
@@ -60,7 +162,6 @@ const DesktopCaseView = ({ caseItem }) => {
                   className="absolute z-10 group cursor-grab active:cursor-grabbing"
                   style={{
                     width: img.format === 'portrait' ? '350px' : '500px',
-                    height: img.format === 'portrait' ? '500px' : '340px',
                   }}
                   animate={{ 
                     scale: isScaled ? 2 : 1, 
@@ -68,12 +169,21 @@ const DesktopCaseView = ({ caseItem }) => {
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 >
-                  <div className="relative w-full h-full shadow-2xl overflow-hidden">
-                    <img 
-                      src={img.url} 
-                      alt="" 
-                      className="w-full h-full object-cover select-none pointer-events-none" 
-                    />
+                  <div className="relative w-full shadow-2xl overflow-hidden">
+                    <div className="relative w-full" style={{ height: img.format === 'portrait' ? '500px' : '340px' }}>
+                      <img 
+                        src={img.url} 
+                        alt="" 
+                        className="w-full h-full object-cover select-none pointer-events-none" 
+                      />
+                    </div>
+                    {img.title && (
+                      <div className="absolute bottom-0 left-0 pl-[18px] pb-[18px] z-20 pointer-events-none">
+                        <p className="text-[10px] lg:text-[14px] font-neue-semibold uppercase text-black">
+                          {img.title}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               );
@@ -85,7 +195,7 @@ const DesktopCaseView = ({ caseItem }) => {
               drag 
               dragMomentum={false} 
               initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }}
-              className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg z-20"
+              className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">{caseItem.title}</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.description}</p>
@@ -97,10 +207,10 @@ const DesktopCaseView = ({ caseItem }) => {
                 drag 
                 dragMomentum={false} 
                 initial={{ x: cardPositions.challenge.x, y: cardPositions.challenge.y }}
-                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[400px] h-[300px] z-20 flex flex-col overflow-hidden"
+                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
               >
-                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px] flex-shrink-0">CHALLENGE</h2>
-                <p className="text-lg font-neue-book-semi leading-relaxed text-black overflow-y-auto flex-1">{caseItem.challenge}</p>
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">CHALLENGE</h2>
+                <p className="text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
               </motion.div>
             )}
 
@@ -110,10 +220,10 @@ const DesktopCaseView = ({ caseItem }) => {
                 drag 
                 dragMomentum={false} 
                 initial={{ x: cardPositions.impact.x, y: cardPositions.impact.y }}
-                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[400px] h-[300px] z-20 flex flex-col overflow-hidden"
+                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
               >
-                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px] flex-shrink-0">IMPACT</h2>
-                <p className="text-lg font-neue-book-semi leading-relaxed text-black overflow-y-auto flex-1">{caseItem.impact}</p>
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">IMPACT</h2>
+                <p className="text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
               </motion.div>
             )}
 
@@ -123,10 +233,10 @@ const DesktopCaseView = ({ caseItem }) => {
                 drag 
                 dragMomentum={false} 
                 initial={{ x: cardPositions.outcome.x, y: cardPositions.outcome.y }}
-                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[400px] h-[300px] z-20 flex flex-col overflow-hidden"
+                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
               >
-                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px] flex-shrink-0">OUTCOME</h2>
-                <p className="text-lg font-neue-book-semi leading-relaxed text-black overflow-y-auto flex-1">{caseItem.outcome}</p>
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">OUTCOME</h2>
+                <p className="text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
               </motion.div>
             )}
 
@@ -136,10 +246,10 @@ const DesktopCaseView = ({ caseItem }) => {
                 drag 
                 dragMomentum={false} 
                 initial={{ x: cardPositions.learning.x, y: cardPositions.learning.y }}
-                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[400px] h-[300px] z-20 flex flex-col overflow-hidden"
+                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
               >
-                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px] flex-shrink-0">LEARNING</h2>
-                <p className="text-lg font-neue-book-semi leading-relaxed text-black italic overflow-y-auto flex-1">"{caseItem.learning}"</p>
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">LEARNING</h2>
+                <p className="text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
               </motion.div>
             )}
 
@@ -149,11 +259,15 @@ const DesktopCaseView = ({ caseItem }) => {
           {caseItem.team && (
             <div className="fixed bottom-12 left-12 z-0 pointer-events-none">
               <h3 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">{caseItem.team.title}</h3>
-              <div className="space-y-2 text-lg font-neue-book-semi leading-relaxed text-black">
-                {caseItem.team.members.map((member, index) => (
-                  <p key={index}>{member}</p>
-                ))}
-              </div>
+              {caseItem.team.collaboration ? (
+                <p className="text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.team.collaboration}</p>
+              ) : (
+                <div className="space-y-2 text-lg font-neue-book-semi leading-relaxed text-black">
+                  {caseItem.team.members?.map((member, index) => (
+                    <p key={index}>{member}</p>
+                  ))}
+                </div>
+              )}
             </div>
           )}
           {!caseItem.team && (

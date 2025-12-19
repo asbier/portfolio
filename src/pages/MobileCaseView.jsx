@@ -91,7 +91,7 @@ const MobileCaseView = ({ caseItem }) => {
                 <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">CHALLENGE</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
               </div>
-              {renderMedia(caseItem.detailImage1, "Challenge Detail", "grayscale hover:grayscale-0 transition-all duration-700")}
+              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile1 : caseItem.detailImage1, "Challenge Detail", "grayscale hover:grayscale-0 transition-all duration-700")}
             </div>
           )}
 
@@ -102,18 +102,7 @@ const MobileCaseView = ({ caseItem }) => {
                 <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">IMPACT</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
               </div>
-              {renderMedia(caseItem.detailImage2, "Impact Detail", "")}
-            </div>
-          )}
-
-          {/* OUTCOME */}
-          {caseItem.outcome && (
-            <div className="space-y-[0.1875rem] snap-start">
-              <div className="bg-[#E2DED3] p-8 space-y-0">
-                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">OUTCOME</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
-              </div>
-              {renderMedia(caseItem.detailImage3, "Final Outcome Detail", "shadow-lg")}
+              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, "Impact Detail", "")}
             </div>
           )}
 
@@ -124,6 +113,24 @@ const MobileCaseView = ({ caseItem }) => {
                 <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">LEARNING</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
               </div>
+            </div>
+          )}
+
+          {/* Additional image for Conic Rose (before OUTCOME) */}
+          {caseItem.id === 6 && caseItem.detailImageMobile4 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImageMobile4, "Detail", "")}
+            </div>
+          )}
+
+          {/* OUTCOME */}
+          {caseItem.outcome && (
+            <div className="space-y-[0.1875rem] snap-start">
+              <div className="bg-[#E2DED3] p-8 space-y-0">
+                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">OUTCOME</h2>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
+              </div>
+              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile5 : caseItem.detailImage3, "Final Outcome Detail", "shadow-lg")}
             </div>
           )}
 
