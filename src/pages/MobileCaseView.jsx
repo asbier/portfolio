@@ -26,7 +26,8 @@ const MobileCaseView = ({ caseItem }) => {
     );
   };
 
-  const heroIsGradient = caseItem.image?.startsWith('linear-gradient');
+  const heroImage = caseItem.mobileImage || caseItem.image;
+  const heroIsGradient = heroImage?.startsWith('linear-gradient');
 
   return (
     <div className="min-h-screen bg-[#F1F2E5] text-black font-neue overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
@@ -37,10 +38,10 @@ const MobileCaseView = ({ caseItem }) => {
         {/* 1. HERO BEREICH - Sticky */}
         <div 
           className="sticky top-0 z-30 relative w-full h-[60vh] overflow-hidden"
-          style={{ background: heroIsGradient ? caseItem.image : 'transparent' }}
+          style={{ background: heroIsGradient ? heroImage : 'transparent' }}
         > 
           {!heroIsGradient && (
-            <img src={caseItem.image} alt={caseItem.title} className="w-full h-full object-cover block" />
+            <img src={heroImage} alt={caseItem.title} className="w-full h-full object-cover block" />
           )}
           
           <div className="absolute bottom-6 left-5 flex flex-wrap gap-2">

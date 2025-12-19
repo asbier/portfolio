@@ -15,7 +15,7 @@ const DesktopCaseView = ({ caseItem }) => {
   // 1. Definiere oben eine Verteilung für die Text-Karten - harmonisch verteilt
   const cardPositions = {
     projectInfo: { x: 100, y: 50 },
-    challenge: { x: 100, y: 400 },
+    challenge: { x: 400, y: 450 },
     impact: { x: 550, y: 700 },
     outcome: { x: 1000, y: 350 },
     learning: { x: 600, y: 1050 },
@@ -28,6 +28,16 @@ const DesktopCaseView = ({ caseItem }) => {
 
   // Für Conic Rose, EDITED, BIORAMA und Plastic Media alle Bilder verwenden (ohne Duplikate), sonst nur die ersten 3
   const getUniqueImages = useCallback(() => {
+    if (caseItem.id === 2) { // HELLAGUTMANN
+      const images = [
+        caseItem.image,
+        caseItem.detailImage1,
+        caseItem.detailImage2,
+        caseItem.detailImage3
+      ].filter(Boolean);
+      // Entferne Duplikate
+      return [...new Set(images)];
+    }
     if (caseItem.id === 6) { // CONIC ROSE
       const images = [
         caseItem.image,
@@ -112,8 +122,7 @@ const DesktopCaseView = ({ caseItem }) => {
         caseItem.detailImage3,
         caseItem.detailImage4,
         caseItem.detailImage5,
-        caseItem.detailImage6,
-        caseItem.detailImage7
+        caseItem.detailImage6
       ].filter(Boolean);
       // Entferne Duplikate
       return [...new Set(images)];
@@ -123,8 +132,7 @@ const DesktopCaseView = ({ caseItem }) => {
         caseItem.image,
         caseItem.detailImage1,
         caseItem.detailImage2,
-        caseItem.detailImage3,
-        caseItem.detailImage4
+        caseItem.detailImage3
       ].filter(Boolean);
       // Entferne Duplikate
       return [...new Set(images)];
@@ -179,7 +187,14 @@ const DesktopCaseView = ({ caseItem }) => {
     }
   }, [getUniqueImages, caseItem.id, caseItem.imageFormats, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6, caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9, caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12, caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15, caseItem.detailImage16]);
 
-  const initialPositions = caseItem.id === 6
+  const initialPositions = caseItem.id === 2
+    ? [
+        { x: 500, y: 200 },
+        { x: 1100, y: 500 },
+        { x: 300, y: 800 },
+        { x: 900, y: 1100 }
+      ]
+    : caseItem.id === 6
     ? [
         { x: 600, y: 200 },
         { x: 1200, y: 500 },
@@ -222,23 +237,23 @@ const DesktopCaseView = ({ caseItem }) => {
       ]
     : caseItem.id === 9
     ? [
-        { x: 600, y: 200 },
-        { x: 1200, y: 500 },
-        { x: 200, y: 800 },
-        { x: 900, y: 1000 },
-        { x: 400, y: 600 },
-        { x: 1400, y: 300 }
+        { x: 300, y: 150 },
+        { x: 1100, y: 300 },
+        { x: 200, y: 700 },
+        { x: 1000, y: 800 },
+        { x: 500, y: 1100 },
+        { x: 1300, y: 600 }
       ]
     : caseItem.id === 10
     ? [
-        { x: 600, y: 200 },
-        { x: 1200, y: 500 },
-        { x: 200, y: 800 },
-        { x: 900, y: 1000 },
-        { x: 400, y: 600 },
-        { x: 1400, y: 300 },
-        { x: 1100, y: 900 },
-        { x: 300, y: 400 }
+        { x: 250, y: 200 },
+        { x: 1050, y: 350 },
+        { x: 150, y: 750 },
+        { x: 950, y: 900 },
+        { x: 450, y: 1150 },
+        { x: 1250, y: 650 },
+        { x: 700, y: 500 },
+        { x: 1400, y: 1000 }
       ]
     : caseItem.id === 11
     ? [
@@ -248,16 +263,14 @@ const DesktopCaseView = ({ caseItem }) => {
         { x: 900, y: 1000 },
         { x: 400, y: 600 },
         { x: 1400, y: 300 },
-        { x: 1100, y: 900 },
-        { x: 300, y: 400 }
+        { x: 1100, y: 900 }
       ]
     : caseItem.id === 12
     ? [
         { x: 600, y: 200 },
         { x: 1200, y: 500 },
         { x: 200, y: 800 },
-        { x: 900, y: 1000 },
-        { x: 400, y: 600 }
+        { x: 900, y: 1000 }
       ]
     : [
         { x: 600, y: 200 },
@@ -338,7 +351,7 @@ const DesktopCaseView = ({ caseItem }) => {
                     </div>
                     {img.title && (
                       <div className="absolute bottom-0 left-0 pl-[18px] pb-[18px] z-20 pointer-events-none">
-                        <p className="text-[10px] lg:text-[14px] font-neue-semibold uppercase text-black">
+                        <p className="text-[10px] lg:text-[14px] font-neue-semibold uppercase text-[#979797]">
                           {img.title}
                         </p>
                       </div>

@@ -18,20 +18,21 @@ export const cases = [
   },
   {
     id: 2,
-    title: "Hellagutmann x DAYONE",
+    title: "DASHBOARD DESIGN ADAS SYSTEM GUIDE",
     category: "PRODUCT DESIGN",
     year: "2024",
     role: "LEAD",
     tags: ["DIAGNOSTICS", "ADAS", "UI-DESIGN"],
-    description: "Redesigning advanced diagnostic systems for workshops.",
-    challenge: "The legacy ADAS dashboard suffered from excessive complexity, rendering mechanical workflows laborious.",
-    impact: "Streamlined ADAS dashboard workflows that significantly reduced calibration time.",
-    outcome: "A guided, step-by-step interface with real-time estimates and integrated documentation layers.",
+    description: "Streamlined ADAS dashboard workflows to save time and improve documentation. As cars have to get calibrated and synchronized with the software, this system helps guide mechanics through the process.",
+    challenge: "Guiding the users better through the workflow and documentation. The legacy system lacked clear guidance, making it difficult for mechanics to track progress and recover from interruptions.",
+    impact: "Step-by-step guidance with time estimates, notifications, and documentation layers, enabling mechanics to track progress, recover from interruptions, and improve calibration workflows.",
+    outcome: "A guided interface that streamlined ADAS dashboard workflows, reducing calibration time and improving documentation accuracy.",
+    learning: "Always be the one asking early enough if this is what you really need, what purpose it solves.",
     image: "/images/01_hellagutmann/sliderImage_hellagutmann_dashboard_hero.jpg",
     detailImage1: "/images/01_hellagutmann/fahrzeug_auswählen_basis_default_1280-800.jpg",
     detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.jpg",
     detailImage3: "/images/01_hellagutmann/hellagutmann_dashboard_adas_guide_calibration.jpg",
-    team: { title: "DAYONE X HELLAGUTMANN", members: ["Christopher G. (Lead)", "Annemarie S.", "Bean D.", "Silvana M."] }
+    team: { title: "DAYONE X HELLAGUTMANN", members: ["Consultancy and Guidance Christopher G. (Lead)", "UX & Strategy Annemarie S.", "UI Bean D.", "PM Silvana M."] }
   },
   {
     id: 3,
@@ -63,7 +64,7 @@ export const cases = [
     detailImage1: "/images/04_carhartt-wip-helpcenter_03/Carhartt_help_desk_live_garmentsecure.jpg",
     detailImage2: "/images/04_carhartt-wip-helpcenter_03/Helpdesk-Userflow.jpg",
     detailImage3: "/images/04_carhartt-wip-helpcenter_03/Helpdesk_Designflow.jpg",
-    team: { title: "CARHARTT-WIP", members: ["Lutz Erian (Lead)", "Annemarie Sauerbier (Designer)"] }
+    team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz Erian ", "Product Designer Annemarie Sauerbier"] }
   },
   {
     id: 5,
@@ -80,7 +81,7 @@ export const cases = [
     detailImage1: "/images/05_carhartt-wip-new journey_04/before_checkout_carhartt_wip.jpg",
     detailImage2: "/images/05_carhartt-wip-new journey_04/new_cart_Checkout_paymentsystem.jpg",
     detailImage3: "/images/05_carhartt-wip-new journey_04/outcome_filternav.jpg",
-    team: { title: "CARHARTT-WIP", members: ["Digital Design Lead: Lutz Erian", "Annemarie Sauerbier"] }
+    team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz Erian", "Annemarie Sauerbier"] }
   },
   {
     id: 6,
@@ -105,7 +106,7 @@ export const cases = [
     detailImage5: "/images/05_conic-rose-artdirection_05/draft_conicr.jpg",
     detailImage6: "/images/05_conic-rose-artdirection_05/finalconicrosedesign.jpg",
     imageFormats: ['landscape', 'portrait', 'portrait', 'landscape', 'landscape', 'landscape', 'landscape'],
-    team: { title: "CONIC ROSE", collaboration: "In zusammenarbeit mit CONIC ROSE und Annemarie S."} 
+    team: { title: "CONIC ROSE", collaboration: "Client CONIC ROSE Direction Design ME."} 
   },
   {
     id: 7,
@@ -165,7 +166,7 @@ export const cases = [
     detailImage5: "/images/08_aboutyou-rebrand_08/moodboxwardsbooth.jpg",
     detailImage6: "/images/08_aboutyou-rebrand_08/personalizationcampaign_shoppingevent.jpg",
     detailImage7: "/images/08_aboutyou-rebrand_08/redesign_stories_direction_final.jpg",
-    team: { title: "ABOUT YOU", members: ["Relaunch Lead: Franziska Nellesen", "Annemarie Sauerbier"] }
+    team: { title: "ABOUT YOU", members: ["Relaunch Lead: Franziska Nellesen", "Design & Art Direction Concept Annemarie Sauerbier"] }
   },
   {
     id: 9,
@@ -211,36 +212,49 @@ export const cases = [
     category: "EDITORIAL DESIGN / MAGAZINE",
     year: "2015-2017",
     tags: ["MAGAZINE", "EDITORIAL", "FASHION"],
-    description: "Editorial design for Monki magazine, creating conceptual layouts and visual narratives for the international fashion brand.",
-    challenge: "Designing 3 issues for Monki, developing a cohesive editorial language that reflects the brand's playful and contemporary identity.",
-    impact: "Merged digital trends with the tactile experience of printed magazine pages, creating engaging editorial content.",
+    description: "\"WE LIVE ONLINE, YET ARE ADDICTED TO THE SMELL OF FRESHLY PRINTED MAGAZINE PAGES. WE IMMERSE OURSELVES IN NEW AND NICHE TRENDS, WHILE WE STRATEGIZE WITH A COMMERCIAL AWARENESS. WE ARE DEEPLY ROOTED IN OUR LOCAL COMMUNITY, WHILST ALSO WORKING WITH THE VERY BEST OF INTERNATIONAL TEAMS. HELLO, THIS IS PLASTIC MEDIA.\" ©PLASTIC MEDIA. Monki was created by PM. My first design-related experiences with international customer contact. Under the mentorship of Art Director Daniela Bily and Creative Director Kira Stachowitz, I learned to channel my skills in editorial design, brand marketing, and public relations.",
+    challenge: "For the Client Monki, we did every 4 Month a new ISSUE of MONKI. Which was accessible in all Monki Stores, it should deliver interesting stories and the current Collection in the Monkiworld. CI",
+    impact: "Designed 3 issues for Monki, developing a cohesive editorial language. Merged digital trends with the tactile experience of printed magazine pages.",
     outcome: "Successful delivery of conceptual magazine issues that aligned with Monki's marketing strategy and brand values.",
-    image: "/images/012monki/cover_hero.jpg",
-    detailImage1: "/images/012monki/monkicover.jpg",
-    detailImage2: "/images/012monki/editorial_layout.jpg",
-    detailImage3: "/images/012monki/layout_nostagia_tech.jpg",
-    detailImage4: "/images/012monki/layoutmonki.jpg",
-    detailImage5: "/images/012monki/monki_layout_guide.jpg",
-    detailImage6: "/images/012monki/survivorsguide_monki.jpg",
-    detailImage7: "/images/012monki/monkibackcover.jpg",
-    team: { title: "MONKI", members: ["Annemarie Sauerbier"] }
+    image: "/images/012monki/monkicoverSlider.jpg",
+    mobileImage: "/images/012monki/cover_hero.jpg",
+    detailImage1: "/images/012monki/editorial_layout.jpg",
+    detailImage2: "/images/012monki/layout_nostagia_tech.jpg",
+    detailImage3: "/images/012monki/monki_layout_guide.jpg",
+    detailImage4: "/images/012monki/survivorsguide_monki.jpg",
+    detailImage5: "/images/012monki/monkibackcover.jpg",
+    detailImage6: "/images/012monki/monki.jpg",
+    team: { 
+      title: "PLASTIC MEDIA", 
+      members: [
+        "Creative Director Kira Stachowitz",
+        "Lead Daniela Bily",
+        "Assistant Annemarie Sauerbier"
+      ] 
+    }
   },
   {
     id: 12,
-    title: "COMMA",
-    category: "EDITORIAL DESIGN / MAGAZINE",
+    title: "COMMA STYLE MAGAZINE",
+    category: "ART DIRECTION / EDITORIAL DESIGN",
     year: "2015",
-    tags: ["MAGAZINE", "EDITORIAL", "FASHION"],
-    description: "Editorial design and art direction for COMMA Style Magazine, creating visual narratives that blend fashion, culture, and contemporary aesthetics.",
-    challenge: "Developing a cohesive editorial language that captures the essence of contemporary style and culture.",
-    impact: "Created engaging editorial layouts and covers that resonated with the target audience, establishing a distinct visual identity for the publication.",
-    outcome: "Successful magazine issues with innovative editorial design, including spring editorials and style-focused content that elevated the publication's visual presence.",
+    tags: ["MAGAZINE", "EDITORIAL", "FASHION", "BRANDING"],
+    description: "As Art Director, I transformed Comma's traditional catalog into dynamic style magazines, creating a modern brand experience that bridges print and digital while attracting younger audiences.",
+    challenge: "Comma needed a fresh approach to attract a younger audience while maintaining its classic appeal. Their catalog, previously a simple brochure, required a redesign to elevate the brand's image and create a seamless e-commerce experience.",
+    impact: "I created a dynamic, zine-style lookbook called \"Comma CI\". During this process, we identified the need for two distinct target pieces: a classic design and a youthful \"Stylemagazine\". The latter embraced bold typography, collage elements, and modern aesthetics. This visual identity was seamlessly translated into a digital experience through parallax scrolling and interactive visuals.",
+    outcome: "The redesign successfully resonated with both younger and older audiences, creating a unified brand experience. The innovative web concept won an award for its unique collage style and immersive user experience.",
+    learning: "Whatever audience - do it circular, consistent and with great value.",
     image: "/images/09_COMMA_09/9.jpg",
     detailImage1: "/images/09_COMMA_09/editorialdesign.jpg",
     detailImage2: "/images/09_COMMA_09/spring_editorial2015.jpg",
-    detailImage3: "/images/09_COMMA_09/1.png",
-    detailImage4: "/images/09_COMMA_09/2.png",
-    team: { title: "COMMA", members: ["Annemarie Sauerbier"] }
+    detailImage3: "/images/09_COMMA_09/commastylemagazineissue2.jpg",
+    team: { 
+      title: "COMMA Design Team", 
+      members: [
+        "Creative Direction & Management SuperReal",
+        "Freelance Art Director Annemarie Sauerbier"
+      ] 
+    }
   }
 ];
 
