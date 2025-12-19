@@ -106,7 +106,7 @@ const Navbar = () => {
             <div className="flex space-x-2 overflow-x-auto no-scrollbar pl-6 lg:pl-0">
               <button 
                 onClick={() => setIsApproachModalOpen(true)} 
-                className="text-[10px] lg:text-2xl font-semibold uppercase px-4 py-2 rounded-full border font-neue-semibold bg-transparent border-black/10 text-black/30 hover:text-black transition-colors"
+                className="text-[10px] lg:text-2xl font-semibold uppercase px-4 py-2 rounded-full border font-neue-semibold bg-transparent border-black/10 text-black/30 hover:bg-[#DFFF00] hover:text-[#D9D9D9] hover:border-black/10 transition-colors"
               >
                 APPROACH
               </button>

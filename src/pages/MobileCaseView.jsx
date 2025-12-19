@@ -20,7 +20,7 @@ const MobileCaseView = ({ caseItem }) => {
         }}
       >
         {!isGradient && (
-          <img src={source} alt={alt} className="w-full h-auto block" />
+          <img src={source} alt={alt} className="w-full h-auto block" loading="lazy" decoding="async" />
         )}
       </div>
     );
@@ -41,7 +41,7 @@ const MobileCaseView = ({ caseItem }) => {
           style={{ background: heroIsGradient ? heroImage : 'transparent' }}
         > 
           {!heroIsGradient && (
-            <img src={heroImage} alt={caseItem.title} className="w-full h-full object-cover block" />
+            <img src={heroImage} alt={caseItem.title} className="w-full h-full object-cover block" loading="eager" decoding="async" />
           )}
           
           <div className="absolute bottom-6 left-5 flex flex-wrap gap-2 z-20">
@@ -59,7 +59,12 @@ const MobileCaseView = ({ caseItem }) => {
         <div className="px-5 pt-8 pb-4">
           <button 
             onClick={() => navigate('/')}
-            className="text-xs font-black font-neue uppercase border-b border-black"
+            className="text-xs font-black font-neue uppercase min-h-[44px] min-w-[44px] touch-manipulation leading-none relative inline-block"
+            style={{
+              borderBottom: '1px solid black',
+              paddingBottom: '0px',
+              lineHeight: '1'
+            }}
           >
             ← See all cases
           </button>
@@ -68,7 +73,7 @@ const MobileCaseView = ({ caseItem }) => {
         {/* 2. INTRO CARD */}
         <div className="px-5 mb-[0.1875rem]">
           <div className="bg-[#E2DED3] p-8 space-y-0">
-            <h1 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">
+            <h1 className="text-[32px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">
               {caseItem.title}
             </h1>
             <div className="flex justify-between items-start">
@@ -89,7 +94,7 @@ const MobileCaseView = ({ caseItem }) => {
           {caseItem.challenge && (
             <div className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
-                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">CHALLENGE</h2>
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">CHALLENGE</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
               </div>
               {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile1 : caseItem.detailImage1, "Challenge Detail", "grayscale hover:grayscale-0 transition-all duration-700")}
@@ -100,7 +105,7 @@ const MobileCaseView = ({ caseItem }) => {
           {caseItem.impact && (
             <div className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
-                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">IMPACT</h2>
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">IMPACT</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
               </div>
               {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, "Impact Detail", "")}
@@ -111,7 +116,7 @@ const MobileCaseView = ({ caseItem }) => {
           {caseItem.learning && (
             <div className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
-                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">LEARNING</h2>
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">LEARNING</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
               </div>
             </div>
@@ -128,10 +133,27 @@ const MobileCaseView = ({ caseItem }) => {
           {caseItem.outcome && (
             <div className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
-                <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">OUTCOME</h2>
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">OUTCOME</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
               </div>
               {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile5 : caseItem.detailImage3, "Final Outcome Detail", "shadow-lg")}
+            </div>
+          )}
+
+          {/* Additional detail images for cases with more than 3 images */}
+          {caseItem.detailImage4 && caseItem.id !== 6 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage4, "Detail 4", "")}
+            </div>
+          )}
+          {caseItem.detailImage5 && caseItem.id !== 6 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage5, "Detail 5", "")}
+            </div>
+          )}
+          {caseItem.detailImage6 && caseItem.id !== 6 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage6, "Detail 6", "")}
             </div>
           )}
 

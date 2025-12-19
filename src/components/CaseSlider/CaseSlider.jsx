@@ -56,8 +56,16 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                 )}
               </div>
 
+              {/* Gradient Overlay - Full Image */}
+              <div 
+                className="absolute inset-0"
+                style={{
+                  background: 'linear-gradient(to top, rgba(128, 93, 10, 0.25) 0%, transparent 100%)'
+                }}
+              />
+              
               {/* Titel-Overlay */}
-              <div className="absolute inset-x-0 bottom-0 p-8 pb-12 lg:p-12 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+              <div className="absolute inset-x-0 bottom-0 p-8 pb-12 lg:p-12 z-10">
                 {/* Tags - Title als erster Tag, dann die anderen Tags */}
                 <div className="flex flex-wrap gap-2">
                   {/* Title als Tag - clickable */}
