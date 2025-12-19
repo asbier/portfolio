@@ -44,7 +44,7 @@ const MobileCaseView = ({ caseItem }) => {
             <img src={heroImage} alt={caseItem.title} className="w-full h-full object-cover block" />
           )}
           
-          <div className="absolute bottom-6 left-5 flex flex-wrap gap-2">
+          <div className="absolute bottom-6 left-5 flex flex-wrap gap-2 z-20">
             {caseItem.tags?.map((tag, index) => (
               <span key={index} className="px-4 py-2 rounded-full text-[10px] font-semibold font-neue-semibold uppercase text-[#979797] bg-transparent border border-[#979797]">
                 {tag}

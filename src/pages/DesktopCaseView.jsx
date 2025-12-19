@@ -68,8 +68,7 @@ const DesktopCaseView = ({ caseItem }) => {
         caseItem.detailImage12,
         caseItem.detailImage13,
         caseItem.detailImage14,
-        caseItem.detailImage15,
-        caseItem.detailImage16
+        caseItem.detailImage15
       ].filter(Boolean);
       // Entferne Duplikate
       return [...new Set(images)];
@@ -142,7 +141,7 @@ const DesktopCaseView = ({ caseItem }) => {
       caseItem.detailImage1,
       caseItem.detailImage2
     ].filter(Boolean);
-  }, [caseItem.id, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6, caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9, caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12, caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15, caseItem.detailImage16]);
+  }, [caseItem.id, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6, caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9, caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12, caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15]);
 
   const allImages = getUniqueImages();
   
@@ -207,22 +206,21 @@ const DesktopCaseView = ({ caseItem }) => {
     : caseItem.id === 7
     ? [
         { x: 600, y: 200 },
-        { x: 1200, y: 500 },
-        { x: 200, y: 800 },
-        { x: 900, y: 1000 },
-        { x: 400, y: 600 },
-        { x: 1400, y: 300 },
-        { x: 1100, y: 900 },
-        { x: 300, y: 400 },
-        { x: 800, y: 700 },
-        { x: 1300, y: 1100 },
-        { x: 500, y: 1200 },
+        { x: 1200, y: 600 },
+        { x: 200, y: 1000 },
+        { x: 900, y: 1400 },
+        { x: 400, y: 800 },
+        { x: 1400, y: 400 },
+        { x: 1100, y: 1200 },
+        { x: 300, y: 500 },
+        { x: 800, y: 1600 },
+        { x: 1300, y: 1800 },
+        { x: 500, y: 2000 },
         { x: 1000, y: 300 },
-        { x: 150, y: 600 },
-        { x: 750, y: 1100 },
-        { x: 1100, y: 200 },
-        { x: 450, y: 900 },
-        { x: 1350, y: 800 }
+        { x: 150, y: 700 },
+        { x: 750, y: 2400 },
+        { x: 1250, y: 2600 },
+        { x: 350, y: 2800 }
       ]
     : caseItem.id === 8
     ? [
@@ -341,17 +339,24 @@ const DesktopCaseView = ({ caseItem }) => {
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 >
-                  <div className="relative w-full shadow-2xl overflow-hidden">
+                  <div className="relative w-full shadow-2xl overflow-hidden group">
                     <div className="relative w-full" style={{ height: img.format === 'portrait' ? '500px' : '340px' }}>
                       <img 
                         src={img.url} 
                         alt="" 
-                        className="w-full h-full object-cover select-none pointer-events-none" 
+                        className="w-full h-full object-cover select-none pointer-events-none transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90" 
+                      />
+                      {/* Gradient overlay for text readability - only on hover */}
+                      <div 
+                        className="absolute inset-0 z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          background: 'linear-gradient(to top, rgba(128, 93, 10, 0.6) 0%, rgba(128, 93, 10, 0.3) 30%, transparent 70%)'
+                        }}
                       />
                     </div>
                     {img.title && (
                       <div className="absolute bottom-0 left-0 pl-[18px] pb-[18px] z-20 pointer-events-none">
-                        <p className="text-[10px] lg:text-[14px] font-neue-semibold uppercase text-[#979797]">
+                        <p className="text-[10px] lg:text-[14px] font-neue-semibold uppercase text-[#979797] group-hover:text-white transition-colors duration-300">
                           {img.title}
                         </p>
                       </div>
@@ -367,7 +372,7 @@ const DesktopCaseView = ({ caseItem }) => {
               drag 
               dragMomentum={false} 
               initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }}
-              className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
+              className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10"
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">{caseItem.title}</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.description}</p>
@@ -379,7 +384,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 drag 
                 dragMomentum={false} 
                 initial={{ x: cardPositions.challenge.x, y: cardPositions.challenge.y }}
-                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
+                className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10"
               >
                 <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">CHALLENGE</h2>
                 <p className="text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
@@ -392,7 +397,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 drag 
                 dragMomentum={false} 
                 initial={{ x: cardPositions.impact.x, y: cardPositions.impact.y }}
-                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
+                className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10"
               >
                 <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">IMPACT</h2>
                 <p className="text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
@@ -405,7 +410,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 drag 
                 dragMomentum={false} 
                 initial={{ x: cardPositions.outcome.x, y: cardPositions.outcome.y }}
-                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
+                className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10"
               >
                 <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">OUTCOME</h2>
                 <p className="text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
@@ -418,7 +423,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 drag 
                 dragMomentum={false} 
                 initial={{ x: cardPositions.learning.x, y: cardPositions.learning.y }}
-                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
+                className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10"
               >
                 <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[68px]">LEARNING</h2>
                 <p className="text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
@@ -431,7 +436,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 drag 
                 dragMomentum={false} 
                 initial={{ x: cardPositions.offer.x, y: cardPositions.offer.y }}
-                className="absolute bg-[#E2DED3] p-8 cursor-move shadow-lg w-[300px] z-20"
+                className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10"
               >
                 <p className="text-lg font-neue-book-semi leading-relaxed text-black mb-6">{caseItem.offer}</p>
                 <a 

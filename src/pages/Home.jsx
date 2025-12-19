@@ -6,21 +6,19 @@ import GrainOverlay from '../components/GrainOverlay/GrainOverlay'; 
 // 🛑 WICHTIG: Den alten Import von '../data/cases.js' löschen!
 
 const Home = ({ cases }) => { // ⬅️ cases hier als Prop entgegennehmen
-    const [activeFilter, setActiveFilter] = useState('all'); 
+    const [activeTagFilter, setActiveTagFilter] = useState(null);
 
     return (
         <div className="min-h-screen bg-[#F1F2E5]"> 
             <GrainOverlay />
-            <Navbar
-                activeFilter={activeFilter} 
-                setActiveFilter={setActiveFilter} 
-            />
+            <Navbar />
             
             <main className="pt-20 lg:pt-32">
                 <div className="relative"> 
                    <CaseSlider 
                         cases={cases}  // Nutzt jetzt die Daten aus App.jsx
-                        filter={activeFilter}
+                        activeTagFilter={activeTagFilter}
+                        setActiveTagFilter={setActiveTagFilter}
                     /> 
                 </div>
             </main>

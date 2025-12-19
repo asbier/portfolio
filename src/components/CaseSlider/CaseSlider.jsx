@@ -1,16 +1,26 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const CaseSlider = ({ cases, filter }) => {
+const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   const navigate = useNavigate();
   
-  const filteredCases = filter === 'all' 
-    ? cases 
-    : filter === 'private'
-    ? cases.filter(c => c.isPrivate === true)
-    : filter === 'commercial'
-    ? cases.filter(c => !c.isPrivate)
+  // Filter cases by tag if a tag filter is active
+  const filteredCases = activeTagFilter
+    ? cases.filter(c => 
+        c.tags?.some(tag => tag.toLowerCase() === activeTagFilter.toLowerCase()) ||
+        c.title?.toLowerCase() === activeTagFilter.toLowerCase()
+      )
     : cases;
+  
+  const handleTagClick = (e, tag) => {
+    e.stopPropagation(); // Prevent navigation when clicking tag
+    // Toggle: if same tag clicked, clear filter; otherwise set new filter
+    if (activeTagFilter?.toLowerCase() === tag.toLowerCase()) {
+      setActiveTagFilter(null);
+    } else {
+      setActiveTagFilter(tag);
+    }
+  };
 
   return (
    <div className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory 
@@ -50,15 +60,30 @@ const CaseSlider = ({ cases, filter }) => {
               <div className="absolute inset-x-0 bottom-0 p-8 pb-12 lg:p-12 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
                 {/* Tags - Title als erster Tag, dann die anderen Tags */}
                 <div className="flex flex-wrap gap-2">
-                  {/* Title als Tag */}
-                  <span className="px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase text-[#979797] bg-transparent border border-[#979797]">
+                  {/* Title als Tag - clickable */}
+                  <button
+                    onClick={(e) => handleTagClick(e, caseItem.title)}
+                    className={`px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors ${
+                      activeTagFilter?.toLowerCase() === caseItem.title?.toLowerCase()
+                        ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
+                        : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white'
+                    }`}
+                  >
                     {caseItem.title}
-                  </span>
-                  {/* Weitere Tags */}
+                  </button>
+                  {/* Weitere Tags - clickable */}
                   {caseItem.tags && caseItem.tags.map((tag, index) => (
-                    <span key={index} className="px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase text-[#979797] bg-transparent border border-[#979797]">
+                    <button
+                      key={index}
+                      onClick={(e) => handleTagClick(e, tag)}
+                      className={`px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors ${
+                        activeTagFilter?.toLowerCase() === tag.toLowerCase()
+                          ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
+                          : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white'
+                      }`}
+                    >
                       {tag}
-                    </span>
+                    </button>
                   ))}
                 </div>
               </div>
