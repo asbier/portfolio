@@ -45,7 +45,7 @@ export const cases = [
     impact: "Streamlined test drive booking process with improved user experience.",
     outcome: "New Landingpagethat simplifies the test drive booking journey within the german market.",
     image: "/images/03_vw-testdrive_07/SliderImage_Volkswagen-IDModelleProbefahren.jpg",
-    detailImage1: "/images/03_vw-testdrive_07/DetailUX.jpg",
+    detailImage1: "/images/03_vw-testdrive_07/wireframe_form_test-drive.jpg",
     detailImage2: "/images/03_vw-testdrive_07/IDModelleProbefahren-copy.jpg",
     detailImage3: "/images/03_vw-testdrive_07/SLiderImage_IDModelleProbefahren.webp",
     team: { title: "VOLKSWAGEN x DAYONE", members: ["VW PO Steffen H. with PM Max M., UX/UI Annemarie Sauerbier"] }
