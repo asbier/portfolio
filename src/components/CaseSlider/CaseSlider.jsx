@@ -58,24 +58,28 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
 
               {/* Gradient Overlay - Full Image */}
               <div 
-                className="absolute inset-0"
+                className="absolute inset-0 z-0"
                 style={{
                   background: 'linear-gradient(to top, rgba(128, 93, 10, 0.25) 0%, transparent 100%)'
                 }}
               />
               
               {/* Titel-Overlay */}
-              <div className="absolute inset-x-0 bottom-0 p-8 pb-12 lg:p-12 z-10">
+              <div className="absolute inset-x-0 bottom-0 p-8 pb-12 lg:p-12 z-20">
                 {/* Tags - Title als erster Tag, dann die anderen Tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 relative z-30">
                   {/* Title als Tag - clickable */}
                   <button
                     onClick={(e) => handleTagClick(e, caseItem.title)}
-                    className={`px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors ${
+                    className={`px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] flex items-center justify-center ${
                       activeTagFilter?.toLowerCase() === caseItem.title?.toLowerCase()
                         ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
                         : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white'
                     }`}
+                    style={{ 
+                      WebkitTextStroke: '0.3px',
+                      textShadow: '0 1px 2px rgba(0,0,0,0.3)'
+                    }}
                   >
                     {caseItem.title}
                   </button>
@@ -84,11 +88,15 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                     <button
                       key={index}
                       onClick={(e) => handleTagClick(e, tag)}
-                      className={`px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors ${
+                      className={`px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] flex items-center justify-center ${
                         activeTagFilter?.toLowerCase() === tag.toLowerCase()
                           ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
                           : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white'
                       }`}
+                      style={{ 
+                        WebkitTextStroke: '0.3px',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.3)'
+                      }}
                     >
                       {tag}
                     </button>
