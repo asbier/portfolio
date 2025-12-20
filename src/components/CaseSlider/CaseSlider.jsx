@@ -6,6 +6,9 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   const [viewportHeight, setViewportHeight] = useState(
     typeof window !== 'undefined' ? window.innerHeight : 0
   );
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth < 1024 : false
+  );
 
   // Handle viewport height changes for Chrome on mobile
   useEffect(() => {
@@ -13,12 +16,23 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
       setViewportHeight(window.innerHeight);
     };
 
-    // Set initial height
+    const updateIsMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    // Set initial values
     updateViewportHeight();
+    updateIsMobile();
 
     // Update on resize
-    window.addEventListener('resize', updateViewportHeight);
-    window.addEventListener('orientationchange', updateViewportHeight);
+    window.addEventListener('resize', () => {
+      updateViewportHeight();
+      updateIsMobile();
+    });
+    window.addEventListener('orientationchange', () => {
+      updateViewportHeight();
+      updateIsMobile();
+    });
 
     // Chrome-specific: handle visual viewport changes
     if (window.visualViewport) {
@@ -78,12 +92,19 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
           const isGradient = caseItem.image?.startsWith('linear-gradient');
           const isComingSoon = caseItem.isPrivate && caseItem.id === 1; // First dashboard project
 
+          const handleNavigation = () => {
+            if (!isComingSoon) {
+              navigate(`/case/${caseItem.id}`);
+            }
+          };
+
           return (
             <div
               key={caseItem.id}
-              onClick={() => !isComingSoon && navigate(`/case/${caseItem.id}`)}
+              onClick={!isMobile ? handleNavigation : undefined}
+              onDoubleClick={isMobile ? handleNavigation : undefined}
               className={`flex-shrink-0 w-screen h-full snap-center relative group
-                         lg:w-[33.33vw] lg:border-r lg:border-black/5 ${isComingSoon ? 'cursor-default' : 'cursor-pointer'}`}
+                         lg:w-[33.33vw] lg:border-r lg:border-black/5 ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
             >
               {/* Projekt-Hintergrund Logik */}
               <div className="absolute inset-0 w-full h-full overflow-hidden">
