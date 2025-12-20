@@ -183,7 +183,7 @@ export const cases = [
     challenge: "Reducing and going towards more neutral from a more tech-looking magazine. Creating a cohesive visual identity for a sustainability-focused publication that appeals to a young, environmentally conscious audience.",
     impact: "Managed to get my own touch into the design, reducing the tech aesthetic and moving towards a more neutral, minimal approach while maintaining editorial excellence.",
     outcome: "4 issues and a relaunch with a complete visual redesign that balanced minimalism with pop culture references, moving from a tech-looking magazine to a more neutral, refined aesthetic.",
-    image: "/images/10_BIORAMA_10/Slider_biorama.jpg",
+    image: "/images/10_BIORAMA_10/biorama_mobile_hero.jpg",
     mobileImage: "/images/10_BIORAMA_10/biorama_cover.png",
     detailImage1: "/images/10_BIORAMA_10/biorama_cover.png",
     detailImage2: "/images/10_BIORAMA_10/layout.jpg",
