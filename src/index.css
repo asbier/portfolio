@@ -65,11 +65,16 @@
 @supports (-webkit-appearance: none) {
   /* Ensure viewport calculations work on Chrome iPhone */
   @media screen and (max-width: 1023px) {
-    /* Force mobile viewport calculations */
-    .h-\[calc\(100vh-119px\)\] {
-      height: calc(100vh - 119px) !important;
-      min-height: calc(100vh - 119px);
-      max-height: calc(100vh - 119px);
+    /* Force mobile viewport calculations - navbar is 110px on mobile */
+    [class*="h-\[calc\(100vh-110px\)\]"] {
+      height: calc(100vh - 110px) !important;
+      min-height: calc(100vh - 110px) !important;
+      max-height: calc(100vh - 110px) !important;
+    }
+    
+    /* Support for dynamic viewport height on mobile */
+    [class*="bottom-\[110px\]"] {
+      bottom: 110px !important;
     }
   }
   

@@ -13,7 +13,7 @@ const Home = ({ cases }) => { // ⬅️ cases hier als Prop entgegennehmen
             <GrainOverlay />
             <Navbar />
             
-            <main className="pt-20 lg:pt-32">
+            <main className="pt-0 lg:pt-32">
                 <div className="relative"> 
                    <CaseSlider 
                         cases={cases}  // Nutzt jetzt die Daten aus App.jsx
