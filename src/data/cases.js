@@ -178,7 +178,7 @@ export const cases = [
     title: "BIORAMA",
     category: "ART DIRECTION / EDITORIAL DESIGN",
     year: "2017",
-    tags: ["MAGAZINE", "SUSTAINABILITY", "LIFESTYLE"],
+    tags: ["BIORAMA", "ART DIRECTION", "EDITORIAL", "SUSTAINABILITY"],
     description: "As Art Director at Monopol, I worked on BIORAMA for a year, managing to get my own touch into the design of 4 issues and a relaunch. Produced by Monopol, I worked together with Thomas on art direction—he did most still life photos. Our concept was minimal, pop, but leaned towards NEON and Brandeins—informative, bio, young target.",
     challenge: "Reducing and going towards more neutral from a more tech-looking magazine. Creating a cohesive visual identity for a sustainability-focused publication that appeals to a young, environmentally conscious audience.",
     impact: "Managed to get my own touch into the design, reducing the tech aesthetic and moving towards a more neutral, minimal approach while maintaining editorial excellence.",
