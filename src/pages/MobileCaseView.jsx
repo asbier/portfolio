@@ -9,8 +9,16 @@ const MobileCaseView = ({ caseItem }) => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -47,6 +55,7 @@ const MobileCaseView = ({ caseItem }) => {
   const heroIsGradient = heroImage?.startsWith('linear-gradient');
 
   // Calculate hero behavior: scrolls up first, then sticks at ~10% height
+  // Use useMemo to avoid recalculating on every render
   const heroFullHeight = typeof window !== 'undefined' ? window.innerHeight * 0.6 : 400; // 60vh
   const heroMinHeight = 60; // ~10% or fixed small height for filters
   const scrollThreshold = heroFullHeight - heroMinHeight;
@@ -64,20 +73,26 @@ const MobileCaseView = ({ caseItem }) => {
       <main className="pt-0 pb-32 scroll-smooth relative" style={{ WebkitOverflowScrolling: 'touch' }}> 
         {/* 1. HERO BEREICH - Scrolls up, then sticks at 10% */}
         <div 
-          className={`${isSticky ? 'sticky' : 'relative'} top-[10px] z-50 w-full overflow-hidden transition-all duration-300`}
+          className={`${isSticky ? 'sticky' : 'relative'} top-[10px] z-50 w-full overflow-hidden`}
           style={{ 
             height: `${heroHeight}px`,
             background: heroIsGradient ? heroImage : 'transparent',
+            willChange: 'height',
+            transition: isSticky ? 'height 0.2s ease-out' : 'none',
           }}
         > 
           {!heroIsGradient && (
             <img 
               src={heroImage} 
               alt={caseItem.title} 
-              className="w-full h-full object-cover block transition-opacity duration-300" 
+              className="w-full h-full object-cover block" 
               loading="eager" 
               decoding="async"
-              style={{ opacity: imageOpacity }}
+              style={{ 
+                opacity: imageOpacity,
+                willChange: 'opacity',
+                transition: 'opacity 0.2s ease-out'
+              }}
             />
           )}
           
