@@ -37,15 +37,19 @@ const MobileCaseView = ({ caseItem }) => {
   const heroIsGradient = heroImage?.startsWith('linear-gradient');
 
   return (
-    <div className="min-h-screen bg-[#F1F2E5] text-black font-neue overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
+    <div className="min-h-screen bg-[#F1F2E5] text-black font-neue" style={{ WebkitOverflowScrolling: 'touch' }}>
       <GrainOverlay />
       <Navbar />
       
-      <main className="pt-0 pb-32 scroll-smooth relative"> 
+      <main className="pt-0 pb-32 scroll-smooth relative overflow-y-auto" style={{ height: 'calc(100vh - 110px)', WebkitOverflowScrolling: 'touch' }}> 
         {/* 1. HERO BEREICH - Sticky 10px from top */}
         <div 
-          className="sticky top-[10px] z-40 relative w-full h-[60vh] overflow-hidden"
-          style={{ background: heroIsGradient ? heroImage : 'transparent' }}
+          className="sticky top-[10px] z-50 relative w-full h-[60vh] overflow-hidden"
+          style={{ 
+            background: heroIsGradient ? heroImage : 'transparent',
+            position: 'sticky',
+            WebkitPosition: 'sticky'
+          }}
         > 
           {!heroIsGradient && (
             <img src={heroImage} alt={caseItem.title} className="w-full h-full object-cover block" loading="eager" decoding="async" />
@@ -60,10 +64,10 @@ const MobileCaseView = ({ caseItem }) => {
           </div>
         </div>
 
-        <div className="h-[3px] w-full bg-[#F1F2E5] -mt-[3px]"></div>
+        <div className="h-[3px] w-full bg-[#F1F2E5] -mt-[3px] relative z-30"></div>
 
         {/* Navigation - Above first card */}
-        <div className="px-5 pt-8 pb-4 relative z-20">
+        <div className="px-5 pt-8 pb-4 relative z-30">
           <button 
             onClick={() => navigate('/')}
             className="text-xs font-black font-neue uppercase min-h-[44px] min-w-[44px] touch-manipulation leading-none relative inline-block"
@@ -78,7 +82,7 @@ const MobileCaseView = ({ caseItem }) => {
         </div>
 
         {/* 2. INTRO CARD */}
-        <div className="px-5 mb-[0.1875rem] relative z-20">
+        <div className="px-5 mb-[0.1875rem] relative z-30">
           <div className="bg-[#E2DED3] p-8 space-y-0">
             <h1 className="text-[32px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">
               {caseItem.title}
@@ -95,7 +99,7 @@ const MobileCaseView = ({ caseItem }) => {
         </div>
 
         {/* 3. CONTENT SECTIONS */}
-        <div className="px-5 space-y-[0.1875rem] snap-y snap-mandatory relative z-20">
+        <div className="px-5 space-y-[0.1875rem] snap-y snap-mandatory relative z-30">
           
           {/* CHALLENGE */}
           {caseItem.challenge && (
