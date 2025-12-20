@@ -63,7 +63,6 @@ const MobileCaseView = ({ caseItem }) => {
   // Hero scrolls up until threshold, then becomes sticky
   const isSticky = scrollY >= scrollThreshold;
   const heroHeight = isSticky ? heroMinHeight : Math.max(heroMinHeight, heroFullHeight - scrollY);
-  const imageOpacity = isSticky ? 0.2 : Math.max(0.2, 1 - (scrollY / scrollThreshold) * 0.8);
 
   return (
     <div className="min-h-screen bg-[#F1F2E5] text-black font-neue" style={{ WebkitOverflowScrolling: 'touch' }}>
@@ -88,11 +87,6 @@ const MobileCaseView = ({ caseItem }) => {
               className="w-full h-full object-cover block" 
               loading="eager" 
               decoding="async"
-              style={{ 
-                opacity: imageOpacity,
-                willChange: 'opacity',
-                transition: 'opacity 0.2s ease-out'
-              }}
             />
           )}
           
