@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   const navigate = useNavigate();
+  const [viewportHeight, setViewportHeight] = useState(
+    typeof window !== 'undefined' ? window.innerHeight : 0
+  );
+
+  // Handle viewport height changes for Chrome on mobile
+  useEffect(() => {
+    const updateViewportHeight = () => {
+      setViewportHeight(window.innerHeight);
+    };
+
+    // Set initial height
+    updateViewportHeight();
+
+    // Update on resize
+    window.addEventListener('resize', updateViewportHeight);
+    window.addEventListener('orientationchange', updateViewportHeight);
+
+    // Chrome-specific: handle visual viewport changes
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', updateViewportHeight);
+    }
+
+    return () => {
+      window.removeEventListener('resize', updateViewportHeight);
+      window.removeEventListener('orientationchange', updateViewportHeight);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', updateViewportHeight);
+      }
+    };
+  }, []);
   
   // Filter cases by tag if a tag filter is active
   const filteredCases = activeTagFilter
@@ -30,11 +60,15 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                 lg:top-[120px] lg:bottom-auto lg:h-[calc(100vh-120px)]
                 z-40"
       style={{
-        // Fix for Chrome on iPhone - use actual viewport height
-        minHeight: 'calc(100vh - 110px)',
-        maxHeight: 'calc(100vh - 110px)',
+        // Fix for Chrome on iPhone - use dynamic viewport height
+        height: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
+        minHeight: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
+        maxHeight: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
         // Ensure it respects safe areas on mobile
         paddingBottom: 'env(safe-area-inset-bottom)',
+        // Force hardware acceleration
+        transform: 'translateZ(0)',
+        WebkitTransform: 'translateZ(0)',
       }}
     >
       
