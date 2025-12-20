@@ -77,12 +77,14 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
           // Prüfen, ob es ein Verlauf ist
           const isGradient = caseItem.image?.startsWith('linear-gradient');
 
+          const isComingSoon = caseItem.isPrivate && caseItem.id === 1; // First dashboard project
+          
           return (
             <div
               key={caseItem.id}
-              onClick={() => navigate(`/case/${caseItem.id}`)}
-              className="flex-shrink-0 w-screen h-full snap-center relative group
-                         lg:w-[33.33vw] lg:border-r lg:border-black/5 cursor-pointer"
+              onClick={() => !isComingSoon && navigate(`/case/${caseItem.id}`)}
+              className={`flex-shrink-0 w-screen h-full snap-center relative group
+                         lg:w-[33.33vw] lg:border-r lg:border-black/5 ${isComingSoon ? 'cursor-default' : 'cursor-pointer'}`}
             >
               {/* Projekt-Hintergrund Logik */}
               <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -107,6 +109,22 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                   background: 'linear-gradient(to top, rgba(128, 93, 10, 0.25) 0%, transparent 100%)'
                 }}
               />
+              
+              {/* Coming Soon Overlay */}
+              {isComingSoon && (
+                <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+                  <div className="text-center px-6">
+                    <div className="inline-block px-6 py-3 rounded-full bg-[#DFFF00] border border-black/10 mb-4">
+                      <span className="text-sm sm:text-base lg:text-lg font-semibold font-neue-semibold uppercase text-[#D9D9D9]">
+                        COMING SOON
+                      </span>
+                    </div>
+                    <p className="text-white/80 text-xs sm:text-sm font-neue-book-semi">
+                      Scroll to view other projects
+                    </p>
+                  </div>
+                </div>
+              )}
               
               {/* Titel-Overlay */}
               <div className="absolute inset-x-0 bottom-0 p-4 pb-6 sm:p-6 sm:pb-8 lg:p-12 z-20">
