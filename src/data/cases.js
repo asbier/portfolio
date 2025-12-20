@@ -58,7 +58,7 @@ export const cases = [
     category: "PRODUCT DESIGN",
     year: "2019-2025",
     hideTitleTag: true,
-    tags: ["CARHARTT-WIP", "HELPCENTER", "PRODUCT DESIGN", "UX", "E-COMMERCE"],
+    tags: ["CARHARTT-WIP", "HELPCENTER", "PRODUCT DESIGN", "E-COMMERCE"],
     description: "Developing a help center to improve customer support and self-service capabilities.",
     challenge: "Increased support tickets and customer frustration during the shopping journey.",
     impact: "Improved self-service rates and reduced support load through better information architecture.",
