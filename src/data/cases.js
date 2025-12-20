@@ -39,7 +39,7 @@ export const cases = [
     title: "VOLKSWAGEN ID MODELLE PROBEFAHREN",
     category: "PRODUCT DESIGN",
     year: "2024",
-    tags: ["UX DESIGN", "AUTOMOTIVE", "DIGITAL"],
+    tags: ["VOLKSWAGEN", "PRODUCT DESIGN", "AUTOMOTIVE", "CONSULTING"],
     description: "Designing a test drive booking system for Volkswagen ID models.",
     challenge: "Creating an intuitive booking experience for electric vehicle test drives.",
     impact: "Streamlined test drive booking process with improved user experience.",
