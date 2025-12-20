@@ -19,6 +19,27 @@ const Privacy = () => {
           
           <div className="space-y-6 text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
             <section>
+              <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Data Collection</h2>
+              <p>
+                This portfolio website does not collect, store, or process any personal data from visitors. No forms, analytics tracking, or cookies are used to gather user information. Your visit to this site is completely anonymous.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Cookies</h2>
+              <p>
+                This website does not use cookies or any tracking technologies. Your browsing experience is not monitored or recorded.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Third-Party Links</h2>
+              <p>
+                This website may contain links to external websites (such as LinkedIn, GitHub, or other third-party sites). I am not responsible for the privacy practices or content of these external sites. Please review their privacy policies separately.
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Image Usage Policy</h2>
               <p>
                 The images displayed in this portfolio are based on projects I have worked on. All images are used for portfolio and professional presentation purposes to showcase my design work and contributions to these projects.
@@ -33,9 +54,26 @@ const Privacy = () => {
             </section>
 
             <section>
+              <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Your Rights</h2>
+              <p>
+                Since no personal data is collected, there is no personal data to access, modify, or delete. If you have any concerns about your privacy while visiting this site, please contact me via <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">LinkedIn</a>.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Changes to This Policy</h2>
+              <p>
+                I may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date.
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Contact</h2>
               <p>
-                For any questions or concerns regarding image usage or privacy, please reach out to me via <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">LinkedIn</a>.
+                For any questions or concerns regarding privacy, image usage, or this policy, please reach out to me via <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">LinkedIn</a>.
+              </p>
+              <p className="text-sm text-black/60 mt-4">
+                Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
             </section>
           </div>
