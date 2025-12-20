@@ -73,12 +73,11 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
     >
       
       <div className="flex h-full w-max">
-        {filteredCases.map((caseItem) => {
+        {filteredCases.map((caseItem, index) => {
           // Prüfen, ob es ein Verlauf ist
           const isGradient = caseItem.image?.startsWith('linear-gradient');
-
           const isComingSoon = caseItem.isPrivate && caseItem.id === 1; // First dashboard project
-          
+
           return (
             <div
               key={caseItem.id}
@@ -98,6 +97,9 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                     src={caseItem.image} 
                     alt={caseItem.title} 
                     className="w-full h-full object-cover" 
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    fetchPriority={index === 0 ? "high" : "auto"}
                   />
                 )}
               </div>
