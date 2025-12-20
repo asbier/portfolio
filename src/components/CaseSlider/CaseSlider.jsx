@@ -77,17 +77,17 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
               {/* Titel-Overlay */}
               <div className="absolute inset-x-0 bottom-0 p-4 pb-6 sm:p-6 sm:pb-8 lg:p-12 z-20">
                 {/* Tags - Title als erster Tag, dann die anderen Tags */}
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 relative z-30">
+                <div className="flex flex-wrap gap-2 sm:gap-2.5 relative z-30">
                   {/* Title als Tag - clickable */}
                   <button
                     onClick={(e) => handleTagClick(e, caseItem.title)}
-                    className={`px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 rounded-full text-[8px] sm:text-[9px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[24px] sm:min-h-[28px] lg:min-h-[32px] flex items-center justify-center ${
+                    className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[11px] sm:text-xs lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
                       activeTagFilter?.toLowerCase() === caseItem.title?.toLowerCase()
                         ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
                         : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white'
                     }`}
                     style={{ 
-                      WebkitTextStroke: '0.2px',
+                      WebkitTextStroke: '0.3px',
                       textShadow: '0 1px 2px rgba(0,0,0,0.3)'
                     }}
                   >
@@ -98,13 +98,13 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                     <button
                       key={index}
                       onClick={(e) => handleTagClick(e, tag)}
-                      className={`px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 rounded-full text-[8px] sm:text-[9px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[24px] sm:min-h-[28px] lg:min-h-[32px] flex items-center justify-center ${
+                      className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[11px] sm:text-xs lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
                         activeTagFilter?.toLowerCase() === tag.toLowerCase()
                           ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
                           : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white'
                       }`}
                       style={{ 
-                        WebkitTextStroke: '0.2px',
+                        WebkitTextStroke: '0.3px',
                         textShadow: '0 1px 2px rgba(0,0,0,0.3)'
                       }}
                     >
