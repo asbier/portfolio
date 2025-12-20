@@ -21,3 +21,61 @@
   clip: auto;
   white-space: normal;
 }
+
+/* Mobile Chrome on iPhone fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari/Chrome specific fixes */
+  * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Ensure viewport units work correctly on iOS */
+  html {
+    height: -webkit-fill-available;
+  }
+  
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Fix for Chrome on iPhone viewport issues */
+@media screen and (max-width: 1024px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Force mobile styles on Chrome iPhone */
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure responsive containers work */
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* Additional Chrome iPhone fixes */
+@supports (-webkit-appearance: none) {
+  /* Ensure viewport calculations work on Chrome iPhone */
+  @media screen and (max-width: 1023px) {
+    /* Force mobile viewport calculations */
+    .h-\[calc\(100vh-119px\)\] {
+      height: calc(100vh - 119px) !important;
+      min-height: calc(100vh - 119px);
+      max-height: calc(100vh - 119px);
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .lg\:h-\[calc\(100vh-120px\)\] {
+      height: calc(100vh - 120px) !important;
+    }
+  }
+}
