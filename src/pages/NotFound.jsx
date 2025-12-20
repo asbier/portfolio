@@ -1,0 +1,57 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar/Navbar';
+import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
+
+const NotFound = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="min-h-screen bg-[#F1F2E5] text-black font-neue">
+      <GrainOverlay />
+      <Navbar />
+      
+      <main className="flex flex-col items-center justify-center min-h-[calc(100vh-110px)] lg:min-h-[calc(100vh-120px)] pt-[110px] lg:pt-[120px] px-5">
+        <div className="text-center max-w-2xl">
+          {/* 404 Number */}
+          <h1 className="text-[120px] sm:text-[180px] lg:text-[240px] font-black font-neue-bold leading-none text-[#DFFF00] mb-4">
+            404
+          </h1>
+          
+          {/* Fun Message */}
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-neue-semibold uppercase mb-6 text-black">
+            Oops! This page took a wrong turn
+          </h2>
+          
+          <p className="text-base sm:text-lg lg:text-xl font-neue-book-semi text-black/70 mb-8 leading-relaxed">
+            Looks like this page decided to go off the grid. Maybe it's exploring new design territories, or perhaps it's just being a bit rebellious.
+          </p>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              onClick={() => navigate('/')}
+              className="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base lg:text-lg font-semibold uppercase rounded-full bg-[#DFFF00] border border-black/10 text-[#D9D9D9] hover:bg-transparent hover:border-[#DFFF00] hover:text-[#DFFF00] transition-colors font-neue-semibold min-h-[44px] flex items-center justify-center"
+            >
+              Back to Home
+            </button>
+            
+            <button
+              onClick={() => navigate(-1)}
+              className="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base lg:text-lg font-semibold uppercase rounded-full bg-transparent border border-black/10 text-black/30 hover:bg-[#DFFF00] hover:text-[#D9D9D9] hover:border-black/10 transition-colors font-neue-semibold min-h-[44px] flex items-center justify-center"
+            >
+              Go Back
+            </button>
+          </div>
+          
+          {/* Fun Quote */}
+          <p className="mt-12 text-sm sm:text-base font-neue-book-semi italic text-black/50">
+            "The best designs are the ones that don't exist yet—or maybe they're just hiding."
+          </p>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default NotFound;
