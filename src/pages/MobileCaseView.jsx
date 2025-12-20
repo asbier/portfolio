@@ -46,12 +46,15 @@ const MobileCaseView = ({ caseItem }) => {
   const heroImage = caseItem.mobileImage || caseItem.image;
   const heroIsGradient = heroImage?.startsWith('linear-gradient');
 
-  // Calculate hero height based on scroll - collapses to ~10% when scrolled
+  // Calculate hero behavior: scrolls up first, then sticks at ~10% height
   const heroFullHeight = typeof window !== 'undefined' ? window.innerHeight * 0.6 : 400; // 60vh
-  const heroMinHeight = heroFullHeight * 0.1; // 10% of original
+  const heroMinHeight = 60; // ~10% or fixed small height for filters
   const scrollThreshold = heroFullHeight - heroMinHeight;
-  const heroHeight = Math.max(heroMinHeight, heroFullHeight - scrollY);
-  const imageOpacity = scrollY > scrollThreshold * 0.5 ? Math.max(0.3, 1 - (scrollY / scrollThreshold)) : 1;
+  
+  // Hero scrolls up until threshold, then becomes sticky
+  const isSticky = scrollY >= scrollThreshold;
+  const heroHeight = isSticky ? heroMinHeight : Math.max(heroMinHeight, heroFullHeight - scrollY);
+  const imageOpacity = isSticky ? 0.2 : Math.max(0.2, 1 - (scrollY / scrollThreshold) * 0.8);
 
   return (
     <div className="min-h-screen bg-[#F1F2E5] text-black font-neue" style={{ WebkitOverflowScrolling: 'touch' }}>
@@ -59,9 +62,9 @@ const MobileCaseView = ({ caseItem }) => {
       <Navbar />
       
       <main className="pt-0 pb-32 scroll-smooth relative" style={{ WebkitOverflowScrolling: 'touch' }}> 
-        {/* 1. HERO BEREICH - Collapses on scroll */}
+        {/* 1. HERO BEREICH - Scrolls up, then sticks at 10% */}
         <div 
-          className="sticky top-[10px] z-50 relative w-full overflow-hidden transition-all duration-300"
+          className={`${isSticky ? 'sticky' : 'relative'} top-[10px] z-50 w-full overflow-hidden transition-all duration-300`}
           style={{ 
             height: `${heroHeight}px`,
             background: heroIsGradient ? heroImage : 'transparent',
@@ -78,9 +81,9 @@ const MobileCaseView = ({ caseItem }) => {
             />
           )}
           
-          <div className="absolute bottom-6 left-5 flex flex-wrap gap-2 z-20">
+          <div className="absolute bottom-2 left-5 flex flex-wrap gap-2 z-20">
             {caseItem.tags?.map((tag, index) => (
-              <span key={index} className="px-4 py-2 rounded-full text-[10px] font-semibold font-neue-semibold uppercase text-[#979797] bg-transparent border border-[#979797]">
+              <span key={index} className="px-3 py-1.5 rounded-full text-[9px] font-semibold font-neue-semibold uppercase text-[#979797] bg-transparent border border-[#979797]">
                 {tag}
               </span>
             ))}
