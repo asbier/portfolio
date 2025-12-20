@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isApproachModalOpen, setIsApproachModalOpen] = useState(false);
   const hiddenPages = ['Home', 'Privacy', 'Contact'];
-  const marqueeText = " ✦ HOLISTIC DESIGN & BRANDING ✦ SYSTEMIC THINKING ACROSS ALL MEDIUMS ✦ FROM INTERFACE LOGIC TO VISUAL IDENTITY ✦ NO BOXES, JUST SOLUTIONS ✦ STOP BEEING BORING ✦ ";
+  const marqueeText = " ✦ PORTFOLIO OF AM ✦ HOLISTIC DESIGN & BRANDING ✦ SYSTEMIC THINKING ACROSS ALL MEDIUMS ✦ FROM INTERFACE LOGIC TO VISUAL IDENTITY ✦ NO BOXES, JUST SOLUTIONS ✦ STOP BEEING BORING ✦ ";
   
   // Split text into sentences and render with alternating colors
   const renderMarqueeText = () => {
