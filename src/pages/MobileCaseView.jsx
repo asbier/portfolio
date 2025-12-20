@@ -69,7 +69,7 @@ const MobileCaseView = ({ caseItem }) => {
             className="text-xs font-black font-neue uppercase min-h-[44px] min-w-[44px] touch-manipulation leading-none relative inline-block"
             style={{
               borderBottom: '1px solid black',
-              paddingBottom: '0px',
+              paddingBottom: '2px',
               lineHeight: '1'
             }}
           >
