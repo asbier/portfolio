@@ -121,7 +121,7 @@ const Navbar = () => {
               </button>
             </div>
             <div className="flex items-center space-x-2 pr-6 lg:pr-0">
-              <a href="mailto:mail@annemaris.de" className="px-5 py-2 sm:px-6 sm:py-2.5 lg:px-8 lg:py-3 text-[22px] sm:text-[17px] lg:text-2xl font-semibold uppercase rounded-full bg-[#FFB115] border border-black/10 text-[#D9D9D9] hover:bg-transparent hover:border-[#FFB115] hover:text-[#FFB115] transition-colors font-neue-semibold min-h-[36px] sm:min-h-[40px] flex items-center justify-center">Contact</a>
+              <a href="mailto:mail@annemaris.de" className="px-5 py-2 sm:px-6 sm:py-2.5 lg:px-8 lg:py-3 text-[22px] sm:text-[17px] lg:text-2xl font-semibold uppercase rounded-full bg-[#FFB115] border border-black/10 text-[#D9D9D9] hover:bg-transparent hover:border-[#FFB115] hover:text-[#FFB115] transition-colors font-neue-semibold min-h-[36px] sm:min-h-[40px] flex items-center justify-center">GET IN TOUCH</a>
               <button onClick={() => setIsMenuOpen(true)} className="lg:hidden w-10 h-10 flex items-center justify-center"><div className="w-[1.5rem] h-[1.5rem] bg-[#D9D9D9] rounded-full"></div></button>
             </div>
           </nav>
