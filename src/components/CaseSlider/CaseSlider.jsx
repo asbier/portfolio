@@ -27,7 +27,8 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
       className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory 
                 top-0 bottom-[110px]
                h-[calc(100vh-110px)]
-                lg:top-[120px] lg:bottom-auto lg:h-[calc(100vh-120px)]"
+                lg:top-[120px] lg:bottom-auto lg:h-[calc(100vh-120px)]
+                z-40"
       style={{
         // Fix for Chrome on iPhone - use actual viewport height
         minHeight: 'calc(100vh - 110px)',
