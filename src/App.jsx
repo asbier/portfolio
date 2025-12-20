@@ -7,6 +7,7 @@ import LoadingOverlay from './components/LoadingOverlay/LoadingOverlay';
 const Home = lazy(() => import('./pages/Home'));
 const CaseDetail = lazy(() => import('./pages/CaseDetail'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const Privacy = lazy(() => import('./pages/Privacy'));
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
@@ -41,6 +42,7 @@ function App() {
                     <Route path="/" element={<Home cases={cases} />} />
                     <Route path="/case/:id" element={<CaseDetail cases={cases} />} /> 
                     <Route path="/history" element={<Home cases={cases} />} /> 
+                    <Route path="/privacy" element={<Privacy />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Suspense>
