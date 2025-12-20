@@ -28,14 +28,14 @@ const Privacy = () => {
             <section>
               <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Removal Requests</h2>
               <p>
-                If you are the owner or representative of a company whose images appear in this portfolio and you do not wish for them to be displayed, please contact me at <a href="mailto:mail@annemaris.de" className="underline hover:no-underline">mail@annemaris.de</a>. I will promptly remove the requested images upon verification of ownership.
+                If you are the owner or representative of a company whose images appear in this portfolio and you do not wish for them to be displayed, please contact me via <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">LinkedIn</a>. I will promptly remove the requested images upon verification of ownership.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Contact</h2>
               <p>
-                For any questions or concerns regarding image usage or privacy, please reach out to me at <a href="mailto:mail@annemaris.de" className="underline hover:no-underline">mail@annemaris.de</a>.
+                For any questions or concerns regarding image usage or privacy, please reach out to me via <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">LinkedIn</a>.
               </p>
             </section>
           </div>
