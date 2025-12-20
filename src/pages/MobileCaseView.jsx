@@ -1,13 +1,15 @@
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 
 const MobileCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
+  const [scrollY, setScrollY] = useState(0);
+  const imageRefs = useRef([]);
   // Hilfsfunktion: Entscheidet ob Bild oder Verlauf gerendert wird
-  const renderMedia = (source, alt, className = "") => {
+  const renderMedia = (source, alt, className = "", index = 0) => {
     if (!source) return null;
     const isGradient = source.startsWith('linear-gradient');
 
@@ -20,7 +22,17 @@ const MobileCaseView = ({ caseItem }) => {
         }}
       >
         {!isGradient && (
-          <img src={source} alt={alt} className="w-full h-auto block" loading="lazy" decoding="async" />
+          <img 
+            ref={el => {
+              if (el) imageRefs.current[index] = el;
+            }}
+            src={source} 
+            alt={alt} 
+            className="w-full h-auto block" 
+            loading="lazy" 
+            decoding="async"
+            style={{ willChange: 'transform' }}
+          />
         )}
       </div>
     );
@@ -29,15 +41,46 @@ const MobileCaseView = ({ caseItem }) => {
   const heroImage = caseItem.mobileImage || caseItem.image;
   const heroIsGradient = heroImage?.startsWith('linear-gradient');
 
+  // Handle scroll for parallax effect
+  useEffect(() => {
+    let imageIndex = 0;
+    
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      
+      // Apply subtle parallax to images
+      imageRefs.current.forEach((ref) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+          
+          if (isVisible) {
+            // Subtle parallax: move slower than scroll (0.2 = 20% of scroll speed - reduced from 0.3)
+            const scrollProgress = (window.innerHeight - rect.top) / window.innerHeight;
+            const parallaxOffset = scrollProgress * 30; // Max 30px movement
+            ref.style.transform = `translateY(${parallaxOffset}px)`;
+          } else {
+            ref.style.transform = 'translateY(0)';
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#F1F2E5] text-black font-neue overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
       <GrainOverlay />
       <Navbar />
       
       <main className="pt-0 pb-32 scroll-smooth"> 
-        {/* 1. HERO BEREICH - Sticky */}
+        {/* 1. HERO BEREICH - Sticky 10px from top */}
         <div 
-          className="sticky top-0 z-30 relative w-full h-[60vh] overflow-hidden"
+          className="sticky top-[10px] z-30 relative w-full h-[60vh] overflow-hidden rounded-b-lg"
           style={{ background: heroIsGradient ? heroImage : 'transparent' }}
         > 
           {!heroIsGradient && (
@@ -53,10 +96,10 @@ const MobileCaseView = ({ caseItem }) => {
           </div>
         </div>
 
-        <div className="h-[3px] w-full bg-[#F1F2E5]"></div>
+        <div className="h-[3px] w-full bg-[#F1F2E5] -mt-[3px]"></div>
 
         {/* Navigation - Above first card */}
-        <div className="px-5 pt-8 pb-4">
+        <div className="px-5 pt-8 pb-4 relative z-20">
           <button 
             onClick={() => navigate('/')}
             className="text-xs font-black font-neue uppercase min-h-[44px] min-w-[44px] touch-manipulation leading-none relative inline-block"
@@ -71,7 +114,7 @@ const MobileCaseView = ({ caseItem }) => {
         </div>
 
         {/* 2. INTRO CARD */}
-        <div className="px-5 mb-[0.1875rem]">
+        <div className="px-5 mb-[0.1875rem] relative z-20">
           <div className="bg-[#E2DED3] p-8 space-y-0">
             <h1 className="text-[32px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">
               {caseItem.title}
@@ -88,7 +131,7 @@ const MobileCaseView = ({ caseItem }) => {
         </div>
 
         {/* 3. CONTENT SECTIONS */}
-        <div className="px-5 space-y-[0.1875rem] snap-y snap-mandatory">
+        <div className="px-5 space-y-[0.1875rem] snap-y snap-mandatory relative z-20">
           
           {/* CHALLENGE */}
           {caseItem.challenge && (
@@ -97,7 +140,7 @@ const MobileCaseView = ({ caseItem }) => {
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">CHALLENGE</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
               </div>
-              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile1 : caseItem.detailImage1, "Challenge Detail", "grayscale hover:grayscale-0 transition-all duration-700")}
+              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile1 : caseItem.detailImage1, "Challenge Detail", "grayscale hover:grayscale-0 transition-all duration-700", 0)}
             </div>
           )}
 
@@ -108,7 +151,7 @@ const MobileCaseView = ({ caseItem }) => {
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">IMPACT</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
               </div>
-              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, "Impact Detail", "")}
+              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, "Impact Detail", "", 1)}
             </div>
           )}
 
@@ -125,7 +168,7 @@ const MobileCaseView = ({ caseItem }) => {
           {/* Additional image for Conic Rose (before OUTCOME) */}
           {caseItem.id === 6 && caseItem.detailImageMobile4 && (
             <div className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImageMobile4, "Detail", "")}
+              {renderMedia(caseItem.detailImageMobile4, "Detail", "", 2)}
             </div>
           )}
 
@@ -136,24 +179,24 @@ const MobileCaseView = ({ caseItem }) => {
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">OUTCOME</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
               </div>
-              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile5 : caseItem.detailImage3, "Final Outcome Detail", "shadow-lg")}
+              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile5 : caseItem.detailImage3, "Final Outcome Detail", "shadow-lg", 3)}
             </div>
           )}
 
           {/* Additional detail images for cases with more than 3 images */}
           {caseItem.detailImage4 && caseItem.id !== 6 && (
             <div className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage4, "Detail 4", "")}
+              {renderMedia(caseItem.detailImage4, "Detail 4", "", 4)}
             </div>
           )}
           {caseItem.detailImage5 && caseItem.id !== 6 && (
             <div className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage5, "Detail 5", "")}
+              {renderMedia(caseItem.detailImage5, "Detail 5", "", 5)}
             </div>
           )}
           {caseItem.detailImage6 && caseItem.id !== 6 && (
             <div className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage6, "Detail 6", "")}
+              {renderMedia(caseItem.detailImage6, "Detail 6", "", 6)}
             </div>
           )}
 
