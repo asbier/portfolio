@@ -1,50 +1,106 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
-const CaseSlider = ({ cases, filter }) => {
+const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   const navigate = useNavigate();
-  const sliderRef = useRef(null);
-
-  const filteredCases = filter === 'all' 
-    ? cases 
-    : cases.filter(caseItem => caseItem.category === filter);
-
-  const handleCaseClick = (caseId) => {
-    navigate(`/case/${caseId}`);
+  
+  // Filter cases by tag if a tag filter is active
+  const filteredCases = activeTagFilter
+    ? cases.filter(c => 
+        c.tags?.some(tag => tag.toLowerCase() === activeTagFilter.toLowerCase()) ||
+        c.title?.toLowerCase() === activeTagFilter.toLowerCase()
+      )
+    : cases;
+  
+  const handleTagClick = (e, tag) => {
+    e.stopPropagation(); // Prevent navigation when clicking tag
+    // Toggle: if same tag clicked, clear filter; otherwise set new filter
+    if (activeTagFilter?.toLowerCase() === tag.toLowerCase()) {
+      setActiveTagFilter(null);
+    } else {
+      setActiveTagFilter(tag);
+    }
   };
 
   return (
-    <div className="w-full overflow-x-auto scrollbar-hide" ref={sliderRef}>
-      <div className="flex space-x-4 pb-4">
-        {filteredCases.map((caseItem, index) => (
-          <motion.div
-            key={caseItem.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.05 }}
-            className="flex-shrink-0 w-[350px] cursor-pointer group"
-            onClick={() => handleCaseClick(caseItem.id)}
-          >
-            <div className="relative overflow-hidden rounded-lg bg-gray-100 aspect-[7/10]">
-              <img
-                src={caseItem.image}
-                alt={caseItem.title}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
+   <div className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory 
+                top-0 
+               h-[calc(100vh-119px)] 
+                lg:top-[120px] lg:h-[calc(100vh-120px)]">
+      
+      <div className="flex h-full w-max">
+        {filteredCases.map((caseItem) => {
+          // Prüfen, ob es ein Verlauf ist
+          const isGradient = caseItem.image?.startsWith('linear-gradient');
+
+          return (
+            <div
+              key={caseItem.id}
+              onClick={() => navigate(`/case/${caseItem.id}`)}
+              className="flex-shrink-0 w-screen h-full snap-center relative group
+                         lg:w-[33.33vw] lg:border-r lg:border-black/5 cursor-pointer"
+            >
+              {/* Projekt-Hintergrund Logik */}
+              <div className="absolute inset-0 w-full h-full overflow-hidden">
+                {isGradient ? (
+                  <div 
+                    className="w-full h-full" 
+                    style={{ background: caseItem.image }} 
+                  />
+                ) : (
+                  <img 
+                    src={caseItem.image} 
+                    alt={caseItem.title} 
+                    className="w-full h-full object-cover" 
+                  />
+                )}
+              </div>
+
+              {/* Gradient Overlay - Full Image */}
+              <div 
+                className="absolute inset-0"
+                style={{
+                  background: 'linear-gradient(to top, rgba(128, 93, 10, 0.25) 0%, transparent 100%)'
+                }}
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
-                <h3 className="text-white font-medium text-sm">{caseItem.title}</h3>
+              
+              {/* Titel-Overlay */}
+              <div className="absolute inset-x-0 bottom-0 p-8 pb-12 lg:p-12 z-10">
+                {/* Tags - Title als erster Tag, dann die anderen Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {/* Title als Tag - clickable */}
+                  <button
+                    onClick={(e) => handleTagClick(e, caseItem.title)}
+                    className={`px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors ${
+                      activeTagFilter?.toLowerCase() === caseItem.title?.toLowerCase()
+                        ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
+                        : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white'
+                    }`}
+                  >
+                    {caseItem.title}
+                  </button>
+                  {/* Weitere Tags - clickable */}
+                  {caseItem.tags && caseItem.tags.map((tag, index) => (
+                    <button
+                      key={index}
+                      onClick={(e) => handleTagClick(e, tag)}
+                      className={`px-4 py-2 rounded-full text-[10px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors ${
+                        activeTagFilter?.toLowerCase() === tag.toLowerCase()
+                          ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
+                          : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white'
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-          </motion.div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
 };
 
 export default CaseSlider;
-
-

@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.8fe1bb7b.css","mappings":"AACA,gBACE,uBAAwB,CACxB,oBACF,CAEA,mCACE,YACF","sources":["App.css"],"sourcesContent":["/* Custom scrollbar hide utility */\n.scrollbar-hide {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n}\n\n.scrollbar-hide::-webkit-scrollbar {\n  display: none;\n}\n\n\n"],"names":[],"sourceRoot":""}

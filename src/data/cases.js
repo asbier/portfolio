@@ -1,128 +1,268 @@
-// Mock case data for 14 portfolio cases
 export const cases = [
   {
     id: 1,
-    title: "E-Commerce Platform Redesign",
-    category: "commerce",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=350&h=500&fit=crop",
-    description: "Complete redesign of e-commerce platform focusing on user experience and conversion optimization.",
-    tags: ["UX Design", "E-Commerce", "Conversion"]
+    title: "Berlin Tech Job Dashboard",
+    category: "PRODUCT DESIGN / DEV COLLAB",
+    isPrivate: true,
+    year: "2025",
+    tags: ["REACT", "TAILWIND", "DASHBOARD"],
+    description: "Visualizing the Berlin tech job market through data-driven design.",
+    challenge: "Fragmented job data made it hard for developers to find roles.",
+    impact: "Created a focused interface for tech-stack based job hunting.",
+    outcome: "A high-fidelity MVP built with a developer partner.",
+    image: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
+    detailImage1: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
+    detailImage2: "linear-gradient(180deg, #363C53 0%, #1A1D25 100%)",
+    detailImage3: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
+    team: { title: "PRIVATE", members: ["Annemarie S. (Design)", "James N. (Data Eng)"] }
   },
   {
     id: 2,
-    title: "Brand Identity System",
-    category: "private",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=350&h=500&fit=crop",
-    description: "Comprehensive brand identity system with typography, color palette, and visual guidelines.",
-    tags: ["Branding", "Identity", "Design System"]
+    title: "DASHBOARD DESIGN ADAS SYSTEM GUIDE",
+    category: "PRODUCT DESIGN",
+    year: "2024",
+    role: "LEAD",
+    tags: ["DASHBOARD", "ADAS", "UI-DESIGN"],
+    description: "Streamlined ADAS dashboard workflows to save time and improve documentation. As cars have to get calibrated and synchronized with the software, this system helps guide mechanics through the process.",
+    challenge: "Guiding the users better through the workflow and documentation. The legacy system lacked clear guidance, making it difficult for mechanics to track progress and recover from interruptions.",
+    impact: "Step-by-step guidance with time estimates, notifications, and documentation layers, enabling mechanics to track progress, recover from interruptions, and improve calibration workflows.",
+    outcome: "A guided interface that streamlined ADAS dashboard workflows, reducing calibration time and improving documentation accuracy.",
+    learning: "Always be the one asking early enough if this is what you really need, what purpose it solves.",
+    image: "/images/01_hellagutmann/sliderImage_hellagutmann_dashboard_hero.jpg",
+    detailImage1: "/images/01_hellagutmann/fahrzeug_auswählen_basis_default_1280-800.jpg",
+    detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.jpg",
+    detailImage3: "/images/01_hellagutmann/hellagutmann_dashboard_adas_guide_calibration.jpg",
+    team: { title: "DAYONE X HELLAGUTMANN", members: ["Consultancy and Guidance Christopher G. (Lead)", "UX & Strategy Annemarie S.", "UI Bean D.", "PM Silvana M."] }
   },
   {
     id: 3,
-    title: "Mobile App Interface",
-    category: "commerce",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=350&h=500&fit=crop",
-    description: "Modern mobile app interface design with focus on accessibility and user engagement.",
-    tags: ["Mobile", "UI Design", "Accessibility"]
+    title: "VOLKSWAGEN ID MODELLE PROBEFAHREN",
+    category: "PRODUCT DESIGN",
+    year: "2024",
+    tags: ["UX DESIGN", "AUTOMOTIVE", "DIGITAL"],
+    description: "Designing a test drive booking system for Volkswagen ID models.",
+    challenge: "Creating an intuitive booking experience for electric vehicle test drives.",
+    impact: "Streamlined test drive booking process with improved user experience.",
+    outcome: "New Landingpagethat simplifies the test drive booking journey within the german market.",
+    image: "/images/03_vw-testdrive_07/SliderImage_Volkswagen-IDModelleProbefahren.jpg",
+    detailImage1: "/images/03_vw-testdrive_07/wireframe_form_test-drive.jpg",
+    detailImage2: "/images/03_vw-testdrive_07/IDModelleProbefahren-copy.jpg",
+    detailImage3: "/images/03_vw-testdrive_07/SLiderImage_IDModelleProbefahren.webp",
+    team: { title: "VOLKSWAGEN x DAYONE", members: ["VW PO Steffen H. with PM Max M., UX/UI Annemarie Sauerbier"] }
   },
   {
     id: 4,
-    title: "Editorial Design Project",
-    category: "private",
-    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=350&h=500&fit=crop",
-    description: "Editorial design for print and digital publications with custom typography.",
-    tags: ["Editorial", "Typography", "Print"]
+    title: "CARHARTT-WIP HELPCENTER",
+    category: "PRODUCT DESIGN",
+    year: "2019-2025",
+    tags: ["UX DESIGN", "E-COMMERCE", "STRATEGY"],
+    description: "Developing a help center to improve customer support and self-service capabilities.",
+    challenge: "Increased support tickets and customer frustration during the shopping journey.",
+    impact: "Improved self-service rates and reduced support load through better information architecture.",
+    outcome: "A redesigned help center featuring intuitive navigation, clear categorization, and a frequent-search function, utilizing responsive accordions for a seamless experience on all devices.",
+    image: "/images/04_carhartt-wip-helpcenter_03/ImageSlider-Carhartt-Helpcenter.jpg",
+    detailImage1: "/images/04_carhartt-wip-helpcenter_03/Carhartt_help_desk_live_garmentsecure.jpg",
+    detailImage2: "/images/04_carhartt-wip-helpcenter_03/Helpdesk-Userflow.jpg",
+    detailImage3: "/images/04_carhartt-wip-helpcenter_03/Helpdesk_Designflow.jpg",
+    team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz Erian ", "Product Designer Annemarie Sauerbier"] }
   },
   {
     id: 5,
-    title: "SaaS Dashboard Design",
-    category: "commerce",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=350&h=500&fit=crop",
-    description: "Data visualization dashboard for SaaS platform with intuitive user interface.",
-    tags: ["Dashboard", "Data Viz", "SaaS"]
+    title: "CARHARTT-WIP SHOPPING JOURNEY",
+    category: "PRODUCT DESIGN",
+    year: "2019-2025",
+    tags: ["USER JOURNEY", "E-COMMERCE", "SEARCH"],
+    description: "Building a Commerce Platform that fits the brand's heritage while driving technical revolution.",
+    challenge: "Helping the Service Team get less load through a better Checkout and Order experience.",
+    impact: "Less returns due to better descriptions and targeted user journeys with integrated search, Filterupdate,new Image/Video upload for content team and Video usage modern product display aswell as more detailed description",
+    outcome: "A modern platform that contributed to growth and stability during the Covid wave and beyond.",
+    learning: "Stay true to your vision and aspirations. Trust within the team is the key to successful teamwork.",
+    image: "/images/05_carhartt-wip-new journey_04/04carharttwip_shopping_journeyslider.jpg",
+    detailImage1: "/images/05_carhartt-wip-new journey_04/before_checkout_carhartt_wip.jpg",
+    detailImage2: "/images/05_carhartt-wip-new journey_04/new_cart_Checkout_paymentsystem.jpg",
+    detailImage3: "/images/05_carhartt-wip-new journey_04/outcome_filternav.jpg",
+    detailImage4: "/images/05_carhartt-wip-new journey_04/carhartt-wip_eu-start-2019-.jpg",
+    detailImage5: "/images/05_carhartt-wip-new journey_04/Carhartt-ImageSlider.png",
+    detailImage6: "/images/05_carhartt-wip-new journey_04/video_implementation.jpg",
+    team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz Erian", "Annemarie Sauerbier"] }
   },
   {
     id: 6,
-    title: "Art Direction Campaign",
-    category: "private",
-    image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=350&h=500&fit=crop",
-    description: "Creative direction for multi-channel marketing campaign with visual storytelling.",
-    tags: ["Art Direction", "Campaign", "Creative"]
+    title: "CONIC ROSE | COVER ART",
+    category: "VISUAL IDENTITY / ART",
+    isPrivate: true,
+    year: "2023",
+    tags: ["ALBUM DESIGN", "JAZZ"],
+    description: "I translated the band's emotional soundscape into a visual identity. It's a mix of mournful guitar, mazy trumpets, and the \"cut and thrust\" of Berlin life. I wanted to capture their music in a way that feels as filmic and experimental as the sound itself.",
+    challenge: "Designing for music in flux. The tracks were still evolving while I worked, so I couldn't lean on a final tracklist. I had to capture the \"vibe\" and the emotional core of the record rather than just specific songs.",
+    impact: "A hybrid of analog and digital textures that acts as a visual echo of the music.",
+    outcome: "It's a tangible home for the band's sound—organic, slightly forlorn, and authentically Berlin.",
+    image: "/images/05_conic-rose-artdirection_05/conicrose-slider.jpg",
+    detailImage1: "/images/05_conic-rose-artdirection_05/how_paint_waterclour_straw.jpg",
+    detailImage2: "/images/05_conic-rose-artdirection_05/how_sunlight_print.jpg",
+    detailImage3: "/images/05_conic-rose-artdirection_05/draft_b_cr.jpg",
+    detailImageMobile1: "/images/05_conic-rose-artdirection_05/how_paint_waterclour_straw.jpg",
+    detailImageMobile2: "/images/05_conic-rose-artdirection_05/how_sunlight_print.jpg",
+    detailImageMobile4: "/images/05_conic-rose-artdirection_05/draft_3.jpg",
+    detailImageMobile5: "/images/05_conic-rose-artdirection_05/finalconicrosedesign.jpg",
+    detailImage4: "/images/05_conic-rose-artdirection_05/draft_3.jpg",
+    detailImage5: "/images/05_conic-rose-artdirection_05/draft_conicr.jpg",
+    detailImage6: "/images/05_conic-rose-artdirection_05/finalconicrosedesign.jpg",
+    imageFormats: ['landscape', 'portrait', 'portrait', 'landscape', 'landscape', 'landscape', 'landscape'],
+    team: { title: "CONIC ROSE", collaboration: "Client CONIC ROSE Direction Design ME."} 
   },
   {
     id: 7,
-    title: "E-Commerce Checkout Flow",
-    category: "commerce",
-    image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=350&h=500&fit=crop",
-    description: "Optimized checkout experience reducing cart abandonment and improving conversion rates.",
-    tags: ["E-Commerce", "UX", "Conversion"]
+    title: "EDITED BRANDING",
+    category: "ART DIRECTION / BRANDING",
+    year: "2016-2018",
+    tags: ["REBRANDING", "FASHION", "GROWTH"],
+    description: "Building the Brand Ecosystem. A holistic redesign steering EDITED towards a more modern direction—holistic online and offline communication, tailored to the target group. Helped scale the company from 100 to 300 employees and expand into Europe.",
+    challenge: "Five core objectives: Everything shareable—every corner a photo opportunity. Memorable launches. Sustainable packaging by 2025. City-specific store vibes. Always cutting-edge technology.",
+    impact: "17 store launches across Europe. Launch store events and dinners. Product Design: Circular e-commerce content, weekly blogs, UI redesign with editorial focus. EDITED Paper: Two larger print issues per year. Our impact at EDITED automatically influenced About You—creating high-value influencer marketing and affiliate strategies.",
+    outcome: "Corporate Identity; Online affiliate marketing Strategy; Shareable Interior concepts, shareable Merchandise, Social Media Visual Strategy; Launch Campaigns Direction; EDITED Paper Design; reflecting the brand's ethos. Brand books and guidelines for retail and events. Without value to your work and product, it becomes unshareable and unlikeable.",
+    offer: "I can show you how to create value for your brand with my secret sauce of methods.",
+    image: "/images/06_edited_digital-branding_06/Slider_editedderportfolio2025_hero.jpg",
+    detailImage1: "/images/06_edited_digital-branding_06/launchbeforeafter.jpg",
+    detailImage2: "/images/06_edited_digital-branding_06/01_skizze_storemerchandise_launchpresentation.jpg",
+    detailImage3: "/images/06_edited_digital-branding_06/lookbooks.jpg",
+    detailImage4: "/images/06_edited_digital-branding_06/webcaapignredesignassets.jpg",
+    detailImage5: "/images/06_edited_digital-branding_06/holistic_bladrunner_branding_launch.jpg",
+    detailImage6: "/images/06_edited_digital-branding_06/Editedpaper3.jpg",
+    detailImage7: "/images/06_edited_digital-branding_06/storeopenings.jpg",
+    detailImage8: "/images/06_edited_digital-branding_06/inviteaunchcampaign.jpg",
+    detailImage9: "/images/06_edited_digital-branding_06/storeeventconceptdesign.jpg",
+    detailImage10: "/images/06_edited_digital-branding_06/sustainabilityconceptpackahgingretail.jpg",
+    detailImage11: "/images/06_edited_digital-branding_06/lumagrothlaunch_webandapp.jpg",
+    detailImage12: "/images/06_edited_digital-branding_06/launchvideoconcepts.jpg",
+    detailImage13: "/images/06_edited_digital-branding_06/makingoflaunchevent.jpg",
+    team: { 
+      title: "EDITED Design Team", 
+      members: [
+        "Brand Director/Lead Franziska Nellesen",
+        "Freelance Creative Director Editorials & Brand Sonja Klements",
+        "Freelance Art Director, Brand, EDITED Paper Sally Milota",
+        "Art Director Brand Vision, Stores, Engagement Annemarie Sauerbier",
+        "Designer/Art Director Vivien Voss", "working with Marketingmanager",
+        "ContentWriter,SocialMediaManager and Frontend"  
+      ] 
+    }
   },
   {
     id: 8,
-    title: "Portfolio Website Design",
-    category: "private",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=350&h=500&fit=crop",
-    description: "Minimalist portfolio website design showcasing creative work with elegant presentation.",
-    tags: ["Web Design", "Portfolio", "Minimalist"]
+    title: "ABOUT YOU RELAUNCH",
+    category: "ART DIRECTION / EXPERIENCE",
+    year: "2018",
+    tags: ["RELAUNCH", "STRATEGY", "PERSONALIZATION"],
+    description: "Revolutionizing online shopping through diversity, inclusivity, and personalization.",
+    challenge: "Strategic shift from German mainstream to European mainstream leader.",
+    impact: "Concepts still in use after 10 years, creating growth through less conservative marketing.",
+    outcome: "A new perspective on branding for consumerism with a balance between success and responsibility.",
+    image: "/images/08_aboutyou-rebrand_08/SliderImage_AboutYou_Rebrand.png",
+    detailImage1: "/images/08_aboutyou-rebrand_08/design_ay.jpg",
+    detailImage2: "/images/08_aboutyou-rebrand_08/direction_campaign_moods_aboutyou.jpg",
+    detailImage3: "/images/08_aboutyou-rebrand_08/leger_Brand_material.jpg",
+    detailImage4: "/images/08_aboutyou-rebrand_08/leger_design.jpg",
+    detailImage5: "/images/08_aboutyou-rebrand_08/moodboxwardsbooth.jpg",
+    detailImage6: "/images/08_aboutyou-rebrand_08/personalizationcampaign_shoppingevent.jpg",
+    detailImage7: "/images/08_aboutyou-rebrand_08/redesign_stories_direction_final.jpg",
+    team: { title: "ABOUT YOU", members: ["Relaunch Lead: Franziska Nellesen", "Design & Art Direction Concept Annemarie Sauerbier"] }
   },
   {
     id: 9,
-    title: "Product Landing Page",
-    category: "commerce",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=350&h=500&fit=crop",
-    description: "High-converting landing page design with clear value proposition and call-to-action.",
-    tags: ["Landing Page", "Conversion", "Marketing"]
+    title: "BIORAMA",
+    category: "ART DIRECTION / EDITORIAL DESIGN",
+    year: "2017",
+    tags: ["MAGAZINE", "SUSTAINABILITY", "LIFESTYLE"],
+    description: "As Art Director at Monopol, I worked on BIORAMA for a year, managing to get my own touch into the design of 4 issues and a relaunch. Produced by Monopol, I worked together with Thomas on art direction—he did most still life photos. Our concept was minimal, pop, but leaned towards NEON and Brandeins—informative, bio, young target.",
+    challenge: "Reducing and going towards more neutral from a more tech-looking magazine. Creating a cohesive visual identity for a sustainability-focused publication that appeals to a young, environmentally conscious audience.",
+    impact: "Managed to get my own touch into the design, reducing the tech aesthetic and moving towards a more neutral, minimal approach while maintaining editorial excellence.",
+    outcome: "4 issues and a relaunch with a complete visual redesign that balanced minimalism with pop culture references, moving from a tech-looking magazine to a more neutral, refined aesthetic.",
+    image: "/images/10_BIORAMA_10/Slider_biorama.jpg",
+    mobileImage: "/images/10_BIORAMA_10/biorama_mobile_hero.jpg",
+    detailImage1: "/images/10_BIORAMA_10/biorama_cover.png",
+    detailImage2: "/images/10_BIORAMA_10/layout.jpg",
+    detailImage3: "/images/10_BIORAMA_10/biorama_e_design.jpg",
+    detailImage4: "/images/10_BIORAMA_10/biorama_inbetween_relaunch.jpg",
+    team: { title: "BIORAMA Produced by Monopol Media GmnH", members: ["Art Director Annemarie Sauerbier", "Art Director & Still Life Photography Thomas Albdorf"] }
   },
   {
     id: 10,
-    title: "Photography Portfolio",
-    category: "private",
-    image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=350&h=500&fit=crop",
-    description: "Visual portfolio showcasing photography work with immersive gallery experience.",
-    tags: ["Photography", "Portfolio", "Gallery"]
+    title: "PLASTIC MEDIA (MONKI/INDIE)",
+    category: "EDITORIAL / CONCEPT",
+    year: "2015-2017",
+    tags: ["EDITORIAL", "MAGAZINES", "FASHION"],
+    description: "Conceptual Editorial Design for international niche and commercial fashion titles.",
+    challenge: "Designing 3 issues for Monki and helping with Material Girl and Indie layouts.",
+    impact: "Merged digital trends with the tactile smell of freshly printed magazine pages.",
+    outcome: "Successful delivery of conceptual issues as part of the client's marketing strategy.",
+    image: "/images/011_plasticmedia/SliderImage_Indie.jpg",
+    detailImage1: "/images/011_plasticmedia/indie_cover.jpg",
+    detailImage2: "/images/011_plasticmedia/editorial-layout.jpg",
+    detailImage3: "/images/011_plasticmedia/indie_layout.jpg",
+    detailImage4: "/images/011_plasticmedia/indie_illustration_and_layout.jpg",
+    detailImage5: "/images/011_plasticmedia/indie_laout_illustration.jpg",
+    detailImage6: "/images/011_plasticmedia/indie_layout_time.jpg",
+    detailImage7: "/images/011_plasticmedia/indielayout.jpg",
+    team: { title: "PLASTIC MEDIA", members: ["Kira Stachowitz", "Daniela Bily", "Annemarie Sauerbier"] }
   },
   {
     id: 11,
-    title: "Marketplace Platform",
-    category: "commerce",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=350&h=500&fit=crop",
-    description: "Multi-vendor marketplace platform with advanced filtering and search capabilities.",
-    tags: ["Marketplace", "Platform", "E-Commerce"]
+    title: "MONKI",
+    category: "EDITORIAL DESIGN / MAGAZINE",
+    year: "2015-2017",
+    tags: ["MAGAZINE", "EDITORIAL", "FASHION"],
+    description: "Editorial design for MONKI magazine, created by Plastic Media. My first international client work, developing editorial layouts and brand marketing under the mentorship of Art Director Daniela Bily and Creative Director Kira Stachowitz.",
+    challenge: "For the Client Monki, we did every 4 Month a new ISSUE of MONKI. Which was accessible in all Monki Stores, it should deliver interesting stories and the current Collection in the Monkiworld. CI",
+    impact: "Designed 3 issues for Monki, developing a cohesive editorial language. Merged digital trends with the tactile experience of printed magazine pages.",
+    outcome: "Successful delivery of conceptual magazine issues that aligned with Monki's marketing strategy and brand values.",
+    image: "/images/012monki/monkicoverSlider.jpg",
+    mobileImage: "/images/012monki/cover_hero.jpg",
+    detailImage1: "/images/012monki/editorial_layout.jpg",
+    detailImage2: "/images/012monki/layout_nostagia_tech.jpg",
+    detailImage3: "/images/012monki/monki_layout_guide.jpg",
+    detailImage4: "/images/012monki/survivorsguide_monki.jpg",
+    detailImage5: "/images/012monki/monkibackcover.jpg",
+    detailImage6: "/images/012monki/monki.jpg",
+    team: { 
+      title: "PLASTIC MEDIA", 
+      members: [
+        "Creative Director Kira Stachowitz",
+        "Lead Daniela Bily",
+        "Assistant Annemarie Sauerbier"
+      ] 
+    }
   },
   {
     id: 12,
-    title: "Creative Studio Branding",
-    category: "private",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=350&h=500&fit=crop",
-    description: "Complete brand identity for creative studio including logo, website, and marketing materials.",
-    tags: ["Branding", "Identity", "Studio"]
-  },
-  {
-    id: 13,
-    title: "Subscription Service UI",
-    category: "commerce",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=350&h=500&fit=crop",
-    description: "User interface design for subscription-based service with seamless onboarding.",
-    tags: ["Subscription", "UI Design", "Onboarding"]
-  },
-  {
-    id: 14,
-    title: "Exhibition Design",
-    category: "private",
-    image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=350&h=500&fit=crop",
-    description: "Spatial design for art exhibition with interactive elements and immersive experience.",
-    tags: ["Exhibition", "Spatial", "Interactive"]
+    title: "COMMA STYLE MAGAZINE",
+    category: "ART DIRECTION / EDITORIAL DESIGN",
+    year: "2015",
+    tags: ["MAGAZINE", "EDITORIAL", "FASHION", "BRANDING"],
+    description: "As Art Director, I transformed Comma's traditional catalog into dynamic style magazines, creating a modern brand experience that bridges print and digital while attracting younger audiences.",
+    challenge: "Comma needed a fresh approach to attract a younger audience while maintaining its classic appeal. Their catalog, previously a simple brochure, required a redesign to elevate the brand's image and create a seamless e-commerce experience.",
+    impact: "I created a dynamic, zine-style lookbook called \"Comma CI\". During this process, we identified the need for two distinct target pieces: a classic design and a youthful \"Stylemagazine\". The latter embraced bold typography, collage elements, and modern aesthetics. This visual identity was seamlessly translated into a digital experience through parallax scrolling and interactive visuals.",
+    outcome: "The redesign successfully resonated with both younger and older audiences, creating a unified brand experience. The innovative web concept won an award for its unique collage style and immersive user experience.",
+    learning: "Whatever audience - do it circular, consistent and with great value.",
+    image: "/images/09_COMMA_09/9.jpg",
+    detailImage1: "/images/09_COMMA_09/editorialdesign.jpg",
+    detailImage2: "/images/09_COMMA_09/spring_editorial2015.jpg",
+    detailImage3: "/images/09_COMMA_09/commastylemagazineissue2.jpg",
+    team: { 
+      title: "COMMA Design Team", 
+      members: [
+        "Creative Direction & Management SuperReal",
+        "Freelance Art Director Annemarie Sauerbier"
+      ] 
+    }
   }
 ];
 
-// Helper function to get cases by category
 export const getCasesByCategory = (category) => {
   if (!category || category === 'all') return cases;
   return cases.filter(caseItem => caseItem.category === category);
 };
 
-// Helper function to get case by ID
 export const getCaseById = (id) => {
   return cases.find(caseItem => caseItem.id === parseInt(id));
 };
-
-

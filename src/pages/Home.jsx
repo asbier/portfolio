@@ -1,83 +1,29 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar/Navbar';
-import FilterTabs from '../components/FilterTabs/FilterTabs';
-import CaseSlider from '../components/CaseSlider/CaseSlider';
-import { cases } from '../data/cases';
+import Navbar from '../components/Navbar/Navbar.jsx'; 
+import CaseSlider from '../components/CaseSlider/CaseSlider.jsx';
+import GrainOverlay from '../components/GrainOverlay/GrainOverlay'; 
 
-const Home = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
-  const navigate = useNavigate();
+// 🛑 WICHTIG: Den alten Import von '../data/cases.js' löschen!
 
-  const handleContact = () => {
-    window.location.href = 'mailto:contact@example.com';
-  };
+const Home = ({ cases }) => { // ⬅️ cases hier als Prop entgegennehmen
+    const [activeTagFilter, setActiveTagFilter] = useState(null);
 
-  const handleAbout = () => {
-    navigate('/about');
-  };
-
-  const handleFilterChange = (filter) => {
-    setActiveFilter(filter);
-  };
-
-  return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      
-      {/* Main Content */}
-      <main className="pt-16">
-        {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Portfolio
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mb-12">
-            Creator & Art Director with focus on building holistic digital and spatial experiences.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-4 mb-16">
-            <button
-              onClick={() => handleFilterChange('commerce')}
-              className="px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
-            >
-              Commerce
-            </button>
-            <button
-              onClick={() => handleFilterChange('private')}
-              className="px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
-            >
-              Private
-            </button>
-            <button
-              onClick={handleContact}
-              className="px-6 py-3 border border-gray-900 text-gray-900 text-sm font-medium rounded hover:bg-gray-50 transition-colors"
-            >
-              Contact
-            </button>
-            <button
-              onClick={handleAbout}
-              className="px-6 py-3 border border-gray-900 text-gray-900 text-sm font-medium rounded hover:bg-gray-50 transition-colors"
-            >
-              About Me
-            </button>
-          </div>
-
-          {/* Filter Tabs */}
-          <FilterTabs 
-            activeFilter={activeFilter} 
-            onFilterChange={handleFilterChange} 
-          />
-
-          {/* Case Slider */}
-          <CaseSlider cases={cases} filter={activeFilter} />
-        </section>
-      </main>
-    </div>
-  );
-};
+    return (
+        <div className="min-h-screen bg-[#F1F2E5]"> 
+            <GrainOverlay />
+            <Navbar />
+            
+            <main className="pt-20 lg:pt-32">
+                <div className="relative"> 
+                   <CaseSlider 
+                        cases={cases}  // Nutzt jetzt die Daten aus App.jsx
+                        activeTagFilter={activeTagFilter}
+                        setActiveTagFilter={setActiveTagFilter}
+                    /> 
+                </div>
+            </main>
+        </div>
+    );
+}; 
 
 export default Home;
-
-

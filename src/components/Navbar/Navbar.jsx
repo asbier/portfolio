@@ -1,66 +1,124 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
-  const location = useLocation();
-  const isHome = location.pathname === '/';
-
-  const handleContact = () => {
-    window.location.href = 'mailto:contact@example.com';
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isApproachModalOpen, setIsApproachModalOpen] = useState(false);
+  const hiddenPages = ['Home', 'Privacy', 'Contact'];
+  const marqueeText = " ✦ HOLISTIC DESIGN & BRANDING ✦ SYSTEMIC THINKING ACROSS ALL MEDIUMS ✦ FROM INTERFACE LOGIC TO VISUAL IDENTITY ✦ NO BOXES, JUST SOLUTIONS ✦ STOP BEEING BORING ✦ ";
+  
+  // Split text into sentences and render with alternating colors
+  const renderMarqueeText = () => {
+    const sentences = marqueeText.split(' ✦ ').filter(s => s.trim());
+    return sentences.map((sentence, index) => {
+      const isEven = index % 2 === 1; // Every 2nd sentence (index 1, 3, 5...)
+      const color = isEven ? 'text-[#979797]' : 'text-black/20';
+      return (
+        <React.Fragment key={index}>
+          <span className={color}>{sentence}</span>
+          {index < sentences.length - 1 && <span className="text-black/20"> ✦ </span>}
+        </React.Fragment>
+      );
+    });
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo/Home */}
-          <Link 
-            to="/" 
-            className="text-xl font-semibold text-gray-900 hover:text-gray-700 transition-colors"
-          >
-            Portfolio
-          </Link>
-
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/"
-              className={`text-sm font-medium transition-colors ${
-                isHome 
-                  ? 'text-gray-900 border-b-2 border-gray-900' 
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
+    <>
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center backdrop-blur-md bg-[#F1F2E5]/60" onClick={() => setIsMenuOpen(false)}>
+          <div className="flex flex-col items-center space-y-10">
+            {hiddenPages.map(page => (
+              <a key={page} href={`/${page.toLowerCase()}`} className="text-5xl font-black uppercase text-black/30" onClick={(e) => e.stopPropagation()}>{page}</a>
+            ))}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsMenuOpen(false);
+              }} 
+              className="w-[1.5rem] h-[1.5rem] rounded-full bg-[#DFFF00] flex items-center justify-center mt-8"
             >
-              Home
-            </Link>
-            <button
-              onClick={handleContact}
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Contact
-            </button>
-            <Link
-              to="/about"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              About
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button className="text-gray-600 hover:text-gray-900">
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
             </button>
           </div>
         </div>
-      </div>
-    </nav>
+      )}
+
+      {isApproachModalOpen && (
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center backdrop-blur-md bg-[#F1F2E5]/60" onClick={() => setIsApproachModalOpen(false)}>
+          <div className="max-w-2xl mx-6 bg-[#E2DED3]/60 backdrop-blur-sm p-8 lg:p-12 border border-black/10" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-between items-start mb-6">
+              <h2 className="text-2xl lg:text-4xl font-neue-semibold uppercase text-black">APPROACH</h2>
+              <button 
+                onClick={() => setIsApproachModalOpen(false)}
+                className="w-[1.5rem] h-[1.5rem] rounded-full bg-[#DFFF00] flex items-center justify-center flex-shrink-0"
+              >
+              </button>
+            </div>
+            <div className="space-y-6 text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
+              <p className="text-xl lg:text-2xl font-neue-semibold">
+                In a market obsessed with rigid categorisation, I build systems that transcend them.
+              </p>
+              
+              <p>
+                I believe that a digital product is a brand's primary utility, and a brand is the product's soul. To treat them as separate "boxes" is to miss the connection that makes design effective. My work occupies the space where Product Design and Visual Identity intersect.
+              </p>
+
+              <div>
+                <h3 className="font-neue-semibold uppercase mb-3">What I bring to the table</h3>
+                <p>
+                  I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. Whether I am architecting a dashboard or defining a brand language, my goal is to ensure the result is visible, likeable, and memorable.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-neue-semibold uppercase mb-3">Strategic Innovation</h3>
+                <p>
+                  The world does not need more products or services destined for the bin. I help businesses innovate for the long-term by creating solutions that people need before they even realise they need them. My approach moves beyond aesthetic fixes; I translate complex services into intuitive value through the lens of human behaviour and systemic design. Inspired by the intersection of nature, technology, and logic, I aim to build meaningful systems that are as usable as they are enduring. We aren't just making things—we are designing for the world we inhabit.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-black/10">
+                <h3 className="font-neue-semibold uppercase mb-3">Contact</h3>
+                <p className="mb-2">
+                  Ready to move beyond the box? <a href="mailto:mail@annemaris.de" className="underline hover:no-underline">Email Me</a> / <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">LinkedIn</a> / <a href="https://github.com/asbier-lab" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">GitHub</a>
+                </p>
+                <p className="text-sm text-black/60">
+                  Available for strategic partnerships and select commissions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <header className="fixed left-0 w-full z-50 bg-[#F1F2E5]/90 backdrop-blur-sm bottom-0 lg:top-0 lg:bottom-auto h-[110px] lg:h-[120px] border-t lg:border-t-0 lg:border-b border-black/5">
+        <div className="flex flex-col lg:flex-row lg:justify-start items-center px-0 lg:px-6 h-full max-w-[1800px] mx-auto overflow-hidden lg:gap-[2.5rem]">
+          <div className="w-full lg:flex-1 overflow-hidden whitespace-nowrap h-[40px] flex items-center border-b lg:border-none border-black/5 px-6 lg:px-0">
+            <motion.div 
+              animate={{ x: [0, -1000] }} 
+              transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
+              className="text-[14px] lg:text-[40px] font-black font-neue uppercase flex"
+            >
+              <span className="pr-4 flex">{renderMarqueeText()}</span>
+              <span className="pr-4 flex">{renderMarqueeText()}</span>
+            </motion.div>
+          </div>
+          <nav className="flex space-x-2 lg:space-x-4 items-center w-full lg:w-auto justify-end h-[70px]">
+            <div className="flex space-x-2 overflow-x-auto no-scrollbar pl-6 lg:pl-0">
+              <button 
+                onClick={() => setIsApproachModalOpen(true)} 
+                className="text-[10px] lg:text-2xl font-semibold uppercase px-4 py-2 rounded-full border font-neue-semibold bg-transparent border-black/10 text-black/30 hover:bg-[#DFFF00] hover:text-[#D9D9D9] hover:border-black/10 transition-colors"
+              >
+                APPROACH
+              </button>
+            </div>
+            <div className="flex items-center space-x-2 pr-6 lg:pr-0">
+              <a href="mailto:mail@annemaris.de" className="px-5 py-2 lg:px-8 lg:py-3 text-[10px] lg:text-2xl font-semibold uppercase rounded-full bg-[#FFB115] border border-black/10 text-[#D9D9D9] hover:bg-transparent hover:border-[#FFB115] hover:text-[#FFB115] transition-colors font-neue-semibold">Contact</a>
+              <button onClick={() => setIsMenuOpen(true)} className="lg:hidden w-10 h-10 flex items-center justify-center"><div className="w-[1.5rem] h-[1.5rem] bg-[#D9D9D9] rounded-full"></div></button>
+            </div>
+          </nav>
+        </div>
+      </header>
+    </>
   );
 };
-
 export default Navbar;
-
-

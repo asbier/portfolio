@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.8fe1bb7b.css",
-    "main.js": "/static/js/main.c9c7eb82.js",
+    "main.css": "/static/css/main.ca388c27.css",
+    "main.js": "/static/js/main.071fcaf5.js",
+    "static/js/320.902fbef1.chunk.js": "/static/js/320.902fbef1.chunk.js",
+    "static/js/781.2b050661.chunk.js": "/static/js/781.2b050661.chunk.js",
     "static/js/787.dc6905b1.chunk.js": "/static/js/787.dc6905b1.chunk.js",
+    "static/js/687.0aaf0042.chunk.js": "/static/js/687.0aaf0042.chunk.js",
+    "static/media/OTNeueMontreal-BoldExtraSqueezed.otf": "/static/media/OTNeueMontreal-BoldExtraSqueezed.2e67666f62a80063d7a9.otf",
+    "static/media/OTNeueMontreal-BookSqueezed.otf": "/static/media/OTNeueMontreal-BookSqueezed.70435d3013bc37f1c166.otf",
     "index.html": "/index.html",
-    "main.8fe1bb7b.css.map": "/static/css/main.8fe1bb7b.css.map",
-    "main.c9c7eb82.js.map": "/static/js/main.c9c7eb82.js.map",
-    "787.dc6905b1.chunk.js.map": "/static/js/787.dc6905b1.chunk.js.map"
+    "main.ca388c27.css.map": "/static/css/main.ca388c27.css.map",
+    "main.071fcaf5.js.map": "/static/js/main.071fcaf5.js.map",
+    "320.902fbef1.chunk.js.map": "/static/js/320.902fbef1.chunk.js.map",
+    "781.2b050661.chunk.js.map": "/static/js/781.2b050661.chunk.js.map",
+    "787.dc6905b1.chunk.js.map": "/static/js/787.dc6905b1.chunk.js.map",
+    "687.0aaf0042.chunk.js.map": "/static/js/687.0aaf0042.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8fe1bb7b.css",
-    "static/js/main.c9c7eb82.js"
+    "static/css/main.ca388c27.css",
+    "static/js/main.071fcaf5.js"
   ]
 }
