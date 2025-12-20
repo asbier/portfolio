@@ -105,7 +105,7 @@ const Navbar = () => {
             <motion.div 
               animate={{ x: [0, -1000] }} 
               transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
-              className="text-[14px] lg:text-[40px] font-black font-neue uppercase flex"
+              className="text-[20px] lg:text-[40px] font-black font-neue uppercase flex"
             >
               <span className="pr-4 flex">{renderMarqueeText()}</span>
               <span className="pr-4 flex">{renderMarqueeText()}</span>
