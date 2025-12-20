@@ -217,7 +217,7 @@ export const cases = [
     title: "MONKI",
     category: "EDITORIAL DESIGN / MAGAZINE",
     year: "2015-2017",
-    tags: ["MAGAZINE", "EDITORIAL", "FASHION"],
+    tags: ["MAGAZINE", "EDITORIAL", "BRANDING"],
     description: "Editorial design for MONKI magazine, created by Plastic Media. My first international client work, developing editorial layouts and brand marketing under the mentorship of Art Director Daniela Bily and Creative Director Kira Stachowitz.",
     challenge: "For the Client Monki, we did every 4 Month a new ISSUE of MONKI. Which was accessible in all Monki Stores, it should deliver interesting stories and the current Collection in the Monkiworld. CI",
     impact: "Designed 3 issues for Monki, developing a cohesive editorial language. Merged digital trends with the tactile experience of printed magazine pages.",
