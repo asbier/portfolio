@@ -69,7 +69,7 @@ const MobileCaseView = ({ caseItem }) => {
       <GrainOverlay />
       <Navbar />
       
-      <main className="pt-0 pb-32 scroll-smooth relative" style={{ WebkitOverflowScrolling: 'touch' }}> 
+      <main className="pt-0 pb-32 relative" style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'auto' }}> 
         {/* 1. HERO BEREICH - Scrolls up, then sticks at 10% */}
         <div 
           className={`${isSticky ? 'sticky' : 'relative'} top-0 z-50 w-full overflow-hidden`}
@@ -77,7 +77,7 @@ const MobileCaseView = ({ caseItem }) => {
             height: `${heroHeight}px`,
             background: heroIsGradient ? heroImage : 'transparent',
             willChange: 'height',
-            transition: isSticky ? 'height 0.2s ease-out' : 'none',
+            transition: 'none', // No transition for snapping behavior
           }}
         > 
           {!heroIsGradient && (
