@@ -41,7 +41,7 @@ export const cases = [
     category: "PRODUCT DESIGN",
     year: "2024",
     hideTitleTag: true,
-    tags: ["VOLKSWAGEN", "PRODUCT DESIGN", "AUTOMOTIVE", "CONSULTING"],
+    tags: ["VOLKSWAGEN", "PRODUCT DESIGN", "AUTOMOTIVE", "TEST DRIVE"],
     description: "Designing a test drive booking system for Volkswagen ID models.",
     challenge: "Creating an intuitive booking experience for electric vehicle test drives.",
     impact: "Streamlined test drive booking process with improved user experience.",
