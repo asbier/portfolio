@@ -72,7 +72,7 @@ const MobileCaseView = ({ caseItem }) => {
       <main className="pt-0 pb-32 scroll-smooth relative" style={{ WebkitOverflowScrolling: 'touch' }}> 
         {/* 1. HERO BEREICH - Scrolls up, then sticks at 10% */}
         <div 
-          className={`${isSticky ? 'sticky' : 'relative'} top-[10px] z-50 w-full overflow-hidden`}
+          className={`${isSticky ? 'sticky' : 'relative'} top-0 z-50 w-full overflow-hidden`}
           style={{ 
             height: `${heroHeight}px`,
             background: heroIsGradient ? heroImage : 'transparent',
