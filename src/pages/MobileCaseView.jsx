@@ -1,11 +1,21 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 
 const MobileCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   // Hilfsfunktion: Entscheidet ob Bild oder Verlauf gerendert wird
   const renderMedia = (source, alt, className = "") => {
@@ -36,23 +46,36 @@ const MobileCaseView = ({ caseItem }) => {
   const heroImage = caseItem.mobileImage || caseItem.image;
   const heroIsGradient = heroImage?.startsWith('linear-gradient');
 
+  // Calculate hero height based on scroll - collapses to ~10% when scrolled
+  const heroFullHeight = typeof window !== 'undefined' ? window.innerHeight * 0.6 : 400; // 60vh
+  const heroMinHeight = heroFullHeight * 0.1; // 10% of original
+  const scrollThreshold = heroFullHeight - heroMinHeight;
+  const heroHeight = Math.max(heroMinHeight, heroFullHeight - scrollY);
+  const imageOpacity = scrollY > scrollThreshold * 0.5 ? Math.max(0.3, 1 - (scrollY / scrollThreshold)) : 1;
+
   return (
     <div className="min-h-screen bg-[#F1F2E5] text-black font-neue" style={{ WebkitOverflowScrolling: 'touch' }}>
       <GrainOverlay />
       <Navbar />
       
-      <main className="pt-0 pb-32 scroll-smooth relative overflow-y-auto" style={{ height: 'calc(100vh - 110px)', WebkitOverflowScrolling: 'touch' }}> 
-        {/* 1. HERO BEREICH - Sticky 10px from top */}
+      <main className="pt-0 pb-32 scroll-smooth relative" style={{ WebkitOverflowScrolling: 'touch' }}> 
+        {/* 1. HERO BEREICH - Collapses on scroll */}
         <div 
-          className="sticky top-[10px] z-50 relative w-full h-[60vh] overflow-hidden"
+          className="sticky top-[10px] z-50 relative w-full overflow-hidden transition-all duration-300"
           style={{ 
+            height: `${heroHeight}px`,
             background: heroIsGradient ? heroImage : 'transparent',
-            position: 'sticky',
-            WebkitPosition: 'sticky'
           }}
         > 
           {!heroIsGradient && (
-            <img src={heroImage} alt={caseItem.title} className="w-full h-full object-cover block" loading="eager" decoding="async" />
+            <img 
+              src={heroImage} 
+              alt={caseItem.title} 
+              className="w-full h-full object-cover block transition-opacity duration-300" 
+              loading="eager" 
+              decoding="async"
+              style={{ opacity: imageOpacity }}
+            />
           )}
           
           <div className="absolute bottom-6 left-5 flex flex-wrap gap-2 z-20">
