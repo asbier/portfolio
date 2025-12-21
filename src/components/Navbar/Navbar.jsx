@@ -46,7 +46,7 @@ const Navbar = () => {
                 <button
                   key={page}
                   onClick={handleNavigation}
-                  className="text-5xl font-black uppercase text-black/30 touch-manipulation min-h-[44px]"
+                  className="text-5xl font-neue-semibold uppercase text-black/30 touch-manipulation min-h-[44px]"
                 >
                   {page}
                 </button>

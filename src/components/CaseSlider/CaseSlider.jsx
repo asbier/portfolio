@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
@@ -9,6 +9,8 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth < 1024 : false
   );
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const sliderRef = useRef(null);
 
   // Handle viewport height changes for Chrome on mobile
   useEffect(() => {
@@ -47,6 +49,29 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
       }
     };
   }, []);
+
+  // Track current slide based on scroll position (mobile only)
+  useEffect(() => {
+    if (!isMobile || !sliderRef.current) return;
+
+    const updateCurrentSlide = () => {
+      if (!sliderRef.current) return;
+      const container = sliderRef.current;
+      const scrollLeft = container.scrollLeft;
+      const slideWidth = window.innerWidth;
+      const currentIndex = Math.round(scrollLeft / slideWidth);
+      setCurrentSlide(currentIndex + 1);
+    };
+
+    updateCurrentSlide();
+    sliderRef.current.addEventListener('scroll', updateCurrentSlide, { passive: true });
+
+    return () => {
+      if (sliderRef.current) {
+        sliderRef.current.removeEventListener('scroll', updateCurrentSlide);
+      }
+    };
+  }, [isMobile, cases.length]);
   
   // Filter cases by tag if a tag filter is active
   const filteredCases = activeTagFilter
@@ -66,8 +91,12 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
     }
   };
 
+  const formatSlideNumber = (num) => String(num).padStart(2, '0');
+  const totalSlides = filteredCases.length;
+
   return (
-   <div 
+   <div
+      ref={sliderRef} 
       className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory 
                 top-0 bottom-[110px]
                h-[calc(100vh-110px)]
@@ -148,7 +177,7 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                   </div>
                 </div>
               )}
-              
+
               {/* Titel-Overlay */}
               <div className="absolute inset-x-0 bottom-0 p-4 pb-6 sm:p-6 sm:pb-8 lg:p-12 z-20">
                 {/* Tags - Title als erster Tag, dann die anderen Tags */}
@@ -181,6 +210,13 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                     </button>
                   ))}
                 </div>
+                
+                {/* Fractional Pagination - Mobile Only, below tags */}
+                {isMobile && (
+                  <div className="mt-3 lg:hidden text-[#979797] font-neue-book-semi text-sm">
+                    {formatSlideNumber(currentSlide)} / {formatSlideNumber(totalSlides)}
+                  </div>
+                )}
               </div>
             </div>
           );
