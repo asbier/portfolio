@@ -52,7 +52,7 @@ export const cases = [
     detailImage1: "/images/03_vw-testdrive_07/wireframe_form_test-drive.jpg",
     detailImage2: "/images/03_vw-testdrive_07/IDModelleProbefahren-copy.jpg",
     detailImage3: "/images/03_vw-testdrive_07/SLiderImage_IDModelleProbefahren.webp",
-    team: { title: "VOLKSWAGEN x DAYONE", members: ["VW PO Steffen H. with PM Max M., UX/UI Annemarie Sauerbier"] }
+    team: { title: "VOLKSWAGEN x DAYONE", members: ["VW PO Steffen H. with PM Max M., UX/UI Annemarie S."] }
   },
   {
     id: 4,
@@ -70,7 +70,7 @@ export const cases = [
     detailImage1: "/images/04_carhartt-wip-helpcenter_03/Carhartt_help_desk_live_garmentsecure.jpg",
     detailImage2: "/images/04_carhartt-wip-helpcenter_03/Helpdesk-Userflow.jpg",
     detailImage3: "/images/04_carhartt-wip-helpcenter_03/Helpdesk_Designflow.jpg",
-    team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz Erian ", "Product Designer Annemarie Sauerbier"] }
+    team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz E.", "Product Designer Annemarie S."] }
   },
   {
     id: 5,
@@ -91,7 +91,7 @@ export const cases = [
     detailImage4: "/images/05_carhartt-wip-new journey_04/carhartt-wip_eu-start-2019-.jpg",
     detailImage5: "/images/05_carhartt-wip-new journey_04/Carhartt-ImageSlider.png",
     detailImage6: "/images/05_carhartt-wip-new journey_04/video_implementation.jpg",
-    team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz Erian", "Annemarie Sauerbier"] }
+    team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz E.", "Annemarie S."] }
   },
   {
     id: 6,
@@ -149,11 +149,11 @@ export const cases = [
     team: { 
       title: "EDITED Design Team", 
       members: [
-        "Brand Director/Lead Franziska Nellesen",
-        "Freelance Creative Director Editorials & Brand Sonja Klements",
-        "Freelance Art Director, Brand, EDITED Paper Sally Milota",
-        "Art Director Brand Vision, Stores, Engagement Annemarie Sauerbier",
-        "Designer/Art Director Vivien Voss", "working with Marketingmanager",
+        "Brand Director/Lead Franziska N.",
+        "Freelance Creative Director Editorials & Brand Sonja K.",
+        "Freelance Art Director, Brand, EDITED Paper Sally M.",
+        "Art Director Brand Vision, Stores, Engagement Annemarie S.",
+        "Designer/Art Director Vivien V.", "working with Marketingmanager",
         "ContentWriter,SocialMediaManager and Frontend"  
       ] 
     }
@@ -178,7 +178,7 @@ export const cases = [
     detailImage5: "/images/08_aboutyou-rebrand_08/moodboxwardsbooth.jpg",
     detailImage6: "/images/08_aboutyou-rebrand_08/personalizationcampaign_shoppingevent.jpg",
     detailImage7: "/images/08_aboutyou-rebrand_08/redesign_stories_direction_final.jpg",
-    team: { title: "ABOUT YOU", members: ["Relaunch Lead: Franziska Nellesen", "Design & Art Direction Concept Annemarie Sauerbier"] }
+    team: { title: "ABOUT YOU", members: ["Relaunch Lead: Franziska N.", "Design & Art Direction Concept Annemarie S."] }
   },
   {
     id: 12,
@@ -200,7 +200,7 @@ export const cases = [
       title: "COMMA Design Team", 
       members: [
         "Creative Direction & Management SuperReal",
-        "Freelance Art Director Annemarie Sauerbier"
+        "Freelance Art Director Annemarie S."
       ] 
     }
   },
@@ -221,7 +221,7 @@ export const cases = [
     detailImage2: "/images/10_BIORAMA_10/layout.jpg",
     detailImage3: "/images/10_BIORAMA_10/biorama_e_design.jpg",
     detailImage4: "/images/10_BIORAMA_10/biorama_inbetween_relaunch.jpg",
-    team: { title: "BIORAMA Produced by Monopol Media GmnH", members: ["Art Director Annemarie Sauerbier", "Art Director & Still Life Photography Thomas Albdorf"] }
+    team: { title: "BIORAMA Produced by Monopol Media GmnH", members: ["Art Director Annemarie S.", "Art Director & Still Life Photography Thomas A."] }
   },
   {
     id: 11,
