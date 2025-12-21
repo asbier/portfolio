@@ -272,6 +272,10 @@ export const cases = [
     detailImage5: "/images/011_plasticmedia/indie_laout_illustration.jpg",
     detailImage6: "/images/011_plasticmedia/indie_layout_time.jpg",
     detailImage7: "/images/011_plasticmedia/indielayout.jpg",
+    detailImage8: "/images/011_plasticmedia/SliderImage_Indie.jpg",
+    detailImage9: "/images/011_plasticmedia/10years.gif",
+    detailImage10: "/images/011_plasticmedia/10years2.gif",
+    detailImage11: "/images/011_plasticmedia/absolutindiecap_merch.png",
     team: { title: "PLASTIC MEDIA", members: ["Creative Director Kira S.", "Lead Daniela B.", "Assistant Annemarie S."] }
   }
 ];
