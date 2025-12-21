@@ -245,9 +245,9 @@ export const cases = [
     team: { 
       title: "PLASTIC MEDIA", 
       members: [
-        "Creative Director Kira Stachowitz",
-        "Lead Daniela Bily",
-        "Assistant Annemarie Sauerbier"
+        "Creative Director Kira S.",
+        "Lead Daniela B.",
+        "Assistant Annemarie S."
       ] 
     }
   },
@@ -271,7 +271,7 @@ export const cases = [
     detailImage5: "/images/011_plasticmedia/indie_laout_illustration.jpg",
     detailImage6: "/images/011_plasticmedia/indie_layout_time.jpg",
     detailImage7: "/images/011_plasticmedia/indielayout.jpg",
-    team: { title: "PLASTIC MEDIA", members: ["Kira Stachowitz", "Daniela Bily", "Annemarie Sauerbier"] }
+    team: { title: "PLASTIC MEDIA", members: ["Creative Director Kira S.", "Lead Daniela B.", "Assistant Annemarie S."] }
   }
 ];
 
