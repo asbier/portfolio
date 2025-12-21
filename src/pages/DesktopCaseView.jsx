@@ -309,7 +309,12 @@ const DesktopCaseView = ({ caseItem }) => {
         {/* Navigation */}
         <button 
           onClick={() => navigate('/')}
-          className="fixed top-32 left-12 z-50 text-xs font-black font-neue uppercase border-b border-black"
+          className="fixed top-32 left-12 z-50 text-xs font-black font-neue uppercase"
+          style={{
+            lineHeight: '1',
+            paddingBottom: '0',
+            boxShadow: '0 1px 0 0 black'
+          }}
         >
           ← See all cases
         </button>

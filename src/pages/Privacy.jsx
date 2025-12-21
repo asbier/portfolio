@@ -83,9 +83,9 @@ const Privacy = () => {
               onClick={() => navigate('/')}
               className="text-sm font-black font-neue uppercase min-h-[44px] touch-manipulation leading-none relative inline-block"
               style={{
-                borderBottom: '1px solid black',
-                paddingBottom: '2px',
-                lineHeight: '1'
+                lineHeight: '1',
+                paddingBottom: '0',
+                boxShadow: '0 1px 0 0 black'
               }}
             >
               ← Back to Home

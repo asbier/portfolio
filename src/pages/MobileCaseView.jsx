@@ -6,16 +6,6 @@ import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 
 const MobileCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
   
   // Hilfsfunktion: Entscheidet ob Bild oder Verlauf gerendert wird
   const renderMedia = (source, alt, className = "") => {
@@ -46,30 +36,18 @@ const MobileCaseView = ({ caseItem }) => {
   const heroImage = caseItem.mobileImage || caseItem.image;
   const heroIsGradient = heroImage?.startsWith('linear-gradient');
 
-  // Calculate hero behavior: scrolls up first, then sticks at ~10% height
-  // Use useMemo to avoid recalculating on every render
-  const heroFullHeight = typeof window !== 'undefined' ? window.innerHeight * 0.6 : 400; // 60vh
-  const heroMinHeight = 60; // ~10% or fixed small height for filters
-  const scrollThreshold = heroFullHeight - heroMinHeight;
-  
-  // Hero scrolls up until threshold, then becomes sticky
-  const isSticky = scrollY >= scrollThreshold;
-  const heroHeight = isSticky ? heroMinHeight : Math.max(heroMinHeight, heroFullHeight - scrollY);
-
   return (
     <div className="min-h-screen bg-[#F1F2E5] text-black font-neue" style={{ WebkitOverflowScrolling: 'touch' }}>
       <GrainOverlay />
       <Navbar />
       
       <main className="pt-0 pb-32 relative" style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'auto' }}> 
-        {/* 1. HERO BEREICH - Scrolls up, then sticks at 10% */}
+        {/* 1. HERO BEREICH */}
         <div 
-          className={`${isSticky ? 'sticky' : 'relative'} top-0 z-50 w-full overflow-hidden`}
+          className="relative w-full overflow-hidden"
           style={{ 
-            height: `${heroHeight}px`,
+            height: typeof window !== 'undefined' ? `${window.innerHeight * 0.6}px` : '400px',
             background: heroIsGradient ? heroImage : 'transparent',
-            willChange: 'height',
-            transition: 'none', // No transition for snapping behavior
           }}
         > 
           {!heroIsGradient && (
@@ -97,11 +75,11 @@ const MobileCaseView = ({ caseItem }) => {
         <div className="px-5 pt-8 pb-4 relative z-30">
           <button 
             onClick={() => navigate('/')}
-            className="text-xs font-black font-neue uppercase min-h-[44px] min-w-[44px] touch-manipulation leading-none relative inline-block"
+            className="text-xs font-black font-neue uppercase touch-manipulation relative inline-block"
             style={{
-              borderBottom: '1px solid black',
-              paddingBottom: '2px',
-              lineHeight: '1'
+              lineHeight: '1',
+              minHeight: '44px',
+              minWidth: '44px'
             }}
           >
             ← See all cases
@@ -119,7 +97,7 @@ const MobileCaseView = ({ caseItem }) => {
                 {caseItem.description}
               </p>
               <div className="text-sm font-neue-book-semi uppercase text-right leading-relaxed text-black">
-                YEAR: {caseItem.year || '2024'}<br />ROLE: {caseItem.role || 'LEAD'}
+                YEAR: {caseItem.year || '2024'}<br />{caseItem.role && `ROLE: ${caseItem.role}`}
               </div>
             </div>
           </div>
