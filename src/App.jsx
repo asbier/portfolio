@@ -3,6 +3,7 @@ import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { cases } from './data/cases';
 import LoadingOverlay from './components/LoadingOverlay/LoadingOverlay';
+import Analytics from './components/Analytics/Analytics';
 
 const Home = lazy(() => import('./pages/Home'));
 const CaseDetail = lazy(() => import('./pages/CaseDetail'));
@@ -37,6 +38,7 @@ function App() {
     return (
         <BrowserRouter>
             <Suspense fallback={<LoadingOverlay />}>
+                <Analytics />
                 {isLoading && <LoadingOverlay />}
                 <Routes>
                     <Route path="/" element={<Home cases={cases} />} />

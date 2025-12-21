@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isApproachModalOpen, setIsApproachModalOpen] = useState(false);
   const hiddenPages = ['Home', 'Privacy', 'Contact'];
@@ -27,15 +29,35 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center backdrop-blur-md bg-[#F1F2E5]/60" onClick={() => setIsMenuOpen(false)}>
           <div className="flex flex-col items-center space-y-10">
-            {hiddenPages.map(page => (
-              <a key={page} href={`/${page.toLowerCase()}`} className="text-5xl font-black uppercase text-black/30" onClick={(e) => e.stopPropagation()}>{page}</a>
-            ))}
+            {hiddenPages.map(page => {
+              const handleNavigation = (e) => {
+                e.stopPropagation();
+                setIsMenuOpen(false);
+                if (page === 'Home') {
+                  navigate('/');
+                } else if (page === 'Privacy') {
+                  navigate('/privacy');
+                } else if (page === 'Contact') {
+                  // Contact can be handled via email link or just close menu
+                  window.location.href = 'mailto:mail@annemaris.de';
+                }
+              };
+              return (
+                <button
+                  key={page}
+                  onClick={handleNavigation}
+                  className="text-5xl font-black uppercase text-black/30 touch-manipulation min-h-[44px]"
+                >
+                  {page}
+                </button>
+              );
+            })}
             <button 
               onClick={(e) => {
                 e.stopPropagation();
                 setIsMenuOpen(false);
               }} 
-              className="w-[1.5rem] h-[1.5rem] rounded-full bg-[#DFFF00] flex items-center justify-center mt-8"
+              className="w-[1.5rem] h-[1.5rem] rounded-full bg-[#DFFF00] flex items-center justify-center mt-8 touch-manipulation min-h-[44px] min-w-[44px]"
             >
             </button>
           </div>

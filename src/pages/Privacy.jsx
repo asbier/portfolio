@@ -21,14 +21,14 @@ const Privacy = () => {
             <section>
               <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Data Collection</h2>
               <p>
-                This portfolio website does not collect, store, or process any personal data from visitors. No forms, analytics tracking, or cookies are used to gather user information. Your visit to this site is completely anonymous.
+                This portfolio website uses Umami Analytics, a free, privacy-focused analytics service that does not collect personal data. Umami Analytics does not use cookies, does not track users across websites, and does not collect any personally identifiable information. All analytics data is aggregated and anonymized. Your visit to this site remains anonymous.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl lg:text-2xl font-neue-semibold uppercase mb-4">Cookies</h2>
               <p>
-                This website does not use cookies or any tracking technologies. Your browsing experience is not monitored or recorded.
+                This website does not use cookies. The analytics service (Umami Analytics) operates without cookies and does not require cookie consent under GDPR, CCPA, or PECR regulations.
               </p>
             </section>
 
