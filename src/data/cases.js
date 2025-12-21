@@ -210,7 +210,7 @@ export const cases = [
     category: "ART DIRECTION / EDITORIAL DESIGN",
     year: "2014/2015",
     role: "ART DIRECTOR",
-    tags: ["BIORAMA", "ART DIRECTION", "EDITORIAL", "BRANDING"],
+    tags: ["BIORAMA", "ART DIRECTION", "EDITORIAL DESIGN"],
     description: "As Art Director at Monopol, I shaped BIORAMA's visual identity across 4 issues and a complete relaunch. Collaborating with photographer Thomas Albdorf on art direction, we developed a minimal yet pop aesthetic inspired by NEON and Brandeins—creating an informative, bio-focused publication tailored to a young, environmentally conscious audience.",
     challenge: "Reducing and going towards more neutral from a more tech-looking magazine. Creating a cohesive visual identity for a sustainability-focused publication that appeals to a young, environmentally conscious audience.",
     impact: "Managed to get my own touch into the design, reducing the tech aesthetic and moving towards a more neutral, minimal approach while maintaining editorial excellence.",
