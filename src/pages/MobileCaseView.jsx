@@ -133,14 +133,6 @@ const MobileCaseView = ({ caseItem }) => {
               decoding="async"
             />
           )}
-          
-          <div className="absolute bottom-2 left-5 flex flex-wrap gap-2 z-20">
-            {caseItem.tags?.map((tag, index) => (
-              <span key={index} className="px-3 py-1.5 rounded-full text-[9px] font-semibold font-neue-semibold uppercase text-[#979797] bg-transparent border border-[#979797]">
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
 
         <div className="h-[3px] w-full bg-[#F1F2E5] -mt-[3px] relative z-30"></div>
