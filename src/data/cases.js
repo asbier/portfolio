@@ -1,12 +1,12 @@
 export const cases = [
   {
     id: 1,
-    title: "Berlin Tech Job Dashboard",
+    title: "Berlin Tech Job Analytics",
     category: "PRODUCT DESIGN / DEV COLLAB",
     isPrivate: true,
     year: "2025",
     role: "PRODUCT DESIGNER",
-    tags: ["REACT", "TAILWIND", "DASHBOARD"],
+    tags: [ "DASHBOARD", "ART DIRECTION", "PRODUCT DESIGN"],
     description: "Visualizing the Berlin tech job market through data-driven design.",
     challenge: "Fragmented job data made it hard for developers to find roles.",
     impact: "Created a focused interface for tech-stack based job hunting.",

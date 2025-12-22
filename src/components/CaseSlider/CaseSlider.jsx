@@ -171,24 +171,28 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                 }}
               />
               
-              {/* Coming Soon Overlay */}
+              {/* Coming Soon Overlay - blur background but keep tags visible */}
               {isComingSoon && (
-                <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-                  <div className="text-center px-6">
-                    <div className="inline-block px-6 py-3 rounded-full bg-[#DFFF00] border border-black/10 mb-4">
-                      <span className="text-sm sm:text-base lg:text-lg font-semibold font-neue-semibold uppercase text-[#D9D9D9]">
-                        COMING SOON
-                      </span>
+                <>
+                  {/* Blur overlay for background - doesn't cover tags area at bottom */}
+                  <div className="absolute inset-0 z-40 backdrop-blur-md" style={{ bottom: '150px' }}></div>
+                  <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none">
+                    <div className="text-center px-6">
+                      <div className="inline-block px-6 py-3 rounded-full bg-[#DFFF00] border border-black/10 mb-4">
+                        <span className="text-sm sm:text-base lg:text-lg font-semibold font-neue-semibold uppercase text-[#D9D9D9]">
+                          COMING SOON
+                        </span>
+                      </div>
+                      <p className="text-white/80 text-xs sm:text-sm font-neue-book-semi">
+                        Scroll to the left view other projects
+                      </p>
                     </div>
-                    <p className="text-white/80 text-xs sm:text-sm font-neue-book-semi">
-                      Scroll to view other projects
-                    </p>
                   </div>
-                </div>
+                </>
               )}
               
               {/* Titel-Overlay */}
-              <div className="absolute inset-x-0 bottom-0 p-4 pb-6 sm:p-6 sm:pb-8 lg:p-12 z-20">
+              <div className={`absolute inset-x-0 bottom-0 p-4 pb-6 sm:p-6 sm:pb-8 lg:p-12 z-50`}>
                 {/* Tags - Title als erster Tag, dann die anderen Tags */}
                 <div className="flex flex-wrap gap-2 sm:gap-2.5 relative z-30">
                   {/* Title als Tag - clickable (nur wenn nicht hideTitleTag) */}

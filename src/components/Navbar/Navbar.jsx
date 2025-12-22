@@ -163,7 +163,7 @@ const Navbar = () => {
             <div className="flex space-x-2 overflow-x-auto no-scrollbar pl-6 lg:pl-0">
               <button 
                 onClick={() => setIsApproachModalOpen(true)} 
-                className="text-[22px] sm:text-[17px] lg:text-2xl font-semibold uppercase px-4 py-2 sm:px-5 sm:py-2.5 lg:px-4 lg:py-2 rounded-full border font-neue-semibold bg-transparent border-black/10 text-black/30 hover:bg-[#DFFF00] hover:text-[#D9D9D9] hover:border-black/10 transition-colors min-h-[36px] sm:min-h-[40px] flex items-center justify-center"
+                className="text-[22px] sm:text-[17px] lg:text-2xl font-semibold uppercase px-5 py-2 sm:px-6 sm:py-2.5 lg:px-8 lg:py-3 rounded-full border font-neue-semibold bg-transparent border-black/10 text-black/30 hover:bg-[#DFFF00] hover:text-[#D9D9D9] hover:border-black/10 transition-colors min-h-[36px] sm:min-h-[40px] flex items-center justify-center"
               >
                 APPROACH
               </button>
