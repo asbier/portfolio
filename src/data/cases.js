@@ -52,7 +52,7 @@ export const cases = [
     detailImage1: "/images/03_vw-testdrive_07/wireframe_form_test-drive.jpg",
     detailImage2: "/images/03_vw-testdrive_07/IDModelleProbefahren-copy.jpg",
     detailImage3: "/images/03_vw-testdrive_07/SLiderImage_IDModelleProbefahren.webp",
-    team: { title: "VOLKSWAGEN x DAYONE", members: ["VW PO Steffen H. with PM Max M., UX/UI Annemarie S."] }
+    team: { title: "VOLKSWAGEN x DAYONE", members: ["VW PO Steffen H. with PM Max M."] }
   },
   {
     id: 4,

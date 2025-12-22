@@ -92,14 +92,9 @@ const MobileCaseView = ({ caseItem }) => {
             <h1 className="text-[32px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">
               {caseItem.title}
             </h1>
-            <div className="flex justify-between items-start">
-              <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black max-w-[65%]">
-                {caseItem.description}
-              </p>
-              <div className="text-sm font-neue-book-semi uppercase text-right leading-relaxed text-black">
-                YEAR: {caseItem.year || '2024'}<br />{caseItem.role && `ROLE: ${caseItem.role}`}
-              </div>
-            </div>
+            <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
+              {caseItem.description}
+            </p>
           </div>
         </div>
 
@@ -172,6 +167,72 @@ const MobileCaseView = ({ caseItem }) => {
               {renderMedia(caseItem.detailImage6, "Detail 6", "")}
             </div>
           )}
+
+          {/* YEAR, ROLE & TEAM - REORDERED SECTION */}
+          <div className="space-y-[0.1875rem] snap-start">
+            <div className="bg-[#E2DED3] p-8 space-y-0">
+              
+              {/* 1. The Heading/Team Title */}
+              {!caseItem.team ? (
+                <div className="mb-8">
+                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">
+                    DAYONE X HELLAGUTMANN
+                  </h2>
+                </div>
+              ) : (
+                <div className="mb-8">
+                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">
+                    {caseItem.team.title}
+                  </h2>
+                </div>
+              )}
+
+              {/* 2. YEAR & ROLE (Now underneath the title) */}
+              <div className="flex gap-12 mb-8">
+                <div className="flex-1">
+                  {caseItem.year && (
+                    <div className="mb-8">
+                      <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">YEAR</h2>
+                      <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.year}</p>
+                    </div>
+                  )}
+                  {/* TEAM in left column under YEAR */}
+                  {caseItem.team ? (
+                    <div>
+                      {caseItem.team.collaboration ? (
+                        <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.team.collaboration}</p>
+                      ) : (
+                        <div>
+                          <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">TEAM</h2>
+                          <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
+                            {caseItem.team.members?.map((member, index) => (
+                              <p key={index}>{member}</p>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div>
+                      <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">TEAM</h2>
+                      <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
+                        <p>Consultancy and Guidance Christopher G. (Lead)</p>
+                        <p>UX & Strategy Annemarie S.</p>
+                        <p>UI Bean D.</p>
+                        <p>PM Silvana M.</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                {caseItem.role && (
+                  <div className="flex-1">
+                    <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">ROLE</h2>
+                    <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.role}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
 
         </div>
       </main>
