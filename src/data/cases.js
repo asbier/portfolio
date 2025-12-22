@@ -187,7 +187,7 @@ export const cases = [
     category: "ART DIRECTION / EDITORIAL DESIGN",
     year: "2015",
     role: "ART DIRECTOR",
-    tags: ["STYLE MAGAZINE", "ART DIRECTION", "BRANDING", "E-COMMERCE"],
+    tags: ["ART DIRECTION", "EDITORIAL DESIGN", "BRANDING"],
     description: "As Art Director, I transformed Comma's traditional catalog into dynamic style magazines, creating a modern brand experience that bridges print and digital while attracting younger audiences.",
     challenge: "Comma needed a fresh approach to attract a younger audience while maintaining its classic appeal. Their catalog, previously a simple brochure, required a redesign to elevate the brand's image and create a seamless e-commerce experience.",
     impact: "I created a dynamic, zine-style lookbook called \"Comma CI\". During this process, we identified the need for two distinct target pieces: a classic design and a youthful \"Stylemagazine\". The latter embraced bold typography, collage elements, and modern aesthetics. This visual identity was seamlessly translated into a digital experience through parallax scrolling and interactive visuals.",
