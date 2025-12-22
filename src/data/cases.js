@@ -83,7 +83,7 @@ export const cases = [
     challenge: "Helping the Service Team get less load through a better Checkout and Order experience.",
     impact: "Less returns due to better descriptions and targeted user journeys with integrated search, Filterupdate,new Image/Video upload for content team and Video usage modern product display aswell as more detailed description",
     outcome: "A modern platform that contributed to growth and stability during the Covid wave and beyond.",
-    learning: "Stay true to your vision and aspirations. Trust within the team is the key to successful teamwork.",
+    learning: "Stay true to your Brand vision and aspirations. Trust within the team is the key to successful teamwork.",
     image: "/images/05_carhartt-wip-new journey_04/04carharttwip_shopping_journeyslider.webp",
     detailImage1: "/images/05_carhartt-wip-new journey_04/before_checkout_carhartt_wip.webp",
     detailImage2: "/images/05_carhartt-wip-new journey_04/new_cart_Checkout_paymentsystem.webp",
@@ -91,6 +91,10 @@ export const cases = [
     detailImage4: "/images/05_carhartt-wip-new journey_04/carhartt-wip_eu-start-2019-.webp",
     detailImage5: "/images/05_carhartt-wip-new journey_04/Carhartt-ImageSlider.webp",
     detailImage6: "/images/05_carhartt-wip-new journey_04/video_implementation.webp",
+    detailVideo1: "/images/05_carhartt-wip-new journey_04/MM_Phone_PH-G-12.mp4",
+    detailVideo1Poster: "/images/05_carhartt-wip-new journey_04/video_implementation.webp",
+    detailVideo2: "/images/05_carhartt-wip-new journey_04/Video_comp_final.mp4",
+    detailVideo2Poster: "/images/05_carhartt-wip-new journey_04/video_implementation.webp",
     team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz E.", "Annemarie S."] }
   },
   {

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
@@ -7,10 +7,84 @@ import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 const MobileCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
   
-  // Hilfsfunktion: Entscheidet ob Bild oder Verlauf gerendert wird
-  const renderMedia = (source, alt, className = "") => {
+  // Video component with Intersection Observer for autoplay on viewport entry
+  const VideoPlayer = ({ source, poster, className = "" }) => {
+    const videoRef = useRef(null);
+    const [shouldLoad, setShouldLoad] = useState(false);
+
+    useEffect(() => {
+      const video = videoRef.current;
+      if (!video) return;
+
+      // Intersection Observer: Load and play video when it enters viewport
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Load video source if not already loaded
+              if (!shouldLoad) {
+                setShouldLoad(true);
+              }
+              
+              // Play video when it enters viewport
+              if (video.paused) {
+                video.play().catch((error) => {
+                  // Autoplay was prevented (user interaction required)
+                  console.log('Autoplay prevented:', error);
+                });
+              }
+            } else {
+              // Pause video when it leaves viewport (save bandwidth)
+              if (!video.paused) {
+                video.pause();
+              }
+            }
+          });
+        },
+        {
+          rootMargin: '50px', // Start loading/playing 50px before video enters viewport
+          threshold: 0.5, // Trigger when 50% of video is visible
+        }
+      );
+
+      observer.observe(video);
+
+      return () => {
+        observer.disconnect();
+      };
+    }, [shouldLoad]);
+
+    return (
+      <video 
+        ref={videoRef}
+        className={`w-full h-auto block ${className}`}
+        controls
+        preload="none"
+        poster={poster || undefined}
+        playsInline
+        muted={true} // Required for autoplay in most browsers
+        loop={true} // Loop video for better portfolio experience
+      >
+        {shouldLoad && (
+          <source src={source} type={`video/${source.split('.').pop()}`} />
+        )}
+        Your browser does not support the video tag.
+      </video>
+    );
+  };
+  
+  // Hilfsfunktion: Entscheidet ob Bild, Video oder Verlauf gerendert wird
+  const renderMedia = (source, alt, className = "", poster = null) => {
     if (!source) return null;
+    
+    // Skip empty/corrupted images (check for known problematic files)
+    const emptyImages = [
+      '/images/05_carhartt-wip-new journey_04/before_checkout_carhartt_wip.webp'
+    ];
+    if (emptyImages.includes(source)) return null;
+    
     const isGradient = source.startsWith('linear-gradient');
+    const isVideo = source.endsWith('.mp4') || source.endsWith('.webm') || source.endsWith('.mov');
 
     return (
       <div 
@@ -20,13 +94,19 @@ const MobileCaseView = ({ caseItem }) => {
           aspectRatio: isGradient ? '16/9' : 'auto' // Platzhalter-Ratio für Verläufe
         }}
       >
-        {!isGradient && (
+        {isVideo ? (
+          <VideoPlayer source={source} poster={poster} />
+        ) : !isGradient && (
           <img 
             src={source} 
             alt={alt} 
             className="w-full h-auto block" 
             loading="lazy" 
             decoding="async"
+            onError={(e) => {
+              // Hide image if it fails to load (empty/corrupted)
+              e.target.style.display = 'none';
+            }}
           />
         )}
       </div>
@@ -98,73 +178,152 @@ const MobileCaseView = ({ caseItem }) => {
           </div>
         </div>
 
-        {/* 3. CONTENT SECTIONS */}
+        {/* 3. CONTENT SECTIONS - Improved Storytelling Flow */}
         <div className="px-5 space-y-[0.1875rem] snap-y snap-mandatory relative z-30">
           
-          {/* CHALLENGE */}
+          {/* Context Image - Visual hook after intro */}
+          {caseItem.detailImage1 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(
+                caseItem.id === 6 ? caseItem.detailImageMobile1 : caseItem.detailImage1, 
+                "Context", 
+                ""
+              )}
+            </div>
+          )}
+
+          {/* CHALLENGE - Problem statement */}
           {caseItem.challenge && (
             <div className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">CHALLENGE</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
               </div>
-              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile1 : caseItem.detailImage1, "Challenge Detail", "grayscale hover:grayscale-0 transition-all duration-700")}
             </div>
           )}
 
-          {/* IMPACT */}
+          {/* Challenge Visual - Shows the problem */}
+          {/* Skip detailImage2 for VW (id: 3) - it comes after OUTCOME */}
+          {caseItem.detailImage2 && caseItem.id !== 3 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(
+                caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, 
+                "Challenge Visual", 
+                "grayscale hover:grayscale-0 transition-all duration-700"
+              )}
+            </div>
+          )}
+
+          {/* IMPACT - Solution approach */}
           {caseItem.impact && (
             <div className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">IMPACT</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
               </div>
-              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, "Impact Detail", "")}
             </div>
           )}
 
-          {/* LEARNING */}
-          {caseItem.learning && (
+          {/* Impact Visual - Shows the solution/process */}
+          {/* Skip detailImage3 for VW (id: 3) - no image needed under IMPACT */}
+          {caseItem.detailImage3 && caseItem.id !== 3 && (
             <div className="space-y-[0.1875rem] snap-start">
-              <div className="bg-[#E2DED3] p-8 space-y-0">
-                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">LEARNING</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
-              </div>
+              {renderMedia(
+                caseItem.id === 6 ? caseItem.detailImageMobile4 : caseItem.detailImage3, 
+                "Impact Visual", 
+                ""
+              )}
             </div>
           )}
 
-          {/* Additional image for Conic Rose (before OUTCOME) */}
-          {caseItem.id === 6 && caseItem.detailImageMobile4 && (
+          {/* Additional supporting images - Show process/details */}
+          {caseItem.detailImage4 && caseItem.id !== 6 && (
             <div className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImageMobile4, "Detail", "")}
+              {renderMedia(caseItem.detailImage4, "Process Detail", "")}
+            </div>
+          )}
+          {caseItem.detailImage5 && caseItem.id !== 6 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage5, "Detail", "")}
             </div>
           )}
 
-          {/* OUTCOME */}
+          {/* Video 1 - Show solution in action (after supporting images, before OUTCOME) */}
+          {caseItem.detailVideo1 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster)}
+            </div>
+          )}
+
+          {/* OUTCOME - Results */}
           {caseItem.outcome && (
             <div className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">OUTCOME</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
               </div>
-              {renderMedia(caseItem.id === 6 ? caseItem.detailImageMobile5 : caseItem.detailImage3, "Final Outcome Detail", "shadow-lg")}
             </div>
           )}
 
-          {/* Additional detail images for cases with more than 3 images */}
-          {caseItem.detailImage4 && caseItem.id !== 6 && (
+          {/* Final Outcome Visual - The result */}
+          {caseItem.id === 6 && caseItem.detailImageMobile5 && (
             <div className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage4, "Detail 4", "")}
+              {renderMedia(caseItem.detailImageMobile5, "Final Outcome", "shadow-lg")}
             </div>
           )}
-          {caseItem.detailImage5 && caseItem.id !== 6 && (
+          {/* VW (id: 3) - IDModelle image comes after OUTCOME */}
+          {caseItem.id === 3 && caseItem.detailImage2 && (
             <div className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage5, "Detail 5", "")}
+              {renderMedia(caseItem.detailImage2, "Final Outcome", "shadow-lg")}
             </div>
           )}
-          {caseItem.detailImage6 && caseItem.id !== 6 && (
+          {caseItem.id !== 6 && caseItem.id !== 3 && caseItem.detailImage6 && (
             <div className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage6, "Detail 6", "")}
+              {renderMedia(caseItem.detailImage6, "Final Outcome", "shadow-lg")}
+            </div>
+          )}
+
+          {/* Video 2 - Final result demonstration (after OUTCOME) */}
+          {caseItem.detailVideo2 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailVideo2, "Final Video", "", caseItem.detailVideo2Poster)}
+            </div>
+          )}
+
+          {/* Additional detail images after outcome (for cases with many images) */}
+          {caseItem.detailImage7 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage7, "Detail", "")}
+            </div>
+          )}
+          {caseItem.detailImage8 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage8, "Detail", "")}
+            </div>
+          )}
+          {caseItem.detailImage9 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage9, "Detail", "")}
+            </div>
+          )}
+          {caseItem.detailImage10 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage10, "Detail", "")}
+            </div>
+          )}
+          {caseItem.detailImage11 && (
+            <div className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage11, "Detail", "")}
+            </div>
+          )}
+
+          {/* LEARNING - Reflection at the end */}
+          {caseItem.learning && (
+            <div className="space-y-[0.1875rem] snap-start">
+              <div className="bg-[#E2DED3] p-8 space-y-0">
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">LEARNING</h2>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
+              </div>
             </div>
           )}
 
