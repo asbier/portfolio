@@ -42,8 +42,8 @@ const MobileCaseView = ({ caseItem }) => {
           });
         },
         {
-          rootMargin: '50px', // Start loading/playing 50px before video enters viewport
-          threshold: 0.5, // Trigger when 50% of video is visible
+          rootMargin: '200px', // Start loading 200px before video enters viewport
+          threshold: 0.1, // Trigger when 10% of video is visible (load earlier)
         }
       );
 
@@ -60,13 +60,13 @@ const MobileCaseView = ({ caseItem }) => {
         className={`w-full h-auto block ${className}`}
         controls
         preload="none"
-        poster={poster || undefined}
+        poster={poster ? encodeURI(poster) : undefined}
         playsInline
         muted={true} // Required for autoplay in most browsers
         loop={true} // Loop video for better portfolio experience
       >
         {shouldLoad && (
-          <source src={source} type={`video/${source.split('.').pop()}`} />
+          <source src={encodeURI(source)} type={`video/${source.split('.').pop()}`} />
         )}
         Your browser does not support the video tag.
       </video>
@@ -76,12 +76,6 @@ const MobileCaseView = ({ caseItem }) => {
   // Hilfsfunktion: Entscheidet ob Bild, Video oder Verlauf gerendert wird
   const renderMedia = (source, alt, className = "", poster = null) => {
     if (!source) return null;
-    
-    // Skip empty/corrupted images (check for known problematic files)
-    const emptyImages = [
-      '/images/05_carhartt-wip-new journey_04/before_checkout_carhartt_wip.webp'
-    ];
-    if (emptyImages.includes(source)) return null;
     
     const isGradient = source.startsWith('linear-gradient');
     const isVideo = source.endsWith('.mp4') || source.endsWith('.webm') || source.endsWith('.mov');
@@ -98,7 +92,7 @@ const MobileCaseView = ({ caseItem }) => {
           <VideoPlayer source={source} poster={poster} />
         ) : !isGradient && (
           <img 
-            src={source} 
+            src={encodeURI(source)} 
             alt={alt} 
             className="w-full h-auto block" 
             loading="lazy" 
