@@ -12,14 +12,14 @@ const DesktopCaseView = ({ caseItem }) => {
     setScaledImages(prev => ({ ...prev, [imageId]: !prev[imageId] }));
   };
 
-  // 1. Definiere oben eine Verteilung für die Text-Karten - harmonisch verteilt
+  // 1. Definiere oben eine Verteilung für die Text-Karten - harmonisch verteilt wie ein Poster
   const cardPositions = {
-    projectInfo: { x: 100, y: 50 },
-    challenge: { x: 400, y: 450 },
-    impact: { x: 550, y: 700 },
-    outcome: { x: 1000, y: 350 },
-    learning: { x: 600, y: 1050 },
-    offer: { x: 1200, y: 1100 }
+    projectInfo: { x: 150, y: 100 },
+    challenge: { x: 800, y: 200 },
+    impact: { x: 200, y: 600 },
+    outcome: { x: 1000, y: 500 },
+    learning: { x: 500, y: 900 },
+    offer: { x: 1200, y: 800 }
   };
 
   // Harmonische Anordnung der Bilder für den Licht-Tisch
@@ -99,7 +99,7 @@ const DesktopCaseView = ({ caseItem }) => {
       // Entferne Duplikate
       return [...new Set(images)];
     }
-    if (caseItem.id === 10) { // PLASTIC MEDIA
+    if (caseItem.id === 10) { // INDIE / PLASTIC MEDIA
       const images = [
         caseItem.image,
         caseItem.detailImage1,
@@ -108,7 +108,11 @@ const DesktopCaseView = ({ caseItem }) => {
         caseItem.detailImage4,
         caseItem.detailImage5,
         caseItem.detailImage6,
-        caseItem.detailImage7
+        caseItem.detailImage7,
+        caseItem.detailImage8,
+        caseItem.detailImage9,
+        caseItem.detailImage10,
+        caseItem.detailImage11
       ].filter(Boolean);
       // Entferne Duplikate
       return [...new Set(images)];
@@ -141,7 +145,7 @@ const DesktopCaseView = ({ caseItem }) => {
       caseItem.detailImage1,
       caseItem.detailImage2
     ].filter(Boolean);
-  }, [caseItem.id, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6, caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9, caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12, caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15]);
+  }, [caseItem.id, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6, caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9, caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12, caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15, caseItem.detailImage16]);
 
   const allImages = getUniqueImages();
   
@@ -186,95 +190,122 @@ const DesktopCaseView = ({ caseItem }) => {
     }
   }, [getUniqueImages, caseItem.id, caseItem.imageFormats, caseItem.image, caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3, caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6, caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9, caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12, caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15, caseItem.detailImage16]);
 
-  const initialPositions = caseItem.id === 2
-    ? [
-        { x: 500, y: 200 },
-        { x: 1100, y: 500 },
-        { x: 300, y: 800 },
-        { x: 900, y: 1100 }
-      ]
-    : caseItem.id === 6
-    ? [
-        { x: 600, y: 200 },
-        { x: 1200, y: 500 },
-        { x: 200, y: 800 },
-        { x: 900, y: 1000 },
-        { x: 400, y: 600 },
-        { x: 1400, y: 300 },
-        { x: 1100, y: 900 }
-      ]
-    : caseItem.id === 7
-    ? [
-        { x: 600, y: 200 },
-        { x: 1200, y: 600 },
-        { x: 200, y: 1000 },
-        { x: 900, y: 1400 },
-        { x: 400, y: 800 },
-        { x: 1400, y: 400 },
-        { x: 1100, y: 1200 },
-        { x: 300, y: 500 },
-        { x: 800, y: 1600 },
-        { x: 1300, y: 1800 },
-        { x: 500, y: 2000 },
-        { x: 1000, y: 300 },
-        { x: 150, y: 700 },
-        { x: 750, y: 2400 },
-        { x: 1250, y: 2600 },
-        { x: 350, y: 2800 }
-      ]
-    : caseItem.id === 8
-    ? [
-        { x: 600, y: 200 },
-        { x: 1200, y: 500 },
-        { x: 200, y: 800 },
-        { x: 900, y: 1000 },
-        { x: 400, y: 600 },
-        { x: 1400, y: 300 },
-        { x: 1100, y: 900 },
-        { x: 300, y: 400 }
-      ]
-    : caseItem.id === 9
-    ? [
-        { x: 300, y: 150 },
-        { x: 1100, y: 300 },
-        { x: 200, y: 700 },
-        { x: 1000, y: 800 },
-        { x: 500, y: 1100 },
-        { x: 1300, y: 600 }
-      ]
-    : caseItem.id === 10
-    ? [
-        { x: 250, y: 200 },
-        { x: 1050, y: 350 },
-        { x: 150, y: 750 },
-        { x: 950, y: 900 },
-        { x: 450, y: 1150 },
-        { x: 1250, y: 650 },
-        { x: 700, y: 500 },
-        { x: 1400, y: 1000 }
-      ]
-    : caseItem.id === 11
-    ? [
-        { x: 600, y: 200 },
-        { x: 1200, y: 500 },
-        { x: 200, y: 800 },
-        { x: 900, y: 1000 },
-        { x: 400, y: 600 },
-        { x: 1400, y: 300 },
-        { x: 1100, y: 900 }
-      ]
-    : caseItem.id === 12
-    ? [
-        { x: 600, y: 200 },
-        { x: 1200, y: 500 },
-        { x: 200, y: 800 },
-        { x: 900, y: 1000 }
-      ]
-    : [
-        { x: 600, y: 200 },
-        { x: 1200, y: 500 },
-        { x: 200, y: 800 }
+  // Harmonische Poster-ähnliche Verteilung der Bilder
+  // Dynamische Berechnung basierend auf Anzahl der Bilder - skaliert mit Anzahl
+  const getImagePositions = (imageCount) => {
+    const positions = [];
+    
+    // Skaliere Abstände basierend auf Anzahl der Bilder
+    // Mehr Bilder = mehr Verteilung, weniger Bilder = kompakter
+    let cols, baseSpacingX, baseSpacingY, startX, startY;
+    
+    if (imageCount === 1) {
+      return [{ x: 500, y: 300 }];
+    } else if (imageCount === 2) {
+      // 2 Bilder: kompakt, diagonal
+      return [
+        { x: 300, y: 200 },
+        { x: 900, y: 500 }
       ];
+    } else if (imageCount === 3) {
+      // 3 Bilder: mäßige Verteilung
+      return [
+        { x: 200, y: 200 },
+        { x: 900, y: 400 },
+        { x: 500, y: 800 }
+      ];
+    } else if (imageCount <= 6) {
+      // 4-6 Bilder: 2 Spalten mit mäßiger Verteilung
+      cols = 2;
+      baseSpacingX = 600;
+      baseSpacingY = 500; // Mäßiger vertikaler Abstand
+      startX = 200;
+      startY = 200;
+    } else if (imageCount <= 10) {
+      // 7-10 Bilder: mehr Verteilung
+      cols = Math.max(2, Math.ceil(Math.sqrt(imageCount * 0.7))); 
+      baseSpacingX = 550;
+      baseSpacingY = 600; // Mehr vertikaler Abstand
+      startX = 200;
+      startY = 200;
+    } else {
+      // 11+ Bilder: viel Verteilung über großen Raum
+      cols = Math.max(2, Math.ceil(Math.sqrt(imageCount * 0.6))); 
+      baseSpacingX = 500;
+      baseSpacingY = 700; // Viel vertikaler Abstand
+      startX = 200;
+      startY = 200;
+    }
+    
+    // Erstelle eine Grid-Struktur mit Variationen
+    for (let i = 0; i < imageCount; i++) {
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+      
+      // Deterministische Variationen basierend auf Index
+      const variationX = ((i * 37) % 150) - 75;
+      const variationY = ((i * 23) % 120) - 60;
+      
+      // Alterniere die Positionen für dynamischeres Layout
+      const offsetX = col % 2 === 0 ? 0 : 100;
+      const offsetY = row % 2 === 0 ? 0 : 80;
+      
+      positions.push({
+        x: startX + (col * baseSpacingX) + variationX + offsetX,
+        y: startY + (row * baseSpacingY) + variationY + offsetY
+      });
+    }
+    
+    return positions;
+  };
+
+  const initialPositions = (() => {
+    const imageCount = allImages.length;
+    
+    // Spezielle Layouts für bestimmte Projekte
+    if (caseItem.id === 2) { // HELLAGUTMANN - 4 Bilder, besser verteilt
+      return [
+        { x: 300, y: 200 },
+        { x: 1000, y: 300 },
+        { x: 400, y: 800 },
+        { x: 1200, y: 900 }
+      ].slice(0, imageCount);
+    }
+    
+    if (caseItem.id === 6) { // CONIC ROSE - 6 Bilder, deutlich besser verteilt mit viel mehr Abstand
+      return [
+        { x: 200, y: 150 },   // Links oben
+        { x: 1100, y: 250 },  // Rechts oben, viel horizontaler Abstand
+        { x: 300, y: 1000 },  // Links mitte, viel mehr vertikaler Abstand (850px)
+        { x: 1200, y: 1100 }, // Rechts mitte, viel mehr vertikaler Abstand
+        { x: 150, y: 2000 },  // Links unten, noch mehr vertikaler Abstand (900px)
+        { x: 1050, y: 2100 }  // Rechts unten, noch mehr vertikaler Abstand
+      ].slice(0, imageCount);
+    }
+    
+    if (caseItem.id === 7) { // EDITED - viele Bilder, braucht mehr vertikalen Raum
+      return [
+        { x: 200, y: 200 }, { x: 750, y: 250 }, { x: 1300, y: 180 },
+        { x: 350, y: 700 }, { x: 900, y: 750 }, { x: 1450, y: 680 },
+        { x: 150, y: 1200 }, { x: 700, y: 1250 }, { x: 1250, y: 1180 },
+        { x: 400, y: 1700 }, { x: 950, y: 1750 }, { x: 1400, y: 1680 },
+        { x: 250, y: 2200 }, { x: 800, y: 2250 }, { x: 1350, y: 2180 },
+        { x: 500, y: 2700 }
+      ].slice(0, imageCount);
+    }
+    
+    if (caseItem.id === 10) { // INDIE - viele Bilder (bis zu 11), besser vertikal verteilt
+      return [
+        { x: 150, y: 200 }, { x: 700, y: 250 }, { x: 1250, y: 180 },
+        { x: 300, y: 700 }, { x: 850, y: 750 }, { x: 1400, y: 680 },
+        { x: 200, y: 1200 }, { x: 750, y: 1250 }, { x: 1300, y: 1180 },
+        { x: 450, y: 1700 }, { x: 1000, y: 1750 }, { x: 1500, y: 1680 }
+      ].slice(0, imageCount);
+    }
+    
+    // Für alle anderen Projekte: dynamische Verteilung
+    return getImagePositions(imageCount);
+  })();
 
   // Extrahiere Bildtitel aus URLs oder verwende definierte Titel
   const getImageTitle = (url, index) => {

@@ -118,6 +118,7 @@ export const cases = [
     detailImage5: "/images/05_conic-rose-artdirection_05/draft_conicr.jpg",
     detailImage6: "/images/05_conic-rose-artdirection_05/finalconicrosedesign.jpg",
     imageFormats: ['landscape', 'portrait', 'portrait', 'landscape', 'landscape', 'landscape', 'landscape'],
+    imageTitles: ['', '', '', 'DRAFT VERSION', '', 'ANOTHER DRAFT', 'FINAL ART WORK'],
     team: { title: "CONIC ROSE", collaboration: "Client CONIC ROSE Direction Design ME."} 
   },
   {

@@ -107,6 +107,32 @@ const Navbar = () => {
                 </p>
               </div>
 
+              <div>
+                <h3 className="font-neue-semibold uppercase mb-2 sm:mb-3 text-base sm:text-lg">Tech Stack and Tools</h3>
+                <p>
+                  I choose tools based on the project goal:
+                </p>
+                <p className="mt-2">
+                  <span className="font-neue-semibold uppercase">Design Systems</span> I am a professional in Figma and Adobe Creative Suite, including InDesign for print. I enjoy bridging the gap between brand mediums.
+                </p>
+                <p className="mt-2">
+                  <span className="font-neue-semibold uppercase">Custom Development</span> For this website, I built custom with React, Tailwind CSS, Cursor, and Hosting on GitHub. I prefer to code myself because it removes the design hurdles of mainstream builders that often slow down the refinement of details and create more steps than needed. I also used this project to test AI-driven testing and Umami for ethical, privacy-focused analytics.
+                </p>
+                <p className="mt-2">
+                  <span className="font-neue-semibold uppercase">CMS & SMEs</span> During the pandemic, I spent 2 years working with CMS solutions for SMEs at We22. I can consult on tools like their proprietary systems, Squarespace, or Webflow. I have an honest view on when they help and when they actually get in the way of qualitatively good design.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-neue-semibold uppercase mb-2 sm:mb-3 text-base sm:text-lg">Design Engineering & Collaboration</h3>
+                <p>
+                  Like the Design Lead at Cursor, I believe that in the future, we will all code.
+                </p>
+                <p className="mt-2">
+                  I am learning to build because I want to speak the same language as the engineers I work with. The roles in the industry are already shifting, which is why I've dedicated the past months to learning skills in analytics and frontend. For commercial projects, I respect the need for security and complex architecture, and I thrive when learning from senior developers. My goal is to collaborate on technical solutions as a Design Engineer, while ensuring that the "love for design detail" never gets lost in the implementation.
+                </p>
+              </div>
+
               <div className="pt-4 border-t border-black/10">
                 <h3 className="font-neue-semibold uppercase mb-2 sm:mb-3 text-base sm:text-lg">Contact</h3>
                 <p className="mb-2 break-words">

@@ -95,7 +95,7 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   const totalSlides = filteredCases.length;
 
   return (
-   <div
+   <div 
       ref={sliderRef} 
       className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory 
                 top-0 bottom-[110px]
@@ -177,7 +177,7 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                   </div>
                 </div>
               )}
-
+              
               {/* Titel-Overlay */}
               <div className="absolute inset-x-0 bottom-0 p-4 pb-6 sm:p-6 sm:pb-8 lg:p-12 z-20">
                 {/* Tags - Title als erster Tag, dann die anderen Tags */}
