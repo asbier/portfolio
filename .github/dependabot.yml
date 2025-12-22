@@ -1,0 +1,36 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"  # Check for updates once per week
+    open-pull-requests-limit: 10  # Maximum number of open PRs at once
+    reviewers:
+      - "asbier-lab"  # Optional: Add your GitHub username for review
+    labels:
+      - "dependencies"
+      - "automated"
+    # Group updates to reduce PR noise
+    groups:
+      # Group all patch and minor updates together
+      production-dependencies:
+        dependency-type: "production"
+        update-types:
+          - "patch"
+          - "minor"
+      dev-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "patch"
+          - "minor"
+    # Ignore major version updates (they need manual review)
+    ignore:
+      # Don't auto-update major versions - these need manual testing
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    # Only create PRs for security updates immediately
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
