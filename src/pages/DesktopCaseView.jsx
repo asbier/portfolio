@@ -403,12 +403,12 @@ const DesktopCaseView = ({ caseItem }) => {
                 cy="100"
                 r="90"
                 fill="none"
-                stroke="black"
+                stroke="#00ff00"
                 strokeWidth="0.8"
               />
             </svg>
             <div className="text-black text-[10px] font-neue-book-semi uppercase whitespace-normal text-center px-6 py-4 leading-tight max-w-[160px]">
-              table of cards drag and resize
+              workspace: Drag to reorder, pull to resize
             </div>
           </div>
         </motion.div>
