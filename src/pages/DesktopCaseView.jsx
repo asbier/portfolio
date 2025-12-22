@@ -408,7 +408,7 @@ const DesktopCaseView = ({ caseItem }) => {
               />
             </svg>
             <div className="text-black text-[10px] font-neue-book-semi uppercase whitespace-normal text-center px-6 py-4 leading-tight max-w-[160px]">
-              workspace: Drag to reorder, pull to resize
+              Drag to reorder, pull to resize
             </div>
           </div>
         </motion.div>
