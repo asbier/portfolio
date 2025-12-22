@@ -143,14 +143,23 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                     style={{ background: caseItem.image }} 
                   />
                 ) : (
-                  <img 
-                    src={caseItem.image} 
-                    alt={caseItem.title} 
-                    className="w-full h-full object-cover" 
-                    loading={index === 0 ? "eager" : "lazy"}
-                    decoding="async"
-                    fetchPriority={index === 0 ? "high" : "auto"}
-                  />
+                  <>
+                    <img 
+                      src={caseItem.image} 
+                      alt={caseItem.title} 
+                      className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90" 
+                      loading={index === 0 ? "eager" : "lazy"}
+                      decoding="async"
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                    />
+                    {/* Gradient overlay for text readability - only on hover (desktop only) */}
+                    <div 
+                      className="absolute inset-0 z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden lg:block"
+                      style={{
+                        background: 'linear-gradient(to top, rgba(128, 93, 10, 0.6) 0%, rgba(128, 93, 10, 0.3) 30%, transparent 70%)'
+                      }}
+                    />
+                  </>
                 )}
               </div>
 
@@ -189,7 +198,7 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                       className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[21px] sm:text-[17px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
                         activeTagFilter?.toLowerCase() === caseItem.title?.toLowerCase()
                           ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
-                          : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white'
+                          : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white group-hover:text-white group-hover:border-white'
                       }`}
                     >
                       {caseItem.title}
@@ -203,7 +212,7 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
                       className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[21px] sm:text-[17px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
                         activeTagFilter?.toLowerCase() === tag.toLowerCase()
                           ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
-                          : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white'
+                          : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white group-hover:text-white group-hover:border-white'
                       }`}
                     >
                       {tag}
