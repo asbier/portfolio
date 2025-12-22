@@ -380,7 +380,7 @@ const DesktopCaseView = ({ caseItem }) => {
       {/* Mouse Follower - Instructional hint (Desktop only) */}
       {isDesktop && showMouseFollower && (
         <motion.div
-          className="fixed pointer-events-none z-[100] mix-blend-difference"
+          className="fixed pointer-events-none z-[100]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -388,10 +388,28 @@ const DesktopCaseView = ({ caseItem }) => {
           style={{
             left: mousePosition.x + 20,
             top: mousePosition.y + 20,
+            transform: 'translate(-50%, -50%)',
           }}
         >
-          <div className="bg-black text-white px-4 py-2 rounded text-xs font-neue-book-semi uppercase whitespace-nowrap">
-            table of cards drag and resize
+          <div className="relative flex items-center justify-center w-[200px] h-[200px]">
+            <svg
+              width="200"
+              height="200"
+              viewBox="0 0 200 200"
+              className="absolute inset-0"
+            >
+              <circle
+                cx="100"
+                cy="100"
+                r="90"
+                fill="none"
+                stroke="black"
+                strokeWidth="0.8"
+              />
+            </svg>
+            <div className="text-black text-[10px] font-neue-book-semi uppercase whitespace-normal text-center px-6 py-4 leading-tight max-w-[160px]">
+              table of cards drag and resize
+            </div>
           </div>
         </motion.div>
       )}
