@@ -7,10 +7,51 @@ import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 const DesktopCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
   const [scaledImages, setScaledImages] = useState({});
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showMouseFollower, setShowMouseFollower] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const toggleScale = (imageId) => {
     setScaledImages(prev => ({ ...prev, [imageId]: !prev[imageId] }));
   };
+
+  // Check if desktop (only show mouse follower on desktop)
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  // Mouse follower: Track mouse position and hide after delay
+  useEffect(() => {
+    if (!isDesktop) return;
+
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    // Hide mouse follower after 8 seconds
+    const hideTimer = setTimeout(() => {
+      setShowMouseFollower(false);
+    }, 8000);
+
+    // Hide mouse follower when user starts dragging
+    const handleDragStart = () => {
+      setShowMouseFollower(false);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousedown', handleDragStart);
+
+    return () => {
+      clearTimeout(hideTimer);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousedown', handleDragStart);
+    };
+  }, [isDesktop]);
 
   // 1. Definiere oben eine Verteilung für die Text-Karten - harmonisch verteilt wie ein Poster
   const cardPositions = {
@@ -335,6 +376,26 @@ const DesktopCaseView = ({ caseItem }) => {
     <div className="min-h-screen bg-[#F1F2E5] overflow-y-auto">
       <GrainOverlay />
       <Navbar />
+      
+      {/* Mouse Follower - Instructional hint (Desktop only) */}
+      {isDesktop && showMouseFollower && (
+        <motion.div
+          className="fixed pointer-events-none z-[100] mix-blend-difference"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          style={{
+            left: mousePosition.x + 20,
+            top: mousePosition.y + 20,
+          }}
+        >
+          <div className="bg-black text-white px-4 py-2 rounded text-xs font-neue-book-semi uppercase whitespace-nowrap">
+            table of cards drag and resize
+          </div>
+        </motion.div>
+      )}
+      
       <main className="relative w-full pt-[120px] pb-32 cursor-crosshair">
         
         {/* Navigation */}
