@@ -6,6 +6,53 @@ import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 
 const MobileCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  
+  // Scroll animation component - fades in and slides up when entering viewport
+  const AnimatedCard = ({ children, id, className = "" }) => {
+    const cardRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setIsVisible(true);
+              setVisibleElements(prev => new Set([...prev, id]));
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px', // Trigger slightly before element enters
+        }
+      );
+
+      if (cardRef.current) {
+        observer.observe(cardRef.current);
+      }
+
+      return () => {
+        if (cardRef.current) {
+          observer.unobserve(cardRef.current);
+        }
+      };
+    }, [id]);
+
+    return (
+      <div
+        ref={cardRef}
+        className={`transition-all duration-700 ease-out ${
+          isVisible
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-8'
+        } ${className}`}
+      >
+        {children}
+      </div>
+    );
+  };
   
   // Video component with Intersection Observer for autoplay on viewport entry
   const VideoPlayer = ({ source, poster, className = "" }) => {
@@ -169,45 +216,45 @@ const MobileCaseView = ({ caseItem }) => {
           
           {/* Context Image - Visual hook after intro */}
           {caseItem.detailImage1 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <AnimatedCard id="image1" className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile1 : caseItem.detailImage1, 
                 "Context", 
                 ""
               )}
-            </div>
+            </AnimatedCard>
           )}
 
           {/* CHALLENGE - Problem statement */}
           {caseItem.challenge && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <AnimatedCard id="challenge" className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">CHALLENGE</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
               </div>
-            </div>
+            </AnimatedCard>
           )}
 
           {/* Challenge Visual - Shows the problem */}
           {/* Skip detailImage2 for VW (id: 3) - it comes after OUTCOME */}
           {caseItem.detailImage2 && caseItem.id !== 3 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <AnimatedCard id="image2" className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, 
                 "Challenge Visual", 
                 "grayscale hover:grayscale-0 transition-all duration-700"
               )}
-            </div>
+            </AnimatedCard>
           )}
 
           {/* IMPACT - Solution approach */}
           {caseItem.impact && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <AnimatedCard id="impact" className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">IMPACT</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
               </div>
-            </div>
+            </AnimatedCard>
           )}
 
           {/* Impact Visual - Shows the solution/process */}
@@ -243,12 +290,12 @@ const MobileCaseView = ({ caseItem }) => {
 
           {/* OUTCOME - Results */}
           {caseItem.outcome && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <AnimatedCard id="outcome" className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">OUTCOME</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
               </div>
-            </div>
+            </AnimatedCard>
           )}
 
           {/* Final Outcome Visual - The result */}
@@ -305,16 +352,16 @@ const MobileCaseView = ({ caseItem }) => {
 
           {/* LEARNING - Reflection at the end */}
           {caseItem.learning && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <AnimatedCard id="learning" className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">LEARNING</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
               </div>
-            </div>
+            </AnimatedCard>
           )}
 
           {/* YEAR, ROLE & TEAM - REORDERED SECTION */}
-          <div className="space-y-[0.1875rem] snap-start">
+          <AnimatedCard id="year-role-team" className="space-y-[0.1875rem] snap-start">
             <div className="bg-[#E2DED3] p-8 space-y-0">
               
               {/* 1. The Heading/Team Title */}
@@ -377,7 +424,7 @@ const MobileCaseView = ({ caseItem }) => {
                 )}
               </div>
             </div>
-          </div>
+          </AnimatedCard>
 
         </div>
       </main>
