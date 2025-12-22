@@ -403,7 +403,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 cy="100"
                 r="90"
                 fill="none"
-                stroke="#DFFF00"
+                stroke="#FFB115"
                 strokeWidth="0.8"
               />
             </svg>
