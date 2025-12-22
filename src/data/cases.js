@@ -78,7 +78,7 @@ export const cases = [
     category: "PRODUCT DESIGN",
     year: "2021/22",
     role: "PRODUCT DESIGNER",
-    tags: ["CARHARTT-WIP", "SHOPPING JOURNEY", "PRODUCT DESIGN", "E-COMMERCE"],
+    tags: ["SHOPPING JOURNEY", "PRODUCT DESIGN", "E-COMMERCE"],
     description: "Building a Commerce Platform that fits the brand's heritage while driving technical revolution.",
     challenge: "Helping the Service Team get less load through a better Checkout and Order experience.",
     impact: "Less returns due to better descriptions and targeted user journeys with integrated search, Filterupdate,new Image/Video upload for content team and Video usage modern product display aswell as more detailed description",
