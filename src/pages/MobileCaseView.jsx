@@ -1,58 +1,88 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
 import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 
+// TextFade Component - Fade up animation for text content with stretchy/elastic effect
+const TextFade = ({
+  direction = 'up',
+  children,
+  className = '',
+  staggerChildren = 0.1,
+}) => {
+  const FADE_DOWN = {
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        type: 'spring',
+        stiffness: 40,   // Niedriger = "schwerer" und langsamer
+        damping: 14,     // Kontrolle über das Nachschwingen
+        mass: 1,         // Erhöhen, wenn es sich noch massiver anfühlen soll
+        velocity: 2      // Startgeschwindigkeit
+      } 
+    },
+    hidden: { 
+      opacity: 0, 
+      y: direction === 'down' ? -30 : 30 // Etwas mehr Weg (30 statt 18) macht die Bewegung sichtbarer
+    },
+  };
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -100px 0px' });
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? 'show' : ''}
+      variants={{
+        hidden: {},
+        show: {
+          transition: {
+            staggerChildren: staggerChildren,
+          },
+        },
+      }}
+      className={className}
+    >
+      {React.Children.map(children, (child) =>
+        React.isValidElement(child) ? (
+          <motion.div variants={FADE_DOWN}>{child}</motion.div>
+        ) : (
+          child
+        )
+      )}
+    </motion.div>
+  );
+};
+
+// FadeUp Component - For images and cards with stretchy/elastic effect
+const FadeUp = ({ children, className = '' }) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -100px 0px' });
+  
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{
+        type: 'spring',
+        stiffness: 40,   // Niedriger = "schwerer" und langsamer
+        damping: 14,     // Kontrolle über das Nachschwingen
+        mass: 1,         // Erhöhen, wenn es sich noch massiver anfühlen soll
+        velocity: 2      // Startgeschwindigkeit
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 const MobileCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
-  const [visibleElements, setVisibleElements] = useState(new Set());
-  
-  // Scroll animation component - fades in and slides up when entering viewport
-  const AnimatedCard = ({ children, id, className = "" }) => {
-    const cardRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setIsVisible(true);
-              setVisibleElements(prev => new Set([...prev, id]));
-            }
-          });
-        },
-        {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px', // Trigger slightly before element enters
-        }
-      );
-
-      if (cardRef.current) {
-        observer.observe(cardRef.current);
-      }
-
-      return () => {
-        if (cardRef.current) {
-          observer.unobserve(cardRef.current);
-        }
-      };
-    }, [id]);
-
-    return (
-      <div
-        ref={cardRef}
-        className={`transition-all duration-700 ease-out ${
-          isVisible
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-8'
-        } ${className}`}
-      >
-        {children}
-      </div>
-    );
-  };
   
   // Video component with Intersection Observer for autoplay on viewport entry
   const VideoPlayer = ({ source, poster, className = "" }) => {
@@ -158,11 +188,11 @@ const MobileCaseView = ({ caseItem }) => {
   const heroIsGradient = heroImage?.startsWith('linear-gradient');
 
   return (
-    <div className="min-h-screen bg-[#F1F2E5] text-black font-neue" style={{ WebkitOverflowScrolling: 'touch' }}>
+    <div className="min-h-screen bg-[#F1F2E5] text-black font-neue" style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}>
       <GrainOverlay />
       <Navbar />
       
-      <main className="pt-0 pb-32 relative" style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'auto' }}> 
+      <main className="pt-0 pb-32 relative" style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}> 
         {/* 1. HERO BEREICH */}
         <div 
           className="relative w-full overflow-hidden"
@@ -202,229 +232,240 @@ const MobileCaseView = ({ caseItem }) => {
         {/* 2. INTRO CARD */}
         <div className="px-5 mb-[0.1875rem] relative z-30">
           <div className="bg-[#E2DED3] p-8 space-y-0">
-            <h1 className="text-[32px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">
-              {caseItem.title}
-            </h1>
-            <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
-              {caseItem.description}
-            </p>
+            <TextFade direction="up">
+              <h1 className="text-[32px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">
+                {caseItem.title}
+              </h1>
+              <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
+                {caseItem.description}
+              </p>
+            </TextFade>
           </div>
         </div>
 
         {/* 3. CONTENT SECTIONS - Improved Storytelling Flow */}
-        <div className="px-5 space-y-[0.1875rem] snap-y snap-mandatory relative z-30">
+        <div className="px-5 space-y-[0.1875rem] snap-y snap-mandatory snap-proximity relative z-30" style={{ scrollBehavior: 'smooth', scrollPaddingTop: '20px' }}>
           
           {/* Context Image - Visual hook after intro */}
           {caseItem.detailImage1 && (
-            <AnimatedCard id="image1" className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile1 : caseItem.detailImage1, 
                 "Context", 
                 ""
               )}
-            </AnimatedCard>
+            </FadeUp>
           )}
 
           {/* CHALLENGE - Problem statement */}
           {caseItem.challenge && (
-            <AnimatedCard id="challenge" className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
-                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">CHALLENGE</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
+                <TextFade direction="up">
+                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">CHALLENGE</h2>
+                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
+                </TextFade>
               </div>
-            </AnimatedCard>
+            </FadeUp>
           )}
 
           {/* Challenge Visual - Shows the problem */}
           {/* Skip detailImage2 for VW (id: 3) - it comes after OUTCOME */}
           {caseItem.detailImage2 && caseItem.id !== 3 && (
-            <AnimatedCard id="image2" className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, 
                 "Challenge Visual", 
                 "grayscale hover:grayscale-0 transition-all duration-700"
               )}
-            </AnimatedCard>
+            </FadeUp>
           )}
 
           {/* IMPACT - Solution approach */}
           {caseItem.impact && (
-            <AnimatedCard id="impact" className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
-                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">IMPACT</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
+                <TextFade direction="up">
+                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">IMPACT</h2>
+                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
+                </TextFade>
               </div>
-            </AnimatedCard>
+            </FadeUp>
           )}
 
           {/* Impact Visual - Shows the solution/process */}
           {/* Skip detailImage3 for VW (id: 3) - no image needed under IMPACT */}
           {caseItem.detailImage3 && caseItem.id !== 3 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile4 : caseItem.detailImage3, 
                 "Impact Visual", 
                 ""
               )}
-            </div>
+            </FadeUp>
           )}
 
           {/* Additional supporting images - Show process/details */}
           {caseItem.detailImage4 && caseItem.id !== 6 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage4, "Process Detail", "")}
-            </div>
+            </FadeUp>
           )}
           {caseItem.detailImage5 && caseItem.id !== 6 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage5, "Detail", "")}
-            </div>
+            </FadeUp>
           )}
 
           {/* Video 1 - Show solution in action (after supporting images, before OUTCOME) */}
           {caseItem.detailVideo1 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster)}
-            </div>
+            </FadeUp>
           )}
 
           {/* OUTCOME - Results */}
           {caseItem.outcome && (
-            <AnimatedCard id="outcome" className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
-                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">OUTCOME</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
+                <TextFade direction="up">
+                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">OUTCOME</h2>
+                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
+                </TextFade>
               </div>
-            </AnimatedCard>
+            </FadeUp>
           )}
 
           {/* Final Outcome Visual - The result */}
           {caseItem.id === 6 && caseItem.detailImageMobile5 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImageMobile5, "Final Outcome", "shadow-lg")}
-            </div>
+            </FadeUp>
           )}
           {/* VW (id: 3) - IDModelle image comes after OUTCOME */}
           {caseItem.id === 3 && caseItem.detailImage2 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage2, "Final Outcome", "shadow-lg")}
-            </div>
+            </FadeUp>
           )}
           {caseItem.id !== 6 && caseItem.id !== 3 && caseItem.detailImage6 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage6, "Final Outcome", "shadow-lg")}
-            </div>
+            </FadeUp>
           )}
 
           {/* Video 2 - Final result demonstration (after OUTCOME) */}
           {caseItem.detailVideo2 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailVideo2, "Final Video", "", caseItem.detailVideo2Poster)}
-            </div>
+            </FadeUp>
           )}
 
           {/* Additional detail images after outcome (for cases with many images) */}
           {caseItem.detailImage7 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage7, "Detail", "")}
-            </div>
+            </FadeUp>
           )}
           {caseItem.detailImage8 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage8, "Detail", "")}
-            </div>
+            </FadeUp>
           )}
           {caseItem.detailImage9 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage9, "Detail", "")}
-            </div>
+            </FadeUp>
           )}
           {caseItem.detailImage10 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage10, "Detail", "")}
-            </div>
+            </FadeUp>
           )}
           {caseItem.detailImage11 && (
-            <div className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage11, "Detail", "")}
-            </div>
+            </FadeUp>
           )}
 
           {/* LEARNING - Reflection at the end */}
           {caseItem.learning && (
-            <AnimatedCard id="learning" className="space-y-[0.1875rem] snap-start">
+            <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
-                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">LEARNING</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
+                <TextFade direction="up">
+                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">LEARNING</h2>
+                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
+                </TextFade>
               </div>
-            </AnimatedCard>
+            </FadeUp>
           )}
 
           {/* YEAR, ROLE & TEAM - REORDERED SECTION */}
-          <AnimatedCard id="year-role-team" className="space-y-[0.1875rem] snap-start">
+          <FadeUp className="space-y-[0.1875rem] snap-start">
             <div className="bg-[#E2DED3] p-8 space-y-0">
-              
-              {/* 1. The Heading/Team Title */}
-              {!caseItem.team ? (
-                <div className="mb-8">
-                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">
-                    DAYONE X HELLAGUTMANN
-                  </h2>
-                </div>
-              ) : (
-                <div className="mb-8">
-                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">
-                    {caseItem.team.title}
-                  </h2>
-                </div>
-              )}
-
-              {/* 2. YEAR & ROLE (Now underneath the title) */}
-              <div className="flex gap-12 mb-8">
-                <div className="flex-1">
-                  {caseItem.year && (
-                    <div className="mb-8">
-                      <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">YEAR</h2>
-                      <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.year}</p>
-                    </div>
-                  )}
-                  {/* TEAM in left column under YEAR */}
-                  {caseItem.team ? (
-                    <div>
-                      {caseItem.team.collaboration ? (
-                        <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.team.collaboration}</p>
-                      ) : (
-                        <div>
-                          <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">TEAM</h2>
-                          <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
-                            {caseItem.team.members?.map((member, index) => (
-                              <p key={index}>{member}</p>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <div>
-                      <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">TEAM</h2>
-                      <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
-                        <p>Consultancy and Guidance Christopher G. (Lead)</p>
-                        <p>UX & Strategy Annemarie S.</p>
-                        <p>UI Bean D.</p>
-                        <p>PM Silvana M.</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                {caseItem.role && (
-                  <div className="flex-1">
-                    <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">ROLE</h2>
-                    <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.role}</p>
+              <TextFade direction="up">
+                {/* 1. The Heading/Team Title */}
+                {!caseItem.team ? (
+                  <div className="mb-8">
+                    <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">
+                      DAYONE X HELLAGUTMANN
+                    </h2>
+                  </div>
+                ) : (
+                  <div className="mb-8">
+                    <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-6">
+                      {caseItem.team.title}
+                    </h2>
                   </div>
                 )}
-              </div>
+
+                {/* 2. YEAR & ROLE (Now underneath the title) */}
+                <div className="flex gap-12 mb-8">
+                  <div className="flex-1">
+                    {caseItem.year && (
+                      <div className="mb-8">
+                        <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">YEAR</h2>
+                        <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.year}</p>
+                      </div>
+                    )}
+                    {/* TEAM in left column under YEAR */}
+                    {caseItem.team ? (
+                      <div>
+                        {caseItem.team.collaboration ? (
+                          <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.team.collaboration}</p>
+                        ) : (
+                          <div>
+                            <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">TEAM</h2>
+                            <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
+                              {caseItem.team.members?.map((member, index) => (
+                                <p key={index}>{member}</p>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div>
+                        <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">TEAM</h2>
+                        <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
+                          <p>Consultancy and Guidance Christopher G. (Lead)</p>
+                          <p>UX & Strategy Annemarie S.</p>
+                          <p>UI Bean D.</p>
+                          <p>PM Silvana M.</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  {caseItem.role && (
+                    <div className="flex-1">
+                      <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-2">ROLE</h2>
+                      <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.role}</p>
+                    </div>
+                  )}
+                </div>
+              </TextFade>
             </div>
-          </AnimatedCard>
+          </FadeUp>
 
         </div>
       </main>
