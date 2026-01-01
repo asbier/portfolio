@@ -90,7 +90,7 @@ const SingleParagraph = ({ content, index, total, globalScroll, isLast = false }
   return (
     <motion.div
       style={{ opacity, pointerEvents: isLast ? 'auto' : 'none' }}
-      className="absolute inset-0 flex items-center text-[32px] font-neue-book-semi leading-snug text-[#979797]"
+      className="absolute inset-0 flex items-center text-[20px] lg:text-[32px] font-neue-book-semi leading-snug text-[#979797]"
     >
       {content}
     </motion.div>
@@ -239,10 +239,10 @@ const ApproachContent = () => {
   return (
     <div className="relative bg-[#F1F2E5]" style={{ height: `${paragraphs.length * 100}vh` }}>
       
-      {/* 1. VISUELLE EBENE: Buchstaben (Fixed) */}
+      {/* 1. VISUELLE EBENE: Buchstaben (Fixed) - nur Desktop */}
       <div 
         ref={lettersContainerRef}
-        className="fixed left-0 top-0 w-1/2 h-screen z-0 pointer-events-none"
+        className="fixed left-0 top-0 w-1/2 h-screen z-0 pointer-events-none hidden lg:block"
         style={{ paddingTop: '120px' }}
       >
         <motion.div 
@@ -292,9 +292,9 @@ const ApproachContent = () => {
         </motion.div>
       </div>
 
-      {/* 2. TEXT EBENE: Absolut fixiert im Zentrum der rechten Seite */}
+      {/* 2. TEXT EBENE: Absolut fixiert - vollbreite auf Mobile, rechte Hälfte auf Desktop */}
       <div 
-        className="fixed right-0 top-0 w-1/2 h-screen flex items-center justify-start px-8 lg:px-24 z-10"
+        className="fixed right-0 top-0 w-full lg:w-1/2 h-screen flex items-center justify-center lg:justify-start px-6 lg:px-24 z-10"
         style={{ paddingTop: '120px' }}
       >
         <div className="relative w-full max-w-[500px] h-[60vh]">
@@ -311,8 +311,8 @@ const ApproachContent = () => {
         </div>
       </div>
 
-      {/* CTA Button */}
-      <div className="fixed left-8 lg:left-24 top-[140px] z-50">
+      {/* CTA Button - nur Desktop (auf Mobile gibt es HOME in Navbar) */}
+      <div className="fixed left-8 lg:left-24 top-[140px] z-50 hidden lg:block">
         <button 
           onClick={() => navigate('/')} 
           className="text-[32px] font-neue-semibold text-[#D9D9D9] hover:opacity-60 transition-opacity"
