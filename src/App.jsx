@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { Suspense, lazy, useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { cases } from './data/cases';
 import LoadingOverlay from './components/LoadingOverlay/LoadingOverlay';
 import Analytics from './components/Analytics/Analytics';
@@ -64,7 +64,7 @@ function App() {
     }, []);
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Suspense fallback={<LoadingOverlay />}>
                 <RedirectHandler />
                 <Analytics />
@@ -78,7 +78,7 @@ function App() {
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Suspense>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
