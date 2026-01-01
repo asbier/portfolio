@@ -1,0 +1,330 @@
+import React, { useRef, useEffect, useState } from 'react';
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import PhysicsLetter from './PhysicsLetter';
+
+// Scroll Progress Cursor - kreisförmiger Indikator
+const ScrollProgressCursor = ({ progress }) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const smoothX = useSpring(mouseX, { stiffness: 150, damping: 20 });
+  const smoothY = useSpring(mouseY, { stiffness: 150, damping: 20 });
+  
+  // SVG Kreis-Parameter
+  const size = 60;
+  const strokeWidth = 2;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  
+  // Progress zu strokeDashoffset
+  const strokeDashoffset = useTransform(progress, [0, 1], [circumference, 0]);
+  
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      mouseX.set(e.clientX - size / 2);
+      mouseY.set(e.clientY - size / 2);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  return (
+    <motion.div
+      className="fixed pointer-events-none z-[100] hidden lg:block"
+      style={{
+        left: smoothX,
+        top: smoothY,
+        width: size,
+        height: size
+      }}
+    >
+      <svg width={size} height={size} className="transform -rotate-90">
+        {/* Hintergrund-Kreis */}
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="#D9D9D9"
+          strokeWidth={strokeWidth}
+          opacity={0.3}
+        />
+        {/* Progress-Kreis */}
+        <motion.circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="#979797"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          style={{ strokeDashoffset }}
+        />
+      </svg>
+      {/* Kleiner Punkt in der Mitte */}
+      <div 
+        className="absolute w-1.5 h-1.5 bg-[#979797] rounded-full"
+        style={{ left: size / 2 - 3, top: size / 2 - 3 }}
+      />
+    </motion.div>
+  );
+};
+
+// Einzelner Paragraph - bleibt an Ort und Stelle, fadet nur ein/aus
+const SingleParagraph = ({ content, index, total, globalScroll, isLast = false }) => {
+  const start = index / total;
+  const end = (index + 1) / total;
+  
+  // Letzter Paragraph bleibt sichtbar (fadet nicht aus)
+  const opacity = useTransform(
+    globalScroll, 
+    isLast 
+      ? [start, start + 0.03, 1] 
+      : [start, start + 0.03, end - 0.03, end], 
+    isLast 
+      ? [0, 1, 1] 
+      : [0, 1, 1, 0]
+  );
+
+  return (
+    <motion.div
+      style={{ opacity, pointerEvents: isLast ? 'auto' : 'none' }}
+      className="absolute inset-0 flex items-center text-[32px] font-neue-book-semi leading-snug text-[#979797]"
+    >
+      {content}
+    </motion.div>
+  );
+};
+
+const ApproachContent = () => {
+  const navigate = useNavigate();
+  const lettersContainerRef = useRef(null);
+  const [currentParagraph, setCurrentParagraph] = useState(0);
+  const [isSwirling, setIsSwirling] = useState(false);
+  const [showSystemLetters, setShowSystemLetters] = useState(false);
+  
+  // Body-Scroll als Taktgeber
+  const { scrollYProgress } = useScroll();
+  
+  // Smooth version
+  const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+  
+  // "Aufwirbeln" der Buchstaben bei Paragraph-Wechsel
+  const swirlIntensity = useMotionValue(0);
+
+  // Versteckt die Scrollbar
+  useEffect(() => {
+    document.documentElement.style.scrollbarWidth = 'none';
+    document.body.style.overflowX = 'hidden';
+    
+    return () => {
+      document.documentElement.style.scrollbarWidth = '';
+      document.body.style.overflowX = '';
+    };
+  }, []);
+
+  // Tracke Paragraph-Wechsel und löse "Aufwirbeln" aus
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
+      const newParagraph = Math.floor(latest * paragraphs.length);
+      const clampedParagraph = Math.max(0, Math.min(newParagraph, paragraphs.length - 1));
+      
+      // SYSTEM Buchstaben erscheinen ab Paragraph 3 (Tech Stack)
+      if (clampedParagraph >= 3 && !showSystemLetters) {
+        setShowSystemLetters(true);
+      }
+      
+      if (clampedParagraph !== currentParagraph) {
+        setCurrentParagraph(clampedParagraph);
+        
+        // Trigger swirl animation
+        setIsSwirling(true);
+        swirlIntensity.set(1);
+        
+        setTimeout(() => {
+          swirlIntensity.set(0);
+          setIsSwirling(false);
+        }, 600);
+      }
+    });
+    
+    return () => unsubscribe();
+  }, [scrollYProgress, currentParagraph, swirlIntensity, showSystemLetters]);
+
+  const paragraphs = [
+    { 
+      id: 0, 
+      content: (
+        <p>
+          A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul. To treat them as separate "boxes" is to miss the connection that makes design effective.
+        </p>
+      )
+    },
+    { 
+      id: 1, 
+      content: (
+        <p>
+          I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. Whether I am architecting a dashboard or defining a brand language, my goal is to ensure the result is visible, likeable, and memorable.
+        </p>
+      )
+    },
+    { 
+      id: 2, 
+      content: (
+        <p>
+          The world does not need more products or services destined for the bin. I help businesses innovate for the long-term by creating solutions that people need before they even realise they need them.
+        </p>
+      )
+    },
+    { 
+      id: 3, 
+      content: (
+        <p>
+          I choose tools based on the project goal. I am a professional in Figma and Adobe Creative Suite, including InDesign for print. I enjoy bridging the gap between brand mediums.
+        </p>
+      )
+    },
+    { 
+      id: 4, 
+      content: (
+        <p>
+          For this website, I built custom with React, Tailwind CSS, Cursor, and Hosting on GitHub. I prefer to code myself because it removes the design hurdles of mainstream builders.
+        </p>
+      )
+    },
+    { 
+      id: 5, 
+      content: (
+        <p>
+          During the pandemic, I spent 2 years working with CMS solutions for SMEs at We22. I can consult on tools like Squarespace or Webflow. I have an honest view on when they help and when they get in the way of good design.
+        </p>
+      )
+    },
+    { 
+      id: 6, 
+      content: (
+        <p>
+          Like the Design Lead at Cursor, I believe that in the future, we will all code. I am learning to build because I want to speak the same language as the engineers I work with.
+        </p>
+      )
+    },
+    { 
+      id: 7, 
+      content: (
+        <p>
+          My goal is to collaborate on technical solutions as a Design Engineer, while ensuring that the "love for design detail" never gets lost in the implementation.
+        </p>
+      )
+    },
+    { 
+      id: 8, 
+      content: (
+        <div>
+          <p className="mb-4">
+            Ready to move beyond the box?
+          </p>
+          <p>
+            <a href="mailto:mail@annemaris.de" className="underline hover:no-underline">Email Me</a>
+            <span className="mx-2">/</span>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">LinkedIn</a>
+            <span className="mx-2">/</span>
+            <a href="https://github.com/asbier-lab" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">GitHub</a>
+          </p>
+        </div>
+      )
+    }
+  ];
+
+  return (
+    <div className="relative bg-[#F1F2E5]" style={{ height: `${paragraphs.length * 100}vh` }}>
+      
+      {/* 1. VISUELLE EBENE: Buchstaben (Fixed) */}
+      <div 
+        ref={lettersContainerRef}
+        className="fixed left-0 top-0 w-1/2 h-screen z-0 pointer-events-none"
+        style={{ paddingTop: '120px' }}
+      >
+        <motion.div 
+          className="relative w-full h-full"
+          animate={isSwirling ? {
+            x: [0, Math.random() * 20 - 10, Math.random() * -20 + 10, 0],
+            y: [0, Math.random() * 15 - 7.5, Math.random() * -15 + 7.5, 0],
+          } : {}}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          {/* APPROACH Buchstaben - verschwinden wenn SYSTEM kommt */}
+          <motion.div
+            animate={{ opacity: showSystemLetters ? 0 : 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {"APPROACH".split("").map((c, i) => (
+              <PhysicsLetter 
+                key={`app-${i}`} 
+                char={c} 
+                defaultX={`${5 + i * 11}%`} 
+                defaultY={`${10 + (i % 3) * 12}%`}
+                containerRef={lettersContainerRef}
+                delay={i * 0.15}
+                letterId={`app-${i}`}
+                isSwirling={isSwirling}
+                colorIndex={i}
+              />
+            ))}
+          </motion.div>
+
+          {/* SYSTEM Buchstaben: Fallen rein, größer und zentrierter */}
+          {showSystemLetters && "SYSTEM".split("").map((c, i) => (
+            <PhysicsLetter 
+              key={`sys-${i}`} 
+              char={c} 
+              defaultX={`${5 + i * 15}%`} 
+              defaultY={`${30 + (i % 2) * 15}%`}
+              containerRef={lettersContainerRef}
+              delay={i * 0.12}
+              letterId={`sys-${i}`}
+              isSwirling={isSwirling}
+              fallIn={true}
+              colorIndex={i + 8}
+              size="large"
+            />
+          ))}
+        </motion.div>
+      </div>
+
+      {/* 2. TEXT EBENE: Absolut fixiert im Zentrum der rechten Seite */}
+      <div 
+        className="fixed right-0 top-0 w-1/2 h-screen flex items-center justify-start px-8 lg:px-24 z-10"
+        style={{ paddingTop: '120px' }}
+      >
+        <div className="relative w-full max-w-[500px] h-[60vh]">
+          {paragraphs.map((para, i) => (
+            <SingleParagraph 
+              key={para.id} 
+              content={para.content} 
+              index={i} 
+              total={paragraphs.length}
+              globalScroll={scrollYProgress}
+              isLast={i === paragraphs.length - 1}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* CTA Button */}
+      <div className="fixed left-8 lg:left-24 top-[140px] z-50">
+        <button 
+          onClick={() => navigate('/')} 
+          className="text-[32px] font-neue-semibold text-[#D9D9D9] hover:opacity-60 transition-opacity"
+        >
+          SEE ALL CASES
+        </button>
+      </div>
+
+      {/* Scroll Progress Cursor */}
+      <ScrollProgressCursor progress={scrollYProgress} />
+    </div>
+  );
+};
+
+export default ApproachContent;

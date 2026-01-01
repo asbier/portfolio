@@ -9,6 +9,7 @@ const Home = lazy(() => import('./pages/Home'));
 const CaseDetail = lazy(() => import('./pages/CaseDetail'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const Privacy = lazy(() => import('./pages/Privacy'));
+const Approach = lazy(() => import('./pages/Approach'));
 
 // Component to handle GitHub Pages 404.html redirect
 function RedirectHandler() {
@@ -73,6 +74,7 @@ function App() {
                     <Route path="/case/:id" element={<CaseDetail cases={cases} />} /> 
                     <Route path="/history" element={<Home cases={cases} />} /> 
                     <Route path="/privacy" element={<Privacy />} />
+                    <Route path="/approach" element={<Approach />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Suspense>

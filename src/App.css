@@ -78,3 +78,23 @@ html {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+/* Versteckt die Scrollbar überall, lässt Scrollen aber zu */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Scrollbar nur auf der Approach-Seite verstecken */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
