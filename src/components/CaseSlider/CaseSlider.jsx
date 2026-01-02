@@ -26,8 +26,9 @@ const SlideItem = ({
     [index / totalSlides, (index + 1) / totalSlides],
     [0, 1]
   );
-  // Invert: when scrolling left, images move right (positive) to create lag effect
-  const parallaxX = useTransform(slideProgress, [0, 1], [20, 0]);
+  // Physik: Auf Desktop (20px Lag), auf Mobile (0px Lag für natives Gefühl)
+  const parallaxValue = isMobile ? 0 : 20;
+  const parallaxX = useTransform(slideProgress, [0, 1], [parallaxValue, 0]);
 
   return (
     <motion.div
@@ -43,7 +44,7 @@ const SlideItem = ({
         delay: index * 0.05 
       }}
       className={`flex-shrink-0 w-screen h-full snap-center relative group
-                 lg:w-[33.33vw] lg:border-r lg:border-black/5 ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
+                 lg:w-[calc(33.33vw-2px)] ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
     >
       {/* Projekt-Hintergrund Logik mit Parallax */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -279,7 +280,8 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
       }}
     >
       
-      <div className="flex h-full w-max">
+      {/* Der Flex-Container steuert jetzt die Gaps */}
+      <div className="flex h-full w-max gap-0 lg:gap-[3px] bg-black/5">
         {filteredCases.map((caseItem, index) => {
           // Prüfen, ob es ein Verlauf ist
           const isGradient = caseItem.image?.startsWith('linear-gradient');
