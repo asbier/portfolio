@@ -7,49 +7,80 @@ const letterColors = ['#DEE6DF', '#E3EEEC', '#D9DED4'];
 const PhysicsLetter = ({ char, defaultX, defaultY, containerRef, delay = 0, letterId, isSwirling = false, fallIn = false, colorIndex = 0, size = 'normal' }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const rotate = useMotionValue(0);
   const letterRef = useRef(null);
   const controls = useAnimation();
   
   // Zufällige Farbe für Wasser-Reflexion
   const letterColor = letterColors[colorIndex % letterColors.length];
   
-  // Sehr weiche Federung für "Wasser-Gefühl"
-  const springConfig = { stiffness: 12, damping: 8, mass: 2.5 };
+  // ÖLIGE PHYSIK: Stiffness runter, Mass hoch = viskos und träge
+  const springConfig = { 
+    stiffness: 8,
+    damping: 12,
+    mass: 5.0
+  };
+  
+  // Federung für Rotation
+  const rotateSpringConfig = { stiffness: 15, damping: 10, mass: 2 };
+  
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
+  const springRotate = useSpring(rotate, rotateSpringConfig);
 
-  // Kontinuierliche Wasser-Bewegung (langsamer, organischer)
+  // Kontinuierliche Wasser-Bewegung
   useEffect(() => {
     const startFloating = async () => {
       if (fallIn) {
-        // ÖLIGE PHYSIK: Schweres Fallen mit Kipp-Punkt und Wobble
-        const tippingDirection = Math.random() > 0.5 ? 1 : -1; // Kippt links oder rechts
-        const tippingAngle = tippingDirection * (25 + Math.random() * 35); // 25-60° Kippung
-        const settleAngle = tippingDirection * (Math.random() * 8); // Leichte Endneigung
-        
-        // Phase 1: Langsames Fallen mit starker Kippung (wie schweres Objekt in Öl)
         await controls.start({
-          y: ['-500%', '-200%', '5%', '-2%', '0%'], // Sinkt, federt leicht nach
-          rotate: [0, tippingAngle * 1.5, tippingAngle * 0.8, -tippingAngle * 0.3, settleAngle], // Kippt, wobbled
-          x: [0, tippingDirection * 15, tippingDirection * -8, tippingDirection * 3, 0], // Seitliches Schwanken
-          opacity: [0, 0.3, 0.4, 0.4, 0.4],
+          // Wir animieren y von einem negativen Wert auf 0 (seine defaultY Position)
+          y: ['-400%', '0%'], 
+          opacity: [0, 0.4],
           transition: {
-            duration: 3.5 + Math.random() * 1.5, // 3.5-5 Sekunden (sehr langsam)
+            duration: 2.0,
             delay: delay,
-            ease: [0.15, 0.8, 0.3, 1], // Sehr träge Kurve
-            times: [0, 0.3, 0.7, 0.85, 1] // Timing der Keyframes
+            ease: [0.22, 1, 0.36, 1], // Starkes Abbremsen am Ende
           }
+        });
+        // Nach dem Aufprall kurz stabilisieren (sehr sanft)
+        controls.start({
+          y: [0, -5, 0],
+          transition: { duration: 0.5 }
         });
         
-        // Phase 2: Nachschwingen/Settlen wie in zäher Flüssigkeit
-        await controls.start({
-          rotate: [settleAngle, settleAngle * 0.5, settleAngle * 0.8, settleAngle * 0.3],
-          y: ['0%', '1%', '-0.5%', '0%'],
-          transition: {
-            duration: 2,
-            ease: "easeInOut"
+        // Zusätzliche Boundary-Correction nach FallIn
+        setTimeout(() => {
+          if (letterRef.current) {
+            const rect = letterRef.current.getBoundingClientRect();
+            const containerWidth = window.innerWidth / 2;
+            const containerHeight = window.innerHeight;
+            const navElement = document.querySelector('header');
+            const topLimit = navElement ? navElement.getBoundingClientRect().bottom + 20 : 140;
+            const bottomLimit = containerHeight - 40;
+            const leftLimit = 20;
+            const rightLimit = containerWidth - 20;
+            
+            let correctionX = 0;
+            let correctionY = 0;
+            
+            if (rect.left < leftLimit) {
+              correctionX = leftLimit - rect.left + 20;
+            } else if (rect.right > rightLimit) {
+              correctionX = -(rect.right - rightLimit) - 20;
+            }
+            
+            if (rect.top < topLimit) {
+              correctionY = topLimit - rect.top + 20;
+            } else if (rect.bottom > bottomLimit) {
+              correctionY = -(rect.bottom - bottomLimit) - 20;
+            }
+            
+            if (correctionX !== 0 || correctionY !== 0) {
+              x.set(x.get() + correctionX);
+              y.set(y.get() + correctionY);
+            }
           }
-        });
+        }, 2100 + delay * 1000); // Nach FallIn-Animation
       } else {
         // Normal einblenden für APPROACH
         await controls.start({
@@ -65,15 +96,13 @@ const PhysicsLetter = ({ char, defaultX, defaultY, containerRef, delay = 0, lett
         });
       }
       
-      // Dann kontinuierliches Schweben (für beide)
+      // Kontinuierliches Schweben (sehr sanft, um im Container zu bleiben)
       controls.start({
-        x: [0, Math.random() * 20 - 10, Math.random() * -15 + 7.5, 0],
-        y: [0, Math.random() * 15 - 7.5, Math.random() * -10 + 5, 0],
-        rotate: fallIn 
-          ? [0, Math.random() * 6 - 3, Math.random() * -4 + 2, 0] // Weniger Rotation für SYSTEM
-          : [0, Math.random() * 8 - 4, Math.random() * -6 + 3, 0],
+        x: [0, Math.random() * 4 - 2, Math.random() * -3 + 1.5, 0],
+        y: [0, Math.random() * 3 - 1.5, Math.random() * -2.5 + 1.25, 0],
+        rotate: [0, Math.random() * 2 - 1, Math.random() * -1.5 + 0.75, 0],
         transition: {
-          duration: 8 + Math.random() * 4, // Langsamer
+          duration: 15 + Math.random() * 8,
           repeat: Infinity,
           repeatType: "reverse",
           ease: "easeInOut"
@@ -84,25 +113,23 @@ const PhysicsLetter = ({ char, defaultX, defaultY, containerRef, delay = 0, lett
     startFloating();
   }, [controls, delay, fallIn]);
 
-  // "Aufwirbeln" bei Paragraph-Wechsel
+  // "Aufwirbeln" bei Paragraph-Wechsel (sehr sanft)
   useEffect(() => {
     if (isSwirling) {
-      const swirlX = (Math.random() - 0.5) * 100;
-      const swirlY = (Math.random() - 0.5) * 80;
-      const rotation = (Math.random() - 0.5) * 40;
+      const swirlX = (Math.random() - 0.5) * 20; // Noch weiter reduziert
+      const swirlY = (Math.random() - 0.5) * 15; // Noch weiter reduziert
+      const rotation = (Math.random() - 0.5) * 12; // Noch weiter reduziert
       
       controls.start({
-        x: [0, swirlX, swirlX * 0.6, swirlX * 0.2, 0],
-        y: [0, swirlY, swirlY * 0.6, swirlY * 0.2, 0],
-        rotate: [0, rotation, rotation * 0.5, rotation * 0.1, 0],
-        transition: {
-          duration: 1.2,
-          ease: [0.25, 0.1, 0.25, 1],
-        }
+        x: [0, swirlX, 0],
+        y: [0, swirlY, 0],
+        rotate: [0, rotation, 0],
+        transition: { duration: 1.0, ease: "easeOut" }
       });
     }
   }, [isSwirling, controls]);
 
+  // Maus-Interaktion mit BOUNCE-Physik und Letter-Kollision
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!letterRef.current) return;
@@ -114,17 +141,19 @@ const PhysicsLetter = ({ char, defaultX, defaultY, containerRef, delay = 0, lett
       const deltaX = e.clientX - letterCenterX;
       const deltaY = e.clientY - letterCenterY;
       const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      const repulsionRadius = 300;
       
-      const repulsionRadius = 350;
       if (distance < repulsionRadius && distance > 0) {
         const force = Math.pow((repulsionRadius - distance) / repulsionRadius, 2);
-        let moveX = (deltaX / distance) * force * 60;
-        let moveY = (deltaY / distance) * force * 60;
         
-        // Kollisionserkennung
+        // Kraft berechnen - NEGATIVE Werte stoßen von der Maus WEG (reduziert)
+        let moveX = (deltaX / distance) * force * -50;
+        let moveY = (deltaY / distance) * force * -50;
+
+        // --- LETTER-TO-LETTER KOLLISION (Softer) ---
         const allLetterElements = document.querySelectorAll('[data-letter-id]');
         allLetterElements.forEach((otherElement) => {
-          if (otherElement !== letterRef.current && otherElement.getAttribute('data-letter-id') !== letterId) {
+          if (otherElement !== letterRef.current) {
             const otherRect = otherElement.getBoundingClientRect();
             const otherCenterX = otherRect.left + otherRect.width / 2;
             const otherCenterY = otherRect.top + otherRect.height / 2;
@@ -134,83 +163,163 @@ const PhysicsLetter = ({ char, defaultX, defaultY, containerRef, delay = 0, lett
               Math.pow(letterCenterY - otherCenterY, 2)
             );
             
-            const minDistance = (rect.width + otherRect.width) / 2 + 40;
+            const minDistance = (rect.width + otherRect.width) / 4; // Kleinerer Kollisions-Radius
             
             if (letterDistance < minDistance && letterDistance > 0) {
-              const pushForce = Math.pow((minDistance - letterDistance) / minDistance, 1.5);
-              const pushX = ((letterCenterX - otherCenterX) / letterDistance) * pushForce * 35;
-              const pushY = ((letterCenterY - otherCenterY) / letterDistance) * pushForce * 35;
-              moveX += pushX;
-              moveY += pushY;
+              // Sanfteres Wegstoßen (weniger aggressiv)
+              const pushForce = ((minDistance - letterDistance) / minDistance) * 20;
+              moveX += ((letterCenterX - otherCenterX) / letterDistance) * pushForce;
+              moveY += ((letterCenterY - otherCenterY) / letterDistance) * pushForce;
+              // Sanfterer Dreh-Impuls
+              rotate.set(rotate.get() + (Math.random() - 0.5) * 10);
             }
           }
         });
+
+        // --- STRENGER CONTAINER-BOUNDARY CHECK ---
+        const containerWidth = window.innerWidth / 2;
+        const containerHeight = window.innerHeight;
         
-        // Boundary check
-        const viewportWidth = window.innerWidth / 2;
-        const viewportHeight = window.innerHeight;
+        // Dynamische Nav-Erkennung
+        const navElement = document.querySelector('header');
+        const topLimit = navElement ? navElement.getBoundingClientRect().bottom + 20 : 140;
         
-        const currentLeft = rect.left;
-        const currentTop = rect.top;
-        const letterWidth = rect.width;
-        const letterHeight = rect.height;
-        
-        const newLeft = currentLeft + moveX;
-        const newTop = currentTop + moveY;
-        
-        const edgePadding = 30;
-        const bounceStrength = 0.4;
-        
-        if (newLeft < edgePadding) {
-          const bounce = (edgePadding - newLeft) * bounceStrength;
-          moveX = -currentLeft + edgePadding - bounce;
-        } else if (newLeft + letterWidth > viewportWidth - edgePadding) {
-          const bounce = (newLeft + letterWidth - (viewportWidth - edgePadding)) * bounceStrength;
-          moveX = viewportWidth - currentLeft - letterWidth - edgePadding + bounce;
+        const bottomLimit = containerHeight - 40;
+        const leftLimit = 20;
+        const rightLimit = containerWidth - 20;
+
+        // Geplante Bewegung begrenzen, damit sie nicht "durch Wände tunneln"
+        moveX = Math.max(-25, Math.min(25, moveX));
+        moveY = Math.max(-25, Math.min(25, moveY));
+
+        let currentX = x.get();
+        let currentY = y.get();
+        let newX = currentX + moveX;
+        let newY = currentY + moveY;
+
+        // Die tatsächliche Position des Elements im Viewport (inkl. Default-Offsets)
+        // Wir nutzen rect, um die Kanten des RIESIGEN Buchstabens zu finden
+        const buffer = 10; // Kleiner Puffer
+
+        // Kollision Links/Rechts
+        if (rect.left + moveX < leftLimit) {
+          newX = currentX + (leftLimit - rect.left) + buffer;
+        } else if (rect.right + moveX > rightLimit) {
+          newX = currentX - (rect.right - rightLimit) - buffer;
         }
-        
-        if (newTop < edgePadding + 120) {
-          const bounce = (edgePadding + 120 - newTop) * bounceStrength;
-          moveY = -(currentTop - edgePadding - 120) - bounce;
-        } else if (newTop + letterHeight > viewportHeight - edgePadding) {
-          const bounce = (newTop + letterHeight - (viewportHeight - edgePadding)) * bounceStrength;
-          moveY = viewportHeight - currentTop - letterHeight - edgePadding + bounce;
+
+        // Kollision Oben (Nav) / Unten
+        if (rect.top + moveY < topLimit) {
+          newY = currentY + (topLimit - rect.top) + buffer;
+        } else if (rect.bottom + moveY > bottomLimit) {
+          newY = currentY - (rect.bottom - bottomLimit) - buffer;
         }
-        
-        x.set(moveX);
-        y.set(moveY);
+
+        // Sanfte Rotation bei Wandkontakt erzwingen
+        if (newX !== currentX + moveX || newY !== currentY + moveY) {
+          rotate.set(rotate.get() + (Math.random() - 0.5) * 30);
+        }
+
+        x.set(newX);
+        y.set(newY);
       } else {
-        // Langsames Zurückgleiten wie im Wasser
-        x.set(x.get() * 0.92);
-        y.set(y.get() * 0.92);
+        // Zähes Ausgleiten im Öl
+        x.set(x.get() * 0.96);
+        y.set(y.get() * 0.96);
+        rotate.set(rotate.get() * 0.96);
       }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [x, y, letterId]);
+  }, [x, y, rotate]);
+
+  // KONTINUIERLICHER BOUNDARY-CORRECTION (auch für Animationen)
+  useEffect(() => {
+    let animationFrameId;
+    
+    const enforceBoundaries = () => {
+      if (!letterRef.current) {
+        animationFrameId = requestAnimationFrame(enforceBoundaries);
+        return;
+      }
+      
+      const rect = letterRef.current.getBoundingClientRect();
+      const containerWidth = window.innerWidth / 2;
+      const containerHeight = window.innerHeight;
+      
+      const navElement = document.querySelector('header');
+      const topLimit = navElement ? navElement.getBoundingClientRect().bottom + 20 : 140;
+      const bottomLimit = containerHeight - 40;
+      const leftLimit = 20;
+      const rightLimit = containerWidth - 20;
+      
+      let needsCorrection = false;
+      let correctionX = 0;
+      let correctionY = 0;
+      
+      // Prüfe alle 4 Grenzen
+      if (rect.left < leftLimit) {
+        correctionX = leftLimit - rect.left + 10;
+        needsCorrection = true;
+      } else if (rect.right > rightLimit) {
+        correctionX = -(rect.right - rightLimit) - 10;
+        needsCorrection = true;
+      }
+      
+      if (rect.top < topLimit) {
+        correctionY = topLimit - rect.top + 10;
+        needsCorrection = true;
+      } else if (rect.bottom > bottomLimit) {
+        correctionY = -(rect.bottom - bottomLimit) - 10;
+        needsCorrection = true;
+      }
+      
+      // Sanfte Korrektur anwenden
+      if (needsCorrection) {
+        const currentX = x.get();
+        const currentY = y.get();
+        x.set(currentX + correctionX * 0.3); // Sanft zurückziehen
+        y.set(currentY + correctionY * 0.3);
+      }
+      
+      animationFrameId = requestAnimationFrame(enforceBoundaries);
+    };
+    
+    animationFrameId = requestAnimationFrame(enforceBoundaries);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [x, y]);
 
   return (
     <motion.span
       ref={letterRef}
       data-letter-id={letterId}
       drag
-      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-      dragElastic={0.98}
-      dragTransition={{ bounceStiffness: 100, bounceDamping: 15 }}
+      // Drag-Constraints begrenzen auf Container
+      dragConstraints={{ 
+        left: -50, 
+        right: window.innerWidth / 4, 
+        top: -50, 
+        bottom: window.innerHeight / 2 
+      }}
+      dragElastic={0.2}
+      dragTransition={{ bounceStiffness: 80, bounceDamping: 20 }}
       initial={{ y: fallIn ? '-400%' : -300, opacity: 0 }}
       animate={controls}
       onMouseLeave={() => { 
-        x.set(x.get() * 0.85);
-        y.set(y.get() * 0.85);
+        rotate.set(rotate.get() * 0.9);
+        x.set(x.get() * 0.9);
+        y.set(y.get() * 0.9);
       }}
       style={{ 
         x: springX, 
-        y: springY, 
+        y: springY,
+        rotate: springRotate,
         left: defaultX, 
         top: defaultY,
         color: letterColor,
-        opacity: 0.4
+        opacity: 0.4,
+        willChange: 'transform' // GPU-Beschleunigung für große Buchstaben
       }}
       className={`absolute font-neue-semibold select-none cursor-grab active:cursor-grabbing leading-none tracking-tighter pointer-events-auto ${
         size === 'large' 

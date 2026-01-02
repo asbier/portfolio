@@ -76,6 +76,7 @@ const SingleParagraph = ({ content, index, total, globalScroll, isLast = false }
   const start = index / total;
   const end = (index + 1) / total;
   
+  // Spezial-Logik: Erster Paragraph (index 0) startet bei voller Deckkraft
   // Letzter Paragraph bleibt sichtbar (fadet nicht aus)
   const opacity = useTransform(
     globalScroll, 
@@ -84,12 +85,12 @@ const SingleParagraph = ({ content, index, total, globalScroll, isLast = false }
       : [start, start + 0.03, end - 0.03, end], 
     isLast 
       ? [0, 1, 1] 
-      : [0, 1, 1, 0]
+      : (index === 0 ? [1, 1, 1, 0] : [0, 1, 1, 0]) // Index 0 startet bei 1
   );
 
   return (
     <motion.div
-      style={{ opacity, pointerEvents: isLast ? 'auto' : 'none' }}
+      style={{ opacity, pointerEvents: (index === 0 || isLast) ? 'auto' : 'none' }}
       className="absolute inset-0 flex items-center text-[20px] lg:text-[32px] font-neue-book-semi leading-snug text-[#979797]"
     >
       {content}
@@ -278,10 +279,10 @@ const ApproachContent = () => {
             <PhysicsLetter 
               key={`sys-${i}`} 
               char={c} 
-              defaultX={`${5 + i * 15}%`} 
-              defaultY={`${30 + (i % 2) * 15}%`}
+              defaultX={`${10 + i * 13}%`} 
+              defaultY={`${20 + (i % 2) * 10}%`}
               containerRef={lettersContainerRef}
-              delay={i * 0.12}
+              delay={i * 0.1}
               letterId={`sys-${i}`}
               isSwirling={isSwirling}
               fallIn={true}
@@ -312,10 +313,11 @@ const ApproachContent = () => {
       </div>
 
       {/* CTA Button - nur Desktop (auf Mobile gibt es HOME in Navbar) */}
-      <div className="fixed left-8 lg:left-24 top-[140px] z-50 hidden lg:block">
+      {/* lg:left-6 = 24px, gleich wie Navbar px-6 */}
+      <div className="fixed left-6 lg:left-6 top-[140px] z-50 hidden lg:block">
         <button 
           onClick={() => navigate('/')} 
-          className="text-[32px] font-neue-semibold text-[#D9D9D9] hover:opacity-60 transition-opacity"
+          className="text-[32px] font-neue-semibold text-black/30 hover:opacity-60 transition-opacity"
         >
           SEE ALL CASES
         </button>
