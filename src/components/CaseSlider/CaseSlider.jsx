@@ -26,25 +26,26 @@ const SlideItem = ({
     [index / totalSlides, (index + 1) / totalSlides],
     [0, 1]
   );
-  // Physik: Auf Desktop (20px Lag), auf Mobile (0px Lag für natives Gefühl)
-  const parallaxValue = isMobile ? 0 : 20;
-  const parallaxX = useTransform(slideProgress, [0, 1], [parallaxValue, 0]);
+  // Physik: Auf Desktop (-20px beim Scrollen), auf Mobile (0px für natives Gefühl)
+  // Startet bei 0, bewegt sich auf -20 beim Scrollen - so ist beim Laden alles bündig
+  const parallaxValue = isMobile ? 0 : -20;
+  const parallaxX = useTransform(slideProgress, [0, 1], [0, parallaxValue]);
 
   return (
     <motion.div
       onClick={!isMobile ? handleNavigation : undefined}
       onDoubleClick={isMobile ? handleNavigation : undefined}
-      initial={{ opacity: 0, scale: 0.95 }}
+      initial={{ opacity: 0, scale: isMobile ? 0.95 : 1 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "0px" }}
       transition={{ 
         type: "spring", 
         stiffness: 40, 
         damping: 20, 
         delay: index * 0.05 
       }}
-      className={`flex-shrink-0 w-screen h-full snap-center relative group
-                 lg:w-[calc(33.33vw-2px)] ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
+      className={`flex-shrink-0 w-screen h-full snap-start relative group
+                 lg:w-[calc((100vw-6px)/3)] ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
     >
       {/* Projekt-Hintergrund Logik mit Parallax */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -168,10 +169,11 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   });
 
   // Create a "heavy" spring for the scroll value
-  // Low stiffness + high damping = heavy and elegant
+  // Öl-Physik: Niedrigere stiffness, höhere damping, mehr mass = viskos und hochwertig
   const smoothScroll = useSpring(scrollXProgress, {
-    stiffness: 45,
-    damping: 20,
+    stiffness: 35,
+    damping: 25,
+    mass: 1.5,
     restDelta: 0.001
   });
 
@@ -260,9 +262,10 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   return (
    <div 
       ref={sliderRef} 
-      className="fixed left-0 w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory 
+      className="fixed left-0 w-full overflow-x-auto scrollbar-hide 
+                snap-x snap-mandatory lg:snap-none
                 top-0 bottom-[110px]
-               h-[calc(100vh-110px)]
+                h-[calc(100vh-110px)]
                 lg:top-[120px] lg:bottom-auto lg:h-[calc(100vh-120px)]
                 z-40"
       style={{
@@ -270,6 +273,9 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
         height: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
         minHeight: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
         maxHeight: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
+        // Kein Padding für präzise 3px Gap-Berechnung
+        paddingLeft: 0,
+        paddingRight: 0,
         // Ensure it respects safe areas on mobile
         paddingBottom: 'env(safe-area-inset-bottom)',
         // Force hardware acceleration
@@ -280,8 +286,8 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
       }}
     >
       
-      {/* 3px Gap zwischen den Slides auf Desktop */}
-      <div className="flex h-full w-max gap-0 lg:gap-[3px]">
+      {/* 3px Gap zwischen den Slides auf Desktop - präzise kalibriert */}
+      <div className="flex h-full gap-0 lg:gap-[3px]" style={{ width: 'max-content' }}>
         {filteredCases.map((caseItem, index) => {
           // Prüfen, ob es ein Verlauf ist
           const isGradient = caseItem.image?.startsWith('linear-gradient');
