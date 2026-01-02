@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
+import { motion, useScroll, useSpring, useMotionValue, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import PhysicsLetter from './PhysicsLetter';
 
@@ -21,8 +21,8 @@ const ScrollProgressCursor = ({ progress }) => {
   
   useEffect(() => {
     const handleMouseMove = (e) => {
-      mouseX.set(e.clientX - size / 2);
-      mouseY.set(e.clientY - size / 2);
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -30,10 +30,12 @@ const ScrollProgressCursor = ({ progress }) => {
 
   return (
     <motion.div
-      className="fixed pointer-events-none z-[100] hidden lg:block"
+      className="fixed pointer-events-none z-[100] hidden lg:flex items-center justify-center"
       style={{
         left: smoothX,
         top: smoothY,
+        translateX: '-50%',
+        translateY: '-50%',
         width: size,
         height: size
       }}
@@ -71,160 +73,48 @@ const ScrollProgressCursor = ({ progress }) => {
   );
 };
 
-// Einzelner Paragraph - bleibt an Ort und Stelle, fadet nur ein/aus
-const SingleParagraph = ({ content, index, total, globalScroll, isLast = false }) => {
-  const start = index / total;
-  const end = (index + 1) / total;
-  
-  // Spezial-Logik: Erster Paragraph (index 0) startet bei voller Deckkraft
-  // Letzter Paragraph bleibt sichtbar (fadet nicht aus)
-  const opacity = useTransform(
-    globalScroll, 
-    isLast 
-      ? [start, start + 0.03, 1] 
-      : [start, start + 0.03, end - 0.03, end], 
-    isLast 
-      ? [0, 1, 1] 
-      : (index === 0 ? [1, 1, 1, 0] : [0, 1, 1, 0]) // Index 0 startet bei 1
-  );
-
-  return (
-    <motion.div
-      style={{ opacity, pointerEvents: (index === 0 || isLast) ? 'auto' : 'none' }}
-      className="absolute inset-0 flex items-center text-[20px] lg:text-[32px] font-neue-book-semi leading-snug text-[#979797]"
-    >
-      {content}
-    </motion.div>
-  );
-};
-
 const ApproachContent = () => {
   const navigate = useNavigate();
   const lettersContainerRef = useRef(null);
   const [currentParagraph, setCurrentParagraph] = useState(0);
-  const [isSwirling, setIsSwirling] = useState(false);
   const [showSystemLetters, setShowSystemLetters] = useState(false);
+  const [isSwirling, setIsSwirling] = useState(false);
+  const [hasReachedLast, setHasReachedLast] = useState(false);
   
-  // Body-Scroll als Taktgeber
   const { scrollYProgress } = useScroll();
-  
-  // Smooth version
-  const smoothScroll = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
-  
-  // "Aufwirbeln" der Buchstaben bei Paragraph-Wechsel
-  const swirlIntensity = useMotionValue(0);
 
-  // Versteckt die Scrollbar
-  useEffect(() => {
-    document.documentElement.style.scrollbarWidth = 'none';
-    document.body.style.overflowX = 'hidden';
-    
-    return () => {
-      document.documentElement.style.scrollbarWidth = '';
-      document.body.style.overflowX = '';
-    };
-  }, []);
-
-  // Tracke Paragraph-Wechsel und löse "Aufwirbeln" aus
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (latest) => {
-      const newParagraph = Math.floor(latest * paragraphs.length);
-      const clampedParagraph = Math.max(0, Math.min(newParagraph, paragraphs.length - 1));
+      const pCount = 9; // Anzahl deiner Paragraphen
+      const newP = Math.floor(latest * pCount);
+      if (newP >= 3) setShowSystemLetters(true);
       
-      // SYSTEM Buchstaben erscheinen ab Paragraph 3 (Tech Stack)
-      if (clampedParagraph >= 3 && !showSystemLetters) {
-        setShowSystemLetters(true);
+      // Track ob der letzte Paragraph erreicht wurde
+      if (newP >= pCount - 1) {
+        setHasReachedLast(true);
       }
       
-      if (clampedParagraph !== currentParagraph) {
-        setCurrentParagraph(clampedParagraph);
-        
-        // Trigger swirl animation
+      if (newP !== currentParagraph) {
+        setCurrentParagraph(newP);
         setIsSwirling(true);
-        swirlIntensity.set(1);
-        
-        setTimeout(() => {
-          swirlIntensity.set(0);
-          setIsSwirling(false);
-        }, 600);
+        setTimeout(() => setIsSwirling(false), 600);
       }
     });
-    
     return () => unsubscribe();
-  }, [scrollYProgress, currentParagraph, swirlIntensity, showSystemLetters]);
+  }, [scrollYProgress, currentParagraph]);
 
   const paragraphs = [
-    { 
-      id: 0, 
-      content: (
-        <p>
-          A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul. To treat them as separate "boxes" is to miss the connection that makes design effective.
-        </p>
-      )
-    },
-    { 
-      id: 1, 
-      content: (
-        <p>
-          I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. Whether I am architecting a dashboard or defining a brand language, my goal is to ensure the result is visible, likeable, and memorable.
-        </p>
-      )
-    },
-    { 
-      id: 2, 
-      content: (
-        <p>
-          The world does not need more products or services destined for the bin. I help businesses innovate for the long-term by creating solutions that people need before they even realise they need them.
-        </p>
-      )
-    },
-    { 
-      id: 3, 
-      content: (
-        <p>
-          I choose tools based on the project goal. I am a professional in Figma and Adobe Creative Suite, including InDesign for print. I enjoy bridging the gap between brand mediums.
-        </p>
-      )
-    },
-    { 
-      id: 4, 
-      content: (
-        <p>
-          For this website, I built custom with React, Tailwind CSS, Cursor, and Hosting on GitHub. I prefer to code myself because it removes the design hurdles of mainstream builders.
-        </p>
-      )
-    },
-    { 
-      id: 5, 
-      content: (
-        <p>
-          During the pandemic, I spent 2 years working with CMS solutions for SMEs at We22. I can consult on tools like Squarespace or Webflow. I have an honest view on when they help and when they get in the way of good design.
-        </p>
-      )
-    },
-    { 
-      id: 6, 
-      content: (
-        <p>
-          Like the Design Lead at Cursor, I believe that in the future, we will all code. I am learning to build because I want to speak the same language as the engineers I work with.
-        </p>
-      )
-    },
-    { 
-      id: 7, 
-      content: (
-        <p>
-          My goal is to collaborate on technical solutions as a Design Engineer, while ensuring that the "love for design detail" never gets lost in the implementation.
-        </p>
-      )
-    },
-    { 
-      id: 8, 
-      content: (
+    { id: 0, content: <p>A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul. To treat them as separate "boxes" is to miss the connection that makes design effective.</p> },
+    { id: 1, content: <p>I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. Whether I am architecting a dashboard or defining a brand language, my goal is to ensure the result is visible, likeable, and memorable.</p> },
+    { id: 2, content: <p>The world does not need more products or services destined for the bin. I help businesses innovate for the long-term by creating solutions that people need before they even realise they need them.</p> },
+    { id: 3, content: <p>I choose tools based on the project goal. I am a professional in Figma and Adobe Creative Suite, including InDesign for print. I enjoy bridging the gap between brand mediums.</p> },
+    { id: 4, content: <p>For this website, I built custom with React, Tailwind CSS, Cursor, and Hosting on GitHub. I prefer to code myself because it removes the design hurdles of mainstream builders.</p> },
+    { id: 5, content: <p>During the pandemic, I spent 2 years working with CMS solutions for SMEs at We22. I can consult on tools like Squarespace or Webflow. I have an honest view on when they help and when they get in the way of good design.</p> },
+    { id: 6, content: <p>Like the Design Lead at Cursor, I believe that in the future, we will all code. I am learning to build because I want to speak the same language as the engineers I work with.</p> },
+    { id: 7, content: <p>My goal is to collaborate on technical solutions as a Design Engineer, while ensuring that the "love for design detail" never gets lost in the implementation.</p> },
+    { id: 8, content: (
         <div>
-          <p className="mb-4">
-            Ready to move beyond the box?
-          </p>
+          <p className="mb-4">Ready to move beyond the box?</p>
           <p>
             <a href="mailto:mail@annemaris.de" className="underline hover:no-underline">Email Me</a>
             <span className="mx-2">/</span>
@@ -239,86 +129,81 @@ const ApproachContent = () => {
 
   return (
     <div className="relative bg-[#F1F2E5]" style={{ height: `${paragraphs.length * 100}vh` }}>
-      
-      {/* 1. VISUELLE EBENE: Buchstaben (Fixed) - nur Desktop */}
-      <div 
-        ref={lettersContainerRef}
-        className="fixed left-0 top-0 w-1/2 h-screen z-0 pointer-events-none hidden lg:block"
-        style={{ paddingTop: '120px' }}
-      >
-        <motion.div 
-          className="relative w-full h-full"
-          animate={isSwirling ? {
-            x: [0, Math.random() * 20 - 10, Math.random() * -20 + 10, 0],
-            y: [0, Math.random() * 15 - 7.5, Math.random() * -15 + 7.5, 0],
-          } : {}}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          {/* APPROACH Buchstaben - verschwinden wenn SYSTEM kommt */}
-          <motion.div
-            animate={{ opacity: showSystemLetters ? 0 : 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {"APPROACH".split("").map((c, i) => (
-              <PhysicsLetter 
-                key={`app-${i}`} 
-                char={c} 
-                defaultX={`${5 + i * 11}%`} 
-                defaultY={`${10 + (i % 3) * 12}%`}
-                containerRef={lettersContainerRef}
-                delay={i * 0.15}
-                letterId={`app-${i}`}
-                isSwirling={isSwirling}
-                colorIndex={i}
-              />
-            ))}
-          </motion.div>
-
-          {/* SYSTEM Buchstaben: Fallen rein, größer und zentrierter */}
-          {showSystemLetters && "SYSTEM".split("").map((c, i) => (
+      {/* Desktop: Letters in linker Hälfte */}
+      <div ref={lettersContainerRef} className="fixed left-0 top-0 w-1/2 h-screen z-0 pointer-events-none hidden lg:block">
+        <div className="relative w-full h-full">
+          {/* APPROACH */}
+          {!showSystemLetters && "APPROACH".split("").map((c, i) => (
             <PhysicsLetter 
-              key={`sys-${i}`} 
-              char={c} 
-              defaultX={`${10 + i * 13}%`} 
-              defaultY={`${20 + (i % 2) * 10}%`}
-              containerRef={lettersContainerRef}
-              delay={i * 0.1}
-              letterId={`sys-${i}`}
-              isSwirling={isSwirling}
-              fallIn={true}
-              colorIndex={i + 8}
-              size="large"
+              key={`app-${i}`} char={c} 
+              defaultX={`${5 + i * 10}%`} defaultY={`${15 + (i % 3) * 10}%`}
+              delay={i * 0.1} letterId={`app-${i}`} isSwirling={isSwirling} colorIndex={i}
             />
           ))}
-        </motion.div>
-      </div>
 
-      {/* 2. TEXT EBENE: Absolut fixiert - vollbreite auf Mobile, rechte Hälfte auf Desktop */}
-      <div 
-        className="fixed right-0 top-0 w-full lg:w-1/2 h-screen flex items-center justify-center lg:justify-start px-6 lg:px-24 z-10"
-        style={{ paddingTop: '120px' }}
-      >
-        <div className="relative w-full max-w-[500px] h-[60vh]">
-          {paragraphs.map((para, i) => (
-            <SingleParagraph 
-              key={para.id} 
-              content={para.content} 
-              index={i} 
-              total={paragraphs.length}
-              globalScroll={scrollYProgress}
-              isLast={i === paragraphs.length - 1}
+          {/* SYSTEM - Höhere defaultY Werte, damit sie nicht unten rausfallen */}
+          {showSystemLetters && "SYSTEM".split("").map((c, i) => (
+            <PhysicsLetter 
+              key={`sys-${i}`} char={c} 
+              defaultX={`${5 + i * 14}%`} defaultY={`${20 + (i % 2) * 8}%`}
+              delay={i * 0.12} letterId={`sys-${i}`} isSwirling={isSwirling} fallIn={true}
+              colorIndex={i + 8} size="large"
             />
           ))}
         </div>
       </div>
 
-      {/* CTA Button - nur Desktop (auf Mobile gibt es HOME in Navbar) */}
-      {/* lg:left-6 = 24px, gleich wie Navbar px-6 */}
-      <div className="fixed left-6 lg:left-6 top-[140px] z-50 hidden lg:block">
-        <button 
-          onClick={() => navigate('/')} 
-          className="text-[32px] font-neue-semibold text-black/30 hover:opacity-60 transition-opacity"
-        >
+      {/* Mobile: Letters im oberen Teil, langsam pumpend */}
+      <div className="fixed left-0 top-0 w-full h-[40vh] z-0 pointer-events-none lg:hidden overflow-hidden">
+        <div className="relative w-full h-full">
+          {/* APPROACH - Mobile: kleiner, im oberen Bereich */}
+          {!showSystemLetters && "APPROACH".split("").map((c, i) => (
+            <PhysicsLetter 
+              key={`app-mobile-${i}`} char={c} 
+              defaultX={`${8 + i * 12}%`} defaultY={`${10 + (i % 3) * 8}%`}
+              delay={i * 0.1} letterId={`app-mobile-${i}`} isSwirling={isSwirling} colorIndex={i}
+              isMobile={true}
+            />
+          ))}
+
+          {/* SYSTEM - Mobile: kleiner, im oberen Bereich */}
+          {showSystemLetters && "SYSTEM".split("").map((c, i) => (
+            <PhysicsLetter 
+              key={`sys-mobile-${i}`} char={c} 
+              defaultX={`${8 + i * 15}%`} defaultY={`${12 + (i % 2) * 6}%`}
+              delay={i * 0.12} letterId={`sys-mobile-${i}`} isSwirling={isSwirling} fallIn={true}
+              colorIndex={i + 8} size="normal"
+              isMobile={true}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="fixed right-0 top-0 w-full lg:w-1/2 h-screen flex items-center px-6 lg:px-24 z-10">
+        <div className="relative w-full max-w-[500px]">
+          {paragraphs.map((p, i) => {
+            const isLast = i === paragraphs.length - 1;
+            const isFirst = i === 0;
+            // Erster Paragraph ist sofort sichtbar, letzter bleibt sichtbar, andere basierend auf Scroll
+            const isVisible = isFirst ? true : (isLast ? hasReachedLast : currentParagraph === i);
+            
+            return (
+              <motion.div
+                key={p.id}
+                initial={{ opacity: isFirst ? 1 : 0 }}
+                animate={{ opacity: isVisible ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
+                className={`absolute inset-0 text-[20px] lg:text-[32px] font-neue-book-semi text-[#979797] ${isLast ? 'pointer-events-auto' : 'pointer-events-none'}`}
+              >
+                {p.content}
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="fixed left-6 top-[140px] z-50 hidden lg:block">
+        <button onClick={() => navigate('/')} className="text-[32px] font-neue-semibold text-black/30 hover:opacity-100 transition-all">
           SEE ALL CASES
         </button>
       </div>
