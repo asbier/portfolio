@@ -44,7 +44,7 @@ const SlideItem = ({
         delay: index * 0.05 
       }}
       className={`flex-shrink-0 w-screen h-full snap-center relative group
-                 lg:w-[calc(33.33vw-2px)] ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
+                 lg:w-[33.33vw] ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
     >
       {/* Projekt-Hintergrund Logik mit Parallax */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -280,8 +280,7 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
       }}
     >
       
-      {/* Der Flex-Container steuert jetzt die Gaps */}
-      <div className="flex h-full w-max gap-0 lg:gap-[3px] bg-black/5">
+      <div className="flex h-full w-max">
         {filteredCases.map((caseItem, index) => {
           // Prüfen, ob es ein Verlauf ist
           const isGradient = caseItem.image?.startsWith('linear-gradient');
