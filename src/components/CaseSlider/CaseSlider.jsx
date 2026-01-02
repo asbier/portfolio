@@ -26,17 +26,16 @@ const SlideItem = ({
     [index / totalSlides, (index + 1) / totalSlides],
     [0, 1]
   );
-  // Physik: Auf Desktop (-20px beim Scrollen), auf Mobile (0px für natives Gefühl)
-  // Startet bei 0, bewegt sich auf -20 beim Scrollen - so ist beim Laden alles bündig
-  const parallaxValue = isMobile ? 0 : -20;
-  const parallaxX = useTransform(slideProgress, [0, 1], [0, parallaxValue]);
+  // Startet bei 0 (bündig). Wenn man scrollt, wandert das Bild bis zu 40px 
+  // in die entgegengesetzte Richtung (Lag-Effekt).
+  const parallaxX = useTransform(slideProgress, [0, 1], [0, isMobile ? 0 : -40]);
 
   return (
     <motion.div
       onClick={!isMobile ? handleNavigation : undefined}
       onDoubleClick={isMobile ? handleNavigation : undefined}
-      initial={{ opacity: 0, scale: isMobile ? 0.95 : 1 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "0px" }}
       transition={{ 
         type: "spring", 
@@ -44,10 +43,11 @@ const SlideItem = ({
         damping: 20, 
         delay: index * 0.05 
       }}
+      style={{ x: parallaxX }}
       className={`flex-shrink-0 w-screen h-full snap-start relative group
                  lg:w-[calc((100vw-6px)/3)] ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
     >
-      {/* Projekt-Hintergrund Logik mit Parallax */}
+      {/* Projekt-Hintergrund - Bild bleibt statisch, Container bewegt sich */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         {isGradient ? (
           <div 
@@ -56,19 +56,14 @@ const SlideItem = ({
           />
         ) : (
           <>
-            <motion.div 
-              className="w-full h-full"
-              style={{ x: parallaxX }}
-            >
-              <img 
-                src={caseItem.image} 
-                alt={caseItem.title} 
-                className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90" 
-                loading={index === 0 ? "eager" : "lazy"}
-                decoding="async"
-                fetchPriority={index === 0 ? "high" : "auto"}
-              />
-            </motion.div>
+            <img 
+              src={caseItem.image} 
+              alt={caseItem.title} 
+              className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90" 
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding="async"
+              fetchPriority={index === 0 ? "high" : "auto"}
+            />
             {/* Gradient overlay for text readability - only on hover (desktop only) */}
             <div 
               className="absolute inset-0 z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden lg:block"
@@ -169,11 +164,11 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   });
 
   // Create a "heavy" spring for the scroll value
-  // Öl-Physik: Niedrigere stiffness, höhere damping, mehr mass = viskos und hochwertig
+  // Magnet-Physik: Niedriger stiffness = weicherer Zug, höhere mass = mehr Gewicht
   const smoothScroll = useSpring(scrollXProgress, {
-    stiffness: 35,
-    damping: 25,
-    mass: 1.5,
+    stiffness: 30,   // Niedriger = weicherer, magnetischer Zug
+    damping: 25,     // Verhindert zu starkes Wackeln
+    mass: 1.8,       // Gibt dem Slider "Gewicht"
     restDelta: 0.001
   });
 
@@ -263,7 +258,7 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
    <div 
       ref={sliderRef} 
       className="fixed left-0 w-full overflow-x-auto scrollbar-hide 
-                snap-x snap-mandatory lg:snap-none
+                snap-x snap-mandatory
                 top-0 bottom-[110px]
                 h-[calc(100vh-110px)]
                 lg:top-[120px] lg:bottom-auto lg:h-[calc(100vh-120px)]
@@ -273,21 +268,15 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
         height: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
         minHeight: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
         maxHeight: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
-        // Kein Padding für präzise 3px Gap-Berechnung
-        paddingLeft: 0,
-        paddingRight: 0,
-        // Ensure it respects safe areas on mobile
-        paddingBottom: 'env(safe-area-inset-bottom)',
-        // Force hardware acceleration
-        transform: 'translateZ(0)',
-        WebkitTransform: 'translateZ(0)',
+        // Kein Padding für präzise Gap-Berechnung
+        padding: 0,
         // Important for smooth mobile scrolling
         WebkitOverflowScrolling: 'touch',
       }}
     >
       
       {/* 3px Gap zwischen den Slides auf Desktop - präzise kalibriert */}
-      <div className="flex h-full gap-0 lg:gap-[3px]" style={{ width: 'max-content' }}>
+      <div className="flex h-full gap-0 lg:gap-[3px] justify-start">
         {filteredCases.map((caseItem, index) => {
           // Prüfen, ob es ein Verlauf ist
           const isGradient = caseItem.image?.startsWith('linear-gradient');
