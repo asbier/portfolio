@@ -19,6 +19,9 @@ const ScrollProgressCursor = ({ progress }) => {
   // Progress zu strokeDashoffset
   const strokeDashoffset = useTransform(progress, [0, 1], [circumference, 0]);
   
+  // Hide cursor when progress reaches 1 (circle is complete)
+  const opacity = useTransform(progress, [0, 0.99, 1], [1, 1, 0]);
+  
   useEffect(() => {
     const handleMouseMove = (e) => {
       mouseX.set(e.clientX);
@@ -37,7 +40,8 @@ const ScrollProgressCursor = ({ progress }) => {
         translateX: '-50%',
         translateY: '-50%',
         width: size,
-        height: size
+        height: size,
+        opacity
       }}
     >
       <svg width={size} height={size} className="transform -rotate-90">
@@ -103,6 +107,28 @@ const ApproachContent = () => {
     return () => unsubscribe();
   }, [scrollYProgress, currentParagraph]);
 
+  // Prevent forward scrolling when at the end
+  useEffect(() => {
+    const handleWheel = (e) => {
+      const progress = scrollYProgress.get();
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+      
+      // If at the end (progress >= 0.99 or at max scroll) and trying to scroll down, prevent it
+      if ((progress >= 0.99 || currentScroll >= maxScroll - 1) && e.deltaY > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, [scrollYProgress]);
+
   const paragraphs = [
     { id: 0, content: <p>A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul. To treat them as separate "boxes" is to miss the connection that makes design effective.</p> },
     { id: 1, content: <p>I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. Whether I am architecting a dashboard or defining a brand language, my goal is to ensure the result is visible, likeable, and memorable.</p> },
@@ -166,13 +192,13 @@ const ApproachContent = () => {
             />
           ))}
 
-          {/* SYSTEM - Mobile: kleiner, im oberen Bereich */}
+          {/* SYSTEM - Mobile: größer, im oberen Bereich */}
           {showSystemLetters && "SYSTEM".split("").map((c, i) => (
             <PhysicsLetter 
               key={`sys-mobile-${i}`} char={c} 
               defaultX={`${8 + i * 15}%`} defaultY={`${12 + (i % 2) * 6}%`}
               delay={i * 0.12} letterId={`sys-mobile-${i}`} isSwirling={isSwirling} fallIn={true}
-              colorIndex={i + 8} size="normal"
+              colorIndex={i + 8} size="large"
               isMobile={true}
             />
           ))}
@@ -184,8 +210,9 @@ const ApproachContent = () => {
           {paragraphs.map((p, i) => {
             const isLast = i === paragraphs.length - 1;
             const isFirst = i === 0;
-            // Erster Paragraph ist sofort sichtbar, letzter bleibt sichtbar, andere basierend auf Scroll
-            const isVisible = isFirst ? true : (isLast ? hasReachedLast : currentParagraph === i);
+            // Only show the current paragraph - no layering
+            // Last paragraph: once reached, it can be shown again when scrolling back to it
+            const isVisible = currentParagraph === i;
             
             return (
               <motion.div
@@ -193,7 +220,7 @@ const ApproachContent = () => {
                 initial={{ opacity: isFirst ? 1 : 0 }}
                 animate={{ opacity: isVisible ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
-                className={`absolute inset-0 text-[20px] lg:text-[32px] font-neue-book-semi text-[#979797] ${isLast ? 'pointer-events-auto' : 'pointer-events-none'}`}
+                className={`absolute inset-0 text-[20px] lg:text-[32px] font-neue-book-semi text-[#979797] ${isLast && hasReachedLast && isVisible ? 'pointer-events-auto' : 'pointer-events-none'}`}
               >
                 {p.content}
               </motion.div>

@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 
 const letterColors = ['#DEE6DF', '#E3EEEC', '#D9DED4'];
 
-const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, isSwirling = false, fallIn = false, colorIndex = 0, size = 'normal' }) => {
+const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, isSwirling = false, fallIn = false, colorIndex = 0, size = 'normal', isMobile = false }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(fallIn ? -1000 : 0);
   const rotate = useMotionValue(0);
@@ -16,8 +16,13 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, isSwirli
   const letterColor = letterColors[colorIndex % letterColors.length];
   
   // SCHWERE PHYSIK: Hohe Masse und Dämpfung für den "Öl-Effekt"
-  const springConfig = { stiffness: 20, damping: 30, mass: 8 };
-  const rotateSpringConfig = { stiffness: 15, damping: 25, mass: 5 };
+  // Mobile: Noch schwerer und langsamer (mehr Öl-Gefühl)
+  const springConfig = isMobile 
+    ? { stiffness: 12, damping: 40, mass: 15 }  // Viel schwerer und langsamer
+    : { stiffness: 20, damping: 30, mass: 8 };
+  const rotateSpringConfig = isMobile
+    ? { stiffness: 10, damping: 35, mass: 12 }  // Langsamere Rotation
+    : { stiffness: 15, damping: 25, mass: 5 };
   
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
@@ -28,14 +33,14 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, isSwirli
     const timeout = setTimeout(() => {
       animate(y, 0, {
         type: "spring",
-        stiffness: 15,
-        damping: 20,
-        mass: 5
+        stiffness: isMobile ? 8 : 15,  // Mobile: viel langsamer
+        damping: isMobile ? 30 : 20,    // Mobile: mehr Dämpfung
+        mass: isMobile ? 12 : 5         // Mobile: schwerer
       });
-      animate(opacity, 0.4, { duration: 1.5 });
+      animate(opacity, 0.4, { duration: isMobile ? 2.5 : 1.5 }); // Mobile: langsameres Fade-in
     }, delay * 1000);
     return () => clearTimeout(timeout);
-  }, [y, opacity, delay]);
+  }, [y, opacity, delay, isMobile]);
 
   // 2. Kontinuierliche Physik-Berechnung (Stoß & Umfallen)
   useEffect(() => {
@@ -58,12 +63,19 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, isSwirli
       const nav = document.querySelector('header') || document.querySelector('nav');
       const navBottom = nav ? nav.getBoundingClientRect().bottom : 80;
 
-      const limits = {
-        top: navBottom + 10,
-        bottom: window.innerHeight - 40,
-        left: 20,
-        right: (window.innerWidth / 2) - 20
-      };
+      const limits = isMobile
+        ? {
+            top: navBottom + 10,
+            bottom: window.innerHeight * 0.4, // Mobile: nur oberer 40% Bereich
+            left: 10,
+            right: window.innerWidth - 10
+          }
+        : {
+            top: navBottom + 10,
+            bottom: window.innerHeight - 40,
+            left: 20,
+            right: (window.innerWidth / 2) - 20
+          };
 
       let hitWall = false;
 
@@ -108,8 +120,9 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, isSwirli
           const minDistance = (rect.width + otherRect.width) / 3;
           
           if (letterDistance < minDistance && letterDistance > 0) {
-            // Kollisionskraft berechnen
-            const collisionForce = ((minDistance - letterDistance) / minDistance) * 30;
+            // Kollisionskraft berechnen - Mobile: weniger Kraft
+            const forceMultiplier = isMobile ? 0.6 : 1;
+            const collisionForce = ((minDistance - letterDistance) / minDistance) * 30 * forceMultiplier;
             const pushX = ((letterCenterX - otherCenterX) / letterDistance) * collisionForce;
             const pushY = ((letterCenterY - otherCenterY) / letterDistance) * collisionForce;
             
@@ -117,20 +130,23 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, isSwirli
             x.set(currentX + pushX * 0.5);
             y.set(currentY + pushY * 0.5);
             
-            // Torque bei Kollision: sehr subtile Rotation
+            // Torque bei Kollision: sehr subtile Rotation - Mobile: weniger Rotation
             const relativeVelocity = Math.sqrt(velocity.current.x ** 2 + velocity.current.y ** 2);
-            rotate.set(rotate.get() + (pushX * 0.05 + pushY * 0.05) * relativeVelocity * 0.02);
+            const rotationMultiplier = isMobile ? 0.5 : 1;
+            rotate.set(rotate.get() + (pushX * 0.05 + pushY * 0.05) * relativeVelocity * 0.02 * rotationMultiplier);
             
             hitWall = true;
           }
         }
       });
 
-      // Reibung / Widerstand (Viskosität)
+      // Reibung / Widerstand (Viskosität) - Mobile: mehr Widerstand (öliger)
       if (!hitWall) {
-        x.set(currentX * 0.98);
-        y.set(currentY * 0.98);
-        rotate.set(rotate.get() * 0.97);
+        const friction = isMobile ? 0.95 : 0.98; // Mobile: mehr Reibung
+        const rotateFriction = isMobile ? 0.94 : 0.97;
+        x.set(currentX * friction);
+        y.set(currentY * friction);
+        rotate.set(rotate.get() * rotateFriction);
       }
 
       requestAnimationFrame(updatePhysics);
@@ -153,10 +169,11 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, isSwirli
       
       if (dist < 300 && dist > 0) {
         const force = Math.pow((300 - dist) / 300, 2);
+        const forceMultiplier = isMobile ? 0.4 : 1; // Mobile: viel weniger Reaktion
         // Drücken schiebt nicht nur, sondern lässt den Buchstaben sehr leicht rotieren (Drehmoment)
-        x.set(x.get() + (dX / dist) * force * -40);
-        y.set(y.get() + (dY / dist) * force * -40);
-        rotate.set(rotate.get() + (dX / dist) * force * 2); // Sehr subtile Rotation
+        x.set(x.get() + (dX / dist) * force * -40 * forceMultiplier);
+        y.set(y.get() + (dY / dist) * force * -40 * forceMultiplier);
+        rotate.set(rotate.get() + (dX / dist) * force * 2 * forceMultiplier); // Sehr subtile Rotation
       }
     };
 
@@ -167,15 +184,16 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, isSwirli
   // 4. Swirling-Effekt bei Paragraph-Wechsel - sehr subtil
   useEffect(() => {
     if (isSwirling) {
-      const swirlX = (Math.random() - 0.5) * 20;
-      const swirlY = (Math.random() - 0.5) * 15;
-      const swirlRotate = (Math.random() - 0.5) * 3; // Sehr leichte Rotation
+      const multiplier = isMobile ? 0.5 : 1; // Mobile: weniger Bewegung
+      const swirlX = (Math.random() - 0.5) * 20 * multiplier;
+      const swirlY = (Math.random() - 0.5) * 15 * multiplier;
+      const swirlRotate = (Math.random() - 0.5) * 3 * multiplier; // Sehr leichte Rotation
       
       x.set(x.get() + swirlX);
       y.set(y.get() + swirlY);
       rotate.set(rotate.get() + swirlRotate);
     }
-  }, [isSwirling, x, y, rotate]);
+  }, [isSwirling, x, y, rotate, isMobile]);
 
   return (
     <motion.span
@@ -192,7 +210,9 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, isSwirli
         willChange: 'transform'
       }}
       className={`absolute font-neue-semibold select-none pointer-events-auto leading-none tracking-tighter ${
-        size === 'large' ? 'text-[28vw] lg:text-[32vw]' : 'text-[22vw] lg:text-[24vw]'
+        isMobile
+          ? (size === 'large' ? 'text-[35vw]' : 'text-[30vw]')  // Mobile: größer
+          : (size === 'large' ? 'text-[28vw] lg:text-[32vw]' : 'text-[22vw] lg:text-[24vw]')
       }`}
     >
       {char}
