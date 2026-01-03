@@ -130,7 +130,7 @@ export const cases = [
     category: "ART DIRECTION / BRANDING",
     year: "2015-18",
     role: "ART DIRECTOR",
-    tags: ["ART DIRECTION", "E-COMMERCE", "BRANDING", "GROWTH"],
+    tags: ["ART DIRECTION", "E-COMMERCE", "BRANDING"],
     description: "Building the Brand Ecosystem. A holistic redesign steering EDITED towards a more modern direction—holistic online and offline communication, tailored to the target group. Helped scale the company from 100 to 300 employees and expand into Europe.",
     challenge: "Five core objectives: Everything shareable—every corner a photo opportunity. Memorable launches. Sustainable packaging by 2025. City-specific store vibes. Always cutting-edge technology.",
     impact: "17 store launches across Europe. Launch store events and dinners. Product Design: Circular e-commerce content, weekly blogs, UI redesign with editorial focus. EDITED Paper: Two larger print issues per year. Our impact at EDITED automatically influenced About You—creating high-value influencer marketing and affiliate strategies.",

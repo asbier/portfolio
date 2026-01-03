@@ -19,7 +19,7 @@ const Navbar = () => {
       return (
         <React.Fragment key={index}>
           <span className={color}>{sentence}</span>
-          {index < sentences.length - 1 && <span className="text-black/20"> ✦ </span>}
+          {index < sentences.length - 1 && <span className="text-black/20 mx-2">✦</span>}
         </React.Fragment>
       );
     });

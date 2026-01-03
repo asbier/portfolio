@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const MarqueeBanner = () => {
-  const text = "PRODUCT DESIGN & BRANDING ✦ SINCE 2012 ✦ SPECIALISED IN E-COMMERCE & SERVICE DESIGN ✦ GOOD DESIGN PERFORMS ✦ STOP BEING BORING ✦ ";
+  const text = "PRODUCT DESIGN & BRANDING   ✦   SINCE 2012   ✦   SPECIALISED IN E-COMMERCE & SERVICE DESIGN   ✦   GOOD DESIGN PERFORMS   ✦   STOP BEING BORING   ✦   ";
 
   return (
     <div 
