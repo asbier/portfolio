@@ -24,7 +24,7 @@ export const cases = [
     year: "2024",
     role: "UX DESIGNER",
     hideTitleTag: true,
-    tags: ["HELLAGUTMANN", "DASHBOARD SYSTEMDESIGN", "UX DESIGN"],
+    tags: ["HELLAGUTMANN", "DASHBOARD", "UX DESIGN"],
     description: "Streamlined ADAS dashboard workflows to save time and improve documentation. As cars have to get calibrated and synchronized with the software, this system helps guide mechanics through the process.",
     challenge: "Guiding the users better through the workflow and documentation. The legacy system lacked clear guidance, making it difficult for mechanics to track progress and recover from interruptions.",
     impact: "Step-by-step guidance with time estimates, notifications, and documentation layers, enabling mechanics to track progress, recover from interruptions, and improve calibration workflows.",

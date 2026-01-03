@@ -111,7 +111,7 @@ const SlideItem = ({
           {!caseItem.hideTitleTag && (
             <button
               onClick={(e) => handleTagClick(e, caseItem.title)}
-              className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[21px] sm:text-[17px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[17px] sm:text-[17px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
                 activeTagFilter?.toLowerCase() === caseItem.title?.toLowerCase()
                   ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
                   : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white group-hover:text-white group-hover:border-white'
@@ -125,7 +125,7 @@ const SlideItem = ({
             <button
               key={tagIndex}
               onClick={(e) => handleTagClick(e, tag)}
-              className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[21px] sm:text-[17px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[17px] sm:text-[17px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
                 activeTagFilter?.toLowerCase() === tag.toLowerCase()
                   ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
                   : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white group-hover:text-white group-hover:border-white'
