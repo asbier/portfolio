@@ -208,7 +208,7 @@ const ApproachContent = () => {
           style={{ 
             height: '100dvh',
             paddingTop: isMobile ? 'calc(50vh + 80px)' : '120px',
-            paddingBottom: isMobile ? '5rem' : '120px',
+            paddingBottom: isMobile ? '10rem' : '120px',
             alignItems: isMobile ? 'flex-start' : 'center',
             justifyContent: isMobile ? 'flex-start' : 'center'
           }}
@@ -231,8 +231,8 @@ const ApproachContent = () => {
                   transition={{ duration: 0.4 }}
                   className={`absolute left-0 w-full ${isActive ? 'pointer-events-auto' : 'pointer-events-none'}`}
                   style={{
-                    top: isActive && isMobile ? '20%' : '0',
-                    maxHeight: isMobile ? 'calc(100vh - 50vh - 80px)' : 'none' // Verhindert Abschneiden auf Mobile
+                    top: isActive && isMobile ? '15%' : '0',
+                    maxHeight: isMobile ? 'calc(100dvh - 50vh - 160px)' : 'none' // Verhindert Abschneiden auf Mobile
                   }}
                 >
                   <div className={`${isMobile ? 'mb-8' : 'mb-24 lg:mb-40'}`}>
@@ -256,8 +256,8 @@ const ApproachContent = () => {
               transition={{ duration: 0.4 }}
               className={`absolute left-0 w-full ${currentParagraph >= paragraphs.length ? 'pointer-events-auto' : 'pointer-events-none'}`}
               style={{
-                top: currentParagraph >= paragraphs.length && isMobile ? '20%' : '0',
-                maxHeight: isMobile ? 'calc(100vh - 50vh - 80px)' : 'none'
+                top: currentParagraph >= paragraphs.length && isMobile ? '15%' : '0',
+                maxHeight: isMobile ? 'calc(100dvh - 50vh - 160px)' : 'none'
               }}
             >
               <div className={`${isMobile ? 'mb-8 space-y-6' : 'mb-24 lg:mb-40 space-y-8'}`}>
