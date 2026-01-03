@@ -1,6 +1,7 @@
 // src/App.jsx
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import { cases } from './data/cases';
 import LoadingOverlay from './components/LoadingOverlay/LoadingOverlay';
 import Analytics from './components/Analytics/Analytics';
@@ -38,6 +39,42 @@ function RedirectHandler() {
     return null;
 }
 
+// Wrapper component to access location for AnimatePresence
+function AnimatedRoutes() {
+    const location = useLocation();
+    
+    return (
+        <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<Home cases={cases} />} />
+                <Route path="/case/:id" element={<CaseDetail cases={cases} />} /> 
+                <Route path="/history" element={<Home cases={cases} />} /> 
+                <Route path="/privacy" element={
+                    <motion.div
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -20, opacity: 0, filter: "blur(10px)", scale: 0.98 }}
+                        transition={{ duration: 0.6, ease: "easeInOut" }}
+                    >
+                        <Privacy />
+                    </motion.div>
+                } />
+                <Route path="/approach" element={
+                    <motion.div
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -20, opacity: 0, filter: "blur(10px)", scale: 0.98 }}
+                        transition={{ duration: 0.6, ease: "easeInOut" }}
+                    >
+                        <Approach />
+                    </motion.div>
+                } />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </AnimatePresence>
+    );
+}
+
 function App() {
     const [isLoading, setIsLoading] = useState(true);
 
@@ -69,14 +106,7 @@ function App() {
                 <RedirectHandler />
                 <Analytics />
                 {isLoading && <LoadingOverlay />}
-                <Routes>
-                    <Route path="/" element={<Home cases={cases} />} />
-                    <Route path="/case/:id" element={<CaseDetail cases={cases} />} /> 
-                    <Route path="/history" element={<Home cases={cases} />} /> 
-                    <Route path="/privacy" element={<Privacy />} />
-                    <Route path="/approach" element={<Approach />} />
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
+                <AnimatedRoutes />
             </Suspense>
         </HashRouter>
     );

@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useSpring, useMotionValue, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import PhysicsLetter from './PhysicsLetter';
+import FadeInText from '../Animations/FadeInText';
 
 // Scroll Progress Cursor - kreisförmiger Indikator
 const ScrollProgressCursor = ({ progress }) => {
@@ -84,8 +85,15 @@ const ApproachContent = () => {
   const [showSystemLetters, setShowSystemLetters] = useState(false);
   const [isSwirling, setIsSwirling] = useState(false);
   const [hasReachedLast, setHasReachedLast] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
   
   const { scrollYProgress } = useScroll();
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (latest) => {
@@ -130,15 +138,15 @@ const ApproachContent = () => {
   }, [scrollYProgress]);
 
   const paragraphs = [
-    { id: 0, content: <p>A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul. To treat them as separate "boxes" is to miss the connection that makes design effective.</p> },
-    { id: 1, content: <p>I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. Whether I am architecting a dashboard or defining a brand language, my goal is to ensure the result is visible, likeable, and memorable.</p> },
-    { id: 2, content: <p>The world does not need more products or services destined for the bin. I help businesses innovate for the long-term by creating solutions that people need before they even realise they need them.</p> },
-    { id: 3, content: <p>I choose tools based on the project goal. I am a professional in Figma and Adobe Creative Suite, including InDesign for print. I enjoy bridging the gap between brand mediums.</p> },
-    { id: 4, content: <p>For this website, I built custom with React, Tailwind CSS, Cursor, and Hosting on GitHub. I prefer to code myself because it removes the design hurdles of mainstream builders.</p> },
-    { id: 5, content: <p>During the pandemic, I spent 2 years working with CMS solutions for SMEs at We22. I can consult on tools like Squarespace or Webflow. I have an honest view on when they help and when they get in the way of good design.</p> },
-    { id: 6, content: <p>Like the Design Lead at Cursor, I believe that in the future, we will all code. I am learning to build because I want to speak the same language as the engineers I work with.</p> },
-    { id: 7, content: <p>My goal is to collaborate on technical solutions as a Design Engineer, while ensuring that the "love for design detail" never gets lost in the implementation.</p> },
-    { id: 8, content: (
+    { id: 0, text: "A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul. To treat them as separate \"boxes\" is to miss the connection that makes design effective." },
+    { id: 1, text: "I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. Whether I am architecting a dashboard or defining a brand language, my goal is to ensure the result is visible, likeable, and memorable." },
+    { id: 2, text: "The world does not need more products or services destined for the bin. I help businesses innovate for the long-term by creating solutions that people need before they even realise they need them." },
+    { id: 3, text: "I choose tools based on the project goal. I am a professional in Figma and Adobe Creative Suite, including InDesign for print. I enjoy bridging the gap between brand mediums." },
+    { id: 4, text: "For this website, I built custom with React, Tailwind CSS, Cursor, and Hosting on GitHub. I prefer to code myself because it removes the design hurdles of mainstream builders." },
+    { id: 5, text: "During the pandemic, I spent 2 years working with CMS solutions for SMEs at We22. I can consult on tools like Squarespace or Webflow. I have an honest view on when they help and when they get in the way of good design." },
+    { id: 6, text: "Like the Design Lead at Cursor, I believe that in the future, we will all code. I am learning to build because I want to speak the same language as the engineers I work with." },
+    { id: 7, text: "My goal is to collaborate on technical solutions as a Design Engineer, while ensuring that the \"love for design detail\" never gets lost in the implementation." },
+    { id: 8, isLast: true, content: (
         <div>
           <p className="mb-4">Ready to move beyond the box?</p>
           <p>
@@ -222,7 +230,15 @@ const ApproachContent = () => {
                 transition={{ duration: 0.3 }}
                 className={`absolute inset-0 text-[20px] lg:text-[32px] font-neue-book-semi text-[#979797] ${isLast && hasReachedLast && isVisible ? 'pointer-events-auto' : 'pointer-events-none'}`}
               >
-                {p.content}
+                {isMobile && p.text ? (
+                  <FadeInText 
+                    text={p.text} 
+                    delay={isFirst ? 0 : 0.1}
+                    staggerDelay={0.03}
+                  />
+                ) : p.content || (
+                  <p>{p.text}</p>
+                )}
               </motion.div>
             );
           })}
