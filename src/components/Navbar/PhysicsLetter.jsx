@@ -63,7 +63,7 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, fallIn =
       const limits = isMobile
         ? {
             top: navBottom + 10,
-            bottom: window.innerHeight * 0.4,
+            bottom: window.innerHeight * 0.5, // Erhöht auf 50vh für bessere Sichtbarkeit
             left: 10,
             right: window.innerWidth - 10
           }
@@ -307,7 +307,7 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, letterId, fallIn =
       }}
       className={`absolute font-neue-semibold select-none pointer-events-auto leading-none tracking-tighter ${
         isMobile
-          ? (size === 'large' ? 'text-[35vw]' : 'text-[30vw]')
+          ? (size === 'large' ? 'text-[28vw] sm:text-[35vw]' : 'text-[24vw] sm:text-[30vw]')
           : (size === 'large' ? 'text-[28vw] lg:text-[32vw]' : 'text-[22vw] lg:text-[26vw]')
       }`}
     >

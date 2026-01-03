@@ -27,7 +27,7 @@ const LetterRevealParagraph = ({ text, scrollProgress, isActive }) => {
   
   return (
     <div 
-      className="text-[22px] lg:text-[36px] leading-[1.25] font-neue-book-semi tracking-normal" 
+      className="text-[22px] lg:text-[36px] leading-[1.25] font-neue-book-semi tracking-wide lg:tracking-normal" 
       style={{ 
         wordBreak: 'normal', 
         overflowWrap: 'break-word', 
@@ -164,7 +164,7 @@ const ApproachContent = () => {
       </div>
 
       {/* Mobile: Letters im oberen Drittel (10-30%) */}
-      <div className="fixed left-0 top-0 w-full h-[40vh] pointer-events-none z-0 overflow-hidden lg:hidden">
+      <div className="fixed left-0 top-0 w-full h-[50vh] pointer-events-none z-20 overflow-visible lg:hidden">
         {!showSystem ? (
           "APPROACH".split("").map((c, i) => (
             <PhysicsLetter 
@@ -204,11 +204,11 @@ const ApproachContent = () => {
         {/* Content-Bereich: rechte Hälfte - Fixed Position für 1-2 sichtbare Paragraphen */}
         <div 
           ref={contentRef}
-          className="fixed right-0 top-0 w-full lg:w-1/2 h-screen flex px-6 lg:px-16 z-10"
+          className="fixed right-0 top-0 w-full lg:w-1/2 h-screen flex px-4 sm:px-6 lg:px-16 z-10 overflow-y-auto"
           style={{ 
-            paddingTop: isMobile ? '50px' : '120px',
-            paddingBottom: isMobile ? '0' : '120px',
-            alignItems: 'center',
+            paddingTop: isMobile ? 'calc(50vh + 80px)' : '120px',
+            paddingBottom: isMobile ? '80px' : '120px',
+            alignItems: isMobile ? 'flex-start' : 'center',
             justifyContent: isMobile ? 'flex-start' : 'center'
           }}
         >
@@ -229,8 +229,11 @@ const ApproachContent = () => {
                   }}
                   transition={{ duration: 0.4 }}
                   className={`absolute top-0 left-0 w-full ${isActive ? 'pointer-events-auto' : 'pointer-events-none'}`}
+                  style={{
+                    maxHeight: isMobile ? 'calc(100vh - 50vh - 80px)' : 'none' // Verhindert Abschneiden auf Mobile
+                  }}
                 >
-                  <div className="mb-24 lg:mb-40">
+                  <div className={`${isMobile ? 'mb-8' : 'mb-24 lg:mb-40'}`}>
                     <LetterRevealParagraph 
                       text={text} 
                       scrollProgress={paragraphProgresses[i]}
@@ -250,12 +253,15 @@ const ApproachContent = () => {
               }}
               transition={{ duration: 0.4 }}
               className={`absolute top-0 left-0 w-full ${currentParagraph >= paragraphs.length ? 'pointer-events-auto' : 'pointer-events-none'}`}
+              style={{
+                maxHeight: isMobile ? 'calc(100vh - 50vh - 80px)' : 'none'
+              }}
             >
-              <div className="mb-24 lg:mb-40 space-y-8">
+              <div className={`${isMobile ? 'mb-8 space-y-6' : 'mb-24 lg:mb-40 space-y-8'}`}>
                 <p className="text-[22px] lg:text-[36px] font-neue-book-semi text-[#979797]">
                   Ready to move beyond the box?
                 </p>
-                <div className="flex gap-6 text-sm font-bold uppercase text-[#979797]">
+                <div className="flex gap-6 text-sm font-neue-semibold uppercase text-[#979797]">
                   <a href="mailto:mail@annemaris.de" className="underline underline-offset-4 hover:text-[#979797]/80">
                     Email
                   </a>
