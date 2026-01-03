@@ -204,10 +204,11 @@ const ApproachContent = () => {
         {/* Content-Bereich: rechte Hälfte - Fixed Position für 1-2 sichtbare Paragraphen */}
         <div 
           ref={contentRef}
-          className="fixed right-0 top-0 w-full lg:w-1/2 h-screen flex px-4 sm:px-6 lg:px-16 z-10 overflow-y-auto"
+          className="fixed right-0 top-0 w-full lg:w-1/2 flex px-4 sm:px-6 lg:px-16 z-10 overflow-y-auto"
           style={{ 
+            height: '100dvh',
             paddingTop: isMobile ? 'calc(50vh + 80px)' : '120px',
-            paddingBottom: isMobile ? '80px' : '120px',
+            paddingBottom: isMobile ? '5rem' : '120px',
             alignItems: isMobile ? 'flex-start' : 'center',
             justifyContent: isMobile ? 'flex-start' : 'center'
           }}
@@ -228,8 +229,9 @@ const ApproachContent = () => {
                     y: isActive ? 0 : 20
                   }}
                   transition={{ duration: 0.4 }}
-                  className={`absolute top-0 left-0 w-full ${isActive ? 'pointer-events-auto' : 'pointer-events-none'}`}
+                  className={`absolute left-0 w-full ${isActive ? 'pointer-events-auto' : 'pointer-events-none'}`}
                   style={{
+                    top: isActive && isMobile ? '20%' : '0',
                     maxHeight: isMobile ? 'calc(100vh - 50vh - 80px)' : 'none' // Verhindert Abschneiden auf Mobile
                   }}
                 >
@@ -252,8 +254,9 @@ const ApproachContent = () => {
                 y: currentParagraph >= paragraphs.length ? 0 : 20
               }}
               transition={{ duration: 0.4 }}
-              className={`absolute top-0 left-0 w-full ${currentParagraph >= paragraphs.length ? 'pointer-events-auto' : 'pointer-events-none'}`}
+              className={`absolute left-0 w-full ${currentParagraph >= paragraphs.length ? 'pointer-events-auto' : 'pointer-events-none'}`}
               style={{
+                top: currentParagraph >= paragraphs.length && isMobile ? '20%' : '0',
                 maxHeight: isMobile ? 'calc(100vh - 50vh - 80px)' : 'none'
               }}
             >
