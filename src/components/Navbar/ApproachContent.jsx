@@ -132,8 +132,8 @@ const ApproachContent = () => {
 
   return (
     <div className="relative bg-[#F1F2E5]" ref={containerRef} style={{ height: `${paragraphs.length * 100}vh` }}>
-      {/* Linke Hälfte: Fixierte Physics Letters */}
-      <div className="fixed left-0 top-0 w-full lg:w-1/2 h-screen pointer-events-none z-0 overflow-hidden">
+      {/* Desktop: Linke Hälfte - Fixierte Physics Letters */}
+      <div className="fixed left-0 top-0 w-1/2 h-screen pointer-events-none z-0 overflow-hidden hidden lg:block">
         {!showSystem ? (
           "APPROACH".split("").map((c, i) => (
             <PhysicsLetter 
@@ -163,6 +163,39 @@ const ApproachContent = () => {
         )}
       </div>
 
+      {/* Mobile: Letters im oberen Drittel (10-30%) */}
+      <div className="fixed left-0 top-0 w-full h-[40vh] pointer-events-none z-0 overflow-hidden lg:hidden">
+        {!showSystem ? (
+          "APPROACH".split("").map((c, i) => (
+            <PhysicsLetter 
+              key={`a-mobile-${i}`} 
+              char={c} 
+              defaultX={`${8 + i * 12}%`} 
+              defaultY={`${10 + (i % 3) * 7}%`}  // Oberes Drittel: 10-24%
+              delay={i * 0.1} 
+              letterId={`app-mobile-${i}`}
+              colorIndex={i}
+              isMobile={true}
+            />
+          ))
+        ) : (
+          "SYSTEM".split("").map((c, i) => (
+            <PhysicsLetter 
+              key={`s-mobile-${i}`} 
+              char={c} 
+              defaultX={`${8 + i * 15}%`} 
+              defaultY={`${15 + (i % 2) * 8}%`}  // Oberes Drittel: 15-23%
+              delay={i * 0.12} 
+              letterId={`sys-mobile-${i}`}
+              fallIn={true}
+              size="large"
+              colorIndex={i + 10}
+              isMobile={true}
+            />
+          ))
+        )}
+      </div>
+
       {/* Rechte Hälfte: Scrollbarer Content */}
       <div className="relative z-10 flex flex-col lg:flex-row">
         {/* Spacer für Desktop: linke Hälfte */}
@@ -175,7 +208,8 @@ const ApproachContent = () => {
           style={{ 
             paddingTop: isMobile ? '50px' : '120px',
             paddingBottom: isMobile ? '0' : '120px',
-            alignItems: 'center'
+            alignItems: 'center',
+            justifyContent: isMobile ? 'flex-start' : 'center'
           }}
         >
           <div className="relative w-full max-w-[600px]">
@@ -215,10 +249,9 @@ const ApproachContent = () => {
                 y: currentParagraph >= paragraphs.length ? 0 : 20
               }}
               transition={{ duration: 0.4 }}
-              className={`absolute top-0 left-0 w-full flex items-center ${currentParagraph >= paragraphs.length ? 'pointer-events-auto' : 'pointer-events-none'}`}
-              style={{ minHeight: '100%' }}
+              className={`absolute top-0 left-0 w-full ${currentParagraph >= paragraphs.length ? 'pointer-events-auto' : 'pointer-events-none'}`}
             >
-              <div className="mt-40 space-y-8">
+              <div className="mb-24 lg:mb-40 space-y-8">
                 <p className="text-[22px] lg:text-[36px] font-neue-book-semi text-[#979797]">
                   Ready to move beyond the box?
                 </p>
