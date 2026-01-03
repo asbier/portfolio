@@ -1,258 +1,243 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useSpring, useMotionValue, useTransform } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import PhysicsLetter from './PhysicsLetter';
-import FadeInText from '../Animations/FadeInText';
 
-// Scroll Progress Cursor - kreisförmiger Indikator
-const ScrollProgressCursor = ({ progress }) => {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothX = useSpring(mouseX, { stiffness: 150, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 150, damping: 20 });
-  
-  // SVG Kreis-Parameter
-  const size = 60;
-  const strokeWidth = 2;
-  const radius = (size - strokeWidth) / 2;
-  const circumference = 2 * Math.PI * radius;
-  
-  // Progress zu strokeDashoffset
-  const strokeDashoffset = useTransform(progress, [0, 1], [circumference, 0]);
-  
-  // Hide cursor when progress reaches 1 (circle is complete)
-  const opacity = useTransform(progress, [0, 0.99, 1], [1, 1, 0]);
-  
+// Buchstabe-für-Buchstabe Reveal-Effekt - wie beim Lesen
+const LetterRevealParagraph = ({ text, scrollProgress, isActive }) => {
+  const letters = text.split('');
+  const [visibleCount, setVisibleCount] = useState(0);
+
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
+    if (!isActive) {
+      setVisibleCount(0);
+      return;
+    }
 
+    const unsubscribe = scrollProgress.on('change', (latest) => {
+      // Reveal progress: 0 = start, 1 = all letters visible
+      const count = Math.floor(latest * letters.length);
+      setVisibleCount(Math.min(count, letters.length));
+    });
+    
+    return () => unsubscribe();
+  }, [scrollProgress, letters.length, isActive]);
+
+  // Teile Text in Wörter auf, um korrekten Umbruch zu gewährleisten
+  const words = text.split(' ');
+  
   return (
-    <motion.div
-      className="fixed pointer-events-none z-[100] hidden lg:flex items-center justify-center"
-      style={{
-        left: smoothX,
-        top: smoothY,
-        translateX: '-50%',
-        translateY: '-50%',
-        width: size,
-        height: size,
-        opacity
+    <div 
+      className="text-[22px] lg:text-[36px] leading-[1.25] font-neue-book-semi tracking-normal" 
+      style={{ 
+        wordBreak: 'normal', 
+        overflowWrap: 'break-word', 
+        hyphens: 'auto',
+        textAlign: 'left'
       }}
     >
-      <svg width={size} height={size} className="transform -rotate-90">
-        {/* Hintergrund-Kreis */}
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke="#D9D9D9"
-          strokeWidth={strokeWidth}
-          opacity={0.3}
-        />
-        {/* Progress-Kreis */}
-        <motion.circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke="#979797"
-          strokeWidth={strokeWidth}
-          strokeLinecap="round"
-          strokeDasharray={circumference}
-          style={{ strokeDashoffset }}
-        />
-      </svg>
-      {/* Kleiner Punkt in der Mitte */}
-      <div 
-        className="absolute w-1.5 h-1.5 bg-[#979797] rounded-full"
-        style={{ left: size / 2 - 3, top: size / 2 - 3 }}
-      />
-    </motion.div>
+      {words.map((word, wordIndex) => {
+        // Berechne Start-Index dieses Wortes im Gesamttext
+        const wordStartIndex = words.slice(0, wordIndex).join(' ').length + (wordIndex > 0 ? 1 : 0);
+        
+        return (
+          <span key={wordIndex} className="inline">
+            {word.split('').map((letter, letterIndex) => {
+              const letterIndexInText = wordStartIndex + letterIndex;
+              const isVisible = letterIndexInText < visibleCount;
+              
+              return (
+                <motion.span
+                  key={letterIndex}
+                  initial={{ color: 'rgba(151, 151, 151, 0.5)' }}
+                  animate={{ 
+                    color: isVisible ? '#979797' : 'rgba(151, 151, 151, 0.5)'
+                  }}
+                  transition={{ duration: 0.15, ease: 'easeOut' }}
+                >
+                  {letter}
+                </motion.span>
+              );
+            })}
+            {wordIndex < words.length - 1 && <span className="mr-1"> </span>}
+          </span>
+        );
+      })}
+    </div>
   );
 };
 
 const ApproachContent = () => {
-  const navigate = useNavigate();
-  const lettersContainerRef = useRef(null);
-  const [currentParagraph, setCurrentParagraph] = useState(0);
-  const [showSystemLetters, setShowSystemLetters] = useState(false);
-  const [isSwirling, setIsSwirling] = useState(false);
-  const [hasReachedLast, setHasReachedLast] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
   
-  const { scrollYProgress } = useScroll();
-
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on("change", (latest) => {
-      const pCount = 9; // Anzahl deiner Paragraphen
-      const newP = Math.floor(latest * pCount);
-      if (newP >= 3) setShowSystemLetters(true);
-      
-      // Track ob der letzte Paragraph erreicht wurde
-      if (newP >= pCount - 1) {
-        setHasReachedLast(true);
-      }
-      
-      if (newP !== currentParagraph) {
-        setCurrentParagraph(newP);
-        setIsSwirling(true);
-        setTimeout(() => setIsSwirling(false), 600);
-      }
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress, currentParagraph]);
-
-  // Prevent forward scrolling when at the end
-  useEffect(() => {
-    const handleWheel = (e) => {
-      const progress = scrollYProgress.get();
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const currentScroll = window.scrollY;
-      
-      // If at the end (progress >= 0.99 or at max scroll) and trying to scroll down, prevent it
-      if ((progress >= 0.99 || currentScroll >= maxScroll - 1) && e.deltaY > 0) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-    };
-
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-    };
-  }, [scrollYProgress]);
-
   const paragraphs = [
-    { id: 0, text: "A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul. To treat them as separate \"boxes\" is to miss the connection that makes design effective." },
-    { id: 1, text: "I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. Whether I am architecting a dashboard or defining a brand language, my goal is to ensure the result is visible, likeable, and memorable." },
-    { id: 2, text: "The world does not need more products or services destined for the bin. I help businesses innovate for the long-term by creating solutions that people need before they even realise they need them." },
-    { id: 3, text: "I choose tools based on the project goal. I am a professional in Figma and Adobe Creative Suite, including InDesign for print. I enjoy bridging the gap between brand mediums." },
-    { id: 4, text: "For this website, I built custom with React, Tailwind CSS, Cursor, and Hosting on GitHub. I prefer to code myself because it removes the design hurdles of mainstream builders." },
-    { id: 5, text: "During the pandemic, I spent 2 years working with CMS solutions for SMEs at We22. I can consult on tools like Squarespace or Webflow. I have an honest view on when they help and when they get in the way of good design." },
-    { id: 6, text: "Like the Design Lead at Cursor, I believe that in the future, we will all code. I am learning to build because I want to speak the same language as the engineers I work with." },
-    { id: 7, text: "My goal is to collaborate on technical solutions as a Design Engineer, while ensuring that the \"love for design detail\" never gets lost in the implementation." },
-    { id: 8, isLast: true, content: (
-        <div>
-          <p className="mb-4">Ready to move beyond the box?</p>
-          <p>
-            <a href="mailto:mail@annemaris.de" className="underline hover:no-underline">Email Me</a>
-            <span className="mx-2">/</span>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">LinkedIn</a>
-            <span className="mx-2">/</span>
-            <a href="https://github.com/asbier-lab" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">GitHub</a>
-          </p>
-        </div>
-      )
-    }
+    "A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul. To treat them as separate 'boxes' is to miss the connection that makes design effective.",
+    "I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. Whether I am architecting a dashboard or defining a brand language, my goal is to ensure the result is visible, likeable, and memorable.",
+    "The world does not need more products or services destined for the bin. I help businesses innovate for the long-term by creating solutions that people need before they even realise they need them.",
+    "I choose tools based on the project goal. I am a professional in Figma and Adobe Creative Suite, including InDesign for print. I enjoy bridging the gap between brand mediums.",
+    "For this website, I built custom with React, Tailwind CSS, Cursor, and Hosting on GitHub. I prefer to code myself because it removes the design hurdles of mainstream builders.",
+    "During the pandemic, I spent 2 years working with CMS solutions for SMEs at We22. I can consult on tools like Squarespace or Webflow. I have an honest view on when they help and when they get in the way of good design.",
+    "Like the Design Lead at Cursor, I believe that in the future, we will all code. I am learning to build because I want to speak the same language as the engineers I work with.",
+    "My goal is to collaborate on technical solutions as a Design Engineer, while ensuring that the 'love for design detail' never gets lost in the implementation."
   ];
 
+  const [showSystem, setShowSystem] = useState(false);
+  const [currentParagraph, setCurrentParagraph] = useState(0);
+  const containerRef = useRef(null);
+  const contentRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  // Paragraph-spezifischer Scroll-Progress für jeden Paragraph
+  const paragraphRefs = useRef([]);
+
+  useEffect(() => {
+    return scrollYProgress.on("change", (latest) => {
+      setShowSystem(latest > 0.35);
+      
+      // Bestimme aktuellen Paragraph basierend auf Scroll-Position
+      // Contact Section ist der "nächste" Paragraph nach dem letzten Text-Paragraph
+      const pCount = paragraphs.length;
+      const totalSections = pCount + 1; // +1 für Contact Section
+      const newP = Math.floor(latest * totalSections);
+      setCurrentParagraph(Math.min(newP, totalSections - 1));
+    });
+  }, [scrollYProgress, paragraphs.length]);
+
+  // Erstelle Paragraph-Progress für jeden Paragraph außerhalb der map
+  const totalSections = paragraphs.length + 1; // +1 für Contact Section
+  const paragraphProgresses = paragraphs.map((_, i) => {
+    const paragraphStart = i / totalSections;
+    const paragraphEnd = (i + 1) / totalSections;
+    return useTransform(
+      scrollYProgress,
+      [paragraphStart, paragraphEnd],
+      [0, 1]
+    );
+  });
+
+  // Contact Section Progress (letzter "Paragraph")
+  const contactProgress = useTransform(
+    scrollYProgress,
+    [paragraphs.length / totalSections, 1],
+    [0, 1]
+  );
+
   return (
-    <div className="relative bg-[#F1F2E5]" style={{ height: `${paragraphs.length * 100}vh` }}>
-      {/* Desktop: Letters in linker Hälfte */}
-      <div ref={lettersContainerRef} className="fixed left-0 top-0 w-1/2 h-screen z-0 pointer-events-none hidden lg:block">
-        <div className="relative w-full h-full">
-          {/* APPROACH */}
-          {!showSystemLetters && "APPROACH".split("").map((c, i) => (
+    <div className="relative bg-[#F1F2E5]" ref={containerRef} style={{ height: `${paragraphs.length * 100}vh` }}>
+      {/* Linke Hälfte: Fixierte Physics Letters */}
+      <div className="fixed left-0 top-0 w-full lg:w-1/2 h-screen pointer-events-none z-0 overflow-hidden">
+        {!showSystem ? (
+          "APPROACH".split("").map((c, i) => (
             <PhysicsLetter 
-              key={`app-${i}`} char={c} 
-              defaultX={`${5 + i * 10}%`} defaultY={`${15 + (i % 3) * 10}%`}
-              delay={i * 0.1} letterId={`app-${i}`} isSwirling={isSwirling} colorIndex={i}
+              key={`a-${i}`} 
+              char={c} 
+              defaultX={`${10 + i * 8}%`} 
+              defaultY={`${20 + (i % 3) * 10}%`} 
+              delay={i * 0.1} 
+              letterId={`app-${i}`}
+              colorIndex={i} 
             />
-          ))}
-
-          {/* SYSTEM - Höhere defaultY Werte, damit sie nicht unten rausfallen */}
-          {showSystemLetters && "SYSTEM".split("").map((c, i) => (
+          ))
+        ) : (
+          "SYSTEM".split("").map((c, i) => (
             <PhysicsLetter 
-              key={`sys-${i}`} char={c} 
-              defaultX={`${5 + i * 14}%`} defaultY={`${20 + (i % 2) * 8}%`}
-              delay={i * 0.12} letterId={`sys-${i}`} isSwirling={isSwirling} fallIn={true}
-              colorIndex={i + 8} size="large"
+              key={`s-${i}`} 
+              char={c} 
+              defaultX={`${10 + i * 12}%`} 
+              defaultY={`${30 + (i % 2) * 5}%`} 
+              delay={i * 0.1} 
+              letterId={`sys-${i}`}
+              fallIn={true} 
+              size="large" 
+              colorIndex={i + 10} 
             />
-          ))}
-        </div>
+          ))
+        )}
       </div>
 
-      {/* Mobile: Letters im oberen Teil, langsam pumpend */}
-      <div className="fixed left-0 top-0 w-full h-[40vh] z-0 pointer-events-none lg:hidden overflow-hidden">
-        <div className="relative w-full h-full">
-          {/* APPROACH - Mobile: kleiner, im oberen Bereich */}
-          {!showSystemLetters && "APPROACH".split("").map((c, i) => (
-            <PhysicsLetter 
-              key={`app-mobile-${i}`} char={c} 
-              defaultX={`${8 + i * 12}%`} defaultY={`${10 + (i % 3) * 8}%`}
-              delay={i * 0.1} letterId={`app-mobile-${i}`} isSwirling={isSwirling} colorIndex={i}
-              isMobile={true}
-            />
-          ))}
+      {/* Rechte Hälfte: Scrollbarer Content */}
+      <div className="relative z-10 flex flex-col lg:flex-row">
+        {/* Spacer für Desktop: linke Hälfte */}
+        <div className="hidden lg:block lg:w-1/2 h-screen sticky top-0" />
+        
+        {/* Content-Bereich: rechte Hälfte - Fixed Position für 1-2 sichtbare Paragraphen */}
+        <div 
+          ref={contentRef}
+          className="fixed right-0 top-0 w-full lg:w-1/2 h-screen flex px-6 lg:px-16 z-10"
+          style={{ 
+            paddingTop: isMobile ? '50px' : '120px',
+            paddingBottom: isMobile ? '0' : '120px',
+            alignItems: 'center'
+          }}
+        >
+          <div className="relative w-full max-w-[600px]">
+            {/* Nur der aktuelle Paragraph sichtbar */}
+            {paragraphs.map((text, i) => {
+              const isActive = i === currentParagraph;
+              const isCurrent = i === currentParagraph;
 
-          {/* SYSTEM - Mobile: größer, im oberen Bereich */}
-          {showSystemLetters && "SYSTEM".split("").map((c, i) => (
-            <PhysicsLetter 
-              key={`sys-mobile-${i}`} char={c} 
-              defaultX={`${8 + i * 15}%`} defaultY={`${12 + (i % 2) * 6}%`}
-              delay={i * 0.12} letterId={`sys-mobile-${i}`} isSwirling={isSwirling} fallIn={true}
-              colorIndex={i + 8} size="large"
-              isMobile={true}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="fixed right-0 top-0 w-full lg:w-1/2 h-screen flex items-center px-6 lg:px-24 z-10">
-        <div className="relative w-full max-w-[500px]">
-          {paragraphs.map((p, i) => {
-            const isLast = i === paragraphs.length - 1;
-            const isFirst = i === 0;
-            // Only show the current paragraph - no layering
-            // Last paragraph: once reached, it can be shown again when scrolling back to it
-            const isVisible = currentParagraph === i;
+              return (
+                <motion.div
+                  key={i}
+                  ref={(el) => (paragraphRefs.current[i] = el)}
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    opacity: isActive ? 1 : 0,
+                    y: isActive ? 0 : 20
+                  }}
+                  transition={{ duration: 0.4 }}
+                  className={`absolute top-0 left-0 w-full ${isActive ? 'pointer-events-auto' : 'pointer-events-none'}`}
+                >
+                  <div className="mb-24 lg:mb-40">
+                    <LetterRevealParagraph 
+                      text={text} 
+                      scrollProgress={paragraphProgresses[i]}
+                      isActive={isCurrent}
+                    />
+                  </div>
+                </motion.div>
+              );
+            })}
             
-            return (
-              <motion.div
-                key={p.id}
-                initial={{ opacity: isFirst ? 1 : 0 }}
-                animate={{ opacity: isVisible ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-                className={`absolute inset-0 text-[20px] lg:text-[32px] font-neue-book-semi text-[#979797] ${isLast && hasReachedLast && isVisible ? 'pointer-events-auto' : 'pointer-events-none'}`}
-              >
-                {isMobile && p.text ? (
-                  <FadeInText 
-                    text={p.text} 
-                    delay={isFirst ? 0 : 0.1}
-                    staggerDelay={0.03}
-                  />
-                ) : p.content || (
-                  <p>{p.text}</p>
-                )}
-              </motion.div>
-            );
-          })}
+            {/* Contact Section - erscheint als nächster Paragraph nach "implementation" */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ 
+                opacity: currentParagraph >= paragraphs.length ? 1 : 0,
+                y: currentParagraph >= paragraphs.length ? 0 : 20
+              }}
+              transition={{ duration: 0.4 }}
+              className={`absolute top-0 left-0 w-full flex items-center ${currentParagraph >= paragraphs.length ? 'pointer-events-auto' : 'pointer-events-none'}`}
+              style={{ minHeight: '100%' }}
+            >
+              <div className="mt-40 space-y-8">
+                <p className="text-[22px] lg:text-[36px] font-neue-book-semi text-[#979797]">
+                  Ready to move beyond the box?
+                </p>
+                <div className="flex gap-6 text-sm font-bold uppercase text-[#979797]">
+                  <a href="mailto:mail@annemaris.de" className="underline underline-offset-4 hover:text-[#979797]/80">
+                    Email
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-[#979797]/80">
+                    LinkedIn
+                  </a>
+                  <a href="https://github.com/asbier-lab" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-[#979797]/80">
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
-
-      <div className="fixed left-6 top-[140px] z-50 hidden lg:block">
-        <button onClick={() => navigate('/')} className="text-[32px] font-neue-semibold text-black/30 hover:opacity-100 transition-all">
-          SEE ALL CASES
-        </button>
-      </div>
-
-      {/* Scroll Progress Cursor */}
-      <ScrollProgressCursor progress={scrollYProgress} />
     </div>
   );
 };
