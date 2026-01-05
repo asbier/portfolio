@@ -73,11 +73,11 @@ const ApproachContent = () => {
           <div className="absolute inset-0 pointer-events-none">
             {showOpportunity ? (
               "OPPORTUNITY".split("").map((c, i) => {
-                // Bessere Koordinaten für Lesbarkeit: Buchstaben horizontal angeordnet
+                // Einheitliche Einstellungen für alle Wörter
                 const isMobile = window.innerWidth < 1024;
-                const startX = 15; // Startposition
-                const spacing = 7; // Abstand zwischen Buchstaben
-                const centerY = isMobile ? 40 : 30; // Mobile: mehr Abstand zur Browser-Leiste
+                const startX = 10; // Einheitliche Startposition
+                const spacing = 8; // Einheitlicher Abstand zwischen Buchstaben
+                const centerY = isMobile ? 50 : 30; // Einheitliche vertikale Position
                 return (
                   <PhysicsLetter 
                     key={`opp-${i}`} 
@@ -85,17 +85,17 @@ const ApproachContent = () => {
                     char={c} 
                     defaultX={`${startX + (i * spacing)}%`} 
                     defaultY={`${centerY}%`} 
-                    delay={i * 0.05} 
+                    delay={i * 0.1} 
                   />
                 );
               })
             ) : showSystem ? (
               "SYSTEM".split("").map((c, i) => {
-                // Bessere Koordinaten für Lesbarkeit: Buchstaben horizontal angeordnet
+                // Einheitliche Einstellungen für alle Wörter
                 const isMobile = window.innerWidth < 1024;
-                const startX = 10;
-                const spacing = 10;
-                const centerY = isMobile ? 35 : 25; // Mobile: mehr Abstand zur Browser-Leiste
+                const startX = 10; // Einheitliche Startposition
+                const spacing = 8; // Einheitlicher Abstand zwischen Buchstaben
+                const centerY = isMobile ? 50 : 30; // Einheitliche vertikale Position
                 return (
                   <PhysicsLetter 
                     key={`sys-${i}`} 
@@ -103,17 +103,17 @@ const ApproachContent = () => {
                     char={c} 
                     defaultX={`${startX + (i * spacing)}%`} 
                     defaultY={`${centerY}%`} 
-                    delay={i * 0.08} 
+                    delay={i * 0.1} 
                   />
                 );
               })
             ) : (
               "APPROACH".split("").map((c, i) => {
-                // Bessere Koordinaten für Lesbarkeit: Buchstaben horizontal angeordnet
+                // Einheitliche Einstellungen für alle Wörter
                 const isMobile = window.innerWidth < 1024;
-                const startX = 8;
-                const spacing = 8;
-                const centerY = isMobile ? 40 : 30; // Mobile: mehr Abstand zur Browser-Leiste
+                const startX = 10; // Einheitliche Startposition
+                const spacing = 8; // Einheitlicher Abstand zwischen Buchstaben
+                const centerY = isMobile ? 50 : 30; // Einheitliche vertikale Position
                 return (
                   <PhysicsLetter 
                     key={`app-${i}`} 

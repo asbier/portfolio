@@ -4,8 +4,9 @@ import { useEffect, useRef } from 'react';
 const letterColors = ['#C8D4C9', '#CDDEDC', '#C3D0C4']; // Etwas dunklere Versionen
 
 const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
+  const isMobileInitial = typeof window !== 'undefined' && window.innerWidth < 1024;
   const x = useMotionValue(0);
-  const y = useMotionValue(-1200); 
+  const y = useMotionValue(isMobileInitial ? -300 : -1200); // Mobile: Starte näher, damit schneller sichtbar
   const rotate = useMotionValue(0);
   const opacity = useMotionValue(0);
   
@@ -28,9 +29,16 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('touchmove', handleMove, { passive: true });
     
+    const isMobile = window.innerWidth < 1024;
     const timeout = setTimeout(() => {
       animate(opacity, 0.45, { duration: 1.5 });
-      animate(y, 0, { type: "spring", stiffness: 10, damping: 20, mass: 4 });
+      // Mobile: Direktes Sinken ohne lange Animation
+      if (isMobile) {
+        // Setze direkt auf Startposition, keine Animation
+        y.set(0);
+      } else {
+        animate(y, 0, { type: "spring", stiffness: 10, damping: 20, mass: 4 });
+      }
     }, delay * 1000);
 
     return () => {
@@ -56,60 +64,99 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
       let curX = x.get();
       let curY = y.get();
 
-      // 1. LEICHTE GRAVITATION - Buchstaben sinken leicht nach unten
-      const gravity = isMobile ? 0.08 : 0.05; // Mobile: etwas stärker
+      // 1. GRAVITATION - Mobile: Schweres, direktes Sinken
+      const gravity = isMobile ? 0.35 : 0.08; // Mobile: Sehr starke Gravitation für schweres Sinken
       vel.current.y += gravity;
 
-      // 2. ANKER (Zieht Buchstaben zurück zur Leseposition) - horizontal
+      // 2. ANKER (Zieht Buchstaben zurück zur Leseposition) - nur horizontal, vertikal nicht
       vel.current.x += (0 - curX) * 0.004;
+      
+      // Vertikaler Anker: Sehr schwacher Anker nur nach unten, nie nach oben (schwere Buchstaben sinken)
+      const maxSinkDepth = isMobile ? 300 : 100; // Sehr große Sink-Tiefe erlauben
+      if (curY > maxSinkDepth) {
+        const anchorStrength = isMobile ? 0.003 : 0.01; // Sehr schwacher Anker
+        vel.current.y += (maxSinkDepth - curY) * anchorStrength;
+      }
+      // WICHTIG: Kein Anker nach oben - schwere Buchstaben sollen nicht an die Decke
 
-      // 3. INTERAKTION & KIPPEN
+      // 3. INTERAKTION & KIPPEN - Mobile: Sehr schwache Interaktion (wie Muschel im Wasser)
       const dx = mousePos.current.x - (rect.left + rect.width / 2);
       const dy = mousePos.current.y - (rect.top + rect.height / 2);
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const radius = isMobile ? 150 : 250;
+      const radius = isMobile ? 200 : 250; // Mobile: Größerer Radius für sanftere Interaktion
       
       if (dist < radius) {
         const force = (radius - dist) / radius;
-        vel.current.x -= (dx / dist) * force * 1.2; 
-        vel.current.y -= (dy / dist) * force * 1.2;
+        // Mobile: Sehr schwache Kraft (wie Muschel im Wasser)
+        const interactionStrength = isMobile ? 0.15 : 1.2; // Mobile: Nur 15% der normalen Kraft
+        vel.current.x -= (dx / dist) * force * interactionStrength; 
+        vel.current.y -= (dy / dist) * force * interactionStrength;
         
-        // KIPP-LOGIK: Rotiert basierend auf der horizontalen Verschiebung
-        rotate.set(vel.current.x * 15); 
+        // KIPP-LOGIK: Mobile: Weniger Rotation
+        const rotationStrength = isMobile ? 5 : 15;
+        rotate.set(vel.current.x * rotationStrength); 
       } else {
         // Langsam zurück zur geraden Ausrichtung
         rotate.set(rotate.get() * 0.95);
       }
 
-      // 4. BOUNDARY CHECKS - Sanftes Abprallen am unteren Rand (Viewport-Ende)
+      // 4. BOUNDARY CHECKS - Sanftes Abprallen an den Rändern
       const padding = isMobile ? 40 : 20;
+      const topPadding = isMobile ? 180 : 100; // Beide: Mehr Abstand oben, damit schwere Buchstaben nicht an die Decke gehen
       const visibleLeft = container.left + padding;
       const visibleRight = container.right - padding;
-      const visibleTop = container.top + navHeight + padding;
-      // Bottom: wirklich am Viewport-Ende, nicht außerhalb
-      const visibleBottom = window.innerHeight - padding; // Viewport-Höhe, nicht Container
-
-      // Links & Rechts
-      if (rect.left < visibleLeft) {
-        vel.current.x = Math.abs(vel.current.x) * 0.5;
-        curX += 2;
-      } else if (rect.right > visibleRight) {
-        vel.current.x = -Math.abs(vel.current.x) * 0.5;
-        curX -= 2;
+      const visibleTop = container.top + navHeight + topPadding; // Mehr Abstand zum Browser-Rand (Decke)
+      
+      // Bottom: Mobile = genau über dem Paragraphen (damit Text lesbar bleibt), Desktop = Viewport-Ende
+      let visibleBottom;
+      if (isMobile) {
+        // Mobile: Meeresgrund muss genau über dem Paragraphen sein
+        // Finde den Paragraph-Container - auf Mobile ist es das zweite Grid-Element
+        const gridContainer = parent?.parentElement;
+        const paragraphContainer = gridContainer?.children[1]; // Zweites Grid-Element
+        let paragraphTop = window.innerHeight * 0.5; // Fallback: Mitte des Viewports
+        
+        if (paragraphContainer) {
+          const paragraphRect = paragraphContainer.getBoundingClientRect();
+          paragraphTop = paragraphRect.top; // Obere Kante des Paragraphen
+        }
+        
+        // Stoppe genau über dem Paragraphen (mit etwas Abstand für Padding)
+        const maxBottom = paragraphTop - (padding * 1.5); // Mehr Abstand für bessere Lesbarkeit
+        
+        // Auch prüfen ob Navigation höher ist
+        const bottomNav = document.querySelector('header');
+        const bottomNavTop = bottomNav ? bottomNav.getBoundingClientRect().top : window.innerHeight;
+        visibleBottom = Math.min(bottomNavTop - padding, maxBottom);
+      } else {
+        // Desktop: Begrenzt auf oberen Bereich (max. 40% der Viewport-Höhe)
+        const maxBottom = window.innerHeight * 0.4;
+        visibleBottom = Math.min(window.innerHeight - padding, maxBottom);
       }
 
-      // Oben & Unten - besonders wichtig für das "Sinken"
+      // Links & Rechts - Sanftes Stoppen statt Bouncen
+      if (rect.left < visibleLeft) {
+        vel.current.x *= 0.3; // Starke Dämpfung statt Bounce
+        curX += 1;
+      } else if (rect.right > visibleRight) {
+        vel.current.x *= 0.3; // Starke Dämpfung statt Bounce
+        curX -= 1;
+      }
+
+      // Oben & Unten - Sanftes Stoppen statt starkes Bouncen
       if (rect.top < visibleTop) {
-        vel.current.y = Math.abs(vel.current.y) * 0.5;
+        // Obere Grenze: Schwere Buchstaben sollen nicht an die Decke - starke Dämpfung nach unten
+        vel.current.y *= 0.1; // Sehr starke Dämpfung, damit sie nicht nach oben schweben
+        vel.current.y += 0.5; // Leichte Kraft nach unten, damit sie schwer bleiben
         curY += 2;
       } else if (rect.bottom > visibleBottom) {
-        // Am unteren Rand: sanftes Abprallen, verhindert weiteres Sinken
-        vel.current.y = -Math.abs(vel.current.y) * 0.3; // Sanfter Rückschlag
-        curY -= 2;
+        // Am unteren Rand: sanftes Stoppen, keine Bounce
+        vel.current.y *= 0.2; // Sehr starke Dämpfung für ruhige Bewegung
+        curY -= 1;
       }
 
-      // 5. REIBUNG - Mehr Reibung für schwerere, langsamere Bewegung
-      const friction = isMobile ? 0.96 : 0.97;
+      // 5. REIBUNG - Mobile: Mehr Reibung für schwerere, langsamere Bewegung
+      const friction = isMobile ? 0.93 : 0.96; // Mobile: Mehr Reibung für schwerere Bewegung
       vel.current.x *= friction; 
       vel.current.y *= friction;
 
