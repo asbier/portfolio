@@ -89,7 +89,7 @@ const MobileCaseView = ({ caseItem }) => {
     const videoRef = useRef(null);
     const [shouldLoad, setShouldLoad] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
       const video = videoRef.current;
       if (!video) return;
 
@@ -233,9 +233,9 @@ const MobileCaseView = ({ caseItem }) => {
         <div className="px-5 mb-[0.1875rem] relative z-30">
           <div className="bg-[#E2DED3] p-8 space-y-0">
             <TextFade direction="up">
-              <h1 className="text-[32px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">
-                {caseItem.title}
-              </h1>
+            <h1 className="text-[32px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">
+              {caseItem.title}
+            </h1>
               <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">
                 {caseItem.description}
               </p>
@@ -262,8 +262,8 @@ const MobileCaseView = ({ caseItem }) => {
             <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
                 <TextFade direction="up">
-                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">CHALLENGE</h2>
-                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">CHALLENGE</h2>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.challenge}</p>
                 </TextFade>
               </div>
             </FadeUp>
@@ -286,8 +286,8 @@ const MobileCaseView = ({ caseItem }) => {
             <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
                 <TextFade direction="up">
-                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">IMPACT</h2>
-                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">IMPACT</h2>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.impact}</p>
                 </TextFade>
               </div>
             </FadeUp>
@@ -329,8 +329,8 @@ const MobileCaseView = ({ caseItem }) => {
             <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="bg-[#E2DED3] p-8 space-y-0">
                 <TextFade direction="up">
-                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">OUTCOME</h2>
-                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">OUTCOME</h2>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black">{caseItem.outcome}</p>
                 </TextFade>
               </div>
             </FadeUp>
@@ -396,7 +396,7 @@ const MobileCaseView = ({ caseItem }) => {
                   <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-black mb-[62px]">LEARNING</h2>
                   <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-black italic">"{caseItem.learning}"</p>
                 </TextFade>
-              </div>
+            </div>
             </FadeUp>
           )}
 

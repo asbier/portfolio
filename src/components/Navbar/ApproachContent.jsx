@@ -27,7 +27,7 @@ const LetterRevealParagraph = ({ text, scrollProgress, isActive }) => {
   
   return (
     <div 
-      className="text-[22px] lg:text-[36px] leading-[1.25] font-neue-book-semi tracking-wide lg:tracking-normal" 
+      className="text-[22px] lg:text-[36px] leading-[1.25] font-neue-book-semi tracking-wide" 
       style={{ 
         wordBreak: 'normal', 
         overflowWrap: 'break-word', 
@@ -76,17 +76,14 @@ const ApproachContent = () => {
   }, []);
 
   const paragraphs = [
-    "A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul. To treat them as separate 'boxes' is to miss the connection that makes design effective.",
-    "I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. Whether I am architecting a dashboard or defining a brand language, my goal is to ensure the result is visible, likeable, and memorable.",
-    "The world does not need more products or services destined for the bin. I help businesses innovate for the long-term by creating solutions that people need before they even realise they need them.",
-    "I choose tools based on the project goal. I am a professional in Figma and Adobe Creative Suite, including InDesign for print. I enjoy bridging the gap between brand mediums.",
-    "For this website, I built custom with React, Tailwind CSS, Cursor, and Hosting on GitHub. I prefer to code myself because it removes the design hurdles of mainstream builders.",
-    "During the pandemic, I spent 2 years working with CMS solutions for SMEs at We22. I can consult on tools like Squarespace or Webflow. I have an honest view on when they help and when they get in the way of good design.",
-    "Like the Design Lead at Cursor, I believe that in the future, we will all code. I am learning to build because I want to speak the same language as the engineers I work with.",
-    "My goal is to collaborate on technical solutions as a Design Engineer, while ensuring that the 'love for design detail' never gets lost in the implementation."
+    "A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul.",
+    "I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. My goal is to ensure the result is visible, likeable, and memorable.",
+    "I choose tools based on the project goal. I am a professional in Figma and Adobe Creative Suite. For this website, I built custom with React, Tailwind CSS, and Cursor. I prefer to code myself because it removes the design hurdles of mainstream builders.",
+    "I am learning to build because I want to speak the same language as the engineers I work with. My goal is to collaborate on technical solutions as a Design Engineer, while ensuring that the 'love for design detail' never gets lost."
   ];
 
   const [showSystem, setShowSystem] = useState(false);
+  const [showOpportunity, setShowOpportunity] = useState(false);
   const [currentParagraph, setCurrentParagraph] = useState(0);
   const containerRef = useRef(null);
   const contentRef = useRef(null);
@@ -100,14 +97,16 @@ const ApproachContent = () => {
 
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
-      setShowSystem(latest > 0.35);
-      
-      // Bestimme aktuellen Paragraph basierend auf Scroll-Position
-      // Contact Section ist der "nächste" Paragraph nach dem letzten Text-Paragraph
       const pCount = paragraphs.length;
       const totalSections = pCount + 1; // +1 für Contact Section
       const newP = Math.floor(latest * totalSections);
       setCurrentParagraph(Math.min(newP, totalSections - 1));
+      
+      // SYSTEM erscheint zwischen 35% und 90%
+      setShowSystem(latest > 0.35 && latest < 0.9);
+      
+      // OPPORTUNITY erscheint wenn Contact Section sichtbar wird (ab 90%)
+      setShowOpportunity(latest > 0.9 || newP >= paragraphs.length);
     });
   }, [scrollYProgress, paragraphs.length]);
 
@@ -134,7 +133,25 @@ const ApproachContent = () => {
     <div className="relative bg-[#F1F2E5]" ref={containerRef} style={{ height: `${paragraphs.length * 100}vh` }}>
       {/* Desktop: Linke Hälfte - Fixierte Physics Letters */}
       <div className="fixed left-0 top-0 w-1/2 h-screen pointer-events-none z-0 overflow-hidden hidden lg:block">
-        {!showSystem ? (
+        {showOpportunity ? (
+          "OPPORTUNITY".split("").map((c, i) => {
+            // Erster Buchstabe (O) fällt zuerst (delay 0), dann die anderen nacheinander
+            const delay = i * 0.1;
+            return (
+              <PhysicsLetter 
+                key={`o-${i}`} 
+                char={c} 
+                defaultX={`${8 + i * 6}%`} 
+                defaultY={`${25 + (i % 3) * 8}%`} 
+                delay={delay}
+                letterId={`opp-${i}`}
+                fallIn={true} 
+                size="normal" 
+                colorIndex={i + 20} 
+              />
+            );
+          })
+        ) : !showSystem ? (
           "APPROACH".split("").map((c, i) => (
             <PhysicsLetter 
               key={`a-${i}`} 
@@ -147,31 +164,55 @@ const ApproachContent = () => {
             />
           ))
         ) : (
-          "SYSTEM".split("").map((c, i) => (
-            <PhysicsLetter 
-              key={`s-${i}`} 
-              char={c} 
-              defaultX={`${10 + i * 12}%`} 
-              defaultY={`${30 + (i % 2) * 5}%`} 
-              delay={i * 0.1} 
-              letterId={`sys-${i}`}
-              fallIn={true} 
-              size="large" 
-              colorIndex={i + 10} 
-            />
-          ))
+          "SYSTEM".split("").map((c, i) => {
+            const totalLetters = "SYSTEM".length;
+            // Erster Buchstabe (S) fällt zuerst (delay 0), dann die anderen nacheinander
+            const delay = i * 0.15;
+            return (
+              <PhysicsLetter 
+                key={`s-${i}`} 
+                char={c} 
+                defaultX={`${10 + i * 12}%`} 
+                defaultY={`${30 + (i % 2) * 5}%`} 
+                delay={delay}
+                letterId={`sys-${i}`}
+                fallIn={true} 
+                size="large" 
+                colorIndex={i + 10} 
+              />
+            );
+          })
         )}
       </div>
 
-      {/* Mobile: Letters im oberen Drittel (10-30%) */}
-      <div className="fixed left-0 top-0 w-full h-[50vh] pointer-events-none z-20 overflow-visible lg:hidden">
-        {!showSystem ? (
+      {/* Mobile: Linke Hälfte - Fixierte Physics Letters (wie Desktop) */}
+      <div className="fixed left-0 top-0 w-1/2 h-screen pointer-events-none z-0 overflow-hidden lg:hidden">
+        {showOpportunity ? (
+          "OPPORTUNITY".split("").map((c, i) => {
+            // Erster Buchstabe (O) fällt zuerst (delay 0), dann die anderen nacheinander
+            const delay = i * 0.1;
+            return (
+              <PhysicsLetter 
+                key={`o-mobile-${i}`} 
+                char={c} 
+                defaultX={`${8 + i * 6}%`} 
+                defaultY={`${25 + (i % 3) * 8}%`} 
+                delay={delay}
+                letterId={`opp-mobile-${i}`}
+                fallIn={true}
+                size="normal"
+                colorIndex={i + 20}
+                isMobile={true}
+              />
+            );
+          })
+        ) : !showSystem ? (
           "APPROACH".split("").map((c, i) => (
             <PhysicsLetter 
               key={`a-mobile-${i}`} 
               char={c} 
-              defaultX={`${8 + i * 12}%`} 
-              defaultY={`${10 + (i % 3) * 7}%`}  // Oberes Drittel: 10-24%
+              defaultX={`${10 + i * 8}%`} 
+              defaultY={`${20 + (i % 3) * 10}%`} 
               delay={i * 0.1} 
               letterId={`app-mobile-${i}`}
               colorIndex={i}
@@ -179,27 +220,31 @@ const ApproachContent = () => {
             />
           ))
         ) : (
-          "SYSTEM".split("").map((c, i) => (
-            <PhysicsLetter 
-              key={`s-mobile-${i}`} 
-              char={c} 
-              defaultX={`${8 + i * 15}%`} 
-              defaultY={`${15 + (i % 2) * 8}%`}  // Oberes Drittel: 15-23%
-              delay={i * 0.12} 
-              letterId={`sys-mobile-${i}`}
-              fallIn={true}
-              size="large"
-              colorIndex={i + 10}
-              isMobile={true}
-            />
-          ))
+          "SYSTEM".split("").map((c, i) => {
+            // Erster Buchstabe (S) fällt zuerst (delay 0), dann die anderen nacheinander
+            const delay = i * 0.15;
+            return (
+              <PhysicsLetter 
+                key={`s-mobile-${i}`} 
+                char={c} 
+                defaultX={`${10 + i * 12}%`} 
+                defaultY={`${30 + (i % 2) * 5}%`} 
+                delay={delay}
+                letterId={`sys-mobile-${i}`}
+                fallIn={true}
+                size="large"
+                colorIndex={i + 10}
+                isMobile={true}
+              />
+            );
+          })
         )}
       </div>
 
       {/* Rechte Hälfte: Scrollbarer Content */}
       <div className="relative z-10 flex flex-col lg:flex-row">
-        {/* Spacer für Desktop: linke Hälfte */}
-        <div className="hidden lg:block lg:w-1/2 h-screen sticky top-0" />
+        {/* Spacer für Desktop und Mobile: linke Hälfte */}
+        <div className="w-1/2 h-screen sticky top-0" />
         
         {/* Content-Bereich: rechte Hälfte - Fixed Position für 1-2 sichtbare Paragraphen */}
         <div 
@@ -207,10 +252,10 @@ const ApproachContent = () => {
           className="fixed right-0 top-0 w-full lg:w-1/2 flex px-4 sm:px-6 lg:px-16 z-10 overflow-y-auto"
           style={{ 
             height: '100dvh',
-            paddingTop: isMobile ? 'calc(50vh + 80px)' : '120px',
-            paddingBottom: isMobile ? '20rem' : '120px',
-            alignItems: isMobile ? 'flex-start' : 'center',
-            justifyContent: isMobile ? 'flex-start' : 'center'
+            paddingTop: isMobile ? '120px' : '0px',
+            paddingBottom: isMobile ? '20rem' : '0px',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
         >
           <div className="relative w-full max-w-[600px]">
@@ -231,8 +276,9 @@ const ApproachContent = () => {
                   transition={{ duration: 0.4 }}
                   className={`absolute left-0 w-full ${isActive ? 'pointer-events-auto' : 'pointer-events-none'}`}
                   style={{
-                    top: isActive && isMobile ? '10%' : '0',
-                    maxHeight: isMobile ? 'calc(100dvh - 50vh - 240px)' : 'none' // Verhindert Abschneiden auf Mobile
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    maxHeight: isMobile ? 'calc(100dvh - 240px)' : 'none' // Verhindert Abschneiden auf Mobile
                   }}
                 >
                   <div className={`${isMobile ? 'mb-8' : 'mb-24 lg:mb-40'}`}>
@@ -256,8 +302,9 @@ const ApproachContent = () => {
               transition={{ duration: 0.4 }}
               className={`absolute left-0 w-full ${currentParagraph >= paragraphs.length ? 'pointer-events-auto' : 'pointer-events-none'}`}
               style={{
-                top: currentParagraph >= paragraphs.length && isMobile ? '10%' : '0',
-                maxHeight: isMobile ? 'calc(100dvh - 50vh - 240px)' : 'none'
+                top: '50%',
+                transform: 'translateY(-50%)',
+                maxHeight: isMobile ? 'calc(100dvh - 240px)' : 'none'
               }}
             >
               <div className={`${isMobile ? 'mb-8 space-y-6' : 'mb-24 lg:mb-40 space-y-8'}`}>
