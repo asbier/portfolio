@@ -157,17 +157,32 @@ const ApproachContent = () => {
               <p className="text-[22px] lg:text-[38px] font-neue-book-semi text-[#979797] mb-16 leading-[1.1]">
                 Ready to move beyond the box?
               </p>
-              <div className="flex gap-12 text-[11px] font-neue-semibold uppercase tracking-[0.25em] text-[#979797]">
-                {['Email', 'LinkedIn', 'GitHub'].map((label) => (
-                  <a 
-                    key={label}
-                    href="#" 
-                    style={{ textDecoration: 'none' }} 
-                    className="pb-2 border-b border-[#979797]/40 hover:border-black hover:text-black transition-all duration-300"
-                  >
-                    {label}
-                  </a>
-                ))}
+              <div className="flex gap-12 text-[11px] lg:text-[17px] font-neue-semibold uppercase tracking-[0.25em] text-[#979797]">
+                <a 
+                  href="mailto:amsauerbier@proton.me" 
+                  style={{ textDecoration: 'none' }} 
+                  className="pb-2 hover:text-[#979797] transition-all duration-300"
+                >
+                  Email
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/annemarie-s-394a444b/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none' }} 
+                  className="pb-2 hover:text-[#979797] transition-all duration-300"
+                >
+                  LinkedIn
+                </a>
+                <a 
+                  href="https://github.com/asbier-lab" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none' }} 
+                  className="pb-2 hover:text-[#979797] transition-all duration-300"
+                >
+                  GitHub
+                </a>
               </div>
             </motion.div>
           </div>
