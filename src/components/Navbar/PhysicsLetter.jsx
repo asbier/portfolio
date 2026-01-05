@@ -64,8 +64,8 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
       let curX = x.get();
       let curY = y.get();
 
-      // 1. GRAVITATION - Mobile: Schweres, direktes Sinken
-      const gravity = isMobile ? 0.35 : 0.08; // Mobile: Sehr starke Gravitation für schweres Sinken
+      // 1. GRAVITATION - Schweres, direktes Sinken (beide)
+      const gravity = isMobile ? 0.35 : 0.15; // Beide: Stärkere Gravitation für schwerere Buchstaben
       vel.current.y += gravity;
 
       // 2. ANKER (Zieht Buchstaben zurück zur Leseposition) - nur horizontal, vertikal nicht
@@ -134,29 +134,29 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
         visibleBottom = Math.min(window.innerHeight - padding, maxBottom);
       }
 
-      // Links & Rechts - Sanftes Stoppen statt Bouncen
+      // Links & Rechts - Kein Bouncen, schweres Stoppen
       if (rect.left < visibleLeft) {
-        vel.current.x *= 0.3; // Starke Dämpfung statt Bounce
+        vel.current.x *= 0.1; // Sehr starke Dämpfung - kein Bounce
         curX += 1;
       } else if (rect.right > visibleRight) {
-        vel.current.x *= 0.3; // Starke Dämpfung statt Bounce
+        vel.current.x *= 0.1; // Sehr starke Dämpfung - kein Bounce
         curX -= 1;
       }
 
-      // Oben & Unten - Sanftes Stoppen statt starkes Bouncen
+      // Oben & Unten - Kein Bouncen, schweres Stoppen
       if (rect.top < visibleTop) {
-        // Obere Grenze: Schwere Buchstaben sollen nicht an die Decke - starke Dämpfung nach unten
-        vel.current.y *= 0.1; // Sehr starke Dämpfung, damit sie nicht nach oben schweben
-        vel.current.y += 0.5; // Leichte Kraft nach unten, damit sie schwer bleiben
+        // Obere Grenze: Schwere Buchstaben - keine Bounce, nur nach unten
+        vel.current.y *= 0.05; // Extrem starke Dämpfung - kein Bounce
+        vel.current.y += 0.8; // Stärkere Kraft nach unten, damit sie schwer bleiben
         curY += 2;
       } else if (rect.bottom > visibleBottom) {
-        // Am unteren Rand: sanftes Stoppen, keine Bounce
-        vel.current.y *= 0.2; // Sehr starke Dämpfung für ruhige Bewegung
+        // Am unteren Rand: schweres Stoppen, kein Bounce
+        vel.current.y *= 0.05; // Extrem starke Dämpfung - kein Bounce
         curY -= 1;
       }
 
-      // 5. REIBUNG - Mobile: Mehr Reibung für schwerere, langsamere Bewegung
-      const friction = isMobile ? 0.93 : 0.96; // Mobile: Mehr Reibung für schwerere Bewegung
+      // 5. REIBUNG - Mehr Reibung für schwerere, langsamere Bewegung (beide)
+      const friction = isMobile ? 0.90 : 0.93; // Beide: Mehr Reibung für schwerere Buchstaben
       vel.current.x *= friction; 
       vel.current.y *= friction;
 

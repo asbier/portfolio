@@ -54,8 +54,10 @@ const ApproachContent = () => {
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
       const idx = Math.floor(latest * (paragraphs.length + 1));
-      setCurrentParagraph(Math.min(idx, paragraphs.length));
-      setShowSystem(latest > 0.25 && latest < 0.7);
+      const currentIdx = Math.min(idx, paragraphs.length);
+      setCurrentParagraph(currentIdx);
+      // SYSTEM erscheint schon beim zweiten Paragraph (I utilise...) - Index 1
+      setShowSystem(currentIdx >= 1 && latest < 0.7);
       setShowOpportunity(latest >= 0.7);
     });
   }, [scrollYProgress, paragraphs.length]);
@@ -73,10 +75,10 @@ const ApproachContent = () => {
           <div className="absolute inset-0 pointer-events-none">
             {showOpportunity ? (
               "OPPORTUNITY".split("").map((c, i) => {
-                // Einheitliche Einstellungen für alle Wörter
+                // OPPORTUNITY hat 11 Buchstaben - braucht mehr Platz, daher kleinerer Abstand
                 const isMobile = window.innerWidth < 1024;
-                const startX = 10; // Einheitliche Startposition
-                const spacing = 8; // Einheitlicher Abstand zwischen Buchstaben
+                const startX = isMobile ? 10 : 3; // Desktop: Weniger Startposition für mehr Platz
+                const spacing = isMobile ? 8 : 9; // Desktop: Kleinerer Abstand, damit es in Container passt
                 const centerY = isMobile ? 50 : 30; // Einheitliche vertikale Position
                 return (
                   <PhysicsLetter 
@@ -93,8 +95,8 @@ const ApproachContent = () => {
               "SYSTEM".split("").map((c, i) => {
                 // Einheitliche Einstellungen für alle Wörter
                 const isMobile = window.innerWidth < 1024;
-                const startX = 10; // Einheitliche Startposition
-                const spacing = 8; // Einheitlicher Abstand zwischen Buchstaben
+                const startX = isMobile ? 10 : 5; // Desktop: Mehr Abstand vom Rand
+                const spacing = isMobile ? 8 : 12; // Desktop: Mehr Abstand zwischen Buchstaben
                 const centerY = isMobile ? 50 : 30; // Einheitliche vertikale Position
                 return (
                   <PhysicsLetter 
@@ -111,8 +113,8 @@ const ApproachContent = () => {
               "APPROACH".split("").map((c, i) => {
                 // Einheitliche Einstellungen für alle Wörter
                 const isMobile = window.innerWidth < 1024;
-                const startX = 10; // Einheitliche Startposition
-                const spacing = 8; // Einheitlicher Abstand zwischen Buchstaben
+                const startX = isMobile ? 10 : 5; // Desktop: Mehr Abstand vom Rand
+                const spacing = isMobile ? 8 : 12; // Desktop: Mehr Abstand zwischen Buchstaben
                 const centerY = isMobile ? 50 : 30; // Einheitliche vertikale Position
                 return (
                   <PhysicsLetter 
