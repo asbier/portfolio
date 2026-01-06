@@ -219,8 +219,9 @@ const ApproachContent = () => {
           >
             <p className="text-[22px] lg:text-[38px] font-neue-book-semi text-[#979797] mb-16">Ready to move beyond the box?</p>
             <div className="flex gap-12 text-[11px] lg:text-[17px] font-neue-semibold uppercase tracking-[0.25em] text-[#979797]">
-              <a href="mailto:amsauerbier@proton.me">Email</a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="mailto:amsauerbier@proton.me" className="hover:text-black transition-colors">Email</a>
+    <a href="https://github.com/asbier" target="_blank" rel="noreferrer" className="hover:text-black transition-colors">GitHub</a>
+    <a href="https://linkedin.com/in/DEIN-PROFIL" target="_blank" rel="noreferrer" className="hover:text-black transition-colors">LinkedIn</a>
             </div>
           </motion.div>
 
