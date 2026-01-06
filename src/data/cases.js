@@ -25,34 +25,41 @@ export const cases = [
     role: "UX DESIGNER",
     hideTitleTag: true,
     tags: ["HELLAGUTMANN", "DASHBOARD", "UX DESIGN"],
-    description: "Streamlined ADAS dashboard workflows to save time and improve documentation. As cars have to get calibrated and synchronized with the software, this system helps guide mechanics through the process.",
-    challenge: "Guiding the users better through the workflow and documentation. The legacy system lacked clear guidance, making it difficult for mechanics to track progress and recover from interruptions.",
-    impact: "Step-by-step guidance with time estimates, notifications, and documentation layers, enabling mechanics to track progress, recover from interruptions, and improve calibration workflows.",
-    outcome: "A guided interface that streamlined ADAS dashboard workflows, reducing calibration time and improving documentation accuracy.",
-    learning: "Always be the one asking early enough if this is what you really need, what purpose it solves.",
+    description: "Designed a high-precision guidance system for ADAS calibration. The system bridges the gap between complex workshop hardware and software, guiding mechanics through sensitive synchronization steps with clarity.",
+    challenge: "Mechanics often faced high cognitive load and uncertainty during calibration. The legacy system lacked a clear progress structure, making it difficult to recover from interruptions or ensure all documentation steps were completed correctly.",
+    impact: "Developed a structured, step-by-step interface that eliminated guesswork. By clearly defining the workflow and documentation layers, we reduced the risk of manual errors and minimized time-intensive recalibrations.",
+    outcome: "A reliable guided workflow that increased workshop efficiency. The interface ensures that even complex ADAS tasks are handled accurately, protecting both the mechanic's time and the quality of the service.",
+    learning: "Early strategic questioning: Evaluating the actual necessity of features before they are built is key to creating tools that solve real-world garage problems instead of just following business assumptions.",
     image: "/images/01_hellagutmann/sliderImage_hellagutmann_dashboard_hero.webp",
     detailImage1: "/images/01_hellagutmann/fahrzeug_auswählen_basis_default_1280-800.webp",
     detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.webp",
     detailImage3: "/images/01_hellagutmann/hellagutmann_dashboard_adas_guide_calibration.webp",
-    team: { title: "DAYONE X HELLAGUTMANN", members: ["Consultancy and Guidance Christopher G. (Lead)", "UX & Strategy Annemarie S.", "UI Bean D.", "PM Silvana M."] }
+    team: { 
+      title: "DAYONE X HELLAGUTMANN", 
+      members: ["Consultancy and Guidance Christopher G. (Lead)", "UX & Strategy Annemarie S.", "UI Bean D.", "PM Silvana M."] 
+    }
   },
   {
     id: 3,
-    title: "VOLKSWAGEN ID MODELLE PROBEFAHREN",
+    title: "VOLKSWAGEN ID. MODELS TEST DRIVE",
     category: "PRODUCT DESIGN",
     year: "2022-2025",
     role: "PRODUCT DESIGNER / UX",
     hideTitleTag: true,
-    tags: ["VOLKSWAGEN", "PRODUCT DESIGN", "AUTOMOTIVE", "TEST DRIVE"],
-    description: "Designing a test drive booking system for Volkswagen ID models.",
-    challenge: "Creating an intuitive booking experience for electric vehicle test drives.",
-    impact: "Streamlined test drive booking process with improved user experience.",
-    outcome: "New Landingpagethat simplifies the test drive booking journey within the german market.",
+    tags: ["VOLKSWAGEN", "PERFORMANCE", "SEO", "CONVERSION"],
+    description: "Designed a high-conversion booking system for the Volkswagen ID. family. The focus was on accelerating sales by creating a dedicated landing page architecture that bypassed complex legacy systems to capture direct leads.",
+    challenge: "Stagnating E-vehicle adoption required a fast, measurable sales solution. Volkswagen needed to bridge the gap between local Google Search listings and the physical dealership experience without being slowed down by massive internal infrastructure.",
+    impact: "Leveraged DAYONE’s deep German market expertise to implement an agile landing page strategy. This allowed for precise SEO tracking and optimized Google Listing conversion, turning local search intent into verified dealership leads with unprecedented speed.",
+    outcome: "A performance-driven entry point for the German market. By solving technical SEO hurdles and streamlining the booking logic, we created a direct pipeline from Google Search results to the driver's seat.",
+    learning: "Strategic agility: Understanding that sometimes the best UX solution is a dedicated architectural 'shortcut' that enables better tracking, faster deployment, and measurable business growth.",
     image: "/images/03_vw-testdrive_07/SliderImage_Volkswagen-IDModelleProbefahren.webp",
     detailImage1: "/images/03_vw-testdrive_07/wireframe_form_test-drive.webp",
     detailImage2: "/images/03_vw-testdrive_07/IDModelleProbefahren-copy.webp",
     detailImage3: "/images/03_vw-testdrive_07/SLiderImage_IDModelleProbefahren.webp",
-    team: { title: "VOLKSWAGEN x DAYONE", members: ["VW PO Steffen H. with PM Max M."] }
+    team: { 
+      title: "VOLKSWAGEN x DAYONE", 
+      members: ["VW PO Steffen H.", "PM Max M.", "UX/Product Design Annemarie S."] 
+    }
   },
   {
     id: 4,
