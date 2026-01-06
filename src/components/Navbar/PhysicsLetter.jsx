@@ -1,12 +1,11 @@
 import { motion, useSpring, useMotionValue, animate } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
-const letterColors = ['#C8D4C9', '#CDDEDC', '#C3D0C4']; // Etwas dunklere Versionen
+const letterColors = ['#C8D4C9', '#CDDEDC', '#C3D0C4'];
 
 const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
-  const isMobileInitial = typeof window !== 'undefined' && window.innerWidth < 1024;
   const x = useMotionValue(0);
-  const y = useMotionValue(isMobileInitial ? -300 : -1200); // Mobile: Starte näher, damit schneller sichtbar
+  const y = useMotionValue(-500); 
   const rotate = useMotionValue(0);
   const opacity = useMotionValue(0);
   
@@ -14,11 +13,11 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
   const vel = useRef({ x: 0, y: 0 }); 
   const mousePos = useRef({ x: -1000, y: -1000 });
 
-  // Spring-Eigenschaften für das "Kippen" und "Schwingen"
-  const springConfig = { stiffness: 20, damping: 30, mass: 5 };
+  // EXTREME TRÄGHEIT: Masse 20 verhindert nervöses Zittern
+  const springConfig = { stiffness: 50, damping: 100, mass: 25 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
-  const springRotate = useSpring(rotate, { stiffness: 15, damping: 20 });
+  const springRotate = useSpring(rotate, { stiffness: 50, damping: 40 });
 
   useEffect(() => {
     const handleMove = (e) => {
@@ -29,16 +28,9 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('touchmove', handleMove, { passive: true });
     
-    const isMobile = window.innerWidth < 1024;
     const timeout = setTimeout(() => {
-      animate(opacity, 0.45, { duration: 1.5 });
-      // Mobile: Direktes Sinken ohne lange Animation
-      if (isMobile) {
-        // Setze direkt auf Startposition, keine Animation
-        y.set(0);
-      } else {
-        animate(y, 0, { type: "spring", stiffness: 10, damping: 20, mass: 4 });
-      }
+      animate(opacity, 0.45, { duration: 1 });
+      animate(y, 0, { duration: 2.5, ease: "easeOut" });
     }, delay * 1000);
 
     return () => {
@@ -52,118 +44,62 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
     let frame;
     const update = () => {
       if (!letterRef.current) return;
-      const isMobile = window.innerWidth < 1024;
-      const parent = letterRef.current.closest('.aquarium-container');
-      if (!parent) return;
-      
       const rect = letterRef.current.getBoundingClientRect();
+      const parent = letterRef.current.parentElement;
+      if (!parent) return;
       const container = parent.getBoundingClientRect();
-      const nav = document.querySelector('header') || document.querySelector('nav');
-      const navHeight = nav ? nav.getBoundingClientRect().height : 0;
       
       let curX = x.get();
       let curY = y.get();
 
-      // 1. GRAVITATION - Schweres, direktes Sinken (beide)
-      const gravity = isMobile ? 0.35 : 0.15; // Beide: Stärkere Gravitation für schwerere Buchstaben
-      vel.current.y += gravity;
+      // Schwerkraft
+      vel.current.y += 0.12; 
 
-      // 2. ANKER (Zieht Buchstaben zurück zur Leseposition) - nur horizontal, vertikal nicht
-      vel.current.x += (0 - curX) * 0.004;
-      
-      // Vertikaler Anker: Sehr schwacher Anker nur nach unten, nie nach oben (schwere Buchstaben sinken)
-      const maxSinkDepth = isMobile ? 300 : 100; // Sehr große Sink-Tiefe erlauben
-      if (curY > maxSinkDepth) {
-        const anchorStrength = isMobile ? 0.003 : 0.01; // Sehr schwacher Anker
-        vel.current.y += (maxSinkDepth - curY) * anchorStrength;
-      }
-      // WICHTIG: Kein Anker nach oben - schwere Buchstaben sollen nicht an die Decke
-
-      // 3. INTERAKTION & KIPPEN - Mobile: Sehr schwache Interaktion (wie Muschel im Wasser)
+      // Maus-Abstoßung
       const dx = mousePos.current.x - (rect.left + rect.width / 2);
       const dy = mousePos.current.y - (rect.top + rect.height / 2);
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const radius = isMobile ? 200 : 250; // Mobile: Größerer Radius für sanftere Interaktion
+      const radius = 250;
       
       if (dist < radius) {
         const force = (radius - dist) / radius;
-        // Mobile: Sehr schwache Kraft (wie Muschel im Wasser)
-        const interactionStrength = isMobile ? 0.15 : 1.2; // Mobile: Nur 15% der normalen Kraft
-        vel.current.x -= (dx / dist) * force * interactionStrength; 
-        vel.current.y -= (dy / dist) * force * interactionStrength;
-        
-        // KIPP-LOGIK: Mobile: Weniger Rotation
-        const rotationStrength = isMobile ? 5 : 15;
-        rotate.set(vel.current.x * rotationStrength); 
+        vel.current.x -= (dx / dist) * force * 0.8;
+        vel.current.y -= (dy / dist) * force * 0.8;
+        rotate.set(vel.current.x * 4); 
       } else {
-        // Langsam zurück zur geraden Ausrichtung
-        rotate.set(rotate.get() * 0.95);
+        rotate.set(rotate.get() * 0.9); 
       }
 
-      // 4. BOUNDARY CHECKS - Sanftes Abprallen an den Rändern
-      const padding = isMobile ? 40 : 20;
-      const topPadding = isMobile ? 180 : 100; // Beide: Mehr Abstand oben, damit schwere Buchstaben nicht an die Decke gehen
-      const visibleLeft = container.left + padding;
-      const visibleRight = container.right - padding;
-      const visibleTop = container.top + navHeight + topPadding; // Mehr Abstand zum Browser-Rand (Decke)
-      
-      // Bottom: Mobile = genau über dem Paragraphen (damit Text lesbar bleibt), Desktop = Viewport-Ende
-      let visibleBottom;
-      if (isMobile) {
-        // Mobile: Meeresgrund muss genau über dem Paragraphen sein
-        // Finde den Paragraph-Container - auf Mobile ist es das zweite Grid-Element
-        const gridContainer = parent?.parentElement;
-        const paragraphContainer = gridContainer?.children[1]; // Zweites Grid-Element
-        let paragraphTop = window.innerHeight * 0.5; // Fallback: Mitte des Viewports
-        
-        if (paragraphContainer) {
-          const paragraphRect = paragraphContainer.getBoundingClientRect();
-          paragraphTop = paragraphRect.top; // Obere Kante des Paragraphen
-        }
-        
-        // Stoppe genau über dem Paragraphen (mit etwas Abstand für Padding)
-        const maxBottom = paragraphTop - (padding * 1.5); // Mehr Abstand für bessere Lesbarkeit
-        
-        // Auch prüfen ob Navigation höher ist
-        const bottomNav = document.querySelector('header');
-        const bottomNavTop = bottomNav ? bottomNav.getBoundingClientRect().top : window.innerHeight;
-        visibleBottom = Math.min(bottomNavTop - padding, maxBottom);
-      } else {
-        // Desktop: Begrenzt auf oberen Bereich (max. 40% der Viewport-Höhe)
-        const maxBottom = window.innerHeight * 0.4;
-        visibleBottom = Math.min(window.innerHeight - padding, maxBottom);
+      // GRENZEN (WÄNDE)
+      if (rect.left < container.left) {
+        vel.current.x = 0;
+        curX += (container.left - rect.left) + 1;
+      } else if (rect.right > container.right) {
+        vel.current.x = 0;
+        curX -= (rect.right - container.right) + 1;
       }
 
-      // Links & Rechts - Kein Bouncen, schweres Stoppen
-      if (rect.left < visibleLeft) {
-        vel.current.x *= 0.1; // Sehr starke Dämpfung - kein Bounce
-        curX += 1;
-      } else if (rect.right > visibleRight) {
-        vel.current.x *= 0.1; // Sehr starke Dämpfung - kein Bounce
-        curX -= 1;
+      // BODEN (KEIN BOUNCE)
+      if (rect.bottom > container.bottom) {
+        vel.current.y = 0; // Stoppt sofort
+        vel.current.x *= 0.5; // Reibung bremst Rutschen
+        curY -= (rect.bottom - container.bottom);
       }
 
-      // Oben & Unten - Kein Bouncen, schweres Stoppen
-      if (rect.top < visibleTop) {
-        // Obere Grenze: Schwere Buchstaben - keine Bounce, nur nach unten
-        vel.current.y *= 0.05; // Extrem starke Dämpfung - kein Bounce
-        vel.current.y += 0.8; // Stärkere Kraft nach unten, damit sie schwer bleiben
-        curY += 2;
-      } else if (rect.bottom > visibleBottom) {
-        // Am unteren Rand: schweres Stoppen, kein Bounce
-        vel.current.y *= 0.05; // Extrem starke Dämpfung - kein Bounce
-        curY -= 1;
-      }
+      // REIBUNG (Macht die Bewegung "ölig")
+      vel.current.x *= 0.65;
+      vel.current.y *= 0.65;
 
-      // 5. REIBUNG - Mehr Reibung für schwerere, langsamere Bewegung (beide)
-      const friction = isMobile ? 0.90 : 0.93; // Beide: Mehr Reibung für schwerere Buchstaben
-      vel.current.x *= friction; 
-      vel.current.y *= friction;
+      // SPEED LIMIT (Verhindert das Verschwinden)
+      const maxSpeed = 8;
+      vel.current.x = Math.max(Math.min(vel.current.x, maxSpeed), -maxSpeed);
+      vel.current.y = Math.max(Math.min(vel.current.y, maxSpeed), -maxSpeed);
 
       x.set(curX + vel.current.x);
       y.set(curY + vel.current.y);
       frame = requestAnimationFrame(update);
     };
+
     frame = requestAnimationFrame(update);
     return () => cancelAnimationFrame(frame);
   }, [x, y, rotate]);
@@ -172,16 +108,12 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
     <motion.span
       ref={letterRef}
       style={{ 
-        x: springX, 
-        y: springY, 
-        rotate: springRotate, 
-        opacity, 
-        left: defaultX, 
-        top: defaultY, 
-        position: 'absolute',
-        color: letterColors[Math.floor(Math.random() * letterColors.length)]
+        x: springX, y: springY, rotate: springRotate, opacity, 
+        left: defaultX, top: defaultY, position: 'absolute',
+        color: letterColors[Math.floor(Math.random() * letterColors.length)],
+        display: 'inline-block'
       }}
-      className="font-neue-semibold select-none pointer-events-auto leading-[0.5] tracking-tighter text-[42vw] lg:text-[38vw] will-change-transform"
+      className="font-neue-semibold select-none pointer-events-none text-[30vw] lg:text-[20vw] leading-none will-change-transform"
     >
       {char}
     </motion.span>
