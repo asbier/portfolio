@@ -34,84 +34,57 @@ const DesktopCaseView = ({ caseItem }) => {
     };
   }, [isDesktop]);
 
-  // 1. Stabile Medienliste (Namen bleiben gleich)
   const allImages = useMemo(() => {
     return [
       caseItem.image,
-      caseItem.detailImage1,
-      caseItem.detailImage2,
-      caseItem.detailImage3,
-      caseItem.detailImage4,
-      caseItem.detailImage5,
-      caseItem.detailImage6,
-      caseItem.detailImage7,
-      caseItem.detailImage8,
-      caseItem.detailImage9,
-      caseItem.detailImage10,
-      caseItem.detailImage11,
-      caseItem.detailVideo1,
-      caseItem.detailVideo2
+      caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3,
+      caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6,
+      caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9,
+      caseItem.detailImage10, caseItem.detailImage11,
+      caseItem.detailVideo1, caseItem.detailVideo2
     ].filter(Boolean);
   }, [caseItem]);
 
-  // 2. DEINE SCHÖNEN LAYOUT KOORDINATEN (Zurückgebracht)
+  // 1. ZENTRALE TEXT-POSITIONEN
+  const cardPositions = useMemo(() => ({
+    projectInfo: { x: 80, y: 50 },
+    challenge:   { x: 1100, y: 700 },
+    impact:      { x: 80, y: 1600 }, // Fix: von 00 auf 1600
+    outcome:     { x: 1100, y: 2500 },
+    learning:    { x: 80, y: 3400 },
+    offer:       { x: 1100, y: 4000 }
+  }), []);
+
+  // 2. BILDER-POSITIONEN
   const initialPositions = useMemo(() => {
     const imageCount = allImages.length;
-
-    // HELLAGUTMANN (ID 2)
-    if (caseItem.id === 2) {
-      return [
-        { x: 300, y: 200 }, { x: 1000, y: 300 },
-        { x: 400, y: 800 }, { x: 1200, y: 900 }
-      ].slice(0, imageCount);
-    }
     
-    // CONIC ROSE (ID 6)
-    if (caseItem.id === 6) {
-      return [
-        { x: 200, y: 150 }, { x: 1100, y: 250 },
-        { x: 300, y: 1000 }, { x: 1200, y: 1100 },
-        { x: 150, y: 2000 }, { x: 1050, y: 2100 }
-      ].slice(0, imageCount);
-    }
+    if (caseItem.id === 2) return [{ x: 300, y: 200 }, { x: 1000, y: 300 }, { x: 400, y: 800 }, { x: 1200, y: 900 }].slice(0, imageCount);
     
-    // EDITED (ID 7)
-    if (caseItem.id === 7) {
-      return [
-        { x: 200, y: 200 }, { x: 750, y: 250 }, { x: 1300, y: 180 },
-        { x: 350, y: 700 }, { x: 900, y: 750 }, { x: 1450, y: 680 },
-        { x: 150, y: 1200 }, { x: 700, y: 1250 }, { x: 1250, y: 1180 },
-        { x: 400, y: 1700 }, { x: 950, y: 1750 }, { x: 1400, y: 1680 },
-        { x: 250, y: 2200 }, { x: 800, y: 2250 }, { x: 1350, y: 2180 }
-      ].slice(0, imageCount);
-    }
-
-    // INDIE / PLASTIC MEDIA (ID 10)
-    if (caseItem.id === 10) {
-      return [
-        { x: 150, y: 200 }, { x: 700, y: 250 }, { x: 1250, y: 180 },
-        { x: 300, y: 700 }, { x: 850, y: 750 }, { x: 1400, y: 680 },
-        { x: 200, y: 1200 }, { x: 750, y: 1250 }, { x: 1300, y: 1180 },
-        { x: 450, y: 1700 }, { x: 1000, y: 1750 }, { x: 1500, y: 1680 }
-      ].slice(0, imageCount);
-    }
-
-    // Standard Grid für alle anderen
     const positions = [];
+    const columns = 2; 
+    const columnWidth = 450;
+    const rowHeight = 750;
+    const startX = 250;
+    const startY = 450;
+
     for (let i = 0; i < imageCount; i++) {
+      const col = i % columns;
+      const row = Math.floor(i / columns);
+      const horizontalShift = (row % 3 === 0) ? 0 : 150;
+
       positions.push({
-        x: 200 + (i % 3) * 500 + ((i * 37) % 100),
-        y: 200 + Math.floor(i / 3) * 600 + ((i * 23) % 100)
+        x: startX + (col * columnWidth) + horizontalShift + ((i * 15) % 40),
+        y: startY + (row * rowHeight) + ((i * 20) % 50)
       });
     }
     return positions;
   }, [allImages, caseItem.id]);
 
-  // 3. Dynamische Höhe basierend auf den Koordinaten
   const minContentHeight = useMemo(() => {
-    if (initialPositions.length === 0) return 1200;
+    if (initialPositions.length === 0) return 1500;
     const lastY = Math.max(...initialPositions.map(p => p.y));
-    return lastY + 900;
+    return lastY + 1200;
   }, [initialPositions]);
 
   useEffect(() => {
@@ -136,12 +109,6 @@ const DesktopCaseView = ({ caseItem }) => {
     if (caseItem.imageTitles?.[index]) return caseItem.imageTitles[index];
     const filename = url.split('/').pop()?.split('.')[0] || '';
     return filename.replace(/[-_]/g, ' ').toUpperCase();
-  };
-
-  const cardPositions = {
-    projectInfo: { x: 150, y: 100 }, challenge: { x: 800, y: 200 },
-    impact: { x: 200, y: 600 }, outcome: { x: 1000, y: 500 },
-    learning: { x: 500, y: 900 }, offer: { x: 1200, y: 800 }
   };
 
   return (
@@ -178,12 +145,12 @@ const DesktopCaseView = ({ caseItem }) => {
                 initial={{ x: initialPositions[index]?.x || 400, y: initialPositions[index]?.y || 200 }}
                 onClick={() => toggleScale(mediaId)}
                 className="absolute z-10 group cursor-grab active:cursor-grabbing"
-                style={{ width: format === 'portrait' ? '350px' : '550px' }}
+                style={{ width: format === 'portrait' ? '300px' : '480px' }} 
                 animate={{ scale: isScaled ? 1.8 : 1, zIndex: isScaled ? 100 : 10 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 <div className="relative w-full shadow-2xl overflow-hidden bg-black/5">
-                  <div className="relative w-full" style={{ height: format === 'portrait' ? '500px' : '360px' }}>
+                  <div className="relative w-full" style={{ height: format === 'portrait' ? '450px' : '320px' }}>
                     {isVideo ? (
                       <video src={url} autoPlay loop muted playsInline className="w-full h-full object-cover pointer-events-none" />
                     ) : (
@@ -198,48 +165,47 @@ const DesktopCaseView = ({ caseItem }) => {
             );
           })}
 
-          {/* Alle Text-Cards */}
-          <motion.div drag dragMomentum={false} initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }} className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10">
-            <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[68px]">{caseItem.title}</h2>
+          <motion.div drag dragMomentum={false} initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+            <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">{caseItem.title}</h2>
             <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.description}</p>
           </motion.div>
 
           {caseItem.challenge && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.challenge.x, y: cardPositions.challenge.y }} className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10">
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[68px]">CHALLENGE</h2>
+            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.challenge.x, y: cardPositions.challenge.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">CHALLENGE</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.challenge}</p>
             </motion.div>
           )}
 
           {caseItem.impact && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.impact.x, y: cardPositions.impact.y }} className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10">
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[68px]">IMPACT</h2>
+            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.impact.x, y: cardPositions.impact.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">IMPACT</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.impact}</p>
             </motion.div>
           )}
 
           {caseItem.outcome && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.outcome.x, y: cardPositions.outcome.y }} className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10">
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[68px]">OUTCOME</h2>
+            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.outcome.x, y: cardPositions.outcome.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">OUTCOME</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.outcome}</p>
             </motion.div>
           )}
 
           {caseItem.learning && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.learning.x, y: cardPositions.learning.y }} className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10">
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[68px]">LEARNING</h2>
+            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.learning.x, y: cardPositions.learning.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">LEARNING</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed italic">"{caseItem.learning}"</p>
             </motion.div>
           )}
 
           {caseItem.offer && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.offer.x, y: cardPositions.offer.y }} className="absolute bg-[#E2DED3]/60 backdrop-blur-sm p-8 cursor-move shadow-lg w-[300px] z-20 border border-black/10">
+            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.offer.x, y: cardPositions.offer.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
               <p className="text-lg font-neue-book-semi mb-6">{caseItem.offer}</p>
               <a href="mailto:mail@annemaris.de" className="text-lg font-neue-book-semi underline">Contact</a>
             </motion.div>
           )}
 
-          <div className="fixed bottom-12 left-12 z-0 pointer-events-none">
+          <div className="fixed bottom-12 left-12 z-0 pointer-events-none text-black/40">
             <h3 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-6">{caseItem.team?.title || 'TEAM'}</h3>
             <div className="space-y-2 text-lg font-neue-book-semi">
               {caseItem.team?.members?.map((m, i) => <p key={i}>{m}</p>) || <p>Collaborative Project</p>}
