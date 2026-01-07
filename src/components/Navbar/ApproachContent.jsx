@@ -16,7 +16,7 @@ const LetterRevealParagraph = ({ text, scrollProgress, isActive }) => {
   }, [scrollProgress, letters.length, isActive]);
 
   return (
-    <div className="text-[22px] lg:text-[38px] leading-[1.1] font-neue-book-semi tracking-tight text-[#979797]">
+    <div className="text-[22px] lg:text-[38px] leading-[1.1] font-neue-book-semi tracking-[0.02em] text-[#979797]">
       {words.map((word, wIdx) => {
         const wordStart = words.slice(0, wIdx).join(' ').length + (wIdx > 0 ? 1 : 0);
         return (
