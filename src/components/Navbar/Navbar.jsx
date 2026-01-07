@@ -78,19 +78,25 @@ const Navbar = () => {
             </motion.div>
           </div>
           <nav className="flex space-x-2 lg:space-x-4 items-center w-full lg:w-auto justify-end h-[70px]">
-            <div className="flex space-x-2 overflow-x-auto no-scrollbar pl-6 lg:pl-0">
-              <button 
-                onClick={() => isApproachPage ? navigate('/') : navigate('/approach')} 
-                className="text-[22px] sm:text-[17px] lg:text-2xl font-semibold uppercase px-5 py-2 sm:px-6 sm:py-2.5 lg:px-8 lg:py-3 rounded-full border font-neue-semibold bg-transparent border-black/10 text-black/30 hover:bg-[#DFFF00] hover:text-[#D9D9D9] hover:border-black/10 transition-colors min-h-[36px] sm:min-h-[40px] flex items-center justify-center"
-              >
-                {isApproachPage ? 'HOME' : 'APPROACH'}
-              </button>
-            </div>
-            <div className="flex items-center space-x-2 pr-6 lg:pr-0">
-              <a href="mailto:mail@annemaris.de" className="px-5 py-2 sm:px-6 sm:py-2.5 lg:px-8 lg:py-3 text-[22px] sm:text-[17px] lg:text-2xl font-semibold uppercase rounded-full bg-[#FFB115] border border-black/10 text-[#D9D9D9] hover:bg-transparent hover:border-[#FFB115] hover:text-[#FFB115] transition-colors font-neue-semibold min-h-[36px] sm:min-h-[40px] flex items-center justify-center">GET IN TOUCH</a>
-              <button onClick={() => setIsMenuOpen(true)} className="lg:hidden w-10 h-10 flex items-center justify-center"><div className="w-[1.5rem] h-[1.5rem] bg-[#D9D9D9] rounded-full"></div></button>
-            </div>
-          </nav>
+  <div className="flex space-x-2 overflow-x-auto no-scrollbar pl-6 lg:pl-0">
+    <button 
+      onClick={() => isApproachPage ? navigate('/') : navigate('/approach')} 
+      // text-2rem (32px), px-1rem (16px), py-0.5rem (8px)
+      className="text-[2rem] font-neue-semibold uppercase px-[1rem] py-[0.5rem] rounded-full border bg-transparent border-black/10 text-black/30 hover:bg-[#DFFF00] hover:text-[#979797] transition-colors leading-none flex items-center justify-center"
+    >
+      {isApproachPage ? 'HOME' : 'APPROACH'}
+    </button>
+  </div>
+  <div className="flex items-center space-x-2 pr-6 lg:pr-0">
+    <a 
+      href="mailto:mail@annemaris.de" 
+      className="text-[2rem] font-neue-semibold uppercase px-[1rem] py-[0.5rem] rounded-full bg-[#FFB115] border border-black/10 text-[#D9D9D9] hover:bg-transparent hover:border-[#FFB115] hover:text-[#FFB115] transition-colors leading-none flex items-center justify-center"
+    >
+      GET IN TOUCH
+    </a>
+    {/* ... restlicher Burger-Button Code ... */}
+  </div>
+</nav>
         </div>
       </header>
     </>
