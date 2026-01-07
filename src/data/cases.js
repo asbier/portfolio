@@ -137,16 +137,23 @@ export const cases = [
   },
   {
     id: 7,
-    title: "EDITED the Label",
-    category: "ART DIRECTION / BRANDING",
+    title: "EDITED THE LABEL",
+    category: "BRAND STRATEGY / ART DIRECTION",
     year: "2015-18",
-    role: "ART DIRECTOR",
-    tags: ["ART DIRECTION", "E-COMMERCE", "BRANDING"],
-    description: "Building the Brand Ecosystem. A holistic redesign steering EDITED towards a more modern direction—holistic online and offline communication, tailored to the target group. Helped scale the company from 100 to 300 employees and expand into Europe.",
-    challenge: "Five core objectives: Everything shareable—every corner a photo opportunity. Memorable launches. Sustainable packaging by 2025. City-specific store vibes. Always cutting-edge technology.",
-    impact: "17 store launches across Europe. Launch store events and dinners. Product Design: Circular e-commerce content, weekly blogs, UI redesign with editorial focus. EDITED Paper: Two larger print issues per year. Our impact at EDITED automatically influenced About You—creating high-value influencer marketing and affiliate strategies.",
-    outcome: "Corporate Identity; Online affiliate marketing Strategy; Shareable Interior concepts, shareable Merchandise, Social Media Visual Strategy; Launch Campaigns Direction; EDITED Paper Design; reflecting the brand's ethos. Brand books and guidelines for retail and events. Without value to your work and product, it becomes unshareable and unlikeable.",
-    offer: "I can show you how to create value for your brand with my secret sauce of methods.",
+    role: "ART DIRECTOR BRAND VISION",
+    tags: ["INNOVATION PILOT", "SCALABLE BRAND SYSTEMS", "360° COMMUNICATION", "RETAIL EXPERIENCE"],
+    
+    description: "Building the high-end blueprint for the group's ecosystem. Leading a holistic redesign that transformed EDITED into a modern, editorial-driven brand, enabling a scale-up from 100 to 300 employees and a successful European expansion.",
+    
+    challenge: "Establish EDITED as the strategic 'test pilot' for innovative marketing. The goal: create a 100% shareable brand experience—from social-first interior concepts to sustainable 2025-ready packaging and cutting-edge editorial UI.",
+    
+    process: "We treated EDITED as an agile laboratory. We pioneered the 'Style Icon' capsule collection model and influencer affiliate strategies that were later exported to boost the group's larger commercial mainstream platforms. Every touchpoint, from the bi-annual 'EDITED Paper' to 17 city-specific store launches, was designed to maximize community engagement and brand desirability.",
+    
+    impact: "The methods we perfected at EDITED became the gold standard for the entire company. By proving that high-value editorial content and authentic storytelling drive e-commerce growth, we paved the way for the brand’s market-leading position and long-term relevance in the European fashion sector.",
+    
+    outcome: "A holistic Corporate Identity and Social Media Visual Strategy that turned customers into ambassadors. Without emotional value, a product remains unshareable—we created the 'secret sauce' that made the brand a community favorite.",
+    
+    offer: "I can show you how to use agile brand-piloting to create measurable value and desirability.",
     image: "/images/06_edited_digital-branding_06/Slider_editedderportfolio2025_hero.webp",
     detailImage1: "/images/06_edited_digital-branding_06/launchbeforeafter.webp",
     detailImage2: "/images/06_edited_digital-branding_06/01_skizze_storemerchandise_launchpresentation.webp",
@@ -176,16 +183,24 @@ export const cases = [
   {
     id: 8,
     title: "ABOUT YOU RELAUNCH",
-    category: "ART DIRECTION / EXPERIENCE",
+    category: "STRATEGIC DESIGN / ART DIRECTION",
     year: "2018",
-    role: "DESIGN & ART DIRECTION",
+    role: "DESIGN LEAD & ART DIRECTION",
     hideTitleTag: true,
-    tags: ["ABOUT YOU", "REBRAND", "STRATEGY", "ART DIRECTION"],
-    description: "Revolutionizing online shopping through diversity, inclusivity, and personalization.",
-    challenge: "Strategic shift from German mainstream to European mainstream leader.",
-    impact: "Concepts still in use after 10 years, creating growth through less conservative marketing.",
-    outcome: "A new perspective on branding for consumerism with a balance between success and responsibility.",
+    tags: ["STRATEGIC REBRAND", "DIVERSITY & INCLUSION", "CAPSULE COLLECTIONS", "INFLUENCER STRATEGY"],
+    description: "Transforming Europe’s fastest-growing fashion platform from a traditional retailer into a community-driven, inclusive lifestyle brand.",
+    
+    challenge: "Shift the brand identity from a conservative 'White Box' look to a modern, bold European leader by addressing a diverse, digital-native generation.",
+    
+    process: "Based on successful pilot methods at EDITED, I integrated 'Style Icon' Capsule Collections into the core UX. We replaced sterile product shoots with emotional 'Momentum Shoots'. The strategy moved away from traditional models toward authentic brand ambassadors—starting with the first celebrity face, Lena Gercke, to represent the target group's aspirations.",
+    
+    impact: "By allowing icons to publish their own creativity within our community, we bridged the gap between social media and e-commerce. These concepts remain the foundation of their identity 10 years later, proving the power of representative branding and influencer integration.",
+    
+    outcome: "A playful, emotional creative direction that turned a shopping app into a space for personal expression and idol-inspired storytelling.",
+    
     image: "/images/08_aboutyou-rebrand_08/SliderImage_AboutYou_Rebrand.webp",
+    
+    // Stelle sicher, dass diese Pfade in deinem Ordner existieren:
     detailImage1: "/images/08_aboutyou-rebrand_08/design_ay.webp",
     detailImage2: "/images/08_aboutyou-rebrand_08/direction_campaign_moods_aboutyou.webp",
     detailImage3: "/images/08_aboutyou-rebrand_08/leger_Brand_material.webp",
@@ -193,9 +208,13 @@ export const cases = [
     detailImage5: "/images/08_aboutyou-rebrand_08/moodboxwardsbooth.webp",
     detailImage6: "/images/08_aboutyou-rebrand_08/personalizationcampaign_shoppingevent.webp",
     detailImage7: "/images/08_aboutyou-rebrand_08/redesign_stories_direction_final.webp",
-    team: { title: "ABOUT YOU", members: ["Relaunch Lead: Franziska N.", "Design & Art Direction Concept Annemarie S."] }
+    
+    team: { 
+      title: "TEAM", 
+      members: ["Relaunch Lead: Franziska N.", "Lead Design & Creative Concept: Annemarie S."] 
+    }
   },
-  {
+   {
     id: 12,
     title: "COMMA",
     category: "ART DIRECTION / EDITORIAL DESIGN",
