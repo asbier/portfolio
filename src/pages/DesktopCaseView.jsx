@@ -128,7 +128,7 @@ const DesktopCaseView = ({ caseItem }) => {
       )}
       
       <main className="relative w-full pt-[120px] cursor-crosshair">
-        <button onClick={() => navigate('/')} className="fixed top-32 left-12 z-50 text-xs font-black font-neue uppercase border-b border-black">← See all cases</button>
+        <button onClick={() => navigate('/')} className="fixed top-[140px] left-12 z-50 text-xs font-black font-neue uppercase border-b border-black">← See all cases</button>
 
         <div className="relative max-w-[1800px] mx-auto px-12" style={{ minHeight: `${minContentHeight}px` }}>
           
