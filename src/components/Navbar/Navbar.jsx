@@ -18,7 +18,27 @@ const Navbar = () => {
       return (
         <React.Fragment key={index}>
           <span className={color}>{sentence}</span>
-          {index < sentences.length - 1 && <span className="text-black/20 mx-6">✦</span>}
+          {index < sentences.length - 1 && (
+            <motion.span 
+              className="text-black/20 inline-flex items-center justify-center align-middle"
+              style={{ 
+                fontSize: '0.35em', 
+                display: 'inline-flex',
+                verticalAlign: 'middle',
+                lineHeight: '1',
+                marginLeft: '1.1em',
+                marginRight: '0.9em'
+              }}
+              animate={{ rotate: 360 }}
+              transition={{ 
+                repeat: Infinity, 
+                duration: 6, 
+                ease: "linear" 
+              }}
+            >
+              ✦
+            </motion.span>
+          )}
         </React.Fragment>
       );
     });
@@ -57,7 +77,11 @@ const Navbar = () => {
           <div className="w-full lg:flex-1 overflow-hidden whitespace-nowrap h-[50px] lg:h-full flex items-center border-b lg:border-none border-black/5">
             <motion.div 
               animate={{ x: [0, -2500] }} 
-              transition={{ repeat: Infinity, duration: 50, ease: "linear" }}
+              transition={{ 
+                repeat: Infinity, 
+                duration: 60, 
+                ease: "linear" 
+              }}
               className="text-[40px] lg:text-[110px] font-black font-neue uppercase flex items-center leading-none italic"
             >
               <span className="px-4 flex">{renderMarqueeText()}</span>
