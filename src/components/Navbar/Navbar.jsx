@@ -94,12 +94,14 @@ const Navbar = () => {
     >
       GET IN TOUCH
     </a>
-    {/* ... restlicher Burger-Button Code ... */}
-  </div>
-</nav>
+  
+              <button onClick={() => setIsMenuOpen(true)} className="lg:hidden w-10 h-10 flex items-center justify-center"><div className="w-[1.5rem] h-[1.5rem] bg-[#D9D9D9] rounded-full"></div></button>
+            </div>
+          </nav>
         </div>
       </header>
     </>
+  
   );
 };
 export default Navbar;
