@@ -141,7 +141,8 @@ export const cases = [
     category: "BRAND STRATEGY / ART DIRECTION",
     year: "2015-18",
     role: ["ART DIRECTOR BRAND VISION","RETAIL EXPERIENCE"],
-    
+    tags: ["ART DIRECTION","BRANDING", "RETAIL EXPERIENCE", "INFLUENCER STRATEGY"],
+ 
     description: "Building the high-end blueprint for the group's ecosystem. Leading a holistic redesign that transformed EDITED into a modern, editorial-driven brand, enabling a scale-up from 100 to 300 employees and a successful European expansion.",
     
     challenge: "Establish EDITED as the strategic 'test pilot' for innovative marketing. The goal: create a 100% shareable brand experience—from social-first interior concepts to sustainable 2025-ready packaging and cutting-edge editorial UI.",
