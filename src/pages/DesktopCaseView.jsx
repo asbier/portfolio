@@ -112,7 +112,7 @@ const DesktopCaseView = ({ caseItem }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F1F2E5] overflow-y-auto">
+    <div className="min-h-screen bg-[#F0F5F5] overflow-y-auto">
       <GrainOverlay />
       <Navbar />
       
@@ -165,41 +165,41 @@ const DesktopCaseView = ({ caseItem }) => {
             );
           })}
 
-          <motion.div drag dragMomentum={false} initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+          <motion.div drag dragMomentum={false} initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
             <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">{caseItem.title}</h2>
             <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.description}</p>
           </motion.div>
 
           {caseItem.challenge && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.challenge.x, y: cardPositions.challenge.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.challenge.x, y: cardPositions.challenge.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">CHALLENGE</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.challenge}</p>
             </motion.div>
           )}
 
           {caseItem.impact && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.impact.x, y: cardPositions.impact.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.impact.x, y: cardPositions.impact.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">IMPACT</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.impact}</p>
             </motion.div>
           )}
 
           {caseItem.outcome && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.outcome.x, y: cardPositions.outcome.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.outcome.x, y: cardPositions.outcome.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">OUTCOME</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.outcome}</p>
             </motion.div>
           )}
 
           {caseItem.learning && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.learning.x, y: cardPositions.learning.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.learning.x, y: cardPositions.learning.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">LEARNING</h2>
               <p className="text-lg font-neue-book-semi leading-relaxed italic">"{caseItem.learning}"</p>
             </motion.div>
           )}
 
           {caseItem.offer && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.offer.x, y: cardPositions.offer.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move shadow-lg w-[380px] z-20 border border-black/10">
+            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.offer.x, y: cardPositions.offer.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
               <p className="text-lg font-neue-book-semi mb-6">{caseItem.offer}</p>
               <a href="mailto:mail@annemaris.de" className="text-lg font-neue-book-semi underline">Contact</a>
             </motion.div>

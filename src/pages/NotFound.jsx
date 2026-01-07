@@ -7,7 +7,7 @@ const NotFound = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#F1F2E5] text-black font-neue">
+    <div className="min-h-screen bg-[#F0F5F5] text-black font-neue">
       <GrainOverlay />
       <Navbar />
       

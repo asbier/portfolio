@@ -5,7 +5,7 @@ import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 
 const Approach = () => {
   return (
-    <div className="min-h-screen bg-[#F1F2E5]">
+    <div className="min-h-screen bg-[#F0F5F5]">
       <GrainOverlay />
       <Navbar />
       <ApproachContent />

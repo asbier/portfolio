@@ -48,7 +48,7 @@ const Navbar = () => {
     <>
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center backdrop-blur-md bg-[#F1F2E5]/60" onClick={() => setIsMenuOpen(false)}>
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center backdrop-blur-md bg-[#F0F5F5]/60" onClick={() => setIsMenuOpen(false)}>
           <div className="flex flex-col items-center space-y-10">
             {hiddenPages.map(page => (
               <button
@@ -71,7 +71,7 @@ const Navbar = () => {
       )}
 
       {/* Main Navbar */}
-      <header className="fixed left-0 w-full z-50 bg-[#F1F2E5]/90 backdrop-blur-sm bottom-0 lg:top-0 lg:bottom-auto h-[110px] lg:h-[120px] border-t lg:border-t-0 lg:border-b border-black/5">
+      <header className="fixed left-0 w-full z-50 bg-[#F0F5F5]/90 backdrop-blur-sm bottom-0 lg:top-0 lg:bottom-auto h-[110px] lg:h-[120px] border-t lg:border-t-0 lg:border-b border-black/5">
       <div className="flex flex-col lg:flex-row items-center h-full max-w-[1800px] mx-auto overflow-hidden px-6 lg:gap-6"> 
           {/* TAPE SECTION */}
           <div className="w-full lg:flex-1 overflow-hidden whitespace-nowrap h-[50px] lg:h-full flex items-center border-b lg:border-none border-black/5">

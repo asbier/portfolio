@@ -188,7 +188,7 @@ const MobileCaseView = ({ caseItem }) => {
   const heroIsGradient = heroImage?.startsWith('linear-gradient');
 
   return (
-    <div className="min-h-screen bg-[#F1F2E5] text-black font-neue" style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}>
+    <div className="min-h-screen bg-[#F0F5F5] text-black font-neue" style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}>
       <GrainOverlay />
       <Navbar />
       
@@ -212,7 +212,7 @@ const MobileCaseView = ({ caseItem }) => {
           )}
         </div>
 
-        <div className="h-[3px] w-full bg-[#F1F2E5] -mt-[3px] relative z-30"></div>
+        <div className="h-[3px] w-full bg-[#F0F5F5] -mt-[3px] relative z-30"></div>
 
         {/* Navigation - Above first card */}
         <div className="px-5 pt-8 pb-4 relative z-30">

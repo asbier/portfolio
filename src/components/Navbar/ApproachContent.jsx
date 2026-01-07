@@ -100,7 +100,7 @@ const ApproachContent = () => {
   }, []);
 
   return (
-    <div className="relative bg-[#F1F2E5]" ref={containerRef} style={{ height: '600vh' }}>
+    <div className="relative bg-[#F0F5F5]" ref={containerRef} style={{ height: '600vh' }}>
       <div 
         className="fixed w-full overflow-hidden flex flex-col lg:grid lg:grid-cols-2" 
         style={{
@@ -162,7 +162,7 @@ const ApproachContent = () => {
               overflowY: 'auto', 
               WebkitOverflowScrolling: 'touch',
               zIndex: currentParagraph === paragraphs.length ? 50 : -1,
-              backgroundColor: '#F1F2E5' // Deckt das Aquarium oben ab für bessere Lesbarkeit
+              backgroundColor: '#F0F5F5' // Deckt das Aquarium oben ab für bessere Lesbarkeit
             }}
             animate={{ 
               opacity: currentParagraph === paragraphs.length ? 1 : 0,

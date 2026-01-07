@@ -8,7 +8,7 @@ const MarqueeBanner = () => {
     <div 
       style={{ 
         width: '100%', 
-        backgroundColor: '#F1F2E5', 
+        backgroundColor: '#F0F5F5', 
         borderBottom: '1px solid rgba(0,0,0,0.1)', 
         overflow: 'hidden', 
         display: 'flex', 

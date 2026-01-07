@@ -9,7 +9,7 @@ const Home = ({ cases }) => { // ⬅️ cases hier als Prop entgegennehmen
     const [activeTagFilter, setActiveTagFilter] = useState(null);
 
     return (
-        <div className="min-h-screen bg-[#F1F2E5]"> 
+        <div className="min-h-screen bg-[#F0F5F5]"> 
             <GrainOverlay />
             <Navbar />
             

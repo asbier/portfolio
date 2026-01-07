@@ -130,7 +130,7 @@ const Privacy = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F1F2E5] text-black font-neue" style={{ scrollBehavior: 'smooth' }}>
+    <div className="min-h-screen bg-[#F0F5F5] text-black font-neue" style={{ scrollBehavior: 'smooth' }}>
       <GrainOverlay />
       <Navbar />
       
