@@ -112,7 +112,7 @@ const DesktopCaseView = ({ caseItem }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F5F5] overflow-y-auto">
+    <div className="min-h-screen bg-[#F0F5F5]">
       <GrainOverlay />
       <Navbar />
       
@@ -152,10 +152,17 @@ const DesktopCaseView = ({ caseItem }) => {
                 <div className="relative w-full shadow-2xl overflow-hidden bg-black/5">
                   <div className="relative w-full" style={{ height: format === 'portrait' ? '450px' : '320px' }}>
                     {isVideo ? (
-                      <video src={url} autoPlay loop muted playsInline className="w-full h-full object-cover pointer-events-none" />
+                      <video src={url} autoPlay loop muted playsInline className="w-full h-full object-cover pointer-events-none transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90" />
                     ) : (
-                      <img src={url} alt="" className="w-full h-full object-cover select-none pointer-events-none" />
+                      <img src={url} alt="" className="w-full h-full object-cover select-none pointer-events-none transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90" />
                     )}
+                    {/* Gradient overlay for text readability - only on hover (desktop only) */}
+                    <div 
+                      className="absolute inset-0 z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{
+                        background: 'linear-gradient(to top, rgba(128, 93, 10, 0.6) 0%, rgba(128, 93, 10, 0.3) 30%, transparent 70%)'
+                      }}
+                    />
                   </div>
                   <div className="absolute bottom-0 left-0 pl-4 pb-4 z-20 pointer-events-none">
                     <p className="text-[11px] font-neue-semibold uppercase text-white/70">{getImageTitle(url, index)}</p>
