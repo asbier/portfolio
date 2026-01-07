@@ -2,19 +2,38 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const MarqueeBanner = () => {
-  const text = "PRODUCT DESIGN & BRANDING   ✦   SINCE 2012   ✦   SPECIALISED IN E-COMMERCE & SERVICE DESIGN   ✦   GOOD DESIGN PERFORMS   ✦   STOP BEING BORING   ✦   ";
+  const text = "PRODUCT DESIGN & BRANDING ✦ SINCE 2012 ✦ SPECIALISED IN E-COMMERCE & SERVICE DESIGN ✦ GOOD DESIGN PERFORMS ✦ STOP BEING BORING ✦ ";
 
   return (
     <div 
-      className="w-full bg-[#F1F2E5] border-b border-black/10 py-2 overflow-hidden whitespace-nowrap flex"
+      style={{ 
+        width: '100%', 
+        backgroundColor: '#F1F2E5', 
+        borderBottom: '1px solid rgba(0,0,0,0.1)', 
+        overflow: 'hidden', 
+        display: 'flex', 
+        alignItems: 'center', 
+        height: '150px' // SPIEL HIER: Band-Höhe
+      }}
       aria-hidden="true"
     >
       <motion.div
-        className="flex"
-        animate={{ x: [0, -1000] }}
-        transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+        style={{ display: 'flex', whiteSpace: 'nowrap' }}
+        animate={{ x: [0, -2000] }}
+        transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
       >
-        <span className="text-[12px] font-black uppercase tracking-widest text-black/20 px-4">
+        <span 
+          style={{ 
+            fontSize: '180px', // SPIEL HIER: Schrift-Größe
+            fontWeight: '900', 
+            textTransform: 'uppercase', 
+            letterSpacing: '-0.05em', 
+            color: 'rgba(0,0,0,0.1)', 
+            lineHeight: '1',
+            display: 'flex',
+            alignItems: 'center'
+          }}
+        >
           {text}{text}{text}
         </span>
       </motion.div>
