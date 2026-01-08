@@ -112,7 +112,7 @@ const DesktopCaseView = ({ caseItem }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F5F5]">
+    <div className="min-h-screen bg-[#F5F3F0]">
       <GrainOverlay />
       <Navbar />
       
@@ -152,17 +152,10 @@ const DesktopCaseView = ({ caseItem }) => {
                 <div className="relative w-full shadow-2xl overflow-hidden bg-black/5">
                   <div className="relative w-full" style={{ height: format === 'portrait' ? '450px' : '320px' }}>
                     {isVideo ? (
-                      <video src={url} autoPlay loop muted playsInline className="w-full h-full object-cover pointer-events-none transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90" />
+                      <video src={url} autoPlay loop muted playsInline className="w-full h-full object-cover pointer-events-none transition-opacity duration-500 opacity-45 group-hover:opacity-100" />
                     ) : (
-                      <img src={url} alt="" className="w-full h-full object-cover select-none pointer-events-none transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90" />
+                      <img src={url} alt="" className="w-full h-full object-cover select-none pointer-events-none transition-opacity duration-500 opacity-45 group-hover:opacity-100" />
                     )}
-                    {/* Gradient overlay for text readability - only on hover (desktop only) */}
-                    <div 
-                      className="absolute inset-0 z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{
-                        background: 'linear-gradient(to top, rgba(128, 93, 10, 0.6) 0%, rgba(128, 93, 10, 0.3) 30%, transparent 70%)'
-                      }}
-                    />
                   </div>
                   <div className="absolute bottom-0 left-0 pl-4 pb-4 z-20 pointer-events-none">
                     <p className="text-[11px] font-neue-semibold uppercase text-white/70">{getImageTitle(url, index)}</p>
@@ -172,49 +165,91 @@ const DesktopCaseView = ({ caseItem }) => {
             );
           })}
 
-          <motion.div drag dragMomentum={false} initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
-            <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">{caseItem.title}</h2>
-            <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.description}</p>
+          <motion.div 
+            drag dragMomentum={false} 
+            initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }} 
+            className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+            style={{
+              background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
+            }}
+          >
+            <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">{caseItem.title}</h2>
+            <p className="text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.description}</p>
           </motion.div>
 
           {caseItem.challenge && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.challenge.x, y: cardPositions.challenge.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">CHALLENGE</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.challenge}</p>
+            <motion.div 
+              drag dragMomentum={false} 
+              initial={{ x: cardPositions.challenge.x, y: cardPositions.challenge.y }} 
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+              style={{
+                background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
+              }}
+            >
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">CHALLENGE</h2>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.challenge}</p>
             </motion.div>
           )}
 
           {caseItem.impact && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.impact.x, y: cardPositions.impact.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">IMPACT</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.impact}</p>
+            <motion.div 
+              drag dragMomentum={false} 
+              initial={{ x: cardPositions.impact.x, y: cardPositions.impact.y }} 
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+              style={{
+                background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
+              }}
+            >
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">IMPACT</h2>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.impact}</p>
             </motion.div>
           )}
 
           {caseItem.outcome && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.outcome.x, y: cardPositions.outcome.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">OUTCOME</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed">{caseItem.outcome}</p>
+            <motion.div 
+              drag dragMomentum={false} 
+              initial={{ x: cardPositions.outcome.x, y: cardPositions.outcome.y }} 
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+              style={{
+                background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
+              }}
+            >
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">OUTCOME</h2>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.outcome}</p>
             </motion.div>
           )}
 
           {caseItem.learning && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.learning.x, y: cardPositions.learning.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px]">LEARNING</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed italic">"{caseItem.learning}"</p>
+            <motion.div 
+              drag dragMomentum={false} 
+              initial={{ x: cardPositions.learning.x, y: cardPositions.learning.y }} 
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+              style={{
+                background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
+              }}
+            >
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">LEARNING</h2>
+              <p className="text-lg font-neue-book-semi leading-relaxed italic text-[#363C53] text-grain">"{caseItem.learning}"</p>
             </motion.div>
           )}
 
           {caseItem.offer && (
-            <motion.div drag dragMomentum={false} initial={{ x: cardPositions.offer.x, y: cardPositions.offer.y }} className="absolute bg-[#E2DED3]/80 backdrop-blur-md p-8 cursor-move w-[380px] z-20">
-              <p className="text-lg font-neue-book-semi mb-6">{caseItem.offer}</p>
-              <a href="mailto:mail@annemaris.de" className="text-lg font-neue-book-semi underline">Contact</a>
+            <motion.div 
+              drag dragMomentum={false} 
+              initial={{ x: cardPositions.offer.x, y: cardPositions.offer.y }} 
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+              style={{
+                background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
+              }}
+            >
+              <p className="text-lg font-neue-book-semi mb-6 text-[#363C53] text-grain">{caseItem.offer}</p>
+              <a href="mailto:mail@annemaris.de" className="text-lg font-neue-book-semi underline text-[#363C53] text-grain">Contact</a>
             </motion.div>
           )}
 
-          <div className="fixed bottom-12 left-12 z-0 pointer-events-none text-black/40">
-            <h3 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-6">{caseItem.team?.title || 'TEAM'}</h3>
-            <div className="space-y-2 text-lg font-neue-book-semi">
+          <div className="fixed bottom-12 left-12 z-0 pointer-events-none text-[#363C53]">
+            <h3 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-6 text-grain">{caseItem.team?.title || 'TEAM'}</h3>
+            <div className="space-y-2 text-lg font-neue-book-semi text-grain">
               {caseItem.team?.members?.map((m, i) => <p key={i}>{m}</p>) || <p>Collaborative Project</p>}
             </div>
           </div>

@@ -34,6 +34,7 @@ export const cases = [
     detailImage1: "/images/01_hellagutmann/fahrzeug_auswählen_basis_default_1280-800.webp",
     detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.webp",
     detailImage3: "/images/01_hellagutmann/hellagutmann_dashboard_adas_guide_calibration.webp",
+    imageTitles: ['Wireframe Fahrzeug auswählen', 'Step by Step Guide Wireframe'],
     team: { 
       title: "DAYONE X HELLAGUTMANN", 
       members: ["Consultancy and Guidance Christopher G. (Lead)", "UX & Strategy Annemarie S.", "UI Bean D.", "PM Silvana M."] 

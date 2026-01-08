@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import PhysicsLetter from './PhysicsLetter';
 import SplitFlapRow from './SplitFlapRow';
 
-const LetterRevealParagraph = ({ text, scrollProgress, isActive }) => {
+const LetterRevealParagraph = ({ text, scrollProgress, isActive, textColor = '#979797' }) => {
   const words = text.split(' ');
   const letters = text.split('');
   const [visibleCount, setVisibleCount] = useState(0);
@@ -15,8 +15,11 @@ const LetterRevealParagraph = ({ text, scrollProgress, isActive }) => {
     });
   }, [scrollProgress, letters.length, isActive]);
 
+  const visibleColor = textColor;
+  const hiddenColor = textColor === '#979797' ? 'rgba(151, 151, 151, 0.2)' : `rgba(83, 87, 98, 0.2)`;
+
   return (
-    <div className="text-[22px] lg:text-[38px] leading-[1.1] font-neue-book-semi tracking-[0.02em] text-[#979797]">
+    <div className="text-[22px] lg:text-[38px] leading-[1.1] font-neue-book-semi tracking-[0.02em]" style={{ color: textColor }}>
       {words.map((word, wIdx) => {
         const wordStart = words.slice(0, wIdx).join(' ').length + (wIdx > 0 ? 1 : 0);
         return (
@@ -24,7 +27,7 @@ const LetterRevealParagraph = ({ text, scrollProgress, isActive }) => {
             {word.split('').map((l, lIdx) => (
               <motion.span
                 key={lIdx}
-                animate={{ color: (wordStart + lIdx) < visibleCount ? '#979797' : 'rgba(151, 151, 151, 0.2)' }}
+                animate={{ color: (wordStart + lIdx) < visibleCount ? visibleColor : hiddenColor }}
                 transition={{ duration: 0.1 }}
               >
                 {l}
@@ -128,7 +131,9 @@ const ApproachContent = () => {
                     char={c}
                     defaultX={`${10 + (i * spacing)}%`}
                     defaultY={`${isDesktop ? 15 : 10}%`}
-                    delay={i * 0.12} 
+                    delay={i * 0.12}
+                    index={i}
+                    totalLetters={arr.length}
                   />
                 );
               })}
@@ -151,7 +156,12 @@ const ApproachContent = () => {
               }}
               transition={{ duration: 0.6 }}
             >
-              <LetterRevealParagraph text={text} scrollProgress={paragraphProgresses[i]} isActive={currentParagraph === i} />
+              <LetterRevealParagraph 
+                text={text} 
+                scrollProgress={paragraphProgresses[i]} 
+                isActive={currentParagraph === i}
+                textColor="#535762"
+              />
             </motion.div>
           ))}
 
