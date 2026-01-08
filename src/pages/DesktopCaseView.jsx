@@ -152,10 +152,17 @@ const DesktopCaseView = ({ caseItem }) => {
                 <div className="relative w-full shadow-2xl overflow-hidden bg-black/5">
                   <div className="relative w-full" style={{ height: format === 'portrait' ? '450px' : '320px' }}>
                     {isVideo ? (
-                      <video src={url} autoPlay loop muted playsInline className="w-full h-full object-cover pointer-events-none transition-opacity duration-500 opacity-45 group-hover:opacity-100" />
+                      <video src={url} autoPlay loop muted playsInline className="w-full h-full object-cover pointer-events-none" />
                     ) : (
-                      <img src={url} alt="" className="w-full h-full object-cover select-none pointer-events-none transition-opacity duration-500 opacity-45 group-hover:opacity-100" />
+                      <img src={url} alt="" className="w-full h-full object-cover select-none pointer-events-none" />
                     )}
+                    {/* Radial gradient overlay - smooth gradient from 70% center to 10% edges, disappears on hover */}
+                    <div 
+                      className="absolute inset-0 z-10 pointer-events-none opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+                      style={{
+                        background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 100%)'
+                      }}
+                    />
                   </div>
                   <div className="absolute bottom-0 left-0 pl-4 pb-4 z-20 pointer-events-none">
                     <p className="text-[11px] font-neue-semibold uppercase text-white/70">{getImageTitle(url, index)}</p>
