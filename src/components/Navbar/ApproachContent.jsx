@@ -194,7 +194,7 @@ const ApproachContent = () => {
           >
             <p className="text-[22px] lg:text-[38px] font-neue-book-semi text-[#979797] mb-12">Ready to move beyond the box?</p>
             <div className="flex flex-wrap gap-8 text-[11px] lg:text-[17px] font-neue-semibold uppercase tracking-[0.25em] text-[#979797]">
-            <a href="mailto:amsauerbier@proton.me" className="hover:text-black transition-colors">
+            <a href="mailto:amsauerbier@proton.me" className="hover:text-[#D9D9D9] transition-colors">
   Email
 </a>
 <a href="https://github.com/asbier" target="_blank" rel="noreferrer" className="hover:text-[#D9D9D9] transition-colors">
