@@ -19,16 +19,14 @@ const SlideItem = ({
   formatSlideNumber
 }) => {
   // Calculate parallax offset for this slide
-  // When scrolling left (scrollXProgress increases), images should lag behind (move right/positive)
-  // This creates the physical effect of "heavier" images that follow slower
+  // When scrolling, images should come together to maintain the 3px gap
   const slideProgress = useTransform(
     smoothScroll,
     [index / totalSlides, (index + 1) / totalSlides],
     [0, 1]
   );
-  // Startet bei 0 (bündig). Wenn man scrollt, wandert das Bild bis zu 40px 
-  // in die entgegengesetzte Richtung (Lag-Effekt).
-  const parallaxX = useTransform(slideProgress, [0, 1], [0, isMobile ? 0 : -40]);
+  // Kein Parallax-Effekt - Bilder bleiben bei 3px Gap
+  const parallaxX = useTransform(slideProgress, [0, 1], [0, isMobile ? 0 : 0]);
 
   return (
     <motion.div
@@ -89,15 +87,15 @@ const SlideItem = ({
           {/* Blur overlay for background - doesn't cover tags area at bottom */}
           <div className="absolute inset-0 z-40 backdrop-blur-md" style={{ bottom: '150px' }}></div>
           <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none">
-            <div className="text-center px-6">
-              <div className="inline-block px-6 py-3 rounded-full bg-[#DFFF00] border border-black/10 mb-4">
-                <span className="text-sm sm:text-base lg:text-lg font-semibold font-neue-semibold uppercase text-[#D9D9D9]">
-                  COMING SOON
-                </span>
-              </div>
-              <p className="text-white/80 text-xs sm:text-sm font-neue-book-semi">
-                Scroll to the left view other projects
-              </p>
+            <div className="text-center px-6 space-y-2">
+              <span className="text-sm sm:text-base lg:text-lg font-semibold font-neue-semibold uppercase text-[#DFFF00] tracking-[0.25em]">
+                COMING SOON
+              </span>
+              {isMobile && (
+                <p className="text-white/80 text-xs sm:text-sm font-neue-book-semi mt-1">
+                  Scroll to the left view other projects
+                </p>
+              )}
             </div>
           </div>
         </>

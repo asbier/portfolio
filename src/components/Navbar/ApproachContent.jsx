@@ -131,7 +131,7 @@ const ApproachContent = () => {
                     char={c}
                     defaultX={`${10 + (i * spacing)}%`}
                     defaultY={`${isDesktop ? 15 : 10}%`}
-                    delay={i * 0.12}
+                    delay={i * 0.12} 
                     index={i}
                     totalLetters={arr.length}
                   />
