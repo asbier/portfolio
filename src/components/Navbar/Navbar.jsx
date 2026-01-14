@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isApproachPage = location.pathname === '/approach';
   const hiddenPages = ['Home', 'Privacy', 'Contact'];
-  const marqueeText = " ✦ PORTFOLIO OF AM ✦ HOLISTIC DESIGN & BRANDING ✦ SYSTEMIC THINKING ACROSS ALL MEDIUMS ✦ FROM INTERFACE LOGIC TO VISUAL IDENTITY ✦ NO BOXES, JUST SOLUTIONS ✦ STOP BEEING BORING ✦ ";
+  const marqueeText = " ✦✦ PORTFOLIO OF AM ✦ HOLISTIC DESIGN & BRANDING ✦ PORTFOLIO OF AM ✦ FROM INTERFACE LOGIC TO VISUAL IDENTITY  ✦ PORTFOLIO OF AM ✦  NO BOXES, JUST SOLUTIONS ✦ STOP BEEING BORING ✦ ";
   
   const renderMarqueeText = () => {
     const sentences = marqueeText.split(' ✦ ').filter(s => s.trim());
