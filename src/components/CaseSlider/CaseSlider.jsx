@@ -282,7 +282,7 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
 
           const handleNavigation = () => {
             if (!isComingSoon) {
-              navigate(`/case/${caseItem.id}`);
+              navigate(`/case/${caseItem.slug}`);
             }
           };
 

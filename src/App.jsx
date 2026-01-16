@@ -47,7 +47,7 @@ function AnimatedRoutes() {
         <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<Home cases={cases} />} />
-                <Route path="/case/:id" element={<CaseDetail cases={cases} />} /> 
+                <Route path="/case/:slug" element={<CaseDetail cases={cases} />} /> 
                 <Route path="/history" element={<Home cases={cases} />} /> 
                 <Route path="/privacy" element={
                     <motion.div

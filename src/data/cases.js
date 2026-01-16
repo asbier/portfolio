@@ -1,6 +1,7 @@
 export const cases = [
   {
     id: 1,
+    slug: "berlin-tech-job-analytics",
     title: "Berlin Tech Job Analytics",
     category: "PRODUCT DESIGN / DEV COLLAB",
     isPrivate: true,
@@ -19,6 +20,7 @@ export const cases = [
   },
   {
     id: 2,
+    slug: "hellagutmann-adas-system-guide",
     title: "DASHBOARD DESIGN ADAS SYSTEM GUIDE",
     category: "PRODUCT DESIGN",
     year: "2024",
@@ -42,6 +44,7 @@ export const cases = [
   },
   {
     id: 3,
+    slug: "volkswagen-id-test-drive",
     title: "VOLKSWAGEN ID. MODELS TEST DRIVE",
     category: "PRODUCT DESIGN",
     year: "2022-2025",
@@ -64,6 +67,7 @@ export const cases = [
   },
   {
     id: 4,
+    slug: "carhartt-wip-helpcenter",
     title: "CARHARTT-WIP",
     category: "PRODUCT DESIGN",
     year: "2021/22",
@@ -86,6 +90,7 @@ export const cases = [
   },
   {
     id: 5,
+    slug: "carhartt-wip-shopping-journey",
     title: "CARHARTT-WIP",
     category: "PRODUCT DESIGN",
     year: "2021/22",
@@ -111,6 +116,7 @@ export const cases = [
 },
   {
     id: 6,
+    slug: "conic-rose",
     title: "CONIC ROSE",
     category: "VISUAL IDENTITY / ART",
     isPrivate: true,
@@ -138,6 +144,7 @@ export const cases = [
   },
   {
     id: 7,
+    slug: "edited-the-label",
     title: "EDITED THE LABEL",
     category: "BRAND STRATEGY / ART DIRECTION",
     year: "2015-18",
@@ -183,6 +190,7 @@ export const cases = [
   },
   {
     id: 8,
+    slug: "about-you-relaunch",
     title: "ABOUT YOU RELAUNCH",
     category: "STRATEGIC DESIGN / ART DIRECTION",
     year: "2018",
@@ -217,6 +225,7 @@ export const cases = [
   },
    {
     id: 12,
+    slug: "comma",
     title: "COMMA",
     category: "ART DIRECTION / EDITORIAL DESIGN",
     year: "2015",
@@ -241,6 +250,7 @@ export const cases = [
   },
   {
     id: 9,
+    slug: "biorama",
     title: "BIORAMA",
     category: "ART DIRECTION / EDITORIAL DESIGN",
     year: "2014/2015",
@@ -260,6 +270,7 @@ export const cases = [
   },
   {
     id: 11,
+    slug: "monki",
     title: "MONKI",
     category: "EDITORIAL DESIGN / MAGAZINE",
     year: "2014",
@@ -288,6 +299,7 @@ export const cases = [
   },
   {
     id: 10,
+    slug: "indie-plastic-media",
     title: "INDIE by PLASTIC MEDIA",
     category: "EDITORIAL / CONCEPT",
     year: "2013",
@@ -322,4 +334,8 @@ export const getCasesByCategory = (category) => {
 
 export const getCaseById = (id) => {
   return cases.find(caseItem => caseItem.id === parseInt(id));
+};
+
+export const getCaseBySlug = (slug) => {
+  return cases.find(caseItem => caseItem.slug === slug);
 };
