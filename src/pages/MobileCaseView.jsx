@@ -247,7 +247,7 @@ const MobileCaseView = ({ caseItem }) => {
         <div className="mb-[0.1875rem] relative z-30">
           <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
             <TextFade direction="up">
-            <h1 className="text-[32px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">
+            <h1 className="text-[62px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">
               {caseItem.title}
             </h1>
               <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">
