@@ -202,7 +202,7 @@ const ApproachContent = () => {
             }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-[22px] lg:text-[38px] font-neue-book-semi text-[#979797] mb-12">Ready to move beyond the box?</p>
+            <p className="text-[22px] lg:text-[38px] font-neue-book-semi text-[#979797] mb-12 tracking-wide">Ready to move beyond the box?</p>
             <div className="flex flex-wrap gap-8 text-[11px] lg:text-[17px] font-neue-semibold uppercase tracking-[0.25em] text-[#979797]">
             <a href="mailto:amsauerbier@proton.me" className="hover:text-[#D9D9D9] transition-colors">
   Email

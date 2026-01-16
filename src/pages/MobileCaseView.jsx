@@ -250,7 +250,7 @@ const MobileCaseView = ({ caseItem }) => {
             <h1 className="text-[62px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">
               {caseItem.title}
             </h1>
-              <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">
+              <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
                 {caseItem.description}
               </p>
             </TextFade>
@@ -277,7 +277,7 @@ const MobileCaseView = ({ caseItem }) => {
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">CHALLENGE</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.challenge}</p>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.challenge}</p>
                 </TextFade>
               </div>
             </FadeUp>
@@ -301,7 +301,7 @@ const MobileCaseView = ({ caseItem }) => {
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">IMPACT</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.impact}</p>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.impact}</p>
                 </TextFade>
               </div>
             </FadeUp>
@@ -344,7 +344,7 @@ const MobileCaseView = ({ caseItem }) => {
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">OUTCOME</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.outcome}</p>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.outcome}</p>
                 </TextFade>
               </div>
             </FadeUp>
@@ -408,7 +408,7 @@ const MobileCaseView = ({ caseItem }) => {
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                   <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">LEARNING</h2>
-                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain italic">"{caseItem.learning}"</p>
+                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain italic">"{caseItem.learning}"</p>
                 </TextFade>
             </div>
             </FadeUp>
@@ -438,19 +438,19 @@ const MobileCaseView = ({ caseItem }) => {
                   <div className="flex-1">
                     {caseItem.year && (
                       <div className="mb-8">
-                        <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-2">YEAR</h2>
-                        <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.year}</p>
+                        <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#979797] text-grain mb-2">YEAR</h2>
+                        <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.year}</p>
                       </div>
                     )}
                     {/* TEAM in left column under YEAR */}
                     {caseItem.team ? (
                       <div>
                         {caseItem.team.collaboration ? (
-                          <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.team.collaboration}</p>
+                          <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.team.collaboration}</p>
                         ) : (
                           <div>
-                            <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-2">TEAM</h2>
-                            <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">
+                            <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#979797] text-grain mb-2">TEAM</h2>
+                            <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
                               {caseItem.team.members?.map((member, index) => (
                                 <p key={index}>{member}</p>
                               ))}
@@ -460,8 +460,8 @@ const MobileCaseView = ({ caseItem }) => {
                       </div>
                     ) : (
                       <div>
-                        <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-2">TEAM</h2>
-                        <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">
+                        <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#979797] text-grain mb-2">TEAM</h2>
+                        <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
                           <p>Consultancy and Guidance Christopher G. (Lead)</p>
                           <p>UX & Strategy Annemarie S.</p>
                           <p>UI Bean D.</p>
@@ -472,8 +472,8 @@ const MobileCaseView = ({ caseItem }) => {
                   </div>
                   {caseItem.role && (
                     <div className="flex-1">
-                      <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-2">ROLE</h2>
-                      <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.role}</p>
+                      <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#979797] text-grain mb-2">ROLE</h2>
+                      <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.role}</p>
                     </div>
                   )}
                 </div>

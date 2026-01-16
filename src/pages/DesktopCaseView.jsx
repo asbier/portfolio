@@ -260,7 +260,7 @@ const DesktopCaseView = ({ caseItem }) => {
             }}
           >
             <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">{caseItem.title}</h2>
-            <p className="text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.description}</p>
+            <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.description}</p>
           </motion.div>
 
           {caseItem.challenge && (
@@ -273,7 +273,7 @@ const DesktopCaseView = ({ caseItem }) => {
               }}
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">CHALLENGE</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.challenge}</p>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.challenge}</p>
             </motion.div>
           )}
 
@@ -287,7 +287,7 @@ const DesktopCaseView = ({ caseItem }) => {
               }}
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">IMPACT</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.impact}</p>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.impact}</p>
             </motion.div>
           )}
 
@@ -301,7 +301,7 @@ const DesktopCaseView = ({ caseItem }) => {
               }}
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">OUTCOME</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.outcome}</p>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.outcome}</p>
             </motion.div>
           )}
 
@@ -315,7 +315,7 @@ const DesktopCaseView = ({ caseItem }) => {
               }}
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">LEARNING</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed italic text-[#363C53] text-grain">"{caseItem.learning}"</p>
+              <p className="text-lg font-neue-book-semi leading-relaxed italic text-[#979797] text-grain">"{caseItem.learning}"</p>
             </motion.div>
           )}
 
@@ -328,7 +328,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
             >
-              <p className="text-lg font-neue-book-semi mb-6 text-[#363C53] text-grain">{caseItem.offer}</p>
+              <p className="text-lg font-neue-book-semi mb-6 text-[#979797] text-grain">{caseItem.offer}</p>
               <a href="mailto:mail@annemaris.de" className="text-lg font-neue-book-semi underline text-[#363C53] text-grain">Contact</a>
             </motion.div>
           )}

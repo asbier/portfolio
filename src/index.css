@@ -1,3 +1,10 @@
+/* Text highlighting with yellow */
+mark {
+  background-color: #DFFF00;
+  color: #363C53;
+  padding: 0 0.125em;
+}
+
 /* Screen reader only class for accessibility */
 .sr-only {
   position: absolute;
