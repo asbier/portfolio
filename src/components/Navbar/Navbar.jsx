@@ -72,9 +72,9 @@ const Navbar = () => {
 
       {/* Main Navbar */}
       <header className="fixed left-0 w-full z-50 bg-[#F5F5F5]/90 backdrop-blur-sm bottom-0 lg:top-0 lg:bottom-auto h-[110px] lg:h-[120px] border-t lg:border-t-0 lg:border-b border-black/5">
-      <div className="flex flex-col lg:flex-row items-center h-full max-w-[1800px] mx-auto overflow-hidden px-6 lg:gap-6"> 
+      <div className="flex flex-col lg:flex-row items-center h-full max-w-[1800px] mx-auto overflow-hidden px-0 lg:px-6 lg:gap-6"> 
           {/* TAPE SECTION */}
-          <div className="w-full lg:flex-1 overflow-hidden whitespace-nowrap h-[50px] lg:h-full flex items-center border-b lg:border-none border-black/5">
+          <div className="w-full lg:flex-1 overflow-hidden whitespace-nowrap h-[50px] lg:h-full flex items-center border-b lg:border-none border-black/5 px-4 lg:px-0">
             <motion.div 
               animate={{ x: [0, -2500] }} 
               transition={{ 
@@ -93,7 +93,7 @@ const Navbar = () => {
           <div className="hidden lg:block w-[6px] shrink-0"></div>
 
           {/* NAV BUTTONS */}
-          <nav className="flex items-center w-full lg:w-auto justify-end h-[60px] lg:h-full shrink-0">
+          <nav className="flex items-center w-full lg:w-auto justify-end h-[60px] lg:h-full shrink-0 px-4 lg:px-0">
             <div className="flex space-x-2 items-center lg:space-x-4">
               <button 
                 onClick={() => isApproachPage ? navigate('/') : navigate('/approach')} 

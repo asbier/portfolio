@@ -16,7 +16,7 @@ const LetterRevealParagraph = ({ text, scrollProgress, isActive, textColor = '#9
   }, [scrollProgress, letters.length, isActive]);
 
   const visibleColor = textColor;
-  const hiddenColor = textColor === '#979797' ? 'rgba(151, 151, 151, 0.2)' : `rgba(83, 87, 98, 0.2)`;
+  const hiddenColor = textColor === '#979797' ? 'rgba(151, 151, 151, 0.2)' : `rgba(54, 60, 83, 0.2)`;
 
   return (
     <div className="text-[22px] lg:text-[38px] leading-[1.1] font-neue-book-semi tracking-[0.02em]" style={{ color: textColor }}>
@@ -160,7 +160,7 @@ const ApproachContent = () => {
                 text={text} 
                 scrollProgress={paragraphProgresses[i]} 
                 isActive={currentParagraph === i}
-                textColor="#535762"
+                textColor="#363C53"
               />
             </motion.div>
           ))}

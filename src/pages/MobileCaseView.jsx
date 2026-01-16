@@ -230,8 +230,8 @@ const MobileCaseView = ({ caseItem }) => {
         </div>
 
         {/* 2. INTRO CARD */}
-        <div className="px-5 mb-[0.1875rem] relative z-30">
-          <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)' }}>
+        <div className="mb-[0.1875rem] relative z-30">
+          <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
             <TextFade direction="up">
             <h1 className="text-[32px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">
               {caseItem.title}
@@ -244,7 +244,7 @@ const MobileCaseView = ({ caseItem }) => {
         </div>
 
         {/* 3. CONTENT SECTIONS - Improved Storytelling Flow */}
-        <div className="px-5 space-y-[0.1875rem] snap-y snap-mandatory snap-proximity relative z-30" style={{ scrollBehavior: 'smooth', scrollPaddingTop: '20px' }}>
+        <div className="space-y-[0.1875rem] snap-y snap-mandatory snap-proximity relative z-30" style={{ scrollBehavior: 'smooth', scrollPaddingTop: '20px' }}>
           
           {/* Context Image - Visual hook after intro */}
           {caseItem.detailImage1 && (
@@ -260,7 +260,7 @@ const MobileCaseView = ({ caseItem }) => {
           {/* CHALLENGE - Problem statement */}
           {caseItem.challenge && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)' }}>
+              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">CHALLENGE</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.challenge}</p>
@@ -284,7 +284,7 @@ const MobileCaseView = ({ caseItem }) => {
           {/* IMPACT - Solution approach */}
           {caseItem.impact && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)' }}>
+              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">IMPACT</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.impact}</p>
@@ -327,7 +327,7 @@ const MobileCaseView = ({ caseItem }) => {
           {/* OUTCOME - Results */}
           {caseItem.outcome && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)' }}>
+              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">OUTCOME</h2>
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain">{caseItem.outcome}</p>
@@ -391,7 +391,7 @@ const MobileCaseView = ({ caseItem }) => {
           {/* LEARNING - Reflection at the end */}
           {caseItem.learning && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)' }}>
+              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                   <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">LEARNING</h2>
                   <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#363C53] text-grain italic">"{caseItem.learning}"</p>
@@ -402,7 +402,7 @@ const MobileCaseView = ({ caseItem }) => {
 
           {/* YEAR, ROLE & TEAM - REORDERED SECTION */}
           <FadeUp className="space-y-[0.1875rem] snap-start">
-            <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)' }}>
+            <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
               <TextFade direction="up">
                 {/* 1. The Heading/Team Title */}
                 {!caseItem.team ? (
