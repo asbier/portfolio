@@ -11,6 +11,9 @@ const DesktopCaseView = ({ caseItem }) => {
   const [showMouseFollower, setShowMouseFollower] = useState(true);
   const [isDesktop, setIsDesktop] = useState(false);
   const [imageFormats, setImageFormats] = useState({});
+  const IMAGE_WIDTHS = { landscape: 420, portrait: 280 };
+  const MAX_IMAGE_WIDTH = 420;
+  const [viewportSize, setViewportSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
   const toggleScale = (imageId) => {
     setScaledImages(prev => ({ ...prev, [imageId]: !prev[imageId] }));
@@ -21,6 +24,13 @@ const DesktopCaseView = ({ caseItem }) => {
     checkDesktop();
     window.addEventListener('resize', checkDesktop);
     return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => setViewportSize({ width: window.innerWidth, height: window.innerHeight });
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -45,47 +55,116 @@ const DesktopCaseView = ({ caseItem }) => {
     ].filter(Boolean);
   }, [caseItem]);
 
-  // 1. ZENTRALE TEXT-POSITIONEN
-  const cardPositions = useMemo(() => ({
-    projectInfo: { x: 80, y: 50 },
-    challenge:   { x: 1100, y: 700 },
-    impact:      { x: 80, y: 1600 }, // Fix: von 00 auf 1600
-    outcome:     { x: 1100, y: 2500 },
-    learning:    { x: 80, y: 3400 },
-    offer:       { x: 1100, y: 4000 }
-  }), []);
+  const grid = useMemo(() => {
+    const containerWidth = Math.min(1800, viewportSize.width - 96);
+    const containerLeft = (viewportSize.width - containerWidth) / 2 + 48;
+    const colWidth = containerWidth / 12;
+    return { containerWidth, containerLeft, colWidth };
+  }, [viewportSize]);
+
+  const colX = (col) => grid.containerLeft + grid.colWidth * (col - 1);
+
+  const layoutConfig = useMemo(() => {
+    const startY = 180;
+    const cols = [1, 5, 9]; // left, center, right (grid-aligned)
+    const yOffsets = [-20, -140, 120];
+    const imageRows = Math.ceil(allImages.length / 3);
+    const rowGap = imageRows <= 1 ? 420 : imageRows === 2 ? 520 : 600;
+    return { startY, cols, yOffsets, rowGap };
+  }, [allImages.length]);
+
+  const getRowAnchorY = (row) => {
+    const imageMid = layoutConfig.startY
+      + row * layoutConfig.rowGap
+      + layoutConfig.yOffsets[1] // center image offset
+      + 160; // approx half of 320px image height
+    return imageMid + 16; // subtle offset for readability
+  };
+
+  // 1. ZENTRALE TEXT-POSITIONEN (an Bildern ausgerichtet)
+  const cardPositions = useMemo(() => {
+    const leftCol = 2;
+    const rightCol = 8;
+    const zigzagOffset = (row, side) => {
+      const base = row % 2 === 0 ? -20 : 20;
+      const sideNudge = side === 'left' ? -8 : 8;
+      return base + sideNudge;
+    };
+    return {
+      projectInfo: { x: colX(leftCol), y: getRowAnchorY(0) + zigzagOffset(0, 'left') },
+      challenge:   { x: colX(rightCol), y: getRowAnchorY(0) + zigzagOffset(0, 'right') },
+      impact:      { x: colX(leftCol), y: getRowAnchorY(1) + zigzagOffset(1, 'left') },
+      outcome:     { x: colX(rightCol), y: getRowAnchorY(1) + zigzagOffset(1, 'right') },
+      learning:    { x: colX(leftCol), y: getRowAnchorY(2) + zigzagOffset(2, 'left') },
+      offer:       { x: colX(rightCol), y: getRowAnchorY(2) + zigzagOffset(2, 'right') }
+    };
+  }, [grid, layoutConfig]);
+
+  const getCardMotion = (key, order) => ({
+    initial: { x: cardPositions[key].x, y: cardPositions[key].y + 40, opacity: 0 },
+    animate: { x: cardPositions[key].x, y: cardPositions[key].y, opacity: 1 },
+    transition: { duration: 0.7, delay: 0.1 * order, ease: "easeOut" }
+  });
+
+  const getCardMotionAt = (pos, order) => ({
+    initial: { x: pos.x, y: pos.y + 40, opacity: 0 },
+    animate: { x: pos.x, y: pos.y, opacity: 1 },
+    transition: { duration: 0.7, delay: 0.1 * order, ease: "easeOut" }
+  });
 
   // 2. BILDER-POSITIONEN
   const initialPositions = useMemo(() => {
     const imageCount = allImages.length;
-    
-    if (caseItem.id === 2) return [{ x: 300, y: 200 }, { x: 1000, y: 300 }, { x: 400, y: 800 }, { x: 1200, y: 900 }].slice(0, imageCount);
-    
     const positions = [];
-    const columns = 2; 
-    const columnWidth = 450;
-    const rowHeight = 750;
-    const startX = 250;
-    const startY = 450;
+    const { cols, yOffsets, startY, rowGap } = layoutConfig;
 
     for (let i = 0; i < imageCount; i++) {
-      const col = i % columns;
-      const row = Math.floor(i / columns);
-      const horizontalShift = (row % 3 === 0) ? 0 : 150;
-
+      const row = Math.floor(i / 3);
+      const slot = i % 3;
+      const overlapY = slot === 1 ? -40 : slot === 2 ? -10 : 0;
+      const overlapX = 0;
+      const rawX = colX(cols[slot]) + overlapX;
+      const rawY = startY + row * rowGap + yOffsets[slot] + overlapY;
+      const maxX = grid.containerLeft + grid.containerWidth - MAX_IMAGE_WIDTH;
+      const clampedX = Math.max(grid.containerLeft, Math.min(rawX, maxX));
+      const clampedY = Math.max(60, rawY);
       positions.push({
-        x: startX + (col * columnWidth) + horizontalShift + ((i * 15) % 40),
-        y: startY + (row * rowHeight) + ((i * 20) % 50)
+        x: clampedX,
+        y: clampedY
       });
     }
     return positions;
-  }, [allImages, caseItem.id]);
+  }, [allImages, colX, layoutConfig, grid]);
+
+  const outcomePosition = useMemo(() => {
+    if (!caseItem.outcome || initialPositions.length === 0) {
+      return cardPositions.outcome;
+    }
+    const rightX = colX(7);
+    const leftX = colX(1);
+    let maxIndex = 0;
+    initialPositions.forEach((pos, idx) => {
+      if (pos.y > initialPositions[maxIndex].y) maxIndex = idx;
+    });
+    const last = initialPositions[maxIndex];
+    const outcomeX = last.x >= colX(6) ? leftX : rightX;
+    return { x: outcomeX, y: last.y };
+  }, [caseItem.outcome, initialPositions, cardPositions.outcome, colX]);
 
   const minContentHeight = useMemo(() => {
-    if (initialPositions.length === 0) return 1500;
-    const lastY = Math.max(...initialPositions.map(p => p.y));
-    return lastY + 1200;
-  }, [initialPositions]);
+    const imageLastY = initialPositions.length === 0
+      ? 0
+      : Math.max(...initialPositions.map(p => p.y));
+    const cardLastY = Math.max(
+      cardPositions.projectInfo.y,
+      cardPositions.challenge.y,
+      cardPositions.impact.y,
+      outcomePosition?.y ?? cardPositions.outcome.y,
+      cardPositions.learning.y,
+      cardPositions.offer.y
+    );
+    return Math.max(imageLastY + 900, cardLastY + 800, viewportSize.height + 400);
+  }, [initialPositions, cardPositions, outcomePosition, viewportSize.height]);
 
   useEffect(() => {
     const formats = {};
@@ -112,7 +191,7 @@ const DesktopCaseView = ({ caseItem }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F3F0]">
+    <div className="min-h-screen bg-[#F5F3F0] overflow-x-hidden">
       <GrainOverlay />
       <Navbar />
       
@@ -145,7 +224,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 initial={{ x: initialPositions[index]?.x || 400, y: initialPositions[index]?.y || 200 }}
                 onClick={() => toggleScale(mediaId)}
                 className="absolute z-10 group cursor-grab active:cursor-grabbing"
-                style={{ width: format === 'portrait' ? '300px' : '480px' }} 
+                style={{ width: format === 'portrait' ? `${IMAGE_WIDTHS.portrait}px` : `${IMAGE_WIDTHS.landscape}px` }} 
                 animate={{ scale: isScaled ? 1.8 : 1, zIndex: isScaled ? 100 : 10 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
@@ -173,9 +252,9 @@ const DesktopCaseView = ({ caseItem }) => {
           })}
 
           <motion.div 
-            drag dragMomentum={false} 
-            initial={{ x: cardPositions.projectInfo.x, y: cardPositions.projectInfo.y }} 
-            className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+            drag dragMomentum={false}
+            {...getCardMotion('projectInfo', 0)}
+            className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
             style={{
               background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
             }}
@@ -186,9 +265,9 @@ const DesktopCaseView = ({ caseItem }) => {
 
           {caseItem.challenge && (
             <motion.div 
-              drag dragMomentum={false} 
-              initial={{ x: cardPositions.challenge.x, y: cardPositions.challenge.y }} 
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+              drag dragMomentum={false}
+              {...getCardMotion('challenge', 1)}
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
@@ -200,9 +279,9 @@ const DesktopCaseView = ({ caseItem }) => {
 
           {caseItem.impact && (
             <motion.div 
-              drag dragMomentum={false} 
-              initial={{ x: cardPositions.impact.x, y: cardPositions.impact.y }} 
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+              drag dragMomentum={false}
+              {...getCardMotion('impact', 2)}
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
@@ -214,9 +293,9 @@ const DesktopCaseView = ({ caseItem }) => {
 
           {caseItem.outcome && (
             <motion.div 
-              drag dragMomentum={false} 
-              initial={{ x: cardPositions.outcome.x, y: cardPositions.outcome.y }} 
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+              drag dragMomentum={false}
+              {...getCardMotionAt(outcomePosition, 3)}
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
@@ -228,9 +307,9 @@ const DesktopCaseView = ({ caseItem }) => {
 
           {caseItem.learning && (
             <motion.div 
-              drag dragMomentum={false} 
-              initial={{ x: cardPositions.learning.x, y: cardPositions.learning.y }} 
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+              drag dragMomentum={false}
+              {...getCardMotion('learning', 4)}
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
@@ -242,9 +321,9 @@ const DesktopCaseView = ({ caseItem }) => {
 
           {caseItem.offer && (
             <motion.div 
-              drag dragMomentum={false} 
-              initial={{ x: cardPositions.offer.x, y: cardPositions.offer.y }} 
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[380px] z-20"
+              drag dragMomentum={false}
+              {...getCardMotion('offer', 5)}
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
@@ -257,7 +336,12 @@ const DesktopCaseView = ({ caseItem }) => {
           <div className="fixed bottom-12 left-12 z-0 pointer-events-none text-[#363C53]">
             <h3 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-6 text-grain">{caseItem.team?.title || 'TEAM'}</h3>
             <div className="space-y-2 text-lg font-neue-book-semi text-grain">
-              {caseItem.team?.members?.map((m, i) => <p key={i}>{m}</p>) || <p>Collaborative Project</p>}
+              {caseItem.team?.collaboration ? (
+                <p>{caseItem.team.collaboration}</p>
+              ) : (
+                caseItem.team?.members?.map((m, i) => <p key={i}>{m}</p>)
+              )}
+              {!caseItem.team?.collaboration && !caseItem.team?.members && <p>Collaborative Project</p>}
             </div>
           </div>
         </div>
