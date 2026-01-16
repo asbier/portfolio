@@ -30,8 +30,7 @@ const SlideItem = ({
 
   return (
     <motion.div
-      onClick={!isMobile ? handleNavigation : undefined}
-      onDoubleClick={isMobile ? handleNavigation : undefined}
+      onClick={handleNavigation}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "0px" }}

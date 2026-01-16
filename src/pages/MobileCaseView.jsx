@@ -83,6 +83,7 @@ const FadeUp = ({ children, className = '' }) => {
 
 const MobileCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
+  const [showBackToTop, setShowBackToTop] = useState(false);
   
   // Video component with Intersection Observer for autoplay on viewport entry
   const VideoPlayer = ({ source, poster, className = "" }) => {
@@ -187,6 +188,19 @@ const MobileCaseView = ({ caseItem }) => {
   const heroImage = caseItem.mobileImage || caseItem.image;
   const heroIsGradient = heroImage?.startsWith('linear-gradient');
 
+  // Show back to top button when scrolled down
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-[#F5F3F0] text-[#363C53] font-neue" style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}>
       <GrainOverlay />
@@ -210,24 +224,24 @@ const MobileCaseView = ({ caseItem }) => {
               decoding="async"
             />
           )}
+          
+          {/* Navigation - Overlay on Hero Image */}
+          <div className="absolute bottom-4 left-4 z-30">
+            <button 
+              onClick={() => navigate('/')}
+              className="text-xs font-black font-neue uppercase touch-manipulation text-white"
+              style={{
+                lineHeight: '1',
+                minHeight: '44px',
+                minWidth: '44px'
+              }}
+            >
+              ← See all cases
+            </button>
+          </div>
         </div>
 
         <div className="h-[3px] w-full bg-[#F0F5F5] -mt-[3px] relative z-30"></div>
-
-        {/* Navigation - Above first card */}
-        <div className="px-5 pt-8 pb-4 relative z-30">
-          <button 
-            onClick={() => navigate('/')}
-            className="text-xs font-black font-neue uppercase touch-manipulation relative inline-block"
-            style={{
-              lineHeight: '1',
-              minHeight: '44px',
-              minWidth: '44px'
-            }}
-          >
-            ← See all cases
-          </button>
-        </div>
 
         {/* 2. INTRO CARD */}
         <div className="mb-[0.1875rem] relative z-30">
@@ -469,6 +483,17 @@ const MobileCaseView = ({ caseItem }) => {
 
         </div>
       </main>
+
+      {/* Back to Top Button - Mobile Only */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed right-4 bottom-[126px] z-50 lg:hidden bg-[#DFFF00] border border-black/10 text-[#979797] rounded-full w-10 h-10 flex items-center justify-center font-neue-semibold text-2xl touch-manipulation shadow-lg hover:bg-[#FFB115] transition-colors"
+          aria-label="Back to top"
+        >
+          ↑
+        </button>
+      )}
     </div>
   );
 };
