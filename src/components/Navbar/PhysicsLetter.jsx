@@ -1,5 +1,5 @@
 import { motion, useSpring, useMotionValue, animate } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 
 const letterColor = '#E7ECEC';
 
@@ -12,12 +12,23 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
   const letterRef = useRef(null);
   const vel = useRef({ x: 0, y: 0 });
   const mousePos = useRef({ x: -1000, y: -1000 });
+  
+  // Random scale for letters - bigger range on mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+  const letterScale = useMemo(() => {
+    const baseMin = isMobile ? 0.9 : 0.85;
+    const baseMax = isMobile ? 2.1 : 1.55;
+    // Narrower range for long words
+    const min = totalLetters >= 9 ? (isMobile ? 0.95 : 0.85) : baseMin;
+    const max = totalLetters >= 9 ? (isMobile ? 1.9 : 1.55) : baseMax;
+    return Math.random() * (max - min) + min;
+  }, [index, totalLetters, isMobile]);
 
   // EXTREME TRÄGHEIT: Masse 20 verhindert nervöses Zittern
-  const springConfig = { stiffness: 50, damping: 100, mass: 25 };
+  const springConfig = { stiffness: 50, damping: 120, mass: 25 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
-  const springRotate = useSpring(rotate, { stiffness: 50, damping: 40 });
+  const springRotate = useSpring(rotate, { stiffness: 50, damping: 50 });
 
   useEffect(() => {
     const handleMove = (e) => {
@@ -63,11 +74,11 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
 
       if (dist < radius) {
         const force = (radius - dist) / radius;
-        vel.current.x -= (dx / dist) * force * 0.8;
-        vel.current.y -= (dy / dist) * force * 0.8;
-        rotate.set(vel.current.x * 4);
+        vel.current.x -= (dx / dist) * force * 0.6;
+        vel.current.y -= (dy / dist) * force * 0.6;
+        rotate.set(vel.current.x * 3);
       } else {
-        rotate.set(rotate.get() * 0.9);
+        rotate.set(rotate.get() * 0.85);
       }
 
       // GRENZEN (WÄNDE)
@@ -82,16 +93,16 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
       // BODEN (KEIN BOUNCE)
       if (rect.bottom > container.bottom) {
         vel.current.y = 0; // Stoppt sofort
-        vel.current.x *= 0.5; // Reibung bremst Rutschen
+        vel.current.x *= 0.3; // Mehr Reibung bremst Rutschen
         curY -= (rect.bottom - container.bottom);
       }
 
-      // REIBUNG (Macht die Bewegung "ölig")
-      vel.current.x *= 0.65;
-      vel.current.y *= 0.65;
+      // REIBUNG (Macht die Bewegung "ölig" - erhöht für weniger Bouncen)
+      vel.current.x *= 0.5;
+      vel.current.y *= 0.5;
 
-      // SPEED LIMIT (Verhindert das Verschwinden)
-      const maxSpeed = 8;
+      // SPEED LIMIT (Verhindert das Verschwinden - reduziert für weniger Bouncen)
+      const maxSpeed = 6;
       vel.current.x = Math.max(Math.min(vel.current.x, maxSpeed), -maxSpeed);
       vel.current.y = Math.max(Math.min(vel.current.y, maxSpeed), -maxSpeed);
 
@@ -113,8 +124,9 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
         color: letterColor,
         display: 'inline-block',
         filter: 'blur(1.5px)',
+        transform: `scale(${letterScale})`,
       }}
-      className="font-neue-semibold select-none pointer-events-none text-[30vw] lg:text-[20vw] leading-none will-change-transform"
+      className="font-neue-semibold select-none pointer-events-none text-[45vw] lg:text-[20vw] leading-none will-change-transform"
     >
       {char}
     </motion.span>
