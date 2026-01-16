@@ -1,14 +1,13 @@
 import { motion, useSpring, useMotionValue, animate } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
-const letterColors = ['#C8D4C9', '#CDDEDC', '#C3D0C4'];
+const letterColor = '#E7ECEC';
 
 const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(-500); 
   const rotate = useMotionValue(0);
-  const opacity = useMotionValue(0);
-  
+  const opacity = useMotionValue(1);
   const letterRef = useRef(null);
   const vel = useRef({ x: 0, y: 0 }); 
   const mousePos = useRef({ x: -1000, y: -1000 });
@@ -27,9 +26,8 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
     };
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('touchmove', handleMove, { passive: true });
-    
+
     const timeout = setTimeout(() => {
-      animate(opacity, 0.45, { duration: 1 });
       animate(y, 0, { duration: 2.5, ease: "easeOut" });
     }, delay * 1000);
 
@@ -110,8 +108,9 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0 }) => {
       style={{ 
         x: springX, y: springY, rotate: springRotate, opacity, 
         left: defaultX, top: defaultY, position: 'absolute',
-        color: letterColors[Math.floor(Math.random() * letterColors.length)],
-        display: 'inline-block'
+        color: letterColor,
+        display: 'inline-block',
+        filter: 'blur(1.5px)'
       }}
       className="font-neue-semibold select-none pointer-events-none text-[30vw] lg:text-[20vw] leading-none will-change-transform"
     >
