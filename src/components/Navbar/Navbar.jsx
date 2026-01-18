@@ -48,7 +48,7 @@ const Navbar = () => {
     <>
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center backdrop-blur-md bg-[#F5F5F5]/60" onClick={() => setIsMenuOpen(false)}>
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center backdrop-blur-md bg-[#F5F5F5]/90" onClick={() => setIsMenuOpen(false)}>
           <div className="flex flex-col items-center space-y-10">
             {hiddenPages.map(page => (
               <button
@@ -60,7 +60,8 @@ const Navbar = () => {
                   else if (page === 'Privacy') navigate('/privacy');
                   else if (page === 'Contact') window.location.href = 'mailto:mail@annemaris.de';
                 }}
-                className="text-5xl font-neue-semibold uppercase text-black/30 touch-manipulation min-h-[44px]"
+                className="text-5xl font-neue-semibold uppercase touch-manipulation min-h-[44px]"
+                style={{ color: '#D0D0D0', filter: 'blur(1.5px)' }}
               >
                 {page}
               </button>

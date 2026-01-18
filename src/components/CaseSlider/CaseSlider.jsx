@@ -87,7 +87,7 @@ const SlideItem = ({
           <div className="absolute inset-0 z-40 backdrop-blur-md" style={{ bottom: '150px' }}></div>
           <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none">
             <div className="text-center px-6 space-y-2">
-              <span className="text-sm sm:text-base lg:text-lg font-semibold font-neue-semibold uppercase text-[#DFFF00] tracking-[0.25em]">
+              <span className="text-sm sm:text-base lg:text-lg font-semibold font-neue-semibold uppercase text-[#DFFF00]" style={{ letterSpacing: '0.1em' }}>
                 COMING SOON
               </span>
               {isMobile && (

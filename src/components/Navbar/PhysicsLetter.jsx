@@ -13,16 +13,16 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
   const vel = useRef({ x: 0, y: 0 });
   const mousePos = useRef({ x: -1000, y: -1000 });
   
-  // Random scale for letters - bigger range on mobile
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+  // Random scale for letters - variable sizes for visual interest
   const letterScale = useMemo(() => {
-    const baseMin = isMobile ? 0.9 : 0.85;
-    const baseMax = isMobile ? 2.1 : 1.55;
-    // Narrower range for long words
-    const min = totalLetters >= 9 ? (isMobile ? 0.95 : 0.85) : baseMin;
-    const max = totalLetters >= 9 ? (isMobile ? 1.9 : 1.55) : baseMax;
+    // Base range for all devices
+    const baseMin = 0.85;
+    const baseMax = 1.55;
+    // Narrower range for long words (better readability)
+    const min = totalLetters >= 9 ? 0.85 : baseMin;
+    const max = totalLetters >= 9 ? 1.55 : baseMax;
     return Math.random() * (max - min) + min;
-  }, [index, totalLetters, isMobile]);
+  }, [index, totalLetters]);
 
   // EXTREME TRÄGHEIT: Masse 20 verhindert nervöses Zittern
   const springConfig = { stiffness: 50, damping: 120, mass: 25 };
