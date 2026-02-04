@@ -156,7 +156,7 @@ const Privacy = () => {
               const content = section.hasLink ? (
                 <>
                   {section.content}{' '}
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
+                  <a href="https://www.linkedin.com/in/annemarie-s-394a444b/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
                     {section.linkText}
                   </a>
                   .
