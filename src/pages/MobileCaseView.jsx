@@ -219,7 +219,7 @@ const MobileCaseView = ({ caseItem }) => {
             <img 
               src={heroImage} 
               alt={caseItem.title} 
-              className="w-full h-full object-cover block" 
+              className={`w-full h-full block ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`} 
               loading="eager" 
               decoding="async"
             />
@@ -247,10 +247,10 @@ const MobileCaseView = ({ caseItem }) => {
         <div className="mb-[0.1875rem] relative z-30">
           <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
             <TextFade direction="up">
-            <h1 className="text-[62px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">
+            <h1 className="text-[62px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">
               {caseItem.title}
             </h1>
-              <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
+              <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>
                 {caseItem.description}
               </p>
             </TextFade>
@@ -260,6 +260,13 @@ const MobileCaseView = ({ caseItem }) => {
         {/* 3. CONTENT SECTIONS - Improved Storytelling Flow */}
         <div className="space-y-[0.1875rem] snap-y snap-mandatory snap-proximity relative z-30" style={{ scrollBehavior: 'smooth', scrollPaddingTop: '20px' }}>
           
+          {/* Intro Image - Right after intro (e.g. moodboard) */}
+          {caseItem.introImage && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.introImage, "Moodboard", "")}
+            </FadeUp>
+          )}
+
           {/* Context Image - Visual hook after intro */}
           {caseItem.detailImage1 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
@@ -276,16 +283,16 @@ const MobileCaseView = ({ caseItem }) => {
             <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
-                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">CHALLENGE</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.challenge}</p>
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">CHALLENGE</h2>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.challenge}</p>
                 </TextFade>
               </div>
             </FadeUp>
           )}
 
           {/* Challenge Visual - Shows the problem */}
-          {/* Skip detailImage2 for VW (id: 3) - it comes after OUTCOME */}
-          {caseItem.detailImage2 && caseItem.id !== 3 && (
+          {/* Skip detailImage2 for VW (id: 3) - it comes after OUTCOME; skip for Jovana (id: 13) - it comes after IMPACT */}
+          {caseItem.detailImage2 && caseItem.id !== 3 && caseItem.id !== 13 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, 
@@ -300,8 +307,8 @@ const MobileCaseView = ({ caseItem }) => {
             <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
-                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">IMPACT</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.impact}</p>
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">IMPACT</h2>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.impact}</p>
                 </TextFade>
               </div>
             </FadeUp>
@@ -316,6 +323,13 @@ const MobileCaseView = ({ caseItem }) => {
                 "Impact Visual", 
                 ""
               )}
+            </FadeUp>
+          )}
+
+          {/* Jovana (id: 13) - Last image(s) after IMPACT */}
+          {caseItem.id === 13 && caseItem.detailImage2 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage2, "Final poster", "")}
             </FadeUp>
           )}
 
@@ -343,8 +357,8 @@ const MobileCaseView = ({ caseItem }) => {
             <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
-                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">OUTCOME</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.outcome}</p>
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">OUTCOME</h2>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.outcome}</p>
                 </TextFade>
               </div>
             </FadeUp>
@@ -407,8 +421,8 @@ const MobileCaseView = ({ caseItem }) => {
             <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
-                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-[62px]">LEARNING</h2>
-                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain italic">"{caseItem.learning}"</p>
+                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">LEARNING</h2>
+                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain italic text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>"{caseItem.learning}"</p>
                 </TextFade>
             </div>
             </FadeUp>
@@ -421,13 +435,13 @@ const MobileCaseView = ({ caseItem }) => {
                 {/* 1. The Heading/Team Title */}
                 {!caseItem.team ? (
                   <div className="mb-8">
-                    <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-6">
+                    <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-6">
                       DAYONE X HELLAGUTMANN
                     </h2>
                   </div>
                 ) : (
                   <div className="mb-8">
-                    <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-tight text-[#363C53] text-grain mb-6">
+                    <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-6">
                       {caseItem.team.title}
                     </h2>
                   </div>

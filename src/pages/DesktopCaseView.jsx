@@ -46,6 +46,7 @@ const DesktopCaseView = ({ caseItem }) => {
 
   const allImages = useMemo(() => {
     return [
+      caseItem.introImage,
       caseItem.image,
       caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3,
       caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6,
@@ -138,6 +139,11 @@ const DesktopCaseView = ({ caseItem }) => {
 
   const outcomePosition = useMemo(() => {
     if (!caseItem.outcome || initialPositions.length === 0) {
+      return cardPositions.outcome;
+    }
+    // Use default grid position when there's only one row of images (e.g. 3 images) so cards stay in zigzag grid like other cases
+    const imageRows = Math.ceil(initialPositions.length / 3);
+    if (imageRows <= 1) {
       return cardPositions.outcome;
     }
     const rightX = colX(7);
@@ -233,7 +239,7 @@ const DesktopCaseView = ({ caseItem }) => {
                     {isVideo ? (
                       <video src={url} autoPlay loop muted playsInline className="w-full h-full object-cover pointer-events-none" />
                     ) : (
-                      <img src={url} alt="" className="w-full h-full object-cover select-none pointer-events-none" />
+                      <img src={url} alt="" className={`w-full h-full select-none pointer-events-none ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`} />
                     )}
                     {/* Radial gradient overlay - smooth gradient from 70% center to 10% edges, disappears on hover */}
                     <div 
@@ -259,8 +265,8 @@ const DesktopCaseView = ({ caseItem }) => {
               background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
             }}
           >
-            <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">{caseItem.title}</h2>
-            <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.description}</p>
+            <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">{caseItem.title}</h2>
+            <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.description}</p>
           </motion.div>
 
           {caseItem.challenge && (
@@ -272,8 +278,8 @@ const DesktopCaseView = ({ caseItem }) => {
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
             >
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">CHALLENGE</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.challenge}</p>
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">CHALLENGE</h2>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.challenge}</p>
             </motion.div>
           )}
 
@@ -286,8 +292,8 @@ const DesktopCaseView = ({ caseItem }) => {
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
             >
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">IMPACT</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.impact}</p>
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">IMPACT</h2>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.impact}</p>
             </motion.div>
           )}
 
@@ -300,8 +306,8 @@ const DesktopCaseView = ({ caseItem }) => {
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
             >
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">OUTCOME</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.outcome}</p>
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">OUTCOME</h2>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.outcome}</p>
             </motion.div>
           )}
 
@@ -314,8 +320,8 @@ const DesktopCaseView = ({ caseItem }) => {
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
             >
-              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain">LEARNING</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed italic text-[#979797] text-grain">"{caseItem.learning}"</p>
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">LEARNING</h2>
+              <p className="text-lg font-neue-book-semi leading-relaxed italic text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>"{caseItem.learning}"</p>
             </motion.div>
           )}
 
@@ -328,7 +334,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
             >
-              <p className="text-lg font-neue-book-semi mb-6 text-[#979797] text-grain">{caseItem.offer}</p>
+              <p className="text-lg font-neue-book-semi mb-6 text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.offer}</p>
               <a href="mailto:mail@annemaris.de" className="text-lg font-neue-book-semi underline text-[#363C53] text-grain">Contact</a>
             </motion.div>
           )}
