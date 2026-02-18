@@ -16,6 +16,7 @@ export const cases = [
     detailImage1: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
     detailImage2: "linear-gradient(180deg, #363C53 0%, #1A1D25 100%)",
     detailImage3: "linear-gradient(180deg, #3A4057 0%, #363C53 100%)",
+    imageTitles: ['Hero', 'Overview', 'Detail', 'Detail'],
     team: { title: "PRIVATE", members: ["Annemarie S. (Design)", "James N. (Data Eng)"] }
   },
   {
@@ -36,7 +37,7 @@ export const cases = [
     detailImage1: "/images/01_hellagutmann/fahrzeug_auswählen_basis_default_1280-800.webp",
     detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.webp",
     detailImage3: "/images/01_hellagutmann/hellagutmann_dashboard_adas_guide_calibration.webp",
-    imageTitles: ['Wireframe Fahrzeug auswählen', 'Step by Step Guide Wireframe'],
+    imageTitles: ['Dashboard hero', 'Wireframe – vehicle selection', 'Step-by-step guide', 'Calibration guide'],
     team: { 
       title: "DAYONE X HELLAGUTMANN", 
       members: ["Consultancy and Guidance Christopher G. (Lead)", "UX & Strategy Annemarie S.", "UI Bean D.", "PM Silvana M."] 
@@ -60,8 +61,9 @@ export const cases = [
     detailImage1: "/images/03_vw-testdrive_07/wireframe_form_test-drive.webp",
     detailImage2: "/images/03_vw-testdrive_07/IDModelleProbefahren-copy.webp",
     detailImage3: "/images/03_vw-testdrive_07/SLiderImage_IDModelleProbefahren.webp",
-    team: { 
-      title: "VOLKSWAGEN x DAYONE", 
+    imageTitles: ['ID. test drive hero', 'Wireframe – booking form', 'ID. models – conversion', 'Test drive'],
+    team: {
+      title: "VOLKSWAGEN x DAYONE",
       members: ["VW PO Steffen H.", "PM Max M.", "UX/Product Design Annemarie S."] 
     }
   },
@@ -83,8 +85,9 @@ export const cases = [
     detailImage1: "/images/04_carhartt-wip-helpcenter_03/Carhartt_help_desk_live_garmentsecure.webp",
     detailImage2: "/images/04_carhartt-wip-helpcenter_03/Helpdesk-Userflow.webp",
     detailImage3: "/images/04_carhartt-wip-helpcenter_03/Helpdesk_Designflow.webp",
-    team: { 
-      title: "CARHARTT-WIP", 
+    imageTitles: ['Help center hero', 'Live help desk', 'User flow', 'Design flow'],
+    team: {
+      title: "CARHARTT-WIP",
       members: ["Digital Design Lead Lutz E.", "Product Designer Annemarie S."] 
     }
   },
@@ -112,6 +115,7 @@ export const cases = [
     detailVideo1Poster: "/images/05_carhartt-wip-new journey_04/video_implementation.webp",
     detailVideo2: "/images/05_carhartt-wip-new journey_04/Video_comp_final.mp4",
     detailVideo2Poster: "/images/05_carhartt-wip-new journey_04/video_implementation.webp",
+    imageTitles: ['Shopping journey hero', 'Before checkout', 'Cart & checkout', 'Filter & navigation', 'Collection slider', 'Video implementation', 'Phone demo', 'Final mobile view of video integration feature', 'Video comp final'],
     team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz E.", "Product Designer Annemarie S."] }
 },
   {
@@ -139,7 +143,7 @@ export const cases = [
     detailImage5: "/images/05_conic-rose-artdirection_05/draft_conicr.webp",
     detailImage6: "/images/05_conic-rose-artdirection_05/finalconicrosedesign.webp",
     imageFormats: ['landscape', 'portrait', 'portrait', 'landscape', 'landscape', 'landscape', 'landscape'],
-    imageTitles: ['', '', '', 'DRAFT VERSION', '', 'ANOTHER DRAFT', 'FINAL ART WORK'],
+    imageTitles: ['Cover', 'Watercolour process', 'Sunlight print', 'Draft version', 'Draft', 'Another draft', 'Final artwork'],
     team: { title: "CONIC ROSE", collaboration: "Art Direction by me, in collaboration with the band."} 
   },
   {
@@ -176,8 +180,9 @@ export const cases = [
     detailImage11: "/images/06_edited_digital-branding_06/lumagrothlaunch_webandapp.webp",
     detailImage12: "/images/06_edited_digital-branding_06/launchvideoconcepts.webp",
     detailImage13: "/images/06_edited_digital-branding_06/makingoflaunchevent.webp",
-    team: { 
-      title: "EDITED Design Team", 
+    imageTitles: ['Hero', 'Launch before / after', 'Store merchandise sketch', 'Lookbooks', 'Web campaign assets', 'Blade Runner branding', 'EDITED Paper', 'Store openings', 'Invite launch campaign', 'Store event concept', 'Sustainability packaging', 'Luma Grothe Launch', 'Launch video concepts', 'Making of launch event'],
+    team: {
+      title: "EDITED Design Team",
       members: [
         "Brand Director / Lead Franziska N.",
         "Freelance Creative Director Editorials & Brand Sonja K.",
@@ -217,7 +222,7 @@ export const cases = [
     detailImage5: "/images/08_aboutyou-rebrand_08/moodboxwardsbooth.webp",
     detailImage6: "/images/08_aboutyou-rebrand_08/personalizationcampaign_shoppingevent.webp",
     detailImage7: "/images/08_aboutyou-rebrand_08/redesign_stories_direction_final.webp",
-    
+    imageTitles: ['Rebrand hero', 'Design direction', 'Campaign moods', 'Brand material', 'Design detail', 'Awards booth', 'Personalization campaign', 'Stories & direction'],
     team: { 
       title: "TEAM", 
       members: ["Relaunch Lead: Franziska N.", "Lead Design & Creative Concept: Annemarie S."] 
@@ -240,6 +245,7 @@ export const cases = [
     introImage: "/images/13_jovana-berlinale-poster/jovana-moodboard.webp",
     detailImage1: "/images/13_jovana-berlinale-poster/jovan-entwurf-poster.webp",
     detailImage2: "/images/13_jovana-berlinale-poster/jovana-final-poster.webp",
+    imageTitles: ['Moodboard', 'Final poster', 'Draft poster', 'Final poster'],
     team: { title: "FILM BY JOVANA REISINGER", members: ["Director Jovana Reisinger", "Art Direction Annemarie S."] }
   },
    {
@@ -259,8 +265,9 @@ export const cases = [
     detailImage1: "/images/09_COMMA_09/editorialdesign.webp",
     detailImage2: "/images/09_COMMA_09/spring_editorial2015.webp",
     detailImage3: "/images/09_COMMA_09/commastylemagazineissue2.webp",
-    team: { 
-      title: "COMMA Design Team", 
+    imageTitles: ['Hero', 'Editorial design', 'Spring editorial 2015', 'Style magazine issue 2'],
+    team: {
+      title: "COMMA Design Team",
       members: [
         "Creative Direction & Management SuperReal",
         "Freelance Art Director Annemarie S."
@@ -285,6 +292,7 @@ export const cases = [
     detailImage2: "/images/10_BIORAMA_10/layout.webp",
     detailImage3: "/images/10_BIORAMA_10/biorama_e_design.webp",
     detailImage4: "/images/10_BIORAMA_10/biorama_inbetween_relaunch.webp",
+    imageTitles: ['Hero', 'Cover', 'Layout', 'E-design', 'Relaunch'],
     team: { title: "BIORAMA Produced by Monopol Media GmnH", members: ["Art Director Annemarie S.", "Art Director & Still Life Photography Thomas A."] }
   },
   {
@@ -307,13 +315,14 @@ export const cases = [
     detailImage4: "/images/012monki/survivorsguide_monki.webp",
     detailImage5: "/images/012monki/monkibackcover.webp",
     detailImage6: "/images/012monki/monki.webp",
-    team: { 
-      title: "PLASTIC MEDIA", 
+    imageTitles: ['Cover', 'Editorial layout', 'Nostalgia & tech layout', 'Layout guide', "Survivor's guide", 'Back cover', 'Monki world'],
+    team: {
+      title: "PLASTIC MEDIA",
       members: [
         "Creative Director Kira S.",
         "Lead Daniela B.",
         "Assistant Annemarie S."
-      ] 
+      ]
     }
   },
   {
@@ -342,6 +351,7 @@ export const cases = [
     detailImage9: "/images/011_plasticmedia/10years.gif",
     detailImage10: "/images/011_plasticmedia/10years2.gif",
     detailImage11: "/images/011_plasticmedia/absolutindiecap_merch.webp",
+    imageTitles: ['Cover', 'Cover detail', 'Editorial layout', 'Layout', 'Illustration & layout', 'Illustration', 'Layout time', 'Layout detail', 'Slider', '10 years', '10 years 2', 'Merch'],
     team: { title: "PLASTIC MEDIA", members: ["Creative Director Kira S.", "Lead Daniela B.", "Assistant Annemarie S."] }
   }
 ];
