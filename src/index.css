@@ -5,6 +5,29 @@ mark {
   padding: 0 0.125em;
 }
 
+/* User text selection uses brand yellow (desktop + mobile) */
+html ::selection,
+body ::selection,
+::selection {
+  background-color: #DFFF00 !important;
+  color: #363C53 !important;
+}
+html ::-moz-selection,
+body ::-moz-selection,
+::-moz-selection {
+  background-color: #DFFF00 !important;
+  color: #363C53 !important;
+}
+/* Force yellow selection on iOS Safari / mobile WebKit */
+@supports (-webkit-touch-callout: none) {
+  html ::selection,
+  body ::selection,
+  * ::selection {
+    background-color: #DFFF00 !important;
+    color: #363C53 !important;
+  }
+}
+
 /* Screen reader only class for accessibility */
 .sr-only {
   position: absolute;

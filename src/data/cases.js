@@ -202,30 +202,30 @@ export const cases = [
     role: "DESIGN LEAD & ART DIRECTION",
     hideTitleTag: true,
     tags: ["ART DIRECTION","REBRAND", "DIVERSITY & INCLUSION", "INFLUENCER STRATEGY"],
-    description: "Transforming Europe’s fastest-growing fashion platform from a traditional retailer into a community-driven, inclusive lifestyle brand.",
+    description: "In 2017 About You was a multi-brand e‑commerce platform going for the mainstream, with competitors in the picture. Personalisation was already happening; the brief was to make us competitive. The UK had already embraced influencer-led, identity-driven retail; Germany was still catching up. That was the context we worked in — and what I created is below.",
     
-    challenge: "Shift the brand identity from a conservative \u2018White Box\u2019 look to a modern, bold European leader by addressing a diverse, digital-native generation.",
+    challenge: "The main challenge was surviving on the market as a multi-brand platform for the mainstream — with competitors in the background. We sold other people’s brands, so controlling look and feel was difficult; we had to give those brands a platform they trusted and wanted to sell on. We also had to attract and retain customers and create a clear reason to come back. On top of that, the platform idea itself had to be translated into a coherent experience across product, marketing, and brand. The direction we took was to put people in the centre — give them control, make it about them. It’s ABOUT YOU: inspiration and identity, not just shopping. The UK had already moved that way; Germany hadn’t yet. EDITED had shown the model could work; we executed it.",
     
-    process: "Based on successful pilot methods at EDITED, I integrated \u2018Style Icon\u2019 Capsule Collections into the core UX. We replaced sterile product shoots with emotional \u2018Momentum Shoots\u2019. The strategy moved away from traditional models toward authentic brand ambassadors — starting with the first celebrity face, Lena Gercke, to represent the target group's aspirations.",
+    process: "First a new look and feel; then we made the brand personalisable — starting with the logo’s name usability, an idea I brought to the table. Rebrand concept and stories and direction followed. We created idol campaign and collaboration, social media redesign, and different model bookings, aligned with global everyday faces and a shift in Germany’s marketing landscape towards more diversity, more you. That same thinking opened the door to the About You Awards, a campaign created by the About You team; I helped represent EDITED and contributed ideas to make the Awards more interactive.",
     
-    impact: "By allowing icons to publish their own creativity within our community, we bridged the gap between social media and e-commerce. These concepts remain the foundation of their identity 10 years later, proving the power of representative branding and influencer integration.",
+    impact: "A few core ideas drove my impact. A personalisable logo (About Anna, About Maria, About Simon) put the person at the centre. Stories and editorial to the front made the platform feel like inspiration, not product grids. Idol campaigns and collaborations gave icons a stage and bridged social, e‑commerce, and the real world — at retail and events. I pushed for everyday, diverse faces so people could see themselves in the brand, and for future concepts around recycling and circular identity. The result: a brand as perception, open for everyone to interpret and shape. Ten years on, that mix is still the foundation of their identity.",
     
-    outcome: "A playful, emotional creative direction that turned a shopping app into a space for personal expression and idol-inspired storytelling.",
+    outcome: "That direction caused a playful, emotional creative journey — one platform idea turned into stories, idols, collaborations, and a personalized brand experience — and led to the idea of the About You Awards.",
     
     image: "/images/08_aboutyou-rebrand_08/SliderImage_AboutYou_Rebrand.webp",
-    
-    // Stelle sicher, dass diese Pfade in deinem Ordner existieren:
-    detailImage1: "/images/08_aboutyou-rebrand_08/design_ay.webp",
+    logoGif: "/images/08_aboutyou-rebrand_08/AboutYOU_Perso-Campaing.gif",
+    detailImage1: "/images/08_aboutyou-rebrand_08/AboutYOU_Perso-Campaing.gif",
     detailImage2: "/images/08_aboutyou-rebrand_08/direction_campaign_moods_aboutyou.webp",
-    detailImage3: "/images/08_aboutyou-rebrand_08/leger_Brand_material.webp",
-    detailImage4: "/images/08_aboutyou-rebrand_08/leger_design.webp",
-    detailImage5: "/images/08_aboutyou-rebrand_08/moodboxwardsbooth.webp",
-    detailImage6: "/images/08_aboutyou-rebrand_08/personalizationcampaign_shoppingevent.webp",
-    detailImage7: "/images/08_aboutyou-rebrand_08/redesign_stories_direction_final.webp",
-    imageTitles: ['Rebrand hero', 'Design direction', 'Campaign moods', 'Brand material', 'Design detail', 'Awards booth', 'Personalization campaign', 'Stories & direction'],
+    detailImage3: "/images/08_aboutyou-rebrand_08/redesign_stories_direction_final.webp",
+    detailImage4: "/images/08_aboutyou-rebrand_08/personalizationcampaign_shoppingevent.webp",
+    detailImage5: "/images/08_aboutyou-rebrand_08/leger_Brand_material.webp",
+    detailImage6: "/images/08_aboutyou-rebrand_08/leger_design.webp",
+    detailImage7: "/images/08_aboutyou-rebrand_08/moodboxwardsbooth.webp",
+    detailImage8: "/images/08_aboutyou-rebrand_08/design_ay.webp",
+    imageTitles: ['Rebrand hero', 'Logo name usability', 'Rebrand Concept', 'Stories & direction', 'Personalization campaign', 'Idol Concept & Collaboration Branding', 'ABOUT YOU X LeGer Collection Launch', 'Awards booth Concept for Edited the Label', 'AY-AWARDS'],
     team: { 
       title: "TEAM", 
-      members: ["Relaunch Lead: Franziska N.", "Lead Design & Creative Concept: Annemarie S."] 
+      members: ["Relaunch Lead: Franziska N.", "Art Direction: Annemarie S.", "Execution: About You team"] 
     }
   },
    {

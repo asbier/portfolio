@@ -84,7 +84,24 @@ const FadeUp = ({ children, className = '' }) => {
 const MobileCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
   const [showBackToTop, setShowBackToTop] = useState(false);
-  
+
+  // Same order as desktop allImages — for looking up imageTitles by URL
+  const imageList = React.useMemo(() => [
+    caseItem.introImage,
+    caseItem.image,
+    caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3,
+    caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6,
+    caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9,
+    caseItem.detailImage10, caseItem.detailImage11,
+    caseItem.detailVideo1, caseItem.detailVideo2
+  ].filter(Boolean), [caseItem]);
+
+  const getTitleForUrl = (url) => {
+    if (!url || !caseItem.imageTitles) return null;
+    const idx = imageList.indexOf(url);
+    return idx >= 0 ? caseItem.imageTitles[idx] : null;
+  };
+
   // Video component with Intersection Observer for autoplay on viewport entry
   const VideoPlayer = ({ source, poster, className = "" }) => {
     const videoRef = useRef(null);
@@ -151,35 +168,41 @@ const MobileCaseView = ({ caseItem }) => {
     );
   };
   
-  // Hilfsfunktion: Entscheidet ob Bild, Video oder Verlauf gerendert wird
-  const renderMedia = (source, alt, className = "", poster = null) => {
+  // Hilfsfunktion: Entscheidet ob Bild, Video oder Verlauf gerendert wird; Titel wie auf Desktop auf dem Bild
+  const renderMedia = (source, alt, className = "", poster = null, caption = null) => {
     if (!source) return null;
-    
+    const title = caption ?? getTitleForUrl(source);
     const isGradient = source.startsWith('linear-gradient');
     const isVideo = source.endsWith('.mp4') || source.endsWith('.webm') || source.endsWith('.mov');
 
     return (
-      <div 
-        className={`w-full overflow-hidden ${className}`}
-        style={{ 
-          background: isGradient ? source : 'transparent',
-          aspectRatio: isGradient ? '16/9' : 'auto' // Platzhalter-Ratio für Verläufe
-        }}
-      >
-        {isVideo ? (
-          <VideoPlayer source={source} poster={poster} />
-        ) : !isGradient && (
-          <img 
-            src={encodeURI(source)} 
-            alt={alt} 
-            className="w-full h-auto block" 
-            loading="lazy" 
-            decoding="async"
-            onError={(e) => {
-              // Hide image if it fails to load (empty/corrupted)
-              e.target.style.display = 'none';
-            }}
-          />
+      <div className="w-full relative">
+        <div 
+          className={`w-full overflow-hidden ${className}`}
+          style={{ 
+            background: isGradient ? source : 'transparent',
+            aspectRatio: isGradient ? '16/9' : 'auto'
+          }}
+        >
+          {isVideo ? (
+            <VideoPlayer source={source} poster={poster} />
+          ) : !isGradient && (
+            <img 
+              src={encodeURI(source)} 
+              alt={alt} 
+              className="w-full h-auto block" 
+              loading="lazy" 
+              decoding="async"
+              onError={(e) => {
+                e.target.style.display = 'none';
+              }}
+            />
+          )}
+        </div>
+        {title && (
+          <div className="absolute bottom-0 left-0 pl-4 pb-4 z-10 pointer-events-none">
+            <p className="text-base font-neue-semibold uppercase text-[#363C53]">{title}</p>
+          </div>
         )}
       </div>
     );
@@ -202,7 +225,7 @@ const MobileCaseView = ({ caseItem }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F3F0] text-[#363C53] font-neue" style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}>
+    <div className="min-h-screen bg-[#F5F3F0] text-[#363C53] font-neue select-text selection:bg-[#DFFF00] selection:text-[#363C53]" style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}>
       <GrainOverlay />
       <Navbar />
       
@@ -214,17 +237,19 @@ const MobileCaseView = ({ caseItem }) => {
             height: typeof window !== 'undefined' ? `${window.innerHeight * 0.6}px` : '400px',
             background: heroIsGradient ? heroImage : 'transparent',
           }}
-        > 
+        >
           {!heroIsGradient && (
-            <img 
-              src={heroImage} 
-              alt={caseItem.title} 
-              className={`w-full h-full block ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`} 
-              loading="eager" 
-              decoding="async"
-            />
+            <>
+              <img 
+                src={heroImage} 
+                alt={caseItem.title} 
+                className={`w-full h-full block ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`} 
+                loading="eager" 
+                decoding="async"
+              />
+            </>
           )}
-          
+
           {/* Navigation - Overlay on Hero Image */}
           <div className="absolute bottom-4 left-4 z-30">
             <button 
@@ -432,20 +457,12 @@ const MobileCaseView = ({ caseItem }) => {
           <FadeUp className="space-y-[0.1875rem] snap-start">
             <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
               <TextFade direction="up">
-                {/* 1. The Heading/Team Title */}
-                {!caseItem.team ? (
-                  <div className="mb-8">
-                    <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-6">
-                      DAYONE X HELLAGUTMANN
-                    </h2>
-                  </div>
-                ) : (
-                  <div className="mb-8">
-                    <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-6">
-                      {caseItem.team.title}
-                    </h2>
-                  </div>
-                )}
+                {/* 1. The Heading/Team Title - same as desktop: team?.title || 'TEAM' */}
+                <div className="mb-8">
+                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-6">
+                    {caseItem.team?.title || 'TEAM'}
+                  </h2>
+                </div>
 
                 {/* 2. YEAR & ROLE (Now underneath the title) */}
                 <div className="flex gap-12 mb-8">
@@ -456,32 +473,17 @@ const MobileCaseView = ({ caseItem }) => {
                         <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.year}</p>
                       </div>
                     )}
-                    {/* TEAM in left column under YEAR */}
-                    {caseItem.team ? (
-                      <div>
-                        {caseItem.team.collaboration ? (
-                          <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.team.collaboration}</p>
-                        ) : (
-                          <div>
-                            <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#979797] text-grain mb-2">TEAM</h2>
-                            <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
-                              {caseItem.team.members?.map((member, index) => (
-                                <p key={index}>{member}</p>
-                              ))}
-                            </div>
-                          </div>
-                        )}
+                    {/* TEAM in left column under YEAR - same logic as desktop */}
+                    {caseItem.team?.collaboration ? (
+                      <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.team.collaboration}</p>
+                    ) : caseItem.team?.members ? (
+                      <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
+                        {caseItem.team.members.map((member, index) => (
+                          <p key={index}>{member}</p>
+                        ))}
                       </div>
                     ) : (
-                      <div>
-                        <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#979797] text-grain mb-2">TEAM</h2>
-                        <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
-                          <p>Consultancy and Guidance Christopher G. (Lead)</p>
-                          <p>UX & Strategy Annemarie S.</p>
-                          <p>UI Bean D.</p>
-                          <p>PM Silvana M.</p>
-                        </div>
-                      </div>
+                      <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">Collaborative Project</p>
                     )}
                   </div>
                   {caseItem.role && (

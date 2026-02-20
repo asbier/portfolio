@@ -197,7 +197,7 @@ const DesktopCaseView = ({ caseItem }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F3F0] overflow-x-hidden">
+    <div className="min-h-screen bg-[#F5F3F0] overflow-x-hidden select-text selection:bg-[#DFFF00] selection:text-[#363C53]">
       <GrainOverlay />
       <Navbar />
       
@@ -249,9 +249,11 @@ const DesktopCaseView = ({ caseItem }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute bottom-0 left-0 pl-4 pb-4 z-20 pointer-events-none">
-                    <p className="text-[11px] font-neue-semibold uppercase text-white/70">{getImageTitle(url, index)}</p>
-                  </div>
+                  {url !== caseItem.image && (
+                    <div className="absolute bottom-0 left-0 pl-4 pb-4 z-20 pointer-events-none">
+                      <p className="text-base font-neue-semibold uppercase text-[#363C53]">{getImageTitle(url, index)}</p>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );
