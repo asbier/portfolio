@@ -210,7 +210,7 @@ export const cases = [
     
     impact: "A few core ideas drove my impact. A personalisable logo (About Anna, About Maria, About Simon) put the person at the centre. Stories and editorial to the front made the platform feel like inspiration, not product grids. Idol campaigns and collaborations gave icons a stage and bridged social, e‑commerce, and the real world — at retail and events. I pushed for everyday, diverse faces so people could see themselves in the brand, and for future concepts around recycling and circular identity. The result: a brand as perception, open for everyone to interpret and shape. Ten years on, that mix is still the foundation of their identity.",
     
-    outcome: "That direction caused a playful, emotional creative journey — one platform idea turned into stories, idols, collaborations, and a personalized brand experience — and led to the idea of the About You Awards.",
+    outcome: "That direction caused a playful, emotional creative journey — one platform idea turned into stories, idols, collaborations, and a personalised brand experience — and led to the idea of the About You Awards.",
     
     image: "/images/08_aboutyou-rebrand_08/SliderImage_AboutYou_Rebrand.webp",
     logoGif: "/images/08_aboutyou-rebrand_08/AboutYOU_Perso-Campaing.gif",
@@ -258,8 +258,8 @@ export const cases = [
     tags: ["ART DIRECTION", "EDITORIAL DESIGN", "BRANDING"],
     description: "As Art Director, I transformed Comma's traditional catalog into dynamic style magazines, creating a modern brand experience that bridges print and digital while attracting younger audiences.",
     challenge: "Comma needed a fresh approach to attract a younger audience while maintaining its classic appeal. Their catalog, previously a simple brochure, required a redesign to elevate the brand's image and create a seamless e-commerce experience.",
-    impact: "I created a dynamic, zine-style lookbook called \u201CComma CI\u201D. During this process, we identified the need for two distinct target pieces: a classic design and a youthful \u201CStylemagazine\u201D. The latter embraced bold typography, collage elements, and modern aesthetics. This visual identity was seamlessly translated into a digital experience through parallax scrolling and interactive visuals.",
-    outcome: "The redesign successfully resonated with both younger and older audiences, creating a unified brand experience. The innovative web concept won an award for its unique collage style and immersive user experience.",
+    impact: "The redesign resonated with both younger and older audiences, creating a unified brand experience. The web concept won an award for its unique collage style and immersive user experience.",
+    outcome: "A dynamic, zine-style lookbook (\u201CComma CI\u201D) and two distinct target pieces: a classic design and a youthful \u201CStylemagazine\u201D with bold typography, collage elements, and modern aesthetics. The visual identity was translated into a digital experience via parallax scrolling and interactive visuals.",
     learning: "\u201CWhatever audience — do it circular, consistent and with great value.\u201D",
     image: "/images/09_COMMA_09/9.webp",
     detailImage1: "/images/09_COMMA_09/editorialdesign.webp",
@@ -283,9 +283,9 @@ export const cases = [
     role: "ART DIRECTOR",
     tags: ["ART DIRECTION", "EDITORIAL DESIGN"],
     description: "As Art Director at Monopol, I shaped BIORAMA's visual identity across 4 issues and a complete relaunch. Collaborating with photographer Thomas Albdorf on art direction, we developed a minimal yet pop aesthetic inspired by NEON and Brandeins — creating an informative, bio-focused publication tailored to a young, environmentally conscious audience.",
-    challenge: "Reducing and going towards more neutral from a more tech-looking magazine. Creating a cohesive visual identity for a sustainability-focused publication that appeals to a young, environmentally conscious audience.",
-    impact: "Managed to get my own touch into the design, reducing the tech aesthetic and moving towards a more neutral, minimal approach while maintaining editorial excellence.",
-    outcome: "4 issues and a relaunch with a complete visual redesign that balanced minimalism with pop culture references, moving from a tech-looking magazine to a more neutral, refined aesthetic.",
+    challenge: "The main challenge was that the magazine had to get picked up — and the content had to be interesting enough. My task was to make sure that content got read.",
+    impact: "Content got read and the magazine got picked up. Today the magazine is not only in Austria but also in Germany, in partner shops like Denns Biomarkt, so people can grab it there. The title felt current and coherent; the tech aesthetic shifted towards a more neutral, minimal one while keeping editorial excellence.",
+    outcome: "4 issues and a soft relaunch: a complete visual redesign that balanced minimalism with pop culture references, moving from a tech-looking magazine to a more neutral, refined aesthetic.",
     image: "/images/10_BIORAMA_10/biorama_mobile_hero.webp",
     mobileImage: "/images/10_BIORAMA_10/biorama_mobile_hero.webp",
     detailImage1: "/images/10_BIORAMA_10/biorama_cover.webp",
@@ -293,7 +293,7 @@ export const cases = [
     detailImage3: "/images/10_BIORAMA_10/biorama_e_design.webp",
     detailImage4: "/images/10_BIORAMA_10/biorama_inbetween_relaunch.webp",
     imageTitles: ['Hero', 'Cover', 'Layout', 'E-design', 'Relaunch'],
-    team: { title: "BIORAMA Produced by Monopol Media GmnH", members: ["Art Director Annemarie S.", "Art Director & Still Life Photography Thomas A."] }
+    team: { title: "BIORAMA by Monopol Media GmbH", members: ["Art Director Annemarie S.", "Art Director & Still Life Photography Thomas A."] }
   },
   {
     id: 11,
