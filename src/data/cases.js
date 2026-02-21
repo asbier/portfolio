@@ -182,7 +182,7 @@ export const cases = [
     detailImage13: "/images/06_edited_digital-branding_06/makingoflaunchevent.webp",
     imageTitles: ['Hero', 'Launch before / after', 'Store merchandise sketch', 'Lookbooks', 'Web campaign assets', 'Blade Runner branding', 'EDITED Paper', 'Store openings', 'Invite launch campaign', 'Store event concept', 'Sustainability packaging', 'Luma Grothe Launch', 'Launch video concepts', 'Making of launch event'],
     team: {
-      title: "EDITED Design Team",
+      title: "EDITED",
       members: [
         "Brand Director / Lead Franziska N.",
         "Freelance Creative Director Editorials & Brand Sonja K.",
