@@ -41,8 +41,8 @@ const SlideItem = ({
         delay: index * 0.05 
       }}
       style={{ x: parallaxX }}
-      className={`flex-shrink-0 w-screen h-full snap-start relative group
-                 lg:w-[calc((100vw-6px)/3)] ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
+      className={`flex-shrink-0 w-full min-h-full h-full snap-start relative group
+                 lg:min-h-0 lg:w-[calc((100vw-6px)/3)] ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
     >
       {/* Projekt-Hintergrund - Bild bleibt statisch, Container bewegt sich */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -90,11 +90,6 @@ const SlideItem = ({
               <span className="text-sm sm:text-base lg:text-lg font-semibold font-neue-semibold uppercase text-[#DFFF00]" style={{ letterSpacing: '0.1em' }}>
                 COMING SOON
               </span>
-              {isMobile && (
-                <p className="text-white/80 text-xs sm:text-sm font-neue-book-semi mt-1">
-                  Scroll to the left view other projects
-                </p>
-              )}
             </div>
           </div>
         </>
@@ -155,14 +150,15 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const sliderRef = useRef(null);
   
-  // Track scroll progress of the container
-  const { scrollXProgress } = useScroll({
+  // Track scroll progress of the container (vertical on mobile, horizontal on desktop)
+  const { scrollXProgress, scrollYProgress } = useScroll({
     container: sliderRef
   });
+  const scrollProgress = isMobile ? scrollYProgress : scrollXProgress;
 
   // Create a "heavy" spring for the scroll value
   // Magnet-Physik: Niedriger stiffness = weicherer Zug, höhere mass = mehr Gewicht
-  const smoothScroll = useSpring(scrollXProgress, {
+  const smoothScroll = useSpring(scrollProgress, {
     stiffness: 30,   // Niedriger = weicherer, magnetischer Zug
     damping: 25,     // Verhindert zu starkes Wackeln
     mass: 1.8,       // Gibt dem Slider "Gewicht"
@@ -207,17 +203,24 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
     };
   }, []);
 
-  // Track current slide based on scroll position (mobile only)
+  // Track current slide based on scroll position (mobile: vertical, desktop: horizontal)
   useEffect(() => {
-    if (!isMobile || !sliderRef.current) return;
+    if (!sliderRef.current) return;
 
     const updateCurrentSlide = () => {
       if (!sliderRef.current) return;
       const container = sliderRef.current;
-      const scrollLeft = container.scrollLeft;
-      const slideWidth = window.innerWidth;
-      const currentIndex = Math.round(scrollLeft / slideWidth);
-      setCurrentSlide(currentIndex + 1);
+      if (isMobile) {
+        const scrollTop = container.scrollTop;
+        const slideHeight = container.clientHeight;
+        const currentIndex = slideHeight > 0 ? Math.round(scrollTop / slideHeight) : 0;
+        setCurrentSlide(currentIndex + 1);
+      } else {
+        const scrollLeft = container.scrollLeft;
+        const slideWidth = window.innerWidth;
+        const currentIndex = Math.round(scrollLeft / slideWidth);
+        setCurrentSlide(currentIndex + 1);
+      }
     };
 
     updateCurrentSlide();
@@ -254,8 +257,9 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   return (
    <div 
       ref={sliderRef} 
-      className="fixed left-0 w-full overflow-x-auto scrollbar-hide 
-                snap-x snap-mandatory
+      className="fixed left-0 w-full scrollbar-hide 
+                overflow-y-auto overflow-x-hidden snap-y snap-mandatory
+                lg:overflow-x-auto lg:overflow-y-hidden lg:snap-x lg:snap-mandatory
                 top-0 bottom-[110px]
                 h-[calc(100vh-110px)]
                 lg:top-[120px] lg:bottom-auto lg:h-[calc(100vh-120px)]
@@ -265,15 +269,12 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
         height: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
         minHeight: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
         maxHeight: viewportHeight > 0 ? `${viewportHeight - 110}px` : 'calc(100vh - 110px)',
-        // Kein Padding für präzise Gap-Berechnung
         padding: 0,
-        // Important for smooth mobile scrolling
         WebkitOverflowScrolling: 'touch',
       }}
     >
-      
-      {/* 3px Gap zwischen den Slides auf Desktop - präzise kalibriert */}
-      <div className="flex h-full gap-0 lg:gap-[3px] justify-start">
+      {/* Mobile: vertical stack (scroll top-to-bottom). Desktop: horizontal row with 3px gap */}
+      <div className="flex flex-col h-full gap-0 lg:flex-row lg:gap-[3px] lg:justify-start">
         {filteredCases.map((caseItem, index) => {
           // Prüfen, ob es ein Verlauf ist
           const isGradient = caseItem.image?.startsWith('linear-gradient');
