@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { MARQUEE_ITEMS } from '@/content/marquee';
+import { LINKEDIN_PROFILE_URL } from '@/content/links';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -14,7 +15,6 @@ const Navbar = () => {
   const renderMarqueeText = () => {
     const sentences = marqueeText.split(' ✦ ').filter(s => s.trim());
     return sentences.map((sentence, index) => {
-      const isEven = index % 2 === 1; 
       const color = 'text-[#535762]';
       return (
         <React.Fragment key={index}>
@@ -52,21 +52,37 @@ const Navbar = () => {
         <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center backdrop-blur-md bg-[#F5F5F5]/90" onClick={() => setIsMenuOpen(false)}>
           <div className="flex flex-col items-center space-y-10">
             {hiddenPages.map(page => (
-              <button
-                key={page}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsMenuOpen(false);
-                  if (page === 'Home') navigate('/');
-                  else if (page === 'Archive') navigate('/history');
-                  else if (page === 'Privacy') navigate('/privacy');
-                  else if (page === 'Contact') window.location.href = 'mailto:mail@annemaris.de';
-                }}
-                className="text-5xl font-neue-semibold uppercase touch-manipulation min-h-[44px]"
-                style={{ color: '#D0D0D0', filter: 'blur(1.5px)' }}
-              >
-                {page}
-              </button>
+              page === 'Contact' ? (
+                <a
+                  key={page}
+                  href={LINKEDIN_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsMenuOpen(false);
+                  }}
+                  className="text-5xl font-neue-semibold uppercase touch-manipulation min-h-[44px]"
+                  style={{ color: '#D0D0D0', filter: 'blur(1.5px)' }}
+                >
+                  {page}
+                </a>
+              ) : (
+                <button
+                  key={page}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsMenuOpen(false);
+                    if (page === 'Home') navigate('/');
+                    else if (page === 'Archive') navigate('/history');
+                    else if (page === 'Privacy') navigate('/privacy');
+                  }}
+                  className="text-5xl font-neue-semibold uppercase touch-manipulation min-h-[44px]"
+                  style={{ color: '#D0D0D0', filter: 'blur(1.5px)' }}
+                >
+                  {page}
+                </button>
+              )
             ))}
             <button onClick={(e) => { e.stopPropagation(); setIsMenuOpen(false); }} className="w-[1.5rem] h-[1.5rem] rounded-full bg-[#DFFF00] flex items-center justify-center mt-8 min-h-[44px] min-w-[44px]" />
           </div>
@@ -106,7 +122,9 @@ const Navbar = () => {
               </button>
               
               <a 
-                href="mailto:mail@annemaris.de" 
+                href={LINKEDIN_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[1.2rem] lg:text-[2rem] font-neue-semibold uppercase px-4 lg:px-[1.5rem] py-2 lg:py-[0.5rem] rounded-full bg-[#FFB115] border border-black/10 text-[#D9D9D9] hover:bg-transparent hover:border-[#FFB115] hover:text-[#FFB115] transition-colors leading-none flex items-center justify-center whitespace-nowrap"
               >
                 GET IN TOUCH

@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import PhysicsLetter from './PhysicsLetter';
 import SplitFlapRow from './SplitFlapRow';
+import { LINKEDIN_PROFILE_URL } from '@/content/links';
 
 const LetterRevealParagraph = ({ text, scrollProgress, isActive, textColor = '#979797' }) => {
   const words = text.split(' ');
@@ -211,7 +212,7 @@ const ApproachContent = () => {
 <a href="https://github.com/asbier-lab" target="_blank" rel="noreferrer" className="hover:text-[#D9D9D9] transition-colors">
   GitHub
 </a>
-<a href="https://www.linkedin.com/in/annemarie-s-394a444b/" target="_blank" rel="noreferrer" className="hover:text-[#D9D9D9] transition-colors">
+<a href={LINKEDIN_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#D9D9D9] transition-colors">
   LinkedIn
 </a>
             </div>

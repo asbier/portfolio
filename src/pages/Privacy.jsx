@@ -4,6 +4,7 @@ import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
 import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
 import FadeInText from '../components/Animations/FadeInText';
+import { LINKEDIN_PROFILE_URL } from '@/content/links';
 
 // Animated Section Component with Scale-X line animation and scroll-based text color
 const AnimatedSection = ({ title, children, index, isMobile }) => {
@@ -156,7 +157,7 @@ const Privacy = () => {
               const content = section.hasLink ? (
                 <>
                   {section.content}{' '}
-                  <a href="https://www.linkedin.com/in/annemarie-s-394a444b/" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
+                  <a href={LINKEDIN_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
                     {section.linkText}
                   </a>
                   .
