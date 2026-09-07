@@ -244,6 +244,7 @@ const MobileCaseView = ({ caseItem }) => {
                 src={heroImage} 
                 alt={caseItem.title} 
                 className={`w-full h-full block ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`} 
+                style={caseItem.imagePosition ? { objectPosition: caseItem.imagePosition } : undefined}
                 loading="eager" 
                 decoding="async"
               />

@@ -57,6 +57,7 @@ const SlideItem = ({
               src={caseItem.image} 
               alt={caseItem.title} 
               className={`w-full h-full ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'} transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90`} 
+              style={caseItem.imagePosition ? { objectPosition: caseItem.imagePosition } : undefined}
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
               fetchPriority={index === 0 ? "high" : "auto"}

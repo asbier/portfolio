@@ -11,7 +11,9 @@ const DesktopCaseView = ({ caseItem }) => {
   const [showMouseFollower, setShowMouseFollower] = useState(true);
   const [isDesktop, setIsDesktop] = useState(false);
   const [imageFormats, setImageFormats] = useState({});
-  const IMAGE_WIDTHS = { landscape: 420, portrait: 280 };
+  const [imageAspects, setImageAspects] = useState({});
+  const IMAGE_WIDTHS = { landscape: 420, portrait: 280, square: 360 };
+  const IMAGE_HEIGHTS = { landscape: 294, portrait: 400, square: 360 }; // 10:7 / 7:10 / 1:1
   const MAX_IMAGE_WIDTH = 420;
   const [viewportSize, setViewportSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
@@ -174,21 +176,46 @@ const DesktopCaseView = ({ caseItem }) => {
 
   useEffect(() => {
     const formats = {};
+    const aspects = {};
     allImages.forEach((url, index) => {
       const isVideo = url.toLowerCase().match(/\.(mp4|mov|webm)$/);
-      if (isVideo) {
-        formats[index] = 'landscape';
+      if (caseItem.forceSquareImages?.includes(url)) {
+        formats[index] = 'square';
+        aspects[index] = 1;
         setImageFormats(prev => ({ ...prev, ...formats }));
+        setImageAspects(prev => ({ ...prev, ...aspects }));
+      } else if (isVideo) {
+        formats[index] = 'landscape';
+        aspects[index] = 10 / 7;
+        setImageFormats(prev => ({ ...prev, ...formats }));
+        setImageAspects(prev => ({ ...prev, ...aspects }));
       } else {
         const img = new Image();
         img.onload = () => {
-          formats[index] = img.width / img.height >= 1 ? 'landscape' : 'portrait';
+          const ratio = img.width / img.height;
+          aspects[index] = ratio;
+          formats[index] =
+            Math.abs(ratio - 1) < 0.08 ? 'square' :
+            ratio >= 1 ? 'landscape' : 'portrait';
           setImageFormats(prev => ({ ...prev, ...formats }));
+          setImageAspects(prev => ({ ...prev, ...aspects }));
         };
         img.src = url;
       }
     });
-  }, [allImages]);
+  }, [allImages, caseItem.forceSquareImages]);
+
+  const getImageSize = (index, format) => {
+    const ratio = imageAspects[index];
+    if (ratio) {
+      const width = ratio >= 1 ? IMAGE_WIDTHS.landscape : IMAGE_WIDTHS.portrait;
+      return { width, height: Math.round(width / ratio) };
+    }
+    return {
+      width: IMAGE_WIDTHS[format] || IMAGE_WIDTHS.landscape,
+      height: IMAGE_HEIGHTS[format] || IMAGE_HEIGHTS.landscape,
+    };
+  };
 
   const getImageTitle = (url, index) => {
     if (caseItem.imageTitles?.[index]) return caseItem.imageTitles[index];
@@ -222,6 +249,7 @@ const DesktopCaseView = ({ caseItem }) => {
             const mediaId = `media-${index}`;
             const isScaled = scaledImages[mediaId];
             const format = imageFormats[index] || 'landscape';
+            const { width: mediaWidth, height: mediaHeight } = getImageSize(index, format);
 
             return (
               <motion.div
@@ -230,16 +258,27 @@ const DesktopCaseView = ({ caseItem }) => {
                 initial={{ x: initialPositions[index]?.x || 400, y: initialPositions[index]?.y || 200 }}
                 onClick={() => toggleScale(mediaId)}
                 className="absolute z-10 group cursor-grab active:cursor-grabbing"
-                style={{ width: format === 'portrait' ? `${IMAGE_WIDTHS.portrait}px` : `${IMAGE_WIDTHS.landscape}px` }} 
+                style={{ width: `${mediaWidth}px` }} 
                 animate={{ scale: isScaled ? 1.8 : 1, zIndex: isScaled ? 100 : 10 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 <div className="relative w-full shadow-2xl overflow-hidden bg-black/5">
-                  <div className="relative w-full" style={{ height: format === 'portrait' ? '450px' : '320px' }}>
+                  <div className="relative w-full" style={{ height: `${mediaHeight}px` }}>
                     {isVideo ? (
                       <video src={url} autoPlay loop muted playsInline className="w-full h-full object-cover pointer-events-none" />
                     ) : (
-                      <img src={url} alt="" className={`w-full h-full select-none pointer-events-none ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`} />
+                      <img
+                        src={url}
+                        alt=""
+                        className="w-full h-full object-cover select-none pointer-events-none"
+                        style={
+                          caseItem.imagePositions?.[url]
+                            ? { objectPosition: caseItem.imagePositions[url] }
+                            : url === caseItem.image && caseItem.imagePosition
+                              ? { objectPosition: caseItem.imagePosition }
+                              : { objectPosition: 'center' }
+                        }
+                      />
                     )}
                     {/* Radial gradient overlay - smooth gradient from 70% center to 10% edges, disappears on hover */}
                     <div 
