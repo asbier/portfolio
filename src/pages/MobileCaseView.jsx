@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
 import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
+import { preventOrphan } from '../utils/text';
+import { TITLE_ON_DARK, TITLE_ON_LIGHT, titleColorForImage } from '../utils/imageTone';
 
 // TextFade Component - Fade up animation for text content with stretchy/elastic effect
 const TextFade = ({
@@ -84,6 +86,7 @@ const FadeUp = ({ children, className = '' }) => {
 const MobileCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [imageTitleColors, setImageTitleColors] = useState({});
 
   // Same order as desktop allImages — for looking up imageTitles by URL
   const imageList = React.useMemo(() => [
@@ -174,6 +177,9 @@ const MobileCaseView = ({ caseItem }) => {
     const title = caption ?? getTitleForUrl(source);
     const isGradient = source.startsWith('linear-gradient');
     const isVideo = source.endsWith('.mp4') || source.endsWith('.webm') || source.endsWith('.mov');
+    const forcedDark = caseItem.darkImages?.includes(source);
+    const titleColor = imageTitleColors[source]
+      || (isVideo || forcedDark ? TITLE_ON_DARK : TITLE_ON_LIGHT);
 
     return (
       <div className="w-full relative">
@@ -193,6 +199,12 @@ const MobileCaseView = ({ caseItem }) => {
               className="w-full h-auto block" 
               loading="lazy" 
               decoding="async"
+              onLoad={(e) => {
+                const color = titleColorForImage(e.currentTarget, forcedDark);
+                setImageTitleColors((prev) => (
+                  prev[source] === color ? prev : { ...prev, [source]: color }
+                ));
+              }}
               onError={(e) => {
                 e.target.style.display = 'none';
               }}
@@ -201,7 +213,7 @@ const MobileCaseView = ({ caseItem }) => {
         </div>
         {title && (
           <div className="absolute bottom-0 left-0 pl-4 pb-4 z-10 pointer-events-none">
-            <p className="text-base font-neue-semibold uppercase text-[#363C53]">{title}</p>
+            <p className="text-base font-neue-semibold uppercase" style={{ color: titleColor }}>{title}</p>
           </div>
         )}
       </div>
@@ -276,8 +288,8 @@ const MobileCaseView = ({ caseItem }) => {
             <h1 className="text-[62px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">
               {caseItem.title}
             </h1>
-              <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>
-                {caseItem.description}
+              <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>
+                {preventOrphan(caseItem.description)}
               </p>
             </TextFade>
           </div>
@@ -310,15 +322,15 @@ const MobileCaseView = ({ caseItem }) => {
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">CHALLENGE</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.challenge}</p>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.challenge)}</p>
                 </TextFade>
               </div>
             </FadeUp>
           )}
 
           {/* Challenge Visual - Shows the problem */}
-          {/* Skip detailImage2 for VW (id: 3) - it comes after OUTCOME; skip for Jovana (id: 13) - it comes after IMPACT */}
-          {caseItem.detailImage2 && caseItem.id !== 3 && caseItem.id !== 13 && (
+          {/* Skip detailImage2 for VW (id: 3) - it comes after OUTCOME */}
+          {caseItem.detailImage2 && caseItem.id !== 3 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, 
@@ -334,7 +346,7 @@ const MobileCaseView = ({ caseItem }) => {
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">IMPACT</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.impact}</p>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.impact)}</p>
                 </TextFade>
               </div>
             </FadeUp>
@@ -349,13 +361,6 @@ const MobileCaseView = ({ caseItem }) => {
                 "Impact Visual", 
                 ""
               )}
-            </FadeUp>
-          )}
-
-          {/* Jovana (id: 13) - Last image(s) after IMPACT */}
-          {caseItem.id === 13 && caseItem.detailImage2 && (
-            <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage2, "Final poster", "")}
             </FadeUp>
           )}
 
@@ -384,7 +389,7 @@ const MobileCaseView = ({ caseItem }) => {
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                 <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">OUTCOME</h2>
-                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.outcome}</p>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.outcome)}</p>
                 </TextFade>
               </div>
             </FadeUp>
@@ -448,7 +453,7 @@ const MobileCaseView = ({ caseItem }) => {
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
                   <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">LEARNING</h2>
-                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain italic text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>"{caseItem.learning}"</p>
+                  <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain italic text-justify hyphens-none" style={{ textAlignLast: 'left' }}>"{preventOrphan(caseItem.learning)}"</p>
                 </TextFade>
             </div>
             </FadeUp>

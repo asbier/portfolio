@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
 import GrainOverlay from '../components/GrainOverlay/GrainOverlay';
+import { preventOrphan } from '../utils/text';
+import { TITLE_ON_DARK, TITLE_ON_LIGHT, titleColorForImage } from '../utils/imageTone';
 
 const DesktopCaseView = ({ caseItem }) => {
   const navigate = useNavigate();
@@ -12,6 +14,7 @@ const DesktopCaseView = ({ caseItem }) => {
   const [isDesktop, setIsDesktop] = useState(false);
   const [imageFormats, setImageFormats] = useState({});
   const [imageAspects, setImageAspects] = useState({});
+  const [imageTitleColors, setImageTitleColors] = useState({});
   const IMAGE_WIDTHS = { landscape: 420, portrait: 280, square: 360 };
   const IMAGE_HEIGHTS = { landscape: 294, portrait: 400, square: 360 }; // 10:7 / 7:10 / 1:1
   const MAX_IMAGE_WIDTH = 420;
@@ -177,8 +180,10 @@ const DesktopCaseView = ({ caseItem }) => {
   useEffect(() => {
     const formats = {};
     const aspects = {};
+    const titleColors = {};
     allImages.forEach((url, index) => {
       const isVideo = url.toLowerCase().match(/\.(mp4|mov|webm)$/);
+      const forcedDark = caseItem.darkImages?.includes(url);
       if (caseItem.forceSquareImages?.includes(url)) {
         formats[index] = 'square';
         aspects[index] = 1;
@@ -187,8 +192,10 @@ const DesktopCaseView = ({ caseItem }) => {
       } else if (isVideo) {
         formats[index] = 'landscape';
         aspects[index] = 10 / 7;
+        titleColors[index] = TITLE_ON_DARK;
         setImageFormats(prev => ({ ...prev, ...formats }));
         setImageAspects(prev => ({ ...prev, ...aspects }));
+        setImageTitleColors(prev => ({ ...prev, ...titleColors }));
       } else {
         const img = new Image();
         img.onload = () => {
@@ -197,13 +204,19 @@ const DesktopCaseView = ({ caseItem }) => {
           formats[index] =
             Math.abs(ratio - 1) < 0.08 ? 'square' :
             ratio >= 1 ? 'landscape' : 'portrait';
+          titleColors[index] = titleColorForImage(img, forcedDark);
           setImageFormats(prev => ({ ...prev, ...formats }));
           setImageAspects(prev => ({ ...prev, ...aspects }));
+          setImageTitleColors(prev => ({ ...prev, ...titleColors }));
         };
         img.src = url;
       }
+      if (forcedDark) {
+        titleColors[index] = TITLE_ON_DARK;
+        setImageTitleColors(prev => ({ ...prev, ...titleColors }));
+      }
     });
-  }, [allImages, caseItem.forceSquareImages]);
+  }, [allImages, caseItem.forceSquareImages, caseItem.darkImages]);
 
   const getImageSize = (index, format) => {
     const ratio = imageAspects[index];
@@ -290,7 +303,12 @@ const DesktopCaseView = ({ caseItem }) => {
                   </div>
                   {url !== caseItem.image && (
                     <div className="absolute bottom-0 left-0 pl-4 pb-4 z-20 pointer-events-none">
-                      <p className="text-base font-neue-semibold uppercase text-[#363C53]">{getImageTitle(url, index)}</p>
+                      <p
+                        className="text-base font-neue-semibold uppercase"
+                        style={{ color: imageTitleColors[index] || TITLE_ON_LIGHT }}
+                      >
+                        {getImageTitle(url, index)}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -307,7 +325,7 @@ const DesktopCaseView = ({ caseItem }) => {
             }}
           >
             <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">{caseItem.title}</h2>
-            <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.description}</p>
+            <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.description)}</p>
           </motion.div>
 
           {caseItem.challenge && (
@@ -320,7 +338,7 @@ const DesktopCaseView = ({ caseItem }) => {
               }}
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">CHALLENGE</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.challenge}</p>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.challenge)}</p>
             </motion.div>
           )}
 
@@ -334,7 +352,7 @@ const DesktopCaseView = ({ caseItem }) => {
               }}
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">IMPACT</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.impact}</p>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.impact)}</p>
             </motion.div>
           )}
 
@@ -348,7 +366,7 @@ const DesktopCaseView = ({ caseItem }) => {
               }}
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">OUTCOME</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.outcome}</p>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.outcome)}</p>
             </motion.div>
           )}
 
@@ -362,7 +380,7 @@ const DesktopCaseView = ({ caseItem }) => {
               }}
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">LEARNING</h2>
-              <p className="text-lg font-neue-book-semi leading-relaxed italic text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>"{caseItem.learning}"</p>
+              <p className="text-lg font-neue-book-semi leading-relaxed italic text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>"{preventOrphan(caseItem.learning)}"</p>
             </motion.div>
           )}
 
@@ -375,7 +393,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
             >
-              <p className="text-lg font-neue-book-semi mb-6 text-[#979797] text-grain text-justify hyphens-auto" style={{ textAlignLast: 'left' }}>{caseItem.offer}</p>
+              <p className="text-lg font-neue-book-semi mb-6 text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.offer)}</p>
               <a href="mailto:mail@annemaris.de" className="text-lg font-neue-book-semi underline text-[#363C53] text-grain">Contact</a>
             </motion.div>
           )}
