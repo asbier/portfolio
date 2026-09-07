@@ -149,8 +149,9 @@ const SlideItem = ({
   );
 };
 
-const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
+const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter, mode = 'selected' }) => {
   const navigate = useNavigate();
+  const isArchive = mode === 'archive';
   const [viewportHeight, setViewportHeight] = useState(
     typeof window !== 'undefined' ? window.innerHeight : 0
   );
@@ -262,7 +263,9 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
   };
 
   const formatSlideNumber = (num) => String(num).padStart(2, '0');
-  const totalSlides = filteredCases.length;
+  // +1 for the quiet Archive / Selected end panel (when not tag-filtering)
+  const showEndPanel = !activeTagFilter;
+  const totalSlides = filteredCases.length + (showEndPanel ? 1 : 0);
 
   return (
    <div 
@@ -301,7 +304,7 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
               key={caseItem.id}
               caseItem={caseItem}
               index={index}
-              totalSlides={filteredCases.length}
+              totalSlides={totalSlides}
               smoothScroll={smoothScroll}
               isMobile={isMobile}
               isGradient={isGradient}
@@ -315,6 +318,34 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
             />
           );
         })}
+
+        {showEndPanel && (
+          <motion.div
+            onClick={() => navigate(isArchive ? '/' : '/history')}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: '0px' }}
+            transition={{ type: 'spring', stiffness: 40, damping: 20 }}
+            className="flex-shrink-0 w-full min-h-full h-full snap-start relative group cursor-pointer
+                       lg:min-h-0 lg:w-[calc((100vw-6px)/3)] bg-[#F0F5F5]"
+            role="link"
+            aria-label={isArchive ? 'Back to selected work' : 'Open archive'}
+          >
+            <div className="absolute inset-0 flex flex-col justify-end p-4 pb-6 sm:p-6 sm:pb-8 lg:p-12">
+              <p className="text-[11px] lg:text-sm font-neue-semibold uppercase tracking-[0.2em] text-[#979797] mb-4">
+                {isArchive ? 'Selected work' : 'Earlier work'}
+              </p>
+              <p className="text-[28px] sm:text-[36px] lg:text-[42px] font-neue-semibold uppercase leading-[1.05] text-[#363C53] border-b border-[#363C53]/40 pb-1 w-fit group-hover:border-[#363C53] transition-colors">
+                {isArchive ? '← Selected' : 'Archive →'}
+              </p>
+              {isMobile && (
+                <div className="mt-3 lg:hidden text-[#979797] font-neue-book-semi text-sm">
+                  {formatSlideNumber(currentSlide)} / {formatSlideNumber(totalSlides)}
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

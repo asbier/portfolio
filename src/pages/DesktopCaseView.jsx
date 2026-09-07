@@ -72,18 +72,17 @@ const DesktopCaseView = ({ caseItem }) => {
 
   const layoutConfig = useMemo(() => {
     const startY = 180;
-    // Keep small galleries tighter so related posters sit closer together
-    const cols = allImages.length <= 3 ? [3, 5, 7] : [1, 5, 9];
-    const yOffsets = allImages.length <= 3 ? [-10, -40, 20] : [-20, -140, 120];
+    // Keep the collage clustered toward centre on typical desktop widths (e.g. 1440)
+    const cols = allImages.length <= 4 ? [3, 5, 7] : [2, 5, 8];
+    const yOffsets = allImages.length <= 4 ? [-10, -40, 20] : [-20, -120, 100];
     const imageRows = Math.ceil(allImages.length / 3);
-    const rowGap = imageRows <= 1 ? 480 : imageRows === 2 ? 560 : 640;
+    const rowGap = imageRows <= 1 ? 460 : imageRows === 2 ? 540 : 620;
     return { startY, cols, yOffsets, rowGap };
   }, [allImages.length]);
 
-  // Cards sit just under each image row, overlapping only ~10% of image height
+  // Cards in front, lightly overlapping (~10% of image height) near the collage centre
   const CARD_WIDTH = 340;
   const APPROX_IMAGE_H = 360;
-  const APPROX_IMAGE_W = 380;
   const OVERLAP = 0.1;
 
   const getRowCardY = (row) => {
@@ -93,19 +92,16 @@ const DesktopCaseView = ({ caseItem }) => {
     return imageBottom - APPROX_IMAGE_H * OVERLAP;
   };
 
-  // 1. TEXT CARDS — in front, light ~10% overlap on nearest images
+  // 1. TEXT CARDS — centred in the composition (not pinned to far edges)
   const cardPositions = useMemo(() => {
-    const { cols } = layoutConfig;
-    // Left cards: mostly left of left image, covering only its left ~10%
-    const leftX = colX(cols[0]) - CARD_WIDTH + APPROX_IMAGE_W * OVERLAP;
-    // Right cards: mostly right of right image, covering only its right ~10%
-    const rightX = colX(cols[2]) + APPROX_IMAGE_W * (1 - OVERLAP);
+    const leftX = colX(allImages.length <= 4 ? 3 : 2);
+    const rightX = colX(allImages.length <= 4 ? 7 : 8);
     const maxX = grid.containerLeft + grid.containerWidth - CARD_WIDTH;
-    const clampX = (x) => Math.max(grid.containerLeft - 24, Math.min(x, maxX + 24));
+    const clampX = (x) => Math.max(grid.containerLeft, Math.min(x, maxX));
 
     const zigzagOffset = (row, side) => {
-      const base = row % 2 === 0 ? 0 : 28;
-      const sideNudge = side === 'left' ? 0 : 36;
+      const base = row % 2 === 0 ? 0 : 24;
+      const sideNudge = side === 'left' ? 0 : 28;
       return base + sideNudge;
     };
 
@@ -117,7 +113,7 @@ const DesktopCaseView = ({ caseItem }) => {
       learning:    { x: clampX(leftX), y: getRowCardY(2) + zigzagOffset(2, 'left') },
       offer:       { x: clampX(rightX), y: getRowCardY(2) + zigzagOffset(2, 'right') }
     };
-  }, [grid, layoutConfig]);
+  }, [grid, layoutConfig, allImages.length]);
 
   const getCardMotion = (key, order) => ({
     initial: { x: cardPositions[key].x, y: cardPositions[key].y + 40, opacity: 0 },

@@ -8,7 +8,7 @@ const Navbar = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isApproachPage = location.pathname === '/approach';
-  const hiddenPages = ['Home', 'Privacy', 'Contact'];
+  const hiddenPages = ['Home', 'Archive', 'Privacy', 'Contact'];
   const marqueeText = ` ✦ ${MARQUEE_ITEMS.join(' ✦ ')} ✦ `;
   
   const renderMarqueeText = () => {
@@ -58,6 +58,7 @@ const Navbar = () => {
                   e.stopPropagation();
                   setIsMenuOpen(false);
                   if (page === 'Home') navigate('/');
+                  else if (page === 'Archive') navigate('/history');
                   else if (page === 'Privacy') navigate('/privacy');
                   else if (page === 'Contact') window.location.href = 'mailto:mail@annemaris.de';
                 }}

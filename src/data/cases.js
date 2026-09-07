@@ -124,6 +124,7 @@ export const cases = [
     title: "CONIC ROSE",
     category: "VISUAL IDENTITY / ART",
     isPrivate: true,
+    archived: true,
     year: "2019",
     role: "ART DIRECTOR",
     tags: ["MARKETING ASSET", "VINYL COVER"],
@@ -227,6 +228,7 @@ export const cases = [
     category: "ART DIRECTION / FILM",
     year: "2018",
     role: "ART DIRECTION",
+    archived: true,
     hideTitleTag: true,
     tags: ["BERLINALE", "FILM POSTER", "JOVANA REISINGER", "ART DIRECTION"],
     description: "Key visual for Pretty Girls Don't Lie (Jovana Reisinger) at Berlinale 2018 — a sharp, glamorous poster playing with female clichés and victim–perpetrator tension.",
@@ -250,6 +252,7 @@ export const cases = [
     category: "ART DIRECTION / EDITORIAL DESIGN",
     year: "2015",
     role: "ART DIRECTOR",
+    archived: true,
     tags: ["ART DIRECTION", "EDITORIAL DESIGN", "BRANDING"],
     description: "As Art Director, I turned Comma's traditional catalogue into dynamic style magazines — a sharper bridge between print, brand, and digital.",
     challenge: "Attract a younger audience without losing classic appeal. The old brochure catalogue needed elevating into a modern brand and shopping experience.",
@@ -276,6 +279,7 @@ export const cases = [
     category: "ART DIRECTION / EDITORIAL DESIGN",
     year: "2014/2015",
     role: "ART DIRECTOR",
+    archived: true,
     tags: ["ART DIRECTION", "EDITORIAL DESIGN"],
     description: "As Art Director at Monopol, I led BIORAMA's visual direction for a young, bio-conscious readership — an informative editorial title with a clear, contemporary identity.",
     challenge: "The magazine's look did not fit the content it wanted to share, so it struggled to connect with a broader bio-conscious audience beyond a tech-heavy visual tone.",
@@ -297,6 +301,7 @@ export const cases = [
     category: "EDITORIAL DESIGN / MAGAZINE",
     year: "2014",
     role: "ASSISTANT",
+    archived: true,
     tags: ["MAGAZINE", "EDITORIAL", "BRANDING"],
     description: "Editorial design for MONKI magazine at Plastic Media — my first international client work under Daniela Bily and Kira Stachowitz.",
     challenge: "A new in-store issue every four months had to carry Monki's world: strong stories and the current collection, within brand CI.",
@@ -327,6 +332,7 @@ export const cases = [
     category: "EDITORIAL / CONCEPT",
     year: "2013",
     role: "DESIGNER",
+    archived: true,
     hideTitleTag: true,
     tags: ["INDIE", "EDITORIAL DESIGN", "PRINT", "ILLUSTRATION"],
     description: "INDIE by Plastic Media — an independent print magazine for cutting-edge fashion, music, opinion, and culture.",
@@ -358,6 +364,10 @@ export const getCasesByCategory = (category) => {
   if (!category || category === 'all') return cases;
   return cases.filter(caseItem => caseItem.category === category);
 };
+
+export const getSelectedCases = () => cases.filter((c) => !c.archived);
+
+export const getArchivedCases = () => cases.filter((c) => c.archived);
 
 export const getCaseById = (id) => {
   return cases.find(caseItem => caseItem.id === parseInt(id));
