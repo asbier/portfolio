@@ -35,7 +35,7 @@ export const cases = [
     outcome: "A reliable guided ADAS workflow that improves workshop efficiency while protecting service quality.",
     learning: "Question feature necessity early — tools should solve garage problems, not only follow business assumptions.",
     image: "/images/01_hellagutmann/sliderImage_hellagutmann_dashboard_hero.webp",
-    detailImage1: "/images/01_hellagutmann/fahrzeug_auswählen_basis_default_1280-800.webp",
+    detailImage1: "/images/01_hellagutmann/fahrzeug_auswaehlen_basis_default_1280-800.webp",
     detailImage2: "/images/01_hellagutmann/hella_gutmann_protocol_2.webp",
     detailImage3: "/images/01_hellagutmann/hellagutmann_dashboard_adas_guide_calibration.webp",
     imageTitles: ['Dashboard hero', 'Wireframe – vehicle selection', 'Step-by-step guide', 'Calibration guide'],
@@ -233,10 +233,14 @@ export const cases = [
     challenge: "Distil Reisinger's tone into one image: Barbie glamour and film's victim–perpetrator tropes, without flattening the ambivalence between empowerment and objectification.",
     impact: "A bold festival-ready poster that held its own at Berlinale and beyond — unapologetic, provocative, and part of a wider conversation on female cliché and power.",
     outcome: "A clear key visual system (final poster and draft) with staged tableaux and deliberate artifice, positioning the film as a stylish provocation for its Berlinale launch.",
-    image: "/images/13_jovana-berlinale-poster/jovana-final-poster.webp",
+    image: "/images/13_jovana-berlinale-poster/jovana-final-poster-tight.webp",
     introImage: "/images/13_jovana-berlinale-poster/jovana-moodboard.webp",
-    detailImage1: "/images/13_jovana-berlinale-poster/jovan-entwurf-poster.webp",
+    detailImage1: "/images/13_jovana-berlinale-poster/jovan-entwurf-poster-tight.webp",
     imageTitles: ['Moodboard', 'Final poster', 'Draft poster'],
+    imagePositions: {
+      "/images/13_jovana-berlinale-poster/jovana-final-poster-tight.webp": "50% 50%",
+      "/images/13_jovana-berlinale-poster/jovan-entwurf-poster-tight.webp": "50% 50%",
+    },
     team: { title: "FILM BY JOVANA REISINGER", members: ["Director Jovana Reisinger", "Art Direction Annemarie S."] }
   },
    {

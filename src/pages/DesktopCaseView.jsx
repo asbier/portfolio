@@ -76,34 +76,46 @@ const DesktopCaseView = ({ caseItem }) => {
     const cols = allImages.length <= 3 ? [3, 5, 7] : [1, 5, 9];
     const yOffsets = allImages.length <= 3 ? [-10, -40, 20] : [-20, -140, 120];
     const imageRows = Math.ceil(allImages.length / 3);
-    const rowGap = imageRows <= 1 ? 420 : imageRows === 2 ? 520 : 600;
+    const rowGap = imageRows <= 1 ? 480 : imageRows === 2 ? 560 : 640;
     return { startY, cols, yOffsets, rowGap };
   }, [allImages.length]);
 
-  const getRowAnchorY = (row) => {
-    const imageMid = layoutConfig.startY
-      + row * layoutConfig.rowGap
-      + layoutConfig.yOffsets[1] // center image offset
-      + 160; // approx half of 320px image height
-    return imageMid + 16; // subtle offset for readability
+  // Cards sit just under each image row, overlapping only ~10% of image height
+  const CARD_WIDTH = 340;
+  const APPROX_IMAGE_H = 360;
+  const APPROX_IMAGE_W = 380;
+  const OVERLAP = 0.1;
+
+  const getRowCardY = (row) => {
+    const { startY, rowGap, yOffsets } = layoutConfig;
+    const rowBase = startY + row * rowGap;
+    const imageBottom = rowBase + Math.max(...yOffsets) + APPROX_IMAGE_H;
+    return imageBottom - APPROX_IMAGE_H * OVERLAP;
   };
 
-  // 1. ZENTRALE TEXT-POSITIONEN (an Bildern ausgerichtet)
+  // 1. TEXT CARDS — in front, light ~10% overlap on nearest images
   const cardPositions = useMemo(() => {
-    const leftCol = 2;
-    const rightCol = 8;
+    const { cols } = layoutConfig;
+    // Left cards: mostly left of left image, covering only its left ~10%
+    const leftX = colX(cols[0]) - CARD_WIDTH + APPROX_IMAGE_W * OVERLAP;
+    // Right cards: mostly right of right image, covering only its right ~10%
+    const rightX = colX(cols[2]) + APPROX_IMAGE_W * (1 - OVERLAP);
+    const maxX = grid.containerLeft + grid.containerWidth - CARD_WIDTH;
+    const clampX = (x) => Math.max(grid.containerLeft - 24, Math.min(x, maxX + 24));
+
     const zigzagOffset = (row, side) => {
-      const base = row % 2 === 0 ? -20 : 20;
-      const sideNudge = side === 'left' ? -8 : 8;
+      const base = row % 2 === 0 ? 0 : 28;
+      const sideNudge = side === 'left' ? 0 : 36;
       return base + sideNudge;
     };
+
     return {
-      projectInfo: { x: colX(leftCol), y: getRowAnchorY(0) + zigzagOffset(0, 'left') },
-      challenge:   { x: colX(rightCol), y: getRowAnchorY(0) + zigzagOffset(0, 'right') },
-      impact:      { x: colX(leftCol), y: getRowAnchorY(1) + zigzagOffset(1, 'left') },
-      outcome:     { x: colX(rightCol), y: getRowAnchorY(1) + zigzagOffset(1, 'right') },
-      learning:    { x: colX(leftCol), y: getRowAnchorY(2) + zigzagOffset(2, 'left') },
-      offer:       { x: colX(rightCol), y: getRowAnchorY(2) + zigzagOffset(2, 'right') }
+      projectInfo: { x: clampX(leftX), y: getRowCardY(0) + zigzagOffset(0, 'left') },
+      challenge:   { x: clampX(rightX), y: getRowCardY(0) + zigzagOffset(0, 'right') },
+      impact:      { x: clampX(leftX), y: getRowCardY(1) + zigzagOffset(1, 'left') },
+      outcome:     { x: clampX(rightX), y: getRowCardY(1) + zigzagOffset(1, 'right') },
+      learning:    { x: clampX(leftX), y: getRowCardY(2) + zigzagOffset(2, 'left') },
+      offer:       { x: clampX(rightX), y: getRowCardY(2) + zigzagOffset(2, 'right') }
     };
   }, [grid, layoutConfig]);
 
@@ -144,24 +156,10 @@ const DesktopCaseView = ({ caseItem }) => {
   }, [allImages, colX, layoutConfig, grid]);
 
   const outcomePosition = useMemo(() => {
-    if (!caseItem.outcome || initialPositions.length === 0) {
-      return cardPositions.outcome;
-    }
-    // Use default grid position when there's only one row of images (e.g. 3 images) so cards stay in zigzag grid like other cases
-    const imageRows = Math.ceil(initialPositions.length / 3);
-    if (imageRows <= 1) {
-      return cardPositions.outcome;
-    }
-    const rightX = colX(7);
-    const leftX = colX(1);
-    let maxIndex = 0;
-    initialPositions.forEach((pos, idx) => {
-      if (pos.y > initialPositions[maxIndex].y) maxIndex = idx;
-    });
-    const last = initialPositions[maxIndex];
-    const outcomeX = last.x >= colX(6) ? leftX : rightX;
-    return { x: outcomeX, y: last.y };
-  }, [caseItem.outcome, initialPositions, cardPositions.outcome, colX]);
+    if (!caseItem.outcome) return cardPositions.outcome;
+    // Keep outcome in the text gutter (same as other cards) so it doesn't cover the last image
+    return cardPositions.outcome;
+  }, [caseItem.outcome, cardPositions.outcome]);
 
   const minContentHeight = useMemo(() => {
     const imageLastY = initialPositions.length === 0
@@ -320,7 +318,7 @@ const DesktopCaseView = ({ caseItem }) => {
           <motion.div 
             drag dragMomentum={false}
             {...getCardMotion('projectInfo', 0)}
-            className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
+            className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
             style={{
               background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
             }}
@@ -333,7 +331,7 @@ const DesktopCaseView = ({ caseItem }) => {
             <motion.div 
               drag dragMomentum={false}
               {...getCardMotion('challenge', 1)}
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
@@ -347,7 +345,7 @@ const DesktopCaseView = ({ caseItem }) => {
             <motion.div 
               drag dragMomentum={false}
               {...getCardMotion('impact', 2)}
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
@@ -361,7 +359,7 @@ const DesktopCaseView = ({ caseItem }) => {
             <motion.div 
               drag dragMomentum={false}
               {...getCardMotionAt(outcomePosition, 3)}
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
@@ -375,7 +373,7 @@ const DesktopCaseView = ({ caseItem }) => {
             <motion.div 
               drag dragMomentum={false}
               {...getCardMotion('learning', 4)}
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
@@ -389,7 +387,7 @@ const DesktopCaseView = ({ caseItem }) => {
             <motion.div 
               drag dragMomentum={false}
               {...getCardMotion('offer', 5)}
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-20"
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
