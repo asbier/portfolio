@@ -72,8 +72,9 @@ const DesktopCaseView = ({ caseItem }) => {
 
   const layoutConfig = useMemo(() => {
     const startY = 180;
-    const cols = [1, 5, 9]; // left, center, right (grid-aligned)
-    const yOffsets = [-20, -140, 120];
+    // Keep small galleries tighter so related posters sit closer together
+    const cols = allImages.length <= 3 ? [3, 5, 7] : [1, 5, 9];
+    const yOffsets = allImages.length <= 3 ? [-10, -40, 20] : [-20, -140, 120];
     const imageRows = Math.ceil(allImages.length / 3);
     const rowGap = imageRows <= 1 ? 420 : imageRows === 2 ? 520 : 600;
     return { startY, cols, yOffsets, rowGap };

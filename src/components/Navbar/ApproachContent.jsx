@@ -54,7 +54,7 @@ const ApproachContent = () => {
     "Hands-on Freelance Art Director. I connect digital with offline experience: clear products and brand systems people recognise and trust, across digital and print assets.",
     "Consistency with room for playful exploration. One direction across product and brand, centred on people, so they connect, get inspired, and come back.",
     "Circular intent shapes how I decide, whether that is retail brand strategy, platforms built for reuse, or editorial work with longevity in mind. I love music, theatre, and film. Understanding the past to create the future means exploring, and being open to risk.",
-    "I concept micro-animations and lead art direction. I do not edit video or build 3D myself, but I can direct both. Fluent in Figma and Adobe Creative Suite; this site is custom-built with React, Tailwind CSS, and Cursor.",
+    "I lead art direction — and I can shape motion when the work needs it, without being a specialist animator. I do not edit video or build 3D myself, but I can direct both. Fluent in Figma and Adobe Creative Suite; this site is custom-built with React, Tailwind CSS, and Cursor.",
     "I explore, then curate. Tools serve the work, never the reverse."
   ];
 
@@ -182,7 +182,7 @@ const ApproachContent = () => {
             }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-[10px] lg:text-[12px] mb-8 opacity-40 uppercase tracking-[0.4em] text-[#979797] font-neue-semibold">
+            <h3 className="text-[11px] lg:text-[17px] mb-8 uppercase tracking-[0.25em] text-[#979797] font-neue-semibold">
               Selected Gigs / Experience
             </h3>
             <div className="flex flex-col gap-1 pb-40">

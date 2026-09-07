@@ -7,7 +7,7 @@ export const cases = [
     isPrivate: true,
     year: "2025",
     role: "Design System, Product Differentiation & Art Direction",
-    tags: ["FINTECH", "RETAIL MARKETING", "REBRAND"],
+    tags: ["FINTECH", "RETAIL EXPERIENCE", "REBRAND"],
     description: "Rebranding SumUp Retail for Europe — design system, product differentiation, and art direction for a coherent market rollout.",
     challenge: "European retail touchpoints needed one visual language at scale, without losing local relevance or product distinctiveness.",
     impact: "A clearer retail offer across markets, with identity and experience aligned for rollout.",
