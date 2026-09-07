@@ -51,14 +51,15 @@ const ApproachContent = () => {
   const MOBILE_NAV_HEIGHT = 110;
 
   const paragraphs = [
-    "A market obsessed with rigid categorisation, I build systems that transcend them. I believe that a digital product is a brand's primary utility, and a brand is the product's soul.",
-    "I utilise systemic thinking across all mediums—from complex interface logic to expressive editorial frameworks. I aim for one coherent direction that fits the challenge and puts the audience at the centre—so the work gets seen, used, and remembered.",
-    "I choose tools based on the project goal. I am a professional in Figma and Adobe Creative Suite. For this website, I built custom with React, Tailwind CSS, and Cursor.",
-    "I am learning to build because I want to speak the same language as the engineers I work with. My goal is to collaborate on technical solutions as a Design Engineer—giving direction and ideas—with the aim to do good."
+    "Hands-on Freelance Art Director. I connect digital with offline experience: clear products and brand systems people recognise and trust, across digital and print assets.",
+    "Consistency with room for playful exploration. One direction across product and brand, centred on people, so they connect, get inspired, and come back.",
+    "Circular intent shapes how I decide, whether that is retail brand strategy, platforms built for reuse, or editorial work with longevity in mind. I love music, theatre, and film. Understanding the past to create the future means exploring, and being open to risk.",
+    "I concept micro-animations and lead art direction. I do not edit video or build 3D myself, but I can direct both. Fluent in Figma and Adobe Creative Suite; this site is custom-built with React, Tailwind CSS, and Cursor.",
+    "I explore, then curate. Tools serve the work, never the reverse."
   ];
 
   const experience = [
-    { label: "2026", value: "Looking for opportunities to help with your next step" },
+    { label: "2026", value: "Freelance Designer for SumUp Retail Brand Experience Redesign, Europe" },
     { label: "Data Analytics Program (AfA)", value: "August 2025 to December 2025" },
     { label: "Dayone", value: "UX Designer / Product Designer - Volkswagen GER/INT - HellaGutmann - FamFam App October 2022 to June 2025" },
     { label: "Carhartt WIP", value: "UX / Design Digital Designer September 2021 to June 2022" },
@@ -93,7 +94,7 @@ const ApproachContent = () => {
   }, [scrollYProgress, paragraphs.length]);
 
   const paragraphProgresses = paragraphs.map((_, i) => 
-    useTransform(scrollYProgress, [i / 5, (i + 1) / 5], [0, 1])
+    useTransform(scrollYProgress, [i / (paragraphs.length + 1), (i + 1) / (paragraphs.length + 1)], [0, 1])
   );
 
   useEffect(() => {

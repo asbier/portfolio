@@ -61,6 +61,13 @@ const SlideItem = ({
               decoding="async"
               fetchPriority={index === 0 ? "high" : "auto"}
             />
+            {/* Optional brand wash over the photo */}
+            {caseItem.imageOverlay && (
+              <div
+                className="absolute inset-0 z-[5] pointer-events-none"
+                style={{ background: caseItem.imageOverlay }}
+              />
+            )}
             {/* Gradient overlay for text readability - only on hover (desktop only) */}
             <div 
               className="absolute inset-0 z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden lg:block"
@@ -80,15 +87,17 @@ const SlideItem = ({
         }}
       />
       
-      {/* Coming Soon Overlay - blur background but keep tags visible */}
+      {/* Coming Soon Overlay - full-bleed blur; tags sit above */}
       {isComingSoon && (
         <>
-          {/* Blur overlay for background - doesn't cover tags area at bottom */}
-          <div className="absolute inset-0 z-40 backdrop-blur-md" style={{ bottom: '150px' }}></div>
+          <div className="absolute inset-0 z-40 backdrop-blur-md"></div>
           <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none">
-            <div className="text-center px-6 space-y-2">
-              <span className="text-sm sm:text-base lg:text-lg font-semibold font-neue-semibold uppercase text-[#DFFF00]" style={{ letterSpacing: '0.1em' }}>
-                COMING SOON
+            <div className="text-center px-6 space-y-3">
+              <span className="block text-[1.75rem] sm:text-[2.25rem] lg:text-[3.25rem] font-neue-semibold uppercase text-[#DFFF00] leading-tight" style={{ letterSpacing: '0.08em' }}>
+                SumUp Retail Rebrand Europe
+              </span>
+              <span className="block text-[1.2rem] lg:text-[2rem] font-neue-semibold uppercase text-[#DFFF00]/80" style={{ letterSpacing: '0.1em' }}>
+                Coming Soon
               </span>
             </div>
           </div>
@@ -103,7 +112,7 @@ const SlideItem = ({
           {!caseItem.hideTitleTag && (
             <button
               onClick={(e) => handleTagClick(e, caseItem.title)}
-              className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[17px] sm:text-[17px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[17px] sm:text-[17px] lg:text-sm font-semibold font-neue-semibold uppercase tracking-[1px] transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
                 activeTagFilter?.toLowerCase() === caseItem.title?.toLowerCase()
                   ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
                   : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white group-hover:text-white group-hover:border-white'
@@ -117,7 +126,7 @@ const SlideItem = ({
             <button
               key={tagIndex}
               onClick={(e) => handleTagClick(e, tag)}
-              className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[17px] sm:text-[17px] lg:text-sm font-semibold font-neue-semibold uppercase transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 lg:px-4 lg:py-2 rounded-full text-[17px] sm:text-[17px] lg:text-sm font-semibold font-neue-semibold uppercase tracking-[1px] transition-colors relative z-30 min-h-[32px] sm:min-h-[36px] lg:min-h-[40px] flex items-center justify-center ${
                 activeTagFilter?.toLowerCase() === tag.toLowerCase()
                   ? 'bg-[#DFFF00] border border-black/10 text-[#D9D9D9]'
                   : 'text-[#979797] bg-transparent border border-[#979797] hover:text-white hover:border-white group-hover:text-white group-hover:border-white'
@@ -278,7 +287,7 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter }) => {
         {filteredCases.map((caseItem, index) => {
           // Prüfen, ob es ein Verlauf ist
           const isGradient = caseItem.image?.startsWith('linear-gradient');
-          const isComingSoon = caseItem.isPrivate && caseItem.id === 1; // First dashboard project
+          const isComingSoon = caseItem.isPrivate && caseItem.id === 1; // SumUp Retail Rebrand — coming soon
 
           const handleNavigation = () => {
             if (!isComingSoon) {

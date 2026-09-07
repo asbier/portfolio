@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { MARQUEE_ITEMS } from '@/content/marquee';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isApproachPage = location.pathname === '/approach';
   const hiddenPages = ['Home', 'Privacy', 'Contact'];
-  const marqueeText = " ✦ PORTFOLIO OF AM ✦ ART DIRECTION ✦ HOLISTIC DESIGN & BRANDING ✦ PORTFOLIO OF AM ✦ FROM INTERFACE LOGIC TO VISUAL IDENTITY ✦ PORTFOLIO OF AM ✦ PLATFORM IDEAS ✦ NO BOXES, JUST SOLUTIONS ✦ STOP BEEING BORING ✦ ";
+  const marqueeText = ` ✦ ${MARQUEE_ITEMS.join(' ✦ ')} ✦ `;
   
   const renderMarqueeText = () => {
     const sentences = marqueeText.split(' ✦ ').filter(s => s.trim());

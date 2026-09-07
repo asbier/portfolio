@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { MARQUEE_ITEMS } from '@/content/marquee';
 
 const MarqueeBanner = () => {
-  const text = "PRODUCT DESIGN & BRANDING ✦ SINCE 2012 ✦ SPECIALISED IN E-COMMERCE & SERVICE DESIGN ✦ GOOD DESIGN PERFORMS ✦ STOP BEING BORING ✦ ";
+  const text = `${MARQUEE_ITEMS.join(' ✦ ')} ✦ `;
 
   return (
     <div 
