@@ -309,8 +309,8 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* Context Image - Visual hook after intro */}
-          {caseItem.detailImage1 && (
+          {/* Context Image - Visual hook after intro (skip if same as mobile hero) */}
+          {caseItem.detailImage1 && caseItem.detailImage1 !== heroImage && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile1 : caseItem.detailImage1, 
@@ -341,6 +341,13 @@ const MobileCaseView = ({ caseItem }) => {
                 "Challenge Visual", 
                 "grayscale hover:grayscale-0 transition-all duration-700"
               )}
+            </FadeUp>
+          )}
+
+          {/* Early video (e.g. SumUp Amazon) — after guidelines, before remaining visuals */}
+          {caseItem.mobileVideoEarly && caseItem.detailVideo1 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster)}
             </FadeUp>
           )}
 
@@ -392,8 +399,8 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* Video 1 - Show solution in action (after supporting images, before OUTCOME) */}
-          {caseItem.detailVideo1 && (
+          {/* Video 1 - default placement (skipped when mobileVideoEarly already showed it) */}
+          {caseItem.detailVideo1 && !caseItem.mobileVideoEarly && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster)}
             </FadeUp>
