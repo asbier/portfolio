@@ -17,7 +17,7 @@ const DesktopCaseView = ({ caseItem }) => {
   const [imageTitleColors, setImageTitleColors] = useState({});
   const IMAGE_WIDTHS = { landscape: 420, portrait: 280, square: 360 };
   const IMAGE_HEIGHTS = { landscape: 294, portrait: 400, square: 360 }; // 10:7 / 7:10 / 1:1
-  const MAX_IMAGE_WIDTH = 420;
+  const MAX_IMAGE_WIDTH = 500; // room for slightly larger video tiles
   const [viewportSize, setViewportSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
   const toggleScale = (imageId) => {
@@ -49,20 +49,36 @@ const DesktopCaseView = ({ caseItem }) => {
     };
   }, [isDesktop]);
 
+  // Canonical media order (for titles) — videos last
+  const canonicalMedia = useMemo(() => ([
+    caseItem.introImage,
+    caseItem.hideDesktopHero ? null : caseItem.image,
+    caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3,
+    caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6,
+    caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9,
+    caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12,
+    caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15,
+    caseItem.detailImage16, caseItem.detailImage17, caseItem.detailImage18,
+    caseItem.detailImage19, caseItem.detailImage20,
+    caseItem.detailVideo1, caseItem.detailVideo2
+  ].filter(Boolean)), [caseItem]);
+
+  // Collage order — optional early video so it isn't buried under later cards
   const allImages = useMemo(() => {
-    return [
-      caseItem.introImage,
-      caseItem.hideDesktopHero ? null : caseItem.image,
-      caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3,
-      caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6,
-      caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9,
-      caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12,
-      caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15,
-      caseItem.detailImage16, caseItem.detailImage17, caseItem.detailImage18,
-      caseItem.detailImage19, caseItem.detailImage20,
-      caseItem.detailVideo1, caseItem.detailVideo2
-    ].filter(Boolean);
-  }, [caseItem]);
+    if (!caseItem.desktopVideoEarly || !caseItem.detailVideo1) return canonicalMedia;
+    const stills = canonicalMedia.filter((url) => !/\.(mp4|mov|webm)$/i.test(url));
+    const videos = canonicalMedia.filter((url) => /\.(mp4|mov|webm)$/i.test(url));
+    if (!stills.length || !videos.length) return canonicalMedia;
+    return [stills[0], videos[0], ...stills.slice(1), ...videos.slice(1)];
+  }, [caseItem.desktopVideoEarly, caseItem.detailVideo1, canonicalMedia]);
+
+  const titleByUrl = useMemo(() => {
+    const map = {};
+    canonicalMedia.forEach((url, i) => {
+      if (caseItem.imageTitles?.[i]) map[url] = caseItem.imageTitles[i];
+    });
+    return map;
+  }, [canonicalMedia, caseItem.imageTitles]);
 
   const grid = useMemo(() => {
     const containerWidth = Math.min(1800, viewportSize.width - 96);
@@ -74,48 +90,45 @@ const DesktopCaseView = ({ caseItem }) => {
   const colX = (col) => grid.containerLeft + grid.colWidth * (col - 1);
 
   const layoutConfig = useMemo(() => {
-    const startY = 180;
-    // Keep the collage clustered toward centre on typical desktop widths (e.g. 1440)
-    const cols = allImages.length <= 4 ? [3, 5, 7] : [2, 5, 8];
-    const yOffsets = allImages.length <= 4 ? [-10, -40, 20] : [-20, -120, 100];
+    const startY = 150;
+    const many = allImages.length > 4;
+    // Balanced triad — overlap without extreme scatter
+    const cols = many ? [2, 5.25, 8.5] : [3, 5.5, 8];
+    const yOffsets = many ? [24, -40, 48] : [12, -28, 32];
     const imageRows = Math.ceil(allImages.length / 3);
-    const rowGap = imageRows <= 1 ? 460 : imageRows === 2 ? 540 : 620;
-    return { startY, cols, yOffsets, rowGap };
+    // Extra air between rows so text cards stay readable
+    const rowGap = imageRows <= 1 ? 520 : imageRows === 2 ? 640 : 720;
+    return { startY, cols, yOffsets, rowGap, imageRows };
   }, [allImages.length]);
 
-  // Cards in front, lightly overlapping (~10% of image height) near the collage centre
   const CARD_WIDTH = 340;
   const APPROX_IMAGE_H = 360;
-  const OVERLAP = 0.1;
 
   const getRowCardY = (row) => {
-    const { startY, rowGap, yOffsets } = layoutConfig;
-    const rowBase = startY + row * rowGap;
-    const imageBottom = rowBase + Math.max(...yOffsets) + APPROX_IMAGE_H;
-    return imageBottom - APPROX_IMAGE_H * OVERLAP;
+    const { startY, rowGap } = layoutConfig;
+    // Sit in the lower band of each image row — overlapping, still legible
+    return startY + row * rowGap + APPROX_IMAGE_H * 0.52;
   };
 
-  // 1. TEXT CARDS — centred in the composition (not pinned to far edges)
+  // 1. TEXT CARDS — paired over image rows; trailing copy sits just under the last row
   const cardPositions = useMemo(() => {
-    const leftX = colX(allImages.length <= 4 ? 3 : 2);
-    const rightX = colX(allImages.length <= 4 ? 7 : 8);
+    const many = allImages.length > 4;
+    const leftX = colX(many ? 3.1 : 3.4);
+    const rightX = colX(many ? 7.1 : 6.8);
     const maxX = grid.containerLeft + grid.containerWidth - CARD_WIDTH;
     const clampX = (x) => Math.max(grid.containerLeft, Math.min(x, maxX));
-
-    const zigzagOffset = (row, side) => {
-      const base = row % 2 === 0 ? 0 : 24;
-      const sideNudge = side === 'left' ? 0 : 28;
-      return base + sideNudge;
-    };
+    const lastRow = Math.max(0, layoutConfig.imageRows - 1);
+    const nudge = (row, side) => (side === 'left' ? -8 : 12) + (row % 2) * 14;
 
     return {
-      projectInfo: { x: clampX(leftX), y: getRowCardY(0) + zigzagOffset(0, 'left') },
-      challenge:   { x: clampX(rightX), y: getRowCardY(0) + zigzagOffset(0, 'right') },
-      process:     { x: clampX(leftX), y: getRowCardY(1) + zigzagOffset(1, 'left') },
-      impact:      { x: clampX(rightX), y: getRowCardY(1) + zigzagOffset(1, 'right') },
-      outcome:     { x: clampX(leftX), y: getRowCardY(2) + zigzagOffset(2, 'left') },
-      learning:    { x: clampX(rightX), y: getRowCardY(2) + zigzagOffset(2, 'right') },
-      offer:       { x: clampX(leftX), y: getRowCardY(3) + zigzagOffset(3, 'left') }
+      projectInfo: { x: clampX(leftX), y: getRowCardY(0) + nudge(0, 'left') },
+      challenge:   { x: clampX(rightX), y: getRowCardY(0) + nudge(0, 'right') },
+      process:     { x: clampX(leftX), y: getRowCardY(Math.min(1, lastRow)) + nudge(1, 'left') },
+      impact:      { x: clampX(rightX), y: getRowCardY(Math.min(1, lastRow)) + nudge(1, 'right') },
+      // Learning / outcome sit clearly below the last media row so they aren't buried
+      outcome:     { x: clampX(leftX), y: getRowCardY(lastRow) + 260 + nudge(2, 'left') },
+      learning:    { x: clampX(rightX), y: getRowCardY(lastRow) + 260 + nudge(2, 'right') },
+      offer:       { x: clampX(leftX), y: getRowCardY(lastRow) + 480 + nudge(3, 'left') }
     };
   }, [grid, layoutConfig, allImages.length]);
 
@@ -134,7 +147,7 @@ const DesktopCaseView = ({ caseItem }) => {
   const usesContain = (url) =>
     Boolean(url && caseItem.containImages?.includes(url));
 
-  // 2. BILDER-POSITIONEN
+  // 2. IMAGE POSITIONS — soft staircase; odd rows gently mirrored for balance
   const initialPositions = useMemo(() => {
     const imageCount = allImages.length;
     const positions = [];
@@ -143,16 +156,16 @@ const DesktopCaseView = ({ caseItem }) => {
     for (let i = 0; i < imageCount; i++) {
       const row = Math.floor(i / 3);
       const slot = i % 3;
-      const overlapY = slot === 1 ? -40 : slot === 2 ? -10 : 0;
-      const rawX = colX(cols[slot]);
-      const rawY = startY + row * rowGap + yOffsets[slot] + overlapY;
+      const mirrored = row % 2 === 1;
+      const colSlot = mirrored ? 2 - slot : slot;
+      const yScale = mirrored ? -0.55 : 1;
+      const overlapY = colSlot === 1 ? -20 : colSlot === 2 ? 12 : 0;
+      const rawX = colX(cols[colSlot]);
+      const rawY = startY + row * rowGap + yOffsets[colSlot] * yScale + overlapY;
       const maxX = grid.containerLeft + grid.containerWidth - MAX_IMAGE_WIDTH;
       const clampedX = Math.max(grid.containerLeft, Math.min(rawX, maxX));
       const clampedY = Math.max(60, rawY);
-      positions.push({
-        x: clampedX,
-        y: clampedY
-      });
+      positions.push({ x: clampedX, y: clampedY });
     }
     return positions;
   }, [allImages, colX, layoutConfig, grid]);
@@ -176,7 +189,7 @@ const DesktopCaseView = ({ caseItem }) => {
       cardPositions.learning.y,
       cardPositions.offer.y
     );
-    return Math.max(imageLastY + 900, cardLastY + 800, viewportSize.height + 400);
+    return Math.max(imageLastY + 1100, cardLastY + 900, viewportSize.height + 400);
   }, [initialPositions, cardPositions, outcomePosition, viewportSize.height]);
 
   useEffect(() => {
@@ -228,18 +241,26 @@ const DesktopCaseView = ({ caseItem }) => {
   }, [allImages, caseItem.forceSquareImages, caseItem.darkImages, caseItem.lightTitleImages]);
 
   const getImageSize = (index, format) => {
+    const url = allImages[index] || '';
+    const isVideo = /\.(mp4|mov|webm)$/i.test(url);
     const ratio = imageAspects[index];
     if (ratio) {
-      const width = ratio >= 1 ? IMAGE_WIDTHS.landscape : IMAGE_WIDTHS.portrait;
+      const base = ratio >= 1 ? IMAGE_WIDTHS.landscape : IMAGE_WIDTHS.portrait;
+      // Slightly larger video so it doesn't disappear in the collage
+      const width = isVideo ? Math.round(base * 1.18) : base;
       return { width, height: Math.round(width / ratio) };
     }
+    const width = isVideo
+      ? Math.round((IMAGE_WIDTHS[format] || IMAGE_WIDTHS.landscape) * 1.18)
+      : (IMAGE_WIDTHS[format] || IMAGE_WIDTHS.landscape);
     return {
-      width: IMAGE_WIDTHS[format] || IMAGE_WIDTHS.landscape,
+      width,
       height: IMAGE_HEIGHTS[format] || IMAGE_HEIGHTS.landscape,
     };
   };
 
   const getImageTitle = (url, index) => {
+    if (titleByUrl[url]) return titleByUrl[url];
     if (caseItem.imageTitles?.[index]) return caseItem.imageTitles[index];
     const filename = url.split('/').pop()?.split('.')[0] || '';
     return filename.replace(/[-_]/g, ' ').toUpperCase();
@@ -281,7 +302,7 @@ const DesktopCaseView = ({ caseItem }) => {
                 onClick={() => toggleScale(mediaId)}
                 className="absolute z-10 group cursor-grab active:cursor-grabbing"
                 style={{ width: `${mediaWidth}px` }} 
-                animate={{ scale: isScaled ? 1.8 : 1, zIndex: isScaled ? 100 : 10 }}
+                animate={{ scale: isScaled ? 1.8 : 1, zIndex: isScaled ? 100 : 10 + index }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 <div className="relative w-full shadow-2xl overflow-hidden bg-black/5">

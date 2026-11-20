@@ -336,14 +336,14 @@ const MobileCaseView = ({ caseItem }) => {
               {renderMedia(caseItem.detailImage1, "Hierarchy", "")}
             </FadeUp>
           )}
-          {caseItem.mobileVideoFirst && caseItem.detailImage3 && (
-            <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage3, "Leaflet", "")}
-            </FadeUp>
-          )}
           {caseItem.mobileVideoFirst && caseItem.detailImage4 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage4, "Product Range Packaging Differentiation", "")}
+              {renderMedia(caseItem.detailImage4, "Leaflet", "")}
+            </FadeUp>
+          )}
+          {caseItem.mobileVideoFirst && caseItem.detailImage5 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage5, "Product Range Packaging Differentiation", "")}
             </FadeUp>
           )}
 
@@ -394,10 +394,15 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* SumUp: guidelines after Approach; retail system follows later (detailImage5) */}
+          {/* SumUp: Production Kit → Brand guidelines after Approach */}
           {caseItem.mobileVideoFirst && caseItem.detailImage2 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage2, "Guidelines", "")}
+              {renderMedia(caseItem.detailImage2, "Production Kit", "")}
+            </FadeUp>
+          )}
+          {caseItem.mobileVideoFirst && caseItem.detailImage3 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage3, "Brand guidelines", "")}
             </FadeUp>
           )}
 
@@ -431,9 +436,16 @@ const MobileCaseView = ({ caseItem }) => {
               {renderMedia(caseItem.detailImage4, "Process Detail", "")}
             </FadeUp>
           )}
-          {caseItem.detailImage5 && caseItem.id !== 6 && (
+          {caseItem.detailImage5 && caseItem.id !== 6 && !caseItem.mobileVideoFirst && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage5, "Detail", "")}
+            </FadeUp>
+          )}
+
+          {/* SumUp: digital brand pages overview after Impact */}
+          {caseItem.mobileVideoFirst && caseItem.detailImage6 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage6, "Digital brand pages — overview", "")}
             </FadeUp>
           )}
 
@@ -468,7 +480,7 @@ const MobileCaseView = ({ caseItem }) => {
               {renderMedia(caseItem.detailImage2, "Final Outcome", "shadow-lg")}
             </FadeUp>
           )}
-          {caseItem.id !== 6 && caseItem.id !== 3 && caseItem.detailImage6 && (
+          {caseItem.id !== 6 && caseItem.id !== 3 && caseItem.detailImage6 && !caseItem.mobileVideoFirst && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage6, "Final Outcome", "shadow-lg")}
             </FadeUp>
