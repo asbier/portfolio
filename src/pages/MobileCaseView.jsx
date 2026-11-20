@@ -220,7 +220,7 @@ const MobileCaseView = ({ caseItem }) => {
         </div>
         {title && (
           <div className="absolute bottom-0 left-0 pl-4 pb-4 z-10 pointer-events-none">
-            <p className="text-base font-neue-semibold uppercase" style={{ color: titleColor }}>{title}</p>
+            <p className="text-base font-neue-semibold uppercase tracking-[1px]" style={{ color: titleColor }}>{title}</p>
           </div>
         )}
       </div>

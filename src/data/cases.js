@@ -8,7 +8,7 @@ export const cases = [
     role: "Senior Brand & Product Designer (Freelance)",
     hideTitleTag: true,
     tags: ["SUMUP", "FINTECH", "BRAND REFRESH", "DESIGN SYSTEM"],
-    description: "SumUp is a fintech for small businesses — payments, banking and tools to run the shop. A full brand rebrand is rolling out; we built the retail layer: one language for packaging, print and digital across countries.",
+    description: "SumUp is an international fintech for SMEs — card terminals, POS, payment processing and business accounts. A full brand rebrand is rolling out; we built the retail layer: one language for packaging, print and digital across countries.",
     challenge: "Amazon storefronts and brand pages had to carry the new retail language, fast — the core brief. Packaging, print and other touchpoints grew along the way, across formats and business partners, as the first drop of a system still forming. In parallel, new EU packaging rules (PPWR) meant packaging will look different soon; that work stays confidential.",
     process: "I turned the master brand into a usable retail system — atoms, a shared grid, three composition levels and a ten-step production flow. Design ops ran through ticketing and Notion; Figma AI helped scale assets across formats.",
     impact: "A coherent first retail layer across packaging, OOH, trade fairs and Amazon — strong enough to ship across countries now, open enough for the brand (and packaging) to evolve. Trade fairs and retailers now run with new packaging and displays developed with the team.",

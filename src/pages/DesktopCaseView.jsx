@@ -342,7 +342,7 @@ const DesktopCaseView = ({ caseItem }) => {
                   {url !== caseItem.image && (
                     <div className="absolute bottom-0 left-0 pl-4 pb-4 z-20 pointer-events-none">
                       <p
-                        className="text-base font-neue-semibold uppercase"
+                        className="text-base font-neue-semibold uppercase tracking-[1px]"
                         style={{ color: imageTitleColors[index] || TITLE_ON_LIGHT }}
                       >
                         {getImageTitle(url, index)}
