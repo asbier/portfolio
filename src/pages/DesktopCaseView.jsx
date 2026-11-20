@@ -208,7 +208,9 @@ const DesktopCaseView = ({ caseItem }) => {
           formats[index] =
             Math.abs(ratio - 1) < 0.08 ? 'square' :
             ratio >= 1 ? 'landscape' : 'portrait';
-          titleColors[index] = titleColorForImage(img, forcedDark);
+          titleColors[index] = caseItem.lightTitleImages?.includes(url)
+            ? TITLE_ON_LIGHT
+            : titleColorForImage(img, forcedDark);
           setImageFormats(prev => ({ ...prev, ...formats }));
           setImageAspects(prev => ({ ...prev, ...aspects }));
           setImageTitleColors(prev => ({ ...prev, ...titleColors }));
@@ -217,6 +219,9 @@ const DesktopCaseView = ({ caseItem }) => {
       }
       if (forcedDark) {
         titleColors[index] = TITLE_ON_DARK;
+        setImageTitleColors(prev => ({ ...prev, ...titleColors }));
+      } else if (caseItem.lightTitleImages?.includes(url)) {
+        titleColors[index] = TITLE_ON_LIGHT;
         setImageTitleColors(prev => ({ ...prev, ...titleColors }));
       }
     });

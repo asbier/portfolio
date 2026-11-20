@@ -205,7 +205,9 @@ const MobileCaseView = ({ caseItem }) => {
               loading="lazy" 
               decoding="async"
               onLoad={(e) => {
-                const color = titleColorForImage(e.currentTarget, forcedDark);
+                const color = forcedLight
+                  ? TITLE_ON_LIGHT
+                  : titleColorForImage(e.currentTarget, forcedDark);
                 setImageTitleColors((prev) => (
                   prev[source] === color ? prev : { ...prev, [source]: color }
                 ));
@@ -310,30 +312,38 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* SumUp-style: video → hierarchy → retail system → poster → packaging */}
+          {/* SumUp: video → challenge → hierarchy → leaflet → packaging → approach → retail system */}
           {caseItem.mobileVideoFirst && caseItem.detailVideo1 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster, getTitleForUrl(caseItem.detailVideo1) || 'Amazon storefront')}
             </FadeUp>
           )}
-          {caseItem.mobileVideoFirst && caseItem.detailImage1 && caseItem.detailImage1 !== heroImage && (
+
+          {/* CHALLENGE — after video when mobileVideoFirst; otherwise after context image below */}
+          {caseItem.challenge && caseItem.mobileVideoFirst && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage1, "Context", "")}
+              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
+                <TextFade direction="up">
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">CHALLENGE</h2>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.challenge)}</p>
+                </TextFade>
+              </div>
             </FadeUp>
           )}
-          {caseItem.mobileVideoFirst && caseItem.detailImage2 && (
+
+          {caseItem.mobileVideoFirst && caseItem.detailImage1 && caseItem.detailImage1 !== heroImage && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage2, "Retail System", "")}
+              {renderMedia(caseItem.detailImage1, "Hierarchy", "")}
             </FadeUp>
           )}
           {caseItem.mobileVideoFirst && caseItem.detailImage3 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage3, "Poster", "")}
+              {renderMedia(caseItem.detailImage3, "Leaflet", "")}
             </FadeUp>
           )}
           {caseItem.mobileVideoFirst && caseItem.detailImage4 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage4, "Packaging", "")}
+              {renderMedia(caseItem.detailImage4, "Product Range Packaging Differentiation", "")}
             </FadeUp>
           )}
 
@@ -348,8 +358,8 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* CHALLENGE - Problem statement */}
-          {caseItem.challenge && (
+          {/* CHALLENGE - Problem statement (default flow) */}
+          {caseItem.challenge && !caseItem.mobileVideoFirst && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
                 <TextFade direction="up">
@@ -381,6 +391,13 @@ const MobileCaseView = ({ caseItem }) => {
                 <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.process)}</p>
                 </TextFade>
               </div>
+            </FadeUp>
+          )}
+
+          {/* SumUp: guidelines after Approach; retail system follows later (detailImage5) */}
+          {caseItem.mobileVideoFirst && caseItem.detailImage2 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage2, "Guidelines", "")}
             </FadeUp>
           )}
 
