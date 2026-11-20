@@ -15,6 +15,9 @@ export const cases = [
     learning: "A first drop should lock the language, not freeze the brand.",
     image: "/images/02_sumup-retail-rebrand/sumup-teaser-register.webp",
     mobileImage: "/images/02_sumup-retail-rebrand/sumup-teaser-register.webp",
+    // Keep logo + grey headroom; crop the register at the bottom on tall mobile frames
+    imagePosition: "center top",
+    lightHero: true,
     // Mobile: video → challenge → hierarchy → leaflet → range → approach → kit → brand guidelines → digital pages overview
     detailImage1: "/images/02_sumup-retail-rebrand/sumup-colour-hierarchy-blurred.webp",
     detailImage2: "/images/02_sumup-retail-rebrand/sumup-retail-brand-guidelines.webp",

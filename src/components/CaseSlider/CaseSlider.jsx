@@ -161,7 +161,7 @@ const SlideItem = ({
         
         {/* Fractional Pagination - Mobile Only, below tags */}
         {isMobile && (
-          <div className="mt-3 lg:hidden text-[#979797] font-neue-book-semi text-sm">
+          <div className={`mt-3 lg:hidden font-neue-book-semi text-sm ${caseItem.lightHero ? 'text-[#363C53]' : 'text-[#979797]'}`}>
             {formatSlideNumber(currentSlide)} / {formatSlideNumber(totalSlidesForPagination)}
           </div>
         )}
