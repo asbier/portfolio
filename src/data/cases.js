@@ -9,7 +9,7 @@ export const cases = [
     hideTitleTag: true,
     tags: ["SUMUP", "FINTECH", "BRAND REFRESH", "DESIGN SYSTEM"],
     description: "SumUp is a fintech for small businesses — payments, banking and tools to run the shop. A full brand rebrand is rolling out; we built the retail layer: one language for packaging, print and digital across countries.",
-    challenge: "Packaging, print assets and digital touchpoints all needed to speak the same retail language, fast — across many formats and business partners — as the first drop of a system that will keep forming over the next years. In parallel, new EU packaging rules (PPWR) meant packaging will look different soon; that work stays confidential.",
+    challenge: "Amazon storefronts and brand pages had to carry the new retail language, fast — the core brief. Packaging, print and other touchpoints grew along the way, across formats and business partners, as the first drop of a system still forming. In parallel, new EU packaging rules (PPWR) meant packaging will look different soon; that work stays confidential.",
     process: "I turned the master brand into a usable retail system — atoms, a shared grid, three composition levels and a ten-step production flow. Design ops ran through ticketing and Notion; Figma AI helped scale assets across formats.",
     impact: "A coherent first retail layer across packaging, OOH, trade fairs and Amazon — strong enough to ship across countries now, open enough for the brand (and packaging) to evolve. Trade fairs and retailers now run with new packaging and displays developed with the team.",
     learning: "A first drop should lock the language, not freeze the brand.",
@@ -199,8 +199,7 @@ export const cases = [
     category: "BRAND STRATEGY / ART DIRECTION",
     year: "2015–18",
     role: ["Art Director Brand Vision", "Retail Experience"],
-    tags: ["BRANDING", "ART DIRECTION", "RETAIL EXPERIENCE"],
- 
+    tags: ["BRANDING", "ART DIRECTION", "DESIGN SYSTEM"],
     description: "Led EDITED's redesign into a modern, editorial-driven brand — supporting scale from 100 to 300 people and European expansion.",
     challenge: "Make EDITED the group's marketing test pilot: a fully shareable brand experience across retail, packaging, social, and editorial UI.",
     process: "We ran EDITED as an agile lab — Style Icon capsules, influencer affiliate models, EDITED Paper, and city store launches built for community pull.",
