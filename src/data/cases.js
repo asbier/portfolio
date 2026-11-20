@@ -86,7 +86,7 @@ export const cases = [
     imageTitles: ['Dashboard hero', 'Wireframe – vehicle selection', 'Step-by-step guide', 'Calibration guide'],
     team: { 
       title: "DAYONE X HELLAGUTMANN", 
-      members: ["Consultancy and Guidance Christopher G. (Lead)", "UX & Strategy Annemarie S.", "UI Bean D.", "PM Silvana M."] 
+      members: ["Consultancy and Guidance Christopher G. (Lead)", "UX & Strategy Annemarie S.", "UI Bean D.", "PM Silviana A."] 
     }
   },
   {
@@ -160,6 +160,7 @@ export const cases = [
     detailVideo1Poster: "/images/05_carhartt-wip-new journey_04/carhartt-journey-video-poster.webp",
     detailVideo2: "/images/05_carhartt-wip-new journey_04/carhartt-journey-video-final.mp4",
     detailVideo2Poster: "/images/05_carhartt-wip-new journey_04/carhartt-journey-video-poster.webp",
+    desktopVideoEarly: true,
     imageTitles: ['Shopping journey hero', 'Before checkout', 'Cart & checkout', 'Filter & navigation', 'EU start', 'Collection slider', 'Video still', 'Phone demo', 'Video final'],
     team: { title: "CARHARTT-WIP", members: ["Digital Design Lead Lutz E.", "Product Designer Annemarie S."] }
 },
