@@ -89,9 +89,10 @@ const MobileCaseView = ({ caseItem }) => {
   const [imageTitleColors, setImageTitleColors] = useState({});
 
   // Same order as desktop allImages — for looking up imageTitles by URL
+  // (respect hideDesktopHero so titles don't shift when the teaser is header-only)
   const imageList = React.useMemo(() => [
     caseItem.introImage,
-    caseItem.image,
+    caseItem.hideDesktopHero ? null : caseItem.image,
     caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3,
     caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6,
     caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9,
@@ -309,8 +310,35 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* Context Image - Visual hook after intro (skip if same as mobile hero) */}
-          {caseItem.detailImage1 && caseItem.detailImage1 !== heroImage && (
+          {/* SumUp-style: video → hierarchy → retail system → poster → packaging */}
+          {caseItem.mobileVideoFirst && caseItem.detailVideo1 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster, getTitleForUrl(caseItem.detailVideo1) || 'Amazon storefront')}
+            </FadeUp>
+          )}
+          {caseItem.mobileVideoFirst && caseItem.detailImage1 && caseItem.detailImage1 !== heroImage && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage1, "Context", "")}
+            </FadeUp>
+          )}
+          {caseItem.mobileVideoFirst && caseItem.detailImage2 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage2, "Retail System", "")}
+            </FadeUp>
+          )}
+          {caseItem.mobileVideoFirst && caseItem.detailImage3 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage3, "Poster", "")}
+            </FadeUp>
+          )}
+          {caseItem.mobileVideoFirst && caseItem.detailImage4 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage4, "Packaging", "")}
+            </FadeUp>
+          )}
+
+          {/* Context Image - Visual hook after intro (skip if same as mobile hero, or already shown above) */}
+          {!caseItem.mobileVideoFirst && caseItem.detailImage1 && caseItem.detailImage1 !== heroImage && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile1 : caseItem.detailImage1, 
@@ -333,21 +361,14 @@ const MobileCaseView = ({ caseItem }) => {
           )}
 
           {/* Challenge Visual - Shows the problem */}
-          {/* Skip detailImage2 for VW (id: 3) - it comes after OUTCOME */}
-          {caseItem.detailImage2 && caseItem.id !== 3 && (
+          {/* Skip detailImage2 for VW (id: 3) - it comes after OUTCOME; skip if already shown for mobileVideoFirst */}
+          {caseItem.detailImage2 && caseItem.id !== 3 && !caseItem.mobileVideoFirst && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile2 : caseItem.detailImage2, 
                 "Challenge Visual", 
                 "grayscale hover:grayscale-0 transition-all duration-700"
               )}
-            </FadeUp>
-          )}
-
-          {/* Early video (e.g. SumUp Amazon) — after guidelines, before remaining visuals */}
-          {caseItem.mobileVideoEarly && caseItem.detailVideo1 && (
-            <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster)}
             </FadeUp>
           )}
 
@@ -376,8 +397,8 @@ const MobileCaseView = ({ caseItem }) => {
           )}
 
           {/* Impact Visual - Shows the solution/process */}
-          {/* Skip detailImage3 for VW (id: 3) - no image needed under IMPACT */}
-          {caseItem.detailImage3 && caseItem.id !== 3 && (
+          {/* Skip detailImage3 for VW (id: 3); skip if already shown in mobileVideoFirst block */}
+          {caseItem.detailImage3 && caseItem.id !== 3 && !caseItem.mobileVideoFirst && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(
                 caseItem.id === 6 ? caseItem.detailImageMobile4 : caseItem.detailImage3, 
@@ -388,7 +409,7 @@ const MobileCaseView = ({ caseItem }) => {
           )}
 
           {/* Additional supporting images - Show process/details */}
-          {caseItem.detailImage4 && caseItem.id !== 6 && (
+          {caseItem.detailImage4 && caseItem.id !== 6 && !caseItem.mobileVideoFirst && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage4, "Process Detail", "")}
             </FadeUp>
@@ -399,8 +420,8 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* Video 1 - default placement (skipped when mobileVideoEarly already showed it) */}
-          {caseItem.detailVideo1 && !caseItem.mobileVideoEarly && (
+          {/* Video 1 - default placement (skipped when already shown first) */}
+          {caseItem.detailVideo1 && !caseItem.mobileVideoFirst && !caseItem.mobileVideoEarly && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster)}
             </FadeUp>
