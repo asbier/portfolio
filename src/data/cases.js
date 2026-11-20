@@ -15,8 +15,6 @@ export const cases = [
     learning: "A first drop should lock the language, not freeze the brand.",
     image: "/images/02_sumup-retail-rebrand/sumup-teaser-register.webp",
     mobileImage: "/images/02_sumup-retail-rebrand/sumup-teaser-register.webp",
-    imageFit: "contain",
-    sliderVideoBg: "#E8E8E8",
     detailImage1: "/images/02_sumup-retail-rebrand/sumup-colour-hierarchy.webp",
     detailImage2: "/images/02_sumup-retail-rebrand/sumup-retail-brand-guidelines.webp",
     detailImage3: "/images/02_sumup-retail-rebrand/sumup-digital-retail-system.webp",
