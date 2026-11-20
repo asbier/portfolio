@@ -20,7 +20,7 @@ const LetterRevealParagraph = ({ text, scrollProgress, isActive, textColor = '#9
   const hiddenColor = textColor === '#979797' ? 'rgba(151, 151, 151, 0.2)' : `rgba(54, 60, 83, 0.2)`;
 
   return (
-    <div className="text-[22px] lg:text-[38px] leading-[1.1] font-neue-book-semi tracking-[0.02em]" style={{ color: textColor }}>
+    <div className="text-[26px] lg:text-[38px] leading-[1.1] font-neue-book-semi tracking-[0.02em]" style={{ color: textColor }}>
       {words.map((word, wIdx) => {
         const wordStart = words.slice(0, wIdx).join(' ').length + (wIdx > 0 ? 1 : 0);
         return (
@@ -147,13 +147,13 @@ const ApproachContent = () => {
         </div>
 
         {/* CONTENT AREA (Unten auf Mobile / Rechts auf Desktop) */}
-        <div className="relative w-full h-[60dvh] lg:h-full px-8 lg:px-20 flex flex-col justify-center order-1 lg:order-2">
+        <div className="relative w-full h-[60dvh] lg:h-full px-8 pt-28 lg:pt-0 lg:px-20 flex flex-col justify-center order-1 lg:order-2">
           
           {/* Paragraphen */}
           {paragraphs.map((text, i) => (
             <motion.div
               key={i}
-              className="absolute w-full pr-12 lg:pr-0"
+              className="absolute w-full pr-[4.25rem] lg:pr-0"
               style={{ maxWidth: '550px' }}
               animate={{ 
                 opacity: currentParagraph === i ? 1 : 0,
@@ -171,14 +171,14 @@ const ApproachContent = () => {
             </motion.div>
           ))}
 
-          {/* GIG-WALL (Full Width) */}
+          {/* GIG-WALL — mobile: full frame, content starts ~80% down; desktop: panel padding */}
           <motion.div
-            className="absolute inset-0 flex flex-col justify-start pt-10 lg:pt-20 px-8 lg:px-20 scrollbar-hide"
+            className="fixed lg:absolute inset-x-0 top-0 bottom-[110px] lg:inset-0 flex flex-col justify-start pt-[80%] lg:pt-20 pl-8 lg:px-20 pr-[4.25rem] lg:pr-20 scrollbar-hide"
             style={{ 
               overflowY: 'auto', 
               WebkitOverflowScrolling: 'touch',
               zIndex: currentParagraph === paragraphs.length ? 50 : -1,
-              backgroundColor: '#F0F5F5' // Deckt das Aquarium oben ab für bessere Lesbarkeit
+              backgroundColor: '#F0F5F5'
             }}
             animate={{ 
               opacity: currentParagraph === paragraphs.length ? 1 : 0,
@@ -187,7 +187,7 @@ const ApproachContent = () => {
             }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-[11px] lg:text-[17px] mb-8 uppercase tracking-[0.25em] text-[#979797] font-neue-semibold">
+            <h3 className="text-[13px] lg:text-[17px] mb-8 uppercase tracking-[0.25em] text-[#979797] font-neue-semibold">
               Selected Gigs / Experience
             </h3>
             <div className="flex flex-col gap-1 pb-40">
@@ -199,7 +199,7 @@ const ApproachContent = () => {
 
           {/* KONTAKT */}
           <motion.div
-            className="absolute w-full flex flex-col items-start pr-8"
+            className="absolute w-full flex flex-col items-start pr-[4.25rem] lg:pr-8"
             style={{ zIndex: currentParagraph === paragraphs.length + 1 ? 50 : -1 }}
             animate={{ 
               opacity: currentParagraph === paragraphs.length + 1 ? 1 : 0,
