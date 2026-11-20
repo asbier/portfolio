@@ -8,23 +8,22 @@ export const cases = [
     role: "Senior Brand & Retail Designer (Freelance)",
     hideTitleTag: true,
     tags: ["SUMUP", "FINTECH", "RETAIL REBRAND", "BRAND DESIGN"],
-    description: "SumUp is rolling out a full brand rebrand — we built the retail layer: one language for packaging, print and digital across 21 countries.",
+    description: "SumUp is a fintech that helps small businesses take payments — and is rolling out a full brand rebrand. We built the retail layer: one language for packaging, print and digital across 21 countries.",
     challenge: "Packaging, print assets and digital touchpoints all needed to speak the same retail language, fast — across many formats and an external agency — as the first drop of a system that will keep forming over the next years. In parallel, new EU packaging rules (PPWR) meant packaging will look different soon; that work stays confidential.",
     process: "I owned the first drop: translating the master brand into a practical retail system — atoms, a shared grid, three composition levels and a ten-step production flow — so the retail team and agency could produce on-brand packaging, flyers and digital assets without starting from scratch each time. I also consulted on PPWR packaging implications, without sharing those outcomes here.",
     impact: "A coherent first retail layer across packaging, OOH, trade fairs and Amazon in 21 countries — strong enough to ship now, open enough for the brand (and packaging) to evolve.",
     learning: "A first drop should lock the language, not freeze the brand.",
     image: "/images/02_sumup-retail-rebrand/sumup-teaser-register-v2.webp",
-    // Mobile hero: not Dual Sided (teaser stays home-slider only)
-    mobileImage: "/images/02_sumup-retail-rebrand/sumup-colour-hierarchy.webp",
+    mobileImage: "/images/02_sumup-retail-rebrand/sumup-teaser-register-v2.webp",
     detailImage1: "/images/02_sumup-retail-rebrand/sumup-colour-hierarchy.webp",
     detailImage2: "/images/02_sumup-retail-rebrand/sumup-retail-brand-guidelines.webp",
     detailImage3: "/images/02_sumup-retail-rebrand/sumup-digital-retail-system.webp",
-    // Single Dual Sided POS in content (your Group export)
+    // Content poster = Group export (full Dual Sided); teaser stays slider + mobile header
     detailImage4: "/images/02_sumup-retail-rebrand/sumup-dual-sided-pos-poster.webp",
     detailImage5: "/images/02_sumup-retail-rebrand/sumup-handheld-pos-packaging-blurred.webp",
     detailVideo1: "/images/02_sumup-retail-rebrand/sumup-amazon-storefront-loop.mp4",
     detailVideo1Poster: "/images/02_sumup-retail-rebrand/sumup-amazon-storefront-poster.webp",
-    // Teaser Register is slider-only
+    // Teaser Register is header/slider only — not repeated in desktop collage
     hideDesktopHero: true,
     // Mobile: Amazon video after guidelines, before digital/poster/packaging
     mobileVideoEarly: true,
