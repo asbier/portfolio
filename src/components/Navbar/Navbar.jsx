@@ -47,6 +47,72 @@ const Navbar = () => {
 
   return (
     <>
+      {/* Mobile brand mark — top left, name ring + slow 3D spin */}
+      <button
+        type="button"
+        onClick={() => navigate('/')}
+        className="lg:hidden fixed left-3 z-[60] touch-manipulation"
+        style={{
+          top: 'max(0.65rem, env(safe-area-inset-top))',
+          width: 148,
+          height: 148,
+          perspective: 600,
+        }}
+        aria-label="Annemarie Sauerbier — Home"
+      >
+        <svg
+          viewBox="0 0 148 148"
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          aria-hidden
+        >
+          <defs>
+            {/* Full closed circle starting at top, clockwise */}
+            <path
+              id="am-name-ring"
+              d="M 74,24 A 50,50 0 1,1 73.999,24"
+              fill="none"
+            />
+          </defs>
+          <text
+            fill="#4A4A4A"
+            style={{
+              fontSize: 26,
+              letterSpacing: '0.14em',
+              fontFamily: 'NeueMontrealSemiBold, sans-serif',
+              textTransform: 'uppercase',
+            }}
+          >
+            <textPath href="#am-name-ring" xlinkHref="#am-name-ring" startOffset="0">
+              {`AM BRAND & PRODUCT DESIGNER${'\u00A0'.repeat(3)}•${'\u00A0'.repeat(3)}AM BRAND & PRODUCT DESIGNER${'\u00A0'.repeat(3)}•${'\u00A0'.repeat(3)}`}
+            </textPath>
+          </text>
+        </svg>
+        <motion.span
+          className="absolute z-10 block"
+          style={{
+            left: '50%',
+            top: '50%',
+            width: 88,
+            height: 88,
+            marginLeft: -44,
+            marginTop: -44,
+            transformStyle: 'preserve-3d',
+          }}
+          animate={{ rotateY: 360 }}
+          transition={{ repeat: Infinity, duration: 8, ease: 'linear' }}
+        >
+          <img
+            src="/am-mark.webp"
+            alt=""
+            className="h-full w-full object-contain block drop-shadow-sm"
+            width={88}
+            height={88}
+            decoding="async"
+            style={{ backfaceVisibility: 'hidden' }}
+          />
+        </motion.span>
+      </button>
+
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center backdrop-blur-md bg-[#F5F5F5]/90" onClick={() => setIsMenuOpen(false)}>
