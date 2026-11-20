@@ -28,17 +28,20 @@ export const cases = [
     hideDesktopHero: true,
     mobileVideoFirst: true,
     desktopVideoEarly: true,
+    darkImages: [
+      "/images/02_sumup-retail-rebrand/sumup-register-leaflet.webp",
+    ],
     lightTitleImages: [
       "/images/02_sumup-retail-rebrand/sumup-retail-brand-guidelines.webp",
       "/images/02_sumup-retail-rebrand/sumup-digital-retail-system.webp",
       "/images/02_sumup-retail-rebrand/sumup-brand-guidelines.webp",
+      "/images/02_sumup-retail-rebrand/sumup-amazon-storefront-loop.mp4",
     ],
     // Keep collage card sizes; show full media inside (no crop)
     containImages: [
       "/images/02_sumup-retail-rebrand/sumup-colour-hierarchy-blurred.webp",
       "/images/02_sumup-retail-rebrand/sumup-retail-brand-guidelines.webp",
       "/images/02_sumup-retail-rebrand/sumup-digital-retail-system.webp",
-      "/images/02_sumup-retail-rebrand/sumup-amazon-storefront-loop.mp4",
       "/images/02_sumup-retail-rebrand/sumup-register-leaflet.webp",
       "/images/02_sumup-retail-rebrand/sumup-range.webp",
       "/images/02_sumup-retail-rebrand/sumup-brand-guidelines.webp",

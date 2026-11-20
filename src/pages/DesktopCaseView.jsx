@@ -213,6 +213,21 @@ const DesktopCaseView = ({ caseItem }) => {
         setImageFormats(prev => ({ ...prev, ...formats }));
         setImageAspects(prev => ({ ...prev, ...aspects }));
         setImageTitleColors(prev => ({ ...prev, ...titleColors }));
+        // Prefer real video aspect so the tile fills edge-to-edge (no letterbox)
+        const video = document.createElement('video');
+        video.preload = 'metadata';
+        video.onloadedmetadata = () => {
+          if (video.videoWidth && video.videoHeight) {
+            const ratio = video.videoWidth / video.videoHeight;
+            aspects[index] = ratio;
+            formats[index] =
+              Math.abs(ratio - 1) < 0.08 ? 'square' :
+              ratio >= 1 ? 'landscape' : 'portrait';
+            setImageFormats(prev => ({ ...prev, ...formats }));
+            setImageAspects(prev => ({ ...prev, ...aspects }));
+          }
+        };
+        video.src = url;
       } else {
         const img = new Image();
         img.onload = () => {
