@@ -10,7 +10,6 @@ const SlideItem = ({
   smoothScroll, 
   isMobile, 
   isGradient, 
-  isComingSoon, 
   handleNavigation,
   handleTagClick,
   activeTagFilter,
@@ -42,10 +41,13 @@ const SlideItem = ({
       }}
       style={{ x: parallaxX }}
       className={`flex-shrink-0 w-full min-h-full h-full snap-start relative group
-                 lg:min-h-0 lg:w-[calc((100vw-6px)/3)] ${isComingSoon ? 'cursor-default' : isMobile ? 'cursor-default' : 'cursor-pointer'}`}
+                 lg:min-h-0 lg:w-[calc((100vw-6px)/3)] ${isMobile ? 'cursor-default' : 'cursor-pointer'}`}
     >
       {/* Projekt-Hintergrund - Bild bleibt statisch, Container bewegt sich */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
+      <div
+        className="absolute inset-0 w-full h-full overflow-hidden"
+        style={caseItem.imageFit === 'contain' ? { background: caseItem.sliderVideoBg || '#FFFFFF' } : undefined}
+      >
         {isGradient ? (
           <div 
             className="w-full h-full" 
@@ -53,11 +55,47 @@ const SlideItem = ({
           />
         ) : (
           <>
+            {(() => {
+              const slideVideo = isMobile
+                ? (caseItem.mobileSliderVideo || caseItem.sliderVideo)
+                : (caseItem.sliderVideo || caseItem.mobileSliderVideo);
+              const poster = caseItem.detailVideo1Poster || caseItem.mobileImage || caseItem.image;
+              if (slideVideo) {
+                return (
+                  <video
+                    key={slideVideo}
+                    src={slideVideo}
+                    poster={poster}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className={`w-full h-full ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'} transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90`}
+                    style={caseItem.imagePosition ? { objectPosition: caseItem.imagePosition } : (caseItem.imageFit === 'contain' ? { objectPosition: 'center top' } : undefined)}
+                    onError={(e) => {
+                      const el = e.currentTarget;
+                      el.style.display = 'none';
+                      const fallback = el.nextElementSibling;
+                      if (fallback) fallback.style.display = 'block';
+                    }}
+                  />
+                );
+              }
+              return null;
+            })()}
             <img 
-              src={caseItem.image} 
+              src={isMobile && caseItem.mobileImage ? caseItem.mobileImage : caseItem.image} 
               alt={caseItem.title} 
               className={`w-full h-full ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'} transition-all duration-300 group-hover:brightness-75 group-hover:contrast-110 group-hover:saturate-90`} 
-              style={caseItem.imagePosition ? { objectPosition: caseItem.imagePosition } : undefined}
+              style={{
+                ...(caseItem.imagePosition
+                  ? { objectPosition: caseItem.imagePosition }
+                  : caseItem.imageFit === 'contain'
+                    ? { objectPosition: 'center top' }
+                    : {}),
+                display: (isMobile ? (caseItem.mobileSliderVideo || caseItem.sliderVideo) : (caseItem.sliderVideo || caseItem.mobileSliderVideo)) ? 'none' : undefined,
+              }}
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
               fetchPriority={index === 0 ? "high" : "auto"}
@@ -87,23 +125,6 @@ const SlideItem = ({
           background: 'linear-gradient(to top, rgba(128, 93, 10, 0.25) 0%, transparent 100%)'
         }}
       />
-      
-      {/* Coming Soon Overlay - full-bleed blur; tags sit above */}
-      {isComingSoon && (
-        <>
-          <div className="absolute inset-0 z-40 backdrop-blur-md"></div>
-          <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none">
-            <div className="text-center px-6 space-y-3">
-              <span className="block text-[1.75rem] sm:text-[2.25rem] lg:text-[3.25rem] font-neue-semibold uppercase text-[#DFFF00] leading-tight" style={{ letterSpacing: '0.08em' }}>
-                SumUp Retail Rebrand Europe
-              </span>
-              <span className="block text-[1.2rem] lg:text-[2rem] font-neue-semibold uppercase text-[#DFFF00]/80" style={{ letterSpacing: '0.1em' }}>
-                Coming Soon
-              </span>
-            </div>
-          </div>
-        </>
-      )}
       
       {/* Titel-Overlay */}
       <div className={`absolute inset-x-0 bottom-0 p-4 pb-6 sm:p-6 sm:pb-8 lg:p-12 z-50`}>
@@ -291,12 +312,9 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter, mode = 'select
         {filteredCases.map((caseItem, index) => {
           // Prüfen, ob es ein Verlauf ist
           const isGradient = caseItem.image?.startsWith('linear-gradient');
-          const isComingSoon = caseItem.isPrivate && caseItem.id === 1; // SumUp Retail Rebrand — coming soon
 
           const handleNavigation = () => {
-            if (!isComingSoon) {
-              navigate(`/case/${caseItem.slug}`);
-            }
+            navigate(`/case/${caseItem.slug}`);
           };
 
           return (
@@ -308,7 +326,6 @@ const CaseSlider = ({ cases, activeTagFilter, setActiveTagFilter, mode = 'select
               smoothScroll={smoothScroll}
               isMobile={isMobile}
               isGradient={isGradient}
-              isComingSoon={isComingSoon}
               handleNavigation={handleNavigation}
               handleTagClick={handleTagClick}
               activeTagFilter={activeTagFilter}

@@ -12,13 +12,12 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
   const letterRef = useRef(null);
   const vel = useRef({ x: 0, y: 0 });
   const mousePos = useRef({ x: -1000, y: -1000 });
+  const physicsReady = useRef(false);
   
   // Random scale for letters - variable sizes for visual interest
   const letterScale = useMemo(() => {
-    // Base range for all devices
     const baseMin = 0.85;
     const baseMax = 1.55;
-    // Narrower range for long words (better readability)
     const min = totalLetters >= 9 ? 0.85 : baseMin;
     const max = totalLetters >= 9 ? 1.55 : baseMax;
     return Math.random() * (max - min) + min;
@@ -40,8 +39,15 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('touchmove', handleMove, { passive: true });
 
+    physicsReady.current = false;
     const timeout = setTimeout(() => {
-      animate(y, 0, { duration: 2.5, ease: "easeOut" });
+      animate(y, 0, {
+        duration: 2.5,
+        ease: 'easeOut',
+        onComplete: () => {
+          physicsReady.current = true;
+        },
+      });
     }, delay * 1000);
 
     return () => {
@@ -49,15 +55,28 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
       window.removeEventListener('touchmove', handleMove);
       clearTimeout(timeout);
     };
-  }, [delay, y, opacity]);
+  }, [delay, y]);
 
   useEffect(() => {
     let frame;
     const update = () => {
-      if (!letterRef.current) return;
+      if (!letterRef.current) {
+        frame = requestAnimationFrame(update);
+        return;
+      }
+
+      // Wait for drop-in to finish — otherwise RAF overwrites the intro animation
+      if (!physicsReady.current) {
+        frame = requestAnimationFrame(update);
+        return;
+      }
+
       const rect = letterRef.current.getBoundingClientRect();
       const parent = letterRef.current.parentElement;
-      if (!parent) return;
+      if (!parent) {
+        frame = requestAnimationFrame(update);
+        return;
+      }
       const container = parent.getBoundingClientRect();
 
       let curX = x.get();
@@ -72,7 +91,7 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
       const dist = Math.sqrt(dx * dx + dy * dy);
       const radius = 250;
 
-      if (dist < radius) {
+      if (dist < radius && dist > 0.001) {
         const force = (radius - dist) / radius;
         vel.current.x -= (dx / dist) * force * 0.6;
         vel.current.y -= (dy / dist) * force * 0.6;
@@ -92,16 +111,15 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
 
       // BODEN (KEIN BOUNCE)
       if (rect.bottom > container.bottom) {
-        vel.current.y = 0; // Stoppt sofort
-        vel.current.x *= 0.3; // Mehr Reibung bremst Rutschen
+        vel.current.y = 0;
+        vel.current.x *= 0.3;
         curY -= (rect.bottom - container.bottom);
       }
 
-      // REIBUNG (Macht die Bewegung "ölig" - erhöht für weniger Bouncen)
+      // REIBUNG
       vel.current.x *= 0.5;
       vel.current.y *= 0.5;
 
-      // SPEED LIMIT (Verhindert das Verschwinden - reduziert für weniger Bouncen)
       const maxSpeed = 6;
       vel.current.x = Math.max(Math.min(vel.current.x, maxSpeed), -maxSpeed);
       vel.current.y = Math.max(Math.min(vel.current.y, maxSpeed), -maxSpeed);
@@ -119,12 +137,17 @@ const PhysicsLetter = ({ char, defaultX, defaultY, delay = 0, index = 0, totalLe
     <motion.span
       ref={letterRef}
       style={{
-        x: springX, y: springY, rotate: springRotate, opacity,
-        left: defaultX, top: defaultY, position: 'absolute',
+        x: springX,
+        y: springY,
+        rotate: springRotate,
+        scale: letterScale,
+        opacity,
+        left: defaultX,
+        top: defaultY,
+        position: 'absolute',
         color: letterColor,
         display: 'inline-block',
         filter: 'blur(1.5px)',
-        transform: `scale(${letterScale})`,
       }}
       className="font-neue-semibold select-none pointer-events-none text-[45vw] lg:text-[20vw] leading-none will-change-transform"
     >

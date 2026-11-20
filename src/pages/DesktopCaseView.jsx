@@ -52,11 +52,14 @@ const DesktopCaseView = ({ caseItem }) => {
   const allImages = useMemo(() => {
     return [
       caseItem.introImage,
-      caseItem.image,
+      caseItem.hideDesktopHero ? null : caseItem.image,
       caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3,
       caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6,
       caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9,
-      caseItem.detailImage10, caseItem.detailImage11,
+      caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12,
+      caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15,
+      caseItem.detailImage16, caseItem.detailImage17, caseItem.detailImage18,
+      caseItem.detailImage19, caseItem.detailImage20,
       caseItem.detailVideo1, caseItem.detailVideo2
     ].filter(Boolean);
   }, [caseItem]);
@@ -108,10 +111,11 @@ const DesktopCaseView = ({ caseItem }) => {
     return {
       projectInfo: { x: clampX(leftX), y: getRowCardY(0) + zigzagOffset(0, 'left') },
       challenge:   { x: clampX(rightX), y: getRowCardY(0) + zigzagOffset(0, 'right') },
-      impact:      { x: clampX(leftX), y: getRowCardY(1) + zigzagOffset(1, 'left') },
-      outcome:     { x: clampX(rightX), y: getRowCardY(1) + zigzagOffset(1, 'right') },
-      learning:    { x: clampX(leftX), y: getRowCardY(2) + zigzagOffset(2, 'left') },
-      offer:       { x: clampX(rightX), y: getRowCardY(2) + zigzagOffset(2, 'right') }
+      process:     { x: clampX(leftX), y: getRowCardY(1) + zigzagOffset(1, 'left') },
+      impact:      { x: clampX(rightX), y: getRowCardY(1) + zigzagOffset(1, 'right') },
+      outcome:     { x: clampX(leftX), y: getRowCardY(2) + zigzagOffset(2, 'left') },
+      learning:    { x: clampX(rightX), y: getRowCardY(2) + zigzagOffset(2, 'right') },
+      offer:       { x: clampX(leftX), y: getRowCardY(3) + zigzagOffset(3, 'left') }
     };
   }, [grid, layoutConfig, allImages.length]);
 
@@ -127,6 +131,9 @@ const DesktopCaseView = ({ caseItem }) => {
     transition: { duration: 0.7, delay: 0.1 * order, ease: "easeOut" }
   });
 
+  const usesContain = (url) =>
+    Boolean(url && caseItem.containImages?.includes(url));
+
   // 2. BILDER-POSITIONEN
   const initialPositions = useMemo(() => {
     const imageCount = allImages.length;
@@ -137,8 +144,7 @@ const DesktopCaseView = ({ caseItem }) => {
       const row = Math.floor(i / 3);
       const slot = i % 3;
       const overlapY = slot === 1 ? -40 : slot === 2 ? -10 : 0;
-      const overlapX = 0;
-      const rawX = colX(cols[slot]) + overlapX;
+      const rawX = colX(cols[slot]);
       const rawY = startY + row * rowGap + yOffsets[slot] + overlapY;
       const maxX = grid.containerLeft + grid.containerWidth - MAX_IMAGE_WIDTH;
       const clampedX = Math.max(grid.containerLeft, Math.min(rawX, maxX));
@@ -164,6 +170,7 @@ const DesktopCaseView = ({ caseItem }) => {
     const cardLastY = Math.max(
       cardPositions.projectInfo.y,
       cardPositions.challenge.y,
+      cardPositions.process.y,
       cardPositions.impact.y,
       outcomePosition?.y ?? cardPositions.outcome.y,
       cardPositions.learning.y,
@@ -187,7 +194,9 @@ const DesktopCaseView = ({ caseItem }) => {
       } else if (isVideo) {
         formats[index] = 'landscape';
         aspects[index] = 10 / 7;
-        titleColors[index] = TITLE_ON_DARK;
+        titleColors[index] = caseItem.lightTitleImages?.includes(url)
+          ? TITLE_ON_LIGHT
+          : TITLE_ON_DARK;
         setImageFormats(prev => ({ ...prev, ...formats }));
         setImageAspects(prev => ({ ...prev, ...aspects }));
         setImageTitleColors(prev => ({ ...prev, ...titleColors }));
@@ -211,7 +220,7 @@ const DesktopCaseView = ({ caseItem }) => {
         setImageTitleColors(prev => ({ ...prev, ...titleColors }));
       }
     });
-  }, [allImages, caseItem.forceSquareImages, caseItem.darkImages]);
+  }, [allImages, caseItem.forceSquareImages, caseItem.darkImages, caseItem.lightTitleImages]);
 
   const getImageSize = (index, format) => {
     const ratio = imageAspects[index];
@@ -273,12 +282,20 @@ const DesktopCaseView = ({ caseItem }) => {
                 <div className="relative w-full shadow-2xl overflow-hidden bg-black/5">
                   <div className="relative w-full" style={{ height: `${mediaHeight}px` }}>
                     {isVideo ? (
-                      <video src={url} autoPlay loop muted playsInline className="w-full h-full object-cover pointer-events-none" />
+                      <video
+                        src={url}
+                        poster={caseItem.detailVideo1Poster && url === caseItem.detailVideo1 ? caseItem.detailVideo1Poster : undefined}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className={`w-full h-full pointer-events-none ${usesContain(url) ? 'object-contain bg-white' : 'object-cover'}`}
+                      />
                     ) : (
                       <img
                         src={url}
                         alt=""
-                        className="w-full h-full object-cover select-none pointer-events-none"
+                        className={`w-full h-full select-none pointer-events-none ${usesContain(url) ? 'object-contain bg-[#F5F3F0]' : 'object-cover'}`}
                         style={
                           caseItem.imagePositions?.[url]
                             ? { objectPosition: caseItem.imagePositions[url] }
@@ -337,10 +354,24 @@ const DesktopCaseView = ({ caseItem }) => {
             </motion.div>
           )}
 
+          {caseItem.process && (
+            <motion.div 
+              drag dragMomentum={false}
+              {...getCardMotion('process', 2)}
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
+              style={{
+                background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
+              }}
+            >
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">APPROACH</h2>
+              <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.process)}</p>
+            </motion.div>
+          )}
+
           {caseItem.impact && (
             <motion.div 
               drag dragMomentum={false}
-              {...getCardMotion('impact', 2)}
+              {...getCardMotion('impact', 3)}
               className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
@@ -354,7 +385,7 @@ const DesktopCaseView = ({ caseItem }) => {
           {caseItem.outcome && (
             <motion.div 
               drag dragMomentum={false}
-              {...getCardMotionAt(outcomePosition, 3)}
+              {...getCardMotionAt(outcomePosition, 4)}
               className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
@@ -368,7 +399,7 @@ const DesktopCaseView = ({ caseItem }) => {
           {caseItem.learning && (
             <motion.div 
               drag dragMomentum={false}
-              {...getCardMotion('learning', 4)}
+              {...getCardMotion('learning', 5)}
               className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
@@ -382,7 +413,7 @@ const DesktopCaseView = ({ caseItem }) => {
           {caseItem.offer && (
             <motion.div 
               drag dragMomentum={false}
-              {...getCardMotion('offer', 5)}
+              {...getCardMotion('offer', 6)}
               className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'

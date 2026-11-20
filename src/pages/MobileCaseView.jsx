@@ -95,7 +95,10 @@ const MobileCaseView = ({ caseItem }) => {
     caseItem.detailImage1, caseItem.detailImage2, caseItem.detailImage3,
     caseItem.detailImage4, caseItem.detailImage5, caseItem.detailImage6,
     caseItem.detailImage7, caseItem.detailImage8, caseItem.detailImage9,
-    caseItem.detailImage10, caseItem.detailImage11,
+    caseItem.detailImage10, caseItem.detailImage11, caseItem.detailImage12,
+    caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15,
+    caseItem.detailImage16, caseItem.detailImage17, caseItem.detailImage18,
+    caseItem.detailImage19, caseItem.detailImage20,
     caseItem.detailVideo1, caseItem.detailVideo2
   ].filter(Boolean), [caseItem]);
 
@@ -178,8 +181,9 @@ const MobileCaseView = ({ caseItem }) => {
     const isGradient = source.startsWith('linear-gradient');
     const isVideo = source.endsWith('.mp4') || source.endsWith('.webm') || source.endsWith('.mov');
     const forcedDark = caseItem.darkImages?.includes(source);
+    const forcedLight = caseItem.lightTitleImages?.includes(source);
     const titleColor = imageTitleColors[source]
-      || (isVideo || forcedDark ? TITLE_ON_DARK : TITLE_ON_LIGHT);
+      || (forcedLight ? TITLE_ON_LIGHT : (isVideo || forcedDark ? TITLE_ON_DARK : TITLE_ON_LIGHT));
 
     return (
       <div className="w-full relative">
@@ -340,6 +344,18 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
+          {/* APPROACH */}
+          {caseItem.process && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
+                <TextFade direction="up">
+                <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">APPROACH</h2>
+                <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.process)}</p>
+                </TextFade>
+              </div>
+            </FadeUp>
+          )}
+
           {/* IMPACT - Solution approach */}
           {caseItem.impact && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
@@ -444,6 +460,51 @@ const MobileCaseView = ({ caseItem }) => {
           {caseItem.detailImage11 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage11, "Detail", "")}
+            </FadeUp>
+          )}
+          {caseItem.detailImage12 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage12, "Detail", "")}
+            </FadeUp>
+          )}
+          {caseItem.detailImage13 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage13, "Detail", "")}
+            </FadeUp>
+          )}
+          {caseItem.detailImage14 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage14, "Detail", "")}
+            </FadeUp>
+          )}
+          {caseItem.detailImage15 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage15, "Detail", "")}
+            </FadeUp>
+          )}
+          {caseItem.detailImage16 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage16, "Detail", "")}
+            </FadeUp>
+          )}
+          {caseItem.detailImage17 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage17, "Detail", "")}
+            </FadeUp>
+          )}
+          {caseItem.detailImage18 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage18, "Detail", "")}
+            </FadeUp>
+          )}
+          {caseItem.detailImage19 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage19, "Detail", "")}
+            </FadeUp>
+          )}
+          {caseItem.detailImage20 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailImage20, "Detail", "")}
             </FadeUp>
           )}
 

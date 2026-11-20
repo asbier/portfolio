@@ -83,6 +83,14 @@ const ApproachContent = () => {
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
 
+  // Fixed transforms (hooks cannot be created inside .map)
+  const p0 = useTransform(scrollYProgress, [0 / 6, 1 / 6], [0, 1]);
+  const p1 = useTransform(scrollYProgress, [1 / 6, 2 / 6], [0, 1]);
+  const p2 = useTransform(scrollYProgress, [2 / 6, 3 / 6], [0, 1]);
+  const p3 = useTransform(scrollYProgress, [3 / 6, 4 / 6], [0, 1]);
+  const p4 = useTransform(scrollYProgress, [4 / 6, 5 / 6], [0, 1]);
+  const paragraphProgresses = [p0, p1, p2, p3, p4];
+
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
       const totalStages = paragraphs.length + 2;
@@ -93,10 +101,6 @@ const ApproachContent = () => {
       setShowOpportunity(latest >= 0.7);
     });
   }, [scrollYProgress, paragraphs.length]);
-
-  const paragraphProgresses = paragraphs.map((_, i) => 
-    useTransform(scrollYProgress, [i / (paragraphs.length + 1), (i + 1) / (paragraphs.length + 1)], [0, 1])
-  );
 
   useEffect(() => {
     const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
