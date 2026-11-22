@@ -84,7 +84,7 @@ const IntroCopy = ({ inlineLogo, showScrollHint, textClassName }) => {
       {showScrollHint && (
         <div className="absolute inset-x-0 bottom-0 p-4 pb-6 z-10 flex flex-col items-center justify-end gap-2">
           <p className="text-[11px] font-neue-book-semi uppercase tracking-[0.22em] text-white/70 leading-none">
-            Scroll for work
+            Scroll to see cases
           </p>
           <motion.span
             className="block w-[2px] bg-white origin-top"
