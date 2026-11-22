@@ -187,7 +187,7 @@ export const cases = [
     year: "2019",
     role: "ART DIRECTOR",
     hideTitleTag: true,
-    tags: ["FREELANCE FOR CONIC ROSE", "MARKETING ASSET", "VINYL COVER"],
+    tags: ["FREELANCE FOR CONIC ROSE", "ARTWORK", "VINYL COVER"],
     description: "A visual identity for Conic Rose — translating mournful guitar, mazy trumpets, and Berlin's cut and thrust into a filmic, experimental cover language.",
     challenge: "The tracks were still evolving, so there was no fixed tracklist to illustrate — only the emotional core of the record.",
     impact: "Analog and digital textures that echo the music without illustrating single songs.",
