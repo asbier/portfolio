@@ -9,7 +9,16 @@ const Navbar = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isApproachPage = location.pathname === '/approach';
-  const hiddenPages = ['Home', 'Archive', 'Privacy', 'Contact'];
+  const isArchivePage = location.pathname === '/history';
+  const showHomeCta = isApproachPage || isArchivePage;
+  // CaseSlider owns the morphing mobile mark on home / history
+  const hideMobileBrandMark =
+    location.pathname === '/' || location.pathname === '/history';
+  // Archive is desktop-only — mobile shows all projects on Home
+  const hiddenPages =
+    typeof window !== 'undefined' && window.innerWidth >= 1024
+      ? ['Home', 'Archive', 'Privacy', 'Contact']
+      : ['Home', 'Privacy', 'Contact'];
   const marqueeText = ` ✦ ${MARQUEE_ITEMS.join(' ✦ ')} ✦ `;
   
   const renderMarqueeText = () => {
@@ -47,7 +56,8 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Mobile brand mark — top left, name ring + slow 3D spin */}
+      {/* Mobile brand mark — top left (hidden on home; CaseSlider morphs center → corner) */}
+      {!hideMobileBrandMark && (
       <button
         type="button"
         onClick={() => navigate('/')}
@@ -58,7 +68,7 @@ const Navbar = () => {
           height: 148,
           perspective: 600,
         }}
-        aria-label="Annemarie Sauerbier — Home"
+        aria-label="Portfolio of AM . Brand & Product Designer — Home"
       >
         <svg
           viewBox="0 0 148 148"
@@ -76,14 +86,14 @@ const Navbar = () => {
           <text
             fill="#4A4A4A"
             style={{
-              fontSize: 26,
-              letterSpacing: '0.14em',
+              fontSize: 20,
+              letterSpacing: '0.08em',
               fontFamily: 'NeueMontrealSemiBold, sans-serif',
               textTransform: 'uppercase',
             }}
           >
             <textPath href="#am-name-ring" xlinkHref="#am-name-ring" startOffset="0">
-              {`AM BRAND & PRODUCT DESIGNER${'\u00A0'.repeat(3)}•${'\u00A0'.repeat(3)}AM BRAND & PRODUCT DESIGNER${'\u00A0'.repeat(3)}•${'\u00A0'.repeat(3)}`}
+              {`PORTFOLIO OF AM . BRAND & PRODUCT DESIGNER${'\u00A0'.repeat(2)}•${'\u00A0'.repeat(2)}PORTFOLIO OF AM . BRAND & PRODUCT DESIGNER${'\u00A0'.repeat(2)}•${'\u00A0'.repeat(2)}`}
             </textPath>
           </text>
         </svg>
@@ -112,6 +122,7 @@ const Navbar = () => {
           />
         </motion.span>
       </button>
+      )}
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
@@ -157,9 +168,9 @@ const Navbar = () => {
 
       {/* Main Navbar */}
       <header className="fixed left-0 w-full z-50 bg-[#F5F5F5]/90 backdrop-blur-sm bottom-0 lg:top-0 lg:bottom-auto h-[110px] lg:h-[120px] border-t lg:border-t-0 lg:border-b border-black/5">
-      <div className="flex flex-col lg:flex-row items-center h-full max-w-[1800px] mx-auto overflow-hidden px-0 lg:px-6 lg:gap-6"> 
-          {/* TAPE SECTION */}
-          <div className="w-full lg:flex-1 overflow-hidden whitespace-nowrap h-[50px] lg:h-full flex items-center border-b lg:border-none border-black/5 px-4 lg:px-0">
+      <div className="relative flex flex-col lg:block h-full w-full overflow-hidden px-0"> 
+          {/* TAPE SECTION — full width on desktop, runs behind CTAs */}
+          <div className="w-full lg:absolute lg:inset-0 overflow-hidden whitespace-nowrap h-[50px] lg:h-full flex items-center border-b lg:border-none border-black/5 px-4 lg:px-0 pointer-events-none">
             <motion.div 
               animate={{ x: [0, -2500] }} 
               transition={{ 
@@ -174,24 +185,21 @@ const Navbar = () => {
             </motion.div>
           </div>
 
-          {/* SPACER FÜR DESKTOP (Erzwingt den Abstand zwischen Tape und Buttons) */}
-          <div className="hidden lg:block w-[6px] shrink-0"></div>
-
           {/* NAV BUTTONS */}
-          <nav className="flex items-center w-full lg:w-auto justify-end h-[60px] lg:h-full shrink-0 px-4 lg:px-0">
+          <nav className="relative z-10 flex items-center w-full lg:w-auto lg:absolute lg:right-0 lg:top-0 lg:h-full justify-end h-[60px] shrink-0 px-4 lg:pr-6">
             <div className="flex space-x-2 items-center lg:space-x-4">
               <button 
-                onClick={() => isApproachPage ? navigate('/') : navigate('/approach')} 
-                className="text-[1.2rem] lg:text-[2rem] font-neue-semibold uppercase px-4 lg:px-[1.5rem] py-2 lg:py-[0.5rem] rounded-full border bg-transparent border-black/10 text-black/30 hover:bg-[#DFFF00] hover:text-[#979797] transition-colors leading-none flex items-center justify-center whitespace-nowrap"
+                onClick={() => showHomeCta ? navigate('/') : navigate('/approach')} 
+                className="text-[1.2rem] lg:text-[2.55rem] font-neue-semibold uppercase px-4 lg:px-8 py-2 lg:py-3 rounded-full border bg-[#F5F5F5] border-black/10 text-black/30 hover:bg-[#DFFF00] hover:text-[#979797] transition-colors leading-none flex items-center justify-center whitespace-nowrap"
               >
-                {isApproachPage ? 'HOME' : 'APPROACH'}
+                {showHomeCta ? 'HOME' : 'APPROACH'}
               </button>
               
               <a 
                 href={LINKEDIN_PROFILE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[1.2rem] lg:text-[2rem] font-neue-semibold uppercase px-4 lg:px-[1.5rem] py-2 lg:py-[0.5rem] rounded-full bg-[#FFB115] border border-black/10 text-[#D9D9D9] hover:bg-transparent hover:border-[#FFB115] hover:text-[#FFB115] transition-colors leading-none flex items-center justify-center whitespace-nowrap"
+                className="text-[1.2rem] lg:text-[2.55rem] font-neue-semibold uppercase px-4 lg:px-8 py-2 lg:py-3 rounded-full bg-[#FFB115] border border-black/10 text-[#D9D9D9] hover:bg-[#D9D9D9] hover:border-[#D9D9D9] hover:text-[#FFB115] transition-colors leading-none flex items-center justify-center whitespace-nowrap"
               >
                 GET IN TOUCH
               </a>

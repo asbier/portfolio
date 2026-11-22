@@ -1,7 +1,6 @@
 export const MARQUEE_ITEMS = [
-  'Freelance hands-on Senior Art Director',
+  'Senior Art Director',
+  'Creative Direction',
+  'Brand & product across disciplines',
   'Circular by design',
-  'Brand & product across digital and print',
-  'From screen to space',
 ];
-
