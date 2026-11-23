@@ -390,7 +390,7 @@ const DesktopCaseView = ({ caseItem }) => {
           <motion.div 
             drag dragMomentum={false}
             {...getCardMotion('projectInfo', 0)}
-            className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
+            className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-40"
             style={{
               background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
             }}
@@ -403,12 +403,17 @@ const DesktopCaseView = ({ caseItem }) => {
             <motion.div 
               drag dragMomentum={false}
               {...getCardMotion('responsibilities', 1)}
-              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-40"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
               }}
             >
               <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">SCOPE</h2>
+              {caseItem.role && (
+                <p className="text-[15px] font-neue-semibold uppercase tracking-[0.04em] text-[#363C53] text-grain mb-5">
+                  {Array.isArray(caseItem.role) ? caseItem.role[0] : caseItem.role}
+                </p>
+              )}
               <div className="space-y-3 text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
                 {caseItem.responsibilities.map((line, index) => (
                   <p key={index}>{line}</p>
