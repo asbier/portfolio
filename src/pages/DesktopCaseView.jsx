@@ -63,13 +63,20 @@ const DesktopCaseView = ({ caseItem }) => {
     caseItem.detailVideo1, caseItem.detailVideo2, caseItem.detailVideo3, caseItem.detailVideo4
   ].filter(Boolean)), [caseItem]);
 
-  // Collage order — optional early video so it isn't buried under later cards
+  // Collage order — pull early videos up (not only the first) so later clips aren't buried
   const allImages = useMemo(() => {
     if (!caseItem.desktopVideoEarly || !caseItem.detailVideo1) return canonicalMedia;
     const stills = canonicalMedia.filter((url) => !/\.(mp4|mov|webm)$/i.test(url));
     const videos = canonicalMedia.filter((url) => /\.(mp4|mov|webm)$/i.test(url));
     if (!stills.length || !videos.length) return canonicalMedia;
-    return [stills[0], videos[0], ...stills.slice(1), ...videos.slice(1)];
+    // still → video → still → video → remaining stills → any leftover videos
+    const ordered = [];
+    const maxPairs = Math.max(stills.length, videos.length);
+    for (let i = 0; i < maxPairs; i += 1) {
+      if (stills[i]) ordered.push(stills[i]);
+      if (videos[i]) ordered.push(videos[i]);
+    }
+    return ordered;
   }, [caseItem.desktopVideoEarly, caseItem.detailVideo1, canonicalMedia]);
 
   const titleByUrl = useMemo(() => {

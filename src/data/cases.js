@@ -22,7 +22,7 @@ export const cases = [
     // Keep logo + grey headroom; crop the register at the bottom on tall mobile frames
     imagePosition: "center top",
     lightHero: true,
-    // Mobile: video → challenge → hierarchy → leaflet → range → approach → kit → brand guidelines → digital pages overview
+    // Desktop collage keeps the full set; mobile skips WIP / duplicate / decorative stills
     detailImage1: "/images/02_sumup-retail-rebrand/sumup-colour-hierarchy-blurred.webp",
     detailImage2: "/images/02_sumup-retail-rebrand/sumup-retail-brand-guidelines.webp",
     detailImage3: "/images/02_sumup-retail-rebrand/sumup-brand-guidelines.webp",
@@ -30,10 +30,14 @@ export const cases = [
     detailImage5: "/images/02_sumup-retail-rebrand/sumup-range.webp",
     detailImage6: "/images/02_sumup-retail-rebrand/sumup-digital-retail-system.webp",
     detailImage7: "/images/02_sumup-retail-rebrand/sumup-logo-sky.webp",
-    // Content videos (orange Amazon loop removed) — early in the story
     detailVideo1: "/images/02_sumup-retail-rebrand/sumup-retail-grid-teaser.mp4",
     detailVideo2: "/images/02_sumup-retail-rebrand/sumup-tag-construction.mp4",
-    // Teaser Register is header/slider only — not repeated in desktop collage
+    hideOnMobile: [
+      "/images/02_sumup-retail-rebrand/sumup-colour-hierarchy-blurred.webp",
+      "/images/02_sumup-retail-rebrand/sumup-brand-guidelines.webp",
+      "/images/02_sumup-retail-rebrand/sumup-logo-sky.webp",
+    ],
+    // Teaser is header/slider only — not repeated in desktop collage
     hideDesktopHero: true,
     mobileVideoFirst: true,
     desktopVideoEarly: true,

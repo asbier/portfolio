@@ -230,6 +230,8 @@ const MobileCaseView = ({ caseItem }) => {
   const heroImage = caseItem.mobileImage || caseItem.image;
   const heroVideo = caseItem.mobileHeroVideo || caseItem.mobileSliderVideo || null;
   const heroIsGradient = !heroVideo && heroImage?.startsWith('linear-gradient');
+  const hideOnMobile = new Set(caseItem.hideOnMobile || []);
+  const showMobileMedia = (url) => Boolean(url) && !hideOnMobile.has(url);
 
   // Show back to top button when scrolled down
   useEffect(() => {
@@ -323,14 +325,7 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* SumUp: video → challenge → hierarchy → leaflet → range → tag video → approach… */}
-          {caseItem.mobileVideoFirst && caseItem.detailVideo1 && (
-            <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster, getTitleForUrl(caseItem.detailVideo1))}
-            </FadeUp>
-          )}
-
-          {/* CHALLENGE — after video when mobileVideoFirst; otherwise after context image below */}
+          {/* SumUp mobile: challenge → retail grid → tag → leaflet → range → approach… */}
           {caseItem.challenge && caseItem.mobileVideoFirst && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
@@ -342,24 +337,24 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {caseItem.mobileVideoFirst && caseItem.detailImage1 && caseItem.detailImage1 !== heroImage && (
+          {caseItem.mobileVideoFirst && showMobileMedia(caseItem.detailVideo1) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailImage1, "Hierarchy", "")}
+              {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster, getTitleForUrl(caseItem.detailVideo1))}
             </FadeUp>
           )}
-          {caseItem.mobileVideoFirst && caseItem.detailImage4 && (
+          {caseItem.mobileVideoFirst && showMobileMedia(caseItem.detailVideo2) && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailVideo2, "Detail Video", "", caseItem.detailVideo2Poster, getTitleForUrl(caseItem.detailVideo2))}
+            </FadeUp>
+          )}
+          {caseItem.mobileVideoFirst && showMobileMedia(caseItem.detailImage4) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage4, "Leaflet", "")}
             </FadeUp>
           )}
-          {caseItem.mobileVideoFirst && caseItem.detailImage5 && (
+          {caseItem.mobileVideoFirst && showMobileMedia(caseItem.detailImage5) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage5, "Product Range Packaging Differentiation", "")}
-            </FadeUp>
-          )}
-          {caseItem.mobileVideoFirst && caseItem.detailVideo2 && (
-            <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailVideo2, "Detail Video", "", caseItem.detailVideo2Poster, getTitleForUrl(caseItem.detailVideo2))}
             </FadeUp>
           )}
 
@@ -410,13 +405,13 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* SumUp: Production Kit → Brand guidelines after Approach */}
-          {caseItem.mobileVideoFirst && caseItem.detailImage2 && (
+          {/* SumUp: Production Kit (+ optional second guidelines) after Approach */}
+          {caseItem.mobileVideoFirst && showMobileMedia(caseItem.detailImage2) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage2, "Production Kit", "")}
             </FadeUp>
           )}
-          {caseItem.mobileVideoFirst && caseItem.detailImage3 && (
+          {caseItem.mobileVideoFirst && showMobileMedia(caseItem.detailImage3) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage3, "Brand guidelines", "")}
             </FadeUp>
@@ -459,7 +454,7 @@ const MobileCaseView = ({ caseItem }) => {
           )}
 
           {/* SumUp: digital brand pages overview after Impact */}
-          {caseItem.mobileVideoFirst && caseItem.detailImage6 && (
+          {caseItem.mobileVideoFirst && showMobileMedia(caseItem.detailImage6) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage6, "Digital brand pages — overview", "")}
             </FadeUp>
@@ -520,37 +515,37 @@ const MobileCaseView = ({ caseItem }) => {
           )}
 
           {/* Additional detail images after outcome (for cases with many images) */}
-          {caseItem.detailImage7 && (
+          {showMobileMedia(caseItem.detailImage7) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage7, "Detail", "")}
             </FadeUp>
           )}
-          {caseItem.detailImage8 && (
+          {showMobileMedia(caseItem.detailImage8) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage8, "Detail", "")}
             </FadeUp>
           )}
-          {caseItem.detailImage9 && (
+          {showMobileMedia(caseItem.detailImage9) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage9, "Detail", "")}
             </FadeUp>
           )}
-          {caseItem.detailImage10 && (
+          {showMobileMedia(caseItem.detailImage10) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage10, "Detail", "")}
             </FadeUp>
           )}
-          {caseItem.detailImage11 && (
+          {showMobileMedia(caseItem.detailImage11) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage11, "Detail", "")}
             </FadeUp>
           )}
-          {caseItem.detailImage12 && (
+          {showMobileMedia(caseItem.detailImage12) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage12, "Detail", "")}
             </FadeUp>
           )}
-          {caseItem.detailImage13 && (
+          {showMobileMedia(caseItem.detailImage13) && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage13, "Detail", "")}
             </FadeUp>
