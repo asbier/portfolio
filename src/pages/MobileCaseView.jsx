@@ -634,7 +634,15 @@ const MobileCaseView = ({ caseItem }) => {
                   {caseItem.role && (
                     <div className="flex-1">
                       <h2 className="text-[17px] font-neue-semibold uppercase tracking-normal leading-tight text-[#979797] text-grain mb-2">ROLE</h2>
-                      <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.role}</p>
+                      {Array.isArray(caseItem.role) ? (
+                        <div className="space-y-2 text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
+                          {caseItem.role.map((line, index) => (
+                            <p key={index}>{line}</p>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">{caseItem.role}</p>
+                      )}
                     </div>
                   )}
                 </div>
