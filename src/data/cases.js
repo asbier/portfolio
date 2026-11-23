@@ -16,6 +16,9 @@ export const cases = [
     learning: "A first drop should lock the language, not freeze the brand.",
     image: "/images/02_sumup-retail-rebrand/sumup-teaser-register.webp",
     mobileImage: "/images/02_sumup-retail-rebrand/sumup-teaser-register.webp",
+    // Homepage + mobile case hero: corrected Amazon storefront laptop loop (1080×1920)
+    sliderVideo: "/images/02_sumup-retail-rebrand/sumup-amazon-storefront-laptop.mp4",
+    mobileSliderVideo: "/images/02_sumup-retail-rebrand/sumup-amazon-storefront-laptop.mp4",
     // Keep logo + grey headroom; crop the register at the bottom on tall mobile frames
     imagePosition: "center top",
     lightHero: true,
@@ -26,20 +29,24 @@ export const cases = [
     detailImage4: "/images/02_sumup-retail-rebrand/sumup-register-leaflet.webp",
     detailImage5: "/images/02_sumup-retail-rebrand/sumup-range.webp",
     detailImage6: "/images/02_sumup-retail-rebrand/sumup-digital-retail-system.webp",
-    detailVideo1: "/images/02_sumup-retail-rebrand/sumup-amazon-storefront-loop.mp4",
-    detailVideo1Poster: "/images/02_sumup-retail-rebrand/sumup-amazon-storefront-poster.webp",
+    detailImage7: "/images/02_sumup-retail-rebrand/sumup-logo-sky.webp",
+    // Content videos (orange Amazon loop removed) — early in the story
+    detailVideo1: "/images/02_sumup-retail-rebrand/sumup-retail-grid-teaser.mp4",
+    detailVideo2: "/images/02_sumup-retail-rebrand/sumup-tag-construction.mp4",
     // Teaser Register is header/slider only — not repeated in desktop collage
     hideDesktopHero: true,
     mobileVideoFirst: true,
     desktopVideoEarly: true,
     darkImages: [
       "/images/02_sumup-retail-rebrand/sumup-register-leaflet.webp",
+      "/images/02_sumup-retail-rebrand/sumup-logo-sky.webp",
     ],
     lightTitleImages: [
       "/images/02_sumup-retail-rebrand/sumup-retail-brand-guidelines.webp",
       "/images/02_sumup-retail-rebrand/sumup-digital-retail-system.webp",
       "/images/02_sumup-retail-rebrand/sumup-brand-guidelines.webp",
-      "/images/02_sumup-retail-rebrand/sumup-amazon-storefront-loop.mp4",
+      "/images/02_sumup-retail-rebrand/sumup-retail-grid-teaser.mp4",
+      "/images/02_sumup-retail-rebrand/sumup-tag-construction.mp4",
     ],
     // Keep collage card sizes; show full media inside (no crop)
     containImages: [
@@ -49,6 +56,7 @@ export const cases = [
       "/images/02_sumup-retail-rebrand/sumup-register-leaflet.webp",
       "/images/02_sumup-retail-rebrand/sumup-range.webp",
       "/images/02_sumup-retail-rebrand/sumup-brand-guidelines.webp",
+      "/images/02_sumup-retail-rebrand/sumup-logo-sky.webp",
     ],
     imageTitles: [
       'Colour hierarchy — WIP',
@@ -57,7 +65,9 @@ export const cases = [
       'Register leaflet',
       'Product Range Packaging Differentiation',
       'Digital brand pages — overview',
-      'Amazon storefront',
+      'Brand mark — sky',
+      'Retail grid teaser',
+      'Tag construction',
     ],
     team: {
       title: "TEAM",

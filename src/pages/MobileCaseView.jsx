@@ -100,7 +100,7 @@ const MobileCaseView = ({ caseItem }) => {
     caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15,
     caseItem.detailImage16, caseItem.detailImage17, caseItem.detailImage18,
     caseItem.detailImage19, caseItem.detailImage20,
-    caseItem.detailVideo1, caseItem.detailVideo2
+    caseItem.detailVideo1, caseItem.detailVideo2, caseItem.detailVideo3, caseItem.detailVideo4
   ].filter(Boolean), [caseItem]);
 
   const getTitleForUrl = (url) => {
@@ -228,7 +228,8 @@ const MobileCaseView = ({ caseItem }) => {
   };
 
   const heroImage = caseItem.mobileImage || caseItem.image;
-  const heroIsGradient = heroImage?.startsWith('linear-gradient');
+  const heroVideo = caseItem.mobileHeroVideo || caseItem.mobileSliderVideo || null;
+  const heroIsGradient = !heroVideo && heroImage?.startsWith('linear-gradient');
 
   // Show back to top button when scrolled down
   useEffect(() => {
@@ -257,17 +258,27 @@ const MobileCaseView = ({ caseItem }) => {
             background: heroIsGradient ? heroImage : 'transparent',
           }}
         >
-          {!heroIsGradient && (
-            <>
-              <img 
-                src={heroImage} 
-                alt={caseItem.title} 
-                className={`w-full h-full block ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`} 
-                style={caseItem.imagePosition ? { objectPosition: caseItem.imagePosition } : undefined}
-                loading="eager" 
-                decoding="async"
-              />
-            </>
+          {heroVideo ? (
+            <video
+              src={heroVideo}
+              poster={heroImage}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className={`w-full h-full block ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+              style={caseItem.imagePosition ? { objectPosition: caseItem.imagePosition } : undefined}
+            />
+          ) : !heroIsGradient && (
+            <img 
+              src={heroImage} 
+              alt={caseItem.title} 
+              className={`w-full h-full block ${caseItem.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`} 
+              style={caseItem.imagePosition ? { objectPosition: caseItem.imagePosition } : undefined}
+              loading="eager" 
+              decoding="async"
+            />
           )}
 
           {/* Navigation - Overlay on Hero Image */}
@@ -312,10 +323,10 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* SumUp: video → challenge → hierarchy → leaflet → packaging → approach → retail system */}
+          {/* SumUp: video → challenge → hierarchy → leaflet → range → tag video → approach… */}
           {caseItem.mobileVideoFirst && caseItem.detailVideo1 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster, getTitleForUrl(caseItem.detailVideo1) || 'Amazon storefront')}
+              {renderMedia(caseItem.detailVideo1, "Video Demo", "", caseItem.detailVideo1Poster, getTitleForUrl(caseItem.detailVideo1))}
             </FadeUp>
           )}
 
@@ -344,6 +355,11 @@ const MobileCaseView = ({ caseItem }) => {
           {caseItem.mobileVideoFirst && caseItem.detailImage5 && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
               {renderMedia(caseItem.detailImage5, "Product Range Packaging Differentiation", "")}
+            </FadeUp>
+          )}
+          {caseItem.mobileVideoFirst && caseItem.detailVideo2 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailVideo2, "Detail Video", "", caseItem.detailVideo2Poster, getTitleForUrl(caseItem.detailVideo2))}
             </FadeUp>
           )}
 
@@ -486,10 +502,20 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
-          {/* Video 2 - Final result demonstration (after OUTCOME) */}
-          {caseItem.detailVideo2 && (
+          {/* Video 2+ — after OUTCOME only when not already shown early (mobileVideoFirst) */}
+          {caseItem.detailVideo2 && !caseItem.mobileVideoFirst && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
-              {renderMedia(caseItem.detailVideo2, "Final Video", "", caseItem.detailVideo2Poster)}
+              {renderMedia(caseItem.detailVideo2, "Final Video", "", caseItem.detailVideo2Poster, getTitleForUrl(caseItem.detailVideo2))}
+            </FadeUp>
+          )}
+          {caseItem.detailVideo3 && !caseItem.mobileVideoFirst && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailVideo3, "Detail Video", "", caseItem.detailVideo3Poster, getTitleForUrl(caseItem.detailVideo3))}
+            </FadeUp>
+          )}
+          {caseItem.detailVideo4 && !caseItem.mobileVideoFirst && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              {renderMedia(caseItem.detailVideo4, "Detail Video", "", caseItem.detailVideo4Poster, getTitleForUrl(caseItem.detailVideo4))}
             </FadeUp>
           )}
 

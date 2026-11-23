@@ -60,7 +60,7 @@ const DesktopCaseView = ({ caseItem }) => {
     caseItem.detailImage13, caseItem.detailImage14, caseItem.detailImage15,
     caseItem.detailImage16, caseItem.detailImage17, caseItem.detailImage18,
     caseItem.detailImage19, caseItem.detailImage20,
-    caseItem.detailVideo1, caseItem.detailVideo2
+    caseItem.detailVideo1, caseItem.detailVideo2, caseItem.detailVideo3, caseItem.detailVideo4
   ].filter(Boolean)), [caseItem]);
 
   // Collage order — optional early video so it isn't buried under later cards
