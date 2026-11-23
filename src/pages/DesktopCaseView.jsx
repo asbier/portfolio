@@ -127,17 +127,27 @@ const DesktopCaseView = ({ caseItem }) => {
     const lastRow = Math.max(0, layoutConfig.imageRows - 1);
     const nudge = (row, side) => (side === 'left' ? -8 : 12) + (row % 2) * 14;
 
+    const hasScope = Array.isArray(caseItem.responsibilities) && caseItem.responsibilities.length > 0;
+
     return {
       projectInfo: { x: clampX(leftX), y: getRowCardY(0) + nudge(0, 'left') },
-      challenge:   { x: clampX(rightX), y: getRowCardY(0) + nudge(0, 'right') },
-      process:     { x: clampX(leftX), y: getRowCardY(Math.min(1, lastRow)) + nudge(1, 'left') },
-      impact:      { x: clampX(rightX), y: getRowCardY(Math.min(1, lastRow)) + nudge(1, 'right') },
+      // Scope takes the top-right slot when present; challenge shifts down a row
+      responsibilities: { x: clampX(rightX), y: getRowCardY(0) + nudge(0, 'right') },
+      challenge: hasScope
+        ? { x: clampX(leftX), y: getRowCardY(Math.min(1, lastRow)) + nudge(1, 'left') }
+        : { x: clampX(rightX), y: getRowCardY(0) + nudge(0, 'right') },
+      process: hasScope
+        ? { x: clampX(rightX), y: getRowCardY(Math.min(1, lastRow)) + nudge(1, 'right') }
+        : { x: clampX(leftX), y: getRowCardY(Math.min(1, lastRow)) + nudge(1, 'left') },
+      impact: hasScope
+        ? { x: clampX(leftX), y: getRowCardY(Math.min(2, lastRow)) + nudge(2, 'left') }
+        : { x: clampX(rightX), y: getRowCardY(Math.min(1, lastRow)) + nudge(1, 'right') },
       // Learning / outcome sit clearly below the last media row so they aren't buried
-      outcome:     { x: clampX(leftX), y: getRowCardY(lastRow) + 260 + nudge(2, 'left') },
-      learning:    { x: clampX(rightX), y: getRowCardY(lastRow) + 260 + nudge(2, 'right') },
-      offer:       { x: clampX(leftX), y: getRowCardY(lastRow) + 480 + nudge(3, 'left') }
+      outcome:  { x: clampX(leftX), y: getRowCardY(lastRow) + 260 + nudge(2, 'left') },
+      learning: { x: clampX(rightX), y: getRowCardY(lastRow) + 260 + nudge(2, 'right') },
+      offer:    { x: clampX(leftX), y: getRowCardY(lastRow) + 480 + nudge(3, 'left') }
     };
-  }, [grid, layoutConfig, allImages.length]);
+  }, [grid, layoutConfig, allImages.length, caseItem.responsibilities]);
 
   const getCardMotion = (key, order) => ({
     initial: { x: cardPositions[key].x, y: cardPositions[key].y + 40, opacity: 0 },
@@ -189,6 +199,7 @@ const DesktopCaseView = ({ caseItem }) => {
       : Math.max(...initialPositions.map(p => p.y));
     const cardLastY = Math.max(
       cardPositions.projectInfo.y,
+      cardPositions.responsibilities.y,
       cardPositions.challenge.y,
       cardPositions.process.y,
       cardPositions.impact.y,
@@ -388,10 +399,28 @@ const DesktopCaseView = ({ caseItem }) => {
             <p className="text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain text-justify hyphens-none" style={{ textAlignLast: 'left' }}>{preventOrphan(caseItem.description)}</p>
           </motion.div>
 
+          {Array.isArray(caseItem.responsibilities) && caseItem.responsibilities.length > 0 && (
+            <motion.div 
+              drag dragMomentum={false}
+              {...getCardMotion('responsibilities', 1)}
+              className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
+              style={{
+                background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
+              }}
+            >
+              <h2 className="text-[24px] lg:text-[36px] font-neue-semibold uppercase mb-[40px] text-[#363C53] text-grain leading-[1.1]">SCOPE</h2>
+              <div className="space-y-3 text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
+                {caseItem.responsibilities.map((line, index) => (
+                  <p key={index}>{line}</p>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
           {caseItem.challenge && (
             <motion.div 
               drag dragMomentum={false}
-              {...getCardMotion('challenge', 1)}
+              {...getCardMotion('challenge', 2)}
               className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
@@ -405,7 +434,7 @@ const DesktopCaseView = ({ caseItem }) => {
           {caseItem.process && (
             <motion.div 
               drag dragMomentum={false}
-              {...getCardMotion('process', 2)}
+              {...getCardMotion('process', 3)}
               className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'
@@ -419,7 +448,7 @@ const DesktopCaseView = ({ caseItem }) => {
           {caseItem.impact && (
             <motion.div 
               drag dragMomentum={false}
-              {...getCardMotion('impact', 3)}
+              {...getCardMotion('impact', 4)}
               className="absolute backdrop-blur-xl p-8 cursor-move w-[340px] z-30"
               style={{
                 background: 'linear-gradient(to bottom, rgba(124, 122, 116, 0) 0%, rgba(245, 243, 240, 0.95) 100%)'

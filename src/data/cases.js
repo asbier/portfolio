@@ -6,8 +6,8 @@ export const cases = [
     caseStudyLabel: "FINTECH RETAIL CASE STUDY",
     category: "DESIGN SYSTEM / ART DIRECTION",
     year: "2026",
-    role: [
-      "Senior Brand & Product Designer (Freelance)",
+    role: "Senior Brand & Product Designer (Freelance)",
+    responsibilities: [
       "Digital — Amazon storefront & brand pages",
       "Print — leaflets, POS, packaging",
       "Event — partner events & trade fairs",

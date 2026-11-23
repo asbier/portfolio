@@ -325,6 +325,22 @@ const MobileCaseView = ({ caseItem }) => {
             </FadeUp>
           )}
 
+          {/* Scope / responsibilities — own tile so ROLE stays short */}
+          {Array.isArray(caseItem.responsibilities) && caseItem.responsibilities.length > 0 && (
+            <FadeUp className="space-y-[0.1875rem] snap-start">
+              <div className="p-8 space-y-0 backdrop-blur-xl" style={{ background: 'linear-gradient(to bottom, rgba(230, 228, 222, 0.4) 0%, rgba(245, 243, 240, 0.98) 50%, rgba(235, 233, 228, 0.95) 100%)' }}>
+                <TextFade direction="up">
+                  <h2 className="text-[28px] lg:text-[36px] font-neue-semibold uppercase tracking-normal leading-[1.1] text-[#363C53] text-grain mb-[62px]">SCOPE</h2>
+                  <div className="space-y-3 text-base lg:text-lg font-neue-book-semi leading-relaxed text-[#979797] text-grain">
+                    {caseItem.responsibilities.map((line, index) => (
+                      <p key={index}>{line}</p>
+                    ))}
+                  </div>
+                </TextFade>
+              </div>
+            </FadeUp>
+          )}
+
           {/* SumUp mobile: challenge → retail grid → tag → leaflet → range → approach… */}
           {caseItem.challenge && caseItem.mobileVideoFirst && (
             <FadeUp className="space-y-[0.1875rem] snap-start">
