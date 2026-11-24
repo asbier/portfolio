@@ -338,8 +338,8 @@ const DesktopCaseView = ({ caseItem }) => {
                 animate={{ scale: isScaled ? 1.8 : 1, zIndex: isScaled ? 100 : 10 + index }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
-                <div className="relative w-full shadow-2xl overflow-hidden bg-black/5">
-                  <div className="relative w-full" style={{ height: `${mediaHeight}px` }}>
+                <div className="relative w-full">
+                  <div className="relative w-full shadow-2xl overflow-hidden bg-black/5" style={{ height: `${mediaHeight}px` }}>
                     {isVideo ? (
                       <video
                         src={url}
@@ -372,15 +372,10 @@ const DesktopCaseView = ({ caseItem }) => {
                       }}
                     />
                   </div>
-                  {url !== caseItem.image && (
-                    <div className="absolute bottom-0 left-0 pl-4 pb-4 z-20 pointer-events-none">
-                      <p
-                        className="text-base font-neue-semibold uppercase tracking-[1px]"
-                        style={{ color: imageTitleColors[index] || TITLE_ON_LIGHT }}
-                      >
-                        {getImageTitle(url, index)}
-                      </p>
-                    </div>
+                  {url !== caseItem.image && getImageTitle(url, index) && (
+                    <p className="mt-2 pl-1 text-base font-neue-semibold uppercase tracking-[1px] text-[#363C53] leading-snug">
+                      {getImageTitle(url, index)}
+                    </p>
                   )}
                 </div>
               </motion.div>
