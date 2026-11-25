@@ -348,13 +348,13 @@ const DesktopCaseView = ({ caseItem }) => {
                         loop
                         muted
                         playsInline
-                        className={`w-full h-full pointer-events-none ${usesContain(url) ? 'object-contain bg-white' : 'object-cover'}`}
+                        className={`w-full h-full pointer-events-none ${usesContain(url) ? 'object-contain bg-white' : 'object-cover scale-[1.03]'}`}
                       />
                     ) : (
                       <img
                         src={url}
                         alt=""
-                        className={`w-full h-full select-none pointer-events-none ${usesContain(url) ? 'object-contain bg-[#F5F3F0]' : 'object-cover'}`}
+                        className={`w-full h-full select-none pointer-events-none ${usesContain(url) ? 'object-contain bg-[#F5F3F0]' : 'object-cover scale-[1.03]'}`}
                         style={
                           caseItem.imagePositions?.[url]
                             ? { objectPosition: caseItem.imagePositions[url] }
@@ -364,19 +364,24 @@ const DesktopCaseView = ({ caseItem }) => {
                         }
                       />
                     )}
-                    {/* Radial gradient overlay - smooth gradient from 70% center to 10% edges, disappears on hover */}
+                    {/* Soft wash — no hard white edge; fades on hover */}
                     <div 
                       className="absolute inset-0 z-10 pointer-events-none opacity-100 group-hover:opacity-0 transition-opacity duration-500"
                       style={{
-                        background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 100%)'
+                        background: 'radial-gradient(ellipse at center, rgba(245, 243, 240, 0.35) 0%, rgba(245, 243, 240, 0.05) 100%)'
                       }}
                     />
+                    {url !== caseItem.image && getImageTitle(url, index) && (
+                      <div className="absolute bottom-0 left-0 pl-4 pb-4 z-20 pointer-events-none">
+                        <p
+                          className="text-base font-neue-semibold uppercase tracking-[1px]"
+                          style={{ color: imageTitleColors[index] || TITLE_ON_LIGHT }}
+                        >
+                          {getImageTitle(url, index)}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                  {url !== caseItem.image && getImageTitle(url, index) && (
-                    <p className="mt-2 pl-1 text-base font-neue-semibold uppercase tracking-[1px] text-[#363C53] leading-snug">
-                      {getImageTitle(url, index)}
-                    </p>
-                  )}
                 </div>
               </motion.div>
             );
