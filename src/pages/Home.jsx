@@ -20,12 +20,12 @@ const Home = ({ cases }) => {
     }, []);
 
     const visibleCases = useMemo(() => {
-        // Mobile: one continuous list — selected first, then earlier work
+        // Mobile: selected → archive → any mobileEnd closer (e.g. Jovana last)
         if (isMobile) {
-            return [
-                ...cases.filter((c) => !c.archived),
-                ...cases.filter((c) => c.archived),
-            ];
+            const selected = cases.filter((c) => !c.archived && !c.mobileEnd);
+            const archived = cases.filter((c) => c.archived);
+            const closer = cases.filter((c) => !c.archived && c.mobileEnd);
+            return [...selected, ...archived, ...closer];
         }
         return isArchive
             ? cases.filter((c) => c.archived)

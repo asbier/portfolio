@@ -302,6 +302,8 @@ export const cases = [
     category: "ART DIRECTION / FILM",
     year: "2018",
     role: "ART DIRECTION",
+    // Mobile continuous list: keep as absolute last slide after archive cases
+    mobileEnd: true,
     hideTitleTag: true,
     tags: ["FREELANCE FOR JOVANA REISINGER", "BERLINALE", "FILM POSTER", "ART DIRECTION"],
     description: "Berlinale 2018 key visual for Pretty Girls Don’t Lie — glamour and cliché in tension.",
