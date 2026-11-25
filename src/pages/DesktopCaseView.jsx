@@ -15,9 +15,9 @@ const DesktopCaseView = ({ caseItem }) => {
   const [imageFormats, setImageFormats] = useState({});
   const [imageAspects, setImageAspects] = useState({});
   const [imageTitleColors, setImageTitleColors] = useState({});
-  const IMAGE_WIDTHS = { landscape: 420, portrait: 280, square: 360 };
-  const IMAGE_HEIGHTS = { landscape: 294, portrait: 400, square: 360 }; // 10:7 / 7:10 / 1:1
-  const MAX_IMAGE_WIDTH = 500; // room for slightly larger video tiles
+  const IMAGE_WIDTHS = { landscape: 520, portrait: 340, square: 440 };
+  const IMAGE_HEIGHTS = { landscape: 364, portrait: 486, square: 440 }; // 10:7 / 7:10 / 1:1
+  const MAX_IMAGE_WIDTH = 620; // room for slightly larger video tiles
   const [viewportSize, setViewportSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
   const toggleScale = (imageId) => {
